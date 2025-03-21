@@ -112,7 +112,7 @@ enum ControlMode {
 };
 
 // Add this at the top of your file with other global variables
-ControlMode currentMode = GAME_MODE; // Start in game mode by default
+ControlMode currentMode = DEBUG_MODE;
 bool modeJustChanged = true;         // Flag to indicate when mode has just changed
 
 // Structure to track finger motion for button detection

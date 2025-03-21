@@ -1,6 +1,6 @@
 #include "HallEffectSensors.h"
 
-ResponsiveAnalogRead analog(A1, true);
+ResponsiveAnalogRead analog(A2, true);
 
 int32_t rawVals[SENSOR_COUNT];
 float proto_angles[SENSOR_COUNT];
