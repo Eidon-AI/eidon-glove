@@ -326,10 +326,10 @@ void setup() {
     // Define which sensors have inverted magnets
     bool invertedSensors[SENSOR_COUNT] = {
         false, false, false, false,  // Thumb (0-3)
-        true, false, true,         // Index (4-6)
-        true, false, true,         // Middle (7-9)
-        false, false, true,         // Ring (10-12)
-        false, false, false          // Pinky (13-15)
+        false, true, false,           // Index (4-6)
+        false, true, false,           // Middle (7-9)
+        false, true, false,          // Ring (10-12)
+        false, true, false          // Pinky (13-15)
     };
     
     // Initialize the finger tracking system with inverted sensor configuration

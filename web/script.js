@@ -56,12 +56,12 @@ const fingerJointMap = [
     // Index finger (3 joints)
     { finger: 1, joint: 0, type: 'MCP_ABDUCTION', min: 0, max: 255, inverted: false },
     { finger: 1, joint: 1, type: 'MCP_FLEXION', min: 0, max: 255, inverted: false },
-    { finger: 1, joint: 2, type: 'PIP_FLEXION', min: 0, max: 158, inverted: false },
+    { finger: 1, joint: 2, type: 'PIP_FLEXION', min: 0, max: 255, inverted: false },
     
     // Middle finger (3 joints)
-    { finger: 2, joint: 0, type: 'MCP_ABDUCTION', min: 120, max: 250, inverted: false },
-    { finger: 2, joint: 1, type: 'MCP_FLEXION', min: 20, max: 246, inverted: false },
-    { finger: 2, joint: 2, type: 'PIP_FLEXION', min: 8, max: 140, inverted: false },
+    { finger: 2, joint: 0, type: 'MCP_ABDUCTION', min: 0, max: 255, inverted: false },
+    { finger: 2, joint: 1, type: 'MCP_FLEXION', min: 0, max: 246, inverted: false },
+    { finger: 2, joint: 2, type: 'PIP_FLEXION', min: 0, max: 255, inverted: false },
     
     // Ring finger (3 joints)
     { finger: 3, joint: 0, type: 'MCP_ABDUCTION', min: 0, max: 255, inverted: false },
@@ -71,7 +71,7 @@ const fingerJointMap = [
     // Pinky finger (3 joints)
     { finger: 4, joint: 0, type: 'MCP_ABDUCTION', min: 0, max: 255, inverted: false },
     { finger: 4, joint: 1, type: 'MCP_FLEXION', min: 0, max: 255, inverted: false },
-    { finger: 4, joint: 2, type: 'PIP_FLEXION', min: 35, max: 100, inverted: false }
+    { finger: 4, joint: 2, type: 'PIP_FLEXION', min: 0, max: 255, inverted: false }
 ];
 
 // Add gamepad support
