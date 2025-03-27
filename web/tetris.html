@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris with Gamepad Support</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #1a1a1a;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        #game-container {
+            position: relative;
+            margin: 20px;
+        }
+
+        #game-canvas {
+            border: 2px solid #333;
+            background-color: #000;
+        }
+
+        #score {
+            position: absolute;
+            top: 0;
+            right: -150px;
+            width: 140px;
+            padding: 10px;
+            background-color: #333;
+            border-radius: 5px;
+        }
+
+        #controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .control-info {
+            margin: 5px 0;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tetris</h1>
+    <div id="game-container">
+        <canvas id="game-canvas" width="300" height="600"></canvas>
+        <div id="score">
+            <h2>Score: <span id="score-value">0</span></h2>
+            <h3>Lines: <span id="lines-value">0</span></h3>
+        </div>
+    </div>
+    <div id="controls">
+        <div class="control-info">Keyboard: ←↓→ to move, ↑ to rotate</div>
+        <div class="control-info">Gamepad: Stick/D-pad for left/right, A to rotate, B to drop</div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('game-canvas');
+        const ctx = canvas.getContext('2d');
+        const BLOCK_SIZE = 30;
+        const COLS = 10;
+        const ROWS = 20;
+        
+        // Tetromino shapes and colors
+        const SHAPES = {
+            I: [[1, 1, 1, 1]], 
+            O: [[1, 1], [1, 1]],
+            T: [[0, 1, 0], [1, 1, 1]],
+            L: [[1, 0], [1, 0], [1, 1]],
+            J: [[0, 1], [0, 1], [1, 1]],
+            S: [[0, 1, 1], [1, 1, 0]],
+            Z: [[1, 1, 0], [0, 1, 1]]
+        };
+
+        const COLORS = {
+            I: '#00f0f0',
+            O: '#f0f000',
+            T: '#f000f0',
+            L: '#f0a000',
+            J: '#0000f0',
+            S: '#00f000',
+            Z: '#f00000'
+        };
+
+        let score = 0;
+        let lines = 0;
+        let gameBoard = Array(ROWS).fill().map(() => Array(COLS).fill(0));
+        let currentPiece = null;
+        let gameLoop = null;
+        let gamepadIndex = null;
+
+        let lastTime = 0;
+        let dropCounter = 0;
+        let dropInterval = 1000; // Time in ms before piece drops
+        let lastMoveTime = 0;
+        const moveInterval = 100; // Time in ms between moves (for smooth movement)
+
+        class Piece {
+            constructor(shape, color) {
+                this.shape = shape;
+                this.color = color;
+                this.x = Math.floor(COLS / 2) - Math.floor(shape[0].length / 2);
+                this.y = 0;
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                this.shape.forEach((row, y) => {
+                    row.forEach((value, x) => {
+                        if (value) {
+                            ctx.fillRect((this.x + x) * BLOCK_SIZE, 
+                                       (this.y + y) * BLOCK_SIZE, 
+                                       BLOCK_SIZE - 1, 
+                                       BLOCK_SIZE - 1);
+                        }
+                    });
+                });
+            }
+        }
+
+        function createNewPiece() {
+            const shapes = Object.keys(SHAPES);
+            const randomShape = shapes[Math.floor(Math.random() * shapes.length)];
+            return new Piece(SHAPES[randomShape], COLORS[randomShape]);
+        }
+
+        function drawBoard() {
+            gameBoard.forEach((row, y) => {
+                row.forEach((value, x) => {
+                    if (value) {
+                        ctx.fillStyle = value;
+                        ctx.fillRect(x * BLOCK_SIZE, y * BLOCK_SIZE, 
+                                   BLOCK_SIZE - 1, BLOCK_SIZE - 1);
+                    }
+                });
+            });
+        }
+
+        function collision(piece, moveX = 0, moveY = 0) {
+            if (!piece || !piece.shape) return false;
+            
+            return piece.shape.some((row, y) => {
+                return row.some((value, x) => {
+                    let newX = piece.x + x + moveX;
+                    let newY = piece.y + y + moveY;
+                    return (
+                        value &&
+                        (newX < 0 || newX >= COLS ||
+                         newY >= ROWS ||
+                         (newY >= 0 && gameBoard[newY][newX]))
+                    );
+                });
+            });
+        }
+
+        function merge(piece) {
+            piece.shape.forEach((row, y) => {
+                row.forEach((value, x) => {
+                    if (value) {
+                        gameBoard[piece.y + y][piece.x + x] = piece.color;
+                    }
+                });
+            });
+        }
+
+        function clearLines() {
+            let linesCleared = 0;
+            for (let y = ROWS - 1; y >= 0; y--) {
+                if (gameBoard[y].every(cell => cell)) {
+                    gameBoard.splice(y, 1);
+                    gameBoard.unshift(Array(COLS).fill(0));
+                    linesCleared++;
+                    y++;
+                }
+            }
+            if (linesCleared > 0) {
+                lines += linesCleared;
+                score += linesCleared * 100;
+                document.getElementById('score-value').textContent = score;
+                document.getElementById('lines-value').textContent = lines;
+            }
+        }
+
+        function rotatePiece() {
+            if (!currentPiece || !currentPiece.shape) return;
+            
+            const rotated = currentPiece.shape[0].map((_, i) =>
+                currentPiece.shape.map(row => row[row.length - 1 - i])
+            );
+            const previousShape = currentPiece.shape;
+            currentPiece.shape = rotated;
+            if (collision(currentPiece)) {
+                currentPiece.shape = previousShape;
+            }
+        }
+
+        function update(time = 0) {
+            const deltaTime = time - lastTime;
+            lastTime = time;
+
+            dropCounter += deltaTime;
+            if (dropCounter > dropInterval) {
+                if (currentPiece) {
+                    if (!collision(currentPiece, 0, 1)) {
+                        currentPiece.y++;
+                    } else {
+                        merge(currentPiece);
+                        clearLines();
+                        currentPiece = null;
+                    }
+                }
+                dropCounter = 0;
+            }
+
+            // Only process moves every moveInterval ms
+            if (time - lastMoveTime > moveInterval) {
+                gamepadUpdate();
+                lastMoveTime = time;
+            }
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            if (currentPiece === null) {
+                currentPiece = createNewPiece();
+                if (collision(currentPiece)) {
+                    // Game Over
+                    alert('Game Over! Score: ' + score);
+                    gameBoard = Array(ROWS).fill().map(() => Array(COLS).fill(0));
+                    score = 0;
+                    lines = 0;
+                    document.getElementById('score-value').textContent = score;
+                    document.getElementById('lines-value').textContent = lines;
+                    currentPiece = createNewPiece(); // Create new piece after reset
+                }
+            }
+
+            drawBoard();
+            if (currentPiece) {
+                currentPiece.draw();
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        // Update the keyboard controls to use the same timing system
+        let keyState = {
+            left: false,
+            right: false,
+            down: false
+        };
+
+        document.addEventListener('keydown', event => {
+            if (!currentPiece) return;
+
+            switch(event.keyCode) {
+                case 37: // Left
+                    keyState.left = true;
+                    if (!collision(currentPiece, -1, 0)) currentPiece.x--;
+                    break;
+                case 39: // Right
+                    keyState.right = true;
+                    if (!collision(currentPiece, 1, 0)) currentPiece.x++;
+                    break;
+                case 40: // Down
+                    keyState.down = true;
+                    if (!collision(currentPiece, 0, 1)) currentPiece.y++;
+                    break;
+                case 38: // Up (rotate)
+                    rotatePiece();
+                    break;
+            }
+        });
+
+        document.addEventListener('keyup', event => {
+            switch(event.keyCode) {
+                case 37: keyState.left = false; break;
+                case 39: keyState.right = false; break;
+                case 40: keyState.down = false; break;
+            }
+        });
+
+        // Update the gamepadUpdate function for smoother controls
+        function gamepadUpdate() {
+            const gamepad = navigator.getGamepads()[gamepadIndex];
+            if (!gamepad || !currentPiece) return;
+
+            const STICK_THRESHOLD = 0.5;
+            
+            // Only use X-axis for left/right movement
+            const analogX = gamepad.axes[0];
+
+            // Handle horizontal movement (analog stick or d-pad)
+            if (analogX < -STICK_THRESHOLD || gamepad.buttons[14].pressed) { // Left
+                if (!collision(currentPiece, -1, 0)) currentPiece.x--;
+            }
+            if (analogX > STICK_THRESHOLD || gamepad.buttons[15].pressed) { // Right
+                if (!collision(currentPiece, 1, 0)) currentPiece.x++;
+            }
+            
+            // A button (button 0) for rotation
+            if (gamepad.buttons[0].pressed && !gamepad.buttons[0].wasPressed) {
+                rotatePiece();
+            }
+            gamepad.buttons[0].wasPressed = gamepad.buttons[0].pressed;
+
+            // B button (button 1) for down
+            if (gamepad.buttons[1].pressed) {
+                if (!collision(currentPiece, 0, 1)) currentPiece.y++;
+            }
+        }
+
+        // Gamepad connection handling
+        window.addEventListener("gamepadconnected", (e) => {
+            console.log("Gamepad connected:", e.gamepad);
+            gamepadIndex = e.gamepad.index;
+        });
+
+        window.addEventListener("gamepaddisconnected", (e) => {
+            console.log("Gamepad disconnected");
+            gamepadIndex = null;
+        });
+
+        // Start game
+        requestAnimationFrame(update);
+    </script>
+</body>
+</html> 

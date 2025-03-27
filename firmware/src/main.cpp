@@ -578,7 +578,7 @@ void loop() {
                 gamepadReport.button4 = fingerButtons[3].isPressed; // Index finger
                 
                 // First map the raw angles to 0-255 range
-                gamepadReport.axes[0] = 255 - mapAngleToHID(angles[0], 0, 127);  // X - Thumb CMC flexion (inverted)
+                gamepadReport.axes[0] = 255 - mapAngleToHID(angles[0], 0, 255);  // X - Thumb CMC flexion (inverted)
                 gamepadReport.axes[1] = mapAngleToHID(angles[1], 0, 255);        // Y - Thumb PIP flexion
                 
                 // Then apply deadzone with proper rescaling
