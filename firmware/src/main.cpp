@@ -325,11 +325,11 @@ void setup() {
     
     // Define which sensors have inverted magnets
     bool invertedSensors[SENSOR_COUNT] = {
-        true, true, true, true,  // Thumb (0-3)
-        true, false, true,       // Index (4-6)
-        true, true, true,        // Middle (7-9)
-        true, false, false,      // Ring (10-12)
-        false, false, false      // Pinky (13-15)
+        false, false, false, false,  // Thumb (0-3)
+        true, false, true,         // Index (4-6)
+        true, false, true,         // Middle (7-9)
+        false, false, true,         // Ring (10-12)
+        false, false, false          // Pinky (13-15)
     };
     
     // Initialize the finger tracking system with inverted sensor configuration
@@ -650,8 +650,8 @@ void loop() {
                     case DEBUG_MODE:
                         // Serial.println("Debug Mode");
                         // Serial.println("Showing angle differences for debugging");
-                        // printRawAngles();
-                        printFingerAngles();
+                        printRawAngles();
+                        // printFingerAngles();
                         break;
                     default:
                         // Serial.println("Unknown Mode");
