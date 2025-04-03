@@ -4,6 +4,8 @@
 #include <NimBLEHIDDevice.h>
 #include <NimBLECharacteristic.h>
 #include "FingerTracking.h"
+#include "BNO085.h"
+#include "HallEffectSensors.h"
 
 // Define the number of axes we'll use
 #define NUM_JOINTS 16  // We want all 16 joints
@@ -24,7 +26,7 @@
 #define DEADZONE 32                   // Size of the deadzone (in output units, 0-255)
 #define ANALOG_CENTER 127             // Center value for analog stick
 
-// Updated HID Report Descriptor for a gamepad with 16 buttons and 20 analog axes
+// Updated HID Report Descriptor to use more standard axis definitions
 const uint8_t reportDescriptor[] = {
     0x05, 0x01,        // Usage Page (Generic Desktop)
     0x09, 0x05,        // Usage (Gamepad)
@@ -77,17 +79,17 @@ const uint8_t reportDescriptor[] = {
     0x95, 0x08,        // Report Count (8)
     0x81, 0x02,        // Input (Data, Variable, Absolute)
 
-    // Last 4 axes - using Simulation Controls
-    // 0x05, 0x02,        // Usage Page (Simulation Controls)
-    // 0x09, 0xBA,        // Usage (Rudder)
-    // 0x09, 0xBB,        // Usage (Throttle)
-    // 0x09, 0xC4,        // Usage (Accelerator)
-    // 0x09, 0xC5,        // Usage (Brake)
-    // 0x15, 0x00,        // Logical Minimum (0)
-    // 0x26, 0xFF, 0x00,  // Logical Maximum (255)
-    // 0x75, 0x08,        // Report Size (8)
-    // 0x95, 0x04,        // Report Count (4)
-    // 0x81, 0x02,        // Input (Data, Variable, Absolute)
+    // Add quaternion values (4 more axes)
+    0x05, 0x02,        // Usage Page (Simulation Controls)
+    0x09, 0xBA,        // Usage (Rudder)
+    0x09, 0xBB,        // Usage (Throttle)
+    0x09, 0xC4,        // Usage (Accelerator)
+    0x09, 0xC5,        // Usage (Brake)
+    0x15, 0x00,        // Logical Minimum (0)
+    0x26, 0xFF, 0x00,  // Logical Maximum (255)
+    0x75, 0x08,        // Report Size (8)
+    0x95, 0x04,        // Report Count (4)
+    0x81, 0x02,        // Input (Data, Variable, Absolute)
 
     0xC0               // End Collection
 };
@@ -106,13 +108,12 @@ bool oldDeviceConnected = false;
 enum ControlMode {
     GAME_MODE = 0,       // Mapped controls for gameplay
     RAW_ANGLES_MODE = 1, // Show all raw angle values
-    DEBUG_MODE = 2,      // Additional debugging information
     // Add more modes as needed in the future
     MODE_COUNT           // Always keep this as the last item to track the number of modes
 };
 
 // Add this at the top of your file with other global variables
-ControlMode currentMode = DEBUG_MODE;
+ControlMode currentMode = RAW_ANGLES_MODE;
 bool modeJustChanged = true;         // Flag to indicate when mode has just changed
 
 // Structure to track finger motion for button detection
@@ -246,6 +247,12 @@ typedef struct {
 // Create an instance of the gamepad report
 GamepadReport gamepadReport = {0};
 
+// Add function to convert quaternion to gamepad axis value
+uint8_t quaternionToAxis(float quat_val) {
+    // Map -1.0 to 1.0 to 0-255
+    return (uint8_t)((quat_val + 1.0f) * 127.5f);
+}
+
 // Add this function before setup()
 void printHIDDescriptor() {
     Serial.println("HID Report Descriptor:");
@@ -275,9 +282,6 @@ void cycleToNextMode() {
             break;
         case RAW_ANGLES_MODE:
             Serial.println("Raw Angles Mode");
-            break;
-        case DEBUG_MODE:
-            Serial.println("Debug Mode");
             break;
         default:
             Serial.println("Unknown Mode");
@@ -338,7 +342,7 @@ void setup() {
     Serial.println("Initializing BLE Gamepad...");
     
     // Set a fixed device name and address for consistent pairing
-    NimBLEDevice::init("Finger Tracker");
+    NimBLEDevice::init("Hand Tracker (Right)");
     
     // Optional: Set a fixed MAC address (uncomment if needed)
     // uint8_t customAddress[6] = {0x11, 0x22, 0x33, 0x44, 0x55, 0x66};
@@ -383,19 +387,21 @@ void setup() {
     pAdvertising->setAppearance(HID_GAMEPAD);
     pAdvertising->addServiceUUID(hid->hidService()->getUUID());
     pAdvertising->setScanResponse(true);
-    pAdvertising->setName("Finger Tracker"); // Must match the init name
+    pAdvertising->setName("Hand Tracker (Right)"); // Must match the init name
     
     // Start advertising
     pAdvertising->start();
     
     Serial.println("BT Gamepad initialized!");
-    Serial.println("Device name: Finger Tracker");
+    Serial.println("Device name: Hand Tracker (Right)");
     Serial.println("The device should now be visible in your Bluetooth settings.");
     Serial.println("Please pair with it from your computer or mobile device.");
     Serial.println("----- Initialization Complete -----");
     
     // Initialize finger button tracking
     initFingerButtons();
+    
+    setupBNO085();            // New BNO085 setup
 }
 
 // Function to update finger button states based on position changes
@@ -561,7 +567,6 @@ void loop() {
         // Set buttons to indicate current mode (optional)
         // gamepadReport.button1 = (currentMode == GAME_MODE);
         // gamepadReport.button2 = (currentMode == RAW_ANGLES_MODE);
-        // gamepadReport.button3 = (currentMode == DEBUG_MODE);
         
         // Process data based on the current mode
         switch (currentMode) {
@@ -598,20 +603,12 @@ void loop() {
                 for (int i = 0; i < NUM_JOINTS && i < 16; i++) {
                     gamepadReport.axes[i] = mapAngleToHID(angles[i], 0, 255);
                 }
-                break;
-                
-            case DEBUG_MODE:
-                // DEBUG MODE: Show specialized debug information
-                
-                // For example, show the difference between consecutive readings
-                static int32_t prevAngles[NUM_JOINTS] = {0};
-                for (int i = 0; i < NUM_JOINTS && i < 16; i++) {
-                    int32_t diff = angles[i] - prevAngles[i];
-                    // Map the difference to 0-255 range (centered at 128)
-                    gamepadReport.axes[i] = mapAngleToHID(angles[i], 0, 255);
-                    prevAngles[i] = angles[i];
-                }
-                // printFingerAngles();
+
+                // Add quaternion values to the last 4 axes
+                gamepadReport.axes[16] = quaternionToAxis(quaternion_x);
+                gamepadReport.axes[17] = quaternionToAxis(quaternion_y);
+                gamepadReport.axes[18] = quaternionToAxis(quaternion_z);
+                gamepadReport.axes[19] = quaternionToAxis(quaternion_w);
                 break;
                 
             default:
@@ -643,14 +640,10 @@ void loop() {
                     //     Serial.println("Game Mode");
                     //     Serial.println("Game controls active - mapped for gameplay");
                     //     break;
-                    // case RAW_ANGLES_MODE:
-                    //     Serial.println("Raw Angles Mode");
-                    //     Serial.println("Showing raw angle values on all axes");
-                    //     break;
-                    case DEBUG_MODE:
-                        // Serial.println("Debug Mode");
-                        // Serial.println("Showing angle differences for debugging");
-                        printRawAngles();
+                    case RAW_ANGLES_MODE:
+                        // Serial.println("Raw Angles Mode");
+                        // Serial.println("Showing raw angle values on all axes");
+                        // printRawAngles();
                         // printFingerAngles();
                         break;
                     default:
@@ -703,4 +696,6 @@ void loop() {
     //     Serial.print("Free heap: ");
     //     Serial.println(ESP.getFreeHeap());
     // }
+
+    updateBNO085();             // New BNO085 measurements
 }

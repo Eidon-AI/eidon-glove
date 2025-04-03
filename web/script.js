@@ -54,430 +54,49 @@ const fingerJointMap = [
     { finger: 0, joint: 3, type: 'IP_FLEXION', min: 0, max: 255, inverted: false },
     
     // Index finger (3 joints)
-    { finger: 1, joint: 0, type: 'MCP_ABDUCTION', min: 0, max: 255, inverted: false },
+    { finger: 1, joint: 0, type: 'MCP_ABDUCTION', min: 0, max: 160, inverted: false },
     { finger: 1, joint: 1, type: 'MCP_FLEXION', min: 0, max: 255, inverted: false },
     { finger: 1, joint: 2, type: 'PIP_FLEXION', min: 0, max: 255, inverted: false },
     
     // Middle finger (3 joints)
-    { finger: 2, joint: 0, type: 'MCP_ABDUCTION', min: 0, max: 255, inverted: false },
-    { finger: 2, joint: 1, type: 'MCP_FLEXION', min: 0, max: 246, inverted: false },
+    { finger: 2, joint: 0, type: 'MCP_ABDUCTION', min: 0, max: 160, inverted: false },
+    { finger: 2, joint: 1, type: 'MCP_FLEXION', min: 0, max: 255, inverted: false },
     { finger: 2, joint: 2, type: 'PIP_FLEXION', min: 0, max: 255, inverted: false },
     
     // Ring finger (3 joints)
-    { finger: 3, joint: 0, type: 'MCP_ABDUCTION', min: 0, max: 255, inverted: false },
+    { finger: 3, joint: 0, type: 'MCP_ABDUCTION', min: 0, max: 160, inverted: false },
     { finger: 3, joint: 1, type: 'MCP_FLEXION', min: 0, max: 255, inverted: false },
     { finger: 3, joint: 2, type: 'PIP_FLEXION', min: 0, max: 255, inverted: false },
     
     // Pinky finger (3 joints)
-    { finger: 4, joint: 0, type: 'MCP_ABDUCTION', min: 0, max: 255, inverted: false },
+    { finger: 4, joint: 0, type: 'MCP_ABDUCTION', min: 0, max: 160, inverted: false },
     { finger: 4, joint: 1, type: 'MCP_FLEXION', min: 0, max: 255, inverted: false },
     { finger: 4, joint: 2, type: 'PIP_FLEXION', min: 0, max: 255, inverted: false }
 ];
 
-// Add gamepad support
-let gamepadIndex = null;
-let gamepadConnected = false;
-
-// Initialize gamepad connection listeners
-window.addEventListener("gamepadconnected", (e) => {
-    console.log("Gamepad connected:", e.gamepad.id);
-    gamepadIndex = e.gamepad.index;
-    gamepadConnected = true;
-    
-    // Log the number of axes detected
-    console.log(`Detected ${e.gamepad.axes.length} axes`);
-    
-    // Update status indicator if it exists
-    if (statusIndicator) {
-        statusIndicator.textContent = `Status: Connected to gamepad: ${e.gamepad.id}`;
-        statusIndicator.className = 'status-connected';
-    }
-    
-    // Start the gamepad polling loop
-    requestAnimationFrame(pollGamepad);
-    
-    // Add log message if the function exists
-    if (typeof addLogMessage === 'function') {
-        addLogMessage(`Connected to gamepad: ${e.gamepad.id} with ${e.gamepad.axes.length} axes`);
-        addLogMessage(`Note: Gamepad input will respect joint inversion settings`);
-    } else {
-        console.log(`Connected to gamepad: ${e.gamepad.id} with ${e.gamepad.axes.length} axes`);
-        console.log(`Note: Gamepad input will respect joint inversion settings`);
-    }
-});
-
-window.addEventListener("gamepaddisconnected", (e) => {
-    console.log("Gamepad disconnected:", e.gamepad.id);
-    if (gamepadIndex === e.gamepad.index) {
-        gamepadIndex = null;
-        gamepadConnected = false;
-        
-        // Update status indicator if it exists
-        if (statusIndicator) {
-            statusIndicator.textContent = 'Status: Gamepad disconnected';
-            statusIndicator.className = '';
-        }
-        
-        // Add log message if the function exists
-        if (typeof addLogMessage === 'function') {
-            addLogMessage(`Disconnected from gamepad: ${e.gamepad.id}`);
-        } else {
-            console.log(`Disconnected from gamepad: ${e.gamepad.id}`);
-        }
-    }
-});
-
-// Function to poll gamepad state
-function pollGamepad() {
-    if (gamepadConnected && gamepadIndex !== null) {
-        const gamepad = navigator.getGamepads()[gamepadIndex];
-        
-        if (gamepad && !ignoreExternalInput) { // Only process gamepad input if not ignoring external input
-            // Process axes values
-            const numAxes = Math.min(gamepad.axes.length, MAX_JOINTS);
-            
-            for (let i = 0; i < numAxes; i++) {
-                // Convert from -1 to 1 range to 0 to 255 range for axes that use this range
-                let value;
-                
-                // Some axes might be in 0 to 1 range (like triggers)
-                // Check if this is a trigger-like axis (usually axes 4 and 5)
-                if (i === 4 || i === 5) {
-                    // Triggers often use 0 to 1 range
-                    value = Math.round(((gamepad.axes[i] + 1) / 2) * 255);
-                } else {
-                    // Standard axes use -1 to 1 range
-                    value = Math.round((gamepad.axes[i] + 1) * 127.5);
-                }
-                
-                // Apply inversion if needed, just like with serial input
-                if (fingerJointMap[i]?.inverted) {
-                    // Invert the value based on the type of joint
-                    if (fingerJointMap[i].type.includes('ABDUCTION')) {
-                        // For abduction (where 127 is center), invert around 127
-                        value = 255 - value;
-                    } else {
-                        // For flexion, simply invert the range
-                        const min = fingerJointMap[i].min;
-                        const max = fingerJointMap[i].max;
-                        value = max - (value - min);
-                    }
-                }
-                
-                // Update joint value
-                jointValues[i] = value;
-                
-                // Update the joint display
-                updateJointDisplay(i, value);
-            }
-            
-            // If we have fewer axes than joints, try to use buttons for the remaining joints
-            if (numAxes < MAX_JOINTS) {
-                for (let i = numAxes; i < MAX_JOINTS && (i - numAxes) < gamepad.buttons.length; i++) {
-                    // Buttons use 0 to 1 range
-                    let value = Math.round(gamepad.buttons[i - numAxes].value * 255);
-                    
-                    // Apply inversion if needed, just like with serial input
-                    if (fingerJointMap[i]?.inverted) {
-                        // Invert the value based on the type of joint
-                        if (fingerJointMap[i].type.includes('ABDUCTION')) {
-                            // For abduction (where 127 is center), invert around 127
-                            value = 255 - value;
-                        } else {
-                            // For flexion, simply invert the range
-                            const min = fingerJointMap[i].min;
-                            const max = fingerJointMap[i].max;
-                            value = max - (value - min);
-                        }
-                    }
-                    
-                    // Update joint value
-                    jointValues[i] = value;
-                    
-                    // Update the joint display
-                    updateJointDisplay(i, value);
-                }
-            }
-            
-            // Update the hand model if the function exists
-            if (typeof updateHandModel === 'function') {
-                updateHandModel();
-            }
-        }
-        
-        // Continue polling
-        requestAnimationFrame(pollGamepad);
-    }
-}
-
-// Initialize joint elements in sidebar
-function initializeJointElements() {
-    jointsContainer.innerHTML = '';
-    
-    for (let i = 0; i < MAX_JOINTS; i++) {
-        const jointElement = document.createElement('div');
-        jointElement.className = 'joint-info';
-        
-        // Get finger and joint info
-        const fingerIndex = i < 4 ? 0 : Math.floor((i - 4) / 3) + 1;
-        const jointType = fingerJointMap[i]?.type || 'Unknown';
-        const fingerName = ['Thumb', 'Index', 'Middle', 'Ring', 'Pinky'][fingerIndex];
-        
-        jointElement.innerHTML = `
-            <div class="joint-name">${fingerName} - ${jointType}</div>
-            <div class="joint-value" id="joint-value-${i}">Value: 0</div>
-            <div class="bar-container">
-                <div class="bar" id="joint-bar-${i}"></div>
-            </div>
-            <label class="invert-toggle">
-                <input type="checkbox" id="invert-${i}" ${fingerJointMap[i]?.inverted ? 'checked' : ''}>
-                Invert Values
-            </label>
-        `;
-        jointsContainer.appendChild(jointElement);
-        
-        // Add event listener for the invert checkbox
-        const invertCheckbox = document.getElementById(`invert-${i}`);
-        invertCheckbox.addEventListener('change', (e) => {
-            if (i < fingerJointMap.length) {
-                fingerJointMap[i].inverted = e.target.checked;
-                addLogMessage(`${fingerName} ${jointType} inversion ${e.target.checked ? 'enabled' : 'disabled'}`);
-            }
-        });
-    }
-}
-
-// Update joint display in sidebar
-function updateJointDisplay(jointIndex, value) {
-    const valueElement = document.getElementById(`joint-value-${jointIndex}`);
-    const barElement = document.getElementById(`joint-bar-${jointIndex}`);
-    
-    if (valueElement && barElement) {
-        valueElement.textContent = `Value: ${value}`;
-        
-        // Calculate percentage based on joint's min/max values
-        const jointInfo = fingerJointMap[jointIndex];
-        const min = jointInfo?.min || 0;
-        const max = jointInfo?.max || 255;
-        const range = max - min;
-        
-        const percentage = Math.min(100, Math.max(0, ((value - min) / range) * 100));
-        barElement.style.width = `${percentage}%`;
-        
-        // Change color based on value
-        const hue = Math.floor(percentage * 1.2); // 0-120 (red to green)
-        barElement.style.backgroundColor = `hsl(${hue}, 80%, 50%)`;
-    }
-}
-
-// Add log message
-function addLogMessage(message) {
-    const logEntry = document.createElement('div');
-    logEntry.textContent = message;
-    logContainer.appendChild(logEntry);
-    logContainer.scrollTop = logContainer.scrollHeight;
-    
-    // Limit log entries
-    while (logContainer.children.length > 100) {
-        logContainer.removeChild(logContainer.firstChild);
-    }
-}
-
-// Process incoming data
-function processData(data) {
-    inputBuffer += data;
-    
-    // Process complete lines
-    let lineEndIndex;
-    while ((lineEndIndex = inputBuffer.indexOf('\n')) !== -1) {
-        const line = inputBuffer.substring(0, lineEndIndex).trim();
-        inputBuffer = inputBuffer.substring(lineEndIndex + 1);
-        
-        // Check if line matches the expected format
-        const jointMatch = line.match(/^>Joint_(\d+):(\d+)$/);
-        if (jointMatch && !ignoreExternalInput) { // Only process joint data if not ignoring external input
-            const jointIndex = parseInt(jointMatch[1], 10);
-            let jointValue = parseInt(jointMatch[2], 10);
-            
-            if (jointIndex >= 0 && jointIndex < MAX_JOINTS) {
-                // Check if this joint's values should be inverted
-                if (fingerJointMap[jointIndex]?.inverted) {
-                    // Invert the value based on the type of joint
-                    if (fingerJointMap[jointIndex].type.includes('ABDUCTION')) {
-                        // For abduction (where 127 is center), invert around 127
-                        jointValue = 255 - jointValue;
-                    } else {
-                        // For flexion, simply invert the range
-                        const min = fingerJointMap[jointIndex].min;
-                        const max = fingerJointMap[jointIndex].max;
-                        jointValue = max - (jointValue - min);
-                    }
-                }
-                
-                jointValues[jointIndex] = jointValue;
-                updateJointDisplay(jointIndex, jointValue);
-                updateHandModel();
-            }
-        } else {
-            // Log other messages
-            addLogMessage(`Received: ${line}`);
-        }
-    }
-}
-
-// Read from the serial port
-async function readSerialData() {
-    while (port.readable && keepReading) {
-        reader = port.readable.getReader();
-        
-        try {
-            while (true) {
-                const { value, done } = await reader.read();
-                
-                if (done) {
-                    break;
-                }
-                
-                if (value) {
-                    processData(decoder.decode(value));
-                }
-            }
-        } catch (error) {
-            console.error('Error reading data:', error);
-            addLogMessage(`Error: ${error.message}`);
-        } finally {
-            reader.releaseLock();
-        }
-    }
-}
-
-// Connect to the device
-async function connectToDevice() {
-    try {
-        // Request a port
-        port = await navigator.serial.requestPort();
-        
-        // Get the selected baud rate
-        const baudRate = parseInt(baudRateSelect.value, 10);
-        
-        // Add a delay before opening the port
-        addLogMessage("Port selected, preparing to connect...");
-        await new Promise(resolve => setTimeout(resolve, 500));
-        
-        let connected = false;
-        
-        // First attempt - standard connection
-        try {
-            addLogMessage("Attempting to open port...");
-            await port.open({ 
-                baudRate: baudRate,
-                dataBits: 8,
-                stopBits: 1,
-                parity: "none",
-                bufferSize: 4096,
-                flowControl: "none"
-            });
-            connected = true;
-            addLogMessage("Port opened successfully.");
-        } catch (openError) {
-            addLogMessage(`First connection attempt failed: ${openError.message}`);
-            
-            // Second attempt - with a delay
-            try {
-                addLogMessage("Trying again with delay...");
-                await new Promise(resolve => setTimeout(resolve, 1000));
-                await port.open({ baudRate: baudRate });
-                connected = true;
-                addLogMessage("Port opened successfully on second attempt.");
-            } catch (retryError) {
-                addLogMessage(`Second attempt failed: ${retryError.message}`);
-                throw new Error(`Could not open serial port: ${retryError.message}`);
-            }
-        }
-        
-        if (connected) {
-            // Update UI
-            statusIndicator.textContent = 'Status: Connected';
-            statusIndicator.className = 'status connected';
-            connectButton.disabled = true;
-            disconnectButton.disabled = false;
-            baudRateSelect.disabled = true;
-            
-            // Initialize joint elements
-            initializeJointElements();
-            
-            // Log connection
-            addLogMessage(`Connected at ${baudRate} baud`);
-            
-            // Start reading
-            keepReading = true;
-            readSerialData();
-        }
-        
-    } catch (error) {
-        console.error('Error connecting to device:', error);
-        addLogMessage(`Connection error: ${error.message}`);
-        
-        // More detailed error handling
-        if (error.message.includes("serial port")) {
-            addLogMessage("Troubleshooting tips:");
-            addLogMessage("1. Make sure no other applications are using this port");
-            addLogMessage("2. Disconnect and reconnect the device");
-            addLogMessage("3. Try a different USB port");
-            addLogMessage("4. Restart your browser");
-            addLogMessage("5. Check if your device requires specific drivers");
-        }
-        
-        // Reset UI state to allow reconnection attempts
-        statusIndicator.textContent = 'Status: Connection failed';
-        statusIndicator.className = 'status disconnected';
-        connectButton.disabled = false;
-        disconnectButton.disabled = true;
-        baudRateSelect.disabled = false;
-        
-        // Reset port variable - don't try to close it if it failed to open
-        port = null;
-    }
-}
-
-// Disconnect from the device
-async function disconnectFromDevice() {
-    if (port) {
-        keepReading = false;
-        
-        // Close the port
-        try {
-            await port.close();
-            
-            // Update UI
-            statusIndicator.textContent = 'Status: Disconnected';
-            statusIndicator.className = 'status disconnected';
-            connectButton.disabled = false;
-            disconnectButton.disabled = true;
-            baudRateSelect.disabled = false;
-            
-            // Log disconnection
-            addLogMessage('Disconnected');
-            
-        } catch (error) {
-            console.error('Error disconnecting:', error);
-            addLogMessage(`Disconnection error: ${error.message}`);
-        }
-    }
-}
+// Add HID variables
+let hidDevice = null;
+const REPORT_ID = 1;
+const REPORT_SIZE = 24; // 2 bytes report ID + 2 bytes buttons + 20 bytes axes
 
 // Initialize Three.js scene
 function initThreeJS() {
+    // Check if canvasContainer exists
+    if (!canvasContainer) {
+        console.error('Canvas container not found');
+        return;
+    }
+
     // Create scene
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0xf0f0f0);
     
     // Create camera
     camera = new THREE.PerspectiveCamera(
-        75, // Field of view
-        canvasContainer.clientWidth / canvasContainer.clientHeight, // Aspect ratio
-        0.1, // Near clipping plane
-        1000 // Far clipping plane
+        75,
+        canvasContainer.clientWidth / canvasContainer.clientHeight,
+        0.1,
+        1000
     );
     camera.position.set(0, 15, 15);
     camera.lookAt(0, 0, 0);
@@ -486,12 +105,19 @@ function initThreeJS() {
     renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(canvasContainer.clientWidth, canvasContainer.clientHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
+    
+    // Clear any existing canvas
+    while (canvasContainer.firstChild) {
+        canvasContainer.removeChild(canvasContainer.firstChild);
+    }
+    
     canvasContainer.appendChild(renderer.domElement);
     
     // Add orbit controls
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.25;
+    controls.enabled = true;  // Explicitly enable controls
     
     // Add lights
     const ambientLight = new THREE.AmbientLight(0x404040);
@@ -519,149 +145,8 @@ function initThreeJS() {
     animate();
 }
 
-// Add GLTFLoader to your imports (you'll need to include this in your HTML)
-// <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
-
-// In your global variables section, add:
-let handModel; // The loaded GLB model
-let handSkeleton = {}; // Object to store references to the bones
-
-// Replace the createHandModel function with this:
+// Modify createHandModel to store direct references to rotation groups
 function createHandModel() {
-    // Create a temporary placeholder while the model loads
-    const placeholder = new THREE.Group();
-    scene.add(placeholder);
-    hand.palm = placeholder;
-    
-    // Initialize empty fingers array
-    hand.fingers = [];
-    
-    // Load the GLB model
-    const loader = new THREE.GLTFLoader();
-    loader.load(
-        'rigged_hand1.glb', // Path to your hand model
-        function(gltf) {
-            // Success callback
-            handModel = gltf.scene;
-            
-            // Scale and position the model as needed
-            handModel.scale.set(5, 5, 5); // Adjust scale as needed
-            handModel.position.set(0, 0, 0);
-            handModel.rotation.set(0, 0, 0);
-            
-            // Replace the placeholder with the loaded model
-            scene.remove(placeholder);
-            scene.add(handModel);
-            hand.palm = handModel;
-            
-            // Store references to the bones for animation
-            const bones = findBonesInModel(handModel);
-            
-            // Map bones to our structure
-            mapBonesToFingers(bones);
-            
-            // Add a simple hand label
-            addHandLabel();
-            
-            // Log success
-            addLogMessage("Hand model loaded successfully");
-        },
-        function(xhr) {
-            // Progress callback
-            const percent = (xhr.loaded / xhr.total * 100).toFixed(1);
-            addLogMessage(`Loading model: ${percent}%`);
-        },
-        function(error) {
-            // Error callback
-            console.error('Error loading model:', error);
-            addLogMessage(`Error loading hand model: ${error.message}`);
-            
-            // Fall back to the geometric model if loading fails
-            createGeometricHandModel();
-        }
-    );
-}
-
-// Helper function to find bones in the model
-function findBonesInModel(model) {
-    const bones = {};
-    
-    model.traverse(function(object) {
-        // Check if this is a bone (usually it's an Object3D with a specific naming convention)
-        if (object.isBone || (object.type === 'Object3D' && object.name.includes('bone'))) {
-            bones[object.name] = object;
-        }
-    });
-    
-    return bones;
-}
-
-// Map the bones to our finger structure
-function mapBonesToFingers(bones) {
-    // This mapping will depend on your specific model's bone naming convention
-    handSkeleton = {
-        thumb: {
-            cmc: bones['thumb_cmc'] || bones['thumb.001'],
-            mcp: bones['thumb_mcp'] || bones['thumb.002'],
-            ip: bones['thumb_ip'] || bones['thumb.003']
-        },
-        index: {
-            mcp: bones['index_mcp'] || bones['index.001'],
-            pip: bones['index_pip'] || bones['index.002'],
-            dip: bones['index_dip'] || bones['index.003']
-        },
-        middle: {
-            mcp: bones['middle_mcp'] || bones['middle.001'],
-            pip: bones['middle_pip'] || bones['middle.002'],
-            dip: bones['middle_dip'] || bones['middle.003']
-        },
-        ring: {
-            mcp: bones['ring_mcp'] || bones['ring.001'],
-            pip: bones['ring_pip'] || bones['ring.002'],
-            dip: bones['ring_dip'] || bones['ring.003']
-        },
-        pinky: {
-            mcp: bones['pinky_mcp'] || bones['pinky.001'],
-            pip: bones['pinky_pip'] || bones['pinky.002'],
-            dip: bones['pinky_dip'] || bones['pinky.003']
-        }
-    };
-    
-    // Create a simplified structure that works with our existing code
-    hand.fingers = [
-        { 
-            name: 'Thumb', 
-            segments: [handSkeleton.thumb.cmc, handSkeleton.thumb.mcp, handSkeleton.thumb.ip],
-            isRigged: true 
-        },
-        { 
-            name: 'Index', 
-            segments: [handSkeleton.index.mcp, handSkeleton.index.pip, handSkeleton.index.dip],
-            isRigged: true 
-        },
-        { 
-            name: 'Middle', 
-            segments: [handSkeleton.middle.mcp, handSkeleton.middle.pip, handSkeleton.middle.dip],
-            isRigged: true 
-        },
-        { 
-            name: 'Ring', 
-            segments: [handSkeleton.ring.mcp, handSkeleton.ring.pip, handSkeleton.ring.dip],
-            isRigged: true 
-        },
-        { 
-            name: 'Pinky', 
-            segments: [handSkeleton.pinky.mcp, handSkeleton.pinky.pip, handSkeleton.pinky.dip],
-            isRigged: true 
-        }
-    ];
-}
-
-// Keep the original geometric model creation as a fallback
-function createGeometricHandModel() {
-    // Your existing createHandModel code here
-    // Rename it to createGeometricHandModel
-    
     // Create materials
     const palmMaterial = new THREE.MeshPhongMaterial({ color: 0xf5c396 });
     const fingerMaterial = new THREE.MeshPhongMaterial({ color: 0xf5c396 });
@@ -671,119 +156,91 @@ function createGeometricHandModel() {
     const palmGeometry = new THREE.BoxGeometry(7, 1, 8);
     hand.palm = new THREE.Mesh(palmGeometry, palmMaterial);
     hand.palm.position.set(0, 0, 0);
-    
-    // Rotate the entire hand to show palm facing up
     hand.palm.rotation.x = Math.PI; // Rotate 180 degrees around X axis
     scene.add(hand.palm);
     
     // Finger dimensions
     const fingerWidth = 1;
     const fingerHeight = 0.8;
-    const fingerSegmentLengths = [3, 2, 1.5]; // MCP, PIP, DIP segment lengths
-    const thumbSegmentLengths = [2, 2, 1.5]; // CMC, MCP, IP segment lengths
+    const fingerSegmentLengths = [3, 2, 1.5];
+    const thumbSegmentLengths = [2, 2, 1.5];
     
-    // Finger positions relative to palm for RIGHT hand with palm facing up
     const fingerBasePositions = [
-        [4, 1.5, -2],         // Thumb (moved further outward and forward)
-        [1.5, -0.5, -4],      // Index (right)
-        [0, -0.5, -4],        // Middle (center)
-        [-1.5, -0.5, -4],     // Ring (left)
-        [-3, -0.5, -4]        // Pinky (far left)
+        [4, 1.5, -2],    // Thumb
+        [1.5, -0.5, -4], // Index
+        [0, -0.5, -4],   // Middle
+        [-1.5, -0.5, -4],// Ring
+        [-3, -0.5, -4]   // Pinky
     ];
     
-    // Initial finger rotations (for natural hand pose)
-    const fingerBaseRotations = [
-        { x: 0, y: -Math.PI / 6, z: Math.PI / 2.5 },  // Thumb (adjusted for better outward position)
-        { x: 0, y: -Math.PI / 48, z: 0 },            // Index (slight inward tilt)
-        { x: 0, y: 0, z: 0 },                        // Middle (no tilt - perfectly straight)
-        { x: 0, y: Math.PI / 32, z: 0 },             // Ring (slight outward tilt)
-        { x: 0, y: Math.PI / 24, z: 0 }              // Pinky (more outward tilt)
-    ];
+    // Create fingers with direct rotation groups
+    hand.fingers = [];
     
-    // Create fingers
     for (let f = 0; f < 5; f++) {
         const finger = {
             name: ['Thumb', 'Index', 'Middle', 'Ring', 'Pinky'][f],
-            segments: [],
-            joints: [],
-            isRigged: false // Mark as not rigged
+            base: new THREE.Group(), // Base group for finger position
+            rotationGroups: [], // Store rotation groups directly
+            segments: []
         };
         
-        // Determine if this is the thumb
-        const isThumb = f === 0;
-        const segmentLengths = isThumb ? thumbSegmentLengths : fingerSegmentLengths;
-        const segmentCount = segmentLengths.length;
+        // Set finger base position
+        finger.base.position.set(...fingerBasePositions[f]);
+        hand.palm.add(finger.base);
         
-        // Create finger base group (attached to palm)
-        finger.group = new THREE.Group();
-        finger.group.position.set(...fingerBasePositions[f]);
+        // Create segments with rotation groups
+        const segmentLengths = f === 0 ? thumbSegmentLengths : fingerSegmentLengths;
+        let parentGroup = finger.base;
         
-        // Apply initial rotations for natural pose
-        const baseRotation = fingerBaseRotations[f];
-        finger.group.rotation.x = baseRotation.x;
-        finger.group.rotation.y = baseRotation.y;
-        finger.group.rotation.z = baseRotation.z;
-        
-        hand.palm.add(finger.group);
-        
-        // Create segments and joints
-        let parentGroup = finger.group;
-        
-        for (let s = 0; s < segmentCount; s++) {
-            // Create segment group
-            const segmentGroup = new THREE.Group();
+        for (let s = 0; s < segmentLengths.length; s++) {
+            // Create rotation group for this segment
+            const rotationGroup = new THREE.Group();
+            parentGroup.add(rotationGroup);
+            finger.rotationGroups.push(rotationGroup);
             
-            // Create joint sphere at the base of the segment
+            // Create segment
+            const segmentGroup = new THREE.Group();
+            rotationGroup.add(segmentGroup);
+            
+            // Create joint sphere
             const jointGeometry = new THREE.SphereGeometry(fingerWidth * 0.6, 8, 8);
             const joint = new THREE.Mesh(jointGeometry, jointMaterial);
             segmentGroup.add(joint);
             
-            // Create segment box, positioned so its base is at the joint
+            // Create segment box
             const segmentGeometry = new THREE.BoxGeometry(fingerWidth, fingerHeight, segmentLengths[s]);
             const segment = new THREE.Mesh(segmentGeometry, fingerMaterial);
-            segment.position.z = -segmentLengths[s] / 2; // Position relative to joint
+            segment.position.z = -segmentLengths[s] / 2;
             segmentGroup.add(segment);
             
-            // Add segment group to parent
-            parentGroup.add(segmentGroup);
-            
-            // Store references
             finger.segments.push(segmentGroup);
-            finger.joints.push(joint);
             
-            // Position next segment at the end of this one
-            if (s < segmentCount - 1) {
-                // Create a connector group that will be positioned at the end of this segment
-                const connectorGroup = new THREE.Group();
-                connectorGroup.position.z = -segmentLengths[s]; // Position at end of current segment
-                segmentGroup.add(connectorGroup);
-                
-                // The next segment's parent will be this connector
-                parentGroup = connectorGroup;
+            // Create next parent group at end of current segment
+            if (s < segmentLengths.length - 1) {
+                const nextParent = new THREE.Group();
+                nextParent.position.z = -segmentLengths[s];
+                segmentGroup.add(nextParent);
+                parentGroup = nextParent;
             }
         }
         
         hand.fingers.push(finger);
     }
     
-    // Add finger labels for clarity
+    // Add labels
     addFingerLabels();
-    
-    // Add a simple hand label using a canvas texture
     addHandLabel();
 }
 
 // Function to add finger labels
 function addFingerLabels() {
-    // Only add labels for the geometric model
-    if (!handModel) {
         const fingerNames = ['Thumb', 'Index', 'Middle', 'Ring', 'Pinky'];
         
         for (let i = 0; i < hand.fingers.length; i++) {
             const finger = hand.fingers[i];
             
-            // Skip if this finger doesn't have a group (rigged model)
-            if (!finger.group) continue;
+        // Skip if this finger doesn't have a group
+        if (!finger.base) continue;
             
             // Create a canvas element
             const canvas = document.createElement('canvas');
@@ -798,7 +255,7 @@ function addFingerLabels() {
             context.fillStyle = '#000000';
             context.textAlign = 'center';
             context.textBaseline = 'middle';
-            context.fillText(fingerNames[i], canvas.width / 2, canvas.height / 2);
+        context.fillText(finger.name, canvas.width / 2, canvas.height / 2);
             
             // Create texture from canvas
             const texture = new THREE.CanvasTexture(canvas);
@@ -813,11 +270,10 @@ function addFingerLabels() {
             const label = new THREE.Mesh(geometry, material);
             
             // Position the label above the finger
-            label.position.set(0, -1.5, -2);
+        label.position.set(0, 1.5, -2);
             label.rotation.x = Math.PI / 2; // Make it face up
             
-            finger.group.add(label);
-        }
+        finger.base.add(label);
     }
 }
 
@@ -857,258 +313,108 @@ function addHandLabel() {
     scene.add(label);
 }
 
-// Update hand model based on joint values
+// Simplified updateHandModel function with direct rotation access
 function updateHandModel() {
-    // First pass: collect all joint values
-    const fingerJointValues = {};
+    if (!scene || !camera || !renderer) return;
     
-    // Initialize the structure to store joint values
-    for (let f = 0; f < 5; f++) {
-        fingerJointValues[f] = {
-            mcpFlexion: null,
-            mcpAbduction: null,
-            pipFlexion: null,
-            dipFlexion: null,
-            cmcFlexion: null,
-            cmcAbduction: null
-        };
-    }
-    
-    // Collect all joint values from the fingerJointMap
+    // Process each joint
     for (let i = 0; i < MAX_JOINTS; i++) {
         const jointInfo = fingerJointMap[i];
         if (!jointInfo) continue;
         
-        const { finger, joint, type, min, max } = jointInfo;
+        const { finger, type, min, max } = jointInfo;
         const value = jointValues[i];
+        const currentFinger = hand.fingers[finger];
         
-        // Skip if finger doesn't exist
-        if (!hand.fingers[finger]) continue;
+        if (!currentFinger || !currentFinger.rotationGroups) continue;
         
-        // Normalize the value based on joint type
+        // Calculate normalized angle
+        let angle;
         if (type.includes('FLEXION')) {
-            // Calculate normalized value (0-1)
             const normalizedValue = (value - min) / (max - min);
-            // Convert to angle (0 to 90 degrees)
-            const angle = normalizedValue * Math.PI / 2;
-            
-            // Store in the appropriate slot
-            if (type.includes('MCP_FLEXION')) {
-                fingerJointValues[finger].mcpFlexion = angle;
-            } else if (type.includes('PIP_FLEXION')) {
-                fingerJointValues[finger].pipFlexion = angle;
-            } else if (type.includes('IP_FLEXION')) {
-                fingerJointValues[finger].dipFlexion = angle;
-            } else if (type.includes('CMC_FLEXION')) {
-                fingerJointValues[finger].cmcFlexion = angle;
-            }
-        } 
-        else if (type.includes('ABDUCTION')) {
-            // For abduction, 127 is center (0 degrees)
-            // 0 is full left (-45 degrees) and 255 is full right (45 degrees)
+            angle = normalizedValue * Math.PI / 2; // 90 degrees max
+        } else if (type.includes('ABDUCTION')) {
             const normalizedAbduction = (value - 127) / 127; // -1 to 1 range
+            angle = normalizedAbduction * Math.PI / 4; // ±45 degrees
+        }
             
-            // Apply different abduction limits and offsets based on finger
-            let maxAbductionAngle;
-            let abductionOffset = 0; // Default is centered
-            
+        // Apply rotation based on joint type
             if (finger === 0) { // Thumb
-                // Reduce the maximum abduction angle to prevent rotation into the hand
-                maxAbductionAngle = Math.PI / 8; // 22.5 degrees - reduced from 30 degrees
-                
-                // Add a stronger offset to keep the thumb positioned away from the palm
-                abductionOffset = Math.PI / 6; // Increased offset to keep thumb outward
-            } else if (finger === 1) { // Index
-                maxAbductionAngle = Math.PI / 8; // 22.5 degrees
-                abductionOffset = -Math.PI / 32; // Slight bias toward middle finger
-            } else if (finger === 2) { // Middle
-                maxAbductionAngle = Math.PI / 24; // 22.5 degrees
-                abductionOffset = -Math.PI / 24; // Slight bias toward middle finger
-            } else if (finger === 3) { // Ring
-                maxAbductionAngle = Math.PI / 16; // 11.25 degrees
-                abductionOffset = Math.PI / 32; // Slight bias toward pinky
-            } else { // Pinky
-                maxAbductionAngle = Math.PI / 10; // 18 degrees
-                abductionOffset = Math.PI / 24; // Bias toward ring finger
+            switch (type) {
+                case 'CMC_ABDUCTION':
+                    currentFinger.base.rotation.z = Math.PI / 2.5 - angle;
+                    currentFinger.base.rotation.y = -Math.PI / 6 - (angle * 0.5);
+                    break;
+                case 'CMC_FLEXION':
+                    currentFinger.rotationGroups[0].rotation.x = angle;
+                    break;
+                case 'MCP_FLEXION':
+                    currentFinger.rotationGroups[1].rotation.x = angle;
+                    break;
+                case 'IP_FLEXION':
+                    currentFinger.rotationGroups[2].rotation.x = angle;
+                    break;
             }
-            
-            // Calculate angle with offset and limits
-            const angle = normalizedAbduction * maxAbductionAngle + abductionOffset;
-            
-            // Store in the appropriate slot
-            if (type.includes('MCP_ABDUCTION')) {
-                fingerJointValues[finger].mcpAbduction = angle;
-            } else if (type.includes('CMC_ABDUCTION')) {
-                fingerJointValues[finger].cmcAbduction = angle;
+        } else { // Other fingers
+            switch (type) {
+                case 'MCP_ABDUCTION':
+                    // Calculate base angle as before
+                    const normalizedAbduction = (value - 127) / 127; // -1 to 1 range
+                    let baseAngle = normalizedAbduction * Math.PI / 4; // ±45 degrees
+                    
+                    // Adjust angle range based on finger
+                    switch (finger) {
+                        case 1: // Index
+                            baseAngle *= 0.5; // ±22.5 degrees
+                            break;
+                        case 2: // Middle
+                            baseAngle *= 0.3; // ±13.5 degrees
+                            break;
+                        case 3: // Ring
+                            baseAngle *= 0.3; // ±13.5 degrees (inverted)
+                            break;
+                        case 4: // Pinky
+                            baseAngle *= 0.5; // ±22.5 degrees (inverted)
+                            break;
+                    }
+                    currentFinger.rotationGroups[0].rotation.y = baseAngle;
+                    break;
+                case 'MCP_FLEXION':
+                    currentFinger.rotationGroups[0].rotation.x = angle;
+                    break;
+                case 'PIP_FLEXION':
+                    currentFinger.rotationGroups[1].rotation.x = angle;
+                    break;
             }
         }
     }
     
-    // Infer DIP flexion from PIP flexion for all fingers except thumb
-    // In a real hand, DIP joint typically flexes about 2/3 as much as the PIP joint
-    for (let f = 1; f < 5; f++) {
-        if (fingerJointValues[f].pipFlexion !== null && fingerJointValues[f].dipFlexion === null) {
-            // DIP flexion is typically about 2/3 of PIP flexion
-            // This ratio can be adjusted for more realistic movement
-            const dipRatio = 0.7; // 70% of PIP flexion
-            fingerJointValues[f].dipFlexion = fingerJointValues[f].pipFlexion * dipRatio;
-        }
-    }
-    
-    // Second pass: apply all collected values to the hand model
-    for (let f = 0; f < 5; f++) {
-        // Skip if this finger doesn't exist
-        if (!hand.fingers[f]) continue;
-        
-        const finger = hand.fingers[f];
-        const values = fingerJointValues[f];
-        
-        // Check if we're using the rigged model
-        if (finger.isRigged) {
-            if (f === 0) { // Thumb
-                // Apply rotations to thumb bones
-                if (handSkeleton.thumb.cmc && values.cmcAbduction !== null) {
-                    // Apply CMC abduction
-                    const limitedAbduction = Math.min(values.cmcAbduction, Math.PI / 6);
-                    
-                    // Apply rotations to the bone
-                    handSkeleton.thumb.cmc.rotation.z = Math.PI / 2.5 - limitedAbduction;
-                    handSkeleton.thumb.cmc.rotation.x = (limitedAbduction / (Math.PI / 6)) * Math.PI / 24;
-                    handSkeleton.thumb.cmc.rotation.y = -Math.PI / 3 - ((limitedAbduction / (Math.PI / 6)) * Math.PI / 24);
-                }
-                
-                if (handSkeleton.thumb.cmc && values.cmcFlexion !== null) {
-                    // Apply CMC flexion
-                    handSkeleton.thumb.cmc.rotation.x = values.cmcFlexion * 0.8;
-                    handSkeleton.thumb.cmc.rotation.y += values.cmcFlexion * 0.3;
-                    handSkeleton.thumb.cmc.rotation.z += values.cmcFlexion * 0.1;
-                }
-                
-                if (handSkeleton.thumb.mcp && values.mcpFlexion !== null) {
-                    // Apply MCP flexion
-                    handSkeleton.thumb.mcp.rotation.x = values.mcpFlexion;
-                    handSkeleton.thumb.mcp.rotation.y = values.mcpFlexion * 0.3;
-                }
-                
-                if (handSkeleton.thumb.ip && values.dipFlexion !== null) {
-                    // Apply IP flexion
-                    handSkeleton.thumb.ip.rotation.x = values.dipFlexion;
-                    handSkeleton.thumb.ip.rotation.y = values.dipFlexion * 0.2;
-                }
-            } else {
-                // Other fingers
-                const fingerName = ['thumb', 'index', 'middle', 'ring', 'pinky'][f];
-                const fingerBones = handSkeleton[fingerName];
-                
-                if (fingerBones.mcp) {
-                    if (values.mcpFlexion !== null) {
-                        fingerBones.mcp.rotation.x = values.mcpFlexion;
-                    }
-                    if (values.mcpAbduction !== null) {
-                        fingerBones.mcp.rotation.y = values.mcpAbduction;
-                    }
-                }
-                
-                if (fingerBones.pip && values.pipFlexion !== null) {
-                    fingerBones.pip.rotation.x = values.pipFlexion;
-                }
-                
-                if (fingerBones.dip && values.dipFlexion !== null) {
-                    fingerBones.dip.rotation.x = values.dipFlexion;
-                }
-            }
-        } else {
-            // Original geometric model logic
-            if (f === 0) { // Thumb has a different structure
-                // CMC joint (base of thumb)
-                if (values.cmcAbduction !== null && finger.group) {
-                    // For thumb CMC abduction, we need to ensure it stays away from the hand
-                    // even at maximum abduction
-                    
-                    // Limit the abduction angle to prevent rotation into the hand
-                    const limitedAbduction = Math.min(values.cmcAbduction, Math.PI / 6);
-                    
-                    // Apply a modified rotation that keeps the thumb in a more natural position
-                    finger.group.rotation.z = Math.PI / 2.5 - limitedAbduction;
-                    
-                    // Calculate opposition factor but limit how much it affects inward movement
-                    const oppositionFactor = limitedAbduction / (Math.PI / 6); // Normalize to 0-1 range
-                    
-                    // Apply minimal X rotation to prevent the thumb from rotating inward
-                    finger.group.rotation.x = oppositionFactor * Math.PI / 24;
-                    
-                    // Adjust Y rotation to keep thumb more outward throughout its range
-                    finger.group.rotation.y = -Math.PI / 3 - (oppositionFactor * Math.PI / 24);
-                }
-                
-                // Modify the CMC flexion to prevent the thumb from going into the hand
-                if (values.cmcFlexion !== null && finger.segments && finger.segments[0]) {
-                    // For thumb CMC flexion, rotate to move toward palm but with limits
-                    finger.segments[0].rotation.x = values.cmcFlexion * 0.8; // Reduce flexion range
-                    
-                    // Adjust Y rotation to move thumb away from palm during flexion
-                    finger.segments[0].rotation.y = values.cmcFlexion * 0.3;
-                    
-                    // Add slight Z rotation to keep thumb away from palm during flexion
-                    finger.segments[0].rotation.z = values.cmcFlexion * 0.1;
-                }
-                
-                // MCP joint (middle joint of thumb)
-                if (values.mcpFlexion !== null && finger.segments && finger.segments[1]) {
-                    // For thumb MCP flexion, rotate to curl inward
-                    finger.segments[1].rotation.x = values.mcpFlexion;
-                    // Add a slight rotation around Y to move toward other fingers
-                    finger.segments[1].rotation.y = values.mcpFlexion * 0.3;
-                }
-                
-                // IP joint (tip joint of thumb)
-                if (values.dipFlexion !== null && finger.segments && finger.segments[2]) {
-                    // For thumb IP flexion, rotate to curl inward
-                    finger.segments[2].rotation.x = values.dipFlexion;
-                    // Add a slight rotation around Y to move toward other fingers
-                    finger.segments[2].rotation.y = values.dipFlexion * 0.2;
-                }
-            } else { // Index, middle, ring, pinky
-                // MCP joint (base of finger) - handles both flexion and abduction
-                if (values.mcpFlexion !== null && finger.segments && finger.segments[0]) {
-                    finger.segments[0].rotation.x = values.mcpFlexion;
-                }
-                if (values.mcpAbduction !== null && finger.segments && finger.segments[0]) {
-                    // Special case for middle finger to ensure it's straight at neutral position
-                    if (f === 2) { // Middle finger
-                        // Apply a small correction to ensure it's perfectly straight at neutral
-                        finger.segments[0].rotation.y = values.mcpAbduction;
-                    } else {
-                        finger.segments[0].rotation.y = values.mcpAbduction;
-                    }
-                }
-                
-                // PIP joint (middle joint)
-                if (values.pipFlexion !== null && finger.segments && finger.segments[1]) {
-                    finger.segments[1].rotation.x = values.pipFlexion;
-                }
-                
-                // DIP joint (tip joint)
-                if (values.dipFlexion !== null && finger.segments && finger.segments[2]) {
-                    finger.segments[2].rotation.x = values.dipFlexion;
-                }
-            }
-        }
-    }
+    // Force update of the entire scene graph
+    hand.palm.updateMatrixWorld(true);
+    renderer.render(scene, camera);
 }
 
 // Handle window resize
 function onWindowResize() {
+    if (!camera || !renderer || !canvasContainer) return;  // Add guard clause
+    
     camera.aspect = canvasContainer.clientWidth / canvasContainer.clientHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(canvasContainer.clientWidth, canvasContainer.clientHeight);
 }
 
-// Animation loop
+// Animation loop - remove the continuous model updates
 function animate() {
     requestAnimationFrame(animate);
+    
+    if (controls) {
     controls.update();
+    }
+    
+    // Always render the scene to keep it responsive
+    if (renderer && scene && camera) {
     renderer.render(scene, camera);
+    }
 }
 
 // Camera view controls
@@ -1140,11 +446,11 @@ resetViewBtn.addEventListener('click', () => {
 connectButton.addEventListener('click', connectToDevice);
 disconnectButton.addEventListener('click', disconnectFromDevice);
 
-// Check if Web Serial API is supported
-if (!navigator.serial) {
-    statusIndicator.textContent = 'Status: Web Serial API not supported in this browser';
+// Check if Web HID API is supported
+if (!navigator.hid) {
+    statusIndicator.textContent = 'Status: WebHID API not supported in this browser';
     connectButton.disabled = true;
-    addLogMessage('ERROR: Web Serial API is not supported in this browser. Try Chrome or Edge.');
+    addLogMessage('ERROR: WebHID API is not supported in this browser. Try Chrome or Edge.');
 }
 
 // Initialize Three.js scene
@@ -1171,19 +477,26 @@ document.head.appendChild(styleElement);
 
 // Add a button to check gamepad details
 function addGamepadDiagnosticButton() {
+    // Check if button already exists
+    if (document.getElementById('gamepad-info-btn')) return;
+    
     const diagnosticButton = document.createElement('button');
     diagnosticButton.textContent = 'Gamepad Info';
+    diagnosticButton.id = 'gamepad-info-btn';
     diagnosticButton.className = 'control-button';
     diagnosticButton.onclick = showGamepadInfo;
     
-    // Find a suitable parent element
-    const controlPanel = document.querySelector('.view-controls');
-    if (controlPanel) {
-        controlPanel.appendChild(diagnosticButton);
-    } else {
-        // If no control panel exists, append to body
-        document.body.appendChild(diagnosticButton);
+    // Find or create the view-controls container
+    let viewControls = document.querySelector('.view-controls');
+    if (!viewControls) {
+        viewControls = document.createElement('div');
+        viewControls.className = 'view-controls';
+        const controlsContainer = document.querySelector('.controls') || document.body;
+        controlsContainer.appendChild(viewControls);
     }
+    
+    // Add button to view-controls
+    viewControls.appendChild(diagnosticButton);
 }
 
 // Function to show gamepad information
@@ -1261,7 +574,7 @@ function initGamepadSupport() {
         }
         
         // Add the diagnostic button
-        addGamepadDiagnosticButton();
+        // addGamepadDiagnosticButton();
     }
 }
 
@@ -1594,6 +907,11 @@ function addRecordingControls() {
     const controlPanel = document.querySelector('.controls');
     if (!controlPanel) return;
     
+    // Check if controls already exist
+    if (controlPanel.querySelector('.recording-controls')) {
+        return;
+    }
+    
     // Create recording controls container
     const recordingControls = document.createElement('div');
     recordingControls.className = 'recording-controls';
@@ -1646,5 +964,330 @@ function addRecordingControls() {
     controlPanel.appendChild(recordingControls);
 }
 
-// Call this at initialization
-addRecordingControls();
+// Replace or update the connect/disconnect functions
+async function connectToDevice() {
+    try {
+        // Request HID device with no filters first to see what's available
+        const devices = await navigator.hid.requestDevice({
+            filters: [] // Empty filters to see all HID devices
+        });
+
+        if (devices.length === 0) {
+            throw new Error('No HID device selected');
+        }
+
+        // Log device information to help identify the correct IDs
+        console.log('Selected device:', {
+            vendorId: devices[0].vendorId,
+            productId: devices[0].productId,
+            productName: devices[0].productName,
+            collections: devices[0].collections
+        });
+
+        hidDevice = devices[0];
+        await hidDevice.open();
+
+        // Update UI
+        statusIndicator.textContent = 'Status: Connected via HID';
+        statusIndicator.className = 'status connected';
+        connectButton.disabled = true;
+        disconnectButton.disabled = false;
+        
+        // Initialize joint elements
+        initializeJointElements();
+        
+        // Log connection
+        addLogMessage(`Connected to HID device: ${hidDevice.productName}`);
+        addLogMessage(`VendorID: 0x${hidDevice.vendorId.toString(16)}, ProductID: 0x${hidDevice.productId.toString(16)}`);
+
+        // Set up input report handler
+        hidDevice.addEventListener('inputreport', handleHIDInput);
+
+    } catch (error) {
+        console.error('Error connecting to HID device:', error);
+        addLogMessage(`Connection error: ${error.message}`);
+        
+        statusIndicator.textContent = 'Status: Connection failed';
+        statusIndicator.className = 'status disconnected';
+        connectButton.disabled = false;
+        disconnectButton.disabled = true;
+        
+        hidDevice = null;
+    }
+}
+
+async function disconnectFromDevice() {
+    if (hidDevice) {
+        try {
+            await hidDevice.close();
+            
+            // Update UI
+            statusIndicator.textContent = 'Status: Disconnected';
+            statusIndicator.className = 'status disconnected';
+            connectButton.disabled = false;
+            disconnectButton.disabled = true;
+            
+            // Log disconnection
+            addLogMessage('Disconnected from HID device');
+            
+        } catch (error) {
+            console.error('Error disconnecting:', error);
+            addLogMessage(`Disconnection error: ${error.message}`);
+        }
+        
+        hidDevice = null;
+    }
+}
+
+let firstFrame = true;
+
+// Update quaternion to Euler conversion to match MCU implementation
+function quaternionToEuler(x, y, z, w) {
+    // Calculate squared terms
+    const sqw = w * w;
+    const sqx = x * x;
+    const sqy = y * y;
+    const sqz = z * z;
+
+    // Calculate Euler angles (in radians)
+    const yaw = Math.atan2(2.0 * (x * y + z * w),
+                          (sqx - sqy - sqz + sqw));
+    
+    const pitch = Math.asin(-2.0 * (x * z - y * w) /
+                           (sqx + sqy + sqz + sqw));
+    
+    const roll = Math.atan2(2.0 * (y * z + x * w),
+                           (-sqx - sqy + sqz + sqw));
+
+    return { roll, pitch, yaw };
+}
+
+// Modify the handleHIDInput function to adjust roll by 180 degrees
+function handleHIDInput(event) {
+    if (ignoreExternalInput) return;
+
+    const { data } = event;
+    if (data.getUint8(0) !== REPORT_ID) return;
+
+    let hasChanges = false;
+    
+    // Process first 16 axes
+    for (let i = 0; i < 16; i++) {
+        const rawValue = data.getUint8(i + 3);
+        let finalValue = rawValue;
+        
+        if (fingerJointMap[i]?.inverted) {
+            if (fingerJointMap[i].type.includes('ABDUCTION')) {
+                finalValue = 255 - rawValue;
+            } else {
+                const min = fingerJointMap[i].min;
+                const max = fingerJointMap[i].max;
+                finalValue = max - (rawValue - min);
+            }
+        }
+        
+        if (jointValues[i] !== finalValue) {
+            // console.log(`Joint ${i} (${fingerJointMap[i]?.type}): ${jointValues[i]} -> ${finalValue}`);
+        jointValues[i] = finalValue;
+        updateJointDisplay(i, finalValue);
+            hasChanges = true;
+        }
+    }
+
+    // Process quaternion values
+    const quatX = (data.getUint8(19) - 127) / 127;
+    const quatY = (data.getUint8(20) - 127) / 127;
+    const quatZ = (data.getUint8(21) - 127) / 127;
+    const quatW = (data.getUint8(22) - 127) / 127;
+    
+    // Update quaternion display
+    updateQuaternionDisplay(quatX, quatY, quatZ, quatW);
+
+    // Convert to Euler angles for rotation
+    const euler = quaternionToEuler(quatX, quatY, quatZ, quatW);
+    
+    // Apply rotations and position to palm
+    if (hand.palm) {
+        // Apply rotations
+        hand.palm.rotation.z = Math.PI + euler.yaw;
+        hand.palm.rotation.y = Math.PI + euler.pitch;
+        hand.palm.rotation.x = euler.roll - Math.PI/2;
+        
+        // Scale and apply position
+        const positionScale = 20; // Adjust this value to change movement sensitivity
+        hand.palm.position.set(
+            quatZ * positionScale,
+            quatY * positionScale,
+            quatX * positionScale
+        );
+        
+        // Force matrix update
+        hand.palm.updateMatrixWorld(true);
+    }
+
+    if (hasChanges) {
+        updateHandModel();
+    }
+}
+
+// Add log message function (needs to be defined early)
+function addLogMessage(message) {
+    const logEntry = document.createElement('div');
+    logEntry.textContent = message;
+    logContainer.appendChild(logEntry);
+    logContainer.scrollTop = logContainer.scrollHeight;
+    
+    // Limit log entries
+    while (logContainer.children.length > 100) {
+        logContainer.removeChild(logContainer.firstChild);
+    }
+}
+
+// Initialize joint elements in sidebar
+function initializeJointElements() {
+    jointsContainer.innerHTML = '';
+    
+    for (let i = 0; i < MAX_JOINTS; i++) {
+        const jointElement = document.createElement('div');
+        jointElement.className = 'joint-info';
+        
+        // Get finger and joint info
+        const fingerIndex = i < 4 ? 0 : Math.floor((i - 4) / 3) + 1;
+        const jointType = fingerJointMap[i]?.type || 'Unknown';
+        const fingerName = ['Thumb', 'Index', 'Middle', 'Ring', 'Pinky'][fingerIndex];
+        
+        jointElement.innerHTML = `
+            <div class="joint-name">${fingerName} - ${jointType}</div>
+            <div class="joint-value" id="joint-value-${i}">Value: 0</div>
+            <div class="bar-container">
+                <div class="bar" id="joint-bar-${i}"></div>
+            </div>
+            <label class="invert-toggle">
+                <input type="checkbox" id="invert-${i}" ${fingerJointMap[i]?.inverted ? 'checked' : ''}>
+                Invert Values
+            </label>
+        `;
+        jointsContainer.appendChild(jointElement);
+        
+        // Add event listener for the invert checkbox
+        const invertCheckbox = document.getElementById(`invert-${i}`);
+        invertCheckbox.addEventListener('change', (e) => {
+            if (i < fingerJointMap.length) {
+                fingerJointMap[i].inverted = e.target.checked;
+                addLogMessage(`${fingerName} ${jointType} inversion ${e.target.checked ? 'enabled' : 'disabled'}`);
+            }
+        });
+    }
+    
+    // Modify quaternion element to include Euler angles
+    const quaternionElement = document.createElement('div');
+    quaternionElement.className = 'joint-info';
+    quaternionElement.innerHTML = `
+        <div class="joint-name">Orientation</div>
+        <div class="quaternion-values">
+            <div>X: <span id="quat-x">0.000</span></div>
+            <div>Y: <span id="quat-y">0.000</span></div>
+            <div>Z: <span id="quat-z">0.000</span></div>
+            <div>W: <span id="quat-w">0.000</span></div>
+        </div>
+        <div class="euler-values">
+            <div>Roll: <span id="euler-roll">0.0°</span></div>
+            <div>Pitch: <span id="euler-pitch">0.0°</span></div>
+            <div>Yaw: <span id="euler-yaw">0.0°</span></div>
+        </div>
+        <div class="bar-container">
+            <div class="quaternion-bars">
+                <div class="bar" id="quat-bar-x"></div>
+                <div class="bar" id="quat-bar-y"></div>
+                <div class="bar" id="quat-bar-z"></div>
+                <div class="bar" id="quat-bar-w"></div>
+            </div>
+        </div>
+    `;
+    jointsContainer.appendChild(quaternionElement);
+}
+
+// Update joint display in sidebar
+function updateJointDisplay(jointIndex, value) {
+    const valueElement = document.getElementById(`joint-value-${jointIndex}`);
+    const barElement = document.getElementById(`joint-bar-${jointIndex}`);
+    
+    if (valueElement && barElement) {
+        valueElement.textContent = `Value: ${value}`;
+        
+        // Calculate percentage based on joint's min/max values
+        const jointInfo = fingerJointMap[jointIndex];
+        const min = jointInfo?.min || 0;
+        const max = jointInfo?.max || 255;
+        const range = max - min;
+        
+        const percentage = Math.min(100, Math.max(0, ((value - min) / range) * 100));
+        barElement.style.width = `${percentage}%`;
+        
+        // Change color based on value
+        const hue = Math.floor(percentage * 1.2); // 0-120 (red to green)
+        barElement.style.backgroundColor = `hsl(${hue}, 80%, 50%)`;
+    }
+}
+
+// Update the quaternion display function to show Euler angles
+function updateQuaternionDisplay(x, y, z, w) {
+    // Update quaternion values
+    document.getElementById('quat-x').textContent = x.toFixed(3);
+    document.getElementById('quat-y').textContent = y.toFixed(3);
+    document.getElementById('quat-z').textContent = z.toFixed(3);
+    document.getElementById('quat-w').textContent = w.toFixed(3);
+    
+    // Calculate and update Euler angles
+    const euler = quaternionToEuler(x, y, z, w);
+    document.getElementById('euler-roll').textContent = `${(euler.roll * 180 / Math.PI).toFixed(1)}°`;
+    document.getElementById('euler-pitch').textContent = `${(euler.pitch * 180 / Math.PI).toFixed(1)}°`;
+    document.getElementById('euler-yaw').textContent = `${(euler.yaw * 180 / Math.PI).toFixed(1)}°`;
+    
+    // Update bars
+    const updateBar = (id, value) => {
+        const bar = document.getElementById(id);
+        if (bar) {
+            const percentage = ((value + 1) / 2) * 100;
+            bar.style.width = `${percentage}%`;
+            const hue = value >= 0 ? 120 : 0;
+            const saturation = Math.abs(value) * 100;
+            bar.style.backgroundColor = `hsl(${hue}, ${saturation}%, 50%)`;
+        }
+    };
+    
+    updateBar('quat-bar-x', x);
+    updateBar('quat-bar-y', y);
+    updateBar('quat-bar-z', z);
+    updateBar('quat-bar-w', w);
+}
+
+// Add additional styles for Euler angles display
+const additionalStyles = `
+.quaternion-values, .euler-values {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: 5px 0;
+    font-family: monospace;
+}
+
+.euler-values {
+    grid-template-columns: repeat(3, 1fr);
+    color: #666;
+}
+
+.quaternion-bars {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 2px;
+}
+
+.quaternion-bars .bar {
+    height: 10px;
+    transition: all 0.1s ease;
+}
+`;
+
+// Add the new styles to the existing styleElement
+styleElement.textContent += additionalStyles;
