@@ -61,9 +61,9 @@ void updateBNO085() {
     if (bno08x.getSensorEvent(&sensorValue)) {
         switch (sensorValue.sensorId) {
             case SH2_ARVR_STABILIZED_RV:
-                quaternion_x = sensorValue.un.arvrStabilizedRV.i;
-                quaternion_y = sensorValue.un.arvrStabilizedRV.j;
-                quaternion_z = sensorValue.un.arvrStabilizedRV.k;
+                quaternion_x = sensorValue.un.arvrStabilizedRV.j;
+                quaternion_y = sensorValue.un.arvrStabilizedRV.k;
+                quaternion_z = sensorValue.un.arvrStabilizedRV.i;
                 quaternion_w = sensorValue.un.arvrStabilizedRV.real;
                 
                 quaternionToEuler();

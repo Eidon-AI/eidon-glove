@@ -79,6 +79,9 @@ let hidDevice = null;
 const REPORT_ID = 1;
 const REPORT_SIZE = 24; // 2 bytes report ID + 2 bytes buttons + 20 bytes axes
 
+// Add at the start of the file, with other global variables
+let lastConnectedDeviceId = localStorage.getItem('lastHidDevice');
+
 // Initialize Three.js scene
 function initThreeJS() {
     // Check if canvasContainer exists
@@ -964,7 +967,45 @@ function addRecordingControls() {
     controlPanel.appendChild(recordingControls);
 }
 
-// Replace or update the connect/disconnect functions
+// Add this new function
+async function autoConnectToLastDevice() {
+    if (!lastConnectedDeviceId) return;
+    
+    try {
+        // Get all paired HID devices
+        const devices = await navigator.hid.getDevices();
+        
+        // Find our last connected device
+        const lastDevice = devices.find(d => 
+            `${d.vendorId}-${d.productId}` === lastConnectedDeviceId
+        );
+        
+        if (lastDevice) {
+            hidDevice = lastDevice;
+            await hidDevice.open();
+            
+            // Update UI
+            statusIndicator.textContent = 'Status: Connected via HID';
+            statusIndicator.className = 'status connected';
+            connectButton.disabled = true;
+            disconnectButton.disabled = false;
+            
+            // Initialize joint elements
+            initializeJointElements();
+            
+            // Log connection
+            addLogMessage(`Auto-connected to HID device: ${hidDevice.productName}`);
+            
+            // Set up input report handler
+            hidDevice.addEventListener('inputreport', handleHIDInput);
+        }
+    } catch (error) {
+        console.error('Auto-connect error:', error);
+        addLogMessage('Failed to auto-connect to last device');
+    }
+}
+
+// Modify the connectToDevice function to store the device ID
 async function connectToDevice() {
     try {
         // Request HID device with no filters first to see what's available
@@ -986,6 +1027,10 @@ async function connectToDevice() {
 
         hidDevice = devices[0];
         await hidDevice.open();
+        
+        // Store the device identifier
+        lastConnectedDeviceId = `${hidDevice.vendorId}-${hidDevice.productId}`;
+        localStorage.setItem('lastHidDevice', lastConnectedDeviceId);
 
         // Update UI
         statusIndicator.textContent = 'Status: Connected via HID';
@@ -1095,35 +1140,27 @@ function handleHIDInput(event) {
     }
 
     // Process quaternion values
-    const quatX = (data.getUint8(19) - 127) / 127;
-    const quatY = (data.getUint8(20) - 127) / 127;
-    const quatZ = (data.getUint8(21) - 127) / 127;
-    const quatW = (data.getUint8(22) - 127) / 127;
-    
-    // Update quaternion display
-    updateQuaternionDisplay(quatX, quatY, quatZ, quatW);
+    const quaternionX = (data.getUint8(19) - 127) / 127;
+    const quaternionY = (data.getUint8(20) - 127) / 127;
+    const quaternionZ = (data.getUint8(21) - 127) / 127;
+    const quaternionW = (data.getUint8(22) - 127) / 127;
+    const euler = quaternionToEuler(quaternionX, quaternionY, quaternionZ, quaternionW);
 
-    // Convert to Euler angles for rotation
-    const euler = quaternionToEuler(quatX, quatY, quatZ, quatW);
-    
-    // Apply rotations and position to palm
+    const roll = Math.PI - (euler.roll);
+    const pitch = Math.PI - (euler.yaw + Math.PI);
+    const yaw = euler.pitch + Math.PI;
+
+    // Apply rotations to palm - try OPTION 2 first
     if (hand.palm) {
-        // Apply rotations
-        hand.palm.rotation.z = Math.PI + euler.yaw;
-        hand.palm.rotation.y = Math.PI + euler.pitch;
-        hand.palm.rotation.x = euler.roll - Math.PI/2;
+        hand.palm.rotation.x = pitch; // x === 3d hand pitch
+        hand.palm.rotation.y = yaw; // y === 3d hand yaw
+        hand.palm.rotation.z = roll; // z === 3d hand roll
         
-        // Scale and apply position
-        const positionScale = 20; // Adjust this value to change movement sensitivity
-        hand.palm.position.set(
-            quatZ * positionScale,
-            quatY * positionScale,
-            quatX * positionScale
-        );
-        
-        // Force matrix update
         hand.palm.updateMatrixWorld(true);
     }
+
+    // Update the display with the raw quaternion values
+    updateQuaternionDisplay(quaternionX, quaternionY, quaternionZ, quaternionW);
 
     if (hasChanges) {
         updateHandModel();
@@ -1291,3 +1328,11 @@ const additionalStyles = `
 
 // Add the new styles to the existing styleElement
 styleElement.textContent += additionalStyles;
+
+// Add to the end of the file or where other initialization code is
+// Try to auto-connect when the page loads
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', autoConnectToLastDevice);
+} else {
+    autoConnectToLastDevice();
+}

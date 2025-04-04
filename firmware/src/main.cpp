@@ -545,6 +545,9 @@ void loop() {
     // Update finger tracking data
     calcFingerAngles();
 
+    // Update BNO085 data
+    updateBNO085();
+
     // Send data if connected
     if (deviceConnected) {
         // Read the button state from the Xiao ESP32-C3
@@ -696,6 +699,4 @@ void loop() {
     //     Serial.print("Free heap: ");
     //     Serial.println(ESP.getFreeHeap());
     // }
-
-    updateBNO085();             // New BNO085 measurements
 }
