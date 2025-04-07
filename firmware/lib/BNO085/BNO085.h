@@ -20,4 +20,8 @@ extern float quaternion_y;
 extern float quaternion_z;
 extern float quaternion_w;
 
+extern float linear_x;
+extern float linear_y;
+extern float linear_z;
+
 #endif 

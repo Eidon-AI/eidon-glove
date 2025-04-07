@@ -82,6 +82,11 @@ const REPORT_SIZE = 24; // 2 bytes report ID + 2 bytes buttons + 20 bytes axes
 // Add at the start of the file, with other global variables
 let lastConnectedDeviceId = localStorage.getItem('lastHidDevice');
 
+// Add these variables at the top of the file with other globals
+let lastLinearX = 128;
+let lastLinearY = 128;
+let lastLinearZ = 128;
+
 // Initialize Three.js scene
 function initThreeJS() {
     // Check if canvasContainer exists
@@ -1095,11 +1100,11 @@ function quaternionToEuler(x, y, z, w) {
     const sqz = z * z;
 
     // Calculate Euler angles (in radians)
-    const yaw = Math.atan2(2.0 * (x * y + z * w),
-                          (sqx - sqy - sqz + sqw));
+    const yaw = Math.asin(-2.0 * (x * z - y * w) /
+                         (sqx + sqy + sqz + sqw));
     
-    const pitch = Math.asin(-2.0 * (x * z - y * w) /
-                           (sqx + sqy + sqz + sqw));
+    const pitch = Math.atan2(2.0 * (x * y + z * w),
+                            (sqx - sqy - sqz + sqw));
     
     const roll = Math.atan2(2.0 * (y * z + x * w),
                            (-sqx - sqy + sqz + sqw));
@@ -1147,15 +1152,40 @@ function handleHIDInput(event) {
     const euler = quaternionToEuler(quaternionX, quaternionY, quaternionZ, quaternionW);
 
     const roll = Math.PI - (euler.roll);
-    const pitch = Math.PI - (euler.yaw + Math.PI);
-    const yaw = euler.pitch + Math.PI;
+    const pitch = Math.PI - (euler.pitch + Math.PI);
+    const yaw = euler.yaw + Math.PI;
 
-    // Apply rotations to palm - try OPTION 2 first
+    const linearX = data.getUint8(24);
+    const linearY = data.getUint8(23);
+    const linearZ = data.getUint8(25);
+
+    const positionScale = 0.1; // Adjust this value to change movement sensitivity
+    const centerOffset = 128; // 0x80
+
     if (hand.palm) {
-        hand.palm.rotation.x = pitch; // x === 3d hand pitch
-        hand.palm.rotation.y = yaw; // y === 3d hand yaw
-        hand.palm.rotation.z = roll; // z === 3d hand roll
-        
+        // Apply rotations as before
+        hand.palm.rotation.x = pitch;
+        hand.palm.rotation.y = yaw;
+        hand.palm.rotation.z = roll;
+
+        // Calculate offset from center (128) for each axis
+        // Positive values mean right/up/forward, negative values mean left/down/back
+        const moveX = (linearX - centerOffset) * positionScale;
+        const moveY = (linearY - centerOffset) * positionScale;
+        const moveZ = (linearZ - centerOffset) * positionScale;
+
+        // Only move if the value is different from center (allowing for small deadzone)
+        const deadzone = 1; // Adjust this value to change deadzone size
+        if (Math.abs(linearX - centerOffset) > deadzone) {
+            hand.palm.position.x += moveX;
+        }
+        if (Math.abs(linearY - centerOffset) > deadzone) {
+            hand.palm.position.y += moveY;
+        }
+        if (Math.abs(linearZ - centerOffset) > deadzone) {
+            hand.palm.position.z += moveZ;
+        }
+
         hand.palm.updateMatrixWorld(true);
     }
 

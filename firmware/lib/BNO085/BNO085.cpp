@@ -15,25 +15,47 @@ struct euler_t {
     float roll;
 } ypr;
 
+// Add these globals near the top with other variables
+float linear_x = 0;
+float linear_y = 0;
+float linear_z = 0;
+
 void printBNO085Values() {
-    Serial.println("Quaternion Values:");
-    Serial.print("X: "); Serial.print(quaternion_x, 4);
-    Serial.print(" Y: "); Serial.print(quaternion_y, 4);
-    Serial.print(" Z: "); Serial.print(quaternion_z, 4);
-    Serial.print(" W: "); Serial.println(quaternion_w, 4);
+    // Serial.println("Quaternion Values:");
+    // Serial.print("X: "); Serial.print(quaternion_x, 4);
+    // Serial.print(" Y: "); Serial.print(quaternion_y, 4);
+    // Serial.print(" Z: "); Serial.print(quaternion_z, 4);
+    // Serial.print(" W: "); Serial.println(quaternion_w, 4);
     
-    // Print Euler angles and status
-    Serial.print("Status: "); Serial.print(sensorValue.status); Serial.print("\t");
-    Serial.print("Yaw: "); Serial.print(ypr.yaw);
-    Serial.print(" Pitch: "); Serial.print(ypr.pitch);
-    Serial.print(" Roll: "); Serial.println(ypr.roll);
+    // // Print Euler angles and status
+    // Serial.print("Status: "); Serial.print(sensorValue.status); Serial.print("\t");
+    // Serial.print("Yaw: "); Serial.print(ypr.yaw);
+    // Serial.print(" Pitch: "); Serial.print(ypr.pitch);
+    // Serial.print(" Roll: "); Serial.println(ypr.roll);
+
+    // Print linear acceleration values
+    Serial.println("Linear Acceleration Values:");
+    Serial.print("X: "); Serial.print(linear_x);
+    Serial.print(" Y: "); Serial.print(linear_y);
+    Serial.print(" Z: "); Serial.println(linear_z);
 }
 
 void setReports() {
-    // Enable ARVR stabilized rotation vector (more accurate but slower)
-    if (!bno08x.enableReport(SH2_ARVR_STABILIZED_RV, 5000)) {
+    // ARVR stabilized rotation vector at 5ms interval (200Hz)
+    if (!bno08x.enableReport(SH2_ARVR_STABILIZED_RV)) {
         Serial.println("Could not enable stabilized rotation vector");
     }
+
+    // // Use regular accelerometer at 2.5ms interval (400Hz)
+    // // Changed from LINEAR_ACCELERATION to regular ACCELEROMETER
+    // if (!bno08x.enableReport(SH2_ACCELEROMETER)) {
+    //     Serial.println("Could not enable accelerometer");
+    // }
+
+    // // Add linear acceleration reporting
+    // if (!bno08x.enableReport(SH2_LINEAR_ACCELERATION)) {
+    //     Serial.println("Could not enable linear acceleration");
+    // }
 }
 
 void setupBNO085() {
@@ -52,7 +74,7 @@ void setupBNO085() {
 void updateBNO085() {
     static unsigned long lastPrint = 0;
     const unsigned long PRINT_INTERVAL = 100; // Print every 100ms
-    
+
     if (bno08x.wasReset()) {
         Serial.println("BNO085 was reset");
         setReports();
@@ -67,13 +89,25 @@ void updateBNO085() {
                 quaternion_w = sensorValue.un.arvrStabilizedRV.real;
                 
                 quaternionToEuler();
-                
-                // Only print every PRINT_INTERVAL milliseconds
-                if (millis() - lastPrint >= PRINT_INTERVAL) {
-                    printBNO085Values();
-                    lastPrint = millis();
-                }
                 break;
+                
+            case SH2_ACCELEROMETER:
+                linear_x = sensorValue.un.accelerometer.x;
+                linear_y = sensorValue.un.accelerometer.y;
+                linear_z = sensorValue.un.accelerometer.z;
+                break;
+            
+            case SH2_LINEAR_ACCELERATION:
+                linear_x = sensorValue.un.linearAcceleration.x;
+                linear_y = sensorValue.un.linearAcceleration.y;
+                linear_z = sensorValue.un.linearAcceleration.z;
+                break;
+        }
+
+        // Only print every PRINT_INTERVAL milliseconds
+        if (millis() - lastPrint >= PRINT_INTERVAL) {
+            printBNO085Values();
+            lastPrint = millis();
         }
     }
 }

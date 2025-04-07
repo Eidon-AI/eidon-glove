@@ -161,7 +161,7 @@ void adjustAngles()
 	angles[0] = adjustThumbCMCFlexionAngle(0);
 	angles[1] = adjustThumbCMCAbductionAngle(1);
 	angles[2] = adjustThumbPIPFlexionAngle(2);
-	angles[3] = proto_angles[3]; // not using this data currently
+	angles[3] = adjustThumbPIPFlexionAngle(3); // proto_angles[3]; // not using this data currently
 
 	// index
 	angles[4] = adjustMCPAbductionAngle(4);

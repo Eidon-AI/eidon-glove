@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamepad Piano</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #333;
+        }
+        
+        .piano {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .key {
+            width: 80px;
+            height: 200px;
+            background-color: white;
+            border: 1px solid #333;
+            margin: 0 5px;
+            border-radius: 0 0 5px 5px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 20px;
+            transition: background-color 0.1s;
+            cursor: pointer;
+        }
+        
+        .key.active {
+            background-color: #e0e0ff;
+            transform: translateY(5px);
+        }
+        
+        .controls {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #eee;
+            border-radius: 5px;
+        }
+        
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .warp-indicator {
+            margin: 20px 0;
+        }
+        
+        .warp-bar {
+            width: 80%;
+            height: 20px;
+            background-color: #eee;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .warp-level {
+            height: 100%;
+            width: 50%;
+            background-color: #4CAF50;
+            transition: width 0.1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gamepad Piano</h1>
+        
+        <div class="piano">
+            <div class="key" id="key-0" data-note="C4">C</div>
+            <div class="key" id="key-1" data-note="E4">E</div>
+            <div class="key" id="key-2" data-note="G4">G</div>
+            <div class="key" id="key-3" data-note="C5">C</div>
+        </div>
+        
+        <div class="warp-indicator">
+            <h2>Sound Warp (Analog Stick)</h2>
+            <div class="warp-bar">
+                <div class="warp-level" id="warp-level"></div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <h2>How to Play</h2>
+            <p>Connect a gamepad and press buttons:</p>
+            <ul style="text-align: left; display: inline-block;">
+                <li>Button 0 (A/X): Play C note</li>
+                <li>Button 1 (B/Circle): Play E note</li>
+                <li>Button 2 (X/Square): Play G note</li>
+                <li>Button 3 (Y/Triangle): Play high C note</li>
+                <li>Left analog stick horizontal: Warp sound pitch</li>
+            </ul>
+        </div>
+        
+        <div class="status" id="status">No gamepad detected. Connect a gamepad and press any button.</div>
+    </div>
+
+    <script>
+        // Audio context
+        let audioContext;
+        let oscillators = {};
+        
+        // Frequencies for C major chord (C, E, G, C)
+        const NOTES = {
+            'C4': 261.63,
+            'E4': 329.63,
+            'G4': 392.00,
+            'C5': 523.25
+        };
+        
+        // Game controllers
+        let controllers = {};
+        let prevButtons = [false, false, false, false];
+        let warpValue = 0;
+        
+        // DOM elements
+        const statusElement = document.getElementById('status');
+        const warpLevelElement = document.getElementById('warp-level');
+        
+        // Initialize Audio Context on user interaction
+        function initAudio() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                document.removeEventListener('click', initAudio);
+                document.removeEventListener('keydown', initAudio);
+            }
+        }
+        
+        // Play a note
+        function playNote(noteId) {
+            if (!audioContext) initAudio();
+            
+            const noteKey = document.getElementById(`key-${noteId}`).dataset.note;
+            const baseFreq = NOTES[noteKey];
+            
+            // Apply warp to frequency (±1 octave)
+            const warpedFreq = baseFreq * Math.pow(2, warpValue);
+            
+            // Create oscillator
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.type = 'sine';
+            oscillator.frequency.setValueAtTime(warpedFreq, audioContext.currentTime);
+            gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+            gainNode.gain.linearRampToValueAtTime(0.5, audioContext.currentTime + 0.01);
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.start();
+            oscillators[noteId] = { oscillator, gainNode, baseFreq };
+            
+            // Highlight key
+            document.getElementById(`key-${noteId}`).classList.add('active');
+        }
+        
+        // Update note frequency
+        function updateNoteFrequency(noteId) {
+            if (oscillators[noteId]) {
+                const { oscillator, baseFreq } = oscillators[noteId];
+                const warpedFreq = baseFreq * Math.pow(2, warpValue);
+                oscillator.frequency.setValueAtTime(warpedFreq, audioContext.currentTime);
+            }
+        }
+        
+        // Stop a note
+        function stopNote(noteId) {
+            if (oscillators[noteId]) {
+                const { oscillator, gainNode } = oscillators[noteId];
+                
+                // Fade out
+                gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.1);
+                
+                // Stop and clean up after fade out
+                setTimeout(() => {
+                    oscillator.stop();
+                    delete oscillators[noteId];
+                }, 100);
+                
+                // Remove key highlight
+                document.getElementById(`key-${noteId}`).classList.remove('active');
+            }
+        }
+        
+        // Update all active note frequencies
+        function updateAllNoteFrequencies() {
+            for (const noteId in oscillators) {
+                updateNoteFrequency(parseInt(noteId));
+            }
+        }
+        
+        // Gamepad connected handler
+        window.addEventListener("gamepadconnected", (e) => {
+            const gamepad = e.gamepad;
+            controllers[gamepad.index] = gamepad;
+            statusElement.textContent = `Gamepad connected: ${gamepad.id}`;
+            
+            // Start the update loop if this is the first controller
+            if (Object.keys(controllers).length === 1) {
+                requestAnimationFrame(updateGamepads);
+            }
+        });
+        
+        // Gamepad disconnected handler
+        window.addEventListener("gamepaddisconnected", (e) => {
+            const gamepad = e.gamepad;
+            delete controllers[gamepad.index];
+            statusElement.textContent = "Gamepad disconnected";
+            
+            // Stop all notes
+            for (let i = 0; i < 4; i++) {
+                stopNote(i);
+            }
+        });
+        
+        // Update gamepad state
+        function updateGamepads() {
+            // Get fresh gamepad data
+            const gamepads = navigator.getGamepads ? navigator.getGamepads() : [];
+            
+            for (const gamepadIndex in controllers) {
+                const gamepad = gamepads[gamepadIndex];
+                if (!gamepad) continue;
+                
+                // Check the first 4 buttons (0-3)
+                for (let i = 0; i < 4; i++) {
+                    const buttonPressed = gamepad.buttons[i].pressed;
+                    
+                    // Button press started
+                    if (buttonPressed && !prevButtons[i]) {
+                        playNote(i);
+                    }
+                    // Button press ended
+                    else if (!buttonPressed && prevButtons[i]) {
+                        stopNote(i);
+                    }
+                    
+                    prevButtons[i] = buttonPressed;
+                }
+                
+                // Get left analog stick horizontal value (-1 to 1)
+                const axisValue = gamepad.axes[0];
+                
+                // Convert to warp value (-1 to 1 range for ±1 octave)
+                warpValue = axisValue;
+                
+                // Update UI
+                const warpPercent = ((warpValue + 1) / 2) * 100;
+                warpLevelElement.style.width = `${warpPercent}%`;
+                
+                // Update background color based on warp
+                const hue = 120 - Math.abs(warpValue * 120);
+                warpLevelElement.style.backgroundColor = `hsl(${hue}, 70%, 50%)`;
+                
+                // Update note frequencies
+                updateAllNoteFrequencies();
+            }
+            
+            // Continue the loop
+            requestAnimationFrame(updateGamepads);
+        }
+        
+        // Add click handlers for piano keys
+        for (let i = 0; i < 4; i++) {
+            const key = document.getElementById(`key-${i}`);
+            
+            key.addEventListener('mousedown', () => {
+                playNote(i);
+            });
+            
+            key.addEventListener('mouseup', () => {
+                stopNote(i);
+            });
+            
+            key.addEventListener('mouseleave', () => {
+                if (key.classList.contains('active')) {
+                    stopNote(i);
+                }
+            });
+        }
+        
+        // Initialize the audio on first user interaction
+        document.addEventListener('click', initAudio);
+        document.addEventListener('keydown', initAudio);
+        
+        // Check for existing gamepads
+        window.addEventListener('load', () => {
+            const gamepads = navigator.getGamepads ? navigator.getGamepads() : [];
+            for (let i = 0; i < gamepads.length; i++) {
+                if (gamepads[i]) {
+                    controllers[gamepads[i].index] = gamepads[i];
+                    statusElement.textContent = `Gamepad connected: ${gamepads[i].id}`;
+                    requestAnimationFrame(updateGamepads);
+                    break;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

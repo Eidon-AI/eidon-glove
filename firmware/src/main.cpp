@@ -91,6 +91,17 @@ const uint8_t reportDescriptor[] = {
     0x95, 0x04,        // Report Count (4)
     0x81, 0x02,        // Input (Data, Variable, Absolute)
 
+    // Add linear acceleration axes (3 more axes)
+    0x05, 0x02,        // Usage Page (Simulation Controls)
+    0x09, 0xB0,        // Usage (X-axis acceleration)
+    0x09, 0xB1,        // Usage (Y-axis acceleration)
+    0x09, 0xB2,        // Usage (Z-axis acceleration)
+    0x15, 0x00,        // Logical Minimum (0)
+    0x26, 0xFF, 0x00,  // Logical Maximum (255)
+    0x75, 0x08,        // Report Size (8)
+    0x95, 0x03,        // Report Count (3)
+    0x81, 0x02,        // Input (Data, Variable, Absolute)
+
     0xC0               // End Collection
 };
 
@@ -240,8 +251,8 @@ typedef struct {
   bool down : 1;
   bool left : 1;
 
-  // All 20 axes
-  uint8_t axes[20]; // All 20 axes in a single array for simplicity
+  // All 23 axes
+  uint8_t axes[23]; // Updated to 23 total axes
 } GamepadReport;
 
 // Create an instance of the gamepad report
@@ -607,11 +618,17 @@ void loop() {
                     gamepadReport.axes[i] = mapAngleToHID(angles[i], 0, 255);
                 }
 
-                // Add quaternion values to the last 4 axes
+                // Add quaternion values to the next 4 axes
                 gamepadReport.axes[16] = quaternionToAxis(quaternion_x);
                 gamepadReport.axes[17] = quaternionToAxis(quaternion_y);
                 gamepadReport.axes[18] = quaternionToAxis(quaternion_z);
                 gamepadReport.axes[19] = quaternionToAxis(quaternion_w);
+                
+                // Add linear acceleration values to the next 3 axes
+                // Map from typical acceleration range (-8 to +8 m/s²) to 0-255
+                gamepadReport.axes[20] = constrain(map(linear_x * 16, -128, 127, 0, 255), 0, 255);
+                gamepadReport.axes[21] = constrain(map(linear_y * 16, -128, 127, 0, 255), 0, 255);
+                gamepadReport.axes[22] = constrain(map(linear_z * 16, -128, 127, 0, 255), 0, 255);
                 break;
                 
             default:
