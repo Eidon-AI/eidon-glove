@@ -87,6 +87,9 @@ let lastLinearX = 128;
 let lastLinearY = 128;
 let lastLinearZ = 128;
 
+// Add to the top with other global variables
+let compassElement = null;
+
 // Initialize Three.js scene
 function initThreeJS() {
     // Check if canvasContainer exists
@@ -151,6 +154,9 @@ function initThreeJS() {
     
     // Start animation loop
     animate();
+
+    // Add compass overlay
+    addCompassOverlay();
 }
 
 // Modify createHandModel to store direct references to rotation groups
@@ -161,7 +167,7 @@ function createHandModel() {
     const jointMaterial = new THREE.MeshPhongMaterial({ color: 0xe3a977 });
     
     // Create palm
-    const palmGeometry = new THREE.BoxGeometry(7, 1, 8);
+    const palmGeometry = new THREE.BoxGeometry(6, 1.25, 7);
     hand.palm = new THREE.Mesh(palmGeometry, palmMaterial);
     hand.palm.position.set(0, 0, 0);
     hand.palm.rotation.x = Math.PI; // Rotate 180 degrees around X axis
@@ -171,14 +177,14 @@ function createHandModel() {
     const fingerWidth = 1;
     const fingerHeight = 0.8;
     const fingerSegmentLengths = [3, 2, 1.5];
-    const thumbSegmentLengths = [2, 2, 1.5];
+    const thumbSegmentLengths = [3, 2, 1.5];
     
     const fingerBasePositions = [
-        [4, 1.5, -2],    // Thumb
-        [1.5, -0.5, -4], // Index
-        [0, -0.5, -4],   // Middle
-        [-1.5, -0.5, -4],// Ring
-        [-3, -0.5, -4]   // Pinky
+        [3, 0, 0],    // Thumb
+        [2.5, -0.5, -3.5],  // Index
+        [0.83, -0.5, -3.5], // Middle
+        [-0.83, -0.5, -3.5],// Ring
+        [-2.5, -0.5, -3.5]  // Pinky
     ];
     
     // Create fingers with direct rotation groups
@@ -289,18 +295,18 @@ function addFingerLabels() {
 function addHandLabel() {
     // Create a canvas element
     const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
+    // const context = canvas.getContext('2d');
     canvas.width = 256;
     canvas.height = 64;
     
     // Draw text on the canvas
-    context.fillStyle = '#ffffff';
-    context.fillRect(0, 0, canvas.width, canvas.height);
-    context.font = 'Bold 24px Arial';
-    context.fillStyle = '#000000';
-    context.textAlign = 'center';
-    context.textBaseline = 'middle';
-    context.fillText('RIGHT HAND (PALM UP)', canvas.width / 2, canvas.height / 2);
+    // context.fillStyle = '#ffffff';
+    // context.fillRect(0, 0, canvas.width, canvas.height);
+    // context.font = 'Bold 24px Arial';
+    // context.fillStyle = '#000000';
+    // context.textAlign = 'center';
+    // context.textBaseline = 'middle';
+    // context.fillText('RIGHT HAND (PALM UP)', canvas.width / 2, canvas.height / 2);
     
     // Create texture from canvas
     const texture = new THREE.CanvasTexture(canvas);
@@ -350,8 +356,8 @@ function updateHandModel() {
             if (finger === 0) { // Thumb
             switch (type) {
                 case 'CMC_ABDUCTION':
-                    currentFinger.base.rotation.z = Math.PI / 2.5 - angle;
-                    currentFinger.base.rotation.y = -Math.PI / 6 - (angle * 0.5);
+                    currentFinger.base.rotation.z = Math.PI / 4 - (angle * 0.75);
+                    currentFinger.base.rotation.y = -Math.PI / 2 - (angle * 0.25);
                     break;
                 case 'CMC_FLEXION':
                     currentFinger.rotationGroups[0].rotation.x = angle;
@@ -392,6 +398,11 @@ function updateHandModel() {
                     break;
                 case 'PIP_FLEXION':
                     currentFinger.rotationGroups[1].rotation.x = angle;
+                    // Add proportional rotation to the DIP joint (last joint)
+                    if (currentFinger.rotationGroups[2]) {
+                        // DIP typically bends about 1.3x the PIP angle
+                        currentFinger.rotationGroups[2].rotation.x = angle * 0.6;
+                    }
                     break;
             }
         }
@@ -1155,12 +1166,12 @@ function handleHIDInput(event) {
     const pitch = Math.PI - (euler.pitch + Math.PI);
     const yaw = euler.yaw + Math.PI;
 
-    const linearX = data.getUint8(24);
-    const linearY = data.getUint8(23);
-    const linearZ = data.getUint8(25);
+    // const linearX = data.getUint8(23);
+    // const linearY = data.getUint8(24);
+    // const linearZ = data.getUint8(25);
 
-    const positionScale = 0.1; // Adjust this value to change movement sensitivity
-    const centerOffset = 128; // 0x80
+    // const positionScale = 0.1; // Adjust this value to change movement sensitivity
+    // const centerOffset = 128; // 0x80
 
     if (hand.palm) {
         // Apply rotations as before
@@ -1168,22 +1179,15 @@ function handleHIDInput(event) {
         hand.palm.rotation.y = yaw;
         hand.palm.rotation.z = roll;
 
-        // Calculate offset from center (128) for each axis
-        // Positive values mean right/up/forward, negative values mean left/down/back
-        const moveX = (linearX - centerOffset) * positionScale;
-        const moveY = (linearY - centerOffset) * positionScale;
-        const moveZ = (linearZ - centerOffset) * positionScale;
-
-        // Only move if the value is different from center (allowing for small deadzone)
-        const deadzone = 1; // Adjust this value to change deadzone size
-        if (Math.abs(linearX - centerOffset) > deadzone) {
-            hand.palm.position.x += moveX;
-        }
-        if (Math.abs(linearY - centerOffset) > deadzone) {
-            hand.palm.position.y += moveY;
-        }
-        if (Math.abs(linearZ - centerOffset) > deadzone) {
-            hand.palm.position.z += moveZ;
+        // Update compass rotation (if it exists)
+        if (compassElement) {
+            // Get the needle element
+            const needle = compassElement.querySelector('div');
+            if (needle) {
+                // Convert yaw to degrees and adjust for compass display
+                const compassDegrees = (euler.yaw * 180 / Math.PI);
+                needle.style.transform = `rotate(${compassDegrees}deg)`;
+            }
         }
 
         hand.palm.updateMatrixWorld(true);
@@ -1365,4 +1369,77 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', autoConnectToLastDevice);
 } else {
     autoConnectToLastDevice();
+}
+
+// Add this function to create and add the compass
+function addCompassOverlay() {
+    // Create compass container
+    compassElement = document.createElement('div');
+    compassElement.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.9);
+        border: 2px solid #333;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    `;
+
+    // Add fixed cardinal direction markers
+    const directions = ['N', 'E', 'S', 'W'];
+    const directionContainer = document.createElement('div');
+    directionContainer.style.cssText = `
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    `;
+
+    directions.forEach((dir, i) => {
+        const marker = document.createElement('div');
+        marker.style.cssText = `
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            font-weight: bold;
+            transform-origin: 0 0;
+        `;
+        
+        // Position each marker
+        switch(dir) {
+            case 'N': 
+                marker.style.transform = 'translate(-50%, -40px)';
+                break;
+            case 'E':
+                marker.style.transform = 'translate(20px, -50%)';
+                break;
+            case 'S':
+                marker.style.transform = 'translate(-50%, 25px)';
+                break;
+            case 'W':
+                marker.style.transform = 'translate(-40px, -50%)';
+                break;
+        }
+        
+        marker.textContent = dir;
+        directionContainer.appendChild(marker);
+    });
+
+    // Create compass needle
+    const needle = document.createElement('div');
+    needle.style.cssText = `
+        position: absolute;
+        width: 4px;
+        height: 50px;
+        background: linear-gradient(to bottom, red 50%, #333 50%);
+        transform-origin: center center;
+    `;
+
+    compassElement.appendChild(directionContainer);
+    compassElement.appendChild(needle);
+    document.body.appendChild(compassElement);
 }

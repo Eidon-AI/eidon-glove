@@ -8,12 +8,8 @@ float quaternion_y = 0;
 float quaternion_z = 0;
 float quaternion_w = 1;
 
-// Add this struct near the top with other globals
-struct euler_t {
-    float yaw;
-    float pitch;
-    float roll;
-} ypr;
+// Define the actual variable here
+euler_t ypr = {0, 0, 0};
 
 // Add these globals near the top with other variables
 float linear_x = 0;
@@ -27,22 +23,22 @@ void printBNO085Values() {
     // Serial.print(" Z: "); Serial.print(quaternion_z, 4);
     // Serial.print(" W: "); Serial.println(quaternion_w, 4);
     
-    // // Print Euler angles and status
-    // Serial.print("Status: "); Serial.print(sensorValue.status); Serial.print("\t");
-    // Serial.print("Yaw: "); Serial.print(ypr.yaw);
-    // Serial.print(" Pitch: "); Serial.print(ypr.pitch);
-    // Serial.print(" Roll: "); Serial.println(ypr.roll);
+    // Print Euler angles and status
+    Serial.print("Status: "); Serial.print(sensorValue.status); Serial.print("\t");
+    Serial.print("Yaw: "); Serial.print(ypr.yaw);
+    Serial.print(" Pitch: "); Serial.print(ypr.pitch);
+    Serial.print(" Roll: "); Serial.println(ypr.roll);
 
-    // Print linear acceleration values
-    Serial.println("Linear Acceleration Values:");
-    Serial.print("X: "); Serial.print(linear_x);
-    Serial.print(" Y: "); Serial.print(linear_y);
-    Serial.print(" Z: "); Serial.println(linear_z);
+    // // Print linear acceleration values
+    // Serial.println("Linear Acceleration Values:");
+    // Serial.print("X: "); Serial.print(linear_x);
+    // Serial.print(" Y: "); Serial.print(linear_y);
+    // Serial.print(" Z: "); Serial.println(linear_z);
 }
 
 void setReports() {
     // ARVR stabilized rotation vector at 5ms interval (200Hz)
-    if (!bno08x.enableReport(SH2_ARVR_STABILIZED_RV)) {
+    if (!bno08x.enableReport(SH2_ARVR_STABILIZED_RV, 1)) {
         Serial.println("Could not enable stabilized rotation vector");
     }
 
@@ -118,15 +114,34 @@ void quaternionToEuler() {
     float sqj = sq(quaternion_y);
     float sqk = sq(quaternion_z);
 
-    ypr.yaw = atan2(2.0 * (quaternion_x * quaternion_y + quaternion_z * quaternion_w),
+    ypr.pitch = atan2(2.0 * (quaternion_x * quaternion_y + quaternion_z * quaternion_w),
                     (sqi - sqj - sqk + sqr));
-    ypr.pitch = asin(-2.0 * (quaternion_x * quaternion_z - quaternion_y * quaternion_w) /
+    ypr.yaw = asin(-2.0 * (quaternion_x * quaternion_z - quaternion_y * quaternion_w) /
                      (sqi + sqj + sqk + sqr));
     ypr.roll = atan2(2.0 * (quaternion_y * quaternion_z + quaternion_x * quaternion_w),
                      (-sqi - sqj + sqk + sqr));
 
     // Convert to degrees
-    ypr.yaw *= RAD_TO_DEG;
-    ypr.pitch *= RAD_TO_DEG;
-    ypr.roll *= RAD_TO_DEG;
+    ypr.yaw = ypr.yaw * RAD_TO_DEG;
+    ypr.pitch = -ypr.pitch * RAD_TO_DEG;
+    ypr.roll = ypr.roll * RAD_TO_DEG;
+
+    // Shift the values by 180 degrees
+    if (ypr.yaw >= 0) {
+        ypr.yaw -= 180;
+    } else {
+        ypr.yaw += 180;
+    }
+
+    if (ypr.pitch >= 0) {
+        ypr.pitch -= 180;
+    } else {
+        ypr.pitch += 180;
+    }
+
+    if (ypr.roll >= 0) {
+        ypr.roll -= 180;
+    } else {
+        ypr.roll += 180;
+    }
 }

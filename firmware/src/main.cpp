@@ -14,7 +14,7 @@
 #define BUTTON_PIN  9
 
 // Add these at the top of your file with other global variables
-#define BUTTON_COUNT 4                  // Number of finger buttons we're tracking
+#define BUTTON_COUNT 5                  // Number of finger buttons we're tracking
 #define PRESS_THRESHOLD 150             // Absolute threshold for press detection
 #define RELEASE_THRESHOLD 130           // Threshold for release detection
 #define NOISE_TOLERANCE 5               // Tolerance for signal noise
@@ -139,7 +139,7 @@ struct FingerButtonState {
 FingerButtonState fingerButtons[BUTTON_COUNT];
 
 // Finger indices for button detection
-const int fingerIndices[BUTTON_COUNT] = {5, 8, 11, 14}; // Index, Middle, Ring, Pinky
+const int fingerIndices[BUTTON_COUNT] = {2, 5, 8, 11, 14}; // Thumb, Index, Middle, Ring, Pinky
 
 // Track recent motion history
 int32_t angleHistory[BUTTON_COUNT][HISTORY_SIZE];
@@ -149,17 +149,19 @@ int32_t avgMotionRange[BUTTON_COUNT] = {0};
 
 // Define arrays for finger-specific thresholds
 const int32_t PRESS_THRESHOLDS[BUTTON_COUNT] = {
-    200,  // Finger 0 (Index) - Standard threshold
-    200,  // Finger 1 (Middle) - Higher threshold (less sensitive)
-    180,  // Finger 2 (Ring) - Medium-high threshold
-    230   // Finger 3 (Pinky) - Lower threshold (more sensitive)
+    120,  // Thumb 0 (Thumb)
+    200,  // Index 0 (Index) - Standard threshold
+    200,  // Middle 1 (Middle) - Higher threshold (less sensitive)
+    200,  // Ring 2 (Ring) - Medium-high threshold
+    200   // Pinky 3 (Pinky) - Lower threshold (more sensitive)
 };
 
 const int32_t RELEASE_THRESHOLDS[BUTTON_COUNT] = {
-    192,  // Finger 0 (Index)
-    192,  // Finger 1 (Middle)
-    172,  // Finger 2 (Ring)
-    222   // Finger 3 (Pinky)
+    110,  // Thumb 0 (Thumb)
+    192,  // Index 1 (Index)
+    192,  // Middle 2 (Middle)
+    192,  // Ring 3 (Ring)
+    192,   // Pinky 4 (Pinky)
 };
 
 // Initialize the finger button tracking
@@ -438,15 +440,15 @@ void updateFingerButtons() {
             fingerButtons[i].baselineAngle = 0; // sum / calibrationSamples;
             fingerButtons[i].prevAngle = fingerButtons[i].baselineAngle;
             
-            Serial.print("Finger ");
-            Serial.print(i);
-            Serial.print(" baseline: ");
-            Serial.print(fingerButtons[i].baselineAngle);
-            Serial.print(" (Press threshold: ");
-            Serial.print(PRESS_THRESHOLDS[i]);
-            Serial.print(", Release threshold: ");
-            Serial.print(RELEASE_THRESHOLDS[i]);
-            Serial.println(")");
+            // Serial.print("Finger ");
+            // Serial.print(i);
+            // Serial.print(" baseline: ");
+            // Serial.print(fingerButtons[i].baselineAngle);
+            // Serial.print(" (Press threshold: ");
+            // Serial.print(PRESS_THRESHOLDS[i]);
+            // Serial.print(", Release threshold: ");
+            // Serial.print(RELEASE_THRESHOLDS[i]);
+            // Serial.println(")");
         }
         isCalibrated = true;
         Serial.println("Calibration complete!");
@@ -586,24 +588,27 @@ void loop() {
         switch (currentMode) {
             case GAME_MODE:
                 // GAME MODE: Use mapped controls for gameplay
-                
+
                 // Update finger button states based on position changes
                 updateFingerButtons();
-                
+
                 // Set button states based on detected gestures
-                gamepadReport.button1 = fingerButtons[0].isPressed; // Pinky finger
-                gamepadReport.button2 = fingerButtons[1].isPressed; // Ring finger
-                gamepadReport.button3 = fingerButtons[2].isPressed; // Middle finger
-                gamepadReport.button4 = fingerButtons[3].isPressed; // Index finger
-                
-                // First map the raw angles to 0-255 range
-                gamepadReport.axes[0] = 255 - mapAngleToHID(angles[0], 0, 255);  // X - Thumb CMC flexion (inverted)
-                gamepadReport.axes[1] = mapAngleToHID(angles[1], 0, 255);        // Y - Thumb PIP flexion
-                
-                // Then apply deadzone with proper rescaling
-                gamepadReport.axes[0] = applyDeadzone(gamepadReport.axes[0], DEADZONE);
-                gamepadReport.axes[1] = applyDeadzone(gamepadReport.axes[1], DEADZONE);
-                
+                gamepadReport.button1 = fingerButtons[0].isPressed; // Thumb
+                gamepadReport.button2 = fingerButtons[1].isPressed; // Pinky finger
+                gamepadReport.button3 = fingerButtons[2].isPressed; // Ring finger
+                gamepadReport.button4 = fingerButtons[3].isPressed; // Middle finger
+                gamepadReport.button5 = fingerButtons[4].isPressed; // Index finger
+
+                // Map roll angle to X-axis (left/right movement)
+                gamepadReport.axes[0] = constrain(map(ypr.roll, -30, 30, 0, 255), 0, 255);
+
+                // Map pitch angle to Y-axis (up/down movement)
+                gamepadReport.axes[1] = constrain(map(-ypr.pitch, -30, 30, 0, 255), 0, 255);
+
+                // Apply deadzone to both axes
+                // gamepadReport.axes[0] = applyDeadzone(gamepadReport.axes[0], DEADZONE);
+                // gamepadReport.axes[1] = applyDeadzone(gamepadReport.axes[1], DEADZONE);
+
                 // Fill remaining axes with zeros or other mapped values
                 for (int i = 2; i < 16; i++) {
                     gamepadReport.axes[i] = 127;
@@ -612,7 +617,7 @@ void loop() {
                 
             case RAW_ANGLES_MODE:
                 // RAW ANGLES MODE: Show all raw angle values
-                
+
                 // Map all raw angle values directly to axes
                 for (int i = 0; i < NUM_JOINTS && i < 16; i++) {
                     gamepadReport.axes[i] = mapAngleToHID(angles[i], 0, 255);
@@ -623,14 +628,14 @@ void loop() {
                 gamepadReport.axes[17] = quaternionToAxis(quaternion_y);
                 gamepadReport.axes[18] = quaternionToAxis(quaternion_z);
                 gamepadReport.axes[19] = quaternionToAxis(quaternion_w);
-                
+
                 // Add linear acceleration values to the next 3 axes
                 // Map from typical acceleration range (-8 to +8 m/s²) to 0-255
                 gamepadReport.axes[20] = constrain(map(linear_x * 16, -128, 127, 0, 255), 0, 255);
                 gamepadReport.axes[21] = constrain(map(linear_y * 16, -128, 127, 0, 255), 0, 255);
                 gamepadReport.axes[22] = constrain(map(linear_z * 16, -128, 127, 0, 255), 0, 255);
                 break;
-                
+
             default:
                 // Fallback mode - just use raw angles
                 for (int i = 0; i < NUM_JOINTS && i < 16; i++) {

@@ -9,6 +9,16 @@
 #define I2C_SDA 21
 #define I2C_SCL 20
 
+// Declare the struct type
+struct euler_t {
+    float yaw;
+    float pitch;
+    float roll;
+};
+
+// Declare the variable as extern
+extern euler_t ypr;
+
 void setupBNO085();
 void updateBNO085();
 void printBNO085Values();
