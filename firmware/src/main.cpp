@@ -337,7 +337,7 @@ void setup() {
     Serial.begin(115200);
     delay(1000); // Give serial time to connect
     
-    Serial.println("\n\n----- Finger Tracker Starting -----");
+    Serial.println("\n\n----- Eidon Glove Starting -----");
     Serial.println("Initializing finger tracking...");
     
     // Define which sensors have inverted magnets
@@ -355,7 +355,7 @@ void setup() {
     Serial.println("Initializing BLE Gamepad...");
     
     // Set a fixed device name and address for consistent pairing
-    NimBLEDevice::init("Hand Tracker (Right)");
+    NimBLEDevice::init("Eidon Glove (Right)");
     
     // Optional: Set a fixed MAC address (uncomment if needed)
     // uint8_t customAddress[6] = {0x11, 0x22, 0x33, 0x44, 0x55, 0x66};
@@ -456,7 +456,7 @@ void updateFingerButtons() {
     
     // Debug output - print values periodically
     static unsigned long lastDebugTime = 0;
-    bool shouldPrintDebug = (millis() - lastDebugTime > 500);
+    bool shouldPrintDebug = false; //(millis() - lastDebugTime > 500);
     
     if (shouldPrintDebug) {
         lastDebugTime = millis();
@@ -600,10 +600,10 @@ void loop() {
                 gamepadReport.button5 = fingerButtons[4].isPressed; // Index finger
 
                 // Map roll angle to X-axis (left/right movement)
-                gamepadReport.axes[0] = constrain(map(ypr.roll, -30, 30, 0, 255), 0, 255);
+                gamepadReport.axes[0] = constrain(map(ypr.roll, -45, 45, 0, 255), 0, 255);
 
                 // Map pitch angle to Y-axis (up/down movement)
-                gamepadReport.axes[1] = constrain(map(-ypr.pitch, -30, 30, 0, 255), 0, 255);
+                // gamepadReport.axes[1] = constrain(map(ypr.pitch, -45, 45, 0, 255), 0, 255);
 
                 // Apply deadzone to both axes
                 // gamepadReport.axes[0] = applyDeadzone(gamepadReport.axes[0], DEADZONE);

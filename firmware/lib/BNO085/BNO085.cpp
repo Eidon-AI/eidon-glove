@@ -83,7 +83,6 @@ void updateBNO085() {
                 quaternion_y = sensorValue.un.arvrStabilizedRV.k;
                 quaternion_z = sensorValue.un.arvrStabilizedRV.i;
                 quaternion_w = sensorValue.un.arvrStabilizedRV.real;
-                
                 quaternionToEuler();
                 break;
                 
@@ -114,34 +113,35 @@ void quaternionToEuler() {
     float sqj = sq(quaternion_y);
     float sqk = sq(quaternion_z);
 
-    ypr.pitch = atan2(2.0 * (quaternion_x * quaternion_y + quaternion_z * quaternion_w),
-                    (sqi - sqj - sqk + sqr));
     ypr.yaw = asin(-2.0 * (quaternion_x * quaternion_z - quaternion_y * quaternion_w) /
                      (sqi + sqj + sqk + sqr));
+    ypr.pitch = atan2(2.0 * (quaternion_x * quaternion_y + quaternion_z * quaternion_w),
+                    (sqi - sqj - sqk + sqr));
     ypr.roll = atan2(2.0 * (quaternion_y * quaternion_z + quaternion_x * quaternion_w),
                      (-sqi - sqj + sqk + sqr));
 
     // Convert to degrees
     ypr.yaw = ypr.yaw * RAD_TO_DEG;
-    ypr.pitch = -ypr.pitch * RAD_TO_DEG;
+    ypr.pitch = ypr.pitch * RAD_TO_DEG;
     ypr.roll = ypr.roll * RAD_TO_DEG;
 
     // Shift the values by 180 degrees
-    if (ypr.yaw >= 0) {
-        ypr.yaw -= 180;
-    } else {
-        ypr.yaw += 180;
-    }
+    // if (ypr.yaw >= 0) {
+    //     ypr.yaw -= 180;
+    // } else {
+    //     ypr.yaw += 180;
+    // }
 
-    if (ypr.pitch >= 0) {
-        ypr.pitch -= 180;
-    } else {
-        ypr.pitch += 180;
-    }
+    // ypr.pitch = -ypr.pitch;
+    // if (ypr.pitch >= 0) {
+    //     ypr.pitch -= 180;
+    // } else {
+    //     ypr.pitch += 180;
+    // }
 
-    if (ypr.roll >= 0) {
-        ypr.roll -= 180;
-    } else {
-        ypr.roll += 180;
-    }
+    // if (ypr.roll >= 0) {
+    //     ypr.roll -= 180;
+    // } else {
+    //     ypr.roll += 180;
+    // }
 }

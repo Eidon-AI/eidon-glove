@@ -70,6 +70,7 @@
         #sidebar {
             flex: 1;
             padding: 15px;
+            padding-top: 0;
             background-color: #f8f9fa;
             overflow-y: auto;
             max-width: 300px;
@@ -78,9 +79,9 @@
         
         .joint-info {
             margin-bottom: 10px;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            padding: 8px 0;
+            border: 0 solid #ddd;
+            border-bottom: 1px;
         }
         
         .joint-name {
@@ -97,6 +98,7 @@
             height: 10px;
             border-radius: 5px;
             margin-top: 5px;
+            overflow: hidden;
         }
         
         .bar {
@@ -107,7 +109,7 @@
         }
         
         .log-container {
-            margin-top: 20px;
+            margin: 16px 0;
             border: 1px solid #ddd;
             border-radius: 5px;
             padding: 10px;
@@ -186,19 +188,61 @@
         #start-playback-btn:hover:not(:disabled) {
             background-color: #218838;
         }
+
+        .glove-info {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .glove-header {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .tracker-info {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .tracker-name {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .tracker-values {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 5px 0;
+            font-family: monospace;
+        }
+
+        .tracker-bars {
+            display: grid;
+            grid-template-rows: repeat(3, 1fr);
+            gap: 2px;
+        }
+
+        .tracker-bars .bar {
+            height: 10px;
+            transition: all 0.1s ease;
+        }
     </style>
 </head>
 <body>
     <div class="controls">
         <button id="connect-button">Connect HID Device</button>
         <button id="disconnect-button" disabled>Disconnect</button>
-        <select id="baudRate">
-            <option value="9600">9600</option>
-            <option value="19200">19200</option>
-            <option value="38400">38400</option>
-            <option value="57600">57600</option>
-            <option value="115200" selected>115200</option>
-        </select>
         <span id="status-indicator" class="status disconnected">Status: Disconnected</span>
     </div>
     
@@ -214,7 +258,7 @@
         </div>
         
         <div id="sidebar">
-            <h3>Joint Values</h3>
+            <!-- <h3>Joint Values</h3> -->
             <div id="joints-container">
                 <!-- Joint info will be added here -->
             </div>

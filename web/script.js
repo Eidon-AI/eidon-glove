@@ -26,7 +26,6 @@ let ignoreExternalInput = false; // Flag to ignore glove/gamepad input during pl
 // DOM elements
 const connectButton = document.getElementById('connect-button');
 const disconnectButton = document.getElementById('disconnect-button');
-const baudRateSelect = document.getElementById('baudRate');
 const statusIndicator = document.getElementById('status-indicator');
 const jointsContainer = document.getElementById('joints-container');
 const logContainer = document.getElementById('log-container');
@@ -40,10 +39,6 @@ const resetViewBtn = document.getElementById('reset-view-btn');
 
 // Three.js variables
 let scene, camera, renderer, controls;
-let hand = {
-    palm: null,
-    fingers: []
-};
 
 // Joint mapping information with inversion flags
 const fingerJointMap = [
@@ -75,9 +70,11 @@ const fingerJointMap = [
 ];
 
 // Add HID variables
-let hidDevice = null;
+let hidDevices = new Map(); // Using Map to store devices by their ID
 const REPORT_ID = 1;
-const REPORT_SIZE = 24; // 2 bytes report ID + 2 bytes buttons + 20 bytes axes
+const GLOVE_REPORT_SIZE = 24;
+const TRACKER_REPORT_SIZE = 3;
+const trackers = new Map(); // Map to store tracker data by deviceId
 
 // Add at the start of the file, with other global variables
 let lastConnectedDeviceId = localStorage.getItem('lastHidDevice');
@@ -89,6 +86,12 @@ let lastLinearZ = 128;
 
 // Add to the top with other global variables
 let compassElement = null;
+
+// Add at the top with other global variables
+const gloves = new Map(); // Map to store glove data by deviceId
+
+// Add to global variables
+const hands = new Map(); // Map to store hand models by deviceId
 
 // Initialize Three.js scene
 function initThreeJS() {
@@ -128,7 +131,7 @@ function initThreeJS() {
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.25;
-    controls.enabled = true;  // Explicitly enable controls
+    controls.enabled = true;
     
     // Add lights
     const ambientLight = new THREE.AmbientLight(0x404040);
@@ -146,21 +149,20 @@ function initThreeJS() {
     const gridHelper = new THREE.GridHelper(20, 20);
     scene.add(gridHelper);
     
-    // Create hand model
-    createHandModel();
-    
     // Handle window resize
     window.addEventListener('resize', onWindowResize);
     
     // Start animation loop
     animate();
-
-    // Add compass overlay
-    addCompassOverlay();
 }
 
-// Modify createHandModel to store direct references to rotation groups
-function createHandModel() {
+// Modify createHandModel to create a hand for a specific device
+function createHandModel(deviceId) {
+    const handModel = {
+        palm: null,
+        fingers: []
+    };
+
     // Create materials
     const palmMaterial = new THREE.MeshPhongMaterial({ color: 0xf5c396 });
     const fingerMaterial = new THREE.MeshPhongMaterial({ color: 0xf5c396 });
@@ -168,10 +170,15 @@ function createHandModel() {
     
     // Create palm
     const palmGeometry = new THREE.BoxGeometry(6, 1.25, 7);
-    hand.palm = new THREE.Mesh(palmGeometry, palmMaterial);
-    hand.palm.position.set(0, 0, 0);
-    hand.palm.rotation.x = Math.PI; // Rotate 180 degrees around X axis
-    scene.add(hand.palm);
+    handModel.palm = new THREE.Mesh(palmGeometry, palmMaterial);
+    handModel.palm.position.set(0, 4, 0);
+    handModel.palm.rotation.x = Math.PI;
+    
+    // Offset each hand model so they don't overlap
+    const handCount = hands.size;
+    handModel.palm.position.x = handCount * 8 + 8; // Space hands horizontally
+    
+    scene.add(handModel.palm);
     
     // Finger dimensions
     const fingerWidth = 1;
@@ -188,7 +195,7 @@ function createHandModel() {
     ];
     
     // Create fingers with direct rotation groups
-    hand.fingers = [];
+    handModel.fingers = [];
     
     for (let f = 0; f < 5; f++) {
         const finger = {
@@ -200,7 +207,7 @@ function createHandModel() {
         
         // Set finger base position
         finger.base.position.set(...fingerBasePositions[f]);
-        hand.palm.add(finger.base);
+        handModel.palm.add(finger.base);
         
         // Create segments with rotation groups
         const segmentLengths = f === 0 ? thumbSegmentLengths : fingerSegmentLengths;
@@ -238,20 +245,24 @@ function createHandModel() {
             }
         }
         
-        hand.fingers.push(finger);
+        handModel.fingers.push(finger);
     }
     
     // Add labels
-    addFingerLabels();
-    addHandLabel();
+    addFingerLabels(handModel);
+    addHandLabel(handModel);
+
+    // Store the hand model in the hands Map
+    hands.set(deviceId, handModel);
+    return handModel;
 }
 
 // Function to add finger labels
-function addFingerLabels() {
+function addFingerLabels(handModel) {
         const fingerNames = ['Thumb', 'Index', 'Middle', 'Ring', 'Pinky'];
         
-        for (let i = 0; i < hand.fingers.length; i++) {
-            const finger = hand.fingers[i];
+        for (let i = 0; i < handModel.fingers.length; i++) {
+            const finger = handModel.fingers[i];
             
         // Skip if this finger doesn't have a group
         if (!finger.base) continue;
@@ -292,7 +303,7 @@ function addFingerLabels() {
 }
 
 // Function to add a hand label
-function addHandLabel() {
+function addHandLabel(handModel) {
     // Create a canvas element
     const canvas = document.createElement('canvas');
     // const context = canvas.getContext('2d');
@@ -327,9 +338,127 @@ function addHandLabel() {
     scene.add(label);
 }
 
-// Simplified updateHandModel function with direct rotation access
-function updateHandModel() {
+// Modify disconnectFromDevice to clean up UI and 3D elements
+async function disconnectFromDevice(deviceId = null) {
+    const savedDevices = JSON.parse(localStorage.getItem('hidDevices') || '[]');
+
+    if (deviceId) {
+        // Disconnect specific device
+        const device = hidDevices.get(deviceId);
+        if (device) {
+            await device.close();
+            hidDevices.delete(deviceId);
+            
+            // Remove from localStorage
+            const updatedDevices = savedDevices.filter(id => id !== deviceId);
+            localStorage.setItem('hidDevices', JSON.stringify(updatedDevices));
+            
+            // Clean up UI and 3D elements
+            cleanupDevice(deviceId);
+            
+            addLogMessage(`Disconnected from HID device: ${device.productName}`);
+        }
+    } else {
+        // Disconnect all devices
+        for (const [id, device] of hidDevices) {
+            await device.close();
+            cleanupDevice(id);
+            addLogMessage(`Disconnected from HID device: ${device.productName}`);
+        }
+        hidDevices.clear();
+        localStorage.setItem('hidDevices', '[]');
+    }
+    
+    updateConnectionStatus();
+}
+
+// Add function to clean up device-specific elements
+function cleanupDevice(deviceId) {
+    // Remove tracker UI and data if it's a tracker
+    if (trackers.has(deviceId)) {
+        const trackerElement = document.getElementById(`tracker-${deviceId}`);
+        if (trackerElement) {
+            trackerElement.remove();
+        }
+        trackers.delete(deviceId);
+    }
+
+    // Remove glove UI, data, and 3D model if it's a glove
+    if (gloves.has(deviceId)) {
+        // Remove UI
+        const gloveElement = document.getElementById(`glove-${deviceId}`);
+        if (gloveElement) {
+            gloveElement.remove();
+        }
+        
+        // Remove 3D model
+        const handModel = hands.get(deviceId);
+        if (handModel) {
+            // Remove palm
+            if (handModel.palm) {
+                scene.remove(handModel.palm);
+            }
+            
+            // Remove any other Three.js objects associated with this hand
+            // This ensures we don't leave any orphaned objects in the scene
+            handModel.fingers.forEach(finger => {
+                if (finger.base) {
+                    handModel.palm.remove(finger.base);
+                }
+            });
+        }
+        
+        // Clear from Maps
+        gloves.delete(deviceId);
+        hands.delete(deviceId);
+        
+        // Reposition remaining hands
+        repositionHands();
+    }
+}
+
+// Add function to reposition hands after a disconnect
+function repositionHands() {
+    let index = 0;
+    for (const [deviceId, handModel] of hands) {
+        // Smoothly animate to new position
+        const targetX = index * 8 - 4;
+        animateHandPosition(handModel, targetX);
+        index++;
+    }
+}
+
+// Add function to smoothly animate hand position changes
+function animateHandPosition(handModel, targetX) {
+    const startX = handModel.palm.position.x;
+    const duration = 1000; // 1 second animation
+    const startTime = Date.now();
+
+    function update() {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Use easing function for smooth movement
+        const easeProgress = progress * (2 - progress);
+        
+        handModel.palm.position.x = startX + (targetX - startX) * easeProgress;
+        
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        }
+    }
+
+    requestAnimationFrame(update);
+}
+
+// Modify updateHandModel to handle multiple hands
+function updateHandModel(deviceId) {
     if (!scene || !camera || !renderer) return;
+    
+    const handModel = hands.get(deviceId);
+    const gloveData = gloves.get(deviceId);
+    
+    if (!handModel || !gloveData) return;
     
     // Process each joint
     for (let i = 0; i < MAX_JOINTS; i++) {
@@ -337,8 +466,8 @@ function updateHandModel() {
         if (!jointInfo) continue;
         
         const { finger, type, min, max } = jointInfo;
-        const value = jointValues[i];
-        const currentFinger = hand.fingers[finger];
+        const value = gloveData.jointValues[i];
+        const currentFinger = handModel.fingers[finger];
         
         if (!currentFinger || !currentFinger.rotationGroups) continue;
         
@@ -408,8 +537,17 @@ function updateHandModel() {
         }
     }
     
-    // Force update of the entire scene graph
-    hand.palm.updateMatrixWorld(true);
+    // Apply quaternion rotations
+    const euler = gloveData.euler;
+    const roll = Math.PI - (euler.roll);
+    const pitch = Math.PI - (euler.pitch + Math.PI);
+    const yaw = euler.yaw + Math.PI;
+
+    handModel.palm.rotation.x = pitch;
+    handModel.palm.rotation.y = yaw;
+    handModel.palm.rotation.z = roll;
+    
+    handModel.palm.updateMatrixWorld(true);
     renderer.render(scene, camera);
 }
 
@@ -463,7 +601,10 @@ resetViewBtn.addEventListener('click', () => {
 
 // Event listeners for serial connection
 connectButton.addEventListener('click', connectToDevice);
-disconnectButton.addEventListener('click', disconnectFromDevice);
+disconnectButton.addEventListener('click', () => {
+    // Disconnect all devices
+    disconnectFromDevice();
+});
 
 // Check if Web HID API is supported
 if (!navigator.hid) {
@@ -476,7 +617,7 @@ if (!navigator.hid) {
 initThreeJS();
 
 // Initialize joint elements
-initializeJointElements();
+// initializeJointElements();
 
 // Add this to the <style> section in the HTML file
 const styleElement = document.createElement('style');
@@ -490,6 +631,35 @@ styleElement.textContent = `
 
 .invert-toggle input {
     margin-right: 5px;
+}
+
+.device-item {
+    margin: 5px 0;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.device-item button {
+    padding: 2px 8px;
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.device-item button:hover {
+    background: #cc0000;
+}
+
+.device-details {
+    font-size: 0.8em;
+    color: #666;
+    margin-left: 10px;
 }
 `;
 document.head.appendChild(styleElement);
@@ -983,120 +1153,122 @@ function addRecordingControls() {
     controlPanel.appendChild(recordingControls);
 }
 
-// Add this new function
-async function autoConnectToLastDevice() {
-    if (!lastConnectedDeviceId) return;
-    
-    try {
-        // Get all paired HID devices
-        const devices = await navigator.hid.getDevices();
-        
-        // Find our last connected device
-        const lastDevice = devices.find(d => 
-            `${d.vendorId}-${d.productId}` === lastConnectedDeviceId
-        );
-        
-        if (lastDevice) {
-            hidDevice = lastDevice;
-            await hidDevice.open();
-            
-            // Update UI
-            statusIndicator.textContent = 'Status: Connected via HID';
-            statusIndicator.className = 'status connected';
-            connectButton.disabled = true;
-            disconnectButton.disabled = false;
-            
-            // Initialize joint elements
-            initializeJointElements();
-            
-            // Log connection
-            addLogMessage(`Auto-connected to HID device: ${hidDevice.productName}`);
-            
-            // Set up input report handler
-            hidDevice.addEventListener('inputreport', handleHIDInput);
-        }
-    } catch (error) {
-        console.error('Auto-connect error:', error);
-        addLogMessage('Failed to auto-connect to last device');
-    }
-}
-
-// Modify the connectToDevice function to store the device ID
+// Modify the connectToDevice function to handle identical devices
 async function connectToDevice() {
     try {
-        // Request HID device with no filters first to see what's available
         const devices = await navigator.hid.requestDevice({
             filters: [] // Empty filters to see all HID devices
         });
 
-        if (devices.length === 0) {
-            throw new Error('No HID device selected');
+        for (const device of devices) {
+            // Create a unique device ID by combining vendorId, productId, and the device index
+            const baseDeviceId = `${device.vendorId}-${device.productId}-${device.productName.replace(/\s+/g, '-')}`;
+            let deviceId = baseDeviceId;
+            let index = 1;
+
+            // If a device with this ID already exists, increment index until we find a unique ID
+            while (hidDevices.has(deviceId)) {
+                deviceId = `${baseDeviceId}-${index}`;
+                index++;
+            }
+            
+            await device.open();
+            hidDevices.set(deviceId, device);
+            
+            // Store in localStorage (as array of IDs)
+            const savedDevices = JSON.parse(localStorage.getItem('hidDevices') || '[]');
+            if (!savedDevices.includes(deviceId)) {
+                savedDevices.push(deviceId);
+                localStorage.setItem('hidDevices', JSON.stringify(savedDevices));
+            }
+
+            // Set up input report handler for this device
+            device.addEventListener('inputreport', handleHIDInput);
+            
+            addLogMessage(`Connected to HID device: ${device.productName} (${deviceId})`);
+            addLogMessage(`VendorID: 0x${device.vendorId.toString(16)}, ProductID: 0x${device.productId.toString(16)}`);
         }
 
-        // Log device information to help identify the correct IDs
-        console.log('Selected device:', {
-            vendorId: devices[0].vendorId,
-            productId: devices[0].productId,
-            productName: devices[0].productName,
-            collections: devices[0].collections
-        });
-
-        hidDevice = devices[0];
-        await hidDevice.open();
-        
-        // Store the device identifier
-        lastConnectedDeviceId = `${hidDevice.vendorId}-${hidDevice.productId}`;
-        localStorage.setItem('lastHidDevice', lastConnectedDeviceId);
-
         // Update UI
-        statusIndicator.textContent = 'Status: Connected via HID';
-        statusIndicator.className = 'status connected';
-        connectButton.disabled = true;
-        disconnectButton.disabled = false;
-        
-        // Initialize joint elements
-        initializeJointElements();
-        
-        // Log connection
-        addLogMessage(`Connected to HID device: ${hidDevice.productName}`);
-        addLogMessage(`VendorID: 0x${hidDevice.vendorId.toString(16)}, ProductID: 0x${hidDevice.productId.toString(16)}`);
-
-        // Set up input report handler
-        hidDevice.addEventListener('inputreport', handleHIDInput);
+        updateConnectionStatus();
 
     } catch (error) {
         console.error('Error connecting to HID device:', error);
         addLogMessage(`Connection error: ${error.message}`);
-        
-        statusIndicator.textContent = 'Status: Connection failed';
-        statusIndicator.className = 'status disconnected';
-        connectButton.disabled = false;
-        disconnectButton.disabled = true;
-        
-        hidDevice = null;
     }
 }
 
-async function disconnectFromDevice() {
-    if (hidDevice) {
-        try {
-            await hidDevice.close();
+// Update autoConnectToLastDevice to handle the new ID format
+async function autoConnectToLastDevice() {
+    const savedDevices = JSON.parse(localStorage.getItem('hidDevices') || '[]');
+    if (savedDevices.length === 0) return;
+    
+    try {
+        const devices = await navigator.hid.getDevices();
+        
+        for (const deviceId of savedDevices) {
+            // Extract the base device ID (vendorId-productId) from the saved device ID
+            const [vendorId, productId] = deviceId.split('-').slice(0, 2);
+            const device = devices.find(d => 
+                d.vendorId.toString() === vendorId && 
+                d.productId.toString() === productId &&
+                !Array.from(hidDevices.values()).includes(d)
+            );
             
-            // Update UI
+            if (device && !hidDevices.has(deviceId)) {
+                await device.open();
+                hidDevices.set(deviceId, device);
+                device.addEventListener('inputreport', handleHIDInput);
+                addLogMessage(`Auto-connected to HID device: ${device.productName} (${deviceId})`);
+            }
+        }
+        
+        updateConnectionStatus();
+            
+    } catch (error) {
+        console.error('Auto-connect error:', error);
+        addLogMessage('Failed to auto-connect to saved devices');
+    }
+}
+
+// Update updateConnectionStatus to show more device details
+function updateConnectionStatus() {
+    if (hidDevices.size > 0) {
+        statusIndicator.textContent = `Status: Connected to ${hidDevices.size} device(s)`;
+        statusIndicator.className = 'status connected';
+        connectButton.disabled = false;
+        disconnectButton.disabled = false;
+
+        let deviceList = document.getElementById('device-list');
+        if (!deviceList) {
+            deviceList = document.createElement('div');
+            deviceList.id = 'device-list';
+            statusIndicator.parentNode.insertBefore(deviceList, statusIndicator.nextSibling);
+        }
+        deviceList.innerHTML = '';
+
+        for (const [deviceId, device] of hidDevices) {
+            const deviceDiv = document.createElement('div');
+            deviceDiv.className = 'device-item';
+            deviceDiv.innerHTML = `
+                ${device.productName} 
+                <span class="device-details">
+                    (ID: ${deviceId})
+                </span>
+                <button onclick="disconnectFromDevice('${deviceId}')">Disconnect</button>
+            `;
+            deviceList.appendChild(deviceDiv);
+        }
+    } else {
             statusIndicator.textContent = 'Status: Disconnected';
             statusIndicator.className = 'status disconnected';
             connectButton.disabled = false;
             disconnectButton.disabled = true;
             
-            // Log disconnection
-            addLogMessage('Disconnected from HID device');
-            
-        } catch (error) {
-            console.error('Error disconnecting:', error);
-            addLogMessage(`Disconnection error: ${error.message}`);
+        const deviceList = document.getElementById('device-list');
+        if (deviceList) {
+            deviceList.remove();
         }
-        
-        hidDevice = null;
     }
 }
 
@@ -1123,81 +1295,82 @@ function quaternionToEuler(x, y, z, w) {
     return { roll, pitch, yaw };
 }
 
-// Modify the handleHIDInput function to adjust roll by 180 degrees
+// Modify handleHIDInput to use the new multi-hand system
 function handleHIDInput(event) {
     if (ignoreExternalInput) return;
 
+    const device = event.device;
+    const deviceId = `${device.vendorId}-${device.productId}-${device.productName.replace(/\s+/g, '-')}`;
     const { data } = event;
-    if (data.getUint8(0) !== REPORT_ID) return;
-
-    let hasChanges = false;
     
-    // Process first 16 axes
-    for (let i = 0; i < 16; i++) {
-        const rawValue = data.getUint8(i + 3);
-        let finalValue = rawValue;
+    // if (data.getUint8(0) !== REPORT_ID) return;
+
+    // Determine if this is a tracker or glove based on report size
+    const isTracker = data.buffer.byteLength === TRACKER_REPORT_SIZE;
+
+    if (isTracker) {
+        // Handle tracker data
+        const roll = data.getUint8(0) * (360/255); // Convert to degrees (0-360)
+        const pitch = data.getUint8(1) * (360/255);
+        const yaw = data.getUint8(2) * (360/255);
         
-        if (fingerJointMap[i]?.inverted) {
-            if (fingerJointMap[i].type.includes('ABDUCTION')) {
-                finalValue = 255 - rawValue;
-            } else {
-                const min = fingerJointMap[i].min;
-                const max = fingerJointMap[i].max;
-                finalValue = max - (rawValue - min);
+        // Create display if it doesn't exist
+        if (!trackers.has(deviceId)) {
+            addTrackerDisplay(deviceId);
+        }
+        
+        // Update tracker display
+        updateTrackerDisplay(deviceId, roll, pitch, yaw);
+        
+    } else {
+        // Glove handling
+        if (!gloves.has(deviceId)) {
+            addGloveDisplay(deviceId);
+            createHandModel(deviceId); // Create 3D hand model for this device
+        }
+
+        const gloveData = gloves.get(deviceId);
+        let hasChanges = false;
+        
+        // Process joint values
+        for (let i = 0; i < 16; i++) {
+            const rawValue = data.getUint8(i + 3);
+            let finalValue = rawValue;
+            
+            if (gloveData.jointInversions[i]) {
+                if (fingerJointMap[i].type.includes('ABDUCTION')) {
+                    finalValue = 255 - rawValue;
+                } else {
+                    const min = fingerJointMap[i].min;
+                    const max = fingerJointMap[i].max;
+                    finalValue = max - (rawValue - min);
+                }
             }
-        }
-        
-        if (jointValues[i] !== finalValue) {
-            // console.log(`Joint ${i} (${fingerJointMap[i]?.type}): ${jointValues[i]} -> ${finalValue}`);
-        jointValues[i] = finalValue;
-        updateJointDisplay(i, finalValue);
-            hasChanges = true;
-        }
-    }
-
-    // Process quaternion values
-    const quaternionX = (data.getUint8(19) - 127) / 127;
-    const quaternionY = (data.getUint8(20) - 127) / 127;
-    const quaternionZ = (data.getUint8(21) - 127) / 127;
-    const quaternionW = (data.getUint8(22) - 127) / 127;
-    const euler = quaternionToEuler(quaternionX, quaternionY, quaternionZ, quaternionW);
-
-    const roll = Math.PI - (euler.roll);
-    const pitch = Math.PI - (euler.pitch + Math.PI);
-    const yaw = euler.yaw + Math.PI;
-
-    // const linearX = data.getUint8(23);
-    // const linearY = data.getUint8(24);
-    // const linearZ = data.getUint8(25);
-
-    // const positionScale = 0.1; // Adjust this value to change movement sensitivity
-    // const centerOffset = 128; // 0x80
-
-    if (hand.palm) {
-        // Apply rotations as before
-        hand.palm.rotation.x = pitch;
-        hand.palm.rotation.y = yaw;
-        hand.palm.rotation.z = roll;
-
-        // Update compass rotation (if it exists)
-        if (compassElement) {
-            // Get the needle element
-            const needle = compassElement.querySelector('div');
-            if (needle) {
-                // Convert yaw to degrees and adjust for compass display
-                const compassDegrees = (euler.yaw * 180 / Math.PI);
-                needle.style.transform = `rotate(${compassDegrees}deg)`;
+            
+            if (gloveData.jointValues[i] !== finalValue) {
+                gloveData.jointValues[i] = finalValue;
+                updateJointDisplay(deviceId, i, finalValue);
+                hasChanges = true;
             }
         }
 
-        hand.palm.updateMatrixWorld(true);
-    }
+        // Process quaternion values
+        const quaternionX = (data.getUint8(19) - 127) / 127;
+        const quaternionY = (data.getUint8(20) - 127) / 127;
+        const quaternionZ = (data.getUint8(21) - 127) / 127;
+        const quaternionW = (data.getUint8(22) - 127) / 127;
+        
+        gloveData.quaternion = { x: quaternionX, y: quaternionY, z: quaternionZ, w: quaternionW };
+        const euler = quaternionToEuler(quaternionX, quaternionY, quaternionZ, quaternionW);
+        gloveData.euler = euler;
 
-    // Update the display with the raw quaternion values
-    updateQuaternionDisplay(quaternionX, quaternionY, quaternionZ, quaternionW);
+        // Update displays
+        updateQuaternionDisplay(deviceId, quaternionX, quaternionY, quaternionZ, quaternionW);
 
-    if (hasChanges) {
-        updateHandModel();
+        // Update this specific hand model
+        if (hasChanges) {
+            updateHandModel(deviceId);
+        }
     }
 }
 
@@ -1262,15 +1435,21 @@ function initializeJointElements() {
             <div>W: <span id="quat-w">0.000</span></div>
         </div>
         <div class="euler-values">
-            <div>Roll: <span id="euler-roll">0.0°</span></div>
-            <div>Pitch: <span id="euler-pitch">0.0°</span></div>
-            <div>Yaw: <span id="euler-yaw">0.0°</span></div>
+            <div>Roll:<br><span id="euler-roll">0.0°</span></div>
+            <div>Pitch:<br><span id="euler-pitch">0.0°</span></div>
+            <div>Yaw:<br><span id="euler-yaw">0.0°</span></div>
         </div>
-        <div class="bar-container">
-            <div class="quaternion-bars">
+        <div class="quaternion-bars">
+            <div class="bar-container">
                 <div class="bar" id="quat-bar-x"></div>
+            </div>
+            <div class="bar-container">
                 <div class="bar" id="quat-bar-y"></div>
+            </div>
+            <div class="bar-container">
                 <div class="bar" id="quat-bar-z"></div>
+            </div>
+            <div class="bar-container">
                 <div class="bar" id="quat-bar-w"></div>
             </div>
         </div>
@@ -1279,14 +1458,13 @@ function initializeJointElements() {
 }
 
 // Update joint display in sidebar
-function updateJointDisplay(jointIndex, value) {
-    const valueElement = document.getElementById(`joint-value-${jointIndex}`);
-    const barElement = document.getElementById(`joint-bar-${jointIndex}`);
+function updateJointDisplay(deviceId, jointIndex, value) {
+    const valueElement = document.getElementById(`joint-value-${deviceId}-${jointIndex}`);
+    const barElement = document.getElementById(`joint-bar-${deviceId}-${jointIndex}`);
     
     if (valueElement && barElement) {
         valueElement.textContent = `Value: ${value}`;
         
-        // Calculate percentage based on joint's min/max values
         const jointInfo = fingerJointMap[jointIndex];
         const min = jointInfo?.min || 0;
         const max = jointInfo?.max || 255;
@@ -1295,25 +1473,24 @@ function updateJointDisplay(jointIndex, value) {
         const percentage = Math.min(100, Math.max(0, ((value - min) / range) * 100));
         barElement.style.width = `${percentage}%`;
         
-        // Change color based on value
-        const hue = Math.floor(percentage * 1.2); // 0-120 (red to green)
+        const hue = Math.floor(percentage * 1.2);
         barElement.style.backgroundColor = `hsl(${hue}, 80%, 50%)`;
     }
 }
 
 // Update the quaternion display function to show Euler angles
-function updateQuaternionDisplay(x, y, z, w) {
+function updateQuaternionDisplay(deviceId, x, y, z, w) {
     // Update quaternion values
-    document.getElementById('quat-x').textContent = x.toFixed(3);
-    document.getElementById('quat-y').textContent = y.toFixed(3);
-    document.getElementById('quat-z').textContent = z.toFixed(3);
-    document.getElementById('quat-w').textContent = w.toFixed(3);
+    document.getElementById(`quat-x-${deviceId}`).textContent = x.toFixed(3);
+    document.getElementById(`quat-y-${deviceId}`).textContent = y.toFixed(3);
+    document.getElementById(`quat-z-${deviceId}`).textContent = z.toFixed(3);
+    document.getElementById(`quat-w-${deviceId}`).textContent = w.toFixed(3);
     
     // Calculate and update Euler angles
     const euler = quaternionToEuler(x, y, z, w);
-    document.getElementById('euler-roll').textContent = `${(euler.roll * 180 / Math.PI).toFixed(1)}°`;
-    document.getElementById('euler-pitch').textContent = `${(euler.pitch * 180 / Math.PI).toFixed(1)}°`;
-    document.getElementById('euler-yaw').textContent = `${(euler.yaw * 180 / Math.PI).toFixed(1)}°`;
+    document.getElementById(`euler-roll-${deviceId}`).textContent = `${(euler.roll * 180 / Math.PI).toFixed(1)}°`;
+    document.getElementById(`euler-pitch-${deviceId}`).textContent = `${(euler.pitch * 180 / Math.PI).toFixed(1)}°`;
+    document.getElementById(`euler-yaw-${deviceId}`).textContent = `${(euler.yaw * 180 / Math.PI).toFixed(1)}°`;
     
     // Update bars
     const updateBar = (id, value) => {
@@ -1327,10 +1504,10 @@ function updateQuaternionDisplay(x, y, z, w) {
         }
     };
     
-    updateBar('quat-bar-x', x);
-    updateBar('quat-bar-y', y);
-    updateBar('quat-bar-z', z);
-    updateBar('quat-bar-w', w);
+    updateBar(`quat-bar-x-${deviceId}`, x);
+    updateBar(`quat-bar-y-${deviceId}`, y);
+    updateBar(`quat-bar-z-${deviceId}`, z);
+    updateBar(`quat-bar-w-${deviceId}`, w);
 }
 
 // Add additional styles for Euler angles display
@@ -1377,8 +1554,8 @@ function addCompassOverlay() {
     compassElement = document.createElement('div');
     compassElement.style.cssText = `
         position: fixed;
-        top: 20px;
-        right: 20px;
+        top: 80px;
+        left: 20px;
         width: 100px;
         height: 100px;
         border-radius: 50%;
@@ -1442,4 +1619,222 @@ function addCompassOverlay() {
     compassElement.appendChild(directionContainer);
     compassElement.appendChild(needle);
     document.body.appendChild(compassElement);
+}
+
+// Add this function to create the tracker display section
+function addTrackerDisplay(deviceId) {
+    console.log(`added: ${deviceId}`);
+    const trackerId = deviceId.split('-').pop(); // Get unique part of device ID
+    const trackerElement = document.createElement('div');
+    trackerElement.className = 'tracker-info';
+    trackerElement.id = `tracker-${deviceId}`;
+    
+    trackerElement.innerHTML = `
+        <div class="tracker-name">Tracker ${trackerId}</div>
+        <div class="tracker-values">
+            <div>Roll:<br><span id="tracker-roll-${deviceId}">0.0°</span></div>
+            <div>Pitch:<br><span id="tracker-pitch-${deviceId}">0.0°</span></div>
+            <div>Yaw:<br><span id="tracker-yaw-${deviceId}">0.0°</span></div>
+        </div>
+        <div class="tracker-bars">
+            <div class="bar-container">
+                <div class="bar" id="tracker-bar-roll-${deviceId}"></div>
+            </div>
+            <div class="bar-container">
+                <div class="bar" id="tracker-bar-pitch-${deviceId}"></div>
+            </div>
+            <div class="bar-container">
+                <div class="bar" id="tracker-bar-yaw-${deviceId}"></div>
+            </div>
+        </div>
+    `;
+    
+    // Add to joints container after the quaternion display
+    jointsContainer.appendChild(trackerElement);
+    
+    // Add to trackers Map
+    trackers.set(deviceId, {
+        roll: 0,
+        pitch: 0,
+        yaw: 0
+    });
+}
+
+// Add this function to update tracker display
+function updateTrackerDisplay(deviceId, roll, pitch, yaw) {
+    // Update stored values
+    trackers.set(deviceId, { roll, pitch, yaw });
+    
+    // Update display values
+    document.getElementById(`tracker-roll-${deviceId}`).textContent = `${roll.toFixed(1)}°`;
+    document.getElementById(`tracker-pitch-${deviceId}`).textContent = `${pitch.toFixed(1)}°`;
+    document.getElementById(`tracker-yaw-${deviceId}`).textContent = `${yaw.toFixed(1)}°`;
+    
+    // Update bars
+    const updateBar = (id, value) => {
+        const bar = document.getElementById(id);
+        if (bar) {
+            // Normalize value from 0-360 to 0-100 for bar display
+            const percentage = (value % 360) / 3.6;
+            bar.style.width = `${percentage}%`;
+            const hue = percentage * 1.2; // 0-120 (red to green)
+            bar.style.backgroundColor = `hsl(${hue}, 80%, 50%)`;
+        }
+    };
+    
+    updateBar(`tracker-bar-roll-${deviceId}`, roll);
+    updateBar(`tracker-bar-pitch-${deviceId}`, pitch);
+    updateBar(`tracker-bar-yaw-${deviceId}`, yaw);
+}
+
+// Add this function to create a glove display section
+function addGloveDisplay(deviceId) {
+    const gloveId = deviceId.split('-').pop(); // Get unique part of device ID
+    const gloveElement = document.createElement('div');
+    gloveElement.className = 'glove-info';
+    gloveElement.id = `glove-${deviceId}`;
+    
+    // Create glove header
+    const header = document.createElement('div');
+    header.className = 'glove-header';
+    header.textContent = `Glove ${gloveId}`;
+    gloveElement.appendChild(header);
+
+    // Create joints container for this glove
+    const glovejointsContainer = document.createElement('div');
+    glovejointsContainer.className = 'glove-joints-container';
+    
+    // Create joint elements for this glove
+    for (let i = 0; i < MAX_JOINTS; i++) {
+        const jointElement = document.createElement('div');
+        jointElement.className = 'joint-info';
+        
+        const fingerIndex = i < 4 ? 0 : Math.floor((i - 4) / 3) + 1;
+        const jointType = fingerJointMap[i]?.type || 'Unknown';
+        const fingerName = ['Thumb', 'Index', 'Middle', 'Ring', 'Pinky'][fingerIndex];
+        
+        jointElement.innerHTML = `
+            <div class="joint-name">${fingerName} - ${jointType}</div>
+            <div class="joint-value" id="joint-value-${deviceId}-${i}">Value: 0</div>
+            <div class="bar-container">
+                <div class="bar" id="joint-bar-${deviceId}-${i}"></div>
+            </div>
+            <label class="invert-toggle">
+                <input type="checkbox" id="invert-${deviceId}-${i}" ${fingerJointMap[i]?.inverted ? 'checked' : ''}>
+                Invert Values
+            </label>
+        `;
+        glovejointsContainer.appendChild(jointElement);
+        
+        // Add event listener for the invert checkbox
+        const invertCheckbox = document.getElementById(`invert-${deviceId}-${i}`);
+        // invertCheckbox.addEventListener('change', (e) => {
+        //     if (i < fingerJointMap.length) {
+        //         // Store inversion state per device and joint
+        //         const gloveData = gloves.get(deviceId);
+        //         if (gloveData) {
+        //             gloveData.jointInversions[i] = e.target.checked;
+        //         }
+        //         addLogMessage(`Glove ${gloveId} ${fingerName} ${jointType} inversion ${e.target.checked ? 'enabled' : 'disabled'}`);
+        //     }
+        // });
+    }
+
+    // Add quaternion display for this glove
+    const quaternionElement = document.createElement('div');
+    quaternionElement.className = 'joint-info';
+    quaternionElement.innerHTML = `
+        <div class="joint-name">Orientation</div>
+        <div class="quaternion-values">
+            <div>X: <span id="quat-x-${deviceId}">0.000</span></div>
+            <div>Y: <span id="quat-y-${deviceId}">0.000</span></div>
+            <div>Z: <span id="quat-z-${deviceId}">0.000</span></div>
+            <div>W: <span id="quat-w-${deviceId}">0.000</span></div>
+        </div>
+        <div class="euler-values">
+            <div>Roll: <span id="euler-roll-${deviceId}">0.0°</span></div>
+            <div>Pitch: <span id="euler-pitch-${deviceId}">0.0°</span></div>
+            <div>Yaw: <span id="euler-yaw-${deviceId}">0.0°</span></div>
+        </div>
+        <div class="quaternion-bars">
+            <div class="bar-container">
+                <div class="bar" id="quat-bar-x-${deviceId}"></div>
+            </div>
+            <div class="bar-container">
+                <div class="bar" id="quat-bar-y-${deviceId}"></div>
+            </div>
+            <div class="bar-container">
+                <div class="bar" id="quat-bar-z-${deviceId}"></div>
+            </div>
+            <div class="bar-container">
+                <div class="bar" id="quat-bar-w-${deviceId}"></div>
+            </div>
+        </div>
+    `;
+    glovejointsContainer.appendChild(quaternionElement);
+    gloveElement.appendChild(glovejointsContainer);
+    
+    // Add to joints container
+    jointsContainer.appendChild(gloveElement);
+    
+    // Initialize glove data in the Map
+    gloves.set(deviceId, {
+        jointValues: new Array(MAX_JOINTS).fill(0),
+        jointInversions: new Array(MAX_JOINTS).fill(false),
+        quaternion: { x: 0, y: 0, z: 0, w: 1 },
+        euler: { roll: 0, pitch: 0, yaw: 0 }
+    });
+}
+
+// Update the joint display function to handle multiple gloves
+function updateJointDisplay(deviceId, jointIndex, value) {
+    const valueElement = document.getElementById(`joint-value-${deviceId}-${jointIndex}`);
+    const barElement = document.getElementById(`joint-bar-${deviceId}-${jointIndex}`);
+    
+    if (valueElement && barElement) {
+        valueElement.textContent = `Value: ${value}`;
+        
+        const jointInfo = fingerJointMap[jointIndex];
+        const min = jointInfo?.min || 0;
+        const max = jointInfo?.max || 255;
+        const range = max - min;
+        
+        const percentage = Math.min(100, Math.max(0, ((value - min) / range) * 100));
+        barElement.style.width = `${percentage}%`;
+        
+        const hue = Math.floor(percentage * 1.2);
+        barElement.style.backgroundColor = `hsl(${hue}, 80%, 50%)`;
+    }
+}
+
+// Update the quaternion display function to handle multiple gloves
+function updateQuaternionDisplay(deviceId, x, y, z, w) {
+    // Update quaternion values
+    document.getElementById(`quat-x-${deviceId}`).textContent = x.toFixed(3);
+    document.getElementById(`quat-y-${deviceId}`).textContent = y.toFixed(3);
+    document.getElementById(`quat-z-${deviceId}`).textContent = z.toFixed(3);
+    document.getElementById(`quat-w-${deviceId}`).textContent = w.toFixed(3);
+    
+    // Calculate and update Euler angles
+    const euler = quaternionToEuler(x, y, z, w);
+    document.getElementById(`euler-roll-${deviceId}`).textContent = `${(euler.roll * 180 / Math.PI).toFixed(1)}°`;
+    document.getElementById(`euler-pitch-${deviceId}`).textContent = `${(euler.pitch * 180 / Math.PI).toFixed(1)}°`;
+    document.getElementById(`euler-yaw-${deviceId}`).textContent = `${(euler.yaw * 180 / Math.PI).toFixed(1)}°`;
+    
+    // Update bars
+    const updateBar = (id, value) => {
+        const bar = document.getElementById(id);
+        if (bar) {
+            const percentage = ((value + 1) / 2) * 100;
+            bar.style.width = `${percentage}%`;
+            const hue = value >= 0 ? 120 : 0;
+            const saturation = Math.abs(value) * 100;
+            bar.style.backgroundColor = `hsl(${hue}, ${saturation}%, 50%)`;
+        }
+    };
+    
+    updateBar(`quat-bar-x-${deviceId}`, x);
+    updateBar(`quat-bar-y-${deviceId}`, y);
+    updateBar(`quat-bar-z-${deviceId}`, z);
+    updateBar(`quat-bar-w-${deviceId}`, w);
 }
