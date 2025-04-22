@@ -93,6 +93,18 @@ const gloves = new Map(); // Map to store glove data by deviceId
 // Add to global variables
 const hands = new Map(); // Map to store hand models by deviceId
 
+// Add to global variables section
+const armJointMap = [
+    { joint: 'shoulder', rotationOrder: 'XYZ', min: -180, max: 180 },
+    { joint: 'elbow', rotationOrder: 'XYZ', min: 0, max: 145 },
+    { joint: 'wrist', rotationOrder: 'XYZ', min: -90, max: 90 }
+];
+
+// Add this function to get the current hand count
+function getHandCount() {
+    return hands.size;
+}
+
 // Initialize Three.js scene
 function initThreeJS() {
     // Check if canvasContainer exists
@@ -158,7 +170,15 @@ function initThreeJS() {
 
 // Modify createHandModel to create a hand for a specific device
 function createHandModel(deviceId) {
+    const handCount = getHandCount();
     const handModel = {
+        arm: {
+            shoulder: null,
+            upperArm: null,
+            elbow: null,
+            forearm: null,
+            wrist: null
+        },
         palm: null,
         fingers: []
     };
@@ -167,19 +187,46 @@ function createHandModel(deviceId) {
     const palmMaterial = new THREE.MeshPhongMaterial({ color: 0xf5c396 });
     const fingerMaterial = new THREE.MeshPhongMaterial({ color: 0xf5c396 });
     const jointMaterial = new THREE.MeshPhongMaterial({ color: 0xe3a977 });
-    
-    // Create palm
+    const armMaterial = new THREE.MeshPhongMaterial({ color: 0xf5c396 });
+
+    // Create arm components
+    // Shoulder joint (sphere)
+    const shoulderGeometry = new THREE.SphereGeometry(1.5, 16, 16);
+    handModel.arm.shoulder = new THREE.Mesh(shoulderGeometry, jointMaterial);
+    handModel.arm.shoulder.position.set(handCount * 8 + 4, 15, 0); // Position shoulder higher up and space them out
+    scene.add(handModel.arm.shoulder);
+
+    // Upper arm (cylinder)
+    const upperArmGeometry = new THREE.CylinderGeometry(1.2, 1, 8, 16);
+    handModel.arm.upperArm = new THREE.Mesh(upperArmGeometry, armMaterial);
+    handModel.arm.upperArm.position.set(0, -4, 0); // Position relative to shoulder
+    handModel.arm.shoulder.add(handModel.arm.upperArm);
+
+    // Elbow joint (sphere)
+    const elbowGeometry = new THREE.SphereGeometry(1.2, 16, 16);
+    handModel.arm.elbow = new THREE.Mesh(elbowGeometry, jointMaterial);
+    handModel.arm.elbow.position.set(0, -4, 0); // Position at end of upper arm
+    handModel.arm.upperArm.add(handModel.arm.elbow);
+
+    // Forearm (cylinder)
+    const forearmGeometry = new THREE.CylinderGeometry(1, 0.8, 8, 16);
+    handModel.arm.forearm = new THREE.Mesh(forearmGeometry, armMaterial);
+    handModel.arm.forearm.position.set(0, -4, 0); // Position relative to elbow
+    handModel.arm.elbow.add(handModel.arm.forearm);
+
+    // Wrist joint (sphere)
+    const wristGeometry = new THREE.SphereGeometry(1, 16, 16);
+    handModel.arm.wrist = new THREE.Mesh(wristGeometry, jointMaterial);
+    handModel.arm.wrist.position.set(0, -4, 0); // Position at end of forearm
+    handModel.arm.forearm.add(handModel.arm.wrist);
+
+    // Create palm and attach to wrist
     const palmGeometry = new THREE.BoxGeometry(6, 1.25, 7);
     handModel.palm = new THREE.Mesh(palmGeometry, palmMaterial);
-    handModel.palm.position.set(0, 4, 0);
+    handModel.palm.position.set(0, 0, 4);
     handModel.palm.rotation.x = Math.PI;
-    
-    // Offset each hand model so they don't overlap
-    const handCount = hands.size;
-    handModel.palm.position.x = handCount * 8 + 8; // Space hands horizontally
-    
-    scene.add(handModel.palm);
-    
+    handModel.arm.wrist.add(handModel.palm);
+
     // Finger dimensions
     const fingerWidth = 1;
     const fingerHeight = 0.8;
@@ -460,6 +507,9 @@ function updateHandModel(deviceId) {
     
     if (!handModel || !gloveData) return;
     
+    // Update arm position first
+    updateArmPosition(deviceId);
+
     // Process each joint
     for (let i = 0; i < MAX_JOINTS; i++) {
         const jointInfo = fingerJointMap[i];
@@ -538,14 +588,14 @@ function updateHandModel(deviceId) {
     }
     
     // Apply quaternion rotations
-    const euler = gloveData.euler;
-    const roll = Math.PI - (euler.roll);
-    const pitch = Math.PI - (euler.pitch + Math.PI);
-    const yaw = euler.yaw + Math.PI;
+    // const euler = gloveData.euler;
+    // const roll = Math.PI - (euler.roll);
+    // const pitch = Math.PI - (euler.pitch + Math.PI);
+    // const yaw = euler.yaw + Math.PI;
 
-    handModel.palm.rotation.x = pitch;
-    handModel.palm.rotation.y = yaw;
-    handModel.palm.rotation.z = roll;
+    // handModel.palm.rotation.x = pitch;
+    // handModel.palm.rotation.y = yaw;
+    // handModel.palm.rotation.z = roll;
     
     handModel.palm.updateMatrixWorld(true);
     renderer.render(scene, camera);
@@ -1632,19 +1682,32 @@ function addTrackerDisplay(deviceId) {
     trackerElement.innerHTML = `
         <div class="tracker-name">Tracker ${trackerId}</div>
         <div class="tracker-values">
-            <div>Roll:<br><span id="tracker-roll-${deviceId}">0.0°</span></div>
-            <div>Pitch:<br><span id="tracker-pitch-${deviceId}">0.0°</span></div>
-            <div>Yaw:<br><span id="tracker-yaw-${deviceId}">0.0°</span></div>
-        </div>
-        <div class="tracker-bars">
-            <div class="bar-container">
-                <div class="bar" id="tracker-bar-roll-${deviceId}"></div>
+            <div class="tracker-value-container">
+                <div class="tracker-value-label">Roll:</div>
+                <div class="tracker-circle-container">
+                    <div class="tracker-circle" id="tracker-circle-roll-${deviceId}">
+                        <div class="tracker-indicator"></div>
+                    </div>
+                    <span id="tracker-roll-${deviceId}">0.0°</span>
+                </div>
             </div>
-            <div class="bar-container">
-                <div class="bar" id="tracker-bar-pitch-${deviceId}"></div>
+            <div class="tracker-value-container">
+                <div class="tracker-value-label">Pitch:</div>
+                <div class="tracker-circle-container">
+                    <div class="tracker-circle" id="tracker-circle-pitch-${deviceId}">
+                        <div class="tracker-indicator"></div>
+                    </div>
+                    <span id="tracker-pitch-${deviceId}">0.0°</span>
+                </div>
             </div>
-            <div class="bar-container">
-                <div class="bar" id="tracker-bar-yaw-${deviceId}"></div>
+            <div class="tracker-value-container">
+                <div class="tracker-value-label">Yaw:</div>
+                <div class="tracker-circle-container">
+                    <div class="tracker-circle" id="tracker-circle-yaw-${deviceId}">
+                        <div class="tracker-indicator"></div>
+                    </div>
+                    <span id="tracker-yaw-${deviceId}">0.0°</span>
+                </div>
             </div>
         </div>
     `;
@@ -1670,21 +1733,32 @@ function updateTrackerDisplay(deviceId, roll, pitch, yaw) {
     document.getElementById(`tracker-pitch-${deviceId}`).textContent = `${pitch.toFixed(1)}°`;
     document.getElementById(`tracker-yaw-${deviceId}`).textContent = `${yaw.toFixed(1)}°`;
     
-    // Update bars
-    const updateBar = (id, value) => {
-        const bar = document.getElementById(id);
-        if (bar) {
-            // Normalize value from 0-360 to 0-100 for bar display
-            const percentage = (value % 360) / 3.6;
-            bar.style.width = `${percentage}%`;
-            const hue = percentage * 1.2; // 0-120 (red to green)
-            bar.style.backgroundColor = `hsl(${hue}, 80%, 50%)`;
+    // Update circular indicators
+    const updateCircle = (id, value) => {
+        const circle = document.getElementById(id);
+        if (circle) {
+            // Convert degrees to radians and rotate the indicator
+            const rotation = (value % 360) * (Math.PI / 180);
+            const indicator = circle.querySelector('.tracker-indicator');
+            if (indicator) {
+                // Calculate the position of the indicator on the circle
+                const circleSize = circle.offsetWidth;
+                const indicatorSize = 8; // Size of the indicator dot
+                const radius = (circleSize - indicatorSize) / 2; // Adjust radius to account for indicator size
+                
+                // Calculate position with indicator size offset
+                const x = Math.sin(rotation) * radius;
+                const y = -Math.cos(rotation) * radius; // Negative because Y is inverted in CSS
+                
+                // Apply the transform, adjusting for the indicator's center point
+                indicator.style.transform = `translate(calc(${x}px - ${indicatorSize/2}px), calc(${y}px - ${indicatorSize/2}px))`;
+            }
         }
     };
     
-    updateBar(`tracker-bar-roll-${deviceId}`, roll);
-    updateBar(`tracker-bar-pitch-${deviceId}`, pitch);
-    updateBar(`tracker-bar-yaw-${deviceId}`, yaw);
+    updateCircle(`tracker-circle-roll-${deviceId}`, roll);
+    updateCircle(`tracker-circle-pitch-${deviceId}`, pitch);
+    updateCircle(`tracker-circle-yaw-${deviceId}`, yaw);
 }
 
 // Add this function to create a glove display section
@@ -1837,4 +1911,63 @@ function updateQuaternionDisplay(deviceId, x, y, z, w) {
     updateBar(`quat-bar-y-${deviceId}`, y);
     updateBar(`quat-bar-z-${deviceId}`, z);
     updateBar(`quat-bar-w-${deviceId}`, w);
+}
+
+// Add new function to update arm position based on IMU sensors
+function updateArmPosition(deviceId) {
+    const handModel = hands.get(deviceId);
+    if (!handModel) return;
+
+    const gloveData = gloves.get(deviceId);
+    const wristTracker = trackers.get(`0-0-Eidon-Tracker-1`);
+    const bicepTracker = trackers.get(`0-0-Eidon-Tracker-2`);
+
+    if (!gloveData || !bicepTracker || !wristTracker) return;
+
+    // Reset shoulder rotation first
+    handModel.arm.shoulder.rotation.set(0, 0, 0);
+
+    // Normalize shoulder angles
+    let shoulderPitch = normalizeAngle(bicepTracker.pitch - 90);
+    let shoulderYaw = normalizeAngle(bicepTracker.yaw);
+    
+    // Invert pitch for natural arm movement
+    shoulderPitch = -shoulderPitch;
+
+    // Apply shoulder rotations
+    handModel.arm.shoulder.rotateY(THREE.MathUtils.degToRad(shoulderYaw));
+    handModel.arm.shoulder.rotateX(THREE.MathUtils.degToRad(shoulderPitch));
+
+    // Convert tracker orientations to vectors
+    const bicepVector = new THREE.Vector3(
+        Math.sin(THREE.MathUtils.degToRad(bicepTracker.yaw)) * Math.cos(THREE.MathUtils.degToRad(bicepTracker.pitch)),
+        Math.sin(THREE.MathUtils.degToRad(bicepTracker.pitch)),
+        Math.cos(THREE.MathUtils.degToRad(bicepTracker.yaw)) * Math.cos(THREE.MathUtils.degToRad(bicepTracker.pitch))
+    );
+    
+    const wristVector = new THREE.Vector3(
+        Math.sin(THREE.MathUtils.degToRad(wristTracker.yaw)) * Math.cos(THREE.MathUtils.degToRad(wristTracker.pitch)),
+        Math.sin(THREE.MathUtils.degToRad(wristTracker.pitch)),
+        Math.cos(THREE.MathUtils.degToRad(wristTracker.yaw)) * Math.cos(THREE.MathUtils.degToRad(wristTracker.pitch))
+    );
+
+    // Calculate angle between vectors
+    const elbowAngle = Math.min(145, THREE.MathUtils.radToDeg(bicepVector.angleTo(wristVector)));
+    handModel.arm.elbow.rotation.x = THREE.MathUtils.degToRad(elbowAngle);
+
+    // Set wrist to align with arm
+    // handModel.arm.wrist.rotation.set(0, 0, 0);
+    handModel.arm.wrist.rotation.x = Math.PI / 2;
+    handModel.arm.wrist.rotation.z = THREE.MathUtils.degToRad(wristTracker.roll) - Math.PI / 2;
+}
+
+// Helper function to normalize angles to -180 to +180 range
+function normalizeAngle(angle) {
+    angle = angle % 360;
+    if (angle > 180) {
+        angle -= 360;
+    } else if (angle < -180) {
+        angle += 360;
+    }
+    return angle;
 }
