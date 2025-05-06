@@ -18,16 +18,16 @@ float linear_z = 0;
 
 void printBNO085Values() {
     // Serial.println("Quaternion Values:");
-    // Serial.print("X: "); Serial.print(quaternion_x, 4);
-    // Serial.print(" Y: "); Serial.print(quaternion_y, 4);
-    // Serial.print(" Z: "); Serial.print(quaternion_z, 4);
-    // Serial.print(" W: "); Serial.println(quaternion_w, 4);
+    Serial.print("X: "); Serial.print(quaternion_x, 4);
+    Serial.print(" Y: "); Serial.print(quaternion_y, 4);
+    Serial.print(" Z: "); Serial.print(quaternion_z, 4);
+    Serial.print(" W: "); Serial.println(quaternion_w, 4);
     
     // Print Euler angles and status
-    Serial.print("Status: "); Serial.print(sensorValue.status); Serial.print("\t");
-    Serial.print("Yaw: "); Serial.print(ypr.yaw);
-    Serial.print(" Pitch: "); Serial.print(ypr.pitch);
-    Serial.print(" Roll: "); Serial.println(ypr.roll);
+    // Serial.print("Status: "); Serial.print(sensorValue.status); Serial.print("\t");
+    // Serial.print("Yaw: "); Serial.print(ypr.yaw);
+    // Serial.print(" Pitch: "); Serial.print(ypr.pitch);
+    // Serial.print(" Roll: "); Serial.println(ypr.roll);
 
     // // Print linear acceleration values
     // Serial.println("Linear Acceleration Values:");
@@ -37,21 +37,10 @@ void printBNO085Values() {
 }
 
 void setReports() {
-    // ARVR stabilized rotation vector at 5ms interval (200Hz)
-    if (!bno08x.enableReport(SH2_ARVR_STABILIZED_RV, 1)) {
-        Serial.println("Could not enable stabilized rotation vector");
+    // Use GAME_ROTATION_VECTOR instead of ARVR_STABILIZED_RV for no magnetic north reference
+    if (!bno08x.enableReport(SH2_GAME_ROTATION_VECTOR, 5000)) { // 5ms (200Hz)
+        Serial.println("Could not enable rotation vector");
     }
-
-    // // Use regular accelerometer at 2.5ms interval (400Hz)
-    // // Changed from LINEAR_ACCELERATION to regular ACCELEROMETER
-    // if (!bno08x.enableReport(SH2_ACCELEROMETER)) {
-    //     Serial.println("Could not enable accelerometer");
-    // }
-
-    // // Add linear acceleration reporting
-    // if (!bno08x.enableReport(SH2_LINEAR_ACCELERATION)) {
-    //     Serial.println("Could not enable linear acceleration");
-    // }
 }
 
 void setupBNO085() {
@@ -78,24 +67,12 @@ void updateBNO085() {
     
     if (bno08x.getSensorEvent(&sensorValue)) {
         switch (sensorValue.sensorId) {
-            case SH2_ARVR_STABILIZED_RV:
-                quaternion_x = sensorValue.un.arvrStabilizedRV.j;
-                quaternion_y = sensorValue.un.arvrStabilizedRV.k;
-                quaternion_z = sensorValue.un.arvrStabilizedRV.i;
-                quaternion_w = sensorValue.un.arvrStabilizedRV.real;
-                quaternionToEuler();
-                break;
-                
-            case SH2_ACCELEROMETER:
-                linear_x = sensorValue.un.accelerometer.x;
-                linear_y = sensorValue.un.accelerometer.y;
-                linear_z = sensorValue.un.accelerometer.z;
-                break;
-            
-            case SH2_LINEAR_ACCELERATION:
-                linear_x = sensorValue.un.linearAcceleration.x;
-                linear_y = sensorValue.un.linearAcceleration.y;
-                linear_z = sensorValue.un.linearAcceleration.z;
+            case SH2_GAME_ROTATION_VECTOR:
+                quaternion_x = sensorValue.un.rotationVector.i;
+                quaternion_y = sensorValue.un.rotationVector.j;
+                quaternion_z = sensorValue.un.rotationVector.k;
+                quaternion_w = sensorValue.un.rotationVector.real;
+                // quaternionToEuler();
                 break;
         }
 

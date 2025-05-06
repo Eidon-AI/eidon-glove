@@ -79,28 +79,18 @@ const uint8_t reportDescriptor[] = {
     0x95, 0x08,        // Report Count (8)
     0x81, 0x02,        // Input (Data, Variable, Absolute)
 
-    // Add quaternion values (4 more axes)
-    0x05, 0x02,        // Usage Page (Simulation Controls)
-    0x09, 0xBA,        // Usage (Rudder)
-    0x09, 0xBB,        // Usage (Throttle)
-    0x09, 0xC4,        // Usage (Accelerator)
-    0x09, 0xC5,        // Usage (Brake)
-    0x15, 0x00,        // Logical Minimum (0)
-    0x26, 0xFF, 0x00,  // Logical Maximum (255)
-    0x75, 0x08,        // Report Size (8)
-    0x95, 0x04,        // Report Count (4)
-    0x81, 0x02,        // Input (Data, Variable, Absolute)
-
-    // Add linear acceleration axes (3 more axes)
-    0x05, 0x02,        // Usage Page (Simulation Controls)
-    0x09, 0xB0,        // Usage (X-axis acceleration)
-    0x09, 0xB1,        // Usage (Y-axis acceleration)
-    0x09, 0xB2,        // Usage (Z-axis acceleration)
-    0x15, 0x00,        // Logical Minimum (0)
-    0x26, 0xFF, 0x00,  // Logical Maximum (255)
-    0x75, 0x08,        // Report Size (8)
-    0x95, 0x03,        // Report Count (3)
-    0x81, 0x02,        // Input (Data, Variable, Absolute)
+    // 4 values for quaternion (w, x, y, z) - now using 16-bit values
+    0x09, 0x30,        //   Usage (X)
+    0x09, 0x31,        //   Usage (Y)
+    0x09, 0x32,        //   Usage (Z)
+    0x09, 0x33,        //   Usage (W)
+    0x15, 0x00,        //   Logical Minimum (0)
+    0x26, 0xFF, 0xFF,  //   Logical Maximum (65535)
+    0x35, 0x00,        //   Physical Minimum (0)
+    0x46, 0xFF, 0xFF,  //   Physical Maximum (65535)
+    0x75, 0x10,        //   Report Size (16)
+    0x95, 0x04,        //   Report Count (4)
+    0x81, 0x02,        //   Input (Data, Variable, Absolute)
 
     0xC0               // End Collection
 };
@@ -254,16 +244,19 @@ typedef struct {
   bool left : 1;
 
   // All 23 axes
-  uint8_t axes[23]; // Updated to 23 total axes
+  uint8_t axes[16]; // Updated to 23 total axes
+
+  // 4 values for quaternion (w, x, y, z)
+  uint16_t quaternion[4];
 } GamepadReport;
 
 // Create an instance of the gamepad report
 GamepadReport gamepadReport = {0};
 
 // Add function to convert quaternion to gamepad axis value
-uint8_t quaternionToAxis(float quat_val) {
-    // Map -1.0 to 1.0 to 0-255
-    return (uint8_t)((quat_val + 1.0f) * 127.5f);
+uint16_t quaternionToAxis(float quat_val) {
+    // Map -1.0 to 1.0 to 0-65535
+    return (uint16_t)((quat_val + 1.0f) * 32767.5f);
 }
 
 // Add this function before setup()
@@ -623,17 +616,11 @@ void loop() {
                     gamepadReport.axes[i] = mapAngleToHID(angles[i], 0, 255);
                 }
 
-                // Add quaternion values to the next 4 axes
-                gamepadReport.axes[16] = quaternionToAxis(quaternion_x);
-                gamepadReport.axes[17] = quaternionToAxis(quaternion_y);
-                gamepadReport.axes[18] = quaternionToAxis(quaternion_z);
-                gamepadReport.axes[19] = quaternionToAxis(quaternion_w);
-
-                // Add linear acceleration values to the next 3 axes
-                // Map from typical acceleration range (-8 to +8 m/s²) to 0-255
-                gamepadReport.axes[20] = constrain(map(linear_x * 16, -128, 127, 0, 255), 0, 255);
-                gamepadReport.axes[21] = constrain(map(linear_y * 16, -128, 127, 0, 255), 0, 255);
-                gamepadReport.axes[22] = constrain(map(linear_z * 16, -128, 127, 0, 255), 0, 255);
+                // Store quaternion values directly as 16-bit values
+                gamepadReport.quaternion[0] = quaternionToAxis(quaternion_x);
+                gamepadReport.quaternion[1] = quaternionToAxis(quaternion_y);
+                gamepadReport.quaternion[2] = quaternionToAxis(quaternion_z);
+                gamepadReport.quaternion[3] = quaternionToAxis(quaternion_w);
                 break;
 
             default:
