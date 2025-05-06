@@ -73,7 +73,7 @@ const fingerJointMap = [
 let hidDevices = new Map(); // Using Map to store devices by their ID
 const REPORT_ID = 1;
 const GLOVE_REPORT_SIZE = 24;
-const TRACKER_REPORT_SIZE = 3;
+const TRACKER_REPORT_SIZE = 9;
 const trackers = new Map(); // Map to store tracker data by deviceId
 
 // Add at the start of the file, with other global variables
@@ -99,6 +99,9 @@ const armJointMap = [
     { joint: 'elbow', rotationOrder: 'XYZ', min: 0, max: 145 },
     { joint: 'wrist', rotationOrder: 'XYZ', min: -90, max: 90 }
 ];
+
+// Add to global variables section
+const trackerArrows = new Map(); // Map to store tracker arrows by deviceId
 
 // Add this function to get the current hand count
 function getHandCount() {
@@ -160,12 +163,97 @@ function initThreeJS() {
     // Add a grid helper
     const gridHelper = new THREE.GridHelper(20, 20);
     scene.add(gridHelper);
+
+    // Add coordinate axes
+    const axesLength = 5;
+    const axesColors = [0xff0000, 0x00ff00, 0x0000ff]; // Red, Green, Blue
+    
+    // X axis (Red)
+    const xAxisGeometry = new THREE.BufferGeometry();
+    const xAxisMaterial = new THREE.LineBasicMaterial({ color: axesColors[0] });
+    const xAxis = new THREE.Line(
+        xAxisGeometry,
+        xAxisMaterial
+    );
+    xAxisGeometry.setFromPoints([
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(axesLength, 0, 0)
+    ]);
+    scene.add(xAxis);
+
+    // Y axis (Green)
+    const yAxisGeometry = new THREE.BufferGeometry();
+    const yAxisMaterial = new THREE.LineBasicMaterial({ color: axesColors[1] });
+    const yAxis = new THREE.Line(
+        yAxisGeometry,
+        yAxisMaterial
+    );
+    yAxisGeometry.setFromPoints([
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(0, axesLength, 0)
+    ]);
+    scene.add(yAxis);
+
+    // Z axis (Blue)
+    const zAxisGeometry = new THREE.BufferGeometry();
+    const zAxisMaterial = new THREE.LineBasicMaterial({ color: axesColors[2] });
+    const zAxis = new THREE.Line(
+        zAxisGeometry,
+        zAxisMaterial
+    );
+    zAxisGeometry.setFromPoints([
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(0, 0, axesLength)
+    ]);
+    scene.add(zAxis);
+
+    // Add axis labels
+    const labelSize = 0.5;
+    const labelDistance = axesLength + 0.5;
+    
+    // X label
+    const xLabel = createTextSprite('X', axesColors[0]);
+    xLabel.position.set(labelDistance, 0, 0);
+    scene.add(xLabel);
+
+    // Y label
+    const yLabel = createTextSprite('Y', axesColors[1]);
+    yLabel.position.set(0, labelDistance, 0);
+    scene.add(yLabel);
+
+    // Z label
+    const zLabel = createTextSprite('Z', axesColors[2]);
+    zLabel.position.set(0, 0, labelDistance);
+    scene.add(zLabel);
     
     // Handle window resize
     window.addEventListener('resize', onWindowResize);
     
     // Start animation loop
     animate();
+}
+
+// Add helper function to create text sprites
+function createTextSprite(text, color) {
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    canvas.width = 64;
+    canvas.height = 64;
+    
+    // Draw text
+    context.font = 'Bold 32px Arial';
+    context.fillStyle = `#${color.toString(16).padStart(6, '0')}`;
+    context.textAlign = 'center';
+    context.textBaseline = 'middle';
+    context.fillText(text, canvas.width/2, canvas.height/2);
+    
+    // Create texture
+    const texture = new THREE.CanvasTexture(canvas);
+    const material = new THREE.SpriteMaterial({ map: texture });
+    const sprite = new THREE.Sprite(material);
+    sprite.scale.set(1, 1, 1);
+    
+    return sprite;
 }
 
 // Modify createHandModel to create a hand for a specific device
@@ -427,6 +515,14 @@ function cleanupDevice(deviceId) {
         if (trackerElement) {
             trackerElement.remove();
         }
+        
+        // Remove tracker arrow from Three.js scene
+        const arrow = trackerArrows.get(deviceId);
+        if (arrow) {
+            scene.remove(arrow);
+            trackerArrows.delete(deviceId);
+        }
+        
         trackers.delete(deviceId);
     }
 
@@ -1324,25 +1420,25 @@ function updateConnectionStatus() {
 
 let firstFrame = true;
 
-// Update quaternion to Euler conversion to match MCU implementation
+const RAD_TO_DEG = 180 / Math.PI;
+
+// Update quaternion to Euler conversion to match firmware implementation
 function quaternionToEuler(x, y, z, w) {
-    // Calculate squared terms
-    const sqw = w * w;
-    const sqx = x * x;
-    const sqy = y * y;
-    const sqz = z * z;
-
-    // Calculate Euler angles (in radians)
-    const yaw = Math.asin(-2.0 * (x * z - y * w) /
-                         (sqx + sqy + sqz + sqw));
+    // Different quaternion to euler conversion that might reduce axis coupling
+    const yaw = Math.atan2(2.0 * (w * z + x * y),
+                          1.0 - 2.0 * (y * y + z * z));
     
-    const pitch = Math.atan2(2.0 * (x * y + z * w),
-                            (sqx - sqy - sqz + sqw));
+    const pitch = Math.asin(2.0 * (w * y - z * x));
     
-    const roll = Math.atan2(2.0 * (y * z + x * w),
-                           (-sqx - sqy + sqz + sqw));
+    const roll = Math.atan2(2.0 * (w * x + y * z),
+                           1.0 - 2.0 * (x * x + y * y));
 
-    return { roll, pitch, yaw };
+    // Convert to degrees and swap pitch and roll
+    return {
+        yaw: yaw * RAD_TO_DEG,
+        roll: pitch * RAD_TO_DEG,  // Use pitch value for roll
+        pitch: roll * RAD_TO_DEG   // Use roll value for pitch
+    };
 }
 
 // Modify handleHIDInput to use the new multi-hand system
@@ -1353,24 +1449,39 @@ function handleHIDInput(event) {
     const deviceId = `${device.vendorId}-${device.productId}-${device.productName.replace(/\s+/g, '-')}`;
     const { data } = event;
     
-    // if (data.getUint8(0) !== REPORT_ID) return;
-
     // Determine if this is a tracker or glove based on report size
     const isTracker = data.buffer.byteLength === TRACKER_REPORT_SIZE;
 
     if (isTracker) {
-        // Handle tracker data
-        const roll = data.getUint8(0) * (360/255); // Convert to degrees (0-360)
-        const pitch = data.getUint8(1) * (360/255);
-        const yaw = data.getUint8(2) * (360/255);
+        // Handle tracker data - reading little-endian 16-bit integers
+        // Each quaternion component is stored as two bytes in little-endian format
+        const x = ((data.getUint8(0) | (data.getUint8(1) << 8)) - 32768) / 32767.5;
+        const y = ((data.getUint8(2) | (data.getUint8(3) << 8)) - 32768) / 32767.5;
+        const z = ((data.getUint8(4) | (data.getUint8(5) << 8)) - 32768) / 32767.5;
+        const w = ((data.getUint8(6) | (data.getUint8(7) << 8)) - 32768) / 32767.5;
+        // const position = data.getInt8(8);
+        // const isLeft = !!(position & 0b00000010);
+        // const isLower = !!(position & 0b00000001);
+
+        // console.log(isLeft, isLower);
         
         // Create display if it doesn't exist
         if (!trackers.has(deviceId)) {
+            // Remove any existing glove displays
+            const existingGloves = document.querySelectorAll('.glove-info');
+            existingGloves.forEach(glove => glove.remove());
+            
+            // Add tracker display
             addTrackerDisplay(deviceId);
+            
+            // Re-add any existing glove displays
+            for (const [gloveId, gloveData] of gloves) {
+                addGloveDisplay(gloveId);
+            }
         }
         
-        // Update tracker display
-        updateTrackerDisplay(deviceId, roll, pitch, yaw);
+        // Update tracker display with quaternion values
+        updateTrackerDisplay(deviceId, x, y, z, w);
         
     } else {
         // Glove handling
@@ -1409,7 +1520,7 @@ function handleHIDInput(event) {
         const quaternionY = (data.getUint8(20) - 127) / 127;
         const quaternionZ = (data.getUint8(21) - 127) / 127;
         const quaternionW = (data.getUint8(22) - 127) / 127;
-        
+
         gloveData.quaternion = { x: quaternionX, y: quaternionY, z: quaternionZ, w: quaternionW };
         const euler = quaternionToEuler(quaternionX, quaternionY, quaternionZ, quaternionW);
         gloveData.euler = euler;
@@ -1538,9 +1649,14 @@ function updateQuaternionDisplay(deviceId, x, y, z, w) {
     
     // Calculate and update Euler angles
     const euler = quaternionToEuler(x, y, z, w);
-    document.getElementById(`euler-roll-${deviceId}`).textContent = `${(euler.roll * 180 / Math.PI).toFixed(1)}°`;
-    document.getElementById(`euler-pitch-${deviceId}`).textContent = `${(euler.pitch * 180 / Math.PI).toFixed(1)}°`;
-    document.getElementById(`euler-yaw-${deviceId}`).textContent = `${(euler.yaw * 180 / Math.PI).toFixed(1)}°`;
+    document.getElementById(`glove-roll-${deviceId}`).textContent = `${(euler.roll).toFixed(1)}°`;
+    document.getElementById(`glove-pitch-${deviceId}`).textContent = `${(euler.pitch).toFixed(1)}°`;
+    document.getElementById(`glove-yaw-${deviceId}`).textContent = `${(euler.yaw).toFixed(1)}°`;
+    
+    // Update circle indicators
+    updateCircleIndicator(`glove-circle-roll-${deviceId}`, euler.roll);
+    updateCircleIndicator(`glove-circle-pitch-${deviceId}`, euler.pitch);
+    updateCircleIndicator(`glove-circle-yaw-${deviceId}`, euler.yaw);
     
     // Update bars
     const updateBar = (id, value) => {
@@ -1671,7 +1787,7 @@ function addCompassOverlay() {
     document.body.appendChild(compassElement);
 }
 
-// Add this function to create the tracker display section
+// Modify addTrackerDisplay function
 function addTrackerDisplay(deviceId) {
     console.log(`added: ${deviceId}`);
     const trackerId = deviceId.split('-').pop(); // Get unique part of device ID
@@ -1682,31 +1798,39 @@ function addTrackerDisplay(deviceId) {
     trackerElement.innerHTML = `
         <div class="tracker-name">Tracker ${trackerId}</div>
         <div class="tracker-values">
-            <div class="tracker-value-container">
-                <div class="tracker-value-label">Roll:</div>
-                <div class="tracker-circle-container">
-                    <div class="tracker-circle" id="tracker-circle-roll-${deviceId}">
-                        <div class="tracker-indicator"></div>
-                    </div>
-                    <span id="tracker-roll-${deviceId}">0.0°</span>
-                </div>
+            <div class="quaternion-values">
+                <div>X: <span id="tracker-quat-x-${deviceId}">0.000</span></div>
+                <div>Y: <span id="tracker-quat-y-${deviceId}">0.000</span></div>
+                <div>Z: <span id="tracker-quat-z-${deviceId}">0.000</span></div>
+                <div>W: <span id="tracker-quat-w-${deviceId}">0.000</span></div>
             </div>
-            <div class="tracker-value-container">
-                <div class="tracker-value-label">Pitch:</div>
-                <div class="tracker-circle-container">
-                    <div class="tracker-circle" id="tracker-circle-pitch-${deviceId}">
-                        <div class="tracker-indicator"></div>
+            <div class="euler-values">
+                <div class="tracker-value-container">
+                    <div class="tracker-value-label">Roll:</div>
+                    <div class="tracker-circle-container">
+                        <div class="tracker-circle" id="tracker-circle-roll-${deviceId}">
+                            <div class="tracker-indicator"></div>
+                        </div>
+                        <span id="tracker-roll-${deviceId}">0.0°</span>
                     </div>
-                    <span id="tracker-pitch-${deviceId}">0.0°</span>
                 </div>
-            </div>
-            <div class="tracker-value-container">
-                <div class="tracker-value-label">Yaw:</div>
-                <div class="tracker-circle-container">
-                    <div class="tracker-circle" id="tracker-circle-yaw-${deviceId}">
-                        <div class="tracker-indicator"></div>
+                <div class="tracker-value-container">
+                    <div class="tracker-value-label">Pitch:</div>
+                    <div class="tracker-circle-container">
+                        <div class="tracker-circle" id="tracker-circle-pitch-${deviceId}">
+                            <div class="tracker-indicator"></div>
+                        </div>
+                        <span id="tracker-pitch-${deviceId}">0.0°</span>
                     </div>
-                    <span id="tracker-yaw-${deviceId}">0.0°</span>
+                </div>
+                <div class="tracker-value-container">
+                    <div class="tracker-value-label">Yaw:</div>
+                    <div class="tracker-circle-container">
+                        <div class="tracker-circle" id="tracker-circle-yaw-${deviceId}">
+                            <div class="tracker-indicator"></div>
+                        </div>
+                        <span id="tracker-yaw-${deviceId}">0.0°</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1715,29 +1839,42 @@ function addTrackerDisplay(deviceId) {
     // Add to joints container after the quaternion display
     jointsContainer.appendChild(trackerElement);
     
-    // Add to trackers Map
+    // Add to trackers Map with quaternion values
     trackers.set(deviceId, {
-        roll: 0,
-        pitch: 0,
-        yaw: 0
+        quaternion: { x: 0, y: 0, z: 0, w: 1 },
+        euler: { roll: 0, pitch: 0, yaw: 0 }
     });
+
+    // Create tracker arrow in Three.js scene
+    createTrackerArrow(deviceId);
 }
 
-// Add this function to update tracker display
-function updateTrackerDisplay(deviceId, roll, pitch, yaw) {
-    // Update stored values
-    trackers.set(deviceId, { roll, pitch, yaw });
+// Modify updateTrackerDisplay function
+function updateTrackerDisplay(deviceId, x, y, z, w) {
+    // Store quaternion values
+    const tracker = trackers.get(deviceId);
+    tracker.quaternion = { x, y, z, w };
     
-    // Update display values
-    document.getElementById(`tracker-roll-${deviceId}`).textContent = `${roll.toFixed(1)}°`;
-    document.getElementById(`tracker-pitch-${deviceId}`).textContent = `${pitch.toFixed(1)}°`;
-    document.getElementById(`tracker-yaw-${deviceId}`).textContent = `${yaw.toFixed(1)}°`;
+    // Calculate Euler angles from quaternion
+    const euler = quaternionToEuler(x, y, z, w);
+    tracker.euler = euler;
     
-    // Update circular indicators
+    // Update quaternion display values
+    document.getElementById(`tracker-quat-x-${deviceId}`).textContent = x.toFixed(3);
+    document.getElementById(`tracker-quat-y-${deviceId}`).textContent = y.toFixed(3);
+    document.getElementById(`tracker-quat-z-${deviceId}`).textContent = z.toFixed(3);
+    document.getElementById(`tracker-quat-w-${deviceId}`).textContent = w.toFixed(3);
+    
+    // Update Euler angle displays (euler values are already in degrees)
+    document.getElementById(`tracker-roll-${deviceId}`).textContent = `${euler.roll.toFixed(1)}°`;
+    document.getElementById(`tracker-pitch-${deviceId}`).textContent = `${euler.pitch.toFixed(1)}°`;
+    document.getElementById(`tracker-yaw-${deviceId}`).textContent = `${euler.yaw.toFixed(1)}°`;
+    
+    // Update circular indicators (euler values are already in degrees)
     const updateCircle = (id, value) => {
         const circle = document.getElementById(id);
         if (circle) {
-            // Convert degrees to radians and rotate the indicator
+            // Convert degrees to radians for the circle rotation
             const rotation = (value % 360) * (Math.PI / 180);
             const indicator = circle.querySelector('.tracker-indicator');
             if (indicator) {
@@ -1756,9 +1893,12 @@ function updateTrackerDisplay(deviceId, roll, pitch, yaw) {
         }
     };
     
-    updateCircle(`tracker-circle-roll-${deviceId}`, roll);
-    updateCircle(`tracker-circle-pitch-${deviceId}`, pitch);
-    updateCircle(`tracker-circle-yaw-${deviceId}`, yaw);
+    updateCircle(`tracker-circle-roll-${deviceId}`, euler.roll);
+    updateCircle(`tracker-circle-pitch-${deviceId}`, euler.pitch);
+    updateCircle(`tracker-circle-yaw-${deviceId}`, euler.yaw);
+
+    // Update the tracker arrow in Three.js scene
+    updateTrackerArrow(deviceId, tracker.quaternion);
 }
 
 // Add this function to create a glove display section
@@ -1777,6 +1917,49 @@ function addGloveDisplay(deviceId) {
     // Create joints container for this glove
     const glovejointsContainer = document.createElement('div');
     glovejointsContainer.className = 'glove-joints-container';
+    
+    // Add quaternion display for this glove first
+    const quaternionElement = document.createElement('div');
+    quaternionElement.className = 'joint-info';
+    quaternionElement.innerHTML = `
+        <div class="joint-name">Orientation</div>
+        <div class="quaternion-values">
+            <div>X: <span id="quat-x-${deviceId}">0.000</span></div>
+            <div>Y: <span id="quat-y-${deviceId}">0.000</span></div>
+            <div>Z: <span id="quat-z-${deviceId}">0.000</span></div>
+            <div>W: <span id="quat-w-${deviceId}">0.000</span></div>
+        </div>
+        <div class="euler-values">
+            <div class="tracker-value-container">
+                <div class="tracker-value-label">Roll:</div>
+                <div class="tracker-circle-container">
+                    <div class="tracker-circle" id="glove-circle-roll-${deviceId}">
+                        <div class="tracker-indicator"></div>
+                    </div>
+                    <span id="glove-roll-${deviceId}">0.0°</span>
+                </div>
+            </div>
+            <div class="tracker-value-container">
+                <div class="tracker-value-label">Pitch:</div>
+                <div class="tracker-circle-container">
+                    <div class="tracker-circle" id="glove-circle-pitch-${deviceId}">
+                        <div class="tracker-indicator"></div>
+                    </div>
+                    <span id="glove-pitch-${deviceId}">0.0°</span>
+                </div>
+            </div>
+            <div class="tracker-value-container">
+                <div class="tracker-value-label">Yaw:</div>
+                <div class="tracker-circle-container">
+                    <div class="tracker-circle" id="glove-circle-yaw-${deviceId}">
+                        <div class="tracker-indicator"></div>
+                    </div>
+                    <span id="glove-yaw-${deviceId}">0.0°</span>
+                </div>
+            </div>
+        </div>
+    `;
+    glovejointsContainer.appendChild(quaternionElement);
     
     // Create joint elements for this glove
     for (let i = 0; i < MAX_JOINTS; i++) {
@@ -1799,53 +1982,8 @@ function addGloveDisplay(deviceId) {
             </label>
         `;
         glovejointsContainer.appendChild(jointElement);
-        
-        // Add event listener for the invert checkbox
-        const invertCheckbox = document.getElementById(`invert-${deviceId}-${i}`);
-        // invertCheckbox.addEventListener('change', (e) => {
-        //     if (i < fingerJointMap.length) {
-        //         // Store inversion state per device and joint
-        //         const gloveData = gloves.get(deviceId);
-        //         if (gloveData) {
-        //             gloveData.jointInversions[i] = e.target.checked;
-        //         }
-        //         addLogMessage(`Glove ${gloveId} ${fingerName} ${jointType} inversion ${e.target.checked ? 'enabled' : 'disabled'}`);
-        //     }
-        // });
     }
 
-    // Add quaternion display for this glove
-    const quaternionElement = document.createElement('div');
-    quaternionElement.className = 'joint-info';
-    quaternionElement.innerHTML = `
-        <div class="joint-name">Orientation</div>
-        <div class="quaternion-values">
-            <div>X: <span id="quat-x-${deviceId}">0.000</span></div>
-            <div>Y: <span id="quat-y-${deviceId}">0.000</span></div>
-            <div>Z: <span id="quat-z-${deviceId}">0.000</span></div>
-            <div>W: <span id="quat-w-${deviceId}">0.000</span></div>
-        </div>
-        <div class="euler-values">
-            <div>Roll: <span id="euler-roll-${deviceId}">0.0°</span></div>
-            <div>Pitch: <span id="euler-pitch-${deviceId}">0.0°</span></div>
-            <div>Yaw: <span id="euler-yaw-${deviceId}">0.0°</span></div>
-        </div>
-        <div class="quaternion-bars">
-            <div class="bar-container">
-                <div class="bar" id="quat-bar-x-${deviceId}"></div>
-            </div>
-            <div class="bar-container">
-                <div class="bar" id="quat-bar-y-${deviceId}"></div>
-            </div>
-            <div class="bar-container">
-                <div class="bar" id="quat-bar-z-${deviceId}"></div>
-            </div>
-            <div class="bar-container">
-                <div class="bar" id="quat-bar-w-${deviceId}"></div>
-            </div>
-        </div>
-    `;
-    glovejointsContainer.appendChild(quaternionElement);
     gloveElement.appendChild(glovejointsContainer);
     
     // Add to joints container
@@ -1891,9 +2029,14 @@ function updateQuaternionDisplay(deviceId, x, y, z, w) {
     
     // Calculate and update Euler angles
     const euler = quaternionToEuler(x, y, z, w);
-    document.getElementById(`euler-roll-${deviceId}`).textContent = `${(euler.roll * 180 / Math.PI).toFixed(1)}°`;
-    document.getElementById(`euler-pitch-${deviceId}`).textContent = `${(euler.pitch * 180 / Math.PI).toFixed(1)}°`;
-    document.getElementById(`euler-yaw-${deviceId}`).textContent = `${(euler.yaw * 180 / Math.PI).toFixed(1)}°`;
+    document.getElementById(`glove-roll-${deviceId}`).textContent = `${(euler.roll).toFixed(1)}°`;
+    document.getElementById(`glove-pitch-${deviceId}`).textContent = `${(euler.pitch).toFixed(1)}°`;
+    document.getElementById(`glove-yaw-${deviceId}`).textContent = `${(euler.yaw).toFixed(1)}°`;
+    
+    // Update circle indicators
+    updateCircleIndicator(`glove-circle-roll-${deviceId}`, euler.roll);
+    updateCircleIndicator(`glove-circle-pitch-${deviceId}`, euler.pitch);
+    updateCircleIndicator(`glove-circle-yaw-${deviceId}`, euler.yaw);
     
     // Update bars
     const updateBar = (id, value) => {
@@ -1913,6 +2056,62 @@ function updateQuaternionDisplay(deviceId, x, y, z, w) {
     updateBar(`quat-bar-w-${deviceId}`, w);
 }
 
+// Function to compute wrist flexion/extension angle
+function computeWristAngle(qWrist, qHand) {
+    // 1. Compute relative quaternion (hand relative to wrist)
+    const qRelative = qWrist.clone().invert().multiply(qHand);
+    
+    // 2. Extract the flexion angle directly from the quaternion
+    // Wrist flexion is primarily around the X-axis in the local wrist frame
+    // We'll use a more direct approach to extract this angle
+    
+    // Convert quaternion to Euler angles (in radians)
+    const euler = new THREE.Euler().setFromQuaternion(qRelative);
+    
+    // Extract the X rotation (flexion/extension)
+    // Convert to degrees and apply a scaling factor if needed
+    const flexionAngle = THREE.MathUtils.radToDeg(euler.x);
+    
+    // Apply a scaling factor to make the movement more pronounced or subtle
+    // Adjust this value based on your preference (1.0 is no scaling)
+    const scalingFactor = 1.5;
+    
+    // Apply the scaling factor
+    const scaledAngle = flexionAngle * scalingFactor;
+    
+    // Log the raw and scaled angles for debugging
+    console.log(`Raw flexion angle: ${flexionAngle.toFixed(2)}°, Scaled: ${scaledAngle.toFixed(2)}°`);
+    
+    return scaledAngle;
+}
+
+// Function to compute radial/ulnar deviation angle
+function computeWristDeviation(qWrist, qHand) {
+    // 1. Compute relative quaternion (hand relative to wrist)
+    const qRelative = qWrist.clone().invert().multiply(qHand);
+    
+    // 2. Extract the deviation angle from the quaternion
+    // Radial/ulnar deviation is primarily around the Z-axis in the local wrist frame
+    
+    // Convert quaternion to Euler angles (in radians)
+    const euler = new THREE.Euler().setFromQuaternion(qRelative);
+    
+    // Extract the Z rotation (radial/ulnar deviation)
+    // Convert to degrees
+    const deviationAngle = THREE.MathUtils.radToDeg(euler.z);
+    
+    // Apply a scaling factor to make the movement more pronounced or subtle
+    const scalingFactor = 1.5;
+    
+    // Apply the scaling factor
+    const scaledAngle = deviationAngle * scalingFactor;
+    
+    // Log the raw and scaled angles for debugging
+    console.log(`Raw deviation angle: ${deviationAngle.toFixed(2)}°, Scaled: ${scaledAngle.toFixed(2)}°`);
+    
+    return scaledAngle;
+}
+
 // Add new function to update arm position based on IMU sensors
 function updateArmPosition(deviceId) {
     const handModel = hands.get(deviceId);
@@ -1920,54 +2119,345 @@ function updateArmPosition(deviceId) {
 
     const gloveData = gloves.get(deviceId);
     const wristTracker = trackers.get(`0-0-Eidon-Tracker-1`);
-    const bicepTracker = trackers.get(`0-0-Eidon-Tracker-2`);
 
-    if (!gloveData || !bicepTracker || !wristTracker) return;
+    if (!gloveData || !wristTracker) return;
 
-    // Reset shoulder rotation first
-    handModel.arm.shoulder.rotation.set(0, 0, 0);
+    // Get quaternion values from wrist tracker and hand
+    const wristQuat = wristTracker.quaternion;
+    const handQuat = gloveData.quaternion;
 
-    // Normalize shoulder angles
-    let shoulderPitch = normalizeAngle(bicepTracker.pitch - 90);
-    let shoulderYaw = normalizeAngle(bicepTracker.yaw);
+    // Set fixed arm positions
+    handModel.arm.elbow.rotation.y = THREE.MathUtils.degToRad(0);
+    handModel.arm.elbow.rotation.x = 0;
+    handModel.arm.shoulder.rotation.x = THREE.MathUtils.degToRad(90);
+    handModel.arm.shoulder.rotation.y = THREE.MathUtils.degToRad(180);
     
-    // Invert pitch for natural arm movement
-    shoulderPitch = -shoulderPitch;
-
-    // Apply shoulder rotations
-    handModel.arm.shoulder.rotateY(THREE.MathUtils.degToRad(shoulderYaw));
-    handModel.arm.shoulder.rotateX(THREE.MathUtils.degToRad(shoulderPitch));
-
-    // Convert tracker orientations to vectors
-    const bicepVector = new THREE.Vector3(
-        Math.sin(THREE.MathUtils.degToRad(bicepTracker.yaw)) * Math.cos(THREE.MathUtils.degToRad(bicepTracker.pitch)),
-        Math.sin(THREE.MathUtils.degToRad(bicepTracker.pitch)),
-        Math.cos(THREE.MathUtils.degToRad(bicepTracker.yaw)) * Math.cos(THREE.MathUtils.degToRad(bicepTracker.pitch))
+    // Create THREE.Quaternion objects
+    const qWrist = new THREE.Quaternion(
+        wristQuat.x,
+        wristQuat.y,
+        wristQuat.z,
+        wristQuat.w
     );
     
-    const wristVector = new THREE.Vector3(
-        Math.sin(THREE.MathUtils.degToRad(wristTracker.yaw)) * Math.cos(THREE.MathUtils.degToRad(wristTracker.pitch)),
-        Math.sin(THREE.MathUtils.degToRad(wristTracker.pitch)),
-        Math.cos(THREE.MathUtils.degToRad(wristTracker.yaw)) * Math.cos(THREE.MathUtils.degToRad(wristTracker.pitch))
+    const qHand = new THREE.Quaternion(
+        handQuat.x,
+        handQuat.y,
+        handQuat.z,
+        handQuat.w
     );
-
-    // Calculate angle between vectors
-    const elbowAngle = Math.min(145, THREE.MathUtils.radToDeg(bicepVector.angleTo(wristVector)));
-    handModel.arm.elbow.rotation.x = THREE.MathUtils.degToRad(elbowAngle);
-
-    // Set wrist to align with arm
-    // handModel.arm.wrist.rotation.set(0, 0, 0);
-    handModel.arm.wrist.rotation.x = Math.PI / 2;
-    handModel.arm.wrist.rotation.z = THREE.MathUtils.degToRad(wristTracker.roll) - Math.PI / 2;
+    
+    // Extract forearm roll from wrist tracker
+    // This is the rotation around the forearm's long axis
+    const forearmQuaternion = qWrist.clone();
+    const forearmRoll = Math.atan2(2 * (forearmQuaternion.w * forearmQuaternion.z + forearmQuaternion.x * forearmQuaternion.y),
+                                   1 - 2 * (forearmQuaternion.y * forearmQuaternion.y + forearmQuaternion.z * forearmQuaternion.z)) * (180 / Math.PI);
+    
+    // Apply forearm roll to the forearm
+    handModel.arm.forearm.rotation.y = THREE.MathUtils.degToRad(-forearmRoll + 45);
+    
+    // Compute wrist flexion/extension angle
+    const wristAngle = computeWristAngle(qWrist, qHand);
+    
+    // Apply the wrist angle to the wrist's x rotation
+    handModel.arm.wrist.rotation.x = THREE.MathUtils.degToRad(-wristAngle + 90);
+    
+    // Compute radial/ulnar deviation angle (but don't apply it yet)
+    const deviationAngle = computeWristDeviation(qWrist, qHand);
+    
+    // Reset other wrist rotations
+    handModel.arm.wrist.rotation.y = 0;
+    handModel.arm.wrist.rotation.z = 0;
+    
+    // Log the values for debugging
+    console.log(`Forearm Roll: ${forearmRoll.toFixed(2)}°, Wrist Flexion/Extension: ${wristAngle.toFixed(2)}°, Radial/Ulnar Deviation: ${deviationAngle.toFixed(2)}°`);
 }
 
-// Helper function to normalize angles to -180 to +180 range
-function normalizeAngle(angle) {
-    angle = angle % 360;
-    if (angle > 180) {
-        angle -= 360;
-    } else if (angle < -180) {
-        angle += 360;
+function updateGloveDisplay(deviceId, data) {
+    const gloveData = gloves.get(deviceId);
+    if (!gloveData) return;
+
+    // Update joint values
+    for (let i = 0; i < MAX_JOINTS; i++) {
+        const value = data.jointValues[i];
+        const inverted = gloveData.jointInversions[i];
+        const displayValue = inverted ? 1 - value : value;
+        
+        // Update joint value display
+        const valueElement = document.getElementById(`joint-value-${deviceId}-${i}`);
+        if (valueElement) {
+            valueElement.textContent = `Value: ${displayValue.toFixed(3)}`;
+        }
+        
+        // Update joint bar
+        const barElement = document.getElementById(`joint-bar-${deviceId}-${i}`);
+        if (barElement) {
+            barElement.style.width = `${displayValue * 100}%`;
+        }
     }
-    return angle;
+
+    // Update quaternion values
+    if (data.quaternion) {
+        gloveData.quaternion = data.quaternion;
+        
+        // Update quaternion text values
+        document.getElementById(`quat-x-${deviceId}`).textContent = data.quaternion.x.toFixed(3);
+        document.getElementById(`quat-y-${deviceId}`).textContent = data.quaternion.y.toFixed(3);
+        document.getElementById(`quat-z-${deviceId}`).textContent = data.quaternion.z.toFixed(3);
+        document.getElementById(`quat-w-${deviceId}`).textContent = data.quaternion.w.toFixed(3);
+
+        // Calculate Euler angles from quaternion
+        const euler = quaternionToEuler(data.quaternion);
+        gloveData.euler = euler;
+
+        // Update Euler angle displays
+        document.getElementById(`glove-roll-${deviceId}`).textContent = `${euler.roll.toFixed(1)}°`;
+        document.getElementById(`glove-pitch-${deviceId}`).textContent = `${euler.pitch.toFixed(1)}°`;
+        document.getElementById(`glove-yaw-${deviceId}`).textContent = `${euler.yaw.toFixed(1)}°`;
+
+        // Update circle indicators
+        updateCircleIndicator(`glove-circle-roll-${deviceId}`, euler.roll);
+        updateCircleIndicator(`glove-circle-pitch-${deviceId}`, euler.pitch);
+        updateCircleIndicator(`glove-circle-yaw-${deviceId}`, euler.yaw);
+    }
+}
+
+function updateCircleIndicator(circleId, angle) {
+    const circle = document.getElementById(circleId);
+    if (!circle) return;
+
+    const indicator = circle.querySelector('.tracker-indicator');
+    if (!indicator) return;
+
+    // Convert degrees to radians for the circle rotation
+    const rotation = (angle % 360) * (Math.PI / 180);
+    
+    // Calculate the position of the indicator on the circle
+    const circleSize = circle.offsetWidth;
+    const indicatorSize = 8; // Size of the indicator dot
+    const radius = (circleSize - indicatorSize) / 2; // Adjust radius to account for indicator size
+    
+    // Calculate position with indicator size offset
+    const x = Math.sin(rotation) * radius;
+    const y = -Math.cos(rotation) * radius; // Negative because Y is inverted in CSS
+    
+    // Apply the transform, adjusting for the indicator's center point
+    indicator.style.transform = `translate(calc(${x}px - ${indicatorSize/2}px), calc(${y}px - ${indicatorSize/2}px))`;
+}
+
+// Assuming q1 and q2 are quaternions representing the orientation of two IMUs
+// q1 is the "parent" IMU (closer to the body)
+// q2 is the "child" IMU (further from the body)
+
+// To find the relative orientation of q2 with respect to q1:
+// q_relative = q2 * q1^(-1)
+// where q1^(-1) is the inverse (conjugate) of q1
+
+function calculateRelativeOrientation(q1, q2) {
+    // Normalize quaternions to ensure they're unit quaternions
+    q1 = normalizeQuaternion(q1);
+    q2 = normalizeQuaternion(q2);
+    
+    // Calculate the inverse (conjugate) of q1
+    const q1Inverse = {
+        w: q1.w,
+        x: -q1.x,
+        y: -q1.y,
+        z: -q1.z
+    };
+    
+    // Multiply q2 by q1's inverse to get the relative orientation
+    return multiplyQuaternions(q2, q1Inverse);
+}
+
+// Helper function to normalize a quaternion
+function normalizeQuaternion(q) {
+    const magnitude = Math.sqrt(q.w*q.w + q.x*q.x + q.y*q.y + q.z*q.z);
+    return {
+        w: q.w / magnitude,
+        x: q.x / magnitude,
+        y: q.y / magnitude,
+        z: q.z / magnitude
+    };
+}
+
+// Helper function to multiply two quaternions
+function multiplyQuaternions(q1, q2) {
+    return {
+        w: q1.w*q2.w - q1.x*q2.x - q1.y*q2.y - q1.z*q2.z,
+        x: q1.w*q2.x + q1.x*q2.w + q1.y*q2.z - q1.z*q2.y,
+        y: q1.w*q2.y - q1.x*q2.z + q1.y*q2.w + q1.z*q2.x,
+        z: q1.w*q2.z + q1.x*q2.y - q1.y*q2.x + q1.z*q2.w
+    };
+}
+
+function quaternionToJointAngles(q) {
+    // This function converts a quaternion to a set of joint angles
+    // The exact implementation depends on your joint's degrees of freedom
+    
+    // For a simple hinge joint (like the elbow), you might only need one angle
+    // For a ball joint (like the shoulder), you might need three angles
+    
+    // Example for a hinge joint (simplified):
+    const angle = 2 * Math.acos(q.w);
+    
+    // Example for a ball joint (three angles):
+    const roll = Math.atan2(2*(q.w*q.x + q.y*q.z), 1 - 2*(q.x*q.x + q.y*q.y));
+    const pitch = Math.asin(2*(q.w*q.y - q.z*q.x));
+    const yaw = Math.atan2(2*(q.w*q.z + q.x*q.y), 1 - 2*(q.y*q.y + q.z*q.z));
+    
+    return {
+        angle: angle * (180/Math.PI), // Convert to degrees
+        roll: roll * (180/Math.PI),
+        pitch: pitch * (180/Math.PI),
+        yaw: yaw * (180/Math.PI)
+    };
+}
+
+// Modify createTrackerArrow function
+function createTrackerArrow(deviceId) {
+    // Create cylinder geometry for the forward arrow shaft
+    const radius = 0.1; // Thickness of the arrow
+    const height = 1;   // Initial height (will be scaled)
+    const geometry = new THREE.CylinderGeometry(radius, radius, height, 8);
+    
+    // Generate a unique color based on deviceId
+    const colors = [
+        0xff00ff, // Magenta
+        0x00ffff, // Cyan
+        0xff0000, // Red
+        0x0000ff, // Blue
+        0x00ff00, // Green
+        0xffff00, // Yellow
+    ];
+    const index = Array.from(trackerArrows.keys()).length % colors.length;
+    const color = colors[index];
+    
+    // Create materials
+    const forwardMaterial = new THREE.MeshBasicMaterial({ color: color });
+    const upMaterial = new THREE.MeshBasicMaterial({ color: color, opacity: 0.7, transparent: true });
+    
+    // Create forward cylinder mesh
+    const forwardCylinder = new THREE.Mesh(geometry, forwardMaterial);
+    forwardCylinder.rotation.x = Math.PI / 2;
+    
+    // Create up cylinder mesh
+    const upCylinder = new THREE.Mesh(geometry, upMaterial);
+    upCylinder.rotation.x = Math.PI / 2;
+    
+    // Create a group to hold both cylinders
+    const arrowGroup = new THREE.Group();
+    arrowGroup.add(forwardCylinder);
+    arrowGroup.add(upCylinder);
+    
+    // Add to scene
+    scene.add(arrowGroup);
+    
+    // Store in Map with both cylinders
+    trackerArrows.set(deviceId, {
+        forward: forwardCylinder,
+        up: upCylinder,
+        group: arrowGroup
+    });
+}
+
+// Add function to calculate angle between two vectors
+function calculateAngleBetweenVectors(v1, v2) {
+    // Calculate dot product
+    const dotProduct = v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
+    
+    // Calculate magnitudes
+    const mag1 = Math.sqrt(v1.x * v1.x + v1.y * v1.y + v1.z * v1.z);
+    const mag2 = Math.sqrt(v2.x * v2.x + v2.y * v2.y + v2.z * v2.z);
+    
+    // Calculate angle in radians
+    const angleRad = Math.acos(dotProduct / (mag1 * mag2));
+    
+    // Convert to degrees
+    return angleRad * (180 / Math.PI);
+}
+
+// Modify updateTrackerArrow function to position up vector at origin
+function updateTrackerArrow(deviceId, quaternion) {
+    const arrow = trackerArrows.get(deviceId);
+    if (!arrow) return;
+    
+    // Calculate forward direction
+    const rayLength = 5.0;
+    const forwardTip = forwardRay(quaternion, rayLength);
+    
+    // Calculate up direction
+    const upLength = 2.0; // Shorter length for up vector
+    const upTip = upRay(quaternion, upLength);
+    
+    // Update forward vector
+    const forwardLength = Math.sqrt(forwardTip.x * forwardTip.x + forwardTip.y * forwardTip.y + forwardTip.z * forwardTip.z);
+    arrow.forward.scale.y = forwardLength;
+    arrow.forward.position.set(forwardTip.x / 2, forwardTip.y / 2, forwardTip.z / 2);
+    
+    // Update up vector (positioned at origin)
+    const upLengthScaled = Math.sqrt(upTip.x * upTip.x + upTip.y * upTip.y + upTip.z * upTip.z);
+    arrow.up.scale.y = upLengthScaled;
+    arrow.up.position.set(upTip.x / 2, upTip.y / 2, upTip.z / 2);
+    
+    // Rotate both cylinders to point in the right direction
+    const forwardDirection = new THREE.Vector3(forwardTip.x, forwardTip.y, forwardTip.z).normalize();
+    arrow.forward.lookAt(new THREE.Vector3(forwardTip.x, forwardTip.y, forwardTip.z));
+    arrow.forward.rotateX(Math.PI / 2);
+    
+    const upDirection = new THREE.Vector3(upTip.x, upTip.y, upTip.z).normalize();
+    arrow.up.lookAt(new THREE.Vector3(upTip.x, upTip.y, upTip.z));
+    arrow.up.rotateX(Math.PI / 2);
+    
+    // Calculate angles between this tracker and all other trackers
+    if (trackerArrows.size > 1) {
+        const currentVector = { x: forwardTip.x, y: forwardTip.y, z: forwardTip.z };
+        let angleInfo = [];
+        
+        for (const [otherId, otherArrow] of trackerArrows) {
+            if (otherId !== deviceId) {
+                const otherTip = {
+                    x: otherArrow.forward.position.x * 2,
+                    y: otherArrow.forward.position.y * 2,
+                    z: otherArrow.forward.position.z * 2
+                };
+                const angle = calculateAngleBetweenVectors(currentVector, otherTip);
+                angleInfo.push(`Angle with ${otherId}: ${angle.toFixed(1)}°`);
+            }
+        }
+        
+        // Log the angles
+        console.log(`Angles for ${deviceId}:`, angleInfo.join(', '));
+    }
+}
+
+// Add quaternion rotation functions
+function rotateVector(q, v) {
+    // Convert v to quaternion form (0, vx, vy, vz)
+    const vx = v.x, vy = v.y, vz = v.z;
+    // First multiply q * v
+    const qw = q.w, qx = q.x, qy = q.y, qz = q.z;
+    const iw = -qx*vx - qy*vy - qz*vz;
+    const ix =  qw*vx + qy*vz - qz*vy;
+    const iy =  qw*vy + qz*vx - qx*vz;
+    const iz =  qw*vz + qx*vy - qy*vx;
+    // Then multiply by q* (conjugate)
+    return {
+        x: ix*qw + iw*(-qx) + iy*(-qz) - iz*(-qy),
+        y: iy*qw + iw*(-qy) + iz*(-qx) - ix*(-qz),
+        z: iz*qw + iw*(-qz) + ix*(-qy) - iy*(-qx)
+    };
+}
+
+function forwardRay(q, len = 1) {
+    const fwd = { x: 0, y: 1, z: 0 };          // sensor's +Y
+    const dir = rotateVector(q, fwd);
+    return { x: dir.x * len, y: dir.z * len, z: -dir.y * len };
+}
+
+// Add function to calculate up vector from quaternion
+function upRay(q, len = 1) {
+    const up = { x: 0, y: 0, z: 1 };          // sensor's +Z is up
+    const dir = rotateVector(q, up);
+    return { x: dir.x * len, y: dir.z * len, z: -dir.y * len };
 }
