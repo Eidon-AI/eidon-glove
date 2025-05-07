@@ -1639,43 +1639,6 @@ function updateJointDisplay(deviceId, jointIndex, value) {
     }
 }
 
-// Update the quaternion display function to show Euler angles
-function updateQuaternionDisplay(deviceId, x, y, z, w) {
-    // Update quaternion values
-    document.getElementById(`quat-x-${deviceId}`).textContent = x.toFixed(3);
-    document.getElementById(`quat-y-${deviceId}`).textContent = y.toFixed(3);
-    document.getElementById(`quat-z-${deviceId}`).textContent = z.toFixed(3);
-    document.getElementById(`quat-w-${deviceId}`).textContent = w.toFixed(3);
-    
-    // Calculate and update Euler angles
-    const euler = quaternionToEuler(x, y, z, w);
-    document.getElementById(`glove-roll-${deviceId}`).textContent = `${(euler.roll).toFixed(1)}°`;
-    document.getElementById(`glove-pitch-${deviceId}`).textContent = `${(euler.pitch).toFixed(1)}°`;
-    document.getElementById(`glove-yaw-${deviceId}`).textContent = `${(euler.yaw).toFixed(1)}°`;
-    
-    // Update circle indicators
-    updateCircleIndicator(`glove-circle-roll-${deviceId}`, euler.roll);
-    updateCircleIndicator(`glove-circle-pitch-${deviceId}`, euler.pitch);
-    updateCircleIndicator(`glove-circle-yaw-${deviceId}`, euler.yaw);
-    
-    // Update bars
-    const updateBar = (id, value) => {
-        const bar = document.getElementById(id);
-        if (bar) {
-            const percentage = ((value + 1) / 2) * 100;
-            bar.style.width = `${percentage}%`;
-            const hue = value >= 0 ? 120 : 0;
-            const saturation = Math.abs(value) * 100;
-            bar.style.backgroundColor = `hsl(${hue}, ${saturation}%, 50%)`;
-        }
-    };
-    
-    updateBar(`quat-bar-x-${deviceId}`, x);
-    updateBar(`quat-bar-y-${deviceId}`, y);
-    updateBar(`quat-bar-z-${deviceId}`, z);
-    updateBar(`quat-bar-w-${deviceId}`, w);
-}
-
 // Add additional styles for Euler angles display
 const additionalStyles = `
 .quaternion-values, .euler-values {
@@ -1996,6 +1959,9 @@ function addGloveDisplay(deviceId) {
         quaternion: { x: 0, y: 0, z: 0, w: 1 },
         euler: { roll: 0, pitch: 0, yaw: 0 }
     });
+
+    // Create tracker arrow for the glove
+    createTrackerArrow(deviceId);
 }
 
 // Update the joint display function to handle multiple gloves
@@ -2038,6 +2004,9 @@ function updateQuaternionDisplay(deviceId, x, y, z, w) {
     updateCircleIndicator(`glove-circle-pitch-${deviceId}`, euler.pitch);
     updateCircleIndicator(`glove-circle-yaw-${deviceId}`, euler.yaw);
     
+    // Update tracker arrow using the same function as trackers
+    updateTrackerArrow(deviceId, { x, y, z, w });
+
     // Update bars
     const updateBar = (id, value) => {
         const bar = document.getElementById(id);
@@ -2314,28 +2283,63 @@ function quaternionToJointAngles(q) {
     };
 }
 
-// Modify createTrackerArrow function
+// Add this function before createTrackerArrow
+function getColorFromDeviceName(deviceName) {
+    const colorMap = {
+        'red': 0xff0000,
+        'green': 0x61c680,
+        'blue': 0x0000ff,
+        'yellow': 0xffff00,
+        'cyan': 0x00ffff,
+        'magenta': 0xff00ff,
+        'white': 0xffffff,
+        'black': 0x000000,
+        'orange': 0xfa9863,  // Changed to mandarin orange
+        'purple': 0x800080,
+        'pink': 0xffc0cb
+    };
+
+    // Convert device name to lowercase for case-insensitive matching
+    const lowerName = deviceName.toLowerCase();
+    
+    // Check if any color name is in the device name
+    for (const [colorName, colorValue] of Object.entries(colorMap)) {
+        if (lowerName.includes(colorName)) {
+            return colorValue;
+        }
+    }
+    
+    // If no color found, return null to use default color scheme
+    return null;
+}
+
 function createTrackerArrow(deviceId) {
     // Create cylinder geometry for the forward arrow shaft
     const radius = 0.1; // Thickness of the arrow
     const height = 1;   // Initial height (will be scaled)
     const geometry = new THREE.CylinderGeometry(radius, radius, height, 8);
     
-    // Generate a unique color based on deviceId
-    const colors = [
-        0xff00ff, // Magenta
-        0x00ffff, // Cyan
-        0xff0000, // Red
-        0x0000ff, // Blue
-        0x00ff00, // Green
-        0xffff00, // Yellow
-    ];
-    const index = Array.from(trackerArrows.keys()).length % colors.length;
-    const color = colors[index];
+    // Try to get color from device name - check the entire device ID
+    let color = getColorFromDeviceName(deviceId);
+    
+    // If no color found in name, use default color scheme
+    if (color === null) {
+        const colors = [
+            0xff00ff, // Magenta
+            0x00ffff, // Cyan
+            0xff0000, // Red
+            0x0000ff, // Blue
+            0x61c680, // Green
+            0xffff00, // Yellow
+        ];
+        const index = Array.from(trackerArrows.keys()).length % colors.length;
+        color = colors[index];
+    }
     
     // Create materials
     const forwardMaterial = new THREE.MeshBasicMaterial({ color: color });
     const upMaterial = new THREE.MeshBasicMaterial({ color: color, opacity: 0.7, transparent: true });
+    const projectedMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, opacity: 0.2, transparent: true }); // Default white, will be updated
     
     // Create forward cylinder mesh
     const forwardCylinder = new THREE.Mesh(geometry, forwardMaterial);
@@ -2345,39 +2349,32 @@ function createTrackerArrow(deviceId) {
     const upCylinder = new THREE.Mesh(geometry, upMaterial);
     upCylinder.rotation.x = Math.PI / 2;
     
-    // Create a group to hold both cylinders
+    // Create projected cylinder mesh
+    const projectedCylinder = new THREE.Mesh(geometry, projectedMaterial);
+    projectedCylinder.rotation.x = Math.PI / 2;
+    projectedCylinder.visible = false; // Initially hidden
+    
+    // Create a group to hold all cylinders
     const arrowGroup = new THREE.Group();
     arrowGroup.add(forwardCylinder);
     arrowGroup.add(upCylinder);
     
+    // Add projected cylinder for all trackers
+    arrowGroup.add(projectedCylinder);
+    
     // Add to scene
     scene.add(arrowGroup);
     
-    // Store in Map with both cylinders
+    // Store in Map with all cylinders and the color
     trackerArrows.set(deviceId, {
         forward: forwardCylinder,
         up: upCylinder,
-        group: arrowGroup
+        projected: projectedCylinder,
+        group: arrowGroup,
+        color: color
     });
 }
 
-// Add function to calculate angle between two vectors
-function calculateAngleBetweenVectors(v1, v2) {
-    // Calculate dot product
-    const dotProduct = v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
-    
-    // Calculate magnitudes
-    const mag1 = Math.sqrt(v1.x * v1.x + v1.y * v1.y + v1.z * v1.z);
-    const mag2 = Math.sqrt(v2.x * v2.x + v2.y * v2.y + v2.z * v2.z);
-    
-    // Calculate angle in radians
-    const angleRad = Math.acos(dotProduct / (mag1 * mag2));
-    
-    // Convert to degrees
-    return angleRad * (180 / Math.PI);
-}
-
-// Modify updateTrackerArrow function to position up vector at origin
 function updateTrackerArrow(deviceId, quaternion) {
     const arrow = trackerArrows.get(deviceId);
     if (!arrow) return;
@@ -2389,6 +2386,19 @@ function updateTrackerArrow(deviceId, quaternion) {
     // Calculate up direction
     const upLength = 2.0; // Shorter length for up vector
     const upTip = upRay(quaternion, upLength);
+    
+    // Calculate orthogonal direction using cross product
+    const orthogonalTip = {
+        x: forwardTip.y * upTip.z - forwardTip.z * upTip.y,
+        y: forwardTip.z * upTip.x - forwardTip.x * upTip.z,
+        z: forwardTip.x * upTip.y - forwardTip.y * upTip.x
+    };
+    
+    // Normalize the orthogonal vector
+    const orthoLength = Math.sqrt(orthogonalTip.x * orthogonalTip.x + orthogonalTip.y * orthogonalTip.y + orthogonalTip.z * orthogonalTip.z);
+    orthogonalTip.x /= orthoLength;
+    orthogonalTip.y /= orthoLength;
+    orthogonalTip.z /= orthoLength;
     
     // Update forward vector
     const forwardLength = Math.sqrt(forwardTip.x * forwardTip.x + forwardTip.y * forwardTip.y + forwardTip.z * forwardTip.z);
@@ -2421,14 +2431,177 @@ function updateTrackerArrow(deviceId, quaternion) {
                     y: otherArrow.forward.position.y * 2,
                     z: otherArrow.forward.position.z * 2
                 };
-                const angle = calculateAngleBetweenVectors(currentVector, otherTip);
-                angleInfo.push(`Angle with ${otherId}: ${angle.toFixed(1)}°`);
+
+                // Create plane normal using forward vector and orthogonal vector
+                const planeNormal = {
+                    x: forwardTip.y * orthogonalTip.z - forwardTip.z * orthogonalTip.y,
+                    y: forwardTip.z * orthogonalTip.x - forwardTip.x * orthogonalTip.z,
+                    z: forwardTip.x * orthogonalTip.y - forwardTip.y * orthogonalTip.x
+                };
+
+                // Project other tracker's forward vector onto the plane
+                const projectedVector = projectVectorOntoPlane(otherTip, planeNormal);
+
+                // Update projected vector visualization
+                // Use the same length as the forward vector
+                const forwardLength = Math.sqrt(forwardTip.x * forwardTip.x + forwardTip.y * forwardTip.y + forwardTip.z * forwardTip.z);
+                
+                // Normalize the projected vector and scale it to match forward length
+                const projectedLength = Math.sqrt(
+                    projectedVector.x * projectedVector.x +
+                    projectedVector.y * projectedVector.y +
+                    projectedVector.z * projectedVector.z
+                );
+                
+                const scale = forwardLength / projectedLength;
+                const scaledProjectedVector = {
+                    x: projectedVector.x * scale,
+                    y: projectedVector.y * scale,
+                    z: projectedVector.z * scale
+                };
+                
+                // Update the projected vector's material to use the source tracker's color
+                arrow.projected.material.color.setHex(otherArrow.color);
+                
+                arrow.projected.scale.y = forwardLength;
+                arrow.projected.position.set(
+                    scaledProjectedVector.x / 2,
+                    scaledProjectedVector.y / 2,
+                    scaledProjectedVector.z / 2
+                );
+                arrow.projected.lookAt(new THREE.Vector3(
+                    scaledProjectedVector.x,
+                    scaledProjectedVector.y,
+                    scaledProjectedVector.z
+                ));
+                arrow.projected.rotateX(Math.PI / 2);
+                arrow.projected.visible = true;
+
+                // Calculate signed angle between forward vector and projected vector
+                const signedAngle = calculateSignedAngle(
+                    { x: forwardTip.x, y: forwardTip.y, z: forwardTip.z },
+                    scaledProjectedVector,
+                    planeNormal
+                );
+
+                // Calculate wrist angles
+                // Deviation: Signed angle between forward vectors in the plane
+                const deviationAngle = calculateSignedAngle(
+                    { x: forwardTip.x, y: forwardTip.y, z: forwardTip.z },
+                    scaledProjectedVector,
+                    planeNormal
+                );
+
+                // Flexion/Extension: Signed angle between the projection and the original vector
+                // Use the cross product of forward and up vectors as the normal for flexion
+                const flexionNormal = {
+                    x: forwardTip.y * upTip.z - forwardTip.z * upTip.y,
+                    y: forwardTip.z * upTip.x - forwardTip.x * upTip.z,
+                    z: forwardTip.x * upTip.y - forwardTip.y * upTip.x
+                };
+                const flexionAngle = calculateSignedAngle(
+                    { x: otherTip.x, y: otherTip.y, z: otherTip.z },
+                    scaledProjectedVector,
+                    flexionNormal
+                );
+
+                // Only update wrist angles from the first tracker
+                if (trackerArrows.size === 1 || Array.from(trackerArrows.keys()).indexOf(deviceId) === 0) {
+                    wristFlexion = flexionAngle * -1;
+                    wristDeviation = deviationAngle * -1;
+                    updateArmValuesDisplay();
+                }
+
+                // Log the wrist angles
+                // console.log(`Wrist angles for ${deviceId} with ${otherId}:`);
+                // console.log(`  Flexion/Extension: ${flexionAngle.toFixed(1)}°`);
+                // console.log(`  Deviation: ${deviationAngle.toFixed(1)}°`);
+
+                // Only add angle info if this tracker is being projected onto
+                if (otherArrow.projected.visible) {
+                    angleInfo.push(`with ${otherId}: ${signedAngle.toFixed(1)}°`);
+                }
             }
         }
         
-        // Log the angles
-        console.log(`Angles for ${deviceId}:`, angleInfo.join(', '));
+        // Only log if there are angles to report
+        // if (angleInfo.length > 0) {
+        //     console.log(`Angles for ${deviceId} ${angleInfo.join(', ')}`);
+        // }
+    } else {
+        // Hide projected vector if there are no other trackers
+        arrow.projected.visible = false;
     }
+}
+
+// Add function to calculate angle between two vectors
+function calculateAngleBetweenVectors(v1, v2) {
+    // Calculate dot product
+    const dotProduct = v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
+    
+    // Calculate magnitudes
+    const mag1 = Math.sqrt(v1.x * v1.x + v1.y * v1.y + v1.z * v1.z);
+    const mag2 = Math.sqrt(v2.x * v2.x + v2.y * v2.y + v2.z * v2.z);
+    
+    // Calculate angle in radians
+    const angleRad = Math.acos(dotProduct / (mag1 * mag2));
+    
+    // Convert to degrees
+    return angleRad * (180 / Math.PI);
+}
+
+// Add helper function to project vector onto plane
+function projectVectorOntoPlane(vector, planeNormal) {
+    // Normalize the plane normal
+    const normal = normalizeVector(planeNormal);
+    
+    // Calculate projection
+    const dot = vector.x * normal.x + vector.y * normal.y + vector.z * normal.z;
+    return {
+        x: vector.x - dot * normal.x,
+        y: vector.y - dot * normal.y,
+        z: vector.z - dot * normal.z
+    };
+}
+
+// Add helper function to normalize vector
+function normalizeVector(v) {
+    const length = Math.sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
+    return {
+        x: v.x / length,
+        y: v.y / length,
+        z: v.z / length
+    };
+}
+
+// Add helper function to calculate cross product
+function crossProduct(v1, v2) {
+    return {
+        x: v1.y * v2.z - v1.z * v2.y,
+        y: v1.z * v2.x - v1.x * v2.z,
+        z: v1.x * v2.y - v1.y * v2.x
+    };
+}
+
+// Add helper function to calculate signed angle between vectors
+function calculateSignedAngle(v1, v2, normal) {
+    // Normalize vectors
+    const n1 = normalizeVector(v1);
+    const n2 = normalizeVector(v2);
+    
+    // Calculate dot product
+    const dot = n1.x * n2.x + n1.y * n2.y + n1.z * n2.z;
+    
+    // Calculate cross product
+    const cross = crossProduct(n1, n2);
+    
+    // Calculate angle
+    const angle = Math.acos(Math.max(-1, Math.min(1, dot))) * (180 / Math.PI);
+    
+    // Determine sign using the normal vector
+    const sign = (cross.x * normal.x + cross.y * normal.y + cross.z * normal.z) >= 0 ? 1 : -1;
+    
+    return angle * sign;
 }
 
 // Add quaternion rotation functions
@@ -2460,4 +2633,58 @@ function upRay(q, len = 1) {
     const up = { x: 0, y: 0, z: 1 };          // sensor's +Z is up
     const dir = rotateVector(q, up);
     return { x: dir.x * len, y: dir.z * len, z: -dir.y * len };
+}
+
+// Add function to create direction vector from quaternion
+function directionVector(q, len = 1) {
+    // Forward direction (typically -Z axis)
+    const forward = { x: 0, y: 0, z: -1 };
+    return rotateVector(q, forward);
+}
+
+// Add CSS for the tracker arrow
+const style = document.createElement('style');
+style.textContent = `
+.tracker-arrow-container {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    perspective: 1000px;
+    margin: 20px auto;
+}
+
+.tracker-arrow {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid #4CAF50;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-origin: center bottom;
+    transform: translate(-50%, -50%);
+}
+
+.tracker-arrow::after {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 20px;
+    width: 10px;
+    height: 40px;
+    background: #4CAF50;
+    transform-origin: center top;
+}
+`;
+document.head.appendChild(style);
+
+// Add global variables for wrist angles
+let wristFlexion = 0;
+let wristDeviation = 0;
+
+// Function to update arm values display
+function updateArmValuesDisplay() {
+    document.getElementById('wrist-flexion').textContent = `${wristFlexion.toFixed(1)}°`;
+    document.getElementById('wrist-deviation').textContent = `${wristDeviation.toFixed(1)}°`;
 }

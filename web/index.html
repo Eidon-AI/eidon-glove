@@ -290,6 +290,16 @@
             transform-origin: right center;
             transform: translateY(-50%);
         }
+
+        .sidebar-box {
+            margin-bottom: 20px;
+        }
+
+        .value-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
@@ -318,6 +328,20 @@
             
             <div class="log-container" id="log-container">
                 <!-- Log messages will be added here -->
+            </div>
+
+            <div class="sidebar-box">
+                <h3>Arm Values</h3>
+                <div id="arm-values">
+                    <div class="value-row">
+                        <span>Wrist Flexion/Extension:</span>
+                        <span id="wrist-flexion">0.0°</span>
+                    </div>
+                    <div class="value-row">
+                        <span>Wrist Deviation:</span>
+                        <span id="wrist-deviation">0.0°</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
