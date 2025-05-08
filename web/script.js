@@ -2439,12 +2439,27 @@ function updateTrackerArrow(deviceId, quaternion) {
     arrow.up.lookAt(new THREE.Vector3(upTip.x, upTip.y, upTip.z));
     arrow.up.rotateX(Math.PI / 2);
     
+    // Create sorted array of tracker arrows with glove first
+    const sortedTrackerArrows = Array.from(trackerArrows.entries())
+        .sort(([a], [b]) => {
+            if (a.includes('Eidon-Glove')) return -1;
+            if (b.includes('Eidon-Glove')) return 1;
+            return 0;
+        })
+        .map(([id, arrow]) => ({id, ...arrow}));
+
+    const thisIndex = sortedTrackerArrows.findIndex(arrow => arrow.id === deviceId);
+    
     // Calculate angles between this tracker and all other trackers
-    if (trackerArrows.size > 1) {
-        const currentVector = { x: forwardTip.x, y: forwardTip.y, z: forwardTip.z };
+    if (sortedTrackerArrows.length > 1) {
         let angleInfo = [];
         
-        for (const [otherId, otherArrow] of trackerArrows) {
+        for (let otherIndex = 0; otherIndex < sortedTrackerArrows.length; otherIndex++) {
+            const otherArrow = sortedTrackerArrows[otherIndex];
+            const otherId = otherArrow.id;
+
+            // console.log(`this: ${deviceId}, other: ${otherId}, otherIndex: ${otherIndex}`);
+
             if (otherId !== deviceId) {
                 const otherTip = {
                     x: otherArrow.forward.position.x * 2,
@@ -2458,15 +2473,6 @@ function updateTrackerArrow(deviceId, quaternion) {
                     y: forwardTip.z * orthogonalTip.x - forwardTip.x * orthogonalTip.z,
                     z: forwardTip.x * orthogonalTip.y - forwardTip.y * orthogonalTip.x
                 };
-
-                // Calculate angle between upTip and otherTip
-                const dotProduct = upTip.x * otherTip.x + upTip.y * otherTip.y + upTip.z * otherTip.z;
-                const upLength = Math.sqrt(upTip.x * upTip.x + upTip.y * upTip.y + upTip.z * upTip.z);
-                const otherLength = Math.sqrt(otherTip.x * otherTip.x + otherTip.y * otherTip.y + otherTip.z * otherTip.z);
-                const cosAngle = dotProduct / (upLength * otherLength);
-                const verticalAngle = Math.acos(Math.max(-1, Math.min(1, cosAngle))) * (180 / Math.PI);
-
-                // console.log("verticalAngle", verticalAngle);
 
                 // Create a vector that combines both forward and up components from the OTHER tracker
                 const otherForwardTip = {
@@ -2519,7 +2525,7 @@ function updateTrackerArrow(deviceId, quaternion) {
                 };
 
                 // Only show projection for the first tracker
-                if (Array.from(trackerArrows.keys()).indexOf(deviceId) === 0) {
+                if (thisIndex === 0) {
                     // Update the projected vector's material to use the source tracker's color
                     arrow.projected.material.color.setHex(otherArrow.color);
                     
@@ -2576,35 +2582,14 @@ function updateTrackerArrow(deviceId, quaternion) {
                 );
 
                 // Only update wrist angles from the first tracker
-                if (trackerArrows.size === 1 || Array.from(trackerArrows.keys()).indexOf(deviceId) === 0) {
+                if (thisIndex === 0) {
                     // console.log("verticalAngle", verticalAngle);
                     // console.log("secondAngle", secondAngle);
 
                     const delta = deltaXY(arrow.quaternion, otherArrow.quaternion);
-                    console.log("delta", delta);
-
-                    // If this is the glove device, make it last in the list
-                    if (deviceId.includes('Eidon-Glove')) {
-                        const gloveId = deviceId;
-                        const otherId = Array.from(trackerArrows.keys())
-                            .filter(id => id !== gloveId)
-                            .sort((a, b) => {
-                                // Put glove last
-                                if (a === gloveId) return 1;
-                                if (b === gloveId) return -1;
-                                return 0;
-                            })[0];
-                        
-                        if (otherId) {
-                            wristFlexion = delta.dY;
-                            wristDeviation = delta.dX;
-                            updateArmValuesDisplay();
-                        }
-                    } else {
-                        wristFlexion = delta.dY;
-                        wristDeviation = delta.dX;
-                        updateArmValuesDisplay();
-                    }
+                    wristFlexion = -delta.dX;
+                    wristDeviation = delta.dY;
+                    updateArmValuesDisplay();
                 }
 
                 // Only add angle info if this tracker is being projected onto
@@ -2854,7 +2839,7 @@ function quatToEulerXYZ(q) {
    * Returns { dX, dY } in **degrees**
    */
   function deltaXY(qA, qB) {
-    // Relative rotation in A’s local frame
+    // Relative rotation in A's local frame
     const qDelta = mulQuat(conj(qA), qB);
   
     // Convert to Euler; order XYZ so X & Y are what we care about
