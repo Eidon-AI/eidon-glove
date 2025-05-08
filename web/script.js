@@ -2343,6 +2343,7 @@ function createTrackerArrow(deviceId) {
     const upMaterial = new THREE.MeshBasicMaterial({ color: color, opacity: 0.7, transparent: true });
     const projectedMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, opacity: 0.2, transparent: true }); // Default white, will be updated
     const invertedUpMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000, opacity: 0.7, transparent: true }); // Red for inverted up vector
+    const secondProjectedMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0.2, transparent: true }); // Green for second projection
     
     // Create forward cylinder mesh
     const forwardCylinder = new THREE.Mesh(geometry, forwardMaterial);
@@ -2361,6 +2362,11 @@ function createTrackerArrow(deviceId) {
     const invertedUpCylinder = new THREE.Mesh(geometry, invertedUpMaterial);
     invertedUpCylinder.rotation.x = Math.PI / 2;
     invertedUpCylinder.visible = false; // Initially hidden
+
+    // Create second projected cylinder mesh
+    const secondProjectedCylinder = new THREE.Mesh(geometry, secondProjectedMaterial);
+    secondProjectedCylinder.rotation.x = Math.PI / 2;
+    secondProjectedCylinder.visible = false; // Initially hidden
     
     // Create a group to hold all cylinders
     const arrowGroup = new THREE.Group();
@@ -2368,6 +2374,7 @@ function createTrackerArrow(deviceId) {
     arrowGroup.add(upCylinder);
     arrowGroup.add(projectedCylinder);
     arrowGroup.add(invertedUpCylinder);
+    arrowGroup.add(secondProjectedCylinder);
     
     // Add to scene
     scene.add(arrowGroup);
@@ -2378,6 +2385,7 @@ function createTrackerArrow(deviceId) {
         up: upCylinder,
         projected: projectedCylinder,
         invertedUp: invertedUpCylinder,
+        secondProjected: secondProjectedCylinder,
         group: arrowGroup,
         color: color
     });
@@ -2450,6 +2458,15 @@ function updateTrackerArrow(deviceId, quaternion) {
                     y: forwardTip.z * orthogonalTip.x - forwardTip.x * orthogonalTip.z,
                     z: forwardTip.x * orthogonalTip.y - forwardTip.y * orthogonalTip.x
                 };
+
+                // Calculate angle between upTip and otherTip
+                const dotProduct = upTip.x * otherTip.x + upTip.y * otherTip.y + upTip.z * otherTip.z;
+                const upLength = Math.sqrt(upTip.x * upTip.x + upTip.y * upTip.y + upTip.z * upTip.z);
+                const otherLength = Math.sqrt(otherTip.x * otherTip.x + otherTip.y * otherTip.y + otherTip.z * otherTip.z);
+                const cosAngle = dotProduct / (upLength * otherLength);
+                const verticalAngle = Math.acos(Math.max(-1, Math.min(1, cosAngle))) * (180 / Math.PI);
+
+                // console.log("verticalAngle", verticalAngle);
 
                 // Create a vector that combines both forward and up components from the OTHER tracker
                 const otherForwardTip = {
@@ -2560,6 +2577,12 @@ function updateTrackerArrow(deviceId, quaternion) {
 
                 // Only update wrist angles from the first tracker
                 if (trackerArrows.size === 1 || Array.from(trackerArrows.keys()).indexOf(deviceId) === 0) {
+                    // console.log("verticalAngle", verticalAngle);
+                    // console.log("secondAngle", secondAngle);
+
+                    const delta = deltaXY(arrow.quaternion, otherArrow.quaternion);
+                    console.log("delta", delta);
+
                     // If this is the glove device, make it last in the list
                     if (deviceId.includes('Eidon-Glove')) {
                         const gloveId = deviceId;
@@ -2573,13 +2596,13 @@ function updateTrackerArrow(deviceId, quaternion) {
                             })[0];
                         
                         if (otherId) {
-                            wristFlexion = flexionAngle * -1;
-                            wristDeviation = deviationAngle * -1;
+                            wristFlexion = delta.dY;
+                            wristDeviation = delta.dX;
                             updateArmValuesDisplay();
                         }
                     } else {
-                        wristFlexion = flexionAngle * -1;
-                        wristDeviation = deviationAngle * -1;
+                        wristFlexion = delta.dY;
+                        wristDeviation = delta.dX;
                         updateArmValuesDisplay();
                     }
                 }
@@ -2782,3 +2805,63 @@ function updateArmValuesDisplay() {
         wristJoint.rotateY(deviationRad);
     }
 }
+
+/**
+ * Quaternion → Euler (XYZ) in radians
+ * Expects a unit quaternion: {x, y, z, w}
+ * Returns [pitchX, yawY, rollZ]
+ */
+function quatToEulerXYZ(q) {
+    const { x, y, z, w } = q;
+  
+    // Pitch (X-axis)
+    const sinr = 2 * (w * x + y * z);
+    const cosr = 1 - 2 * (x * x + y * y);
+    const pitch = Math.atan2(sinr, cosr);
+  
+    // Yaw (Y-axis)
+    const sinp = 2 * (w * y - z * x);
+    const yaw = Math.abs(sinp) >= 1 ? Math.sign(sinp) * Math.PI / 2
+                                    : Math.asin(sinp);
+  
+    // Roll (Z-axis)
+    const siny = 2 * (w * z + x * y);
+    const cosy = 1 - 2 * (y * y + z * z);
+    const roll = Math.atan2(siny, cosy);
+  
+    return [pitch, yaw, roll];
+  }
+  
+  /**
+   * Hamilton product q1 * q2
+   */
+  function mulQuat(q1, q2) {
+    return {
+      w: q1.w*q2.w - q1.x*q2.x - q1.y*q2.y - q1.z*q2.z,
+      x: q1.w*q2.x + q1.x*q2.w + q1.y*q2.z - q1.z*q2.y,
+      y: q1.w*q2.y - q1.x*q2.z + q1.y*q2.w + q1.z*q2.x,
+      z: q1.w*q2.z + q1.x*q2.y - q1.y*q2.x + q1.z*q2.w,
+    };
+  }
+  
+  /**
+   * Conjugate (same as inverse for unit quats)
+   */
+  const conj = q => ({ w: q.w, x: -q.x, y: -q.y, z: -q.z });
+  
+  /**
+   * Degrees of change about local X & Y axes from qA → qB
+   * Returns { dX, dY } in **degrees**
+   */
+  function deltaXY(qA, qB) {
+    // Relative rotation in A’s local frame
+    const qDelta = mulQuat(conj(qA), qB);
+  
+    // Convert to Euler; order XYZ so X & Y are what we care about
+    const [pitchX, , rollY] = quatToEulerXYZ(qDelta);
+  
+    return {
+      dX: pitchX * 180 / Math.PI,
+      dY: rollY  * 180 / Math.PI,
+    };
+  }
