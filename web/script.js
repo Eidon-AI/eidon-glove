@@ -2442,8 +2442,18 @@ function updateTrackerArrow(deviceId, quaternion) {
     // Create sorted array of tracker arrows with glove first
     const sortedTrackerArrows = Array.from(trackerArrows.entries())
         .sort(([a], [b]) => {
+            // Glove always first
             if (a.includes('Eidon-Glove')) return -1;
             if (b.includes('Eidon-Glove')) return 1;
+            
+            // Orange tracker second
+            if (a.includes('Eidon-Tracker-Orange')) return -1;
+            if (b.includes('Eidon-Tracker-Orange')) return 1;
+            
+            // Green tracker third
+            if (a.includes('Eidon-Tracker-Green')) return -1;
+            if (b.includes('Eidon-Tracker-Green')) return 1;
+            
             return 0;
         })
         .map(([id, arrow]) => ({id, ...arrow}));
@@ -2581,8 +2591,8 @@ function updateTrackerArrow(deviceId, quaternion) {
                     planeNormal
                 );
 
-                // Only update wrist angles from the first tracker
-                if (thisIndex === 0) {
+                // Only update wrist angles from the first two trackers
+                if (thisIndex === 0 && otherIndex === 1) {
                     // console.log("verticalAngle", verticalAngle);
                     // console.log("secondAngle", secondAngle);
 
@@ -2590,6 +2600,13 @@ function updateTrackerArrow(deviceId, quaternion) {
                     wristFlexion = -delta.dX;
                     wristDeviation = delta.dY;
                     updateArmValuesDisplay();
+
+                } else if (thisIndex === 1 && otherIndex === 2) {
+
+                    const delta = deltaXY(arrow.quaternion, otherArrow.quaternion);
+                    elbowFlexion = delta.dX;
+                    updateArmValuesDisplay();
+
                 }
 
                 // Only add angle info if this tracker is being projected onto
@@ -2767,18 +2784,21 @@ document.head.appendChild(style);
 // Add global variables for wrist angles
 let wristFlexion = 0;
 let wristDeviation = 0;
+let elbowFlexion = 0;
 
 // Function to update arm values display
 function updateArmValuesDisplay() {
     document.getElementById('wrist-flexion').textContent = `${wristFlexion.toFixed(1)}°`;
     document.getElementById('wrist-deviation').textContent = `${wristDeviation.toFixed(1)}°`;
+    document.getElementById('elbow-flexion').textContent = `${elbowFlexion.toFixed(1)}°`;
 
     // Update the hand model's wrist rotation
     const handModel = hands.get('12346-43981-Eidon-Glove-(Right)');
-    if (handModel && handModel.arm && handModel.arm.wrist) {
+    if (handModel && handModel.arm && handModel.arm.wrist && handModel.arm.elbow) {
         // Convert degrees to radians
         const flexionRad = THREE.MathUtils.degToRad(-wristFlexion + 90);
         const deviationRad = THREE.MathUtils.degToRad(-wristDeviation);
+        const elbowRad = THREE.MathUtils.degToRad(-elbowFlexion);
         
         // Apply rotations to the wrist joint
         const wristJoint = handModel.arm.wrist;
@@ -2788,6 +2808,10 @@ function updateArmValuesDisplay() {
         wristJoint.rotateX(flexionRad);
         // Apply deviation (around Z axis)
         wristJoint.rotateY(deviationRad);
+        // Apply elbow flexion (around Y axis)
+        const elbowJoint = handModel.arm.elbow;
+        elbowJoint.rotation.set(0, 0, 0);
+        elbowJoint.rotateX(elbowRad);
     }
 }
 
