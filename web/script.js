@@ -2459,7 +2459,7 @@ function updateTrackerArrow(deviceId, quaternion) {
         .map(([id, arrow]) => ({id, ...arrow}));
 
     const thisIndex = sortedTrackerArrows.findIndex(arrow => arrow.id === deviceId);
-    
+
     // Calculate angles between this tracker and all other trackers
     if (sortedTrackerArrows.length > 1) {
         let angleInfo = [];
@@ -2569,26 +2569,24 @@ function updateTrackerArrow(deviceId, quaternion) {
                     arrow.projected.visible = false;
                 }
 
-                // Calculate signed angle between forward vector and projected vector
-                const signedAngle = calculateSignedAngle(
-                    { x: forwardTip.x, y: forwardTip.y, z: forwardTip.z },
-                    scaledProjectedVector,
-                    planeNormal
-                );
-
                 // Calculate wrist angles
                 // Deviation: Signed angle between forward vector and projected vector
                 const deviationAngle = calculateSignedAngle(
-                    { x: forwardTip.x, y: forwardTip.y, z: forwardTip.z },
+                    forwardTip,
                     scaledProjectedVector,
                     planeNormal
                 );
 
                 // Flexion/Extension: Signed angle between the projected vector and the other tracker's forward vector
+                const flexionNormal = {
+                    x: forwardTip.y * upTip.z - forwardTip.z * upTip.y,
+                    y: forwardTip.z * upTip.x - forwardTip.x * upTip.z,
+                    z: forwardTip.x * upTip.y - forwardTip.y * upTip.x
+                };
                 const flexionAngle = calculateSignedAngle(
-                    scaledProjectedVector,
                     otherTip,
-                    planeNormal
+                    scaledProjectedVector,
+                    flexionNormal
                 );
 
                 // Only update wrist angles from the first two trackers
@@ -2596,9 +2594,11 @@ function updateTrackerArrow(deviceId, quaternion) {
                     // console.log("verticalAngle", verticalAngle);
                     // console.log("secondAngle", secondAngle);
 
-                    const delta = deltaXY(arrow.quaternion, otherArrow.quaternion);
-                    wristFlexion = -delta.dX;
-                    wristDeviation = delta.dY;
+                    // const delta = deltaXY(arrow.quaternion, otherArrow.quaternion);
+                    // wristFlexion = -delta.dX;
+                    // wristDeviation = delta.dY;
+                    wristFlexion = flexionAngle;
+                    wristDeviation = -deviationAngle;
                     updateArmValuesDisplay();
 
                 } else if (thisIndex === 1 && otherIndex === 2) {
@@ -2611,7 +2611,7 @@ function updateTrackerArrow(deviceId, quaternion) {
 
                 // Only add angle info if this tracker is being projected onto
                 if (otherArrow.projected.visible) {
-                    angleInfo.push(`with ${otherId}: ${signedAngle.toFixed(1)}°`);
+                    angleInfo.push(`with ${otherId}: ${flexionAngle.toFixed(1)}°, ${deviationAngle.toFixed(1)}°`);
                 }
             }
         }
