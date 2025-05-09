@@ -2464,6 +2464,14 @@ function updateTrackerArrow(deviceId, quaternion) {
 
     const thisIndex = sortedTrackerArrows.findIndex(arrow => arrow.id === deviceId);
 
+    console.log("thisIndex", thisIndex);
+
+    if (thisIndex === 0) {
+        wristRotation = calculateRollAroundForward(forwardTip, upTip);
+        updateArmValuesDisplay();
+
+    } 
+
     // Calculate angles between this tracker and all other trackers
     if (sortedTrackerArrows.length > 1) {
         let angleInfo = [];
@@ -2604,15 +2612,11 @@ function updateTrackerArrow(deviceId, quaternion) {
 
                 // Only update wrist angles from the first two trackers
                 if (thisIndex === 0 && otherIndex === 1) {
-                    // console.log("verticalAngle", verticalAngle);
-                    // console.log("secondAngle", secondAngle);
-
                     // const delta = deltaXY(arrow.quaternion, otherArrow.quaternion);
                     // wristFlexion = -delta.dX;
                     // wristDeviation = delta.dY;
                     wristFlexion = flexionAngle;
                     wristDeviation = -deviationAngle;
-                    wristRotation = calculateRollAroundForward(forwardTip, upTip);
                     updateArmValuesDisplay();
 
                 } else if (thisIndex === 1 && otherIndex === 2) {
