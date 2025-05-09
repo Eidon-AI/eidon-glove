@@ -2446,11 +2446,15 @@ function updateTrackerArrow(deviceId, quaternion) {
             if (a.includes('Eidon-Glove')) return -1;
             if (b.includes('Eidon-Glove')) return 1;
             
-            // Orange tracker second
+            // White tracker second
+            if (a.includes('Eidon-Tracker-White')) return -1;
+            if (b.includes('Eidon-Tracker-White')) return 1;
+            
+            // Orange tracker third
             if (a.includes('Eidon-Tracker-Orange')) return -1;
             if (b.includes('Eidon-Tracker-Orange')) return 1;
             
-            // Green tracker third
+            // Green tracker fourth
             if (a.includes('Eidon-Tracker-Green')) return -1;
             if (b.includes('Eidon-Tracker-Green')) return 1;
             
@@ -2476,6 +2480,15 @@ function updateTrackerArrow(deviceId, quaternion) {
                     y: otherArrow.forward.position.y * 2,
                     z: otherArrow.forward.position.z * 2
                 };
+
+                // Calculate direct angle between forwardTip and otherTip
+                const dotProduct = forwardTip.x * otherTip.x + forwardTip.y * otherTip.y + forwardTip.z * otherTip.z;
+                const forwardLength = Math.sqrt(forwardTip.x * forwardTip.x + forwardTip.y * forwardTip.y + forwardTip.z * forwardTip.z);
+                const otherLength = Math.sqrt(otherTip.x * otherTip.x + otherTip.y * otherTip.y + otherTip.z * otherTip.z);
+                const cosAngle = dotProduct / (forwardLength * otherLength);
+                const directAngle = Math.acos(Math.max(-1, Math.min(1, cosAngle))) * (180 / Math.PI);
+
+                // console.log("Direct angle between trackers:", directAngle);
 
                 // Create plane normal using forward vector and orthogonal vector
                 const planeNormal = {
@@ -2599,14 +2612,77 @@ function updateTrackerArrow(deviceId, quaternion) {
                     // wristDeviation = delta.dY;
                     wristFlexion = flexionAngle;
                     wristDeviation = -deviationAngle;
+                    wristRotation = calculateRollAroundForward(forwardTip, upTip);
                     updateArmValuesDisplay();
 
                 } else if (thisIndex === 1 && otherIndex === 2) {
 
-                    const delta = deltaXY(arrow.quaternion, otherArrow.quaternion);
-                    elbowFlexion = delta.dX;
+                    elbowFlexion = directAngle;
                     updateArmValuesDisplay();
 
+                } else if (thisIndex === 2) {
+                    // Calculate shoulder angles based on third tracker's orientation
+                    // Get the forward and up vectors from the third tracker
+                    const shoulderForward = {
+                        x: arrow.forward.position.x * 2,
+                        y: arrow.forward.position.y * 2,
+                        z: arrow.forward.position.z * 2
+                    };
+                    const shoulderUp = {
+                        x: arrow.up.position.x * 2,
+                        y: arrow.up.position.y * 2,
+                        z: arrow.up.position.z * 2
+                    };
+
+                    // Normalize vectors
+                    const normalize = (v) => {
+                        const length = Math.sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
+                        return {
+                            x: v.x / length,
+                            y: v.y / length,
+                            z: v.z / length
+                        };
+                    };
+                    const forward = normalize(shoulderForward);
+                    const up = normalize(shoulderUp);
+
+                    // Calculate shoulder flexion (up/down movement)
+                    // Project forward vector onto the vertical plane (XZ plane)
+                    const forwardXZ = {
+                        x: forward.x,
+                        y: 0,
+                        z: forward.z
+                    };
+                    const forwardXZLength = Math.sqrt(forwardXZ.x * forwardXZ.x + forwardXZ.z * forwardXZ.z);
+                    if (forwardXZLength > 0) {
+                        forwardXZ.x /= forwardXZLength;
+                        forwardXZ.z /= forwardXZLength;
+                    }
+                    // Angle between forward vector and its projection on XZ plane
+                    const flexionDot = forward.x * forwardXZ.x + forward.z * forwardXZ.z;
+                    shoulderFlexion = Math.acos(Math.max(-1, Math.min(1, flexionDot))) * (180 / Math.PI);
+                    // Make flexion negative when pointing down
+                    if (forward.y < 0) shoulderFlexion = -shoulderFlexion;
+
+                    // Calculate shoulder deviation (left/right movement)
+                    // Project forward vector onto the horizontal plane (XY plane)
+                    const forwardXY = {
+                        x: forward.x,
+                        y: forward.y,
+                        z: 0
+                    };
+                    const forwardXYLength = Math.sqrt(forwardXY.x * forwardXY.x + forwardXY.y * forwardXY.y);
+                    if (forwardXYLength > 0) {
+                        forwardXY.x /= forwardXYLength;
+                        forwardXY.y /= forwardXYLength;
+                    }
+                    // Angle between forward vector and its projection on XY plane
+                    const deviationDot = forward.x * forwardXY.x + forward.y * forwardXY.y;
+                    shoulderDeviation = Math.acos(Math.max(-1, Math.min(1, deviationDot))) * (180 / Math.PI);
+                    // Make deviation negative when pointing left
+                    // if (forward.z < 0) shoulderDeviation = -shoulderDeviation;
+
+                    updateArmValuesDisplay();
                 }
 
                 // Only add angle info if this tracker is being projected onto
@@ -2784,21 +2860,32 @@ document.head.appendChild(style);
 // Add global variables for wrist angles
 let wristFlexion = 0;
 let wristDeviation = 0;
+let wristRotation = 0;
 let elbowFlexion = 0;
+let shoulderFlexion = 0;
+let shoulderDeviation = 0;
 
 // Function to update arm values display
 function updateArmValuesDisplay() {
     document.getElementById('wrist-flexion').textContent = `${wristFlexion.toFixed(1)}°`;
     document.getElementById('wrist-deviation').textContent = `${wristDeviation.toFixed(1)}°`;
+    document.getElementById('wrist-rotation').textContent = `${wristRotation.toFixed(1)}°`;
     document.getElementById('elbow-flexion').textContent = `${elbowFlexion.toFixed(1)}°`;
+    document.getElementById('shoulder-flexion').textContent = `${shoulderFlexion.toFixed(1)}°`;
+    document.getElementById('shoulder-deviation').textContent = `${shoulderDeviation.toFixed(1)}°`;
 
-    // Update the hand model's wrist rotation
-    const handModel = hands.get('12346-43981-Eidon-Glove-(Right)');
+    // Get the first glove from the hands Map
+    const firstGloveId = Array.from(hands.keys()).find(id => id.includes('Eidon-Glove'));
+    const handModel = firstGloveId ? hands.get(firstGloveId) : null;
+
     if (handModel && handModel.arm && handModel.arm.wrist && handModel.arm.elbow) {
         // Convert degrees to radians
         const flexionRad = THREE.MathUtils.degToRad(-wristFlexion + 90);
         const deviationRad = THREE.MathUtils.degToRad(-wristDeviation);
+        const rotationRad = THREE.MathUtils.degToRad(-wristRotation);
         const elbowRad = THREE.MathUtils.degToRad(-elbowFlexion);
+        const shoulderFlexionRad = THREE.MathUtils.degToRad(-shoulderFlexion);
+        const shoulderDeviationRad = THREE.MathUtils.degToRad(-shoulderDeviation);
         
         // Apply rotations to the wrist joint
         const wristJoint = handModel.arm.wrist;
@@ -2806,12 +2893,22 @@ function updateArmValuesDisplay() {
         wristJoint.rotation.set(0, 0, 0);
         // Apply flexion (around X axis)
         wristJoint.rotateX(flexionRad);
-        // Apply deviation (around Z axis)
+        // Apply deviation (around Y axis)
         wristJoint.rotateY(deviationRad);
+        // Apply rotation (around Z axis)
+        wristJoint.rotateZ(rotationRad);
+
         // Apply elbow flexion (around Y axis)
         const elbowJoint = handModel.arm.elbow;
         elbowJoint.rotation.set(0, 0, 0);
         elbowJoint.rotateX(elbowRad);
+
+        // Apply shoulder flexion (around X axis)
+        const shoulderJoint = handModel.arm.shoulder;
+        shoulderJoint.rotation.set(0, 0, 0);
+        shoulderJoint.rotateX(shoulderFlexionRad);
+        // Apply shoulder deviation (around Z axis)
+        shoulderJoint.rotateZ(-shoulderDeviationRad);
     }
 }
 
@@ -2874,3 +2971,43 @@ function quatToEulerXYZ(q) {
       dY: rollY  * 180 / Math.PI,
     };
   }
+
+  function calculateRollAroundForward(forward, up) {
+    // Normalize the forward vector to create our Z axis
+    const forwardLength = Math.sqrt(forward.x * forward.x + forward.y * forward.y + forward.z * forward.z);
+    const zAxis = {
+        x: forward.x / forwardLength,
+        y: forward.y / forwardLength,
+        z: forward.z / forwardLength
+    };
+
+    // Create a reference vector perpendicular to forward (we'll use the cross product with world up)
+    const worldUp = { x: 0, y: 1, z: 0 };
+    const xAxis = {
+        x: worldUp.y * zAxis.z - worldUp.z * zAxis.y,
+        y: worldUp.z * zAxis.x - worldUp.x * zAxis.z,
+        z: worldUp.x * zAxis.y - worldUp.y * zAxis.x
+    };
+    
+    // Normalize xAxis
+    const xLength = Math.sqrt(xAxis.x * xAxis.x + xAxis.y * xAxis.y + xAxis.z * xAxis.z);
+    xAxis.x /= xLength;
+    xAxis.y /= xLength;
+    xAxis.z /= xLength;
+
+    // Create yAxis using cross product of zAxis and xAxis
+    const yAxis = {
+        x: zAxis.y * xAxis.z - zAxis.z * xAxis.y,
+        y: zAxis.z * xAxis.x - zAxis.x * xAxis.z,
+        z: zAxis.x * xAxis.y - zAxis.y * xAxis.x
+    };
+
+    // Project the up vector onto the XY plane
+    const upDotX = up.x * xAxis.x + up.y * xAxis.y + up.z * xAxis.z;
+    const upDotY = up.x * yAxis.x + up.y * yAxis.y + up.z * yAxis.z;
+    
+    // Calculate the angle in the XY plane
+    const angle = Math.atan2(upDotY, upDotX) * (180 / Math.PI);
+    
+    return angle;
+}
