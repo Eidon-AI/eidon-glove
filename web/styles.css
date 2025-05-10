@@ -1,0 +1,466 @@
+:root {
+  --bg-color: #f0f0f0;
+  --text-color: #333;
+  --border-color: #ccc;
+  --bar-bg: #eee;
+  --joint-bg: #fff;
+  --tracker-bg: #fff;
+  --glove-bg: #fff;
+  --label-bg: #d4edda;
+  --label-color: #155724;
+  --disabled-bg: #cccccc;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #e0e0e0;
+  --border-color: #444;
+  --bar-bg: #333;
+  --joint-bg: #2a2a2a;
+  --tracker-bg: #2a2a2a;
+  --glove-bg: #2a2a2a;
+  --disabled-bg: #cccccc7a;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.controls {
+  padding: 15px;
+  background-color: var(--bg-color);
+  z-index: 100;
+}
+
+.status {
+  display: inline-block;
+  padding: 6.5px 10px;
+  border-radius: 20px;
+}
+
+.connected {
+  background-color: var(--label-bg);
+  color: var(--label-color);
+}
+
+.disconnected {
+  background-color: #ffa0a9;
+  color: #721c24;
+}
+
+button {
+  padding: 8px 16px;
+  cursor: pointer;
+  margin-right: 10px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background-color: var(--joint-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:disabled {
+  background-color: var(--disabled-bg);
+  cursor: not-allowed;
+}
+
+#connect-button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+#disconnect-button:hover {
+  background-color: #dc3545;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+#canvas-container {
+  flex: 3;
+  position: relative;
+}
+
+#sidebar {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  max-width: 300px;
+  border-left: 1px solid var(--border-color);
+}
+
+.joint-info {
+  margin-bottom: 10px;
+  padding: 8px 0;
+  border: 0 solid #ddd;
+  border-bottom: 1px;
+}
+
+.joint-name {
+  font-weight: bold;
+}
+
+.joint-value {
+  font-family: monospace;
+}
+
+.bar-container {
+  width: 100%;
+  background-color: #e0e0e0;
+  height: 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  background-color: #4CAF50;
+  width: 0%;
+  /*transition: width 0.2s ease-in-out;*/ 
+}
+
+.log-container {
+  margin: 16px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  height: 150px;
+  overflow-y: auto;
+  font-family: monospace;
+  background-color: #f8f9fa;
+}
+
+.view-controls {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 10;
+}
+
+.view-button {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-right: 5px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.recording-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #e9ecef;
+  border-radius: 5px;
+}
+
+.recording-controls button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.recording-controls button:hover {
+  background-color: #0069d9;
+}
+
+.recording-controls button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+#start-record-btn {
+  background-color: #dc3545;
+}
+
+#start-record-btn:hover {
+  background-color: #c82333;
+}
+
+#stop-record-btn {
+  background-color: #6c757d;
+}
+
+#stop-record-btn:hover:not(:disabled) {
+  background-color: #5a6268;
+}
+
+#start-playback-btn {
+  background-color: #28a745;
+}
+
+#start-playback-btn:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+.glove-info {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.glove-header {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ccc;
+}
+
+.tracker-info {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.tracker-name {
+  font-weight: bold;
+  font-size: 1.2em;
+  padding-bottom: 5px;
+}
+
+.tracker-values {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+  margin: 5px 0;
+  font-family: monospace;
+}
+
+.tracker-value-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.tracker-value-label {
+  font-weight: bold;
+  color: #666;
+}
+
+.tracker-circle-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.tracker-circle {
+  width: 60px;
+  height: 60px;
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  position: relative;
+  background: var(--joint-bg);
+}
+
+.tracker-indicator {
+  width: 8px;
+  height: 8px;
+  background: #007bff;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+}
+
+.tracker-circle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 50%;
+  /* background: #ccc; */
+  transform-origin: bottom center;
+  transform: translateX(-50%);
+}
+
+.tracker-circle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 2px;
+  /* background: #ccc; */
+  transform-origin: right center;
+  transform: translateY(-50%);
+}
+
+.sidebar-box {
+  margin-bottom: 20px;
+}
+
+.value-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.joint-info, .tracker-info, .glove-info, .sidebar-box {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: var(--joint-bg);
+  border: 1px solid var(--border-color);
+  /* transition: background-color 0.3s, border-color 0.3s; */
+}
+
+.bar-container {
+  background-color: var(--bar-bg);
+  transition: background-color 0.3s;
+}
+
+.controls {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  /* transition: background-color 0.3s, border-color 0.3s; */
+}
+
+.device-item {
+  background-color: var(--joint-bg);
+  border: 1px solid var(--border-color);
+  /* transition: background-color 0.3s, border-color 0.3s; */
+}
+
+#log-container {
+  background-color: var(--joint-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  /* transition: background-color 0.3s, border-color 0.3s, color 0.3s; */
+}
+
+.tracker-circle {
+  border-color: var(--border-color);
+  transition: border-color 0.3s;
+}
+
+.tracker-value-label {
+  color: var(--text-color);
+  transition: color 0.3s;
+}
+
+.control-button {
+  background-color: var(--joint-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.control-button:hover {
+  background-color: var(--bar-bg);
+}
+
+#dark-mode-toggle {
+  position: fixed;
+  top: 14px;
+  right: 10px;
+  z-index: 1000;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background-color: var(--joint-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+#dark-mode-toggle:hover {
+  background-color: var(--bar-bg);
+}
+
+.quaternion-values, .euler-values {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 5px 0;
+  font-family: monospace;
+}
+
+.euler-values {
+  grid-template-columns: repeat(3, 1fr);
+  color: #666;
+}
+
+.quaternion-bars {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  gap: 2px;
+}
+
+.quaternion-bars .bar {
+  height: 10px;
+  transition: all 0.1s ease;
+}
+
+.tracker-header, .glove-header, .sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 8px;
+  padding-bottom: 12px;
+}
+
+.tracker-details, .glove-details {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8em;
+}
+
+.device-id {
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+.disconnect-btn {
+  padding: 2px 8px;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.8em;
+  transition: background-color 0.3s;
+}
+
+.disconnect-btn:hover {
+  background: #c82333;
+}
+
+.tracker-name, .glove-name, .sidebar-name {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-bottom: 4px;
+}

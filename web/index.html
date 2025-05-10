@@ -4,308 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D Hand Joint Visualizer</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-        }
-        
-        .controls {
-            padding: 15px;
-            background-color: #f5f5f5;
-            z-index: 100;
-        }
-        
-        .status {
-            padding: 10px;
-            border-radius: 5px;
-            margin: 10px 0;
-        }
-        
-        .connected {
-            background-color: #d4edda;
-            color: #155724;
-        }
-        
-        .disconnected {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
-        
-        button {
-            padding: 8px 16px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-right: 10px;
-        }
-        
-        button:hover {
-            background-color: #45a049;
-        }
-        
-        button:disabled {
-            background-color: #cccccc;
-            cursor: not-allowed;
-        }
-        
-        .container {
-            display: flex;
-            flex: 1;
-            overflow: hidden;
-        }
-        
-        #canvas-container {
-            flex: 3;
-            position: relative;
-        }
-        
-        #sidebar {
-            flex: 1;
-            padding: 15px;
-            padding-top: 0;
-            background-color: #f8f9fa;
-            overflow-y: auto;
-            max-width: 300px;
-            border-left: 1px solid #ddd;
-        }
-        
-        .joint-info {
-            margin-bottom: 10px;
-            padding: 8px 0;
-            border: 0 solid #ddd;
-            border-bottom: 1px;
-        }
-        
-        .joint-name {
-            font-weight: bold;
-        }
-        
-        .joint-value {
-            font-family: monospace;
-        }
-        
-        .bar-container {
-            width: 100%;
-            background-color: #e0e0e0;
-            height: 10px;
-            border-radius: 5px;
-            margin-top: 5px;
-            overflow: hidden;
-        }
-        
-        .bar {
-            height: 100%;
-            background-color: #4CAF50;
-            width: 0%;
-            /*transition: width 0.2s ease-in-out;*/ 
-        }
-        
-        .log-container {
-            margin: 16px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 10px;
-            height: 150px;
-            overflow-y: auto;
-            font-family: monospace;
-            background-color: #f8f9fa;
-        }
-        
-        .view-controls {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            z-index: 10;
-        }
-        
-        .view-button {
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            margin-right: 5px;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-        
-        .recording-controls {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 10px;
-            padding: 10px;
-            background-color: #e9ecef;
-            border-radius: 5px;
-        }
-        
-        .recording-controls button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.9em;
-        }
-        
-        .recording-controls button:hover {
-            background-color: #0069d9;
-        }
-        
-        .recording-controls button:disabled {
-            background-color: #6c757d;
-            cursor: not-allowed;
-        }
-        
-        #start-record-btn {
-            background-color: #dc3545;
-        }
-        
-        #start-record-btn:hover {
-            background-color: #c82333;
-        }
-        
-        #stop-record-btn {
-            background-color: #6c757d;
-        }
-        
-        #stop-record-btn:hover:not(:disabled) {
-            background-color: #5a6268;
-        }
-        
-        #start-playback-btn {
-            background-color: #28a745;
-        }
-        
-        #start-playback-btn:hover:not(:disabled) {
-            background-color: #218838;
-        }
-
-        .glove-info {
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        .glove-header {
-            font-weight: bold;
-            font-size: 1.2em;
-            margin-bottom: 10px;
-            padding-bottom: 5px;
-            border-bottom: 1px solid #ccc;
-        }
-
-        .tracker-info {
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        .tracker-name {
-            font-weight: bold;
-            font-size: 1.2em;
-            margin-bottom: 10px;
-            padding-bottom: 5px;
-            border-bottom: 1px solid #ccc;
-        }
-
-        .tracker-values {
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            gap: 20px;
-            margin: 5px 0;
-            font-family: monospace;
-        }
-
-        .tracker-value-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .tracker-value-label {
-            font-weight: bold;
-            color: #666;
-        }
-
-        .tracker-circle-container {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .tracker-circle {
-            width: 60px;
-            height: 60px;
-            border: 2px solid #ccc;
-            border-radius: 50%;
-            position: relative;
-            background: #f8f9fa;
-        }
-
-        .tracker-indicator {
-            width: 8px;
-            height: 8px;
-            background: #007bff;
-            border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform-origin: center;
-        }
-
-        .tracker-circle::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 2px;
-            height: 50%;
-            /* background: #ccc; */
-            transform-origin: bottom center;
-            transform: translateX(-50%);
-        }
-
-        .tracker-circle::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 50%;
-            height: 2px;
-            /* background: #ccc; */
-            transform-origin: right center;
-            transform: translateY(-50%);
-        }
-
-        .sidebar-box {
-            margin-bottom: 20px;
-        }
-
-        .value-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="controls">
         <button id="connect-button">Connect HID Device</button>
-        <button id="disconnect-button" disabled>Disconnect</button>
+        <button id="disconnect-button" disabled style="display: none;">Disconnect All</button>
         <span id="status-indicator" class="status disconnected">Status: Disconnected</span>
     </div>
     
@@ -321,20 +25,13 @@
         </div>
         
         <div id="sidebar">
-            <!-- <h3>Joint Values</h3> -->
-            <div id="joints-container">
-                <!-- Joint info will be added here -->
-            </div>
-            
-            <div class="log-container" id="log-container">
-                <!-- Log messages will be added here -->
-            </div>
-
             <div class="sidebar-box">
-                <h3>Arm Values</h3>
+                <div class="sidebar-header">
+                    <div class="sidebar-name">Arm Angles</div>
+                </div>
                 <div id="arm-values">
                     <div class="value-row">
-                        <span>Wrist Flexion/Extension:</span>
+                        <span>Wrist Flexion:</span>
                         <span id="wrist-flexion">0.0°</span>
                     </div>
                     <div class="value-row">
@@ -359,6 +56,15 @@
                     </div>
                 </div>
             </div>
+
+            <div id="joints-container">
+                <!-- Joint info will be added here -->
+            </div>
+            
+            <div class="log-container" id="log-container">
+                <!-- Log messages will be added here -->
+            </div>
+
         </div>
     </div>
     

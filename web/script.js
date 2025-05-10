@@ -118,7 +118,8 @@ function initThreeJS() {
 
     // Create scene
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xf0f0f0);
+    const isDark = document.body.getAttribute('data-theme') === 'dark';
+    scene.background = new THREE.Color(isDark ? 0x1a1a1a : 0xf0f0f0);
     
     // Create camera
     camera = new THREE.PerspectiveCamera(
@@ -484,6 +485,8 @@ async function disconnectFromDevice(deviceId = null) {
         // Disconnect specific device
         const device = hidDevices.get(deviceId);
         if (device) {
+            // Remove event listener first
+            device.removeEventListener('inputreport', handleHIDInput);
             await device.close();
             hidDevices.delete(deviceId);
             
@@ -494,17 +497,36 @@ async function disconnectFromDevice(deviceId = null) {
             // Clean up UI and 3D elements
             cleanupDevice(deviceId);
             
+            // Clear this device's permissions
+            try {
+                await device.forget();
+            } catch (error) {
+                console.error(`Error clearing HID permissions for device ${deviceId}:`, error);
+            }
+            
             addLogMessage(`Disconnected from HID device: ${device.productName}`);
         }
     } else {
         // Disconnect all devices
         for (const [id, device] of hidDevices) {
+            // Remove event listener first
+            device.removeEventListener('inputreport', handleHIDInput);
             await device.close();
             cleanupDevice(id);
             addLogMessage(`Disconnected from HID device: ${device.productName}`);
         }
         hidDevices.clear();
         localStorage.setItem('hidDevices', '[]');
+        
+        // Clear all HID device permissions
+        try {
+            const devices = await navigator.hid.getDevices();
+            for (const device of devices) {
+                await device.forget();
+            }
+        } catch (error) {
+            console.error('Error clearing HID permissions:', error);
+        }
     }
     
     updateConnectionStatus();
@@ -809,6 +831,32 @@ styleElement.textContent = `
     font-size: 0.8em;
     color: #666;
     margin-left: 10px;
+}
+
+.tracker-header, .glove-header, .sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 8px;
+    padding-bottom: 12px;
+}
+
+.tracker-name, .glove-name, .sidebar-name {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.device-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
 }
 `;
 document.head.appendChild(styleElement);
@@ -1311,7 +1359,7 @@ async function connectToDevice() {
 
         for (const device of devices) {
             // Create a unique device ID by combining vendorId, productId, and the device index
-            const baseDeviceId = `${device.vendorId}-${device.productId}-${device.productName.replace(/\s+/g, '-')}`;
+            const baseDeviceId = `${device.vendorId}-${device.productId}-${device.productName.replace(/\s+/g, '-').replace(/-+$/, '')}`;
             let deviceId = baseDeviceId;
             let index = 1;
 
@@ -1350,14 +1398,23 @@ async function connectToDevice() {
 // Update autoConnectToLastDevice to handle the new ID format
 async function autoConnectToLastDevice() {
     const savedDevices = JSON.parse(localStorage.getItem('hidDevices') || '[]');
+    console.log('Saved devices for auto-connect:', savedDevices);
+    
     if (savedDevices.length === 0) return;
     
     try {
         const devices = await navigator.hid.getDevices();
+        console.log('Available HID devices:', devices.map(d => ({
+            vendorId: d.vendorId,
+            productId: d.productId,
+            productName: d.productName
+        })));
         
         for (const deviceId of savedDevices) {
             // Extract the base device ID (vendorId-productId) from the saved device ID
             const [vendorId, productId] = deviceId.split('-').slice(0, 2);
+            console.log('Looking for device:', { vendorId, productId });
+            
             const device = devices.find(d => 
                 d.vendorId.toString() === vendorId && 
                 d.productId.toString() === productId &&
@@ -1365,10 +1422,28 @@ async function autoConnectToLastDevice() {
             );
             
             if (device && !hidDevices.has(deviceId)) {
+                console.log('Found matching device:', {
+                    vendorId: device.vendorId,
+                    productId: device.productId,
+                    productName: device.productName
+                });
+                
                 await device.open();
                 hidDevices.set(deviceId, device);
                 device.addEventListener('inputreport', handleHIDInput);
                 addLogMessage(`Auto-connected to HID device: ${device.productName} (${deviceId})`);
+
+                // Create display for the device
+                if (device.productName.toLowerCase().includes('tracker')) {
+                    console.log('Creating tracker display for:', deviceId);
+                    addTrackerDisplay(deviceId);
+                } else {
+                    console.log('Creating glove display for:', deviceId);
+                    addGloveDisplay(deviceId);
+                    createHandModel(deviceId);
+                }
+            } else {
+                console.log('No matching device found for:', deviceId);
             }
         }
         
@@ -1387,37 +1462,13 @@ function updateConnectionStatus() {
         statusIndicator.className = 'status connected';
         connectButton.disabled = false;
         disconnectButton.disabled = false;
-
-        let deviceList = document.getElementById('device-list');
-        if (!deviceList) {
-            deviceList = document.createElement('div');
-            deviceList.id = 'device-list';
-            statusIndicator.parentNode.insertBefore(deviceList, statusIndicator.nextSibling);
-        }
-        deviceList.innerHTML = '';
-
-        for (const [deviceId, device] of hidDevices) {
-            const deviceDiv = document.createElement('div');
-            deviceDiv.className = 'device-item';
-            deviceDiv.innerHTML = `
-                ${device.productName} 
-                <span class="device-details">
-                    (ID: ${deviceId})
-                </span>
-                <button onclick="disconnectFromDevice('${deviceId}')">Disconnect</button>
-            `;
-            deviceList.appendChild(deviceDiv);
-        }
+        disconnectButton.style.display = '';
     } else {
-            statusIndicator.textContent = 'Status: Disconnected';
-            statusIndicator.className = 'status disconnected';
-            connectButton.disabled = false;
-            disconnectButton.disabled = true;
-            
-        const deviceList = document.getElementById('device-list');
-        if (deviceList) {
-            deviceList.remove();
-        }
+        statusIndicator.textContent = 'Status: Disconnected';
+        statusIndicator.className = 'status disconnected';
+        connectButton.disabled = false;
+        disconnectButton.disabled = true;
+        disconnectButton.style.display = 'none';
     }
 }
 
@@ -1449,27 +1500,29 @@ function handleHIDInput(event) {
     if (ignoreExternalInput) return;
 
     const device = event.device;
-    const deviceId = `${device.vendorId}-${device.productId}-${device.productName.replace(/\s+/g, '-')}`;
     const { data } = event;
+
+    // Validate device information
+    // if (!device || !device.vendorId || !device.productId || !device.productName) {
+    //     console.error('Invalid device information:', device);
+    //     return;
+    // }
+
+    const deviceId = `${device.vendorId}-${device.productId}-${device.productName.replace(/\s+/g, '-').replace(/-+$/, '')}`;
+    // console.log('HID Input - Device:', {
+    //     vendorId: device.vendorId,
+    //     productId: device.productId,
+    //     productName: device.productName,
+    //     deviceId: deviceId
+    // });
     
     // Determine if this is a tracker or glove based on report size
     const isTracker = data.buffer.byteLength === TRACKER_REPORT_SIZE;
 
     if (isTracker) {
-        // Handle tracker data - reading little-endian 16-bit integers
-        // Each quaternion component is stored as two bytes in little-endian format
-        const x = ((data.getUint8(0) | (data.getUint8(1) << 8)) - 32768) / 32767.5;
-        const y = ((data.getUint8(2) | (data.getUint8(3) << 8)) - 32768) / 32767.5;
-        const z = ((data.getUint8(4) | (data.getUint8(5) << 8)) - 32768) / 32767.5;
-        const w = ((data.getUint8(6) | (data.getUint8(7) << 8)) - 32768) / 32767.5;
-        // const position = data.getInt8(8);
-        // const isLeft = !!(position & 0b00000010);
-        // const isLower = !!(position & 0b00000001);
-
-        // console.log(isLeft, isLower);
-        
-        // Create display if it doesn't exist
+        // Handle tracker data
         if (!trackers.has(deviceId)) {
+            console.log('Creating new tracker display for:', deviceId);
             // Remove any existing glove displays
             const existingGloves = document.querySelectorAll('.glove-info');
             existingGloves.forEach(glove => glove.remove());
@@ -1483,9 +1536,15 @@ function handleHIDInput(event) {
             }
         }
         
+        // Handle tracker data - reading little-endian 16-bit integers
+        // Each quaternion component is stored as two bytes in little-endian format
+        const x = ((data.getUint8(0) | (data.getUint8(1) << 8)) - 32768) / 32767.5;
+        const y = ((data.getUint8(2) | (data.getUint8(3) << 8)) - 32768) / 32767.5;
+        const z = ((data.getUint8(4) | (data.getUint8(5) << 8)) - 32768) / 32767.5;
+        const w = ((data.getUint8(6) | (data.getUint8(7) << 8)) - 32768) / 32767.5;
+        
         // Update tracker display with quaternion values
         updateTrackerDisplay(deviceId, x, y, z, w);
-        
     } else {
         // Glove handling
         if (!gloves.has(deviceId)) {
@@ -1642,36 +1701,6 @@ function updateJointDisplay(deviceId, jointIndex, value) {
     }
 }
 
-// Add additional styles for Euler angles display
-const additionalStyles = `
-.quaternion-values, .euler-values {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin: 5px 0;
-    font-family: monospace;
-}
-
-.euler-values {
-    grid-template-columns: repeat(3, 1fr);
-    color: #666;
-}
-
-.quaternion-bars {
-    display: grid;
-    grid-template-rows: repeat(4, 1fr);
-    gap: 2px;
-}
-
-.quaternion-bars .bar {
-    height: 10px;
-    transition: all 0.1s ease;
-}
-`;
-
-// Add the new styles to the existing styleElement
-styleElement.textContent += additionalStyles;
-
 // Add to the end of the file or where other initialization code is
 // Try to auto-connect when the page loads
 if (document.readyState === 'loading') {
@@ -1755,14 +1784,34 @@ function addCompassOverlay() {
 
 // Modify addTrackerDisplay function
 function addTrackerDisplay(deviceId) {
-    console.log(`added: ${deviceId}`);
-    const trackerId = deviceId.split('-').pop(); // Get unique part of device ID
+    console.log(`Adding tracker display for deviceId: ${deviceId}`);
+    const device = hidDevices.get(deviceId);
+    console.log('Device from hidDevices:', device);
+    console.log('Device productName:', device?.productName);
+    
     const trackerElement = document.createElement('div');
     trackerElement.className = 'tracker-info';
     trackerElement.id = `tracker-${deviceId}`;
     
+    // Get device name from hidDevices
+    const deviceName = device ? device.productName : 'Tracker';
+    console.log('Final deviceName:', deviceName);
+    
+    // Get color for the dot
+    const color = getColorFromDeviceName(deviceId);
+    const colorHex = color ? '#' + color.toString(16).padStart(6, '0') : '#ffffff';
+    
     trackerElement.innerHTML = `
-        <div class="tracker-name">Tracker ${trackerId}</div>
+        <div class="tracker-header">
+            <div class="tracker-name">
+                <span class="device-dot" style="background-color: ${colorHex}"></span>
+                ${deviceName}
+            </div>
+            <div class="tracker-details">
+                <span class="device-id">${deviceId}</span>
+                <button class="disconnect-btn" onclick="disconnectFromDevice('${deviceId}')">Disconnect</button>
+            </div>
+        </div>
         <div class="tracker-values">
             <div class="quaternion-values">
                 <div>X: <span id="tracker-quat-x-${deviceId}">0.000</span></div>
@@ -1802,7 +1851,7 @@ function addTrackerDisplay(deviceId) {
         </div>
     `;
     
-    // Add to joints container after the quaternion display
+    // Add to joints container
     jointsContainer.appendChild(trackerElement);
     
     // Add to trackers Map with quaternion values
@@ -1874,10 +1923,27 @@ function addGloveDisplay(deviceId) {
     gloveElement.className = 'glove-info';
     gloveElement.id = `glove-${deviceId}`;
     
+    // Get device name from hidDevices
+    const device = hidDevices.get(deviceId);
+    const deviceName = device ? `${device.productName} (${device.vendorId.toString(16)}:${device.productId.toString(16)})` : 'Glove';
+    
+    // Get color for the dot
+    const color = getColorFromDeviceName(deviceId);
+    const colorHex = color ? '#' + color.toString(16).padStart(6, '0') : '#ffffff';
+    
     // Create glove header
     const header = document.createElement('div');
     header.className = 'glove-header';
-    header.textContent = `Glove ${gloveId}`;
+    header.innerHTML = `
+        <div class="glove-name">
+            <span class="device-dot" style="background-color: ${colorHex}"></span>
+            ${deviceName}
+        </div>
+        <div class="glove-details">
+            <span class="device-id">${deviceId}</span>
+            <button class="disconnect-btn" onclick="disconnectFromDevice('${deviceId}')">Disconnect</button>
+        </div>
+    `;
     gloveElement.appendChild(header);
 
     // Create joints container for this glove
@@ -2141,7 +2207,7 @@ function updateArmPosition(deviceId) {
     handModel.arm.wrist.rotation.z = 0;
     
     // Log the values for debugging
-    console.log(`Forearm Roll: ${forearmRoll.toFixed(2)}°, Wrist Flexion/Extension: ${wristAngle.toFixed(2)}°, Radial/Ulnar Deviation: ${deviationAngle.toFixed(2)}°`);
+    console.log(`Forearm Roll: ${forearmRoll.toFixed(2)}°, Wrist Flexion: ${wristAngle.toFixed(2)}°, Radial/Ulnar Deviation: ${deviationAngle.toFixed(2)}°`);
 }
 
 function updateGloveDisplay(deviceId, data) {
@@ -2464,7 +2530,7 @@ function updateTrackerArrow(deviceId, quaternion) {
 
     const thisIndex = sortedTrackerArrows.findIndex(arrow => arrow.id === deviceId);
 
-    console.log("thisIndex", thisIndex);
+    // console.log("thisIndex", thisIndex);
 
     if (thisIndex === 0) {
         wristRotation = calculateRollAroundForward(forwardTip, upTip);
@@ -2556,7 +2622,7 @@ function updateTrackerArrow(deviceId, quaternion) {
                 };
 
                 // Only show projection for the first tracker
-                if (thisIndex === 0) {
+                if (thisIndex === 1) {
                     // Update the projected vector's material to use the source tracker's color
                     arrow.projected.material.color.setHex(otherArrow.color);
                     
@@ -3015,3 +3081,38 @@ function quatToEulerXYZ(q) {
     
     return angle;
 }
+
+// Add dark mode toggle functionality
+function addDarkModeToggle() {
+    const toggle = document.createElement('button');
+    toggle.id = 'dark-mode-toggle';
+    toggle.textContent = '☀️ Light Mode';
+    toggle.onclick = () => {
+        const isDark = document.body.getAttribute('data-theme') === 'dark';
+        document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        toggle.textContent = isDark ? '🌙 Dark Mode' : '☀️ Light Mode';
+        
+        // Update Three.js scene background
+        if (scene) {
+            scene.background = new THREE.Color(isDark ? 0xf0f0f0 : 0x1a1a1a);
+        }
+        
+        // Save preference
+        localStorage.setItem('darkMode', !isDark);
+    };
+    
+    document.body.appendChild(toggle);
+    
+    // Check for saved preference, default to dark mode if not set
+    const savedDarkMode = localStorage.getItem('darkMode') !== 'false';
+    if (savedDarkMode) {
+        document.body.setAttribute('data-theme', 'dark');
+        toggle.textContent = '☀️ Light Mode';
+        if (scene) {
+            scene.background = new THREE.Color(0x1a1a1a);
+        }
+    }
+}
+
+// Call this after Three.js initialization
+addDarkModeToggle();
