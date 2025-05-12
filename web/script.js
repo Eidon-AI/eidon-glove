@@ -32,7 +32,7 @@ const logContainer = document.getElementById('log-container');
 const canvasContainer = document.getElementById('canvas-container');
 
 // View control buttons
-const frontViewBtn = document.getElementById('front-view-btn');
+const backViewBtn = document.getElementById('back-view-btn');
 const sideViewBtn = document.getElementById('side-view-btn');
 const topViewBtn = document.getElementById('top-view-btn');
 const resetViewBtn = document.getElementById('reset-view-btn');
@@ -746,7 +746,7 @@ function animate() {
 }
 
 // Camera view controls
-frontViewBtn.addEventListener('click', () => {
+backViewBtn.addEventListener('click', () => {
     camera.position.set(0, 0, 20);
     camera.lookAt(0, 0, 0);
     controls.update();
@@ -954,10 +954,10 @@ function initGamepadSupport() {
             addLogMessage('WARNING: Gamepad API is not supported in this browser.');
         }
     } else {
-        console.log('Gamepad API is supported. Connect a gamepad to begin.');
-        if (typeof addLogMessage === 'function') {
-            addLogMessage('Gamepad API is supported. Connect a gamepad to begin.');
-        }
+        // console.log('Gamepad API is supported. Connect a gamepad to begin.');
+        // if (typeof addLogMessage === 'function') {
+        //     addLogMessage('Gamepad API is supported. Connect a gamepad to begin.');
+        // }
         
         // Add the diagnostic button
         // addGamepadDiagnosticButton();
@@ -1398,53 +1398,69 @@ async function connectToDevice() {
 // Update autoConnectToLastDevice to handle the new ID format
 async function autoConnectToLastDevice() {
     const savedDevices = JSON.parse(localStorage.getItem('hidDevices') || '[]');
-    console.log('Saved devices for auto-connect:', savedDevices);
+    // console.log('Saved devices for auto-connect:', savedDevices);
     
     if (savedDevices.length === 0) return;
     
     try {
         const devices = await navigator.hid.getDevices();
-        console.log('Available HID devices:', devices.map(d => ({
-            vendorId: d.vendorId,
-            productId: d.productId,
-            productName: d.productName
-        })));
+        // console.log('Available HID devices:', devices.map(d => ({
+        //     vendorId: d.vendorId,
+        //     productId: d.productId,
+        //     productName: d.productName
+        // })));
         
+        // Create a map of available devices by their base ID
+        const availableDevices = new Map();
+        devices.forEach(device => {
+            const baseId = `${device.vendorId}-${device.productId}`;
+            if (!availableDevices.has(baseId)) {
+                availableDevices.set(baseId, []);
+            }
+            availableDevices.get(baseId).push(device);
+        });
+        
+        // Create a map to track which devices have been matched
+        const matchedDevices = new Set();
+        
+        // First pass: Try to match devices by their full ID
         for (const deviceId of savedDevices) {
-            // Extract the base device ID (vendorId-productId) from the saved device ID
             const [vendorId, productId] = deviceId.split('-').slice(0, 2);
-            console.log('Looking for device:', { vendorId, productId });
+            const baseId = `${vendorId}-${productId}`;
+            const matchingDevices = availableDevices.get(baseId) || [];
             
-            const device = devices.find(d => 
-                d.vendorId.toString() === vendorId && 
-                d.productId.toString() === productId &&
-                !Array.from(hidDevices.values()).includes(d)
+            // Try to find an exact match first
+            const exactMatch = matchingDevices.find(d => 
+                !matchedDevices.has(d) && 
+                `${d.vendorId}-${d.productId}-${d.productName.replace(/\s+/g, '-').replace(/-+$/, '')}` === deviceId
             );
             
-            if (device && !hidDevices.has(deviceId)) {
-                console.log('Found matching device:', {
-                    vendorId: device.vendorId,
-                    productId: device.productId,
-                    productName: device.productName
-                });
-                
-                await device.open();
-                hidDevices.set(deviceId, device);
-                device.addEventListener('inputreport', handleHIDInput);
-                addLogMessage(`Auto-connected to HID device: ${device.productName} (${deviceId})`);
-
-                // Create display for the device
-                if (device.productName.toLowerCase().includes('tracker')) {
-                    console.log('Creating tracker display for:', deviceId);
-                    addTrackerDisplay(deviceId);
-                } else {
-                    console.log('Creating glove display for:', deviceId);
-                    addGloveDisplay(deviceId);
-                    createHandModel(deviceId);
-                }
-            } else {
-                console.log('No matching device found for:', deviceId);
+            if (exactMatch) {
+                matchedDevices.add(exactMatch);
+                await connectDevice(exactMatch, deviceId);
+                continue;
             }
+        }
+        
+        // Second pass: Match remaining devices by type and order
+        const remainingSavedDevices = savedDevices.filter(id => !Array.from(hidDevices.keys()).includes(id));
+        const remainingAvailableDevices = devices.filter(d => !matchedDevices.has(d));
+        
+        // Group remaining devices by type (tracker vs glove)
+        const savedTrackers = remainingSavedDevices.filter(id => id.toLowerCase().includes('tracker'));
+        const savedGloves = remainingSavedDevices.filter(id => id.toLowerCase().includes('glove'));
+        
+        const availableTrackers = remainingAvailableDevices.filter(d => d.productName.toLowerCase().includes('tracker'));
+        const availableGloves = remainingAvailableDevices.filter(d => d.productName.toLowerCase().includes('glove'));
+        
+        // Match trackers
+        for (let i = 0; i < Math.min(savedTrackers.length, availableTrackers.length); i++) {
+            await connectDevice(availableTrackers[i], savedTrackers[i]);
+        }
+        
+        // Match gloves
+        for (let i = 0; i < Math.min(savedGloves.length, availableGloves.length); i++) {
+            await connectDevice(availableGloves[i], savedGloves[i]);
         }
         
         updateConnectionStatus();
@@ -1452,6 +1468,29 @@ async function autoConnectToLastDevice() {
     } catch (error) {
         console.error('Auto-connect error:', error);
         addLogMessage('Failed to auto-connect to saved devices');
+    }
+}
+
+// Helper function to connect a device
+async function connectDevice(device, deviceId) {
+    try {
+        await device.open();
+        hidDevices.set(deviceId, device);
+        device.addEventListener('inputreport', handleHIDInput);
+        addLogMessage(`Auto-connected to HID device: ${device.productName} (${deviceId})`);
+
+        // Create display for the device
+        if (device.productName.toLowerCase().includes('tracker')) {
+            console.log('Creating tracker display for:', deviceId);
+            addTrackerDisplay(deviceId);
+        } else {
+            console.log('Creating glove display for:', deviceId);
+            addGloveDisplay(deviceId);
+            createHandModel(deviceId);
+        }
+    } catch (error) {
+        console.error(`Error connecting device ${deviceId}:`, error);
+        addLogMessage(`Failed to connect to device: ${device.productName}`);
     }
 }
 
@@ -1925,7 +1964,7 @@ function addGloveDisplay(deviceId) {
     
     // Get device name from hidDevices
     const device = hidDevices.get(deviceId);
-    const deviceName = device ? `${device.productName} (${device.vendorId.toString(16)}:${device.productId.toString(16)})` : 'Glove';
+    const deviceName = device ? device.productName : 'Glove';
     
     // Get color for the dot
     const color = getColorFromDeviceName(deviceId);
@@ -2008,11 +2047,11 @@ function addGloveDisplay(deviceId) {
             <div class="bar-container">
                 <div class="bar" id="joint-bar-${deviceId}-${i}"></div>
             </div>
-            <label class="invert-toggle">
-                <input type="checkbox" id="invert-${deviceId}-${i}" ${fingerJointMap[i]?.inverted ? 'checked' : ''}>
-                Invert Values
-            </label>
         `;
+        // <label class="invert-toggle">
+        //     <input type="checkbox" id="invert-${deviceId}-${i}" ${fingerJointMap[i]?.inverted ? 'checked' : ''}>
+        //     Invert Values
+        // </label>
         glovejointsContainer.appendChild(jointElement);
     }
 
@@ -2353,6 +2392,11 @@ function quaternionToJointAngles(q) {
 
 // Add this function before createTrackerArrow
 function getColorFromDeviceName(deviceName) {
+    // Special case for gloves - always use a specific color
+    if (deviceName.toLowerCase().includes('glove')) {
+        return 0x61c680; // Use green color for gloves
+    }
+
     const colorMap = {
         'red': 0xff0000,
         'green': 0x61c680,
@@ -2486,24 +2530,20 @@ function updateTrackerArrow(deviceId, quaternion) {
     orthogonalTip.y /= orthoLength;
     orthogonalTip.z /= orthoLength;
     
-    // Update forward vector
-    const forwardLength = Math.sqrt(forwardTip.x * forwardTip.x + forwardTip.y * forwardTip.y + forwardTip.z * forwardTip.z);
-    arrow.forward.scale.y = forwardLength;
-    arrow.forward.position.set(forwardTip.x / 2, forwardTip.y / 2, forwardTip.z / 2);
-    
-    // Update up vector (positioned at origin)
-    const upLengthScaled = Math.sqrt(upTip.x * upTip.x + upTip.y * upTip.y + upTip.z * upTip.z);
-    arrow.up.scale.y = upLengthScaled;
-    arrow.up.position.set(upTip.x / 2, upTip.y / 2, upTip.z / 2);
-    
-    // Rotate both cylinders to point in the right direction
-    const forwardDirection = new THREE.Vector3(forwardTip.x, forwardTip.y, forwardTip.z).normalize();
-    arrow.forward.lookAt(new THREE.Vector3(forwardTip.x, forwardTip.y, forwardTip.z));
-    arrow.forward.rotateX(Math.PI / 2);
-    
-    const upDirection = new THREE.Vector3(upTip.x, upTip.y, upTip.z).normalize();
-    arrow.up.lookAt(new THREE.Vector3(upTip.x, upTip.y, upTip.z));
-    arrow.up.rotateX(Math.PI / 2);
+    // Use helper to draw cylinders between origin and tip points
+    setCylinderBetweenPoints(
+        arrow.forward,
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(forwardTip.x, forwardTip.y, forwardTip.z)
+    );
+
+    setCylinderBetweenPoints(
+        arrow.up,
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(upTip.x, upTip.y, upTip.z)
+    );
+
+    arrow.upTip = { ...upTip }; // Store up tip for repositioning
     
     // Create sorted array of tracker arrows with glove first
     const sortedTrackerArrows = Array.from(trackerArrows.entries())
@@ -2529,8 +2569,6 @@ function updateTrackerArrow(deviceId, quaternion) {
         .map(([id, arrow]) => ({id, ...arrow}));
 
     const thisIndex = sortedTrackerArrows.findIndex(arrow => arrow.id === deviceId);
-
-    // console.log("thisIndex", thisIndex);
 
     if (thisIndex === 0) {
         wristRotation = calculateRollAroundForward(forwardTip, upTip);
@@ -2562,15 +2600,6 @@ function updateTrackerArrow(deviceId, quaternion) {
                 const cosAngle = dotProduct / (forwardLength * otherLength);
                 const directAngle = Math.acos(Math.max(-1, Math.min(1, cosAngle))) * (180 / Math.PI);
 
-                // console.log("Direct angle between trackers:", directAngle);
-
-                // Create plane normal using forward vector and orthogonal vector
-                const planeNormal = {
-                    x: forwardTip.y * orthogonalTip.z - forwardTip.z * orthogonalTip.y,
-                    y: forwardTip.z * orthogonalTip.x - forwardTip.x * orthogonalTip.z,
-                    z: forwardTip.x * orthogonalTip.y - forwardTip.y * orthogonalTip.x
-                };
-
                 // Create a vector that combines both forward and up components from the OTHER tracker
                 const otherForwardTip = {
                     x: otherArrow.forward.position.x * 2,
@@ -2581,6 +2610,19 @@ function updateTrackerArrow(deviceId, quaternion) {
                     x: -otherArrow.up.position.x * 2,
                     y: -otherArrow.up.position.y * 2,
                     z: -otherArrow.up.position.z * 2
+                };
+
+                const otherOrthogonalTip = {
+                    x: otherForwardTip.y * otherUpTip.z - otherForwardTip.z * otherUpTip.y,
+                    y: otherForwardTip.z * otherUpTip.x - otherForwardTip.x * otherUpTip.z,
+                    z: otherForwardTip.x * otherUpTip.y - otherForwardTip.y * otherUpTip.x
+                };
+
+                // Create plane normal using forward vector and orthogonal vector
+                const otherPlaneNormal = {
+                    x: forwardTip.y * otherOrthogonalTip.z - forwardTip.z * otherOrthogonalTip.y,
+                    y: forwardTip.z * otherOrthogonalTip.x - forwardTip.x * otherOrthogonalTip.z,
+                    z: forwardTip.x * otherOrthogonalTip.y - forwardTip.y * otherOrthogonalTip.x
                 };
 
                 const combinedVector = {
@@ -2605,7 +2647,7 @@ function updateTrackerArrow(deviceId, quaternion) {
                 combinedVector.z *= forwardLength;
 
                 // Project the combined vector onto the plane
-                const projectedVector = projectVectorOntoPlane(combinedVector, planeNormal);
+                const projectedVector = projectVectorOntoPlane(combinedVector, otherPlaneNormal);
 
                 // Update projected vector visualization
                 const projectedLength = Math.sqrt(
@@ -2622,38 +2664,29 @@ function updateTrackerArrow(deviceId, quaternion) {
                 };
 
                 // Only show projection for the first tracker
-                if (thisIndex === 1) {
+                if (otherIndex === 1 && thisIndex === 0) {
                     // Update the projected vector's material to use the source tracker's color
                     arrow.projected.material.color.setHex(otherArrow.color);
                     
-                    // Set the scale and position of the projected vector
-                    arrow.projected.scale.y = forwardLength;
-                    arrow.projected.position.set(
-                        scaledProjectedVector.x / 2,
-                        scaledProjectedVector.y / 2,
-                        scaledProjectedVector.z / 2
+                    // Position projected cylinder using helper
+                    setCylinderBetweenPoints(
+                        arrow.projected,
+                        new THREE.Vector3(0, 0, 0),
+                        new THREE.Vector3(
+                            scaledProjectedVector.x,
+                            scaledProjectedVector.y,
+                            scaledProjectedVector.z
+                        )
                     );
                     
                     // Make sure the projected vector is visible
                     arrow.projected.visible = true;
-                    
-                    // Set the direction of the projected vector
-                    const projectedDirection = new THREE.Vector3(
-                        scaledProjectedVector.x,
-                        scaledProjectedVector.y,
-                        scaledProjectedVector.z
-                    ).normalize();
-                    
-                    arrow.projected.lookAt(projectedDirection);
-                    arrow.projected.rotateX(Math.PI / 2);
                     
                     // console.log("Projected vector visualization:", {
                     //     position: arrow.projected.position,
                     //     scale: arrow.projected.scale,
                     //     visible: arrow.projected.visible
                     // });
-                } else {
-                    arrow.projected.visible = false;
                 }
 
                 // Calculate wrist angles
@@ -2661,7 +2694,7 @@ function updateTrackerArrow(deviceId, quaternion) {
                 const deviationAngle = calculateSignedAngle(
                     forwardTip,
                     scaledProjectedVector,
-                    planeNormal
+                    otherPlaneNormal
                 );
 
                 // Flexion/Extension: Signed angle between the projected vector and the other tracker's forward vector
@@ -2765,6 +2798,10 @@ function updateTrackerArrow(deviceId, quaternion) {
         // Hide projected vector if there are no other trackers
         arrow.projected.visible = false;
     }
+
+    // In original updateTrackerArrow function, after forwardTip is calculated, store it
+    arrow.forwardTip = { ...forwardTip }; // Save for chain positioning
+    repositionTrackerArrows();
 }
 
 // Add function to calculate angle between two vectors
@@ -3116,3 +3153,102 @@ function addDarkModeToggle() {
 
 // Call this after Three.js initialization
 addDarkModeToggle();
+
+// Add global toggle for tracker arrow drawing mode
+let chainMode = false; // false = all arrows from origin, true = chained vectors
+
+// Function to reposition tracker arrows based on current mode
+function repositionTrackerArrows() {
+    if (!scene) return;
+    if (!chainMode) {
+        // Reset all arrow groups to origin
+        for (const arrow of trackerArrows.values()) {
+            arrow.group.position.set(0, 0, 0);
+        }
+        return;
+    }
+
+    // Build sorted array with same ordering logic used in updateTrackerArrow
+    const sortedTrackerArrows = Array.from(trackerArrows.entries())
+        .sort(([a], [b]) => {
+            if (a.includes('Eidon-Glove')) return -1;
+            if (b.includes('Eidon-Glove')) return 1;
+            if (a.includes('Eidon-Tracker-White')) return -1;
+            if (b.includes('Eidon-Tracker-White')) return 1;
+            if (a.includes('Eidon-Tracker-Orange')) return -1;
+            if (b.includes('Eidon-Tracker-Orange')) return 1;
+            if (a.includes('Eidon-Tracker-Green')) return -1;
+            if (b.includes('Eidon-Tracker-Green')) return 1;
+            return 0;
+        })
+        .map(([id, arrow]) => ({ id, ...arrow }));
+
+    // Position arrows so that last one is at origin and previous arrows chain outwards
+    let cumulativeOffset = { x: 0, y: 0, z: 0 };
+    for (let i = sortedTrackerArrows.length - 1; i >= 0; i--) {
+        const arrow = sortedTrackerArrows[i];
+        arrow.group.position.set(cumulativeOffset.x, cumulativeOffset.y, cumulativeOffset.z);
+        
+        // Add this arrow's forward tip to cumulative offset if we have it
+        if (arrow.forwardTip) {
+            cumulativeOffset.x += arrow.forwardTip.x;
+            cumulativeOffset.y += arrow.forwardTip.y;
+            cumulativeOffset.z += arrow.forwardTip.z;
+        }
+    }
+}
+
+// Add vector mode toggle UI
+function addVectorModeToggle() {
+    // Prevent duplicate button
+    if (document.getElementById('vector-mode-toggle')) return;
+
+    const toggle = document.createElement('button');
+    toggle.id = 'vector-mode-toggle';
+    toggle.textContent = 'Chain Mode: Off';
+    toggle.onclick = () => {
+        chainMode = !chainMode;
+        toggle.textContent = chainMode ? 'Chain Mode: On' : 'Chain Mode: Off';
+        repositionTrackerArrows();
+    };
+
+    // Find or create the view-controls container (same logic as gamepad button)
+    let viewControls = document.querySelector('.view-controls');
+    if (!viewControls) {
+        viewControls = document.createElement('div');
+        viewControls.className = 'view-controls';
+        const controlsContainer = document.querySelector('.controls') || document.body;
+        controlsContainer.appendChild(viewControls);
+    }
+
+    viewControls.appendChild(toggle);
+}
+
+// Call this after dark mode toggle setup
+addVectorModeToggle();
+
+// Utility: create a cylinder that can be stretched between two points
+function createThickLineCylinder(radius = 0.1, color = 0xffffff, radialSegments = 8) {
+    const geometry = new THREE.CylinderGeometry(radius, radius, 1, radialSegments);
+    const material = new THREE.MeshBasicMaterial({ color });
+    const mesh = new THREE.Mesh(geometry, material);
+    return mesh;
+}
+
+// Utility: position & orient a cylinder so it spans start → end
+function setCylinderBetweenPoints(cylinder, start, end) {
+    const dir = new THREE.Vector3().subVectors(end, start);
+    const len = dir.length();
+    if (len === 0) return;
+
+    // Scale to correct length (original height is 1)
+    cylinder.scale.set(1, len, 1);
+
+    // Move to midpoint
+    const mid = new THREE.Vector3().addVectors(start, end).multiplyScalar(0.5);
+    cylinder.position.copy(mid);
+
+    // Orient so +Y of cylinder matches dir
+    const quat = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir.clone().normalize());
+    cylinder.setRotationFromQuaternion(quat);
+}
