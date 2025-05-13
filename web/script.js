@@ -166,7 +166,7 @@ function initThreeJS() {
     scene.add(gridHelper);
 
     // Add coordinate axes
-    const axesLength = 5;
+    const axesLength = 10;
     const axesColors = [0xff0000, 0x00ff00, 0x0000ff]; // Red, Green, Blue
     
     // X axis (Red)
@@ -789,77 +789,6 @@ initThreeJS();
 
 // Initialize joint elements
 // initializeJointElements();
-
-// Add this to the <style> section in the HTML file
-const styleElement = document.createElement('style');
-styleElement.textContent = `
-.invert-toggle {
-    display: block;
-    margin-top: 5px;
-    font-size: 0.8em;
-    color: #666;
-}
-
-.invert-toggle input {
-    margin-right: 5px;
-}
-
-.device-item {
-    margin: 5px 0;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.device-item button {
-    padding: 2px 8px;
-    background: #ff4444;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-.device-item button:hover {
-    background: #cc0000;
-}
-
-.device-details {
-    font-size: 0.8em;
-    color: #666;
-    margin-left: 10px;
-}
-
-.tracker-header, .glove-header, .sidebar-header {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: flex-start;
-    border-bottom: 1px solid var(--border-color);
-    margin-bottom: 8px;
-    padding-bottom: 12px;
-}
-
-.tracker-name, .glove-name, .sidebar-name {
-    font-weight: bold;
-    font-size: 1.1em;
-    margin-bottom: 4px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.device-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    display: inline-block;
-}
-`;
-document.head.appendChild(styleElement);
 
 // Add a button to check gamepad details
 function addGamepadDiagnosticButton() {
@@ -1847,7 +1776,10 @@ function addTrackerDisplay(deviceId) {
                 ${deviceName}
             </div>
             <div class="tracker-details">
-                <span class="device-id">${deviceId}</span>
+                <span class="device-id">ID: ${deviceId}</span>
+            </div>
+            <div class="tracker-controls">
+                <button class="calibrate-btn" onclick="calibrateDevice('${deviceId}')">Calibrate</button>
                 <button class="disconnect-btn" onclick="disconnectFromDevice('${deviceId}')">Disconnect</button>
             </div>
         </div>
@@ -1980,6 +1912,7 @@ function addGloveDisplay(deviceId) {
         </div>
         <div class="glove-details">
             <span class="device-id">${deviceId}</span>
+            <button class="calibrate-btn" onclick="calibrateDevice('${deviceId}')">Calibrate</button>
             <button class="disconnect-btn" onclick="disconnectFromDevice('${deviceId}')">Disconnect</button>
         </div>
     `;
@@ -2450,9 +2383,9 @@ function createTrackerArrow(deviceId) {
     
     // Create materials
     const forwardMaterial = new THREE.MeshBasicMaterial({ color: color });
-    const upMaterial = new THREE.MeshBasicMaterial({ color: color, opacity: 0.7, transparent: true });
+    const upMaterial = new THREE.MeshBasicMaterial({ color: color, opacity: 0.9, transparent: true });
     const projectedMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, opacity: 0.2, transparent: true }); // Default white, will be updated
-    const invertedUpMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000, opacity: 0.7, transparent: true }); // Red for inverted up vector
+    const invertedUpMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000, opacity: 0.9, transparent: true }); // Red for inverted up vector
     const secondProjectedMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0.2, transparent: true }); // Green for second projection
     
     // Create forward cylinder mesh
@@ -2504,16 +2437,41 @@ function createTrackerArrow(deviceId) {
 function updateTrackerArrow(deviceId, quaternion) {
     const arrow = trackerArrows.get(deviceId);
     if (!arrow) return;
-    
+
+    // Create sorted array of tracker arrows with glove first
+    const sortedTrackerArrows = Array.from(trackerArrows.entries())
+        .sort(([a], [b]) => {
+            // Glove always first
+            if (a.includes('Eidon-Glove')) return -1;
+            if (b.includes('Eidon-Glove')) return 1;
+            
+            // White tracker second
+            if (a.includes('Eidon-Tracker-White')) return -1;
+            if (b.includes('Eidon-Tracker-White')) return 1;
+            
+            // Orange tracker third
+            if (a.includes('Eidon-Tracker-Orange')) return -1;
+            if (b.includes('Eidon-Tracker-Orange')) return 1;
+            
+            // Green tracker fourth
+            if (a.includes('Eidon-Tracker-Green')) return -1;
+            if (b.includes('Eidon-Tracker-Green')) return 1;
+            
+            return 0;
+        })
+        .map(([id, arrow]) => ({id, ...arrow}));
+
+    const thisIndex = sortedTrackerArrows.findIndex(arrow => arrow.id === deviceId);
+
     // Store the quaternion in the arrow object
     arrow.quaternion = quaternion;
     
-    // Calculate forward direction
-    const rayLength = 5.0;
+    // Calculate forward direction with variable length (first tracker gets shorter ray)
+    const rayLength = thisIndex === 0 ? 2.0 : 5.0;
     const forwardTip = forwardRay(quaternion, rayLength);
     
     // Calculate up direction
-    const upLength = 2.0; // Shorter length for up vector
+    const upLength = 1.0; // Shorter length for up vector
     const upTip = upRay(quaternion, upLength);
     const downTip = downRay(quaternion, upLength);
 
@@ -2544,31 +2502,6 @@ function updateTrackerArrow(deviceId, quaternion) {
     );
 
     arrow.upTip = { ...upTip }; // Store up tip for repositioning
-    
-    // Create sorted array of tracker arrows with glove first
-    const sortedTrackerArrows = Array.from(trackerArrows.entries())
-        .sort(([a], [b]) => {
-            // Glove always first
-            if (a.includes('Eidon-Glove')) return -1;
-            if (b.includes('Eidon-Glove')) return 1;
-            
-            // White tracker second
-            if (a.includes('Eidon-Tracker-White')) return -1;
-            if (b.includes('Eidon-Tracker-White')) return 1;
-            
-            // Orange tracker third
-            if (a.includes('Eidon-Tracker-Orange')) return -1;
-            if (b.includes('Eidon-Tracker-Orange')) return 1;
-            
-            // Green tracker fourth
-            if (a.includes('Eidon-Tracker-Green')) return -1;
-            if (b.includes('Eidon-Tracker-Green')) return 1;
-            
-            return 0;
-        })
-        .map(([id, arrow]) => ({id, ...arrow}));
-
-    const thisIndex = sortedTrackerArrows.findIndex(arrow => arrow.id === deviceId);
 
     if (thisIndex === 0) {
         wristRotation = calculateRollAroundForward(forwardTip, upTip);
@@ -2927,43 +2860,6 @@ function directionVector(q, len = 1) {
     return rotateVector(q, forward);
 }
 
-// Add CSS for the tracker arrow
-const style = document.createElement('style');
-style.textContent = `
-.tracker-arrow-container {
-    width: 100px;
-    height: 100px;
-    position: relative;
-    perspective: 1000px;
-    margin: 20px auto;
-}
-
-.tracker-arrow {
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 20px solid #4CAF50;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform-origin: center bottom;
-    transform: translate(-50%, -50%);
-}
-
-.tracker-arrow::after {
-    content: '';
-    position: absolute;
-    left: -5px;
-    top: 20px;
-    width: 10px;
-    height: 40px;
-    background: #4CAF50;
-    transform-origin: center top;
-}
-`;
-document.head.appendChild(style);
-
 // Add global variables for wrist angles
 let wristFlexion = 0;
 let wristDeviation = 0;
@@ -3184,7 +3080,7 @@ function repositionTrackerArrows() {
         .map(([id, arrow]) => ({ id, ...arrow }));
 
     // Position arrows so that last one is at origin and previous arrows chain outwards
-    let cumulativeOffset = { x: 0, y: 0, z: 0 };
+    let cumulativeOffset = { x: 2, y: 5, z: 0 };
     for (let i = sortedTrackerArrows.length - 1; i >= 0; i--) {
         const arrow = sortedTrackerArrows[i];
         arrow.group.position.set(cumulativeOffset.x, cumulativeOffset.y, cumulativeOffset.z);
@@ -3252,3 +3148,49 @@ function setCylinderBetweenPoints(cylinder, start, end) {
     const quat = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir.clone().normalize());
     cylinder.setRotationFromQuaternion(quat);
 }
+
+// NEW: global calibration button and function definitions
+function addGlobalCalibrationButton() {
+    const controlPanel = document.querySelector('.controls');
+    if (!controlPanel) return;
+
+    // Avoid duplicates
+    if (document.getElementById('calibrate-all-btn')) return;
+
+    const calibrateAllBtn = document.createElement('button');
+    calibrateAllBtn.id = 'calibrate-all-btn';
+    calibrateAllBtn.textContent = 'Calibrate All Devices';
+    calibrateAllBtn.onclick = () => calibrateDevice(); // no arg => all devices
+    controlPanel.appendChild(calibrateAllBtn);
+}
+
+// Send calibration command (reportId 1, value 1) to one or all devices
+async function calibrateDevice(deviceId = null) {
+    const REPORT_ID = 1;
+    const payload = new Uint8Array([1]);
+
+    // Helper to send to a specific HIDDevice instance
+    const sendTo = async (id, device) => {
+        try {
+            await device.sendReport(REPORT_ID, payload);
+            addLogMessage(`Calibration command sent to ${device.productName || id}`);
+        } catch (err) {
+            console.error('Calibration error for device', id, err);
+            addLogMessage(`Calibration error for ${device.productName || id}: ${err.message}`);
+        }
+    };
+
+    if (deviceId) {
+        const device = hidDevices.get(deviceId);
+        if (device) {
+            await sendTo(deviceId, device);
+        }
+    } else {
+        for (const [id, device] of hidDevices) {
+            await sendTo(id, device);
+        }
+    }
+}
+
+// Call global calibration button setup after vector mode toggle
+addGlobalCalibrationButton();

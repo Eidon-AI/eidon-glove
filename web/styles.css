@@ -233,10 +233,16 @@ button:disabled {
   border-radius: 4px;
 }
 
-.tracker-name {
+.tracker-name, .glove-name, .sidebar-name {
   font-weight: bold;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tracker-name {
   font-size: 1.2em;
-  padding-bottom: 5px;
 }
 
 .tracker-values {
@@ -341,12 +347,6 @@ button:disabled {
   /* transition: background-color 0.3s, border-color 0.3s; */
 }
 
-.device-item {
-  background-color: var(--joint-bg);
-  border: 1px solid var(--border-color);
-  /* transition: background-color 0.3s, border-color 0.3s; */
-}
-
 #log-container {
   background-color: var(--joint-bg);
   border: 1px solid var(--border-color);
@@ -423,9 +423,62 @@ button:disabled {
   flex-direction: column;
   align-items: flex-start;
   border-bottom: 1px solid var(--border-color);
-  margin-bottom: 8px;
+  gap: 8px;
   padding-bottom: 12px;
 }
+
+.invert-toggle {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.8em;
+  color: #666;
+}
+
+.invert-toggle input {
+  margin-right: 5px;
+}
+
+.device-item {
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--joint-bg);
+  border: 1px solid var(--border-color);
+  /* transition: background-color 0.3s, border-color 0.3s; */
+}
+
+.device-item button {
+  padding: 2px 8px;
+  background: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.device-item button:hover {
+  background: #cc0000;
+}
+
+.device-details {
+  font-size: 0.8em;
+  color: #666;
+  margin-left: 10px;
+}
+
+.device-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+
+
+
 
 .tracker-details, .glove-details {
   display: flex;
@@ -455,8 +508,47 @@ button:disabled {
   background: #c82333;
 }
 
-.tracker-name, .glove-name, .sidebar-name {
-  font-weight: bold;
-  font-size: 1.1em;
-  margin-bottom: 4px;
+.tracker-arrow-container {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  perspective: 1000px;
+  margin: 20px auto;
+}
+
+.tracker-arrow {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid #4CAF50;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center bottom;
+  transform: translate(-50%, -50%);
+}
+
+.tracker-arrow::after {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 20px;
+  width: 10px;
+  height: 40px;
+  background: #4CAF50;
+  transform-origin: center top;
+}
+
+.calibrate-btn {
+  padding: 2px 8px;
+  background: #008CBA;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+.calibrate-btn:hover {
+  background: #005f73;
 }
