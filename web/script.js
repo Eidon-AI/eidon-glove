@@ -6,6 +6,10 @@ let decoder = new TextDecoder();
 let inputBuffer = '';
 const MAX_JOINTS = 16;
 
+const EIDON_VENDOR_ID   = 0xE1D0;
+const EIDON_GLOVE_PID   = 0x0001;
+const EIDON_TRACKER_PID = 0x0002;
+
 // Joint values array
 let jointValues = new Array(MAX_JOINTS).fill(0);
 
@@ -1283,7 +1287,9 @@ function addRecordingControls() {
 async function connectToDevice() {
     try {
         const devices = await navigator.hid.requestDevice({
-            filters: [] // Empty filters to see all HID devices
+            filters: [
+                { vendorId: EIDON_VENDOR_ID } // comment out to allow any device to be connected
+            ]
         });
 
         for (const device of devices) {

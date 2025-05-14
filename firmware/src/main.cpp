@@ -7,6 +7,10 @@
 #include "BNO085.h"
 #include "HallEffectSensors.h"
 
+// Vendor and Product IDs
+#define VENDOR_ID  0xE1D0 // Eidon AI vendor ID
+#define PRODUCT_ID 0x0001 // Eidon Glove v1 product ID
+
 // Define the number of axes we'll use
 #define NUM_JOINTS 16  // We want all 16 joints
 
@@ -376,7 +380,7 @@ void setup() {
     hid->manufacturer()->setValue("ESP32-C3");
     
     // Use consistent VID/PID
-    hid->pnp(0x01, 0x303A, 0xABCD, 0x0110);
+    hid->pnp(0x01, VENDOR_ID, PRODUCT_ID, 0x0110);
     hid->hidInfo(0x00, 0x01);
     
     // Set report descriptor
