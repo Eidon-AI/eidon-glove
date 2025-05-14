@@ -10,6 +10,12 @@ const EIDON_VENDOR_ID   = 0xE1D0;
 const EIDON_GLOVE_PID   = 0x0001;
 const EIDON_TRACKER_PID = 0x0002;
 
+const toHex = (n) => {
+    const num = Number(n); // coerce strings like "0x1d50" or numbers
+    if (Number.isNaN(num)) return '0000';
+    return num.toString(16).padStart(4, '0');
+};
+
 // Joint values array
 let jointValues = new Array(MAX_JOINTS).fill(0);
 
@@ -545,12 +551,7 @@ function cleanupDevice(deviceId) {
             trackerElement.remove();
         }
         
-        // Remove tracker arrow from Three.js scene
-        const arrow = trackerArrows.get(deviceId);
-        if (arrow) {
-            scene.remove(arrow);
-            trackerArrows.delete(deviceId);
-        }
+        // Remove tracker arrow from Three.js scene (handled later generically)
         
         trackers.delete(deviceId);
     }
@@ -586,6 +587,24 @@ function cleanupDevice(deviceId) {
         
         // Reposition remaining hands
         repositionHands();
+    }
+
+    // Remove tracker arrow (for trackers or gloves) if it exists
+    if (trackerArrows.has(deviceId)) {
+        const arrowObj = trackerArrows.get(deviceId);
+        const group = arrowObj.group || arrowObj; // support previous structure
+        if (group && scene) {
+            scene.remove(group);
+            // Dispose geometries & materials to free GPU memory
+            group.traverse(child => {
+                if (child.geometry) child.geometry.dispose();
+                if (child.material) {
+                    if (Array.isArray(child.material)) child.material.forEach(m => m.dispose());
+                    else child.material.dispose();
+                }
+            });
+        }
+        trackerArrows.delete(deviceId);
     }
 }
 
@@ -1294,7 +1313,7 @@ async function connectToDevice() {
 
         for (const device of devices) {
             // Create a unique device ID by combining vendorId, productId, and the device index
-            const baseDeviceId = `${device.vendorId}-${device.productId}-${device.productName.replace(/\s+/g, '-').replace(/-+$/, '')}`;
+            const baseDeviceId = getDeviceId(device);
             let deviceId = baseDeviceId;
             let index = 1;
 
@@ -1330,6 +1349,10 @@ async function connectToDevice() {
     }
 }
 
+function getDeviceId(device) {
+    return `${toHex(device.vendorId)}-${toHex(device.productId)}-${device.productName.replace(/\s+/g, '-').replace(/-+$/, '').toLowerCase()}`
+}
+
 // Update autoConnectToLastDevice to handle the new ID format
 async function autoConnectToLastDevice() {
     const savedDevices = JSON.parse(localStorage.getItem('hidDevices') || '[]');
@@ -1348,7 +1371,7 @@ async function autoConnectToLastDevice() {
         // Create a map of available devices by their base ID
         const availableDevices = new Map();
         devices.forEach(device => {
-            const baseId = `${device.vendorId}-${device.productId}`;
+            const baseId = getDeviceId(device);
             if (!availableDevices.has(baseId)) {
                 availableDevices.set(baseId, []);
             }
@@ -1361,16 +1384,17 @@ async function autoConnectToLastDevice() {
         // First pass: Try to match devices by their full ID
         for (const deviceId of savedDevices) {
             const [vendorId, productId] = deviceId.split('-').slice(0, 2);
-            const baseId = `${vendorId}-${productId}`;
+            const baseId = deviceId;
             const matchingDevices = availableDevices.get(baseId) || [];
             
             // Try to find an exact match first
             const exactMatch = matchingDevices.find(d => 
                 !matchedDevices.has(d) && 
-                `${d.vendorId}-${d.productId}-${d.productName.replace(/\s+/g, '-').replace(/-+$/, '')}` === deviceId
+                getDeviceId(d) === deviceId
             );
             
             if (exactMatch) {
+                console.log('Exact match found:', exactMatch);
                 matchedDevices.add(exactMatch);
                 await connectDevice(exactMatch, deviceId);
                 continue;
@@ -1482,7 +1506,7 @@ function handleHIDInput(event) {
     //     return;
     // }
 
-    const deviceId = `${device.vendorId}-${device.productId}-${device.productName.replace(/\s+/g, '-').replace(/-+$/, '')}`;
+    const deviceId = getDeviceId(device);
     // console.log('HID Input - Device:', {
     //     vendorId: device.vendorId,
     //     productId: device.productId,
@@ -2440,32 +2464,36 @@ function createTrackerArrow(deviceId) {
     });
 }
 
+function getSortedTrackerArrows(trackerArrows) {
+    return Array.from(trackerArrows.entries())
+        .sort(([a], [b]) => {
+            // Glove always first
+            if (a.includes('eidon-glove')) return -1;
+            if (b.includes('eidon-glove')) return 1;
+            
+            // White tracker second
+            if (a.includes('eidon-tracker-white')) return -1;
+            if (b.includes('eidon-tracker-white')) return 1;
+            
+            // Orange tracker third
+            if (a.includes('eidon-tracker-orange')) return -1;
+            if (b.includes('eidon-tracker-orange')) return 1;
+            
+            // Green tracker fourth
+            if (a.includes('eidon-tracker-green')) return -1;
+            if (b.includes('eidon-tracker-green')) return 1;
+            
+            return 0;
+        })
+        .map(([id, arrow]) => ({id, ...arrow}));
+}
+
 function updateTrackerArrow(deviceId, quaternion) {
     const arrow = trackerArrows.get(deviceId);
     if (!arrow) return;
 
     // Create sorted array of tracker arrows with glove first
-    const sortedTrackerArrows = Array.from(trackerArrows.entries())
-        .sort(([a], [b]) => {
-            // Glove always first
-            if (a.includes('Eidon-Glove')) return -1;
-            if (b.includes('Eidon-Glove')) return 1;
-            
-            // White tracker second
-            if (a.includes('Eidon-Tracker-White')) return -1;
-            if (b.includes('Eidon-Tracker-White')) return 1;
-            
-            // Orange tracker third
-            if (a.includes('Eidon-Tracker-Orange')) return -1;
-            if (b.includes('Eidon-Tracker-Orange')) return 1;
-            
-            // Green tracker fourth
-            if (a.includes('Eidon-Tracker-Green')) return -1;
-            if (b.includes('Eidon-Tracker-Green')) return 1;
-            
-            return 0;
-        })
-        .map(([id, arrow]) => ({id, ...arrow}));
+    const sortedTrackerArrows = getSortedTrackerArrows(trackerArrows);
 
     const thisIndex = sortedTrackerArrows.findIndex(arrow => arrow.id === deviceId);
 
@@ -3071,19 +3099,7 @@ function repositionTrackerArrows() {
     }
 
     // Build sorted array with same ordering logic used in updateTrackerArrow
-    const sortedTrackerArrows = Array.from(trackerArrows.entries())
-        .sort(([a], [b]) => {
-            if (a.includes('Eidon-Glove')) return -1;
-            if (b.includes('Eidon-Glove')) return 1;
-            if (a.includes('Eidon-Tracker-White')) return -1;
-            if (b.includes('Eidon-Tracker-White')) return 1;
-            if (a.includes('Eidon-Tracker-Orange')) return -1;
-            if (b.includes('Eidon-Tracker-Orange')) return 1;
-            if (a.includes('Eidon-Tracker-Green')) return -1;
-            if (b.includes('Eidon-Tracker-Green')) return 1;
-            return 0;
-        })
-        .map(([id, arrow]) => ({ id, ...arrow }));
+    const sortedTrackerArrows = getSortedTrackerArrows(trackerArrows);
 
     // Position arrows so that last one is at origin and previous arrows chain outwards
     let cumulativeOffset = { x: 2, y: 5, z: 0 };
@@ -3103,9 +3119,16 @@ function repositionTrackerArrows() {
 // Add vector mode toggle UI
 function addVectorModeToggle() {
     // Prevent duplicate button
-    if (document.getElementById('vector-mode-toggle')) return;
-
-    const toggle = document.createElement('button');
+    let toggle = document.getElementById('vector-mode-toggle');
+    if (toggle) {
+        toggle.onclick = () => {
+            chainMode = !chainMode;
+            toggle.textContent = chainMode ? 'Chain Mode: On' : 'Chain Mode: Off';
+            repositionTrackerArrows();
+        };
+        return;
+    }
+    toggle = document.createElement('button');
     toggle.id = 'vector-mode-toggle';
     toggle.textContent = 'Chain Mode: Off';
     toggle.onclick = () => {
@@ -3161,11 +3184,15 @@ function addGlobalCalibrationButton() {
     if (!controlPanel) return;
 
     // Avoid duplicates
-    if (document.getElementById('calibrate-all-btn')) return;
+    let calibrateAllBtn = document.getElementById('calibrate-all-btn');
+    if (calibrateAllBtn) {
+        calibrateAllBtn.onclick = () => calibrateDevice();
+        return;
+    }
 
-    const calibrateAllBtn = document.createElement('button');
+    calibrateAllBtn = document.createElement('button');
     calibrateAllBtn.id = 'calibrate-all-btn';
-    calibrateAllBtn.textContent = 'Calibrate All Devices';
+    calibrateAllBtn.textContent = 'Calibrate All';
     calibrateAllBtn.onclick = () => calibrateDevice(); // no arg => all devices
     controlPanel.appendChild(calibrateAllBtn);
 }

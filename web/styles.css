@@ -6,9 +6,9 @@
   --joint-bg: #fff;
   --tracker-bg: #fff;
   --glove-bg: #fff;
-  --label-bg: #d4edda;
-  --label-color: #155724;
   --disabled-bg: #cccccc;
+  --button-primary-bg: #4CAF50;
+  --button-primary-text: white;
 }
 
 [data-theme="dark"] {
@@ -20,6 +20,10 @@
   --tracker-bg: #2a2a2a;
   --glove-bg: #2a2a2a;
   --disabled-bg: #cccccc7a;
+  --button-primary-bg: #2e5830;
+  --button-primary-text: white;
+  --label-bg: #d4edda;
+  --label-color: #155724;
 }
 
 body {
@@ -57,23 +61,32 @@ body {
 }
 
 button {
-  padding: 8px 16px;
-  cursor: pointer;
-  margin-right: 10px;
+  margin-right: 8px;
   padding: 8px 16px;
   border-radius: 20px;
   background-color: var(--joint-bg);
   color: var(--text-color);
   border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: var(--bar-bg);
 }
 
 button:disabled {
   background-color: var(--disabled-bg);
   cursor: not-allowed;
+}
+
+#connect-button {
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-text);
+}
+
+#connect-button button:hover {
+  background-color: #45a049;
 }
 
 #disconnect-button:hover {
@@ -474,6 +487,11 @@ button:disabled {
   height: 12px;
   border-radius: 50%;
   display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+#arm-values {
+  margin: 10px 0;
 }
 
 

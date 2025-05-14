@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D Hand Joint Visualizer</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" type="text/css" media="screen" />
 </head>
 <body>
     <div class="controls">
         <button id="connect-button">Connect HID Device</button>
         <button id="disconnect-button" disabled style="display: none;">Disconnect All</button>
+        <button id="calibrate-all-btn">Calibrate All</button>
+        <button id="vector-mode-toggle">Chain Mode: Off</button>
         <span id="status-indicator" class="status disconnected">Status: Disconnected</span>
     </div>
     
