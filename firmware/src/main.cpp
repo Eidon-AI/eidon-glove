@@ -330,6 +330,20 @@ uint8_t applyDeadzone(int32_t rawValue, uint8_t deadzone) {
     }
 }
 
+// Helper to generate unique BLE name "Eidon Glove-XXXX" using low 2 bytes of the MAC
+static std::string generateUniqueName() {
+    NimBLEAddress addr = NimBLEDevice::getAddress(); // e.g. "aa:bb:cc:dd:ee:ff"
+    std::string mac = addr.toString();
+    // Extract last 4 hex characters (low 16-bits) ignoring ':'
+    std::string suffix;
+    for (int i = mac.size() - 2; i >= 0 && suffix.size() < 4; --i) {
+        if (mac[i] != ':') suffix.insert(suffix.begin(), (char)toupper(mac[i]));
+    }
+    char name[32];
+    snprintf(name, sizeof(name), "Eidon Glove-%s", suffix.c_str());
+    return std::string(name);
+}
+
 void setup() {
     Serial.begin(115200);
     delay(1000); // Give serial time to connect
@@ -351,12 +365,15 @@ void setup() {
     
     Serial.println("Initializing BLE Gamepad...");
     
-    // Set a fixed device name and address for consistent pairing
-    NimBLEDevice::init("Eidon Glove (Right)");
-    
-    // Optional: Set a fixed MAC address (uncomment if needed)
-    // uint8_t customAddress[6] = {0x11, 0x22, 0x33, 0x44, 0x55, 0x66};
-    // esp_base_mac_addr_set(customAddress);
+    // Initialize NimBLE stack first (device name can be empty for now)
+    NimBLEDevice::init("");
+
+    // Generate a unique device name based on MAC address
+    std::string deviceName = generateUniqueName();
+    NimBLEDevice::setDeviceName(deviceName);
+
+    Serial.print("Advertising as: ");
+    Serial.println(deviceName.c_str());
     
     // Configure security for reliable pairing
     NimBLEDevice::setSecurityAuth(true, true, true);
@@ -397,7 +414,7 @@ void setup() {
     pAdvertising->setAppearance(HID_GAMEPAD);
     pAdvertising->addServiceUUID(hid->hidService()->getUUID());
     pAdvertising->setScanResponse(true);
-    pAdvertising->setName("Hand Tracker (Right)"); // Must match the init name
+    pAdvertising->setName(deviceName);
     
     // Start advertising
     pAdvertising->start();
