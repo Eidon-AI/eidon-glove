@@ -35,12 +35,8 @@ const uint8_t reportDescriptor[] = {
     0x05, 0x01,        // Usage Page (Generic Desktop)
     0x09, 0x05,        // Usage (Gamepad)
     0xA1, 0x01,        // Collection (Application)
+    0x85, 0x01,        //   Report ID (1)
 
-    // Constant value (1 byte)
-    0x75, 0x08,        // Report Size (8)
-    0x95, 0x01,        // Report Count (1)
-    0x81, 0x03,        // Input (Constant, Variable, Absolute)
-    
     // Buttons (16 buttons)
     0x05, 0x09,        // Usage Page (Button)
     0x19, 0x01,        // Usage Minimum (Button 1)
@@ -51,7 +47,7 @@ const uint8_t reportDescriptor[] = {
     0x95, 0x10,        // Report Count (16)
     0x81, 0x02,        // Input (Data, Variable, Absolute)
     
-    // First 8 axes - using standard axis definitions
+    // 16 one-byte axes, each with distinct usage codes, but declared in a single block
     0x05, 0x01,        // Usage Page (Generic Desktop)
     0x09, 0x30,        // Usage (X)
     0x09, 0x31,        // Usage (Y)
@@ -61,14 +57,6 @@ const uint8_t reportDescriptor[] = {
     0x09, 0x35,        // Usage (Rz)
     0x09, 0x36,        // Usage (Slider)
     0x09, 0x37,        // Usage (Dial)
-    0x15, 0x00,        // Logical Minimum (0)
-    0x26, 0xFF, 0x00,  // Logical Maximum (255)
-    0x75, 0x08,        // Report Size (8)
-    0x95, 0x08,        // Report Count (8)
-    0x81, 0x02,        // Input (Data, Variable, Absolute)
-    
-    // Second set of 8 axes - using additional standard controls
-    0x05, 0x01,        // Usage Page (Generic Desktop)
     0x09, 0x38,        // Usage (Wheel)
     0x09, 0x39,        // Usage (Hat switch)
     0x09, 0x3A,        // Usage (Counted Buffer)
@@ -80,23 +68,21 @@ const uint8_t reportDescriptor[] = {
     0x15, 0x00,        // Logical Minimum (0)
     0x26, 0xFF, 0x00,  // Logical Maximum (255)
     0x75, 0x08,        // Report Size (8)
-    0x95, 0x08,        // Report Count (8)
+    0x95, 0x10,        // Report Count (16)
     0x81, 0x02,        // Input (Data, Variable, Absolute)
 
-    // 4 values for quaternion (w, x, y, z) - now using 16-bit values
-    0x09, 0x30,        //   Usage (X)
-    0x09, 0x31,        //   Usage (Y)
-    0x09, 0x32,        //   Usage (Z)
-    0x09, 0x33,        //   Usage (W)
-    0x15, 0x00,        //   Logical Minimum (0)
-    0x26, 0xFF, 0xFF,  //   Logical Maximum (65535)
-    0x35, 0x00,        //   Physical Minimum (0)
-    0x46, 0xFF, 0xFF,  //   Physical Maximum (65535)
-    0x75, 0x10,        //   Report Size (16)
-    0x95, 0x04,        //   Report Count (4)
-    0x81, 0x02,        //   Input (Data, Variable, Absolute)
+    // Quaternion orientation (Sensor page) integrated in same Application Collection
+    0x05, 0x20,                  // Usage Page (Sensor)
+    0x09, 0x80,                  // Usage (Orientation)
+    // 4×16-bit quaternion components (i, j, k, real)
+    0x0A, 0x83, 0x04,            // Usage 0x0483 – Data Field: Quaternion
+    0x75, 0x10,                  // Report Size (16)
+    0x95, 0x04,                  // Report Count (4)
+    0x17, 0x00, 0x00, 0x00, 0x00,// Logical Minimum 0 (32-bit)
+    0x27, 0xFF, 0xFF, 0x00, 0x00,// Logical Maximum 65535 (32-bit)
+    0x81, 0x02,                  // Input (Data,Var,Abs)
 
-    0xC0               // End Collection
+    0xC0               // End Application Collection
 };
 
 // Variables to store joint values and button state
