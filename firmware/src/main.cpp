@@ -6,6 +6,7 @@
 #include "BNO085.h"
 #include "FingerTracking.h"
 #include "HallEffectSensors.h"
+#include <Preferences.h>
 
 // Vendor and Product IDs
 #define VENDOR_ID  0xE1D0 // Eidon AI vendor ID
@@ -30,70 +31,89 @@
 #define DEADZONE 32                   // Size of the deadzone (in output units, 0-255)
 #define ANALOG_CENTER 127             // Center value for analog stick
 
-// Updated HID Report Descriptor to use more standard axis definitions
-const uint8_t reportDescriptor[] = {
-    0x05, 0x01,        // Usage Page (Generic Desktop)
-    0x09, 0x05,        // Usage (Gamepad)
-    0xA1, 0x01,        // Collection (Application)
-    0x85, 0x01,        //   Report ID (1)
+/* One top-level application collection, Usage = Gamepad                    */
+/*  ├─ Input  (Button/Flags, Finger Angle Bytes, Quaternion)                */
+/*  ├─ Output (Vendor byte)                                                 */
+/*  └─ Feature(RGB)                                                         */
 
-    // Buttons (16 buttons)
-    0x05, 0x09,        // Usage Page (Button)
-    0x19, 0x01,        // Usage Minimum (Button 1)
-    0x29, 0x10,        // Usage Maximum (Button 16)
-    0x15, 0x00,        // Logical Minimum (0)
-    0x25, 0x01,        // Logical Maximum (1)
-    0x75, 0x01,        // Report Size (1)
-    0x95, 0x10,        // Report Count (16)
-    0x81, 0x02,        // Input (Data, Variable, Absolute)
-    
-    // 16 one-byte axes, each with distinct usage codes, but declared in a single block
-    0x05, 0x01,        // Usage Page (Generic Desktop)
-    0x09, 0x30,        // Usage (X)
-    0x09, 0x31,        // Usage (Y)
-    0x09, 0x32,        // Usage (Z)
-    0x09, 0x33,        // Usage (Rx)
-    0x09, 0x34,        // Usage (Ry)
-    0x09, 0x35,        // Usage (Rz)
-    0x09, 0x36,        // Usage (Slider)
-    0x09, 0x37,        // Usage (Dial)
-    0x09, 0x38,        // Usage (Wheel)
-    0x09, 0x39,        // Usage (Hat switch)
-    0x09, 0x3A,        // Usage (Counted Buffer)
-    0x09, 0x3B,        // Usage (Byte Count)
-    0x09, 0x3C,        // Usage (Motion Wakeup)
-    0x09, 0x3D,        // Usage (Start)
-    0x09, 0x3E,        // Usage (Select)
-    0x09, 0x3F,        // Usage (Vector)
-    0x15, 0x00,        // Logical Minimum (0)
-    0x26, 0xFF, 0x00,  // Logical Maximum (255)
-    0x75, 0x08,        // Report Size (8)
-    0x95, 0x10,        // Report Count (16)
-    0x81, 0x02,        // Input (Data, Variable, Absolute)
+const uint8_t hid_report_descriptor[] = {
 
-    // Quaternion orientation (Sensor page) integrated in same Application Collection
-    0x05, 0x20,                  // Usage Page (Sensor)
-    0x09, 0x80,                  // Usage (Orientation)
-    // 4×16-bit quaternion components (i, j, k, real)
-    0x0A, 0x83, 0x04,            // Usage 0x0483 – Data Field: Quaternion
-    0x75, 0x10,                  // Report Size (16)
-    0x95, 0x04,                  // Report Count (4)
-    0x17, 0x00, 0x00, 0x00, 0x00,// Logical Minimum 0 (32-bit)
-    0x27, 0xFF, 0xFF, 0x00, 0x00,// Logical Maximum 65535 (32-bit)
-    0x81, 0x02,                  // Input (Data,Var,Abs)
+    /* -----------------------------------------------------------------------
+     * Top-level collection : sensor orientation + vendor channel, ID = 1
+     * ---------------------------------------------------------------------*/
+    0x05, 0x01,            // UsagePage (Generic Desktop)
+    0x09, 0x05,            // Usage (Gamepad)
+    0xA1, 0x01,            // Collection (Application)
 
-    /* ------------------------------------------------------------------
-     * Vendor-defined channel : Output (1 byte) – command interface
-     * ---------------------------------------------------------------- */
-    0x06, 0x00, 0xFF,     // Usage Page (Vendor 0xFF00)
-    0x09, 0x01,           // Usage 1
-    0x15, 0x00,           // Logical Minimum (0)
-    0x26, 0xFF, 0x00,     // Logical Maximum (255)
-    0x75, 0x08,           // Report Size (8)
-    0x95, 0x01,           // Report Count (1)
-    0x91, 0x02,           // Output (Data,Var,Abs)
+        0x85, 0x01,        //   Report ID (1)
 
-    0xC0               // End Application Collection
+        /* --- button flags : 16-bits ------------------------------------ */
+        0x05, 0x09,        // Usage Page (Button)
+        0x19, 0x01,        // Usage Minimum (Button 1)
+        0x29, 0x10,        // Usage Maximum (Button 16)
+        0x15, 0x00,        // Logical Minimum (0)
+        0x25, 0x01,        // Logical Maximum (1)
+        0x75, 0x01,        // Report Size (1)
+        0x95, 0x10,        // Report Count (16)
+        0x81, 0x02,        // Input (Data, Variable, Absolute)
+        
+        /* --- finger angles : 16 8-bit axes ------------------------------ */
+        0x05, 0x01,        // Usage Page (Generic Desktop)
+        0x09, 0x30,        // Usage (X)
+        0x09, 0x31,        // Usage (Y)
+        0x09, 0x32,        // Usage (Z)
+        0x09, 0x33,        // Usage (Rx)
+        0x09, 0x34,        // Usage (Ry)
+        0x09, 0x35,        // Usage (Rz)
+        0x09, 0x36,        // Usage (Slider)
+        0x09, 0x37,        // Usage (Dial)
+        0x09, 0x38,        // Usage (Wheel)
+        0x09, 0x39,        // Usage (Hat switch)
+        0x09, 0x3A,        // Usage (Counted Buffer)
+        0x09, 0x3B,        // Usage (Byte Count)
+        0x09, 0x3C,        // Usage (Motion Wakeup)
+        0x09, 0x3D,        // Usage (Start)
+        0x09, 0x3E,        // Usage (Select)
+        0x09, 0x3F,        // Usage (Vector)
+        0x15, 0x00,        // Logical Minimum (0)
+        0x26, 0xFF, 0x00,  // Logical Maximum (255)
+        0x75, 0x08,        // Report Size (8)
+        0x95, 0x10,        // Report Count (16)
+        0x81, 0x02,        // Input (Data, Variable, Absolute)
+
+        /* --- quaternion orientation (Sensor page) ------------------------ */
+        0x05, 0x20,                    // Usage Page (Sensor)
+        0x09, 0x80,                    // Usage (Orientation)
+        /* --- 4×16-bit quaternion components (i, j, k, real) -------------- */
+        0x0A, 0x83, 0x04,              // Usage 0x0483 – Data Field: Quaternion
+        0x75, 0x10,                    // Report Size (16)
+        0x95, 0x04,                    // Report Count (4)
+        0x17, 0x00, 0x00, 0x00, 0x00,  // Logical Minimum 0 (32-bit)
+        0x27, 0xFF, 0xFF, 0x00, 0x00,  // Logical Maximum 65535 (32-bit)
+        0x81, 0x02,                    // Input (Data,Var,Abs)
+
+        /* ------------------------------------------------------------------
+        * Vendor-defined channel : Output (1 byte) – command interface
+        * ---------------------------------------------------------------- */
+        0x06, 0x00, 0xFF,     // Usage Page (Vendor 0xFF00)
+        0x09, 0x01,           // Usage 1
+        0x15, 0x00,           // Logical Minimum (0)
+        0x26, 0xFF, 0x00,     // Logical Maximum (255)
+        0x75, 0x08,           // Report Size (8)
+        0x95, 0x01,           // Report Count (1)
+        0x91, 0x02,           // Output (Data,Var,Abs)
+
+        /* ------------------------------------------------------------------
+        * Vendor-defined Feature report : saved RGB (3 bytes)
+        * ---------------------------------------------------------------- */
+        0x09, 0x02,           // Usage (Vendor 2)
+        0x15, 0x00,           // Logical Minimum (0)
+        0x26, 0xFF, 0x00,     // Logical Maximum (255)
+        0x95, 0x03,           // Report Count 3
+        0x75, 0x08,           // Report Size 8
+        0xB1, 0x02,           // Feature (Data,Var,Abs)
+
+    0xC0                  // End Application Collection
 };
 
 // Variables to store joint values and button state
@@ -104,8 +124,15 @@ NimBLEServer* pServer = nullptr;
 NimBLEHIDDevice* hid = nullptr;
 NimBLECharacteristic* inputGamepad = nullptr;
 NimBLECharacteristic* outputGamepad = nullptr;
+NimBLECharacteristic* featureColor = nullptr;
 bool deviceConnected = false;
 bool oldDeviceConnected = false;
+
+// Persistent storage
+Preferences prefs;
+
+// Device color (RGB)
+uint8_t deviceColor[3] = {0xFF, 0xFF, 0xFF};
 
 // Define an enum for the different modes
 enum ControlMode {
@@ -264,15 +291,15 @@ uint16_t quaternionToAxis(float quat_val) {
 // Add this function before setup()
 void printHIDDescriptor() {
     Serial.println("HID Report Descriptor:");
-    for (size_t i = 0; i < sizeof(reportDescriptor); i++) {
-        if (reportDescriptor[i] < 16) Serial.print("0");
-        Serial.print(reportDescriptor[i], HEX);
+    for (size_t i = 0; i < sizeof(hid_report_descriptor); i++) {
+        if (hid_report_descriptor[i] < 16) Serial.print("0");
+        Serial.print(hid_report_descriptor[i], HEX);
         Serial.print(" ");
         if ((i + 1) % 8 == 0) Serial.println();
     }
     Serial.println();
     Serial.print("Total descriptor size: ");
-    Serial.println(sizeof(reportDescriptor));
+    Serial.println(sizeof(hid_report_descriptor));
     Serial.print("GamepadReport struct size: ");
     Serial.println(sizeof(GamepadReport));
 }
@@ -360,6 +387,30 @@ class OutputReportCallbacks : public NimBLECharacteristicCallbacks {
     }
 };
 
+// Callback for Feature report read/write (RGB color)
+class FeatureReportCallbacks : public NimBLECharacteristicCallbacks {
+    void onRead(NimBLECharacteristic* pChar) override {
+        // Return current color (3-byte payload only; stack prepends ID automatically)
+        pChar->setValue(deviceColor, 3);
+    }
+    void onWrite(NimBLECharacteristic* pChar) override {
+        std::string value = pChar->getValue();
+        size_t len = value.size();
+        if (len == 4) {
+            // Host included Report ID as first byte – skip it
+            memcpy(deviceColor, value.data() + 1, 3);
+        } else if (len >= 3) {
+            memcpy(deviceColor, value.data(), 3);
+        } else {
+            return; // invalid length
+        }
+
+        // Persist to NVS
+        prefs.putBytes("color", deviceColor, 3);
+        Serial.printf("Color updated to %02X %02X %02X and saved to flash\n", deviceColor[0], deviceColor[1], deviceColor[2]);
+    }
+};
+
 void setup() {
     Serial.begin(115200);
     delay(1000); // Give serial time to connect
@@ -411,6 +462,20 @@ void setup() {
     outputGamepad = hid->outputReport(1); // Report ID 1 (Output)
     outputGamepad->setCallbacks(new OutputReportCallbacks());
     
+    // Open NVS and load saved color
+    prefs.begin("glove", false);
+    if (prefs.getBytes("color", deviceColor, 3) != 3) {
+        // Default color if nothing stored
+        deviceColor[0] = 0xFF;
+        deviceColor[1] = 0xFF;
+        deviceColor[2] = 0xFF;
+    }
+
+    // Feature report for RGB color
+    featureColor = hid->featureReport(1); // Report ID 1 (Feature)
+    featureColor->setValue(deviceColor, 3);
+    featureColor->setCallbacks(new FeatureReportCallbacks());
+    
     // Set consistent manufacturer name
     hid->manufacturer()->setValue("ESP32-C3");
     
@@ -419,7 +484,7 @@ void setup() {
     hid->hidInfo(0x00, 0x01);
     
     // Set report descriptor
-    hid->reportMap((uint8_t*)reportDescriptor, sizeof(reportDescriptor));
+    hid->reportMap((uint8_t*)hid_report_descriptor, sizeof(hid_report_descriptor));
     
     // Print the HID descriptor for debugging
     // printHIDDescriptor();
