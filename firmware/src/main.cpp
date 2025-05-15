@@ -3,8 +3,8 @@
 #include <NimBLEUtils.h>
 #include <NimBLEHIDDevice.h>
 #include <NimBLECharacteristic.h>
-#include "FingerTracking.h"
 #include "BNO085.h"
+#include "FingerTracking.h"
 #include "HallEffectSensors.h"
 
 // Vendor and Product IDs
