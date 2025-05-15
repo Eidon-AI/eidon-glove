@@ -21,6 +21,7 @@ extern euler_t ypr;
 
 void setupBNO085();
 void updateBNO085();
+void resetBNO085();
 void printBNO085Values();
 void quaternionToEuler();
 
@@ -29,9 +30,5 @@ extern float quaternion_x;
 extern float quaternion_y;
 extern float quaternion_z;
 extern float quaternion_w;
-
-extern float linear_x;
-extern float linear_y;
-extern float linear_z;
 
 #endif 

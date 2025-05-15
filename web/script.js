@@ -1555,7 +1555,7 @@ function handleHIDInput(event) {
         
         // Process joint values
         for (let i = 0; i < 16; i++) {
-            const rawValue = data.getUint8(i + 3);
+            const rawValue = data.getUint8(i + 2);
             let finalValue = rawValue;
             
             if (gloveData.jointInversions[i]) {
@@ -1576,10 +1576,10 @@ function handleHIDInput(event) {
         }
 
         // Process quaternion values
-        const quaternionX = ((data.getUint8(19) | (data.getUint8(20) << 8)) - 32768) / 32767.5;
-        const quaternionY = ((data.getUint8(21) | (data.getUint8(22) << 8)) - 32768) / 32767.5;
-        const quaternionZ = ((data.getUint8(23) | (data.getUint8(24) << 8)) - 32768) / 32767.5;
-        const quaternionW = ((data.getUint8(25) | (data.getUint8(26) << 8)) - 32768) / 32767.5;
+        const quaternionX = ((data.getUint8(18) | (data.getUint8(19) << 8)) - 32768) / 32767.5;
+        const quaternionY = ((data.getUint8(20) | (data.getUint8(21) << 8)) - 32768) / 32767.5;
+        const quaternionZ = ((data.getUint8(22) | (data.getUint8(23) << 8)) - 32768) / 32767.5;
+        const quaternionW = ((data.getUint8(24) | (data.getUint8(25) << 8)) - 32768) / 32767.5;
 
         gloveData.quaternion = { x: quaternionX, y: quaternionY, z: quaternionZ, w: quaternionW };
         const euler = quaternionToEuler(quaternionX, quaternionY, quaternionZ, quaternionW);
@@ -1942,6 +1942,8 @@ function addGloveDisplay(deviceId) {
         </div>
         <div class="glove-details">
             <span class="device-id">${deviceId}</span>
+        </div>
+        <div class="glove-controls">
             <button class="calibrate-btn" onclick="calibrateDevice('${deviceId}')">Calibrate</button>
             <button class="disconnect-btn" onclick="disconnectFromDevice('${deviceId}')">Disconnect</button>
         </div>

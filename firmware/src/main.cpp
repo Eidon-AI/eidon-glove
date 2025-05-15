@@ -82,6 +82,17 @@ const uint8_t reportDescriptor[] = {
     0x27, 0xFF, 0xFF, 0x00, 0x00,// Logical Maximum 65535 (32-bit)
     0x81, 0x02,                  // Input (Data,Var,Abs)
 
+    /* ------------------------------------------------------------------
+     * Vendor-defined channel : Output (1 byte) – command interface
+     * ---------------------------------------------------------------- */
+    0x06, 0x00, 0xFF,     // Usage Page (Vendor 0xFF00)
+    0x09, 0x01,           // Usage 1
+    0x15, 0x00,           // Logical Minimum (0)
+    0x26, 0xFF, 0x00,     // Logical Maximum (255)
+    0x75, 0x08,           // Report Size (8)
+    0x95, 0x01,           // Report Count (1)
+    0x91, 0x02,           // Output (Data,Var,Abs)
+
     0xC0               // End Application Collection
 };
 
@@ -92,6 +103,7 @@ const uint8_t reportDescriptor[] = {
 NimBLEServer* pServer = nullptr;
 NimBLEHIDDevice* hid = nullptr;
 NimBLECharacteristic* inputGamepad = nullptr;
+NimBLECharacteristic* outputGamepad = nullptr;
 bool deviceConnected = false;
 bool oldDeviceConnected = false;
 
@@ -330,6 +342,24 @@ static std::string generateUniqueName() {
     return std::string(name);
 }
 
+// Callback to handle data sent from host (Output report)
+class OutputReportCallbacks : public NimBLECharacteristicCallbacks {
+    void onWrite(NimBLECharacteristic* pChar) override {
+        std::string value = pChar->getValue();
+        if (!value.empty()) {
+            uint8_t cmd = static_cast<uint8_t>(value[0]);
+            Serial.print("Output report received, cmd=0x");
+            Serial.println(cmd, HEX);
+
+            if (cmd == 0x01) {
+                Serial.println("Reset command: resetting BNO085");
+                resetBNO085();
+            }
+            // Additional commands can be added here
+        }
+    }
+};
+
 void setup() {
     Serial.begin(115200);
     delay(1000); // Give serial time to connect
@@ -377,7 +407,9 @@ void setup() {
     
     // Create HID device with consistent settings
     hid = new NimBLEHIDDevice(pServer);
-    inputGamepad = hid->inputReport(1); // Report ID 1
+    inputGamepad = hid->inputReport(1); // Report ID 1 (Input)
+    outputGamepad = hid->outputReport(1); // Report ID 1 (Output)
+    outputGamepad->setCallbacks(new OutputReportCallbacks());
     
     // Set consistent manufacturer name
     hid->manufacturer()->setValue("ESP32-C3");
@@ -591,6 +623,7 @@ void loop() {
 
                 // Update finger button states based on position changes
                 updateFingerButtons();
+                quaternionToEuler();
 
                 // Set button states based on detected gestures
                 gamepadReport.button1 = fingerButtons[0].isPressed; // Thumb
