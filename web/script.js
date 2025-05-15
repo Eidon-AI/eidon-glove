@@ -269,6 +269,10 @@ function createTextSprite(text, color) {
 
 // Modify createHandModel to create a hand for a specific device
 function createHandModel(deviceId) {
+    if (hands.has(deviceId)) {
+        return hands.get(deviceId);
+    }
+
     const handCount = getHandCount();
     const handModel = {
         arm: {
@@ -1336,6 +1340,44 @@ async function connectToDevice() {
             // Set up input report handler for this device
             device.addEventListener('inputreport', handleHIDInput);
             
+            // Use cached colour (if any) for instant UI
+            const cachedColor = getCachedColor(deviceId);
+
+            if (device.productName.toLowerCase().includes('tracker')) {
+                if (!trackers.has(deviceId)) addTrackerDisplay(deviceId, cachedColor);
+            } else {
+                addGloveDisplay(deviceId, cachedColor);
+                createHandModel(deviceId);
+            }
+
+            // Read firmware colour, update UI and cache when it arrives
+            const readColour = async () => {
+                try {
+                    const dv = await device.receiveFeatureReport(1);
+                    const arr = new Uint8Array(dv.buffer);
+                    if (arr.length >= 3) {
+                        const offset = (arr[0] === 1 && arr.length >= 4) ? 1 : 0;
+                        return (arr[offset] << 16) | (arr[offset + 1] << 8) | arr[offset + 2];
+                    }
+                } catch(err) {
+                    console.warn('Colour report read failed', err);
+                }
+                return null;
+            };
+
+            readColour().then(col => {
+                if (col === null) return;
+                const arrow = trackerArrows.get(deviceId);
+                const dotSelector = device.productName.toLowerCase().includes('tracker') ? 'tracker' : 'glove';
+                const dot = document.querySelector(`#${dotSelector}-${deviceId} .device-dot`);
+                if (arrow) {
+                    arrow.color = col;
+                    [arrow.forward.material, arrow.up.material].forEach(m=>m.color.setHex(col));
+                }
+                if (dot) dot.style.backgroundColor = '#' + col.toString(16).padStart(6,'0');
+                setCachedColor(deviceId, col);
+            });
+
             addLogMessage(`Connected to HID device: ${device.productName} (${deviceId})`);
             addLogMessage(`VendorID: 0x${device.vendorId.toString(16)}, ProductID: 0x${device.productId.toString(16)}`);
         }
@@ -1438,15 +1480,44 @@ async function connectDevice(device, deviceId) {
         device.addEventListener('inputreport', handleHIDInput);
         addLogMessage(`Auto-connected to HID device: ${device.productName} (${deviceId})`);
 
-        // Create display for the device
+        const cachedColor = getCachedColor(deviceId);
+
+        // Instant UI using cached colour
         if (device.productName.toLowerCase().includes('tracker')) {
-            console.log('Creating tracker display for:', deviceId);
-            addTrackerDisplay(deviceId);
+            if (!trackers.has(deviceId)) addTrackerDisplay(deviceId, cachedColor);
         } else {
-            console.log('Creating glove display for:', deviceId);
-            addGloveDisplay(deviceId);
+            addGloveDisplay(deviceId, cachedColor);
             createHandModel(deviceId);
         }
+
+        const readColour = async () => {
+            try {
+                const dv = await device.receiveFeatureReport(1);
+                const arr = new Uint8Array(dv.buffer);
+                if (arr.length >= 3) {
+                    const offset = (arr[0] === 1 && arr.length >= 4) ? 1 : 0;
+                    return (arr[offset] << 16) | (arr[offset + 1] << 8) | arr[offset + 2];
+                }
+            } catch (err) {
+                console.warn('Could not read colour feature from device', err);
+            }
+            return null;
+        };
+
+        // Fetch actual colour and update when available
+        readColour().then(col => {
+            if (col === null) return;
+            const arrow = trackerArrows.get(deviceId);
+            const dotSel = device.productName.toLowerCase().includes('tracker') ? 'tracker' : 'glove';
+            const dot = document.querySelector(`#${dotSel}-${deviceId} .device-dot`);
+            if (arrow) {
+                arrow.color = col;
+                [arrow.forward.material, arrow.up.material].forEach(m=>m.color.setHex(col));
+            }
+            if (dot) dot.style.backgroundColor = '#' + col.toString(16).padStart(6,'0');
+            setCachedColor(deviceId, col);
+        });
+
     } catch (error) {
         console.error(`Error connecting device ${deviceId}:`, error);
         addLogMessage(`Failed to connect to device: ${device.productName}`);
@@ -1781,7 +1852,7 @@ function addCompassOverlay() {
 }
 
 // Modify addTrackerDisplay function
-function addTrackerDisplay(deviceId) {
+function addTrackerDisplay(deviceId, presetColor = null) {
     console.log(`Adding tracker display for deviceId: ${deviceId}`);
     const device = hidDevices.get(deviceId);
     console.log('Device from hidDevices:', device);
@@ -1796,7 +1867,7 @@ function addTrackerDisplay(deviceId) {
     console.log('Final deviceName:', deviceName);
     
     // Get color for the dot
-    const color = getColorFromDeviceName(deviceId);
+    let color = presetColor !== null ? presetColor : getColorFromDeviceName(deviceId);
     const colorHex = color ? '#' + color.toString(16).padStart(6, '0') : '#ffffff';
     
     trackerElement.innerHTML = `
@@ -1861,8 +1932,70 @@ function addTrackerDisplay(deviceId) {
         euler: { roll: 0, pitch: 0, yaw: 0 }
     });
 
-    // Create tracker arrow in Three.js scene
-    createTrackerArrow(deviceId);
+    // Create tracker arrow in Three.js scene with chosen colour
+    createTrackerArrow(deviceId, color);
+
+    // After arrow creation (or if colour came from device) paint dot & arrow
+    const arrowInfo = trackerArrows.get(deviceId);
+    const dotEl = trackerElement.querySelector('.device-dot');
+    if (arrowInfo && dotEl) {
+        dotEl.style.backgroundColor = '#' + arrowInfo.color.toString(16).padStart(6, '0');
+        // Add click handler to change colour
+        attachColorPicker(dotEl, deviceId);
+        return; // skip legacy code
+    }
+
+    // Create materials
+    const forwardMaterial = new THREE.MeshBasicMaterial({ color: color });
+    const upMaterial = new THREE.MeshBasicMaterial({ color: color, opacity: 0.9, transparent: true });
+    const projectedMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, opacity: 0.2, transparent: true }); // Default white, will be updated
+    const invertedUpMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000, opacity: 0.9, transparent: true }); // Red for inverted up vector
+    const secondProjectedMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0.2, transparent: true }); // Green for second projection
+    
+    // Create forward cylinder mesh
+    const forwardCylinder = new THREE.Mesh(geometry, forwardMaterial);
+    forwardCylinder.rotation.x = Math.PI / 2;
+    
+    // Create up cylinder mesh
+    const upCylinder = new THREE.Mesh(geometry, upMaterial);
+    upCylinder.rotation.x = Math.PI / 2;
+    
+    // Create projected cylinder mesh
+    const projectedCylinder = new THREE.Mesh(geometry, projectedMaterial);
+    projectedCylinder.rotation.x = Math.PI / 2;
+    projectedCylinder.visible = false; // Initially hidden
+
+    // Create inverted up cylinder mesh
+    const invertedUpCylinder = new THREE.Mesh(geometry, invertedUpMaterial);
+    invertedUpCylinder.rotation.x = Math.PI / 2;
+    invertedUpCylinder.visible = false; // Initially hidden
+
+    // Create second projected cylinder mesh
+    const secondProjectedCylinder = new THREE.Mesh(geometry, secondProjectedMaterial);
+    secondProjectedCylinder.rotation.x = Math.PI / 2;
+    secondProjectedCylinder.visible = false; // Initially hidden
+    
+    // Create a group to hold all cylinders
+    const arrowGroup = new THREE.Group();
+    arrowGroup.add(forwardCylinder);
+    arrowGroup.add(upCylinder);
+    arrowGroup.add(projectedCylinder);
+    arrowGroup.add(invertedUpCylinder);
+    arrowGroup.add(secondProjectedCylinder);
+    
+    // Add to scene
+    scene.add(arrowGroup);
+    
+    // Store in Map with all cylinders and the color
+    trackerArrows.set(deviceId, {
+        forward: forwardCylinder,
+        up: upCylinder,
+        projected: projectedCylinder,
+        invertedUp: invertedUpCylinder,
+        secondProjected: secondProjectedCylinder,
+        group: arrowGroup,
+        color: color
+    });
 }
 
 // Modify updateTrackerDisplay function
@@ -1918,7 +2051,27 @@ function updateTrackerDisplay(deviceId, x, y, z, w) {
 }
 
 // Add this function to create a glove display section
-function addGloveDisplay(deviceId) {
+function addGloveDisplay(deviceId, presetColor = null) {
+    // If already exists, just update color and return
+    const existing = document.getElementById(`glove-${deviceId}`);
+    if (existing) {
+        const arrow = trackerArrows.get(deviceId);
+        const dot = existing.querySelector('.device-dot');
+        const col = presetColor !== null ? presetColor : (arrow ? arrow.color : null);
+        if (col !== null && dot) {
+            dot.style.backgroundColor = '#' + col.toString(16).padStart(6,'0');
+        }
+        if (!trackerArrows.has(deviceId)) {
+            createTrackerArrow(deviceId, col);
+        } else if (col !== null) {
+            const arr = trackerArrows.get(deviceId);
+            arr.color = col;
+            [arr.forward.material, arr.up.material].forEach(m=>m.color.setHex(col));
+        }
+        attachColorPicker(dot, deviceId);
+        return;
+    }
+
     const gloveId = deviceId.split('-').pop(); // Get unique part of device ID
     const gloveElement = document.createElement('div');
     gloveElement.className = 'glove-info';
@@ -1929,7 +2082,7 @@ function addGloveDisplay(deviceId) {
     const deviceName = device ? device.productName : 'Glove';
     
     // Get color for the dot
-    const color = getColorFromDeviceName(deviceId);
+    let color = presetColor !== null ? presetColor : getColorFromDeviceName(deviceId);
     const colorHex = color ? '#' + color.toString(16).padStart(6, '0') : '#ffffff';
     
     // Create glove header
@@ -2033,8 +2186,18 @@ function addGloveDisplay(deviceId) {
         euler: { roll: 0, pitch: 0, yaw: 0 }
     });
 
-    // Create tracker arrow for the glove
-    createTrackerArrow(deviceId);
+    // Create tracker arrow for the glove with chosen colour
+    createTrackerArrow(deviceId, color);
+
+    // Attach colour picker to dot and sync initial colour
+    const gloveDot = gloveElement.querySelector('.device-dot');
+    if (gloveDot) {
+        const arrowInfo = trackerArrows.get(deviceId);
+        if (arrowInfo) {
+            gloveDot.style.backgroundColor = '#' + arrowInfo.color.toString(16).padStart(6, '0');
+        }
+        attachColorPicker(gloveDot, deviceId);
+    }
 }
 
 // Update the joint display function to handle multiple gloves
@@ -2359,7 +2522,7 @@ function quaternionToJointAngles(q) {
 function getColorFromDeviceName(deviceName) {
     // Special case for gloves - always use a specific color
     if (deviceName.toLowerCase().includes('glove')) {
-        return 0x61c680; // Use green color for gloves
+        return 0xFFFFFF; // Use white color for gloves
     }
 
     const colorMap = {
@@ -2390,14 +2553,24 @@ function getColorFromDeviceName(deviceName) {
     return null;
 }
 
-function createTrackerArrow(deviceId) {
+function createTrackerArrow(deviceId, presetColor=null) {
+    // If arrow already exists, optionally update colour and exit
+    if (trackerArrows.has(deviceId)) {
+        const existing = trackerArrows.get(deviceId);
+        if (presetColor !== null) {
+            existing.color = presetColor;
+            [existing.forward.material, existing.up.material].forEach(m=>m.color.setHex(presetColor));
+        }
+        return existing;
+    }
+
     // Create cylinder geometry for the forward arrow shaft
     const radius = 0.1; // Thickness of the arrow
     const height = 1;   // Initial height (will be scaled)
     const geometry = new THREE.CylinderGeometry(radius, radius, height, 8);
     
     // Try to get color from device name - check the entire device ID
-    let color = getColorFromDeviceName(deviceId);
+    let color = presetColor !== null ? presetColor : getColorFromDeviceName(deviceId);
     
     // If no color found in name, use default color scheme
     if (color === null) {
@@ -2406,7 +2579,7 @@ function createTrackerArrow(deviceId) {
         0x00ffff, // Cyan
         0xff0000, // Red
         0x0000ff, // Blue
-            0x61c680, // Green
+        0x61c680, // Green
         0xffff00, // Yellow
     ];
     const index = Array.from(trackerArrows.keys()).length % colors.length;
@@ -3229,3 +3402,59 @@ async function calibrateDevice(deviceId = null) {
 
 // Call global calibration button setup after vector mode toggle
 addGlobalCalibrationButton();
+
+// Attach a hidden colour picker to the dot, send result to device & update arrow
+function attachColorPicker(dotEl, deviceId) {
+    const picker = document.createElement('input');
+    picker.type = 'color';
+    picker.style.display = 'none';
+    document.body.appendChild(picker);
+
+    dotEl.style.cursor = 'pointer';
+    dotEl.addEventListener('click', () => picker.click());
+
+    picker.addEventListener('input', async () => {
+        const hex = picker.value.substring(1); // "RRGGBB"
+        const colorInt = parseInt(hex, 16);
+        // Update UI dot
+        dotEl.style.backgroundColor = '#' + hex;
+
+        // Update arrow materials
+        const arrow = trackerArrows.get(deviceId);
+        if (arrow) {
+            [arrow.forward.material, arrow.up.material].forEach(m=>m.color.setHex(colorInt));
+            arrow.color = colorInt;
+        }
+
+        // Send to device via feature report
+        const device = hidDevices.get(deviceId);
+        if (device) {
+            const r = (colorInt >> 16) & 0xFF;
+            const g = (colorInt >> 8) & 0xFF;
+            const b = colorInt & 0xFF;
+            try {
+                await device.sendFeatureReport(1, new Uint8Array([r, g, b]));
+            } catch(e) {
+                console.warn('Failed to send colour feature', e);
+            }
+        }
+    });
+}
+
+// --- Persistent colour cache (deviceId → int) ---
+function getStoredDeviceColors() {
+    try {
+        return JSON.parse(localStorage.getItem('deviceColors') || '{}');
+    } catch (e) {
+        return {};
+    }
+}
+function getCachedColor(deviceId) {
+    const map = getStoredDeviceColors();
+    return Object.prototype.hasOwnProperty.call(map, deviceId) ? map[deviceId] : null;
+}
+function setCachedColor(deviceId, colorInt) {
+    const map = getStoredDeviceColors();
+    map[deviceId] = colorInt;
+    localStorage.setItem('deviceColors', JSON.stringify(map));
+}
