@@ -657,6 +657,9 @@ function updateHandModel(deviceId) {
     
     // Update arm position first
     updateArmPosition(deviceId);
+    
+    // Make sure arm values are applied to the model
+    updateArmValuesDisplay();
 
     // Process each joint
     for (let i = 0; i < MAX_JOINTS; i++) {
@@ -734,16 +737,6 @@ function updateHandModel(deviceId) {
             }
         }
     }
-    
-    // Apply quaternion rotations
-    // const euler = gloveData.euler;
-    // const roll = Math.PI - (euler.roll);
-    // const pitch = Math.PI - (euler.pitch + Math.PI);
-    // const yaw = euler.yaw + Math.PI;
-
-    // handModel.palm.rotation.x = pitch;
-    // handModel.palm.rotation.y = yaw;
-    // handModel.palm.rotation.z = roll;
     
     handModel.palm.updateMatrixWorld(true);
     renderer.render(scene, camera);
@@ -2751,7 +2744,7 @@ function updateTrackerArrow(deviceId, quaternion) {
     arrow.quaternion = quaternion;
     
     // Calculate forward direction with variable length (first tracker gets shorter ray)
-    const rayLength = thisIndex === 0 ? 2.0 : 5.0;
+    const rayLength = 5.0; //thisIndex === 0 ? 2.0 : 5.0;
     const forwardTip = forwardRay(quaternion, rayLength);
     
     // Calculate up direction
