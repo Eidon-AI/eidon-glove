@@ -390,8 +390,11 @@ class OutputReportCallbacks : public NimBLECharacteristicCallbacks {
 // Callback for Feature report read/write (RGB color)
 class FeatureReportCallbacks : public NimBLECharacteristicCallbacks {
     void onRead(NimBLECharacteristic* pChar) override {
-        // Return current color (3-byte payload only; stack prepends ID automatically)
-        pChar->setValue(deviceColor, 3);
+        // Manually prepend report ID 1 to the color data
+        uint8_t reportData[4];
+        reportData[0] = 0x01;  // Report ID
+        memcpy(reportData + 1, deviceColor, 3);
+        pChar->setValue(reportData, 4);
     }
     void onWrite(NimBLECharacteristic* pChar) override {
         std::string value = pChar->getValue();
