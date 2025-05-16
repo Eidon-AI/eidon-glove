@@ -1694,7 +1694,7 @@ function initializeJointElements() {
         
         jointElement.innerHTML = `
             <div class="joint-name">${fingerName} - ${jointType}</div>
-            <div class="joint-value" id="joint-value-${i}">Value: 0</div>
+            <div class="joint-value" id="joint-value-${i}">0</div>
             <div class="bar-container">
                 <div class="bar" id="joint-bar-${i}"></div>
             </div>
@@ -1719,12 +1719,12 @@ function initializeJointElements() {
     const quaternionElement = document.createElement('div');
     quaternionElement.className = 'joint-info';
     quaternionElement.innerHTML = `
-        <div class="joint-name">Orientation</div>
+        <div class="joint-name">🌐 Orientation</div>
         <div class="quaternion-values">
-            <div>X: <span id="quat-x">0.000</span></div>
-            <div>Y: <span id="quat-y">0.000</span></div>
-            <div>Z: <span id="quat-z">0.000</span></div>
-            <div>W: <span id="quat-w">0.000</span></div>
+            <div>X<br><span id="quat-x">0.000</span></div>
+            <div>Y<br><span id="quat-y">0.000</span></div>
+            <div>Z<br><span id="quat-z">0.000</span></div>
+            <div>W<br><span id="quat-w">0.000</span></div>
         </div>
         <div class="euler-values">
             <div>Roll:<br><span id="euler-roll">0.0°</span></div>
@@ -1755,7 +1755,7 @@ function updateJointDisplay(deviceId, jointIndex, value) {
     const barElement = document.getElementById(`joint-bar-${deviceId}-${jointIndex}`);
     
     if (valueElement && barElement) {
-        valueElement.textContent = `Value: ${value}`;
+        valueElement.textContent = `${value}`;
         
         const jointInfo = fingerJointMap[jointIndex];
         const min = jointInfo?.min || 0;
@@ -1763,7 +1763,7 @@ function updateJointDisplay(deviceId, jointIndex, value) {
         const range = max - min;
         
         const percentage = Math.min(100, Math.max(0, ((value - min) / range) * 100));
-        barElement.style.width = `${percentage}%`;
+        barElement.style.height = `${percentage}%`;
         
         const hue = Math.floor(percentage * 1.2);
         barElement.style.backgroundColor = `hsl(${hue}, 80%, 50%)`;
@@ -1885,11 +1885,12 @@ function addTrackerDisplay(deviceId, presetColor = null) {
             </div>
         </div>
         <div class="tracker-values">
+            <div class="tracker-value-label">Orientation</div>
             <div class="quaternion-values">
-                <div>X: <span id="tracker-quat-x-${deviceId}">0.000</span></div>
-                <div>Y: <span id="tracker-quat-y-${deviceId}">0.000</span></div>
-                <div>Z: <span id="tracker-quat-z-${deviceId}">0.000</span></div>
-                <div>W: <span id="tracker-quat-w-${deviceId}">0.000</span></div>
+                <div>X<br><span id="tracker-quat-x-${deviceId}">0.000</span></div>
+                <div>Y<br><span id="tracker-quat-y-${deviceId}">0.000</span></div>
+                <div>Z<br><span id="tracker-quat-z-${deviceId}">0.000</span></div>
+                <div>W<br><span id="tracker-quat-w-${deviceId}">0.000</span></div>
             </div>
             <div class="euler-values">
                 <div class="tracker-value-container">
@@ -2094,7 +2095,7 @@ function addGloveDisplay(deviceId, presetColor = null) {
             ${deviceName}
         </div>
         <div class="glove-details">
-            <span class="device-id">${deviceId}</span>
+            <span class="device-id">ID: ${deviceId}</span>
         </div>
         <div class="glove-controls">
             <button class="calibrate-btn" onclick="calibrateDevice('${deviceId}')">Calibrate</button>
@@ -2111,12 +2112,12 @@ function addGloveDisplay(deviceId, presetColor = null) {
     const quaternionElement = document.createElement('div');
     quaternionElement.className = 'joint-info';
     quaternionElement.innerHTML = `
-        <div class="joint-name">Orientation</div>
+        <div class="joint-name">🌐 Orientation</div>
         <div class="quaternion-values">
-            <div>X: <span id="quat-x-${deviceId}">0.000</span></div>
-            <div>Y: <span id="quat-y-${deviceId}">0.000</span></div>
-            <div>Z: <span id="quat-z-${deviceId}">0.000</span></div>
-            <div>W: <span id="quat-w-${deviceId}">0.000</span></div>
+            <div>X<br><span id="quat-x-${deviceId}">0.000</span></div>
+            <div>Y<br><span id="quat-y-${deviceId}">0.000</span></div>
+            <div>Z<br><span id="quat-z-${deviceId}">0.000</span></div>
+            <div>W<br><span id="quat-w-${deviceId}">0.000</span></div>
         </div>
         <div class="euler-values">
             <div class="tracker-value-container">
@@ -2150,29 +2151,16 @@ function addGloveDisplay(deviceId, presetColor = null) {
     `;
     glovejointsContainer.appendChild(quaternionElement);
     
-    // Create joint elements for this glove
-    for (let i = 0; i < MAX_JOINTS; i++) {
-        const jointElement = document.createElement('div');
-        jointElement.className = 'joint-info';
-        
-        const fingerIndex = i < 4 ? 0 : Math.floor((i - 4) / 3) + 1;
-        const jointType = fingerJointMap[i]?.type || 'Unknown';
-        const fingerName = ['Thumb', 'Index', 'Middle', 'Ring', 'Pinky'][fingerIndex];
-        
-        jointElement.innerHTML = `
-            <div class="joint-name">${fingerName} - ${jointType}</div>
-            <div class="joint-value" id="joint-value-${deviceId}-${i}">Value: 0</div>
-            <div class="bar-container">
-                <div class="bar" id="joint-bar-${deviceId}-${i}"></div>
-            </div>
-        `;
-        // <label class="invert-toggle">
-        //     <input type="checkbox" id="invert-${deviceId}-${i}" ${fingerJointMap[i]?.inverted ? 'checked' : ''}>
-        //     Invert Values
-        // </label>
-        glovejointsContainer.appendChild(jointElement);
-    }
-
+    // Create new compact angles display section
+    const anglesElement = document.createElement('div');
+    anglesElement.className = 'joint-info compact-angles';
+    anglesElement.innerHTML = `
+        <div class="joint-name">🖐 Finger Angles</div>
+        <div class="compact-angles-container" id="compact-angles-${deviceId}"></div>
+    `;
+    glovejointsContainer.appendChild(anglesElement);
+    
+    // Add compact angles container to the glove joints container
     gloveElement.appendChild(glovejointsContainer);
     
     // Add to joints container
@@ -2198,26 +2186,60 @@ function addGloveDisplay(deviceId, presetColor = null) {
         }
         attachColorPicker(gloveDot, deviceId);
     }
-}
-
-// Update the joint display function to handle multiple gloves
-function updateJointDisplay(deviceId, jointIndex, value) {
-    const valueElement = document.getElementById(`joint-value-${deviceId}-${jointIndex}`);
-    const barElement = document.getElementById(`joint-bar-${deviceId}-${jointIndex}`);
     
-    if (valueElement && barElement) {
-        valueElement.textContent = `Value: ${value}`;
+    // Create the compact angle bars with tooltips, grouped by finger
+    const compactAnglesContainer = document.getElementById(`compact-angles-${deviceId}`);
+    if (compactAnglesContainer) {
+        // Define finger groups
+        const fingerGroups = [
+            { name: 'Thumb', startIndex: 0, count: 4 },
+            { name: 'Index', startIndex: 4, count: 3 },
+            { name: 'Middle', startIndex: 7, count: 3 },
+            { name: 'Ring', startIndex: 10, count: 3 },
+            { name: 'Pinky', startIndex: 13, count: 3 }
+        ];
         
-        const jointInfo = fingerJointMap[jointIndex];
-        const min = jointInfo?.min || 0;
-        const max = jointInfo?.max || 255;
-        const range = max - min;
-        
-        const percentage = Math.min(100, Math.max(0, ((value - min) / range) * 100));
-        barElement.style.width = `${percentage}%`;
-        
-        const hue = Math.floor(percentage * 1.2);
-        barElement.style.backgroundColor = `hsl(${hue}, 80%, 50%)`;
+        // Create a container for each finger group
+        fingerGroups.forEach(group => {
+            const groupContainer = document.createElement('div');
+            groupContainer.className = 'finger-group';
+            
+            // Add finger group label
+            const groupLabel = document.createElement('div');
+            groupLabel.className = 'finger-group-label';
+            groupLabel.textContent = group.name;
+            groupContainer.appendChild(groupLabel);
+            
+            // Create content container for the bars
+            const contentContainer = document.createElement('div');
+            contentContainer.className = 'finger-group-content';
+            
+            // Create bars for this finger group
+            for (let i = 0; i < group.count; i++) {
+                const jointIndex = group.startIndex + i;
+                const jointType = fingerJointMap[jointIndex]?.type || 'Unknown';
+                
+                const barContainer = document.createElement('div');
+                barContainer.className = 'compact-angle-item';
+                barContainer.title = `${group.name} - ${jointType}`;
+                
+                const bar = document.createElement('div');
+                bar.className = 'compact-angle-bar';
+                bar.id = `joint-bar-${deviceId}-${jointIndex}`;
+                
+                const valueSpan = document.createElement('span');
+                valueSpan.className = 'compact-angle-value';
+                valueSpan.id = `joint-value-${deviceId}-${jointIndex}`;
+                valueSpan.textContent = '0';
+                
+                barContainer.appendChild(bar);
+                barContainer.appendChild(valueSpan);
+                contentContainer.appendChild(barContainer);
+            }
+            
+            groupContainer.appendChild(contentContainer);
+            compactAnglesContainer.appendChild(groupContainer);
+        });
     }
 }
 
@@ -2387,16 +2409,25 @@ function updateGloveDisplay(deviceId, data) {
         const inverted = gloveData.jointInversions[i];
         const displayValue = inverted ? 1 - value : value;
         
-        // Update joint value display
+        // Update joint value display - now just the number
         const valueElement = document.getElementById(`joint-value-${deviceId}-${i}`);
         if (valueElement) {
-            valueElement.textContent = `Value: ${displayValue.toFixed(3)}`;
+            valueElement.textContent = displayValue;
         }
         
-        // Update joint bar
+        // Update joint bar - compact version
         const barElement = document.getElementById(`joint-bar-${deviceId}-${i}`);
         if (barElement) {
-            barElement.style.width = `${displayValue * 100}%`;
+            const jointInfo = fingerJointMap[i];
+            const min = jointInfo?.min || 0;
+            const max = jointInfo?.max || 255;
+            const range = max - min;
+            
+            const percentage = Math.min(100, Math.max(0, ((displayValue - min) / range) * 100));
+            barElement.style.height = `${percentage}%`;  // Now using height instead of width
+            
+            const hue = Math.floor(percentage * 1.2);
+            barElement.style.backgroundColor = `hsl(${hue}, 80%, 50%)`;
         }
     }
 
@@ -2713,9 +2744,8 @@ function updateTrackerArrow(deviceId, quaternion) {
     arrow.upTip = { ...upTip }; // Store up tip for repositioning
 
     if (thisIndex === 0) {
-        wristRotation = calculateRollAroundForward(forwardTip, upTip);
+        lowerArmRotation = calculateRollAroundForward(forwardTip, upTip);
         updateArmValuesDisplay();
-
     } 
 
     // Calculate angles between this tracker and all other trackers
@@ -3072,8 +3102,9 @@ function directionVector(q, len = 1) {
 // Add global variables for wrist angles
 let wristFlexion = 0;
 let wristDeviation = 0;
-let wristRotation = 0;
+let lowerArmRotation = 0;
 let elbowFlexion = 0;
+let upperArmRotation = 0;
 let shoulderFlexion = 0;
 let shoulderDeviation = 0;
 
@@ -3081,7 +3112,8 @@ let shoulderDeviation = 0;
 function updateArmValuesDisplay() {
     document.getElementById('wrist-flexion').textContent = `${wristFlexion.toFixed(1)}°`;
     document.getElementById('wrist-deviation').textContent = `${wristDeviation.toFixed(1)}°`;
-    document.getElementById('wrist-rotation').textContent = `${wristRotation.toFixed(1)}°`;
+    document.getElementById('lower-arm-rotation').textContent = `${lowerArmRotation.toFixed(1)}°`;
+    document.getElementById('upper-arm-rotation').textContent = `${shoulderFlexion.toFixed(1)}°`;
     document.getElementById('elbow-flexion').textContent = `${elbowFlexion.toFixed(1)}°`;
     document.getElementById('shoulder-flexion').textContent = `${shoulderFlexion.toFixed(1)}°`;
     document.getElementById('shoulder-deviation').textContent = `${shoulderDeviation.toFixed(1)}°`;
@@ -3094,7 +3126,7 @@ function updateArmValuesDisplay() {
         // Convert degrees to radians
         const flexionRad = THREE.MathUtils.degToRad(-wristFlexion + 90);
         const deviationRad = THREE.MathUtils.degToRad(-wristDeviation);
-        const rotationRad = THREE.MathUtils.degToRad(-wristRotation);
+        const rotationRad = THREE.MathUtils.degToRad(-lowerArmRotation);
         const elbowRad = THREE.MathUtils.degToRad(-elbowFlexion);
         const shoulderFlexionRad = THREE.MathUtils.degToRad(-shoulderFlexion);
         const shoulderDeviationRad = THREE.MathUtils.degToRad(-shoulderDeviation);
@@ -3410,8 +3442,68 @@ function attachColorPicker(dotEl, deviceId) {
     picker.style.display = 'none';
     document.body.appendChild(picker);
 
+    // Get the current color from the dot's background color
+    const getCurrentColor = () => {
+        const bgColor = window.getComputedStyle(dotEl).backgroundColor;
+        // Convert RGB format to hex
+        if (bgColor.startsWith('rgb')) {
+            const rgb = bgColor.match(/\d+/g);
+            if (rgb && rgb.length >= 3) {
+                const hexColor = '#' + 
+                    parseInt(rgb[0]).toString(16).padStart(2, '0') +
+                    parseInt(rgb[1]).toString(16).padStart(2, '0') +
+                    parseInt(rgb[2]).toString(16).padStart(2, '0');
+                return hexColor;
+            }
+        }
+        // If color is already in hex format or can't be determined, use white
+        return '#ffffff';
+    };
+
     dotEl.style.cursor = 'pointer';
-    dotEl.addEventListener('click', () => picker.click());
+    dotEl.addEventListener('click', (event) => {
+        // Set initial color value
+        picker.value = getCurrentColor();
+        
+        // Position the picker near the clicked dot
+        picker.style.position = 'absolute';
+        picker.style.display = 'block';
+        
+        // Calculate position
+        const rect = dotEl.getBoundingClientRect();
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
+        
+        // Position above the dot with some offset
+        const top = rect.top + scrollTop - 40;
+        const left = rect.left + scrollLeft - 40;
+        
+        // Ensure picker stays within viewport
+        const viewportHeight = window.innerHeight;
+        const viewportWidth = window.innerWidth;
+        const pickerHeight = 40; // Approximate height of color picker
+        const pickerWidth = 40;  // Approximate width of color picker
+        
+        const finalTop = Math.max(0, Math.min(top, viewportHeight - pickerHeight));
+        const finalLeft = Math.max(0, Math.min(left, viewportWidth - pickerWidth));
+        
+        picker.style.top = `${finalTop}px`;
+        picker.style.left = `${finalLeft}px`;
+        
+        // Trigger click after positioning
+        setTimeout(() => picker.click(), 0);
+        
+        // Add one-time event to hide the picker element when clicking away
+        document.addEventListener('click', function hideOnClickAway(e) {
+            if (e.target !== picker) {
+                picker.style.display = 'none';
+                document.removeEventListener('click', hideOnClickAway);
+            }
+        });
+        
+        // Prevent the click from propagating to the hideOnClickAway handler
+        event.stopPropagation();
+    });
 
     picker.addEventListener('input', async () => {
         const hex = picker.value.substring(1); // "RRGGBB"
@@ -3438,6 +3530,9 @@ function attachColorPicker(dotEl, deviceId) {
                 console.warn('Failed to send colour feature', e);
             }
         }
+        
+        // Save color to cache
+        setCachedColor(deviceId, colorInt);
     });
 }
 

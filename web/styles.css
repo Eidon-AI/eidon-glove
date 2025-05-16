@@ -106,14 +106,13 @@ button:disabled {
 
 #sidebar {
   flex: 1;
-  padding: 15px;
+  padding: 8px 15px;
   overflow-y: auto;
   max-width: 300px;
   border-left: 1px solid var(--border-color);
 }
 
 .joint-info {
-  margin-bottom: 10px;
   padding: 8px 0;
   border: 0 solid #ddd;
   border-bottom: 1px;
@@ -234,7 +233,6 @@ button:disabled {
 .glove-header {
   font-weight: bold;
   font-size: 1.2em;
-  margin-bottom: 10px;
   padding-bottom: 5px;
   border-bottom: 1px solid #ccc;
 }
@@ -261,9 +259,11 @@ button:disabled {
 .tracker-values {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 20px;
-  margin: 5px 0;
-  font-family: monospace;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: var(--joint-bg);
+  border: 1px solid var(--border-color);
+  margin: 8px 0 0;
 }
 
 .tracker-value-container {
@@ -341,12 +341,13 @@ button:disabled {
 }
 
 .joint-info, .tracker-info, .glove-info, .sidebar-box {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
   padding: 10px;
   border-radius: 4px;
   background-color: var(--joint-bg);
   border: 1px solid var(--border-color);
-  /* transition: background-color 0.3s, border-color 0.3s; */
+  margin: 8px 0 0;
 }
 
 .bar-container {
@@ -412,6 +413,7 @@ button:disabled {
   gap: 10px;
   margin: 5px 0;
   font-family: monospace;
+  text-align: center;
 }
 
 .euler-values {
@@ -435,9 +437,10 @@ button:disabled {
   justify-content: space-between;
   flex-direction: column;
   align-items: flex-start;
-  border-bottom: 1px solid var(--border-color);
+  /* border-bottom: 1px solid var(--border-color); */
+  border: none;
   gap: 8px;
-  padding-bottom: 12px;
+  padding-bottom: 4px;
 }
 
 .invert-toggle {
@@ -493,10 +496,6 @@ button:disabled {
 #arm-values {
   margin: 10px 0;
 }
-
-
-
-
 
 .tracker-details, .glove-details {
   display: flex;
@@ -569,4 +568,73 @@ button:disabled {
 }
 .calibrate-btn:hover {
   background: #005f73;
+}
+
+/* Compact angles display */
+.compact-angles-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 10px 0;
+  min-height: 100px;
+}
+
+.finger-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.finger-group-content {
+  display: flex;
+  gap: 6px;
+}
+
+.finger-group-label {
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  color: var(--text-color);
+  opacity: 0.7;
+  margin-bottom: 5px;
+}
+
+.compact-angle-item {
+  width: 15px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background-color: var(--bar-bg);
+  border-radius: 2px;
+}
+
+.compact-angle-bar {
+  width: 100%;
+  height: 0%;
+  background-color: #4CAF50;
+  border-radius: 2px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.compact-angle-value {
+  position: absolute;
+  bottom: -16px;
+  font-size: 10px;
+  text-align: center;
+  font-family: monospace;
+  color: var(--text-color);
+  width: 24px;
+  left: -6px;
+}
+
+/* Dark mode compatibility */
+[data-theme="dark"] .compact-angle-item {
+  background-color: var(--bar-bg);
 }
