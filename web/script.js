@@ -1564,7 +1564,7 @@ function quaternionToEuler(x, y, z, w) {
     };
 }
 
-// Modify handleHIDInput to use the new multi-hand system
+// Modify handleHIDInput to extract arm position bits
 function handleHIDInput(event) {
     if (ignoreExternalInput) return;
 
@@ -1612,6 +1612,23 @@ function handleHIDInput(event) {
         const z = ((data.getUint8(4) | (data.getUint8(5) << 8)) - 32768) / 32767.5;
         const w = ((data.getUint8(6) | (data.getUint8(7) << 8)) - 32768) / 32767.5;
         
+        // Extract arm position information from the last byte (index 8)
+        const configByte = data.getUint8(8);
+        const isRightArm = (configByte & 0x01) === 0; // Bit 0: 0 = right, 1 = left
+        const isLowerArm = (configByte & 0x02) === 0; // Bit 1: 0 = upper, 1 = lower
+        
+        // Get tracker data structure
+        const tracker = trackers.get(deviceId);
+        
+        // Update arm position info if changed
+        if (tracker.isRightArm !== isRightArm || tracker.isLowerArm !== isLowerArm) {
+            tracker.isRightArm = isRightArm;
+            tracker.isLowerArm = isLowerArm;
+            
+            // Update the display to show the new arm position
+            updateTrackerArmPosition(deviceId, isRightArm, isLowerArm);
+        }
+        
         // Update tracker display with quaternion values
         updateTrackerDisplay(deviceId, x, y, z, w);
     } else {
@@ -1623,6 +1640,19 @@ function handleHIDInput(event) {
 
         const gloveData = gloves.get(deviceId);
         let hasChanges = false;
+        
+        // Extract left/right hand information from second byte after reportId
+        // ReportId is byte 0, so the hand info is in byte 1
+        const configByte = data.getUint8(1);
+        const isRightHand = (configByte & 0x01) === 0; // Bit 0: 0 = right, 1 = left
+        
+        // Update hand position if changed
+        if (gloveData.isRightHand !== isRightHand) {
+            gloveData.isRightHand = isRightHand;
+            
+            // Update the display to show hand position
+            updateGloveHandPosition(deviceId, isRightHand);
+        }
         
         // Process joint values
         for (let i = 0; i < 16; i++) {
@@ -1664,6 +1694,164 @@ function handleHIDInput(event) {
             updateHandModel(deviceId);
         }
     }
+}
+
+// Add a helper function to update the tracker arm position display
+function updateTrackerArmPosition(deviceId, isRightArm, isLowerArm) {
+    const trackerElement = document.getElementById(`tracker-${deviceId}`);
+    if (!trackerElement) return;
+    
+    // Find or create the arm position span
+    let armPositionSpan = document.getElementById(`arm-position-${deviceId}`);
+    if (!armPositionSpan) {
+        const trackerControls = trackerElement.querySelector('.tracker-controls');
+        if (trackerControls) {
+            // Create position info with appropriate emoji and text
+            armPositionSpan = document.createElement('span');
+            armPositionSpan.id = `arm-position-${deviceId}`;
+            armPositionSpan.className = 'device-arm-position';
+            trackerControls.append(armPositionSpan);
+        }
+    }
+    
+    if (armPositionSpan) {
+        // Determine side and position emoji
+        const sideEmoji = isRightArm ? '👉' : '👈';
+        const positionEmoji = isLowerArm ? '💪' : '🦾';
+        
+        // Determine position text
+        const positionText = isLowerArm ? 'Lower' : 'Upper';
+        const sideText = isRightArm ? 'Right' : 'Left';
+        
+        // Update text content with emoji
+        armPositionSpan.innerHTML = `${positionEmoji} ${sideText} ${positionText}`;
+        
+        // Update the tracker object name
+        // const nameElement = trackerElement.querySelector('.tracker-name');
+        // if (nameElement) {
+        //     const deviceNameSpan = nameElement.querySelector('.device-name') || document.createElement('span');
+        //     if (!deviceNameSpan.classList.contains('device-name')) {
+        //         deviceNameSpan.className = 'device-name';
+        //         // Extract the dot and text
+        //         const dot = nameElement.querySelector('.device-dot');
+        //         const text = nameElement.childNodes[2]; // Text node after the dot
+                
+        //         // Clear the name element
+        //         nameElement.innerHTML = '';
+                
+        //         // Re-add components
+        //         if (dot) nameElement.appendChild(dot);
+        //         nameElement.appendChild(deviceNameSpan);
+        //     }
+            
+        //     // Get device from map
+        //     const device = hidDevices.get(deviceId);
+        //     const deviceName = device ? device.productName : 'Tracker';
+            
+        //     // Create a descriptive name
+        //     deviceNameSpan.textContent = `${deviceName} (${sideText} ${positionText})`;
+        // }
+    }
+}
+
+// Modify addTrackerDisplay to initialize arm position
+function addTrackerDisplay(deviceId, presetColor = null) {
+    console.log(`Adding tracker display for deviceId: ${deviceId}`);
+    const device = hidDevices.get(deviceId);
+    console.log('Device from hidDevices:', device);
+    console.log('Device productName:', device?.productName);
+    
+    const trackerElement = document.createElement('div');
+    trackerElement.className = 'tracker-info';
+    trackerElement.id = `tracker-${deviceId}`;
+    
+    // Get device name from hidDevices
+    const deviceName = device ? device.productName : 'Tracker';
+    console.log('Final deviceName:', deviceName);
+    
+    // Get color for the dot
+    let color = presetColor !== null ? presetColor : getColorFromDeviceName(deviceId);
+    const colorHex = color ? '#' + color.toString(16).padStart(6, '0') : '#ffffff';
+    
+    trackerElement.innerHTML = `
+        <div class="tracker-header">
+            <div class="tracker-name">
+                <span class="device-dot" style="background-color: ${colorHex}"></span>
+                <span class="device-name">${deviceName}</span>
+            </div>
+            <div class="tracker-details">
+                <span class="device-id">ID: ${deviceId}</span>
+            </div>
+            <div class="tracker-controls">
+                <button class="calibrate-btn" onclick="calibrateDevice('${deviceId}')">Calibrate</button>
+                <button class="disconnect-btn" onclick="disconnectFromDevice('${deviceId}')">Disconnect</button>
+            </div>
+        </div>
+        <div class="tracker-values">
+            <div class="tracker-value-label">🌐 Orientation</div>
+            <div class="quaternion-values">
+                <div>X<br><span id="tracker-quat-x-${deviceId}">0.000</span></div>
+                <div>Y<br><span id="tracker-quat-y-${deviceId}">0.000</span></div>
+                <div>Z<br><span id="tracker-quat-z-${deviceId}">0.000</span></div>
+                <div>W<br><span id="tracker-quat-w-${deviceId}">0.000</span></div>
+            </div>
+            <div class="euler-values">
+                <div class="tracker-value-container">
+                    <div class="tracker-value-label">Roll:</div>
+                    <div class="tracker-circle-container">
+                        <div class="tracker-circle" id="tracker-circle-roll-${deviceId}">
+                            <div class="tracker-indicator"></div>
+                        </div>
+                        <span id="tracker-roll-${deviceId}">0.0°</span>
+                    </div>
+                </div>
+                <div class="tracker-value-container">
+                    <div class="tracker-value-label">Pitch:</div>
+                    <div class="tracker-circle-container">
+                        <div class="tracker-circle" id="tracker-circle-pitch-${deviceId}">
+                            <div class="tracker-indicator"></div>
+                        </div>
+                        <span id="tracker-pitch-${deviceId}">0.0°</span>
+                    </div>
+                </div>
+                <div class="tracker-value-container">
+                    <div class="tracker-value-label">Yaw:</div>
+                    <div class="tracker-circle-container">
+                        <div class="tracker-circle" id="tracker-circle-yaw-${deviceId}">
+                            <div class="tracker-indicator"></div>
+                        </div>
+                        <span id="tracker-yaw-${deviceId}">0.0°</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Add to joints container
+    jointsContainer.appendChild(trackerElement);
+    
+    // Add to trackers Map with quaternion values and default arm position values
+    trackers.set(deviceId, {
+        quaternion: { x: 0, y: 0, z: 0, w: 1 },
+        euler: { roll: 0, pitch: 0, yaw: 0 },
+        isRightArm: false, // Default to left arm
+        isLowerArm: false  // Default to upper arm
+    });
+
+    // Create tracker arrow in Three.js scene with chosen colour
+    createTrackerArrow(deviceId, color);
+
+    // After arrow creation (or if colour came from device) paint dot & arrow
+    const arrowInfo = trackerArrows.get(deviceId);
+    const dotEl = trackerElement.querySelector('.device-dot');
+    if (arrowInfo && dotEl) {
+        dotEl.style.backgroundColor = '#' + arrowInfo.color.toString(16).padStart(6, '0');
+        // Add click handler to change colour
+        attachColorPicker(dotEl, deviceId);
+        return; // skip legacy code
+    }
+
+    // Rest of the function remains unchanged...
 }
 
 // Add log message function (needs to be defined early)
@@ -1851,154 +2039,6 @@ function addCompassOverlay() {
     document.body.appendChild(compassElement);
 }
 
-// Modify addTrackerDisplay function
-function addTrackerDisplay(deviceId, presetColor = null) {
-    console.log(`Adding tracker display for deviceId: ${deviceId}`);
-    const device = hidDevices.get(deviceId);
-    console.log('Device from hidDevices:', device);
-    console.log('Device productName:', device?.productName);
-    
-    const trackerElement = document.createElement('div');
-    trackerElement.className = 'tracker-info';
-    trackerElement.id = `tracker-${deviceId}`;
-    
-    // Get device name from hidDevices
-    const deviceName = device ? device.productName : 'Tracker';
-    console.log('Final deviceName:', deviceName);
-    
-    // Get color for the dot
-    let color = presetColor !== null ? presetColor : getColorFromDeviceName(deviceId);
-    const colorHex = color ? '#' + color.toString(16).padStart(6, '0') : '#ffffff';
-    
-    trackerElement.innerHTML = `
-        <div class="tracker-header">
-            <div class="tracker-name">
-                <span class="device-dot" style="background-color: ${colorHex}"></span>
-                ${deviceName}
-            </div>
-            <div class="tracker-details">
-                <span class="device-id">ID: ${deviceId}</span>
-            </div>
-            <div class="tracker-controls">
-                <button class="calibrate-btn" onclick="calibrateDevice('${deviceId}')">Calibrate</button>
-                <button class="disconnect-btn" onclick="disconnectFromDevice('${deviceId}')">Disconnect</button>
-            </div>
-        </div>
-        <div class="tracker-values">
-            <div class="tracker-value-label">Orientation</div>
-            <div class="quaternion-values">
-                <div>X<br><span id="tracker-quat-x-${deviceId}">0.000</span></div>
-                <div>Y<br><span id="tracker-quat-y-${deviceId}">0.000</span></div>
-                <div>Z<br><span id="tracker-quat-z-${deviceId}">0.000</span></div>
-                <div>W<br><span id="tracker-quat-w-${deviceId}">0.000</span></div>
-            </div>
-            <div class="euler-values">
-                <div class="tracker-value-container">
-                    <div class="tracker-value-label">Roll:</div>
-                    <div class="tracker-circle-container">
-                        <div class="tracker-circle" id="tracker-circle-roll-${deviceId}">
-                            <div class="tracker-indicator"></div>
-                        </div>
-                        <span id="tracker-roll-${deviceId}">0.0°</span>
-                    </div>
-                </div>
-                <div class="tracker-value-container">
-                    <div class="tracker-value-label">Pitch:</div>
-                    <div class="tracker-circle-container">
-                        <div class="tracker-circle" id="tracker-circle-pitch-${deviceId}">
-                            <div class="tracker-indicator"></div>
-                        </div>
-                        <span id="tracker-pitch-${deviceId}">0.0°</span>
-                    </div>
-                </div>
-                <div class="tracker-value-container">
-                    <div class="tracker-value-label">Yaw:</div>
-                    <div class="tracker-circle-container">
-                        <div class="tracker-circle" id="tracker-circle-yaw-${deviceId}">
-                            <div class="tracker-indicator"></div>
-                        </div>
-                        <span id="tracker-yaw-${deviceId}">0.0°</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    // Add to joints container
-    jointsContainer.appendChild(trackerElement);
-    
-    // Add to trackers Map with quaternion values
-    trackers.set(deviceId, {
-        quaternion: { x: 0, y: 0, z: 0, w: 1 },
-        euler: { roll: 0, pitch: 0, yaw: 0 }
-    });
-
-    // Create tracker arrow in Three.js scene with chosen colour
-    createTrackerArrow(deviceId, color);
-
-    // After arrow creation (or if colour came from device) paint dot & arrow
-    const arrowInfo = trackerArrows.get(deviceId);
-    const dotEl = trackerElement.querySelector('.device-dot');
-    if (arrowInfo && dotEl) {
-        dotEl.style.backgroundColor = '#' + arrowInfo.color.toString(16).padStart(6, '0');
-        // Add click handler to change colour
-        attachColorPicker(dotEl, deviceId);
-        return; // skip legacy code
-    }
-
-    // Create materials
-    const forwardMaterial = new THREE.MeshBasicMaterial({ color: color });
-    const upMaterial = new THREE.MeshBasicMaterial({ color: color, opacity: 0.9, transparent: true });
-    const projectedMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, opacity: 0.2, transparent: true }); // Default white, will be updated
-    const invertedUpMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000, opacity: 0.9, transparent: true }); // Red for inverted up vector
-    const secondProjectedMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0.2, transparent: true }); // Green for second projection
-    
-    // Create forward cylinder mesh
-    const forwardCylinder = new THREE.Mesh(geometry, forwardMaterial);
-    forwardCylinder.rotation.x = Math.PI / 2;
-    
-    // Create up cylinder mesh
-    const upCylinder = new THREE.Mesh(geometry, upMaterial);
-    upCylinder.rotation.x = Math.PI / 2;
-    
-    // Create projected cylinder mesh
-    const projectedCylinder = new THREE.Mesh(geometry, projectedMaterial);
-    projectedCylinder.rotation.x = Math.PI / 2;
-    projectedCylinder.visible = false; // Initially hidden
-
-    // Create inverted up cylinder mesh
-    const invertedUpCylinder = new THREE.Mesh(geometry, invertedUpMaterial);
-    invertedUpCylinder.rotation.x = Math.PI / 2;
-    invertedUpCylinder.visible = false; // Initially hidden
-
-    // Create second projected cylinder mesh
-    const secondProjectedCylinder = new THREE.Mesh(geometry, secondProjectedMaterial);
-    secondProjectedCylinder.rotation.x = Math.PI / 2;
-    secondProjectedCylinder.visible = false; // Initially hidden
-    
-    // Create a group to hold all cylinders
-    const arrowGroup = new THREE.Group();
-    arrowGroup.add(forwardCylinder);
-    arrowGroup.add(upCylinder);
-    arrowGroup.add(projectedCylinder);
-    arrowGroup.add(invertedUpCylinder);
-    arrowGroup.add(secondProjectedCylinder);
-    
-    // Add to scene
-    scene.add(arrowGroup);
-    
-    // Store in Map with all cylinders and the color
-    trackerArrows.set(deviceId, {
-        forward: forwardCylinder,
-        up: upCylinder,
-        projected: projectedCylinder,
-        invertedUp: invertedUpCylinder,
-        secondProjected: secondProjectedCylinder,
-        group: arrowGroup,
-        color: color
-    });
-}
-
 // Modify updateTrackerDisplay function
 function updateTrackerDisplay(deviceId, x, y, z, w) {
     // Store quaternion values
@@ -2092,7 +2132,7 @@ function addGloveDisplay(deviceId, presetColor = null) {
     header.innerHTML = `
         <div class="glove-name">
             <span class="device-dot" style="background-color: ${colorHex}"></span>
-            ${deviceName}
+            <span class="device-name">${deviceName}</span>
         </div>
         <div class="glove-details">
             <span class="device-id">ID: ${deviceId}</span>
@@ -2171,7 +2211,8 @@ function addGloveDisplay(deviceId, presetColor = null) {
         jointValues: new Array(MAX_JOINTS).fill(0),
         jointInversions: new Array(MAX_JOINTS).fill(false),
         quaternion: { x: 0, y: 0, z: 0, w: 1 },
-        euler: { roll: 0, pitch: 0, yaw: 0 }
+        euler: { roll: 0, pitch: 0, yaw: 0 },
+        isRightHand: false // Default to left hand
     });
 
     // Create tracker arrow for the glove with chosen colour
@@ -2186,6 +2227,9 @@ function addGloveDisplay(deviceId, presetColor = null) {
         }
         attachColorPicker(gloveDot, deviceId);
     }
+    
+    // Display initial hand position
+    updateGloveHandPosition(deviceId, false); // Default to left hand
     
     // Create the compact angle bars with tooltips, grouped by finger
     const compactAnglesContainer = document.getElementById(`compact-angles-${deviceId}`);
@@ -3552,4 +3596,32 @@ function setCachedColor(deviceId, colorInt) {
     const map = getStoredDeviceColors();
     map[deviceId] = colorInt;
     localStorage.setItem('deviceColors', JSON.stringify(map));
+}
+
+// Add a helper function to update the glove hand display
+function updateGloveHandPosition(deviceId, isRightHand) {
+    const gloveElement = document.getElementById(`glove-${deviceId}`);
+    if (!gloveElement) return;
+    
+    // Find or create the hand position span
+    let handPositionSpan = document.getElementById(`hand-position-${deviceId}`);
+    if (!handPositionSpan) {
+        const gloveControls = gloveElement.querySelector('.glove-controls');
+        if (gloveControls) {
+            // Create position info with appropriate emoji and text
+            handPositionSpan = document.createElement('span');
+            handPositionSpan.id = `hand-position-${deviceId}`;
+            handPositionSpan.className = 'device-hand-position';
+            gloveControls.append(handPositionSpan);
+        }
+    }
+    
+    if (handPositionSpan) {
+        // Set emoji based on left/right hand
+        const handEmoji = isRightHand ? '🤚' : '✋';
+        const handText = isRightHand ? 'Right' : 'Left';
+        
+        // Update text content with emoji
+        handPositionSpan.innerHTML = `${handEmoji} ${handText}`;
+    }
 }

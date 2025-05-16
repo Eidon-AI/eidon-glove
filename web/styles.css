@@ -638,3 +638,36 @@ button:disabled {
 [data-theme="dark"] .compact-angle-item {
   background-color: var(--bar-bg);
 }
+
+/* Arm position indicators */
+.device-arm-position {
+  font-size: 12px;
+  color: var(--text-color);
+}
+
+.left-arm {
+  display: inline-block;
+  transform: scaleX(-1); /* Mirror the emoji for left arm */
+}
+
+.right-arm {
+  display: inline-block;
+}
+
+/* Better spacing for device details */
+.tracker-details {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Device hand position indicator */
+.device-hand-position {
+  font-size: 12px;
+  color: var(--text-color);
+  margin-left: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
