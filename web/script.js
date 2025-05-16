@@ -3617,9 +3617,9 @@ function updateGloveHandPosition(deviceId, isRightHand) {
     }
     
     if (handPositionSpan) {
-        // Set emoji based on left/right hand
+        // Set emoji based on left/right handhand
         const handEmoji = isRightHand ? '🤚' : '✋';
-        const handText = isRightHand ? 'Right' : 'Left';
+        const handText = isRightHand ? 'Right Hand' : 'Left Hand';
         
         // Update text content with emoji
         handPositionSpan.innerHTML = `${handEmoji} ${handText}`;

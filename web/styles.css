@@ -9,6 +9,7 @@
   --disabled-bg: #cccccc;
   --button-primary-bg: #4CAF50;
   --button-primary-text: white;
+  --tag-bg: #0000000f;
 }
 
 [data-theme="dark"] {
@@ -24,6 +25,7 @@
   --button-primary-text: white;
   --label-bg: #d4edda;
   --label-color: #155724;
+  --tag-bg: #0000002e;
 }
 
 body {
@@ -639,12 +641,21 @@ button:disabled {
   background-color: var(--bar-bg);
 }
 
-/* Arm position indicators */
-.device-arm-position {
+/* Device hand position indicator */
+.device-arm-position,
+.device-hand-position {
   font-size: 12px;
+  font-weight: 300;
   color: var(--text-color);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--tag-bg);
+  padding: 4px 12px 4px 10px;
+  border-radius: 16px;
 }
 
+/* Arm position indicators */
 .left-arm {
   display: inline-block;
   transform: scaleX(-1); /* Mirror the emoji for left arm */
@@ -662,12 +673,3 @@ button:disabled {
   gap: 10px;
 }
 
-/* Device hand position indicator */
-.device-hand-position {
-  font-size: 12px;
-  color: var(--text-color);
-  margin-left: 10px;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
