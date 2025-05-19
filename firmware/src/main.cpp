@@ -669,7 +669,8 @@ void loop() {
         // Toggle between modes on button release
         static bool lastButtonState = false;
         if (!buttonState && lastButtonState) {  // Button was released
-            cycleToNextMode();
+            // cycleToNextMode();
+            resetBNO085();
         }
         lastButtonState = buttonState;
         
@@ -678,7 +679,7 @@ void loop() {
         memset(&gamepadReport, 0, sizeof(GamepadReport));
         
         // Set button6 based on the physical button
-        // gamepadReport.button6 = buttonState;
+        gamepadReport.button8 = buttonState;
         
         // Set buttons to indicate current mode (optional)
         // gamepadReport.button1 = (currentMode == GAME_MODE);
