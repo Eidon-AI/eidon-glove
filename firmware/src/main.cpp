@@ -18,6 +18,9 @@
 // Define the button pin for the Xiao ESP32-C3
 #define BUTTON_PIN  9
 
+// Define the LED pin
+#define LED_PIN  5
+
 // Add these at the top of your file with other global variables
 #define BUTTON_COUNT 5                  // Number of finger buttons we're tracking
 #define PRESS_THRESHOLD 150             // Absolute threshold for press detection
@@ -30,6 +33,27 @@
 // Define deadzone parameters
 #define DEADZONE 32                   // Size of the deadzone (in output units, 0-255)
 #define ANALOG_CENTER 127             // Center value for analog stick
+
+// LED status variables
+unsigned long ledLastUpdate = 0;
+// LED patterns
+enum LEDPattern {
+    LED_ADVERTISING,  // Strobing brightness when advertising
+    LED_CONNECTED,    // Fast blinking when connected
+    LED_IMU_RESET     // Solid LED when resetting IMU
+};
+LEDPattern currentLEDPattern = LED_ADVERTISING;
+unsigned long imuResetStartTime = 0;
+const unsigned long IMU_RESET_DURATION = 300; // Solid LED duration in ms
+int ledBrightness = 0;
+bool ledState = false;
+
+// Simple timer for debugging LED
+unsigned long debugLedTimer = 0;
+const unsigned long LED_FLASH_INTERVAL = 50; // Very slow flash for debugging
+
+// LED brightness settings
+#define LED_DIM_BRIGHTNESS 50  // Dim brightness level (0-255) when connected
 
 /* One top-level application collection, Usage = Gamepad                    */
 /*  ├─ Input  (Button/Flags, Finger Angle Bytes, Quaternion)                */
@@ -414,11 +438,69 @@ class FeatureReportCallbacks : public NimBLECharacteristicCallbacks {
     }
 };
 
+// Function to update LED status based on current state
+void updateLEDStatus() {
+    unsigned long currentTime = millis();
+    
+    // Special test mode for connected state LED
+    if (deviceConnected) {
+        // SIMPLIFIED: Just toggle LED every LED_FLASH_INTERVAL ms when connected
+        if (currentTime - debugLedTimer >= LED_FLASH_INTERVAL) {
+            debugLedTimer = currentTime;
+            // Toggle between full on and full off for debugging
+            ledState = !ledState;
+            
+            if (ledState) {
+                // Serial.println("TEST MODE: LED ON");
+                digitalWrite(LED_PIN, HIGH); // Full ON for testing
+            } else {
+                // Serial.println("TEST MODE: LED OFF");
+                digitalWrite(LED_PIN, LOW);  // Full OFF
+            }
+        }
+        return; // Skip normal LED logic when connected
+    }
+    
+    // Handle IMU reset pattern with priority
+    if (currentLEDPattern == LED_IMU_RESET) {
+        digitalWrite(LED_PIN, HIGH); // Solid ON during IMU reset
+        
+        // Check if IMU reset period is over
+        if (currentTime - imuResetStartTime >= IMU_RESET_DURATION) {
+            // Return to appropriate pattern based on connection state
+            currentLEDPattern = deviceConnected ? LED_CONNECTED : LED_ADVERTISING;
+            ledLastUpdate = currentTime; // Reset timer to start new pattern immediately
+        }
+        return;
+    }
+    
+    // Only handle advertising when not connected
+    if (currentLEDPattern == LED_ADVERTISING) {
+        // Strobing brightness pattern (sine wave)
+        if (currentTime - ledLastUpdate >= 20) { // Update every 20ms for smooth animation
+            ledLastUpdate = currentTime;
+            // Create a sine wave brightness pattern (0-255)
+            ledBrightness = 128 + 127 * sin(currentTime / 500.0);
+            analogWrite(LED_PIN, ledBrightness);
+        }
+    }
+}
+
+// Function to trigger IMU reset LED pattern
+void startIMUResetPattern() {
+    currentLEDPattern = LED_IMU_RESET;
+    imuResetStartTime = millis();
+}
+
 void setup() {
     Serial.begin(115200);
     delay(1000); // Give serial time to connect
     
     Serial.println("\n\n----- Eidon Glove Starting -----");
+    
+    // Setup LED pin
+    pinMode(LED_PIN, OUTPUT);
+    
     Serial.println("Initializing finger tracking...");
     
     // Define which sensors have inverted magnets
@@ -625,25 +707,21 @@ void updateFingerButtons() {
 }
 
 void loop() {
-    // Print connection status every 3 seconds
-    // static unsigned long lastStatusTime = 0;
-    // if (millis() - lastStatusTime > 3000) {
-    //     lastStatusTime = millis();
-    //     Serial.print("BLE connection status: ");
-    //     Serial.println(deviceConnected ? "Connected" : "Waiting for connection...");
-        
-    //     // Print more detailed connection info
-    //     if (pServer != nullptr) {
-    //         Serial.print("Connected clients: ");
-    //         Serial.println(pServer->getConnectedCount());
-    //     }
-    // }
+    // Update LED status first
+    updateLEDStatus();
     
     // Handle connection state changes
     if (deviceConnected && !oldDeviceConnected) {
         // Just connected
         Serial.println("Connected - starting to send data");
         oldDeviceConnected = deviceConnected;
+        
+        // Force reset LED state and start fresh pattern
+        digitalWrite(LED_PIN, LOW);  // Start with LED OFF
+        ledState = false;
+        ledLastUpdate = 0; // Force immediate update
+        currentLEDPattern = LED_CONNECTED;
+        Serial.println("Switching to CONNECTED LED pattern - should flash dimmed");
     }
     
     if (!deviceConnected && oldDeviceConnected) {
@@ -653,6 +731,7 @@ void loop() {
         NimBLEDevice::startAdvertising();
         Serial.println("Advertising restarted");
         oldDeviceConnected = deviceConnected;
+        currentLEDPattern = LED_ADVERTISING; // Switch to advertising LED pattern
     }
     
     // Update finger tracking data
@@ -671,6 +750,7 @@ void loop() {
         if (!buttonState && lastButtonState) {  // Button was released
             // cycleToNextMode();
             resetBNO085();
+            startIMUResetPattern(); // Start IMU reset LED pattern
         }
         lastButtonState = buttonState;
         
