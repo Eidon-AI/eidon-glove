@@ -8,6 +8,9 @@
 #include "HallEffectSensors.h"
 #include <Preferences.h>
 
+// Set to true for left hand, false for right hand
+#define IS_LEFT_HAND false
+
 // Vendor and Product IDs
 #define VENDOR_ID  0xE1D0 // Eidon AI vendor ID
 #define PRODUCT_ID 0x0001 // Eidon Glove v1 product ID
@@ -588,7 +591,9 @@ void setup() {
     pAdvertising->start();
     
     Serial.println("BT Gamepad initialized!");
-    Serial.println("Device name: Hand Tracker (Right)");
+    Serial.print("Device name: Hand Tracker (");
+    Serial.print(IS_LEFT_HAND ? "Left" : "Right");
+    Serial.println(")");
     Serial.println("The device should now be visible in your Bluetooth settings.");
     Serial.println("Please pair with it from your computer or mobile device.");
     Serial.println("----- Initialization Complete -----");
@@ -758,8 +763,11 @@ void loop() {
         // Clear all buttons first
         memset(&gamepadReport, 0, sizeof(GamepadReport));
         
-        // Set button6 based on the physical button
-        gamepadReport.button8 = buttonState;
+        // Set button8 based on the physical button
+        gamepadReport.button1 = buttonState;
+        
+        // Set button9 to indicate left/right hand
+        gamepadReport.button9 = IS_LEFT_HAND;
         
         // Set buttons to indicate current mode (optional)
         // gamepadReport.button1 = (currentMode == GAME_MODE);
