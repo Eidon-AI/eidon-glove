@@ -9,7 +9,7 @@
 #include <Preferences.h>
 
 // Set to true for left hand, false for right hand
-#define IS_LEFT_HAND false
+#define IS_LEFT_HAND 0
 
 // Vendor and Product IDs
 #define VENDOR_ID  0xE1D0 // Eidon AI vendor ID
@@ -19,7 +19,8 @@
 #define NUM_JOINTS 16  // We want all 16 joints
 
 // Define the button pin for the Xiao ESP32-C3
-#define BUTTON_PIN  9
+#define BUTTON_BOOT_PIN  9 // user button on Xiao
+#define BUTTON_MODE_PIN  10 // button on pcb
 
 // Define the LED pin
 #define LED_PIN  5
@@ -288,16 +289,15 @@ typedef struct {
   bool button6 : 1;
   bool button7 : 1;
   bool button8 : 1;
-  bool button9 : 1;
-  bool button10 : 1;
-  bool button11 : 1;
-  bool button12 : 1;
 
-  // D-pad buttons
-  bool up : 1;
-  bool right : 1;
-  bool down : 1;
-  bool left : 1;
+  bool cfgbit0 : 1; // isLeftHand
+  bool cfgbit1 : 1;
+  bool cfgbit2 : 1;
+  bool cfgbit3 : 1;
+  bool cfgbit4 : 1;
+  bool cfgbit5 : 1;
+  bool cfgbit6 : 1;
+  bool cfgbit7 : 1;
 
   // All 23 axes
   uint8_t axes[16]; // Updated to 23 total axes
@@ -748,26 +748,27 @@ void loop() {
     // Send data if connected
     if (deviceConnected) {
         // Read the button state from the Xiao ESP32-C3
-        int buttonState = !digitalRead(BUTTON_PIN);
+        int buttonsState = !digitalRead(BUTTON_BOOT_PIN) || !digitalRead(BUTTON_MODE_PIN) << 1;
         
         // Toggle between modes on button release
-        static bool lastButtonState = false;
-        if (!buttonState && lastButtonState) {  // Button was released
+        static int lastButtonState = 0;
+        if (!buttonsState && lastButtonState) {  // Button was released
             // cycleToNextMode();
             resetBNO085();
             startIMUResetPattern(); // Start IMU reset LED pattern
         }
-        lastButtonState = buttonState;
+        lastButtonState = buttonsState;
         
         // Update the gamepad report structure
         // Clear all buttons first
         memset(&gamepadReport, 0, sizeof(GamepadReport));
-        
-        // Set button8 based on the physical button
-        gamepadReport.button1 = buttonState;
+
+        // Set button1 based on the physical button
+        gamepadReport.button1 = buttonsState & 0x01;
+        gamepadReport.button2 = buttonsState & 0x02;
         
         // Set button9 to indicate left/right hand
-        gamepadReport.button9 = IS_LEFT_HAND;
+        gamepadReport.cfgbit0 = IS_LEFT_HAND;
         
         // Set buttons to indicate current mode (optional)
         // gamepadReport.button1 = (currentMode == GAME_MODE);

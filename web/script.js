@@ -1648,7 +1648,7 @@ function handleHIDInput(event) {
         // ReportId is byte 0, so the hand info is in byte 1
         const configByte = data.getUint8(1);
         const isRightHand = (configByte & 0x01) === 0; // Bit 0: 0 = right, 1 = left
-        
+
         // Update hand position if changed
         if (gloveData.isRightHand !== isRightHand) {
             gloveData.isRightHand = isRightHand;
@@ -1656,6 +1656,17 @@ function handleHIDInput(event) {
             // Update the display to show hand position
             updateGloveHandPosition(deviceId, isRightHand);
         }
+
+        // Detect button 8 press (bit 7 of configByte)
+        const buttonsByte = data.getUint8(0);
+        const buttonMask = buttonsByte & 0xFF; // bits 0-7 correspond to buttons 1-8
+        const BUTTON_1_MASK = 0x01;
+        if ((buttonMask & BUTTON_1_MASK) && !(gloveData.prevButtonState & BUTTON_1_MASK)) {
+            // Button 8 was just pressed – trigger calibration on same-arm trackers
+            calibrateTrackersOnSameArm(deviceId);
+        }
+        // Store current button state for next comparison
+        gloveData.prevButtonState = buttonMask;
         
         // Process joint values
         for (let i = 0; i < 16; i++) {
@@ -1837,8 +1848,8 @@ function addTrackerDisplay(deviceId, presetColor = null) {
     trackers.set(deviceId, {
         quaternion: { x: 0, y: 0, z: 0, w: 1 },
         euler: { roll: 0, pitch: 0, yaw: 0 },
-        isRightArm: false, // Default to left arm
-        isLowerArm: false  // Default to upper arm
+        isRightArm: null, // Default to left arm
+        isLowerArm: null  // Default to upper arm
     });
 
     // Create tracker arrow in Three.js scene with chosen colour
@@ -2219,7 +2230,8 @@ function addGloveDisplay(deviceId, presetColor = null) {
         jointInversions: new Array(MAX_JOINTS).fill(false),
         quaternion: { x: 0, y: 0, z: 0, w: 1 },
         euler: { roll: 0, pitch: 0, yaw: 0 },
-        isRightHand: false // Default to left hand
+        isRightHand: false, // Default to left hand
+        prevButtonState: 0 // Track previous button state for press detection
     });
 
     // Create tracker arrow for the glove with chosen colour
@@ -3601,6 +3613,26 @@ async function calibrateDevice(deviceId = null) {
     }
 }
 
+// Helper: calibrate all trackers on the same arm as the specified glove
+function calibrateTrackersOnSameArm(gloveDeviceId) {
+    const gloveData = gloves.get(gloveDeviceId);
+    console.log('gloveData:', gloveData);
+    if (!gloveData) return;
+
+    const targetIsRight = gloveData.isRightHand;
+
+    for (const [trackerId, trackerInfo] of trackers) {
+        // Only calibrate trackers that have side information and match the glove's side
+        if (trackerInfo && typeof trackerInfo.isRightArm === 'boolean' && trackerInfo.isRightArm === targetIsRight) {
+            console.log('trackerId:', trackerId);
+            calibrateDevice(trackerId);
+        }
+    }
+
+    const sideLabel = targetIsRight ? 'Right' : 'Left';
+    addLogMessage(`Glove ${gloveDeviceId} requested calibration for ${sideLabel} arm trackers.`);
+}
+
 // Call global calibration button setup after vector mode toggle
 addGlobalCalibrationButton();
 
@@ -3844,50 +3876,6 @@ function displayDeviceGrouping() {
     html += '</div>';
 
     groupingInfo.innerHTML = html;
-    
-    // Add additional styles for the elements
-    const styleElement = document.getElementById('grouping-styles');
-    if (!styleElement) {
-        const newStyle = document.createElement('style');
-        newStyle.id = 'grouping-styles';
-        newStyle.textContent = `
-            .grouping-header {
-                font-weight: bold;
-                margin-bottom: 8px;
-                text-align: center;
-                font-size: 14px;
-            }
-            .side-group {
-                margin-top: 8px;
-                margin-bottom: 4px;
-                padding-left: 4px;
-                border-left: 3px solid #444;
-            }
-            .chain-path {
-                margin-left: 12px;
-                margin-bottom: 8px;
-                white-space: nowrap;
-                overflow-x: auto;
-                padding-bottom: 4px;
-            }
-            .chain-mode-status {
-                text-align: center;
-                margin-top: 8px;
-                padding-top: 8px;
-                border-top: 1px solid #444;
-                font-weight: bold;
-            }
-            [data-theme="light"] .side-group {
-                border-left-color: #aaa;
-            }
-            [data-theme="light"] .chain-mode-status {
-                border-top-color: #ccc;
-            }
-        `;
-        document.head.appendChild(newStyle);
-    }
-    
-    // No visibility preference needed now
 }
 
 // Helper function to format device ID list

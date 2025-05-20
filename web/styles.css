@@ -673,3 +673,35 @@ button:disabled {
   gap: 10px;
 }
 
+.grouping-header {
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-align: center;
+  font-size: 14px;
+}
+.side-group {
+  margin-top: 8px;
+  margin-bottom: 4px;
+  padding-left: 4px;
+  border-left: 3px solid #444;
+}
+.chain-path {
+  margin-left: 12px;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+.chain-mode-status {
+  text-align: center;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #444;
+  font-weight: bold;
+}
+[data-theme="light"] .side-group {
+  border-left-color: #aaa;
+}
+[data-theme="light"] .chain-mode-status {
+  border-top-color: #ccc;
+}
