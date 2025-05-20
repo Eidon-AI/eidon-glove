@@ -544,6 +544,11 @@ async function disconnectFromDevice(deviceId = null) {
     }
     
     updateConnectionStatus();
+    
+    // Update device grouping display if in chain mode
+    if (chainMode) {
+        repositionTrackerArrows();
+    }
 }
 
 // Add function to clean up device-specific elements
@@ -1377,6 +1382,11 @@ async function connectToDevice() {
 
         // Update UI
         updateConnectionStatus();
+        
+        // Update device grouping display if in chain mode
+        if (chainMode) {
+            repositionTrackerArrows();
+        }
 
     } catch (error) {
         console.error('Error connecting to HID device:', error);
@@ -1954,9 +1964,13 @@ function updateJointDisplay(deviceId, jointIndex, value) {
 // Add to the end of the file or where other initialization code is
 // Try to auto-connect when the page loads
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', autoConnectToLastDevice);
+    document.addEventListener('DOMContentLoaded', function() {
+        autoConnectToLastDevice();
+        displayDeviceGrouping(); // Initialize device grouping display
+    });
 } else {
     autoConnectToLastDevice();
+    displayDeviceGrouping(); // Initialize device grouping display
 }
 
 // Add this function to create and add the compass
@@ -2709,26 +2723,62 @@ function createTrackerArrow(deviceId, presetColor=null) {
 
 function getSortedTrackerArrows(trackerArrows) {
     return Array.from(trackerArrows.entries())
-        .sort(([a], [b]) => {
-            // Glove always first
-            if (a.includes('eidon-glove')) return -1;
-            if (b.includes('eidon-glove')) return 1;
+        .sort(([idA, _], [idB, __]) => {
+            // Get device types and positions
+            const isDeviceA = {
+                glove: idA.toLowerCase().includes('glove'),
+                right: isRightSide(idA),
+                lower: isLowerArm(idA)
+            };
             
-            // White tracker second
-            if (a.includes('eidon-tracker-white')) return -1;
-            if (b.includes('eidon-tracker-white')) return 1;
+            const isDeviceB = {
+                glove: idB.toLowerCase().includes('glove'),
+                right: isRightSide(idB),
+                lower: isLowerArm(idB)
+            };
             
-            // Orange tracker third
-            if (a.includes('eidon-tracker-orange')) return -1;
-            if (b.includes('eidon-tracker-orange')) return 1;
+            // Sort by side first (right before left)
+            if (isDeviceA.right !== isDeviceB.right) {
+                return isDeviceA.right ? -1 : 1;
+            }
             
-            // Green tracker fourth
-            if (a.includes('eidon-tracker-green')) return -1;
-            if (b.includes('eidon-tracker-green')) return 1;
+            // For same side, sort by position (glove, lower arm, upper arm)
+            if (isDeviceA.glove !== isDeviceB.glove) {
+                return isDeviceA.glove ? -1 : 1;
+            }
             
-            return 0;
+            // Both are trackers, sort by arm position (lower before upper)
+            if (!isDeviceA.glove && isDeviceA.lower !== isDeviceB.lower) {
+                return isDeviceA.lower ? -1 : 1;
+            }
+            
+            // Fallback to default sort (ID)
+            return idA.localeCompare(idB);
         })
         .map(([id, arrow]) => ({id, ...arrow}));
+}
+
+// Helper function to determine if a device is on the right side
+function isRightSide(deviceId) {
+    if (deviceId.toLowerCase().includes('glove')) {
+        // For gloves, check the stored hand information
+        const gloveData = gloves.get(deviceId);
+        return gloveData ? gloveData.isRightHand : false;
+    } else {
+        // For trackers, check the stored arm information
+        const trackerData = trackers.get(deviceId);
+        return trackerData ? trackerData.isRightArm : false;
+    }
+}
+
+// Helper function to determine if a tracker is for the lower arm
+function isLowerArm(deviceId) {
+    if (deviceId.toLowerCase().includes('glove')) {
+        return false; // Gloves are not arm trackers
+    }
+    
+    const trackerData = trackers.get(deviceId);
+    return trackerData ? trackerData.isLowerArm : false;
 }
 
 function updateTrackerArrow(deviceId, quaternion) {
@@ -2781,7 +2831,7 @@ function updateTrackerArrow(deviceId, quaternion) {
     arrow.upTip = { ...upTip }; // Store up tip for repositioning
 
     if (thisIndex === 0) {
-        lowerArmRotation = calculateRollAroundForward(forwardTip, upTip);
+        currentArmAngles.right.lowerArmRotation = calculateRollAroundForward(forwardTip, upTip);
         updateArmValuesDisplay();
     } 
 
@@ -2923,13 +2973,13 @@ function updateTrackerArrow(deviceId, quaternion) {
                     // const delta = deltaXY(arrow.quaternion, otherArrow.quaternion);
                     // wristFlexion = -delta.dX;
                     // wristDeviation = delta.dY;
-                    wristFlexion = flexionAngle;
-                    wristDeviation = -deviationAngle;
+                    currentArmAngles.right.wristFlexion = flexionAngle;
+                    currentArmAngles.right.wristDeviation = -deviationAngle;
                     updateArmValuesDisplay();
 
                 } else if (thisIndex === 1 && otherIndex === 2) {
 
-                    elbowFlexion = directAngle;
+                    currentArmAngles.right.elbowFlexion = directAngle;
                     updateArmValuesDisplay();
 
                 } else if (thisIndex === 2) {
@@ -2972,9 +3022,9 @@ function updateTrackerArrow(deviceId, quaternion) {
                     }
                     // Angle between forward vector and its projection on XZ plane
                     const flexionDot = forward.x * forwardXZ.x + forward.z * forwardXZ.z;
-                    shoulderFlexion = Math.acos(Math.max(-1, Math.min(1, flexionDot))) * (180 / Math.PI);
+                    currentArmAngles.right.shoulderFlexion = Math.acos(Math.max(-1, Math.min(1, flexionDot))) * (180 / Math.PI);
                     // Make flexion negative when pointing down
-                    if (forward.y < 0) shoulderFlexion = -shoulderFlexion;
+                    if (forward.y < 0) currentArmAngles.right.shoulderFlexion = -currentArmAngles.right.shoulderFlexion;
 
                     // Calculate shoulder deviation (left/right movement)
                     // Project forward vector onto the horizontal plane (XY plane)
@@ -2990,7 +3040,7 @@ function updateTrackerArrow(deviceId, quaternion) {
                     }
                     // Angle between forward vector and its projection on XY plane
                     const deviationDot = forward.x * forwardXY.x + forward.y * forwardXY.y;
-                    shoulderDeviation = Math.acos(Math.max(-1, Math.min(1, deviationDot))) * (180 / Math.PI);
+                    currentArmAngles.right.shoulderDeviation = Math.acos(Math.max(-1, Math.min(1, deviationDot))) * (180 / Math.PI);
                     // Make deviation negative when pointing left
                     // if (forward.z < 0) shoulderDeviation = -shoulderDeviation;
 
@@ -3137,23 +3187,43 @@ function directionVector(q, len = 1) {
 }
 
 // Add global variables for wrist angles
-let wristFlexion = 0;
-let wristDeviation = 0;
-let lowerArmRotation = 0;
-let elbowFlexion = 0;
-let upperArmRotation = 0;
-let shoulderFlexion = 0;
-let shoulderDeviation = 0;
+// let wristFlexion = 0;
+// let wristDeviation = 0;
+// let lowerArmRotation = 0;
+// let elbowFlexion = 0;
+// let upperArmRotation = 0;
+// let shoulderFlexion = 0;
+// let shoulderDeviation = 0;
+
+// New unified structure for arm angles per side
+const currentArmAngles = {
+    right: {
+        wristFlexion: 0,
+        wristDeviation: 0,
+        lowerArmRotation: 0,
+        elbowFlexion: 0,
+        shoulderFlexion: 0,
+        shoulderDeviation: 0
+    },
+    left: {
+        wristFlexion: 0,
+        wristDeviation: 0,
+        lowerArmRotation: 0,
+        elbowFlexion: 0,
+        shoulderFlexion: 0,
+        shoulderDeviation: 0
+    }
+};
 
 // Function to update arm values display
 function updateArmValuesDisplay() {
-    document.getElementById('wrist-flexion').textContent = `${wristFlexion.toFixed(1)}°`;
-    document.getElementById('wrist-deviation').textContent = `${wristDeviation.toFixed(1)}°`;
-    document.getElementById('lower-arm-rotation').textContent = `${lowerArmRotation.toFixed(1)}°`;
-    document.getElementById('upper-arm-rotation').textContent = `${shoulderFlexion.toFixed(1)}°`;
-    document.getElementById('elbow-flexion').textContent = `${elbowFlexion.toFixed(1)}°`;
-    document.getElementById('shoulder-flexion').textContent = `${shoulderFlexion.toFixed(1)}°`;
-    document.getElementById('shoulder-deviation').textContent = `${shoulderDeviation.toFixed(1)}°`;
+    document.getElementById('wrist-flexion').textContent = `${currentArmAngles.right.wristFlexion.toFixed(1)}°`;
+    document.getElementById('wrist-deviation').textContent = `${currentArmAngles.right.wristDeviation.toFixed(1)}°`;
+    document.getElementById('lower-arm-rotation').textContent = `${currentArmAngles.right.lowerArmRotation.toFixed(1)}°`;
+    document.getElementById('upper-arm-rotation').textContent = `${currentArmAngles.right.shoulderFlexion.toFixed(1)}°`;
+    document.getElementById('elbow-flexion').textContent = `${currentArmAngles.right.elbowFlexion.toFixed(1)}°`;
+    document.getElementById('shoulder-flexion').textContent = `${currentArmAngles.right.shoulderFlexion.toFixed(1)}°`;
+    document.getElementById('shoulder-deviation').textContent = `${currentArmAngles.right.shoulderDeviation.toFixed(1)}°`;
 
     // Get the first glove from the hands Map
     const firstGloveId = Array.from(hands.keys()).find(id => id.includes('Eidon-Glove'));
@@ -3161,12 +3231,12 @@ function updateArmValuesDisplay() {
 
     if (handModel && handModel.arm && handModel.arm.wrist && handModel.arm.elbow) {
         // Convert degrees to radians
-        const flexionRad = THREE.MathUtils.degToRad(-wristFlexion + 90);
-        const deviationRad = THREE.MathUtils.degToRad(-wristDeviation);
-        const rotationRad = THREE.MathUtils.degToRad(-lowerArmRotation);
-        const elbowRad = THREE.MathUtils.degToRad(-elbowFlexion);
-        const shoulderFlexionRad = THREE.MathUtils.degToRad(-shoulderFlexion);
-        const shoulderDeviationRad = THREE.MathUtils.degToRad(-shoulderDeviation);
+        const flexionRad = THREE.MathUtils.degToRad(-currentArmAngles.right.wristFlexion + 90);
+        const deviationRad = THREE.MathUtils.degToRad(-currentArmAngles.right.wristDeviation);
+        const rotationRad = THREE.MathUtils.degToRad(-currentArmAngles.right.lowerArmRotation);
+        const elbowRad = THREE.MathUtils.degToRad(-currentArmAngles.right.elbowFlexion);
+        const shoulderFlexionRad = THREE.MathUtils.degToRad(-currentArmAngles.right.shoulderFlexion);
+        const shoulderDeviationRad = THREE.MathUtils.degToRad(-currentArmAngles.right.shoulderDeviation);
         
         // Apply rotations to the wrist joint
         const wristJoint = handModel.arm.wrist;
@@ -3339,16 +3409,57 @@ function repositionTrackerArrows() {
         for (const arrow of trackerArrows.values()) {
             arrow.group.position.set(0, 0, 0);
         }
+        displayDeviceGrouping(); // Update grouping display
         return;
     }
 
-    // Build sorted array with same ordering logic used in updateTrackerArrow
+    // Build sorted array with body position ordering
     const sortedTrackerArrows = getSortedTrackerArrows(trackerArrows);
+    
+    // Group devices into sets of three (right set and left set)
+    const rightSet = [];
+    const leftSet = [];
+    
+    sortedTrackerArrows.forEach(arrow => {
+        // Check if this is a right-side device
+        const isRightSide = arrow.id.toLowerCase().includes('glove') 
+            ? (gloves.get(arrow.id)?.isRightHand ?? false)
+            : (trackers.get(arrow.id)?.isRightArm ?? false);
+            
+        if (isRightSide) {
+            rightSet.push(arrow);
+        } else {
+            leftSet.push(arrow);
+        }
+    });
 
-    // Position arrows so that last one is at origin and previous arrows chain outwards
-    let cumulativeOffset = { x: 2, y: 5, z: 0 };
-    for (let i = sortedTrackerArrows.length - 1; i >= 0; i--) {
-        const arrow = sortedTrackerArrows[i];
+    // Position for right side devices (starts at right side of screen)
+    const rightStartPosition = { x: 2, y: 5, z: 0 };
+    positionChainedSet(rightSet, rightStartPosition);
+    
+    // Position for left side devices (starts at left side of screen)
+    const leftStartPosition = { x: -2, y: 5, z: 0 };
+    positionChainedSet(leftSet, leftStartPosition);
+    
+    // Update the grouping display
+    displayDeviceGrouping();
+}
+
+// Helper function to position a set of chained devices
+function positionChainedSet(deviceSet, startPosition) {
+    if (deviceSet.length === 0) return;
+    
+    // Reverse the device set to get anatomical order: upper arm → lower arm → glove
+    // This will make the glove appear at the end of the chain
+    const reversedSet = [...deviceSet].reverse();
+    
+    let cumulativeOffset = { ...startPosition };
+    
+    // Position each device in the set
+    for (let i = 0; i < reversedSet.length; i++) {
+        const arrow = reversedSet[i];
+        
+        // Set position for this arrow
         arrow.group.position.set(cumulativeOffset.x, cumulativeOffset.y, cumulativeOffset.z);
         
         // Add this arrow's forward tip to cumulative offset if we have it
@@ -3367,8 +3478,10 @@ function addVectorModeToggle() {
     if (toggle) {
         toggle.onclick = () => {
             chainMode = !chainMode;
-            toggle.textContent = chainMode ? 'Chain Mode: On' : 'Chain Mode: Off';
+            updateChainModeButtonText(toggle);
             repositionTrackerArrows();
+            // Explicitly call displayDeviceGrouping to update the grouping info
+            displayDeviceGrouping();
         };
         return;
     }
@@ -3377,8 +3490,10 @@ function addVectorModeToggle() {
     toggle.textContent = 'Chain Mode: Off';
     toggle.onclick = () => {
         chainMode = !chainMode;
-        toggle.textContent = chainMode ? 'Chain Mode: On' : 'Chain Mode: Off';
+        updateChainModeButtonText(toggle);
         repositionTrackerArrows();
+        // Explicitly call displayDeviceGrouping to update the grouping info
+        displayDeviceGrouping();
     };
 
     // Find or create the view-controls container (same logic as gamepad button)
@@ -3391,6 +3506,23 @@ function addVectorModeToggle() {
     }
 
     viewControls.appendChild(toggle);
+    updateChainModeButtonText(toggle);
+    
+    // Initialize device grouping display
+    displayDeviceGrouping();
+}
+
+// Helper function to update chain mode button text
+function updateChainModeButtonText(buttonElement) {
+    if (!buttonElement) return;
+    
+    if (chainMode) {
+        buttonElement.textContent = 'Chain Mode: On (Anatomical Order)';
+        buttonElement.title = 'Devices are grouped by right/left sides and chained in anatomical order: Upper Arm → Lower Arm → Glove';
+    } else {
+        buttonElement.textContent = 'Chain Mode: Off';
+        buttonElement.title = 'All devices are positioned at the origin';
+    }
 }
 
 // Call this after dark mode toggle setup
@@ -3617,4 +3749,161 @@ function updateGloveHandPosition(deviceId, isRightHand) {
         // Update text content with emoji
         handPositionSpan.innerHTML = `${handEmoji} ${handText}`;
     }
+}
+
+// Add a function to display device grouping information
+function displayDeviceGrouping() {
+    // Check if the sidebar exists
+    if (!jointsContainer) return;
+
+    // Check if grouping info already exists in sidebar
+    let groupingInfo = document.getElementById('device-grouping-info');
+
+    if (!groupingInfo) {
+        // Create info container in the sidebar
+        groupingInfo = document.createElement('div');
+        groupingInfo.id = 'device-grouping-info';
+        groupingInfo.className = 'tracker-info device-grouping';
+        // Minimal extra styling so it blends with tracker-info look
+        groupingInfo.style.cssText = `margin-top: 10px; font-size: 12px;`;
+        
+        // Insert at the top of the sidebar
+        if (jointsContainer.firstChild) {
+            jointsContainer.insertBefore(groupingInfo, jointsContainer.firstChild);
+        } else {
+            jointsContainer.appendChild(groupingInfo);
+        }
+        
+        // Add a style for dark/light mode compatibility
+        const style = document.createElement('style');
+        style.textContent = `
+            [data-theme="light"] .device-grouping-sidebar {
+                background: rgba(240, 240, 240, 0.8);
+                color: black;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    // Always show the grouping info box
+    groupingInfo.style.display = 'block';
+
+    // Get sorted devices
+    const sortedTrackerArrows = getSortedTrackerArrows(trackerArrows);
+    
+    // Group devices by side and position
+    const rightGlove = [];
+    const rightLower = [];
+    const rightUpper = [];
+    const leftGlove = [];
+    const leftLower = [];
+    const leftUpper = [];
+
+    sortedTrackerArrows.forEach(arrow => {
+        const isGlove = arrow.id.toLowerCase().includes('glove');
+        const isRight = isRightSide(arrow.id);
+        const isLower = isLowerArm(arrow.id);
+        
+        if (isRight) {
+            if (isGlove) rightGlove.push(arrow.id);
+            else if (isLower) rightLower.push(arrow.id);
+            else rightUpper.push(arrow.id);
+        } else {
+            if (isGlove) leftGlove.push(arrow.id);
+            else if (isLower) leftLower.push(arrow.id);
+            else leftUpper.push(arrow.id);
+        }
+    });
+
+    // Format the display text
+    let html = '<div class="grouping-header">Device Grouping (Chain Order)</div>';
+    
+    html += '<div class="side-group"><b>RIGHT ARM:</b></div>';
+    // Show in reverse order (matching the chain direction)
+    html += formatDeviceList(rightUpper);
+    html += ' → <br>';
+    html += formatDeviceList(rightLower);
+    html += ' → <br>';
+    html += formatDeviceList(rightGlove);
+    html += '</div>';
+    
+    html += '<div class="side-group"><b>LEFT ARM:</b></div>';
+    // Show in reverse order (matching the chain direction)
+    html += formatDeviceList(leftUpper);
+    html += ' → <br>';
+    html += formatDeviceList(leftLower);
+    html += ' → <br>';
+    html += formatDeviceList(leftGlove);
+    html += '</div>';
+
+    // Add chain mode status
+    html += '<div class="chain-mode-status">';
+    html += chainMode ? 
+        '<span style="color: #4CAF50;">Chain Mode: ON</span>' : 
+        '<span style="color: #F44336;">Chain Mode: OFF</span>';
+    html += '</div>';
+
+    groupingInfo.innerHTML = html;
+    
+    // Add additional styles for the elements
+    const styleElement = document.getElementById('grouping-styles');
+    if (!styleElement) {
+        const newStyle = document.createElement('style');
+        newStyle.id = 'grouping-styles';
+        newStyle.textContent = `
+            .grouping-header {
+                font-weight: bold;
+                margin-bottom: 8px;
+                text-align: center;
+                font-size: 14px;
+            }
+            .side-group {
+                margin-top: 8px;
+                margin-bottom: 4px;
+                padding-left: 4px;
+                border-left: 3px solid #444;
+            }
+            .chain-path {
+                margin-left: 12px;
+                margin-bottom: 8px;
+                white-space: nowrap;
+                overflow-x: auto;
+                padding-bottom: 4px;
+            }
+            .chain-mode-status {
+                text-align: center;
+                margin-top: 8px;
+                padding-top: 8px;
+                border-top: 1px solid #444;
+                font-weight: bold;
+            }
+            [data-theme="light"] .side-group {
+                border-left-color: #aaa;
+            }
+            [data-theme="light"] .chain-mode-status {
+                border-top-color: #ccc;
+            }
+        `;
+        document.head.appendChild(newStyle);
+    }
+    
+    // No visibility preference needed now
+}
+
+// Helper function to format device ID list
+function formatDeviceList(deviceIds) {
+    if (deviceIds.length === 0) return '<span style="color: #777777">None</span>';
+    
+    return deviceIds.map(id => {
+        // Get device from hidDevices map
+        const device = hidDevices.get(id);
+        const name = device ? device.productName : id.split('-').pop();
+        
+        // Get color from trackerArrow
+        const arrow = trackerArrows.get(id);
+        const color = arrow ? arrow.color : 0xFFFFFF;
+        const colorHex = color.toString(16).padStart(6, '0');
+        
+        return `<span style="color: #${colorHex}">■</span> ${name}`;
+    }).join(', ');
 }
