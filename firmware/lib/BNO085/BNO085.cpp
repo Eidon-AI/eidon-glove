@@ -10,31 +10,6 @@ float quaternion_w = 1;
 
 euler_t ypr = {0, 0, 0};
 
-// Function to correct quaternion for backwards-mounted IMU
-void correctQuaternionForBackwardsMount() {
-    // Create a quaternion representing a 180-degree rotation around the Y axis
-    float correction_w = 0.0f;  // cos(180/2) = 0
-    float correction_x = 0.0f;  // 0 * sin(180/2)
-    float correction_y = 0.0f;  // 1 * sin(180/2)
-    float correction_z = 1.0f;  // 0 * sin(180/2)
-
-    // Multiply the current quaternion by the correction quaternion
-    float temp_w = quaternion_w * correction_w - quaternion_x * correction_x - 
-                   quaternion_y * correction_y - quaternion_z * correction_z;
-    float temp_x = quaternion_w * correction_x + quaternion_x * correction_w + 
-                   quaternion_y * correction_z - quaternion_z * correction_y;
-    float temp_y = quaternion_w * correction_y - quaternion_x * correction_z + 
-                   quaternion_y * correction_w + quaternion_z * correction_x;
-    float temp_z = quaternion_w * correction_z + quaternion_x * correction_y - 
-                   quaternion_y * correction_x + quaternion_z * correction_w;
-
-    // Update the quaternion values
-    quaternion_w = temp_w;
-    quaternion_x = temp_x;
-    quaternion_y = temp_y;
-    quaternion_z = temp_z;
-}
-
 void printBNO085Values() {
     // Serial.println("Quaternion Values:");
     Serial.print("X: "); Serial.print(quaternion_x, 4);
@@ -84,13 +59,10 @@ void updateBNO085() {
     if (bno08x.getSensorEvent(&sensorValue)) {
         switch (sensorValue.sensorId) {
             case SH2_GAME_ROTATION_VECTOR:
-                quaternion_x = sensorValue.un.rotationVector.i;
-                quaternion_y = sensorValue.un.rotationVector.j;
+                quaternion_x = -sensorValue.un.rotationVector.i;
+                quaternion_y = -sensorValue.un.rotationVector.j;
                 quaternion_z = sensorValue.un.rotationVector.k;
                 quaternion_w = sensorValue.un.rotationVector.real;
-                
-                // Apply correction for backwards-mounted IMU
-                correctQuaternionForBackwardsMount();
                 break;
         }
 
