@@ -102,6 +102,7 @@ const gloves = new Map(); // Map to store glove data by deviceId
 
 // Add to global variables
 const hands = new Map(); // Map to store hand models by deviceId
+let handModelsVisible = true; // Track hand model visibility state
 
 // Add to global variables section
 const armJointMap = [
@@ -116,6 +117,45 @@ const trackerArrows = new Map(); // Map to store tracker arrows by deviceId
 // Add this function to get the current hand count
 function getHandCount() {
     return hands.size;
+}
+
+// Add function to toggle hand model visibility
+function toggleHandModelsVisibility() {
+    handModelsVisible = !handModelsVisible;
+    const toggleButton = document.getElementById('hand-models-toggle');
+    toggleButton.textContent = handModelsVisible ? 'Hide Hand Models' : 'Show Hand Models';
+    
+    // Update visibility for all hand models
+    for (const [deviceId, handModel] of hands) {
+        if (handModel.arm && handModel.arm.shoulder) {
+            handModel.arm.shoulder.visible = handModelsVisible;
+        }
+    }
+    
+    // Save preference
+    localStorage.setItem('handModelsVisible', handModelsVisible);
+}
+
+// Add function to initialize hand model visibility
+function initializeHandModelVisibility() {
+    const toggleButton = document.getElementById('hand-models-toggle');
+    if (toggleButton) {
+        toggleButton.onclick = toggleHandModelsVisibility;
+        
+        // Check for saved preference
+        const savedVisibility = localStorage.getItem('handModelsVisible');
+        if (savedVisibility !== null) {
+            handModelsVisible = savedVisibility === 'true';
+            toggleButton.textContent = handModelsVisible ? 'Hide Hand Models' : 'Show Hand Models';
+            
+            // Apply saved visibility state
+            for (const [deviceId, handModel] of hands) {
+                if (handModel.arm && handModel.arm.shoulder) {
+                    handModel.arm.shoulder.visible = handModelsVisible;
+                }
+            }
+        }
+    }
 }
 
 // Initialize Three.js scene
@@ -144,7 +184,8 @@ function initThreeJS() {
     // Create renderer
     renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(canvasContainer.clientWidth, canvasContainer.clientHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    const DPR = Math.min(1.5, window.devicePixelRatio);  // cap at 1.5
+    renderer.setPixelRatio(DPR);
     
     // Clear any existing canvas
     while (canvasContainer.firstChild) {
@@ -274,6 +315,8 @@ function createHandModel(deviceId) {
     }
 
     const handCount = getHandCount();
+    const gloveInfo = gloves.get(deviceId);
+    const isRightHand = gloveInfo ? gloveInfo.isRightHand : false;
     const handModel = {
         arm: {
             shoulder: null,
@@ -283,7 +326,10 @@ function createHandModel(deviceId) {
             wrist: null
         },
         palm: null,
-        fingers: []
+        fingers: [],
+        // Track which side this hand represents for easier mapping
+        side: isRightHand ? 'right' : 'left',
+        id: deviceId
     };
 
     // Create materials
@@ -296,7 +342,7 @@ function createHandModel(deviceId) {
     // Shoulder joint (sphere)
     const shoulderGeometry = new THREE.SphereGeometry(1.5, 16, 16);
     handModel.arm.shoulder = new THREE.Mesh(shoulderGeometry, jointMaterial);
-    handModel.arm.shoulder.position.set(handCount * 8 + 4, 15, 0); // Position shoulder higher up and space them out
+    handModel.arm.shoulder.position.set(isRightHand ? 4 : -4, 15, 0); // Position shoulder higher up and space them out
 
     scene.add(handModel.arm.shoulder);
 
@@ -661,7 +707,7 @@ function updateHandModel(deviceId) {
     if (!handModel || !gloveData) return;
     
     // Update arm position first
-    updateArmPosition(deviceId);
+    // updateArmPosition(deviceId);
     
     // Make sure arm values are applied to the model
     updateArmValuesDisplay();
@@ -811,6 +857,9 @@ if (!navigator.hid) {
 
 // Initialize Three.js scene
 initThreeJS();
+
+// NEW: create placeholder left & right hands at startup (no devices required)
+initializeDefaultHands();
 
 // Initialize joint elements
 // initializeJointElements();
@@ -1976,8 +2025,14 @@ function updateJointDisplay(deviceId, jointIndex, value) {
 // Try to auto-connect when the page loads
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
-        autoConnectToLastDevice();
-        displayDeviceGrouping(); // Initialize device grouping display
+        // Initialize Three.js
+        initThreeJS();
+        
+        // Initialize hand model visibility
+        initializeHandModelVisibility();
+        
+        // Initialize default hands
+        initializeDefaultHands();
     });
 } else {
     autoConnectToLastDevice();
@@ -2403,64 +2458,64 @@ function computeWristDeviation(qWrist, qHand) {
 }
 
 // Add new function to update arm position based on IMU sensors
-function updateArmPosition(deviceId) {
-    const handModel = hands.get(deviceId);
-    if (!handModel) return;
+// function updateArmPosition(deviceId) {
+//     const handModel = hands.get(deviceId);
+//     if (!handModel) return;
 
-    const gloveData = gloves.get(deviceId);
-    const wristTracker = trackers.get(`0-0-Eidon-Tracker-1`);
+//     const gloveData = gloves.get(deviceId);
+//     const wristTracker = trackers.get(`0-0-Eidon-Tracker-1`);
 
-    if (!gloveData || !wristTracker) return;
+//     if (!gloveData || !wristTracker) return;
 
-    // Get quaternion values from wrist tracker and hand
-    const wristQuat = wristTracker.quaternion;
-    const handQuat = gloveData.quaternion;
+//     // Get quaternion values from wrist tracker and hand
+//     const wristQuat = wristTracker.quaternion;
+//     const handQuat = gloveData.quaternion;
 
-    // Set fixed arm positions
-    handModel.arm.elbow.rotation.y = THREE.MathUtils.degToRad(0);
-    handModel.arm.shoulder.rotation.x = THREE.MathUtils.degToRad(90);
-    handModel.arm.shoulder.rotation.y = THREE.MathUtils.degToRad(180);
+//     // Set fixed arm positions
+//     handModel.arm.elbow.rotation.y = THREE.MathUtils.degToRad(0);
+//     handModel.arm.shoulder.rotation.x = THREE.MathUtils.degToRad(90);
+//     handModel.arm.shoulder.rotation.y = THREE.MathUtils.degToRad(180);
     
-    // Create THREE.Quaternion objects
-    const qWrist = new THREE.Quaternion(
-        wristQuat.x,
-        wristQuat.y,
-        wristQuat.z,
-        wristQuat.w
-    );
+//     // Create THREE.Quaternion objects
+//     const qWrist = new THREE.Quaternion(
+//         wristQuat.x,
+//         wristQuat.y,
+//         wristQuat.z,
+//         wristQuat.w
+//     );
     
-    const qHand = new THREE.Quaternion(
-        handQuat.x,
-        handQuat.y,
-        handQuat.z,
-        handQuat.w
-    );
+//     const qHand = new THREE.Quaternion(
+//         handQuat.x,
+//         handQuat.y,
+//         handQuat.z,
+//         handQuat.w
+//     );
     
-    // Extract forearm roll from wrist tracker
-    // This is the rotation around the forearm's long axis
-    const forearmQuaternion = qWrist.clone();
-    const forearmRoll = Math.atan2(2 * (forearmQuaternion.w * forearmQuaternion.z + forearmQuaternion.x * forearmQuaternion.y),
-                                   1 - 2 * (forearmQuaternion.y * forearmQuaternion.y + forearmQuaternion.z * forearmQuaternion.z)) * (180 / Math.PI);
+//     // Extract forearm roll from wrist tracker
+//     // This is the rotation around the forearm's long axis
+//     const forearmQuaternion = qWrist.clone();
+//     const forearmRoll = Math.atan2(2 * (forearmQuaternion.w * forearmQuaternion.z + forearmQuaternion.x * forearmQuaternion.y),
+//                                    1 - 2 * (forearmQuaternion.y * forearmQuaternion.y + forearmQuaternion.z * forearmQuaternion.z)) * (180 / Math.PI);
     
-    // Apply forearm roll to the forearm
-    handModel.arm.forearm.rotation.y = THREE.MathUtils.degToRad(-forearmRoll + 45);
+//     // Apply forearm roll to the forearm
+//     handModel.arm.forearm.rotation.y = THREE.MathUtils.degToRad(-forearmRoll + 45);
     
-    // Compute wrist flexion/extension angle
-    const wristAngle = computeWristAngle(qWrist, qHand);
+//     // Compute wrist flexion/extension angle
+//     const wristAngle = computeWristAngle(qWrist, qHand);
     
-    // Apply the wrist angle to the wrist's x rotation
-    handModel.arm.wrist.rotation.x = THREE.MathUtils.degToRad(-wristAngle + 90);
+//     // Apply the wrist angle to the wrist's x rotation
+//     handModel.arm.wrist.rotation.x = THREE.MathUtils.degToRad(-wristAngle + 90);
     
-    // Compute radial/ulnar deviation angle (but don't apply it yet)
-    const deviationAngle = computeWristDeviation(qWrist, qHand);
+//     // Compute radial/ulnar deviation angle (but don't apply it yet)
+//     const deviationAngle = computeWristDeviation(qWrist, qHand);
     
-    // Reset other wrist rotations
-    handModel.arm.wrist.rotation.y = 0;
-    handModel.arm.wrist.rotation.z = 0;
+//     // Reset other wrist rotations
+//     handModel.arm.wrist.rotation.y = 0;
+//     handModel.arm.wrist.rotation.z = 0;
     
-    // Log the values for debugging
-    console.log(`Forearm Roll: ${forearmRoll.toFixed(2)}°, Wrist Flexion: ${wristAngle.toFixed(2)}°, Radial/Ulnar Deviation: ${deviationAngle.toFixed(2)}°`);
-}
+//     // Log the values for debugging
+//     console.log(`Forearm Roll: ${forearmRoll.toFixed(2)}°, Wrist Flexion: ${wristAngle.toFixed(2)}°, Radial/Ulnar Deviation: ${deviationAngle.toFixed(2)}°`);
+// }
 
 function updateGloveDisplay(deviceId, data) {
     const gloveData = gloves.get(deviceId);
@@ -2805,8 +2860,11 @@ function updateTrackerArrow(deviceId, quaternion) {
     // Store the quaternion in the arrow object
     arrow.quaternion = quaternion;
     
-    // Calculate forward direction with variable length (first tracker gets shorter ray)
-    const rayLength = 5.0; //thisIndex === 0 ? 2.0 : 5.0;
+    // Use shorter arrows for glove devices for better visual separation
+    const isGloveDevice = deviceId.toLowerCase().includes('glove');
+    const rayLength = isGloveDevice ? 2.0 : 5.0;
+    
+    // Calculate forward direction with variable length based on device type
     const forwardTip = forwardRay(quaternion, rayLength);
     
     // Calculate up direction
@@ -3034,9 +3092,9 @@ function updateTrackerArrow(deviceId, quaternion) {
                     }
                     // Angle between forward vector and its projection on XZ plane
                     const flexionDot = forward.x * forwardXZ.x + forward.z * forwardXZ.z;
-                    currentArmAngles.right.shoulderFlexion = Math.acos(Math.max(-1, Math.min(1, flexionDot))) * (180 / Math.PI);
+                    currentArmAngles.right.shoulderAbduction = Math.acos(Math.max(-1, Math.min(1, flexionDot))) * (180 / Math.PI);
                     // Make flexion negative when pointing down
-                    if (forward.y < 0) currentArmAngles.right.shoulderFlexion = -currentArmAngles.right.shoulderFlexion;
+                    if (forward.y < 0) currentArmAngles.right.shoulderAbduction = -currentArmAngles.right.shoulderAbduction;
 
                     // Calculate shoulder deviation (left/right movement)
                     // Project forward vector onto the horizontal plane (XY plane)
@@ -3052,9 +3110,9 @@ function updateTrackerArrow(deviceId, quaternion) {
                     }
                     // Angle between forward vector and its projection on XY plane
                     const deviationDot = forward.x * forwardXY.x + forward.y * forwardXY.y;
-                    currentArmAngles.right.shoulderDeviation = Math.acos(Math.max(-1, Math.min(1, deviationDot))) * (180 / Math.PI);
+                    currentArmAngles.right.shoulderFlexion = Math.acos(Math.max(-1, Math.min(1, deviationDot))) * (180 / Math.PI);
                     // Make deviation negative when pointing left
-                    // if (forward.z < 0) shoulderDeviation = -shoulderDeviation;
+                    if (forward.z > 0) currentArmAngles.right.shoulderFlexion = -currentArmAngles.right.shoulderFlexion;
 
                     updateArmValuesDisplay();
                 }
@@ -3205,7 +3263,7 @@ function directionVector(q, len = 1) {
 // let elbowFlexion = 0;
 // let upperArmRotation = 0;
 // let shoulderFlexion = 0;
-// let shoulderDeviation = 0;
+// let shoulderAbduction = 0;
 
 // New unified structure for arm angles per side
 const currentArmAngles = {
@@ -3215,7 +3273,7 @@ const currentArmAngles = {
         lowerArmRotation: 0,
         elbowFlexion: 0,
         shoulderFlexion: 0,
-        shoulderDeviation: 0
+        shoulderAbduction: 0
     },
     left: {
         wristFlexion: 0,
@@ -3223,7 +3281,7 @@ const currentArmAngles = {
         lowerArmRotation: 0,
         elbowFlexion: 0,
         shoulderFlexion: 0,
-        shoulderDeviation: 0
+        shoulderAbduction: 0
     }
 };
 
@@ -3235,23 +3293,26 @@ function updateArmValuesDisplay() {
     document.getElementById('upper-arm-rotation').textContent = `${currentArmAngles.right.shoulderFlexion.toFixed(1)}°`;
     document.getElementById('elbow-flexion').textContent = `${currentArmAngles.right.elbowFlexion.toFixed(1)}°`;
     document.getElementById('shoulder-flexion').textContent = `${currentArmAngles.right.shoulderFlexion.toFixed(1)}°`;
-    document.getElementById('shoulder-deviation').textContent = `${currentArmAngles.right.shoulderDeviation.toFixed(1)}°`;
+    document.getElementById('shoulder-deviation').textContent = `${currentArmAngles.right.shoulderAbduction.toFixed(1)}°`;
 
     // Get the first glove from the hands Map
-    const firstGloveId = Array.from(hands.keys()).find(id => id.includes('Eidon-Glove'));
-    const handModel = firstGloveId ? hands.get(firstGloveId) : null;
+    const rightGloveValue = Array.from(hands.values()).find(hand => hand.side === 'right' && hand.id && hand.id.toLowerCase().includes('eidon-glove')) ||
+                             Array.from(hands.values()).find(hand => hand.side === 'right');
+    const rightGloveId = rightGloveValue ? rightGloveValue.id : null;
+    const rightHandModel = rightGloveId ? hands.get(rightGloveId) : null;
 
-    if (handModel && handModel.arm && handModel.arm.wrist && handModel.arm.elbow) {
+    if (rightHandModel && rightHandModel.arm && rightHandModel.arm.wrist && rightHandModel.arm.elbow) {
+        // console.log('currentArmAngles:', currentArmAngles);
         // Convert degrees to radians
         const flexionRad = THREE.MathUtils.degToRad(-currentArmAngles.right.wristFlexion + 90);
         const deviationRad = THREE.MathUtils.degToRad(-currentArmAngles.right.wristDeviation);
-        const rotationRad = THREE.MathUtils.degToRad(-currentArmAngles.right.lowerArmRotation);
-        const elbowRad = THREE.MathUtils.degToRad(-currentArmAngles.right.elbowFlexion);
-        const shoulderFlexionRad = THREE.MathUtils.degToRad(-currentArmAngles.right.shoulderFlexion);
-        const shoulderDeviationRad = THREE.MathUtils.degToRad(-currentArmAngles.right.shoulderDeviation);
+        const rotationRad = THREE.MathUtils.degToRad(90 + currentArmAngles.right.lowerArmRotation);
+        const elbowRad = THREE.MathUtils.degToRad(currentArmAngles.right.elbowFlexion);
+        const shoulderFlexionRad = THREE.MathUtils.degToRad(currentArmAngles.right.shoulderFlexion);
+        const shoulderAbductionRad = THREE.MathUtils.degToRad(currentArmAngles.right.shoulderAbduction + 90);
         
         // Apply rotations to the wrist joint
-        const wristJoint = handModel.arm.wrist;
+        const wristJoint = rightHandModel.arm.wrist;
         // Reset rotation first
         wristJoint.rotation.set(0, 0, 0);
         // Apply flexion (around X axis)
@@ -3259,19 +3320,19 @@ function updateArmValuesDisplay() {
         // Apply deviation (around Y axis)
         wristJoint.rotateY(deviationRad);
         // Apply rotation (around Z axis)
-        wristJoint.rotateZ(rotationRad);
+        // wristJoint.rotateZ(rotationRad);
 
         // Apply elbow flexion (around Y axis)
-        const elbowJoint = handModel.arm.elbow;
+        const elbowJoint = rightHandModel.arm.elbow;
         elbowJoint.rotation.set(0, 0, 0);
         elbowJoint.rotateX(elbowRad);
 
         // Apply shoulder flexion (around X axis)
-        const shoulderJoint = handModel.arm.shoulder;
+        const shoulderJoint = rightHandModel.arm.shoulder;
         shoulderJoint.rotation.set(0, 0, 0);
         shoulderJoint.rotateX(shoulderFlexionRad);
         // Apply shoulder deviation (around Z axis)
-        shoulderJoint.rotateZ(-shoulderDeviationRad);
+        // shoulderJoint.rotateZ(shoulderAbductionRad);
     }
 }
 
@@ -3616,7 +3677,6 @@ async function calibrateDevice(deviceId = null) {
 // Helper: calibrate all trackers on the same arm as the specified glove
 function calibrateTrackersOnSameArm(gloveDeviceId) {
     const gloveData = gloves.get(gloveDeviceId);
-    console.log('gloveData:', gloveData);
     if (!gloveData) return;
 
     const targetIsRight = gloveData.isRightHand;
@@ -3781,6 +3841,29 @@ function updateGloveHandPosition(deviceId, isRightHand) {
         // Update text content with emoji
         handPositionSpan.innerHTML = `${handEmoji} ${handText}`;
     }
+
+    // Update the hand model side property if it exists
+    const handModel = hands.get(deviceId);
+    if (handModel) {
+        handModel.side = isRightHand ? 'right' : 'left';
+        // Ensure the hand appears on the correct side of the avatar
+        const targetX = handModel.side === 'right' ? 4 : -4;
+        if (handModel.arm && handModel.arm.shoulder) {
+            handModel.arm.shoulder.position.x = targetX;
+        }
+    }
+
+    // If this is a real glove, remove any placeholder hand on the same side
+    if (!deviceId.startsWith('default')) {
+        const placeholderId = isRightHand ? 'default-right' : 'default-left';
+        if (hands.has(placeholderId)) {
+            const placeholder = hands.get(placeholderId);
+            if (placeholder && placeholder.arm && placeholder.arm.shoulder) {
+                scene.remove(placeholder.arm.shoulder);
+            }
+            hands.delete(placeholderId);
+        }
+    }
 }
 
 // Add a function to display device grouping information
@@ -3894,4 +3977,26 @@ function formatDeviceList(deviceIds) {
         
         return `<span style="color: #${colorHex}">■</span> ${name}`;
     }).join(', ');
+}
+
+// Function to initialize placeholder hands when no gloves are connected
+function initializeDefaultHands() {
+    // Right hand placeholder
+    if (!hands.has('default-right')) {
+        const rightHand = createHandModel('default-right');
+        if (rightHand) {
+            rightHand.side = 'right';
+            // Place on positive X side
+            rightHand.arm.shoulder.position.set(4, 15, 0);
+        }
+    }
+    // Left hand placeholder
+    if (!hands.has('default-left')) {
+        const leftHand = createHandModel('default-left');
+        if (leftHand) {
+            leftHand.side = 'left';
+            // Place on negative X side
+            leftHand.arm.shoulder.position.set(-4, 15, 0);
+        }
+    }
 }

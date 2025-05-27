@@ -24,6 +24,7 @@ void updateBNO085();
 void resetBNO085();
 void printBNO085Values();
 void quaternionToEuler();
+void correctQuaternionForBackwardsMount();
 
 // Declare external variables to store sensor data
 extern float quaternion_x;
