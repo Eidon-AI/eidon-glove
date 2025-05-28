@@ -59,8 +59,8 @@ void updateBNO085() {
     if (bno08x.getSensorEvent(&sensorValue)) {
         switch (sensorValue.sensorId) {
             case SH2_GAME_ROTATION_VECTOR:
-                quaternion_x = -sensorValue.un.rotationVector.i;
-                quaternion_y = -sensorValue.un.rotationVector.j;
+                quaternion_x = sensorValue.un.rotationVector.i;
+                quaternion_y = sensorValue.un.rotationVector.j;
                 quaternion_z = sensorValue.un.rotationVector.k;
                 quaternion_w = sensorValue.un.rotationVector.real;
                 break;
