@@ -4,6 +4,7 @@
 #include <Arduino.h>
 #include <stdint.h>
 #include <ResponsiveAnalogRead.h>
+#include <Preferences.h>
 
 //TODO define multiplexer input pins
 #define S0 10
@@ -39,6 +40,22 @@ void calibrateHallEffectSensors();
  * Resets the calibration min/max angles to initial values
  */
 void resetHallEffectCalibration();
+
+/**
+ * Saves current calibration data to persistent storage
+ */
+void saveHallEffectCalibration();
+
+/**
+ * Loads calibration data from persistent storage
+ * Returns true if calibration was loaded, false if no saved data exists
+ */
+bool loadHallEffectCalibration();
+
+/**
+ * Resets calibration to defaults and clears persistent storage
+ */
+void clearHallEffectCalibration();
 
 float poly(double x, double a,double b,double c);
 

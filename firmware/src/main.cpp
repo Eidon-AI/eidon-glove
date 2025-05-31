@@ -59,6 +59,12 @@ const unsigned long LED_FLASH_INTERVAL = 50; // Very slow flash for debugging
 // LED brightness settings
 #define LED_DIM_BRIGHTNESS 50  // Dim brightness level (0-255) when connected
 
+// Button hold calibration reset constants
+#define CALIBRATION_RESET_HOLD_TIME 3000  // Hold for 3 seconds to reset calibration
+bool buttonHoldInProgress = false;
+unsigned long buttonHoldStartTime = 0;
+bool calibrationResetTriggered = false;
+
 /* One top-level application collection, Usage = Gamepad                    */
 /*  ├─ Input  (Button/Flags, Finger Angle Bytes, Quaternion)                */
 /*  ├─ Output (Vendor byte)                                                 */
@@ -719,6 +725,47 @@ void loop() {
     // Update LED status first
     updateLEDStatus();
     
+    // Check for calibration reset button hold (independent of connection state)
+    bool bootButtonPressed = !digitalRead(BUTTON_BOOT_PIN);
+    
+    if (bootButtonPressed) {
+        if (!buttonHoldInProgress) {
+            // Button just pressed, start timing
+            buttonHoldInProgress = true;
+            buttonHoldStartTime = millis();
+            calibrationResetTriggered = false;
+        } else {
+            // Button is being held, check if it's been long enough
+            unsigned long holdDuration = millis() - buttonHoldStartTime;
+            
+            if (holdDuration >= CALIBRATION_RESET_HOLD_TIME && !calibrationResetTriggered) {
+                // Button held long enough, reset calibration
+                Serial.println("Button held for 3+ seconds - resetting hall effect calibration!");
+                clearHallEffectCalibration();
+                calibrationResetTriggered = true;
+                
+                // Flash LED rapidly to indicate reset
+                for (int i = 0; i < 6; i++) {
+                    digitalWrite(LED_PIN, HIGH);
+                    delay(100);
+                    digitalWrite(LED_PIN, LOW);
+                    delay(100);
+                }
+            }
+        }
+    } else {
+        if (buttonHoldInProgress) {
+            // Button was released
+            unsigned long holdDuration = millis() - buttonHoldStartTime;
+            if (holdDuration < CALIBRATION_RESET_HOLD_TIME && !calibrationResetTriggered) {
+                Serial.print("Button held for ");
+                Serial.print(holdDuration);
+                Serial.println("ms (need 3000ms for calibration reset)");
+            }
+            buttonHoldInProgress = false;
+        }
+    }
+    
     // Handle connection state changes
     if (deviceConnected && !oldDeviceConnected) {
         // Just connected
@@ -751,12 +798,12 @@ void loop() {
 
     // Send data if connected
     if (deviceConnected) {
-        // Read the button state from the Xiao ESP32-C3
+        // Read the button state from the Xiao ESP32-C3 (for mode switching, separate from calibration reset)
         int buttonsState = !digitalRead(BUTTON_BOOT_PIN) || !digitalRead(BUTTON_MODE_PIN) << 1;
         
-        // Toggle between modes on button release
+        // Toggle between modes on button release (but only if it wasn't a long hold for calibration reset)
         static int lastButtonState = 0;
-        if (!buttonsState && lastButtonState) {  // Button was released
+        if (!buttonsState && lastButtonState && !calibrationResetTriggered) {  // Button was released and wasn't a calibration reset
             // cycleToNextMode();
             if (isBNO085Available()) {
                 resetBNO085();

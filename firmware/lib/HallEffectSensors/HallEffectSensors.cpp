@@ -1,11 +1,16 @@
 #include "HallEffectSensors.h"
 
 ResponsiveAnalogRead analog(A2, true);
+Preferences calibPrefs;  // Preferences instance for calibration storage
 
 int32_t rawVals[SENSOR_COUNT];
 float proto_angles[SENSOR_COUNT];
 float min_angles[SENSOR_COUNT];
 float max_angles[SENSOR_COUNT];
+
+// Track when calibration was last saved to avoid excessive writes
+unsigned long lastCalibSave = 0;
+const unsigned long CALIB_SAVE_INTERVAL = 5000; // Save every 5 seconds max
 
 float polyVals[16][3] = {
     {-0.000087481431887,0.549306011516565,-709.440158534950912},  //thumb 0
@@ -38,9 +43,16 @@ void hallEffectSensorsSetup(){
 
     //digitalWrite(D2, LOW);
 
-    for (uint8_t i = 0; i < SENSOR_COUNT; i++){
-        min_angles[i] = 10000;
-        max_angles[i] = -10000;
+    // Try to load saved calibration data
+    if (loadHallEffectCalibration()) {
+        Serial.println("Loaded saved hall effect calibration");
+    } else {
+        Serial.println("No saved calibration found, using defaults");
+        // Initialize with default values if no saved calibration
+        for (uint8_t i = 0; i < SENSOR_COUNT; i++){
+            min_angles[i] = 10000;
+            max_angles[i] = -10000;
+        }
     }
 }
 
@@ -49,12 +61,22 @@ float poly(double x, double a,double b,double c){
 }
 
 void calibrateHallEffectSensors(){
+    bool calibrationChanged = false;
+    
     for (uint8_t i = 0; i < SENSOR_COUNT; i++){
         if(proto_angles[i] < min_angles[i]){
             min_angles[i] = proto_angles[i];
+            calibrationChanged = true;
         } else if(proto_angles[i] > max_angles[i]){
             max_angles[i] = proto_angles[i];
+            calibrationChanged = true;
         }
+    }
+    
+    // Save calibration periodically if it has changed
+    if (calibrationChanged && (millis() - lastCalibSave > CALIB_SAVE_INTERVAL)) {
+        saveHallEffectCalibration();
+        lastCalibSave = millis();
     }
 }
 
@@ -90,5 +112,63 @@ void resetHallEffectCalibration(){
         min_angles[i] = 10000;
         max_angles[i] = -10000;
     }
+}
+
+bool loadHallEffectCalibration(){
+    calibPrefs.begin("hall_calib", true); // Read-only mode
+    
+    // Check if calibration data exists
+    if (!calibPrefs.isKey("min_angles") || !calibPrefs.isKey("max_angles")) {
+        calibPrefs.end();
+        return false;
+    }
+    
+    // Load min_angles array
+    size_t minSize = calibPrefs.getBytesLength("min_angles");
+    if (minSize != sizeof(min_angles)) {
+        Serial.println("Calibration data size mismatch for min_angles");
+        calibPrefs.end();
+        return false;
+    }
+    calibPrefs.getBytes("min_angles", min_angles, sizeof(min_angles));
+    
+    // Load max_angles array
+    size_t maxSize = calibPrefs.getBytesLength("max_angles");
+    if (maxSize != sizeof(max_angles)) {
+        Serial.println("Calibration data size mismatch for max_angles");
+        calibPrefs.end();
+        return false;
+    }
+    calibPrefs.getBytes("max_angles", max_angles, sizeof(max_angles));
+    
+    calibPrefs.end();
+    
+    Serial.println("Hall effect calibration loaded successfully");
+    return true;
+}
+
+void saveHallEffectCalibration(){
+    calibPrefs.begin("hall_calib", false); // Read-write mode
+    
+    // Save both arrays
+    calibPrefs.putBytes("min_angles", min_angles, sizeof(min_angles));
+    calibPrefs.putBytes("max_angles", max_angles, sizeof(max_angles));
+    
+    calibPrefs.end();
+    
+    Serial.println("Hall effect calibration saved");
+}
+
+void clearHallEffectCalibration(){
+    calibPrefs.begin("hall_calib", false); // Read-write mode
+    
+    // Clear stored calibration
+    calibPrefs.clear();
+    calibPrefs.end();
+    
+    // Reset to default values
+    resetHallEffectCalibration();
+    
+    Serial.println("Hall effect calibration cleared and reset to defaults");
 }
 
