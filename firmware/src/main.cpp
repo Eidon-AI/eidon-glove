@@ -406,8 +406,12 @@ class OutputReportCallbacks : public NimBLECharacteristicCallbacks {
             Serial.println(cmd, HEX);
 
             if (cmd == 0x01) {
-                Serial.println("Reset command: resetting BNO085");
-                resetBNO085();
+                if (isBNO085Available()) {
+                    Serial.println("Reset command: resetting BNO085");
+                    resetBNO085();
+                } else {
+                    Serial.println("Reset command received, but BNO085 is not available");
+                }
             }
             // Additional commands can be added here
         }
@@ -754,8 +758,10 @@ void loop() {
         static int lastButtonState = 0;
         if (!buttonsState && lastButtonState) {  // Button was released
             // cycleToNextMode();
-            resetBNO085();
-            startIMUResetPattern(); // Start IMU reset LED pattern
+            if (isBNO085Available()) {
+                resetBNO085();
+                startIMUResetPattern(); // Start IMU reset LED pattern
+            }
         }
         lastButtonState = buttonsState;
         
@@ -781,7 +787,16 @@ void loop() {
 
                 // Update finger button states based on position changes
                 updateFingerButtons();
-                quaternionToEuler();
+                
+                // Only update quaternion if BNO085 is available
+                if (isBNO085Available()) {
+                    quaternionToEuler();
+                    // Map roll angle to X-axis (left/right movement)
+                    gamepadReport.axes[0] = constrain(map(ypr.roll, -45, 45, 0, 255), 0, 255);
+                } else {
+                    // Fallback: center the axis when IMU is not available
+                    gamepadReport.axes[0] = 127;  // Center position
+                }
 
                 // Set button states based on detected gestures
                 gamepadReport.button1 = fingerButtons[0].isPressed; // Thumb
@@ -789,9 +804,6 @@ void loop() {
                 gamepadReport.button3 = fingerButtons[2].isPressed; // Ring finger
                 gamepadReport.button4 = fingerButtons[3].isPressed; // Middle finger
                 gamepadReport.button5 = fingerButtons[4].isPressed; // Index finger
-
-                // Map roll angle to X-axis (left/right movement)
-                gamepadReport.axes[0] = constrain(map(ypr.roll, -45, 45, 0, 255), 0, 255);
 
                 // Map pitch angle to Y-axis (up/down movement)
                 // gamepadReport.axes[1] = constrain(map(ypr.pitch, -45, 45, 0, 255), 0, 255);
@@ -814,11 +826,19 @@ void loop() {
                     gamepadReport.axes[i] = mapAngleToHID(angles[i], 0, 255);
                 }
 
-                // Store quaternion values directly as 16-bit values
-                gamepadReport.quaternion[0] = quaternionToAxis(quaternion_x);
-                gamepadReport.quaternion[1] = quaternionToAxis(quaternion_y);
-                gamepadReport.quaternion[2] = quaternionToAxis(quaternion_z);
-                gamepadReport.quaternion[3] = quaternionToAxis(quaternion_w);
+                // Store quaternion values directly as 16-bit values (if BNO085 available)
+                if (isBNO085Available()) {
+                    gamepadReport.quaternion[0] = quaternionToAxis(quaternion_x);
+                    gamepadReport.quaternion[1] = quaternionToAxis(quaternion_y);
+                    gamepadReport.quaternion[2] = quaternionToAxis(quaternion_z);
+                    gamepadReport.quaternion[3] = quaternionToAxis(quaternion_w);
+                } else {
+                    // Fallback: identity quaternion when IMU is not available
+                    gamepadReport.quaternion[0] = quaternionToAxis(0.0f);  // x
+                    gamepadReport.quaternion[1] = quaternionToAxis(0.0f);  // y  
+                    gamepadReport.quaternion[2] = quaternionToAxis(0.0f);  // z
+                    gamepadReport.quaternion[3] = quaternionToAxis(1.0f);  // w (identity)
+                }
                 break;
 
             default:

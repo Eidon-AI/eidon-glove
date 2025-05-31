@@ -9,6 +9,7 @@ float quaternion_z = 0;
 float quaternion_w = 1;
 
 euler_t ypr = {0, 0, 0};
+bool bno085_available = false;  // Track if BNO085 is working
 
 void printBNO085Values() {
     // Serial.println("Quaternion Values:");
@@ -37,17 +38,38 @@ void resetBNO085() {
 void setupBNO085() {
     Wire.begin(I2C_SDA, I2C_SCL);
     
-    // Try to initialize the sensor
-    if (!bno08x.begin_I2C(0x4B)) {
-        Serial.println("Failed to find BNO085 chip");
-        while (1) { delay(10); }
+    Serial.println("Initializing BNO085...");
+    
+    // Keep trying to initialize the sensor until it's found
+    int attempt = 1;
+    while (!bno08x.begin_I2C(0x4B)) {
+        Serial.print("BNO085 initialization attempt ");
+        Serial.print(attempt);
+        Serial.println(" failed, retrying in 1 second...");
+        delay(1000);  // Wait 1 second before trying again
+        attempt++;
+        
+        // Optional: Add a maximum retry limit if you want
+        // if (attempt > 30) {
+        //     Serial.println("BNO085 failed after 30 attempts, continuing without IMU...");
+        //     bno085_available = false;
+        //     return;  // Continue without BNO085
+        // }
     }
     
-    Serial.println("BNO085 Found!");
+    Serial.print("BNO085 Found on attempt ");
+    Serial.print(attempt);
+    Serial.println("!");
+    bno085_available = true;  // Mark sensor as available
     setReports();
 }
 
 void updateBNO085() {
+    // Don't try to update if BNO085 is not available
+    if (!bno085_available) {
+        return;
+    }
+    
     // static unsigned long lastPrint = 0;
     // const unsigned long PRINT_INTERVAL = 100; // Print every 100ms
 
@@ -111,4 +133,8 @@ void quaternionToEuler() {
     // } else {
     //     ypr.roll += 180;
     // }
+}
+
+bool isBNO085Available() {
+    return bno085_available;
 }

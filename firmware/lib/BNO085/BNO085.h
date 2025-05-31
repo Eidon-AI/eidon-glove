@@ -25,10 +25,14 @@ void resetBNO085();
 void printBNO085Values();
 void quaternionToEuler();
 
+// Helper function to check if BNO085 is available
+bool isBNO085Available();
+
 // Declare external variables to store sensor data
 extern float quaternion_x;
 extern float quaternion_y;
 extern float quaternion_z;
 extern float quaternion_w;
+extern bool bno085_available;
 
 #endif 
