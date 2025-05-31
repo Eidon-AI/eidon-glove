@@ -35,6 +35,11 @@ void sendData();
 void measureHallEffectSensors();
 void calibrateHallEffectSensors();
 
+/**
+ * Resets the calibration min/max angles to initial values
+ */
+void resetHallEffectCalibration();
+
 float poly(double x, double a,double b,double c);
 
 #endif

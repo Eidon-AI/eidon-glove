@@ -65,7 +65,12 @@ int32_t adjustMCPAbductionAngle(int32_t i)
 	float max_angle = max_angles[i];
 	float min_angle = min_angles[i];
 	int32_t adjusted_angle = (int32_t)((angle - min_angle) / (max_angle - min_angle) * (2 * MCP_ABDUCTION_MAX));
-	
+
+	// TODO: remove this once we make ring and pinkie sensors more aligned with the other fingers
+	if (i == 10 || i == 13) {
+		adjusted_angle += 50;
+	}
+
 	// Apply inversion if needed
 	if (invertedSensors[i])
 	{
@@ -182,41 +187,6 @@ void adjustAngles()
 	angles[13] = adjustMCPAbductionAngle(13);
 	angles[14] = adjustMCPFlexionAngle(14);
 	angles[15] = adjustPIPFlexionAngle(15);
-
-	// // pinkie
-	// angles[0] = adjustMCPAbductionAngle(0);
-	// angles[1] = adjustMCPFlexionAngle(1);
-	// angles[2] = adjustPIPFlexionAngle(2);
-
-	// // ring
-	// angles[3] = adjustMCPAbductionAngle(3);
-	// angles[4] = adjustMCPFlexionAngle(4);
-	// angles[5] = adjustPIPFlexionAngle(5);
-
-	// // middle
-	// angles[6] = adjustMCPAbductionAngle(6);
-	// angles[7] = adjustMCPFlexionAngle(7);
-	// angles[8] = adjustPIPFlexionAngle(8);
-
-	// // index
-	// angles[9] = adjustMCPAbductionAngle(9);
-	// angles[10] = adjustMCPFlexionAngle(10);
-	// angles[11] = adjustPIPFlexionAngle(11);
-
-	// // TODO
-	// // thumb
-	// angles[12] = adjustThumbCMCFlexionAngle(12);
-	// angles[13] = adjustThumbCMCAbductionAngle(13);
-	// angles[14] = adjustThumbPIPFlexionAngle(14);
-	// angles[15] = proto_angles[15]; // not using this data currently
-
-	// //jank solution to inverted thumb movement on prototype glove
-	// //TODO remove with glove v2
-	// angles[12] = THUMB_CMC_FLEXION_MAX - angles[12];
-	// angles[13] = THUMB_CMC_ABDUCTION_MAX*2 - angles[13];
-	// angles[14] = THUMB_PIP_FLEXION_MAX - angles[14];
-
-
 }
 
 void calcFingerAngles()
