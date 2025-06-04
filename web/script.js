@@ -6,6 +6,24 @@ let decoder = new TextDecoder();
 let inputBuffer = '';
 const MAX_JOINTS = 16;
 
+// IMU Coordinate System Configuration
+// Adjust these values to fix yaw/roll/pitch mapping issues
+const IMU_COORDINATE_CONFIG = {
+    // Quaternion component mapping (try different combinations)
+    // Original: x, y, z, w
+    // Option 1: x, z, y, w (swap Y and Z)
+    // Option 2: x, -z, y, w (swap Y and Z, negate Z) 
+    // Option 3: -x, y, z, w (negate X)
+    mapping: 'original', // Start with original since hand is now properly oriented
+    
+    // Additional rotation adjustments (in radians)
+    additionalRotation: {
+        x: 0,  // 0° around X-axis (removed since hand model is now oriented correctly)
+        y: 0,  // 0° around Y-axis  
+        z: 0   // 0° around Z-axis
+    }
+};
+
 const EIDON_VENDOR_ID   = 0xE1D0;
 const EIDON_GLOVE_PID   = 0x0001;
 const EIDON_TRACKER_PID = 0x0002;
@@ -125,10 +143,10 @@ function toggleHandModelsVisibility() {
     const toggleButton = document.getElementById('hand-models-toggle');
     toggleButton.textContent = handModelsVisible ? 'Hide Hand Models' : 'Show Hand Models';
     
-    // Update visibility for all hand models
+    // Update visibility for all hand models (simplified for hand-only display)
     for (const [deviceId, handModel] of hands) {
-        if (handModel.arm && handModel.arm.shoulder) {
-            handModel.arm.shoulder.visible = handModelsVisible;
+        if (handModel.handGroup) {
+            handModel.handGroup.visible = handModelsVisible;
         }
     }
     
@@ -148,10 +166,10 @@ function initializeHandModelVisibility() {
             handModelsVisible = savedVisibility === 'true';
             toggleButton.textContent = handModelsVisible ? 'Hide Hand Models' : 'Show Hand Models';
             
-            // Apply saved visibility state
+            // Apply saved visibility state (simplified for hand-only display)
             for (const [deviceId, handModel] of hands) {
-                if (handModel.arm && handModel.arm.shoulder) {
-                    handModel.arm.shoulder.visible = handModelsVisible;
+                if (handModel.handGroup) {
+                    handModel.handGroup.visible = handModelsVisible;
                 }
             }
         }
@@ -178,8 +196,8 @@ function initThreeJS() {
         0.1,
         1000
     );
-    camera.position.set(0, 15, 15);
-    camera.lookAt(0, 0, 0);
+    camera.position.set(0, 8, 15);  // Adjusted to better view centered hand at y=8
+    camera.lookAt(0, 8, 0);  // Look at hand position instead of origin
     
     // Create renderer
     renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -199,6 +217,7 @@ function initThreeJS() {
     controls.enableDamping = true;
     controls.dampingFactor = 0.25;
     controls.enabled = true;
+    controls.target.set(0, 8, 0);  // Set orbit target to hand position
     
     // Add lights
     const ambientLight = new THREE.AmbientLight(0x404040);
@@ -318,13 +337,15 @@ function createHandModel(deviceId) {
     const gloveInfo = gloves.get(deviceId);
     const isRightHand = gloveInfo ? gloveInfo.isRightHand : false;
     const handModel = {
-        arm: {
-            shoulder: null,
-            upperArm: null,
-            elbow: null,
-            forearm: null,
-            wrist: null
-        },
+        // Comment out arm components for simplified hand-only display
+        // arm: {
+        //     shoulder: null,
+        //     upperArm: null,
+        //     elbow: null,
+        //     forearm: null,
+        //     wrist: null
+        // },
+        handGroup: null,  // Main hand group for IMU orientation
         palm: null,
         fingers: [],
         // Track which side this hand represents for easier mapping
@@ -336,8 +357,15 @@ function createHandModel(deviceId) {
     const palmMaterial = new THREE.MeshPhongMaterial({ color: 0xf5c396 });
     const fingerMaterial = new THREE.MeshPhongMaterial({ color: 0xf5c396 });
     const jointMaterial = new THREE.MeshPhongMaterial({ color: 0xe3a977 });
-    const armMaterial = new THREE.MeshPhongMaterial({ color: 0xf5c396 });
 
+    // Create main hand group positioned at center, elevated above ground
+    handModel.handGroup = new THREE.Group();
+    handModel.handGroup.position.set(0, 8, 0); // Centered horizontally, 8 units above ground
+    
+    scene.add(handModel.handGroup);
+
+    // Comment out arm creation - simplified to hand only
+    /*
     // Create arm components
     // Shoulder joint (sphere)
     const shoulderGeometry = new THREE.SphereGeometry(1.5, 16, 16);
@@ -378,6 +406,18 @@ function createHandModel(deviceId) {
     handModel.palm.position.set(0, 0, 4);
     handModel.palm.rotation.x = Math.PI;
     handModel.arm.wrist.add(handModel.palm);
+    */
+
+    // Create palm and attach directly to hand group (simplified)
+    const palmGeometry = new THREE.BoxGeometry(6, 1.25, 7);
+    handModel.palm = new THREE.Mesh(palmGeometry, palmMaterial);
+    handModel.palm.position.set(0, 0, 0);
+    
+    // Apply base rotation to flip hand so palm faces down (180° around X-axis)
+    handModel.palm.rotation.x = Math.PI; // 180 degrees to flip palm down
+    handModel.palm.rotation.y = Math.PI; // 180 degrees to flip palm down
+    
+    handModel.handGroup.add(handModel.palm);
 
     // Finger dimensions
     const fingerWidth = 1;
@@ -706,13 +746,30 @@ function updateHandModel(deviceId) {
     
     if (!handModel || !gloveData) return;
     
-    // Update arm position first
+    // Apply IMU quaternion data to hand orientation (simplified - no arm)
+    if (gloveData.quaternion && handModel.handGroup) {
+        const { x, y, z, w } = gloveData.quaternion;
+        
+        // Let's try the original quaternion with a systematic coordinate transformation
+        // Device coordinate system might be: X=right, Y=forward, Z=up
+        // Hand model needs: X=right, Y=up, Z=forward
+        // This suggests we need: device_Y -> hand_Z, device_Z -> hand_Y
+        
+        // Try mapping: device(x,y,z,w) -> hand(x,z,-y,w)
+        // This maps: device_Y->hand_Z (forward), device_Z->hand_Y (up), negate Y for correct direction
+        const correctedQuaternion = new THREE.Quaternion(x, z, -y, w);
+        
+        // Apply the corrected quaternion
+        handModel.handGroup.quaternion.copy(correctedQuaternion);
+    }
+    
+    // Comment out arm position update since we're hand-only now
     // updateArmPosition(deviceId);
     
-    // Make sure arm values are applied to the model
-    updateArmValuesDisplay();
+    // Comment out arm values display since we removed arms
+    // updateArmValuesDisplay();
 
-    // Process each joint
+    // Process each joint for finger movements
     for (let i = 0; i < MAX_JOINTS; i++) {
         const jointInfo = fingerJointMap[i];
         if (!jointInfo) continue;
@@ -818,26 +875,26 @@ function animate() {
 
 // Camera view controls
 backViewBtn.addEventListener('click', () => {
-    camera.position.set(0, 0, 20);
-    camera.lookAt(0, 0, 0);
+    camera.position.set(0, 8, 20);  // Focus on hand position
+    camera.lookAt(0, 8, 0);
     controls.update();
 });
 
 sideViewBtn.addEventListener('click', () => {
-    camera.position.set(20, 0, 0);
-    camera.lookAt(0, 0, 0);
+    camera.position.set(20, 8, 0);  // Focus on hand position
+    camera.lookAt(0, 8, 0);
     controls.update();
 });
 
 topViewBtn.addEventListener('click', () => {
-    camera.position.set(0, 20, 0);
-    camera.lookAt(0, 0, 0);
+    camera.position.set(0, 20, 0);  // Look down at hand
+    camera.lookAt(0, 8, 0);
     controls.update();
 });
 
 resetViewBtn.addEventListener('click', () => {
-    camera.position.set(10, 10, 10);
-    camera.lookAt(0, 0, 0);
+    camera.position.set(0, 8, 15);  // Reset to initial hand-focused view
+    camera.lookAt(0, 8, 0);
     controls.update();
 });
 
@@ -859,7 +916,7 @@ if (!navigator.hid) {
 initThreeJS();
 
 // NEW: create placeholder left & right hands at startup (no devices required)
-initializeDefaultHands();
+// initializeDefaultHands();
 
 // Initialize joint elements
 // initializeJointElements();
@@ -1603,16 +1660,16 @@ function quaternionToEuler(x, y, z, w) {
     const yaw = Math.atan2(2.0 * (w * z + x * y),
                           1.0 - 2.0 * (y * y + z * z));
     
-    const pitch = Math.asin(2.0 * (w * y - z * x));
+    const roll = Math.asin(2.0 * (w * y - z * x));
     
-    const roll = Math.atan2(2.0 * (w * x + y * z),
+    const pitch = Math.atan2(2.0 * (w * x + y * z),
                            1.0 - 2.0 * (x * x + y * y));
 
     // Convert to degrees and swap pitch and roll
     return {
         yaw: yaw * RAD_TO_DEG,
-        roll: pitch * RAD_TO_DEG,  // Use pitch value for roll
-        pitch: roll * RAD_TO_DEG   // Use roll value for pitch
+        roll: roll * RAD_TO_DEG,
+        pitch: pitch * RAD_TO_DEG
     };
 }
 
@@ -2031,12 +2088,16 @@ if (document.readyState === 'loading') {
         // Initialize hand model visibility
         initializeHandModelVisibility();
         
+        // Auto-connect to previously connected devices
+        autoConnectToLastDevice();
+        
         // Initialize default hands
-        initializeDefaultHands();
+        // initializeDefaultHands();
     });
 } else {
+    // Page already loaded
     autoConnectToLastDevice();
-    displayDeviceGrouping(); // Initialize device grouping display
+    // displayDeviceGrouping(); // Initialize device grouping display
 }
 
 // Add this function to create and add the compass
@@ -2902,7 +2963,7 @@ function updateTrackerArrow(deviceId, quaternion) {
 
     if (thisIndex === 0) {
         currentArmAngles.right.lowerArmRotation = calculateRollAroundForward(forwardTip, upTip);
-        updateArmValuesDisplay();
+        // updateArmValuesDisplay();  // Commented out for hand-only display
     } 
 
     // Calculate angles between this tracker and all other trackers
@@ -3045,12 +3106,12 @@ function updateTrackerArrow(deviceId, quaternion) {
                     // wristDeviation = delta.dY;
                     currentArmAngles.right.wristFlexion = flexionAngle;
                     currentArmAngles.right.wristDeviation = -deviationAngle;
-                    updateArmValuesDisplay();
+                    // updateArmValuesDisplay();  // Commented out for hand-only display
 
                 } else if (thisIndex === 1 && otherIndex === 2) {
 
                     currentArmAngles.right.elbowFlexion = directAngle;
-                    updateArmValuesDisplay();
+                    // updateArmValuesDisplay();  // Commented out for hand-only display
 
                 } else if (thisIndex === 2) {
                     // Calculate shoulder angles based on third tracker's orientation
@@ -3114,7 +3175,7 @@ function updateTrackerArrow(deviceId, quaternion) {
                     // Make deviation negative when pointing left
                     if (forward.z > 0) currentArmAngles.right.shoulderFlexion = -currentArmAngles.right.shoulderFlexion;
 
-                    updateArmValuesDisplay();
+                    // updateArmValuesDisplay();  // Commented out for hand-only display
                 }
 
                 // Only add angle info if this tracker is being projected onto
@@ -3482,7 +3543,7 @@ function repositionTrackerArrows() {
         for (const arrow of trackerArrows.values()) {
             arrow.group.position.set(0, 0, 0);
         }
-        displayDeviceGrouping(); // Update grouping display
+        // displayDeviceGrouping(); // Update grouping display
         return;
     }
 
@@ -3515,7 +3576,7 @@ function repositionTrackerArrows() {
     positionChainedSet(leftSet, leftStartPosition);
     
     // Update the grouping display
-    displayDeviceGrouping();
+    // displayDeviceGrouping();
 }
 
 // Helper function to position a set of chained devices
@@ -3554,7 +3615,7 @@ function addVectorModeToggle() {
             updateChainModeButtonText(toggle);
             repositionTrackerArrows();
             // Explicitly call displayDeviceGrouping to update the grouping info
-            displayDeviceGrouping();
+            // displayDeviceGrouping();
         };
         return;
     }
@@ -3566,7 +3627,7 @@ function addVectorModeToggle() {
         updateChainModeButtonText(toggle);
         repositionTrackerArrows();
         // Explicitly call displayDeviceGrouping to update the grouping info
-        displayDeviceGrouping();
+        // displayDeviceGrouping();
     };
 
     // Find or create the view-controls container (same logic as gamepad button)
@@ -3582,7 +3643,7 @@ function addVectorModeToggle() {
     updateChainModeButtonText(toggle);
     
     // Initialize device grouping display
-    displayDeviceGrouping();
+    // displayDeviceGrouping();
 }
 
 // Helper function to update chain mode button text
@@ -3599,7 +3660,7 @@ function updateChainModeButtonText(buttonElement) {
 }
 
 // Call this after dark mode toggle setup
-addVectorModeToggle();
+// addVectorModeToggle();
 
 // Utility: create a cylinder that can be stretched between two points
 function createThickLineCylinder(radius = 0.1, color = 0xffffff, radialSegments = 8) {
@@ -4000,3 +4061,169 @@ function initializeDefaultHands() {
         }
     }
 }
+
+// Add function to create IMU coordinate system controls
+function addIMUCoordinateControls() {
+    // Check if controls already exist
+    if (document.getElementById('imu-coordinate-controls')) {
+        return;
+    }
+    
+    const controlPanel = document.querySelector('.controls');
+    if (!controlPanel) return;
+    
+    // Create controls container
+    const imuControls = document.createElement('div');
+    imuControls.id = 'imu-coordinate-controls';
+    imuControls.style.cssText = `
+        margin-top: 10px; 
+        padding: 10px; 
+        border: 1px solid #ccc; 
+        border-radius: 5px;
+        background: rgba(255,255,255,0.1);
+        font-size: 12px;
+    `;
+    
+    // Add title
+    const title = document.createElement('div');
+    title.textContent = '🧭 IMU Coordinate Mapping';
+    title.style.cssText = 'font-weight: bold; margin-bottom: 5px;';
+    imuControls.appendChild(title);
+    
+    // Create mapping dropdown
+    const mappingContainer = document.createElement('div');
+    mappingContainer.style.cssText = 'margin-bottom: 5px;';
+    
+    const mappingLabel = document.createElement('label');
+    mappingLabel.textContent = 'Quaternion Mapping: ';
+    mappingLabel.style.cssText = 'margin-right: 5px;';
+    
+    const mappingSelect = document.createElement('select');
+    mappingSelect.style.cssText = 'margin-right: 10px;';
+    
+    // Add mapping options
+    const mappingOptions = [
+        { value: 'original', text: 'Original (no transform)' },
+        { value: 'rotate_x_90', text: 'Rotate 90° around X axis' },
+        { value: 'rotate_x_180', text: 'Rotate 180° around X axis' },
+        { value: 'rotate_x_270', text: 'Rotate 270° around X axis' },
+        { value: 'rotate_y_90', text: 'Rotate 90° around Y axis' },
+        { value: 'rotate_y_180', text: 'Rotate 180° around Y axis' },
+        { value: 'rotate_y_270', text: 'Rotate 270° around Y axis' },
+        { value: 'rotate_z_90', text: 'Rotate 90° around Z axis' },
+        { value: 'rotate_z_180', text: 'Rotate 180° around Z axis' },
+        { value: 'rotate_z_270', text: 'Rotate 270° around Z axis' },
+        { value: 'x_z_y_w', text: 'Legacy: Swap Y↔Z axes' },
+        { value: 'x_neg_z_y_w', text: 'Legacy: Swap Y↔Z + flip' },
+        { value: 'neg_x_y_z_w', text: 'Legacy: Flip X axis' },
+        { value: 'y_x_z_w', text: 'Legacy: Swap X↔Y axes' },
+        { value: 'z_y_x_w', text: 'Legacy: Z→X transform' },
+        { value: 'y_z_x_w', text: 'Legacy: Complex transform' },
+        { value: 'neg_z_y_x_w', text: 'Legacy: Roll forward' },
+        { value: 'x_y_neg_z_w', text: 'Legacy: Pitch forward' },
+        { value: 'z_x_y_w', text: 'Legacy: Complex Y+Z transform' },
+        { value: 'neg_y_x_z_w', text: 'Legacy: Complex Z+X transform' }
+    ];
+    
+    mappingOptions.forEach(option => {
+        const optionElement = document.createElement('option');
+        optionElement.value = option.value;
+        optionElement.textContent = option.text;
+        if (option.value === IMU_COORDINATE_CONFIG.mapping) {
+            optionElement.selected = true;
+        }
+        mappingSelect.appendChild(optionElement);
+    });
+    
+    mappingSelect.addEventListener('change', (e) => {
+        IMU_COORDINATE_CONFIG.mapping = e.target.value;
+        // Immediately update all hand models
+        for (const deviceId of hands.keys()) {
+            updateHandModel(deviceId);
+        }
+    });
+    
+    mappingContainer.appendChild(mappingLabel);
+    mappingContainer.appendChild(mappingSelect);
+    imuControls.appendChild(mappingContainer);
+    
+    // Create rotation adjustment controls
+    const rotationContainer = document.createElement('div');
+    rotationContainer.style.cssText = 'display: flex; gap: 10px; align-items: center;';
+    
+    ['x', 'y', 'z'].forEach(axis => {
+        const axisContainer = document.createElement('div');
+        axisContainer.style.cssText = 'display: flex; flex-direction: column; align-items: center;';
+        
+        const label = document.createElement('label');
+        label.textContent = `${axis.toUpperCase()}°:`;
+        label.style.cssText = 'font-size: 10px; margin-bottom: 2px;';
+        
+        const input = document.createElement('input');
+        input.type = 'range';
+        input.min = '-180';
+        input.max = '180';
+        input.step = '5';
+        input.value = (IMU_COORDINATE_CONFIG.additionalRotation[axis] * 180 / Math.PI).toString();
+        input.style.cssText = 'width: 60px;';
+        
+        const valueSpan = document.createElement('span');
+        valueSpan.textContent = input.value + '°';
+        valueSpan.style.cssText = 'font-size: 10px;';
+        
+        input.addEventListener('input', (e) => {
+            const degrees = parseFloat(e.target.value);
+            valueSpan.textContent = degrees + '°';
+            IMU_COORDINATE_CONFIG.additionalRotation[axis] = degrees * Math.PI / 180;
+            
+            // Immediately update all hand models
+            for (const deviceId of hands.keys()) {
+                updateHandModel(deviceId);
+            }
+        });
+        
+        axisContainer.appendChild(label);
+        axisContainer.appendChild(input);
+        axisContainer.appendChild(valueSpan);
+        rotationContainer.appendChild(axisContainer);
+    });
+    
+    imuControls.appendChild(rotationContainer);
+    
+    // Add reset button
+    const resetButton = document.createElement('button');
+    resetButton.textContent = 'Reset to Neutral';
+    resetButton.style.cssText = 'margin-top: 5px; padding: 2px 8px; font-size: 10px;';
+    resetButton.onclick = () => {
+        // Reset to original mapping
+        IMU_COORDINATE_CONFIG.mapping = 'original';
+        mappingSelect.value = 'original';
+        
+        // Reset all rotations to zero
+        IMU_COORDINATE_CONFIG.additionalRotation.x = 0;
+        IMU_COORDINATE_CONFIG.additionalRotation.y = 0;
+        IMU_COORDINATE_CONFIG.additionalRotation.z = 0;
+        
+        // Update slider values
+        const sliders = rotationContainer.querySelectorAll('input[type="range"]');
+        const valueSpans = rotationContainer.querySelectorAll('span');
+        sliders.forEach((slider, index) => {
+            slider.value = '0';
+            if (valueSpans[index]) valueSpans[index].textContent = '0°';
+        });
+        
+        // Update all hand models
+        for (const deviceId of hands.keys()) {
+            updateHandModel(deviceId);
+        }
+    };
+    imuControls.appendChild(resetButton);
+    
+    controlPanel.appendChild(imuControls);
+}
+
+// Call this after Three.js initialization
+addDarkModeToggle();
+
+// Add IMU coordinate system controls
+// addIMUCoordinateControls();
