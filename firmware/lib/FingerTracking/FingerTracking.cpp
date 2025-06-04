@@ -67,7 +67,13 @@ int32_t adjustMCPAbductionAngle(int32_t i)
 	int32_t adjusted_angle = (int32_t)((angle - min_angle) / (max_angle - min_angle) * (2 * MCP_ABDUCTION_MAX));
 
 	// TODO: remove this once we make ring and pinkie sensors more aligned with the other fingers
-	if (i == 10 || i == 13) {
+	if (i == 4) {
+		adjusted_angle += 10;
+	}
+	else if (i == 7) {
+		adjusted_angle -= 10;
+	}
+	else if (i == 10 || i == 13) {
 		adjusted_angle += 50;
 	}
 
