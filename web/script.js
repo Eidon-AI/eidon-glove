@@ -1106,11 +1106,20 @@ function showRecordingIndicator(show) {
 }
 
 function recordFrame() {
-    // Create a frame with current timestamp and joint values
+    // Create a frame with current timestamp and data for all connected gloves
     const frame = {
         timestamp: Date.now() - recordingStartTime, // Relative time in ms
-        joints: [...jointValues] // Clone the current joint values
+        gloves: {} // Store data for each glove device
     };
+    
+    // Record data for each connected glove
+    for (const [deviceId, gloveData] of gloves) {
+        frame.gloves[deviceId] = {
+            jointValues: [...gloveData.jointValues], // Clone the joint values
+            quaternion: { ...gloveData.quaternion }, // Clone the quaternion
+            euler: { ...gloveData.euler } // Clone the euler angles
+        };
+    }
     
     // Add to recording
     recordedMovement.movement.push(frame);
@@ -1292,44 +1301,125 @@ function updatePlayback() {
     // Get current frame
     const currentFrame = movement[currentPlaybackIndex];
     
-    // If there's a next frame, interpolate between frames
-    if (currentPlaybackIndex < movement.length - 1) {
-        const nextFrame = movement[currentPlaybackIndex + 1];
-        const frameDuration = nextFrame.timestamp - currentFrame.timestamp;
-        
-        if (frameDuration > 0) {
-            const frameProgress = (elapsedTime - currentFrame.timestamp) / frameDuration;
-            
-            // Interpolate joint values
-            for (let i = 0; i < Math.min(currentFrame.joints.length, jointValues.length); i++) {
-                const startValue = currentFrame.joints[i];
-                const endValue = nextFrame.joints[i];
-                jointValues[i] = Math.round(startValue + (endValue - startValue) * frameProgress);
-                
-                // Update the joint display
-                updateJointDisplay(i, jointValues[i]);
-            }
-        } else {
-            // If frames have the same timestamp, just use current frame
-            applyFrame(currentFrame);
+    // Check if this is a legacy recording format (has joints array)
+    if (currentFrame.joints) {
+        // Handle legacy format - apply to first connected glove if any
+        const firstGloveId = Array.from(gloves.keys())[0];
+        if (firstGloveId) {
+            applyLegacyFrame(currentFrame, firstGloveId);
         }
-    } else {
-        // If this is the last frame, just apply it directly
-        applyFrame(currentFrame);
+        return;
     }
     
-    // Update the hand model
-    updateHandModel();
+    // Handle new format with device-specific data
+    if (currentFrame.gloves) {
+        // If there's a next frame, interpolate between frames
+        if (currentPlaybackIndex < movement.length - 1) {
+            const nextFrame = movement[currentPlaybackIndex + 1];
+            const frameDuration = nextFrame.timestamp - currentFrame.timestamp;
+            
+            if (frameDuration > 0 && nextFrame.gloves) {
+                const frameProgress = (elapsedTime - currentFrame.timestamp) / frameDuration;
+                
+                // Interpolate data for each glove
+                for (const [deviceId, currentGloveData] of Object.entries(currentFrame.gloves)) {
+                    const nextGloveData = nextFrame.gloves[deviceId];
+                    if (nextGloveData && gloves.has(deviceId)) {
+                        // Interpolate joint values
+                        const gloveData = gloves.get(deviceId);
+                        for (let i = 0; i < Math.min(currentGloveData.jointValues.length, gloveData.jointValues.length); i++) {
+                            const startValue = currentGloveData.jointValues[i];
+                            const endValue = nextGloveData.jointValues[i];
+                            gloveData.jointValues[i] = Math.round(startValue + (endValue - startValue) * frameProgress);
+                            
+                            // Update the joint display
+                            updateJointDisplay(deviceId, i, gloveData.jointValues[i]);
+                        }
+                        
+                        // Update quaternion and hand model
+                        if (currentGloveData.quaternion && nextGloveData.quaternion) {
+                            // For quaternions, we could interpolate but for simplicity, just use current frame
+                            gloveData.quaternion = { ...currentGloveData.quaternion };
+                            updateQuaternionDisplay(deviceId, 
+                                gloveData.quaternion.x, 
+                                gloveData.quaternion.y, 
+                                gloveData.quaternion.z, 
+                                gloveData.quaternion.w);
+                        }
+                        
+                        // Update the hand model for this device
+                        updateHandModel(deviceId);
+                    }
+                }
+            } else {
+                // If frames have the same timestamp, just use current frame
+                applyFrame(currentFrame);
+            }
+        } else {
+            // If this is the last frame, just apply it directly
+            applyFrame(currentFrame);
+        }
+    }
 }
 
 function applyFrame(frame) {
-    // Apply joint values from the frame
-    for (let i = 0; i < Math.min(frame.joints.length, jointValues.length); i++) {
-        jointValues[i] = frame.joints[i];
+    // Check if this is a legacy recording format (has joints array)
+    if (frame.joints) {
+        // Handle legacy format - apply to first connected glove if any
+        const firstGloveId = Array.from(gloves.keys())[0];
+        if (firstGloveId) {
+            applyLegacyFrame(frame, firstGloveId);
+        }
+        return;
+    }
+    
+    // Handle new format with device-specific data
+    if (frame.gloves) {
+        for (const [deviceId, gloveData] of Object.entries(frame.gloves)) {
+            if (gloves.has(deviceId)) {
+                const currentGloveData = gloves.get(deviceId);
+                
+                // Apply joint values from the frame
+                for (let i = 0; i < Math.min(gloveData.jointValues.length, currentGloveData.jointValues.length); i++) {
+                    currentGloveData.jointValues[i] = gloveData.jointValues[i];
+                    
+                    // Update the joint display
+                    updateJointDisplay(deviceId, i, gloveData.jointValues[i]);
+                }
+                
+                // Apply quaternion data
+                if (gloveData.quaternion) {
+                    currentGloveData.quaternion = { ...gloveData.quaternion };
+                    updateQuaternionDisplay(deviceId, 
+                        currentGloveData.quaternion.x, 
+                        currentGloveData.quaternion.y, 
+                        currentGloveData.quaternion.z, 
+                        currentGloveData.quaternion.w);
+                }
+                
+                // Update the hand model for this device
+                updateHandModel(deviceId);
+            }
+        }
+    }
+}
+
+// Helper function to handle legacy recording format
+function applyLegacyFrame(frame, deviceId) {
+    if (!gloves.has(deviceId)) return;
+    
+    const gloveData = gloves.get(deviceId);
+    
+    // Apply joint values from the legacy frame
+    for (let i = 0; i < Math.min(frame.joints.length, gloveData.jointValues.length); i++) {
+        gloveData.jointValues[i] = frame.joints[i];
         
         // Update the joint display
-        updateJointDisplay(i, jointValues[i]);
+        updateJointDisplay(deviceId, i, frame.joints[i]);
     }
+    
+    // Update the hand model for this device
+    updateHandModel(deviceId);
 }
 
 function updateRecordingButtonStates() {
@@ -3755,7 +3845,7 @@ function calibrateTrackersOnSameArm(gloveDeviceId) {
 }
 
 // Call global calibration button setup after vector mode toggle
-addGlobalCalibrationButton();
+// addGlobalCalibrationButton();
 
 // Attach a hidden colour picker to the dot, send result to device & update arrow
 function attachColorPicker(dotEl, deviceId) {
@@ -4224,6 +4314,9 @@ function addIMUCoordinateControls() {
 
 // Call this after Three.js initialization
 addDarkModeToggle();
+
+// Add recording controls
+// addRecordingControls();
 
 // Add IMU coordinate system controls
 // addIMUCoordinateControls();

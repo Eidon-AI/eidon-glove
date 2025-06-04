@@ -158,6 +158,12 @@ A browser-based 3D hand visualization tool that:
 - **Update Rate**: ~60fps visualization with real-time sensor data
 - **Data Format**: 24-byte HID reports containing joint angles + quaternion data
 
+### Files
+
+```
+web/
+
+```
 
 The web visualizer provides an intuitive way to validate glove functionality, debug sensor issues, and demonstrate the full capabilities of the eidon-glove system.
 
@@ -172,6 +178,11 @@ eidon-glove/
 ├── pcb/               # KiCad PCB design files
 ├── cad/               # 3D printable components
 ├── web/               # Web interface (if applicable)
+│   ├── index.html         # Main web interface
+│   ├── script.js          # Core visualization logic
+│   ├── style.css          # UI styling
+│   ├── tetris.html    # Simple Tetris game demo
+│   └── piano.html     # Simple five key piano demo
 └── images/            # Documentation images
 ```
 
