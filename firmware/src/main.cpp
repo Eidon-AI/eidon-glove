@@ -13,14 +13,13 @@
 
 // Vendor and Product IDs
 #define VENDOR_ID  0xE1D0 // Eidon AI vendor ID
-#define PRODUCT_ID 0x0001 // Eidon Glove v1 product ID
+#define PRODUCT_ID 0x0002 // Eidon Tracker v1 product ID
 
 // Define the number of axes we'll use
 #define NUM_JOINTS 16  // We want all 16 joints
 
-// Define the button pin for the Xiao ESP32-C3
-#define BUTTON_BOOT_PIN  9 // user button on Xiao
-#define BUTTON_MODE_PIN  10 // button on pcb
+// Define the button pin for the Xiao ESP32-C6
+#define BUTTON_BOOT_PIN  0 // user button on Xiao
 
 // Define the LED pin
 #define LED_PIN  5
@@ -245,36 +244,6 @@ class ServerCallbacks : public NimBLEServerCallbacks {
     };
 };
 
-// Security callback to accept pairing requests
-class SecurityCallbacks : public NimBLESecurityCallbacks {
-    uint32_t onPassKeyRequest() {
-        Serial.println("Passkey request");
-        return 123456; // Just use a simple passkey for testing
-    }
-
-    void onPassKeyNotify(uint32_t pass_key) {
-        Serial.print("Passkey Notify: ");
-        Serial.println(pass_key);
-    }
-
-    bool onConfirmPIN(uint32_t pass_key) {
-        Serial.print("Confirm PIN: ");
-        Serial.println(pass_key);
-        return true;
-    }
-
-    bool onSecurityRequest() {
-        Serial.println("Security Request");
-        return true;
-    }
-
-    void onAuthenticationComplete(ble_gap_conn_desc* desc) {
-        Serial.println("Authentication Complete");
-        Serial.print("Secure: ");
-        Serial.println(desc->sec_state.encrypted ? "Yes" : "No");
-    }
-};
-
 // Function to map angle values to the 0-255 range needed for HID
 uint8_t mapAngleToHID(int32_t angle, int32_t minAngle, int32_t maxAngle) {
     // Constrain the angle to the min-max range
@@ -388,7 +357,7 @@ uint8_t applyDeadzone(int32_t rawValue, uint8_t deadzone) {
     }
 }
 
-// Helper to generate unique BLE name "Eidon Glove-XXXX" using low 2 bytes of the MAC
+// Helper to generate unique BLE name "Eidon Tracker-XXXX" using low 2 bytes of the MAC
 static std::string generateUniqueName() {
     NimBLEAddress addr = NimBLEDevice::getAddress(); // e.g. "aa:bb:cc:dd:ee:ff"
     std::string mac = addr.toString();
@@ -398,14 +367,13 @@ static std::string generateUniqueName() {
         if (mac[i] != ':') suffix.insert(suffix.begin(), (char)toupper(mac[i]));
     }
     char name[32];
-    snprintf(name, sizeof(name), "Eidon Glove-%s", suffix.c_str());
+    snprintf(name, sizeof(name), "Eidon Tracker-%s", suffix.c_str());
     return std::string(name);
 }
 
 // Callback to handle data sent from host (Output report)
 class OutputReportCallbacks : public NimBLECharacteristicCallbacks {
-    void onWrite(NimBLECharacteristic* pChar) override {
-        std::string value = pChar->getValue();
+    void onWrite(NimBLECharacteristic* pChar, const std::string& value) {
         if (!value.empty()) {
             uint8_t cmd = static_cast<uint8_t>(value[0]);
             Serial.print("Output report received, cmd=0x");
@@ -426,15 +394,14 @@ class OutputReportCallbacks : public NimBLECharacteristicCallbacks {
 
 // Callback for Feature report read/write (RGB color)
 class FeatureReportCallbacks : public NimBLECharacteristicCallbacks {
-    void onRead(NimBLECharacteristic* pChar) override {
+    void onRead(NimBLECharacteristic* pChar, const std::string& value) {
         // Manually prepend report ID 1 to the color data
         uint8_t reportData[4];
         reportData[0] = 0x01;  // Report ID
         memcpy(reportData + 1, deviceColor, 3);
         pChar->setValue(reportData, 4);
     }
-    void onWrite(NimBLECharacteristic* pChar) override {
-        std::string value = pChar->getValue();
+    void onWrite(NimBLECharacteristic* pChar, const std::string& value) {
         size_t len = value.size();
         if (len == 4) {
             // Host included Report ID as first byte – skip it
@@ -509,7 +476,7 @@ void setup() {
     Serial.begin(115200);
     delay(1000); // Give serial time to connect
     
-    Serial.println("\n\n----- Eidon Glove Starting -----");
+    Serial.println("\n\n----- Eidon Tracker Starting -----");
     
     // Setup LED pin
     pinMode(LED_PIN, OUTPUT);
@@ -526,7 +493,7 @@ void setup() {
     };
     
     // Initialize the finger tracking system with inverted sensor configuration
-    fingerTrackingSetup(invertedSensors);
+    // fingerTrackingSetup(invertedSensors);
     
     Serial.println("Initializing BLE Gamepad...");
     
@@ -545,7 +512,6 @@ void setup() {
     NimBLEDevice::setSecurityIOCap(BLE_HS_IO_NO_INPUT_OUTPUT);
     NimBLEDevice::setSecurityInitKey(BLE_SM_PAIR_KEY_DIST_ENC | BLE_SM_PAIR_KEY_DIST_ID);
     NimBLEDevice::setSecurityRespKey(BLE_SM_PAIR_KEY_DIST_ENC | BLE_SM_PAIR_KEY_DIST_ID);
-    NimBLEDevice::setSecurityCallbacks(new SecurityCallbacks());
     
     // Set consistent power level
     NimBLEDevice::setPower(ESP_PWR_LVL_P9);
@@ -556,12 +522,12 @@ void setup() {
     
     // Create HID device with consistent settings
     hid = new NimBLEHIDDevice(pServer);
-    inputGamepad = hid->inputReport(1); // Report ID 1 (Input)
-    outputGamepad = hid->outputReport(1); // Report ID 1 (Output)
+    inputGamepad = hid->getInputReport(1); // Report ID 1 (Input)
+    outputGamepad = hid->getOutputReport(1); // Report ID 1 (Output)
     outputGamepad->setCallbacks(new OutputReportCallbacks());
     
     // Open NVS and load saved color
-    prefs.begin("glove", false);
+    prefs.begin("tracker", false);
     if (prefs.getBytes("color", deviceColor, 3) != 3) {
         // Default color if nothing stored
         deviceColor[0] = 0xFF;
@@ -570,19 +536,17 @@ void setup() {
     }
 
     // Feature report for RGB color
-    featureColor = hid->featureReport(1); // Report ID 1 (Feature)
+    featureColor = hid->getFeatureReport(1); // Report ID 1 (Feature)
     featureColor->setValue(deviceColor, 3);
     featureColor->setCallbacks(new FeatureReportCallbacks());
     
-    // Set consistent manufacturer name
-    hid->manufacturer()->setValue("ESP32-C3");
-    
-    // Use consistent VID/PID
-    hid->pnp(0x01, VENDOR_ID, PRODUCT_ID, 0x0110);
-    hid->hidInfo(0x00, 0x01);
+    // Configure HID device
+    hid->setManufacturer("Eidon AI");
+    hid->setPnp(0x02, VENDOR_ID, PRODUCT_ID, 0x0110);
+    hid->setHidInfo(0x00, 0x01);
     
     // Set report descriptor
-    hid->reportMap((uint8_t*)hid_report_descriptor, sizeof(hid_report_descriptor));
+    hid->setReportMap((uint8_t*)hid_report_descriptor, sizeof(hid_report_descriptor));
     
     // Print the HID descriptor for debugging
     // printHIDDescriptor();
@@ -593,9 +557,12 @@ void setup() {
     // Configure advertising with consistent settings
     NimBLEAdvertising* pAdvertising = NimBLEDevice::getAdvertising();
     pAdvertising->setAppearance(HID_GAMEPAD);
-    pAdvertising->addServiceUUID(hid->hidService()->getUUID());
-    pAdvertising->setScanResponse(true);
-    pAdvertising->setName(deviceName);
+    pAdvertising->addServiceUUID(hid->getHidService()->getUUID());
+    
+    // Create scan response data
+    NimBLEAdvertisementData scanResponse;
+    scanResponse.setName(deviceName);
+    pAdvertising->setScanResponseData(scanResponse);
     
     // Start advertising
     pAdvertising->start();
@@ -609,7 +576,7 @@ void setup() {
     Serial.println("----- Initialization Complete -----");
     
     // Initialize finger button tracking
-    initFingerButtons();
+    // initFingerButtons();
     
     setupBNO085();            // New BNO085 setup
 }
@@ -799,7 +766,7 @@ void loop() {
     // Send data if connected
     if (deviceConnected) {
         // Read the button state from the Xiao ESP32-C3 (for mode switching, separate from calibration reset)
-        int buttonsState = !digitalRead(BUTTON_BOOT_PIN) || !digitalRead(BUTTON_MODE_PIN) << 1;
+        int buttonsState = !digitalRead(BUTTON_BOOT_PIN);
         
         // Toggle between modes on button release (but only if it wasn't a long hold for calibration reset)
         static int lastButtonState = 0;

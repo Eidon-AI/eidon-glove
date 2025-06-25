@@ -35,14 +35,24 @@ void resetBNO085() {
     setReports();
 }
 
+// Add interrupt flag for faster sensor reading
+volatile bool sensorDataReady = false;
+
+// Interrupt service routine
+void sensorISR() {
+    sensorDataReady = true;
+}
+
 void setupBNO085() {
-    Wire.begin(I2C_SDA, I2C_SCL);
+    Wire.setPins(I2C_SDA, I2C_SCL);
+    Wire.begin();
     
     Serial.println("Initializing BNO085...");
     
     // Keep trying to initialize the sensor until it's found
     int attempt = 1;
-    while (!bno08x.begin_I2C(0x4B)) {
+    
+    while (!bno08x.begin_I2C(I2C_ADDR)) {
         Serial.print("BNO085 initialization attempt ");
         Serial.print(attempt);
         Serial.println(" failed, retrying in 1 second...");
@@ -56,7 +66,10 @@ void setupBNO085() {
         //     return;  // Continue without BNO085
         // }
     }
-    
+
+    // pinMode(I2C_INT, INPUT_PULLUP);
+    // attachInterrupt(digitalPinToInterrupt(I2C_INT), sensorISR, FALLING);
+
     Serial.print("BNO085 Found on attempt ");
     Serial.print(attempt);
     Serial.println("!");
