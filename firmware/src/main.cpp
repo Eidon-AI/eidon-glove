@@ -4,8 +4,8 @@
 #include <NimBLEHIDDevice.h>
 #include <NimBLECharacteristic.h>
 #include "BNO085.h"
-#include "FingerTracking.h"
-#include "HallEffectSensors.h"
+// #include "FingerTracking.h"
+// #include "HallEffectSensors.h"
 #include <Preferences.h>
 
 // Set to true for left hand, false for right hand
@@ -22,7 +22,7 @@
 #define BUTTON_BOOT_PIN  0 // user button on Xiao
 
 // Define the LED pin
-#define LED_PIN  5
+#define LED_PIN  15
 
 // Add these at the top of your file with other global variables
 #define BUTTON_COUNT 5                  // Number of finger buttons we're tracking
@@ -74,16 +74,15 @@ const uint8_t hid_report_descriptor[] = {
     /* -----------------------------------------------------------------------
      * Top-level collection : sensor orientation + vendor channel, ID = 1
      * ---------------------------------------------------------------------*/
-    0x05, 0x01,            // UsagePage (Generic Desktop)
-    0x09, 0x05,            // Usage (Gamepad)
+    0x06, 0x00, 0xFF,      // UsagePage (Vendor Defined 0xFF00)
+    0x09, 0x01,            // Usage (Vendor Usage 1)
     0xA1, 0x01,            // Collection (Application)
 
         0x85, 0x01,        //   Report ID (1)
 
         /* --- button flags : 16-bits ------------------------------------ */
-        0x05, 0x09,        // Usage Page (Button)
-        0x19, 0x01,        // Usage Minimum (Button 1)
-        0x29, 0x10,        // Usage Maximum (Button 16)
+        0x06, 0x00, 0xFF,  // Usage Page (Vendor Defined 0xFF00)
+        0x09, 0x10,        // Usage (Vendor Usage 0x10 - Button Data)
         0x15, 0x00,        // Logical Minimum (0)
         0x25, 0x01,        // Logical Maximum (1)
         0x75, 0x01,        // Report Size (1)
@@ -91,34 +90,18 @@ const uint8_t hid_report_descriptor[] = {
         0x81, 0x02,        // Input (Data, Variable, Absolute)
         
         /* --- finger angles : 16 8-bit axes ------------------------------ */
-        0x05, 0x01,        // Usage Page (Generic Desktop)
-        0x09, 0x30,        // Usage (X)
-        0x09, 0x31,        // Usage (Y)
-        0x09, 0x32,        // Usage (Z)
-        0x09, 0x33,        // Usage (Rx)
-        0x09, 0x34,        // Usage (Ry)
-        0x09, 0x35,        // Usage (Rz)
-        0x09, 0x36,        // Usage (Slider)
-        0x09, 0x37,        // Usage (Dial)
-        0x09, 0x38,        // Usage (Wheel)
-        0x09, 0x39,        // Usage (Hat switch)
-        0x09, 0x3A,        // Usage (Counted Buffer)
-        0x09, 0x3B,        // Usage (Byte Count)
-        0x09, 0x3C,        // Usage (Motion Wakeup)
-        0x09, 0x3D,        // Usage (Start)
-        0x09, 0x3E,        // Usage (Select)
-        0x09, 0x3F,        // Usage (Vector)
+        0x06, 0x00, 0xFF,  // Usage Page (Vendor Defined 0xFF00)
+        0x09, 0x20,        // Usage (Vendor Usage 0x20 - Finger Angle Data)
         0x15, 0x00,        // Logical Minimum (0)
         0x26, 0xFF, 0x00,  // Logical Maximum (255)
         0x75, 0x08,        // Report Size (8)
         0x95, 0x10,        // Report Count (16)
         0x81, 0x02,        // Input (Data, Variable, Absolute)
 
-        /* --- quaternion orientation (Sensor page) ------------------------ */
-        0x05, 0x20,                    // Usage Page (Sensor)
-        0x09, 0x80,                    // Usage (Orientation)
-        /* --- 4×16-bit quaternion components (i, j, k, real) -------------- */
-        0x0A, 0x83, 0x04,              // Usage 0x0483 – Data Field: Quaternion
+        /* --- quaternion orientation (Vendor defined) --------------------- */
+        0x06, 0x00, 0xFF,              // Usage Page (Vendor Defined 0xFF00)
+        0x09, 0x30,                    // Usage (Vendor Usage 0x30 - Quaternion Data)
+        /* --- 4×16-bit quaternion components (x, y, z, w) ----------------- */
         0x75, 0x10,                    // Report Size (16)
         0x95, 0x04,                    // Report Count (4)
         0x17, 0x00, 0x00, 0x00, 0x00,  // Logical Minimum 0 (32-bit)
@@ -245,13 +228,13 @@ class ServerCallbacks : public NimBLEServerCallbacks {
 };
 
 // Function to map angle values to the 0-255 range needed for HID
-uint8_t mapAngleToHID(int32_t angle, int32_t minAngle, int32_t maxAngle) {
-    // Constrain the angle to the min-max range
-    int32_t constrainedAngle = constrain(angle, minAngle, maxAngle);
+// uint8_t mapAngleToHID(int32_t angle, int32_t minAngle, int32_t maxAngle) {
+//     // Constrain the angle to the min-max range
+//     int32_t constrainedAngle = constrain(angle, minAngle, maxAngle);
     
-    // Map to 0-255 range for HID
-    return map(constrainedAngle, minAngle, maxAngle, 0, 255);
-}
+//     // Map to 0-255 range for HID
+//     return map(constrainedAngle, minAngle, maxAngle, 0, 255);
+// }
 
 // Gamepad descriptor layout for buttons and axes
 typedef struct {
@@ -481,16 +464,16 @@ void setup() {
     // Setup LED pin
     pinMode(LED_PIN, OUTPUT);
     
-    Serial.println("Initializing finger tracking...");
+    // Serial.println("Initializing finger tracking...");
     
     // Define which sensors have inverted magnets
-    bool invertedSensors[SENSOR_COUNT] = {
-        false, false, false, false,  // Thumb (0-3)
-        false, true, false,           // Index (4-6)
-        false, true, false,           // Middle (7-9)
-        false, true, false,          // Ring (10-12)
-        false, true, false          // Pinky (13-15)
-    };
+    // bool invertedSensors[SENSOR_COUNT] = {
+    //     false, false, false, false,  // Thumb (0-3)
+    //     false, true, false,           // Index (4-6)
+    //     false, true, false,           // Middle (7-9)
+    //     false, true, false,          // Ring (10-12)
+    //     false, true, false          // Pinky (13-15)
+    // };
     
     // Initialize the finger tracking system with inverted sensor configuration
     // fingerTrackingSetup(invertedSensors);
@@ -556,7 +539,7 @@ void setup() {
     
     // Configure advertising with consistent settings
     NimBLEAdvertising* pAdvertising = NimBLEDevice::getAdvertising();
-    pAdvertising->setAppearance(HID_GAMEPAD);
+    pAdvertising->setAppearance(HID_GENERIC);
     pAdvertising->addServiceUUID(hid->getHidService()->getUUID());
     
     // Create scan response data
@@ -567,13 +550,13 @@ void setup() {
     // Start advertising
     pAdvertising->start();
     
-    Serial.println("BT Gamepad initialized!");
-    Serial.print("Device name: Hand Tracker (");
-    Serial.print(IS_LEFT_HAND ? "Left" : "Right");
-    Serial.println(")");
-    Serial.println("The device should now be visible in your Bluetooth settings.");
-    Serial.println("Please pair with it from your computer or mobile device.");
-    Serial.println("----- Initialization Complete -----");
+    Serial.println("Tracker initialized!");
+    // Serial.print("Device name: Hand Tracker (");
+    // Serial.print(IS_LEFT_HAND ? "Left" : "Right");
+    // Serial.println(")");
+    // Serial.println("The device should now be visible in your Bluetooth settings.");
+    // Serial.println("Please pair with it from your computer or mobile device.");
+    // Serial.println("----- Initialization Complete -----");
     
     // Initialize finger button tracking
     // initFingerButtons();
@@ -597,8 +580,8 @@ void updateFingerButtons() {
         for (int i = 0; i < BUTTON_COUNT; i++) {
             int32_t sum = 0;
             for (int j = 0; j < calibrationSamples; j++) {
-                calcFingerAngles();
-                sum += angles[fingerIndices[i]];
+                // calcFingerAngles();
+                // sum += angles[fingerIndices[i]];
                 delay(20);
             }
             fingerButtons[i].baselineAngle = 0; // sum / calibrationSamples;
@@ -629,7 +612,7 @@ void updateFingerButtons() {
     
     for (int i = 0; i < BUTTON_COUNT; i++) {
         // Get current angle for this finger
-        int32_t currentAngle = angles[fingerIndices[i]];
+        int32_t currentAngle = 0;//angles[fingerIndices[i]];
         
         // Calculate distance from baseline (rest position)
         int32_t distanceFromBaseline = currentAngle - fingerButtons[i].baselineAngle;
@@ -693,45 +676,45 @@ void loop() {
     updateLEDStatus();
     
     // Check for calibration reset button hold (independent of connection state)
-    bool bootButtonPressed = !digitalRead(BUTTON_BOOT_PIN);
+    // bool bootButtonPressed = !digitalRead(BUTTON_BOOT_PIN);
     
-    if (bootButtonPressed) {
-        if (!buttonHoldInProgress) {
-            // Button just pressed, start timing
-            buttonHoldInProgress = true;
-            buttonHoldStartTime = millis();
-            calibrationResetTriggered = false;
-        } else {
-            // Button is being held, check if it's been long enough
-            unsigned long holdDuration = millis() - buttonHoldStartTime;
+    // if (bootButtonPressed) {
+    //     if (!buttonHoldInProgress) {
+    //         // Button just pressed, start timing
+    //         buttonHoldInProgress = true;
+    //         buttonHoldStartTime = millis();
+    //         calibrationResetTriggered = false;
+    //     } else {
+    //         // Button is being held, check if it's been long enough
+    //         unsigned long holdDuration = millis() - buttonHoldStartTime;
             
-            if (holdDuration >= CALIBRATION_RESET_HOLD_TIME && !calibrationResetTriggered) {
-                // Button held long enough, reset calibration
-                Serial.println("Button held for 3+ seconds - resetting hall effect calibration!");
-                clearHallEffectCalibration();
-                calibrationResetTriggered = true;
+    //         if (holdDuration >= CALIBRATION_RESET_HOLD_TIME && !calibrationResetTriggered) {
+    //             // Button held long enough, reset calibration
+    //             Serial.println("Button held for 3+ seconds - resetting hall effect calibration!");
+    //             clearHallEffectCalibration();
+    //             calibrationResetTriggered = true;
                 
-                // Flash LED rapidly to indicate reset
-                for (int i = 0; i < 6; i++) {
-                    digitalWrite(LED_PIN, HIGH);
-                    delay(100);
-                    digitalWrite(LED_PIN, LOW);
-                    delay(100);
-                }
-            }
-        }
-    } else {
-        if (buttonHoldInProgress) {
-            // Button was released
-            unsigned long holdDuration = millis() - buttonHoldStartTime;
-            if (holdDuration < CALIBRATION_RESET_HOLD_TIME && !calibrationResetTriggered) {
-                Serial.print("Button held for ");
-                Serial.print(holdDuration);
-                Serial.println("ms (need 3000ms for calibration reset)");
-            }
-            buttonHoldInProgress = false;
-        }
-    }
+    //             // Flash LED rapidly to indicate reset
+    //             for (int i = 0; i < 6; i++) {
+    //                 digitalWrite(LED_PIN, HIGH);
+    //                 delay(100);
+    //                 digitalWrite(LED_PIN, LOW);
+    //                 delay(100);
+    //             }
+    //         }
+    //     }
+    // } else {
+    //     if (buttonHoldInProgress) {
+    //         // Button was released
+    //         unsigned long holdDuration = millis() - buttonHoldStartTime;
+    //         if (holdDuration < CALIBRATION_RESET_HOLD_TIME && !calibrationResetTriggered) {
+    //             Serial.print("Button held for ");
+    //             Serial.print(holdDuration);
+    //             Serial.println("ms (need 3000ms for calibration reset)");
+    //         }
+    //         buttonHoldInProgress = false;
+    //     }
+    // }
     
     // Handle connection state changes
     if (deviceConnected && !oldDeviceConnected) {
@@ -758,7 +741,7 @@ void loop() {
     }
     
     // Update finger tracking data
-    calcFingerAngles();
+    // calcFingerAngles();
 
     // Update BNO085 data
     updateBNO085();
@@ -837,7 +820,7 @@ void loop() {
 
                 // Map all raw angle values directly to axes
                 for (int i = 0; i < NUM_JOINTS && i < 16; i++) {
-                    gamepadReport.axes[i] = mapAngleToHID(angles[i], 0, 255);
+                    gamepadReport.axes[i] = 127;//mapAngleToHID(angles[i], 0, 255);
                 }
 
                 // Store quaternion values directly as 16-bit values (if BNO085 available)
@@ -858,7 +841,7 @@ void loop() {
             default:
                 // Fallback mode - just use raw angles
                 for (int i = 0; i < NUM_JOINTS && i < 16; i++) {
-                    gamepadReport.axes[i] = mapAngleToHID(angles[i], 0, 255);
+                    gamepadReport.axes[i] = 127;//mapAngleToHID(angles[i], 0, 255);
                 }
                 break;
         }

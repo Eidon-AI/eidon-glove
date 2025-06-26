@@ -43,38 +43,221 @@ void sensorISR() {
     sensorDataReady = true;
 }
 
+void scanI2C() {
+    Serial.println("Scanning I2C bus...");
+    Serial.print("SDA: GPIO"); Serial.print(I2C_SDA);
+    Serial.print(", SCL: GPIO"); Serial.println(I2C_SCL);
+    
+    int nDevices = 0;
+    for (byte address = 1; address < 127; address++) {
+        Wire.beginTransmission(address);
+        byte error = Wire.endTransmission();
+        
+        if (error == 0) {
+            Serial.print("I2C device found at address 0x");
+            if (address < 16) Serial.print("0");
+            Serial.print(address, HEX);
+            Serial.println(" !");
+            nDevices++;
+        }
+        else if (error == 4) {
+            Serial.print("Unknown error at address 0x");
+            if (address < 16) Serial.print("0");
+            Serial.println(address, HEX);
+        }
+    }
+    if (nDevices == 0) {
+        Serial.println("No I2C devices found");
+    } else {
+        Serial.print("Found ");
+        Serial.print(nDevices);
+        Serial.println(" device(s)");
+    }
+    Serial.println("Scan complete\n");
+}
+
+// Add direct BNO085 communication functions
+bool testBNO085Direct() {
+    Serial.println("Testing direct BNO085 communication...");
+    
+    // BNO085 uses SHTP (Sensor Hub Transport Protocol)
+    // Try to read the SHTP header to see if we can communicate
+    Wire.requestFrom(I2C_ADDR, 4); // Request 4 bytes (SHTP header)
+    
+    if (Wire.available() >= 4) {
+        byte header[4];
+        for (int i = 0; i < 4; i++) {
+            header[i] = Wire.read();
+        }
+        
+        Serial.print("SHTP Header received: ");
+        for (int i = 0; i < 4; i++) {
+            if (header[i] < 16) Serial.print("0");
+            Serial.print(header[i], HEX);
+            Serial.print(" ");
+        }
+        Serial.println();
+        
+        // Check if this looks like a valid SHTP header
+        uint16_t length = (header[1] << 8) | header[0];
+        Serial.print("Packet length: ");
+        Serial.println(length);
+        
+        if (length > 0 && length < 1000) { // Reasonable packet length
+            Serial.println("Valid SHTP communication detected!");
+            return true;
+        } else {
+            Serial.println("SHTP header format unexpected");
+            return false;
+        }
+    } else {
+        Serial.print("Only ");
+        Serial.print(Wire.available());
+        Serial.println(" bytes available from SHTP request");
+        return false;
+    }
+}
+
 void setupBNO085() {
+    Serial.println("Setting up I2C pins...");
+    Serial.print("SDA: GPIO"); Serial.print(I2C_SDA);
+    Serial.print(" (D9), SCL: GPIO"); Serial.print(I2C_SCL);
+    Serial.println(" (D10)");
+    
     Wire.setPins(I2C_SDA, I2C_SCL);
     Wire.begin();
+    Wire.setClock(100000); // Set to 100kHz for better reliability
     
-    Serial.println("Initializing BNO085...");
+    Serial.println("I2C initialized, testing basic communication...");
     
-    // Keep trying to initialize the sensor until it's found
-    int attempt = 1;
+    // Test basic I2C communication with retries
+    int i2c_attempts = 0;
+    bool i2c_success = false;
     
-    while (!bno08x.begin_I2C(I2C_ADDR)) {
-        Serial.print("BNO085 initialization attempt ");
-        Serial.print(attempt);
-        Serial.println(" failed, retrying in 1 second...");
-        delay(1000);  // Wait 1 second before trying again
-        attempt++;
+    while (!i2c_success && i2c_attempts < 5) {
+        Wire.beginTransmission(I2C_ADDR);
+        byte error = Wire.endTransmission();
         
-        // Optional: Add a maximum retry limit if you want
-        // if (attempt > 30) {
-        //     Serial.println("BNO085 failed after 30 attempts, continuing without IMU...");
-        //     bno085_available = false;
-        //     return;  // Continue without BNO085
-        // }
+        if (error == 0) {
+            Serial.println("I2C communication successful!");
+            i2c_success = true;
+        } else {
+            i2c_attempts++;
+            Serial.print("I2C attempt "); Serial.print(i2c_attempts);
+            Serial.print(" failed with error: "); Serial.println(error);
+            if (i2c_attempts < 5) {
+                Serial.println("Retrying I2C in 500ms...");
+                delay(500);
+            }
+        }
+    }
+    
+    if (!i2c_success) {
+        Serial.println("I2C communication failed after 5 attempts, giving up on BNO085");
+        bno085_available = false;
+        return;
+    }
+    
+    // Test direct BNO085 communication
+    if (testBNO085Direct()) {
+        Serial.println("Direct BNO085 SHTP communication successful!");
+    } else {
+        Serial.println("Direct BNO085 SHTP communication failed!");
+        // Don't return here - still try the Adafruit library
+    }
+    
+    Serial.println("Initializing BNO085 with Adafruit library...");
+    
+    // Scan the I2C bus
+    scanI2C();
+    
+    // Try multiple initialization approaches with retries
+    bool bno_initialized = false;
+    int total_attempts = 0;
+    const int max_attempts = 15;
+    
+    while (!bno_initialized && total_attempts < max_attempts) {
+        total_attempts++;
+        
+        Serial.print("BNO085 initialization attempt "); 
+        Serial.print(total_attempts); 
+        Serial.print("/"); 
+        Serial.println(max_attempts);
+        
+        // Try different initialization methods
+        if (total_attempts <= 5) {
+            // First 5 attempts: Try with explicit Wire object
+            Serial.println("  -> Trying with explicit Wire object...");
+            if (bno08x.begin_I2C(I2C_ADDR, &Wire)) {
+                Serial.println("BNO085 initialized successfully with explicit Wire object!");
+                bno_initialized = true;
+                break;
+            }
+        } else if (total_attempts <= 10) {
+            // Next 5 attempts: Try with default address
+            Serial.println("  -> Trying with default address...");
+            if (bno08x.begin_I2C()) {
+                Serial.println("BNO085 initialized successfully with default address!");
+                bno_initialized = true;
+                break;
+            }
+        } else {
+            // Final attempts: Try with different I2C speeds
+            if (total_attempts == 11) {
+                Serial.println("  -> Trying with 400kHz I2C clock...");
+                Wire.setClock(400000);
+            } else if (total_attempts == 13) {
+                Serial.println("  -> Trying with 50kHz I2C clock...");
+                Wire.setClock(50000);
+            }
+            
+            Serial.println("  -> Trying standard initialization...");
+            if (bno08x.begin_I2C(I2C_ADDR)) {
+                Serial.println("BNO085 initialized successfully!");
+                bno_initialized = true;
+                break;
+            }
+        }
+        
+        // Wait between attempts, with longer waits for later attempts
+        int delay_ms = (total_attempts <= 5) ? 500 : 1000;
+        Serial.print("  -> Failed, waiting "); Serial.print(delay_ms); Serial.println("ms...");
+        delay(delay_ms);
+        
+        // Rescan I2C bus every 5 attempts to verify device is still there
+        if (total_attempts % 5 == 0) {
+            Serial.println("  -> Rescanning I2C bus...");
+            scanI2C();
+            
+            // Reset I2C if device is not responding
+            Wire.beginTransmission(I2C_ADDR);
+            if (Wire.endTransmission() != 0) {
+                Serial.println("  -> Device not responding, reinitializing I2C...");
+                Wire.end();
+                delay(100);
+                Wire.setPins(I2C_SDA, I2C_SCL);
+                Wire.begin();
+                Wire.setClock(100000);
+            }
+        }
+    }
+    
+    if (!bno_initialized) {
+        Serial.print("BNO085 failed to initialize after ");
+        Serial.print(max_attempts);
+        Serial.println(" attempts. Continuing without IMU...");
+        bno085_available = false;
+        return;
     }
 
-    // pinMode(I2C_INT, INPUT_PULLUP);
-    // attachInterrupt(digitalPinToInterrupt(I2C_INT), sensorISR, FALLING);
-
-    Serial.print("BNO085 Found on attempt ");
-    Serial.print(attempt);
+    Serial.print("BNO085 successfully initialized on attempt ");
+    Serial.print(total_attempts);
     Serial.println("!");
-    bno085_available = true;  // Mark sensor as available
+    
+    bno085_available = true;
     setReports();
+    
+    Serial.println("BNO085 setup complete - quaternion data should be available");
 }
 
 void updateBNO085() {
@@ -83,8 +266,8 @@ void updateBNO085() {
         return;
     }
     
-    // static unsigned long lastPrint = 0;
-    // const unsigned long PRINT_INTERVAL = 100; // Print every 100ms
+    static unsigned long lastPrint = 0;
+    const unsigned long PRINT_INTERVAL = 500; // Print every 500ms
 
     if (bno08x.wasReset()) {
         Serial.println("BNO085 was reset");
@@ -101,11 +284,21 @@ void updateBNO085() {
                 break;
         }
 
-        // Only print every PRINT_INTERVAL milliseconds
-        // if (millis() - lastPrint >= PRINT_INTERVAL) {
-        //     printBNO085Values();
-        //     lastPrint = millis();
-        // }
+        // Print quaternion values every PRINT_INTERVAL milliseconds
+        if (millis() - lastPrint >= PRINT_INTERVAL) {
+            Serial.print("Quaternion - X: "); Serial.print(quaternion_x, 4);
+            Serial.print(" Y: "); Serial.print(quaternion_y, 4);
+            Serial.print(" Z: "); Serial.print(quaternion_z, 4);
+            Serial.print(" W: "); Serial.print(quaternion_w, 4);
+            
+            // Also show magnitude to verify it's normalized (should be ~1.0)
+            float magnitude = sqrt(quaternion_x*quaternion_x + quaternion_y*quaternion_y + 
+                                 quaternion_z*quaternion_z + quaternion_w*quaternion_w);
+            Serial.print(" |Mag: "); Serial.print(magnitude, 4);
+            Serial.println("|");
+            
+            lastPrint = millis();
+        }
     }
 }
 
