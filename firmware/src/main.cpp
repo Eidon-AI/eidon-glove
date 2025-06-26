@@ -219,11 +219,20 @@ class ServerCallbacks : public NimBLEServerCallbacks {
     void onConnect(NimBLEServer* pServer) {
         Serial.println("Client connected!");
         deviceConnected = true;
+        
+        // Stop advertising when connected to prevent conflicts
+        if (NimBLEDevice::getAdvertising()->isAdvertising()) {
+            Serial.println("Stopping advertising after connection");
+            NimBLEDevice::getAdvertising()->stop();
+        }
     };
 
     void onDisconnect(NimBLEServer* pServer) {
         Serial.println("Client disconnected");
         deviceConnected = false;
+        
+        // Small delay before allowing advertising restart
+        delay(100);
     };
 };
 
@@ -716,6 +725,17 @@ void loop() {
     //     }
     // }
     
+    // Update deviceConnected state based on actual connection count
+    // This helps if the callbacks aren't working properly
+    bool actuallyConnected = (pServer->getConnectedCount() > 0);
+    if (actuallyConnected != deviceConnected) {
+        Serial.print("Connection state mismatch detected! deviceConnected=");
+        Serial.print(deviceConnected);
+        Serial.print(", actuallyConnected=");
+        Serial.println(actuallyConnected);
+        deviceConnected = actuallyConnected;
+    }
+    
     // Handle connection state changes
     if (deviceConnected && !oldDeviceConnected) {
         // Just connected
@@ -910,10 +930,36 @@ void loop() {
         // delay(100);
     }
 
-    // In your loop function
-    if (!deviceConnected && !NimBLEDevice::getAdvertising()->isAdvertising()) {
-        Serial.println("Restarting advertising to reconnect...");
-        NimBLEDevice::startAdvertising();
+    // Only restart advertising if truly disconnected and not advertising
+    // Add some debugging and rate limiting to prevent spam
+    static unsigned long lastAdvertisingCheck = 0;
+    static unsigned long lastAdvertisingRestart = 0;
+    static unsigned long lastDebugPrint = 0;
+    const unsigned long ADVERTISING_CHECK_INTERVAL = 1000; // Check every 1 second
+    const unsigned long ADVERTISING_RESTART_COOLDOWN = 5000; // Wait 5 seconds between restarts
+    const unsigned long DEBUG_PRINT_INTERVAL = 5000; // Debug print every 5 seconds
+    
+    // Debug connection state periodically
+    if (millis() - lastDebugPrint > DEBUG_PRINT_INTERVAL) {
+        lastDebugPrint = millis();
+        Serial.print("DEBUG: deviceConnected=");
+        Serial.print(deviceConnected);
+        Serial.print(", isAdvertising=");
+        Serial.print(NimBLEDevice::getAdvertising()->isAdvertising());
+        Serial.print(", connectedClients=");
+        Serial.println(pServer->getConnectedCount());
+    }
+    
+    if (!deviceConnected && (millis() - lastAdvertisingCheck > ADVERTISING_CHECK_INTERVAL)) {
+        lastAdvertisingCheck = millis();
+        
+        bool isCurrentlyAdvertising = NimBLEDevice::getAdvertising()->isAdvertising();
+        
+        if (!isCurrentlyAdvertising && (millis() - lastAdvertisingRestart > ADVERTISING_RESTART_COOLDOWN)) {
+            Serial.println("Restarting advertising to reconnect...");
+            NimBLEDevice::startAdvertising();
+            lastAdvertisingRestart = millis();
+        }
     }
 
     // Add this to your loop to monitor memory
