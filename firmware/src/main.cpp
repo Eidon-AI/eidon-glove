@@ -539,7 +539,7 @@ void setup() {
     
     // Configure advertising with consistent settings
     NimBLEAdvertising* pAdvertising = NimBLEDevice::getAdvertising();
-    pAdvertising->setAppearance(HID_GENERIC);
+    pAdvertising->setAppearance(960); // BLE_APPEARANCE_GENERIC_HID
     pAdvertising->addServiceUUID(hid->getHidService()->getUUID());
     
     // Create scan response data
