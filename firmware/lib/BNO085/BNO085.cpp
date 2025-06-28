@@ -20,9 +20,22 @@ void printBNO085Values() {
 }
 
 void setReports() {
-    // Use GAME_ROTATION_VECTOR instead of ARVR_STABILIZED_RV for no magnetic north reference
-    if (!bno08x.enableReport(SH2_GAME_ROTATION_VECTOR, 5000)) { // 5ms (200Hz)
-        Serial.println("Could not enable rotation vector");
+    // Use GAME_ROTATION_VECTOR for fast quaternion updates (no magnetic north reference)
+    // Reduce to 50Hz (20ms) for stability - prevents overwhelming I2C and BLE
+    if (!bno08x.enableReport(SH2_GAME_ROTATION_VECTOR, 20000)) { // 20ms (50Hz) - stable rate
+        Serial.println("Could not enable rotation vector at 50Hz, trying 100Hz...");
+        if (!bno08x.enableReport(SH2_GAME_ROTATION_VECTOR, 10000)) { // 10ms (100Hz) fallback
+            Serial.println("Could not enable rotation vector at 100Hz, trying 200Hz...");
+            if (!bno08x.enableReport(SH2_GAME_ROTATION_VECTOR, 5000)) { // 5ms (200Hz) fallback
+                Serial.println("Could not enable rotation vector");
+            } else {
+                Serial.println("Game rotation vector enabled at 200Hz");
+            }
+        } else {
+            Serial.println("Game rotation vector enabled at 100Hz");
+        }
+    } else {
+        Serial.println("Game rotation vector enabled at 50Hz (stable rate)");
     }
 }
 
@@ -119,14 +132,17 @@ bool testBNO085Direct() {
 }
 
 void setupBNO085() {
-    Serial.println("Setting up I2C pins...");
+    Serial.println("Setting up I2C pins for ESP32-C6...");
     Serial.print("SDA: GPIO"); Serial.print(I2C_SDA);
     Serial.print(" (D9), SCL: GPIO"); Serial.print(I2C_SCL);
-    Serial.println(" (D10)");
+    Serial.print(" (D10), INT: GPIO"); Serial.print(I2C_INT);
+    Serial.println(" (D8)");
     
     Wire.setPins(I2C_SDA, I2C_SCL);
     Wire.begin();
-    Wire.setClock(100000); // Set to 100kHz for better reliability
+    Wire.setClock(400000); // Set to 400kHz (standard fast mode) for stability
+    
+    Serial.println("I2C configured with standard speed (400kHz) and correct ESP32-C6 pins");
     
     Serial.println("I2C initialized, testing basic communication...");
     
@@ -205,10 +221,10 @@ void setupBNO085() {
             // Final attempts: Try with different I2C speeds
             if (total_attempts == 11) {
                 Serial.println("  -> Trying with 400kHz I2C clock...");
-                Wire.setClock(400000);
+                // Wire.setClock(400000);
             } else if (total_attempts == 13) {
                 Serial.println("  -> Trying with 50kHz I2C clock...");
-                Wire.setClock(50000);
+                // Wire.setClock(50000);
             }
             
             Serial.println("  -> Trying standard initialization...");
@@ -237,7 +253,7 @@ void setupBNO085() {
                 delay(100);
                 Wire.setPins(I2C_SDA, I2C_SCL);
                 Wire.begin();
-                Wire.setClock(100000);
+                // Wire.setClock(100000);
             }
         }
     }
@@ -266,8 +282,9 @@ void updateBNO085() {
         return;
     }
     
-    static unsigned long lastPrint = 0;
-    const unsigned long PRINT_INTERVAL = 500; // Print every 500ms
+    // Remove debug printing to eliminate delays
+    // static unsigned long lastPrint = 0;
+    // const unsigned long PRINT_INTERVAL = 100; // Print every 100ms for faster feedback
 
     if (bno08x.wasReset()) {
         Serial.println("BNO085 was reset");
@@ -284,21 +301,22 @@ void updateBNO085() {
                 break;
         }
 
+        // Debug printing disabled for maximum performance
         // Print quaternion values every PRINT_INTERVAL milliseconds
-        if (millis() - lastPrint >= PRINT_INTERVAL) {
-            Serial.print("Quaternion - X: "); Serial.print(quaternion_x, 4);
-            Serial.print(" Y: "); Serial.print(quaternion_y, 4);
-            Serial.print(" Z: "); Serial.print(quaternion_z, 4);
-            Serial.print(" W: "); Serial.print(quaternion_w, 4);
-            
-            // Also show magnitude to verify it's normalized (should be ~1.0)
-            float magnitude = sqrt(quaternion_x*quaternion_x + quaternion_y*quaternion_y + 
-                                 quaternion_z*quaternion_z + quaternion_w*quaternion_w);
-            Serial.print(" |Mag: "); Serial.print(magnitude, 4);
-            Serial.println("|");
-            
-            lastPrint = millis();
-        }
+        // if (millis() - lastPrint >= PRINT_INTERVAL) {
+        //     Serial.print("Quaternion - X: "); Serial.print(quaternion_x, 4);
+        //     Serial.print(" Y: "); Serial.print(quaternion_y, 4);
+        //     Serial.print(" Z: "); Serial.print(quaternion_z, 4);
+        //     Serial.print(" W: "); Serial.print(quaternion_w, 4);
+        //     
+        //     // Also show magnitude to verify it's normalized (should be ~1.0)
+        //     float magnitude = sqrt(quaternion_x*quaternion_x + quaternion_y*quaternion_y + 
+        //                          quaternion_z*quaternion_z + quaternion_w*quaternion_w);
+        //     Serial.print(" |Mag: "); Serial.print(magnitude, 4);
+        //     Serial.println("|");
+        //     
+        //     lastPrint = millis();
+        // }
     }
 }
 

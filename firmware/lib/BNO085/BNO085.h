@@ -8,7 +8,7 @@
 // Define I2C pins
 #define I2C_SCL 18  // D10 on XIAO ESP32-C6 (GPIO18)
 #define I2C_SDA 20  // D9 on XIAO ESP32-C6 (GPIO20)
-// #define I2C_INT 8
+#define I2C_INT 19
 #define I2C_ADDR 0x4B
 
 // Declare the struct type

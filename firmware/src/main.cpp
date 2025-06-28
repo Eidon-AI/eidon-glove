@@ -4,8 +4,6 @@
 #include <NimBLEHIDDevice.h>
 #include <NimBLECharacteristic.h>
 #include "BNO085.h"
-// #include "FingerTracking.h"
-// #include "HallEffectSensors.h"
 #include <Preferences.h>
 
 // Set to true for left hand, false for right hand
@@ -16,13 +14,13 @@
 #define PRODUCT_ID 0x0002 // Eidon Tracker v1 product ID
 
 // Define the number of axes we'll use
-#define NUM_JOINTS 16  // We want all 16 joints
+// #define NUM_JOINTS 16  // We want all 16 joints
 
 // Define the button pin for the Xiao ESP32-C6
-#define BUTTON_BOOT_PIN  0 // user button on Xiao
+// #define BUTTON_BOOT_PIN  0 // user button on Xiao
 
 // Define the LED pin
-#define LED_PIN  15
+// #define LED_PIN  15
 
 // Add these at the top of your file with other global variables
 #define BUTTON_COUNT 5                  // Number of finger buttons we're tracking
@@ -171,48 +169,48 @@ struct FingerButtonState {
 };
 
 // Array to track state for each finger button
-FingerButtonState fingerButtons[BUTTON_COUNT];
+// FingerButtonState fingerButtons[BUTTON_COUNT];
 
 // Finger indices for button detection
-const int fingerIndices[BUTTON_COUNT] = {2, 5, 8, 11, 14}; // Thumb, Index, Middle, Ring, Pinky
+// const int fingerIndices[BUTTON_COUNT] = {2, 5, 8, 11, 14}; // Thumb, Index, Middle, Ring, Pinky
 
 // Track recent motion history
-int32_t angleHistory[BUTTON_COUNT][HISTORY_SIZE];
+// int32_t angleHistory[BUTTON_COUNT][HISTORY_SIZE];
 
 // Track average motion range for each finger
-int32_t avgMotionRange[BUTTON_COUNT] = {0};
+// int32_t avgMotionRange[BUTTON_COUNT] = {0};
 
 // Define arrays for finger-specific thresholds
-const int32_t PRESS_THRESHOLDS[BUTTON_COUNT] = {
-    120,  // Thumb 0 (Thumb)
-    200,  // Index 0 (Index) - Standard threshold
-    200,  // Middle 1 (Middle) - Higher threshold (less sensitive)
-    200,  // Ring 2 (Ring) - Medium-high threshold
-    200   // Pinky 3 (Pinky) - Lower threshold (more sensitive)
-};
+// const int32_t PRESS_THRESHOLDS[BUTTON_COUNT] = {
+//     120,  // Thumb 0 (Thumb)
+//     200,  // Index 0 (Index) - Standard threshold
+//     200,  // Middle 1 (Middle) - Higher threshold (less sensitive)
+//     200,  // Ring 2 (Ring) - Medium-high threshold
+//     200   // Pinky 3 (Pinky) - Lower threshold (more sensitive)
+// };
 
-const int32_t RELEASE_THRESHOLDS[BUTTON_COUNT] = {
-    110,  // Thumb 0 (Thumb)
-    192,  // Index 1 (Index)
-    192,  // Middle 2 (Middle)
-    192,  // Ring 3 (Ring)
-    192,   // Pinky 4 (Pinky)
-};
+// const int32_t RELEASE_THRESHOLDS[BUTTON_COUNT] = {
+//     110,  // Thumb 0 (Thumb)
+//     192,  // Index 1 (Index)
+//     192,  // Middle 2 (Middle)
+//     192,  // Ring 3 (Ring)
+//     192,   // Pinky 4 (Pinky)
+// };
 
 // Initialize the finger button tracking
-void initFingerButtons() {
-    for (int i = 0; i < BUTTON_COUNT; i++) {
-        fingerButtons[i].baselineAngle = 0;  // Will be calibrated later
-        fingerButtons[i].prevAngle = 0;
-        fingerButtons[i].isPressed = false;
-        fingerButtons[i].lastChange = 0;
+// void initFingerButtons() {
+//     for (int i = 0; i < BUTTON_COUNT; i++) {
+//         fingerButtons[i].baselineAngle = 0;  // Will be calibrated later
+//         fingerButtons[i].prevAngle = 0;
+//         fingerButtons[i].isPressed = false;
+//         fingerButtons[i].lastChange = 0;
         
-        // Initialize history array
-        for (int j = 0; j < HISTORY_SIZE; j++) {
-            angleHistory[i][j] = 0;
-        }
-    }
-}
+//         // Initialize history array
+//         for (int j = 0; j < HISTORY_SIZE; j++) {
+//             angleHistory[i][j] = 0;
+//         }
+//     }
+// }
 
 // Server callbacks
 class ServerCallbacks : public NimBLEServerCallbacks {
@@ -225,25 +223,41 @@ class ServerCallbacks : public NimBLEServerCallbacks {
             Serial.println("Stopping advertising after connection");
             NimBLEDevice::getAdvertising()->stop();
         }
+        
+        // Request stable connection parameters to prevent disconnections
+        NimBLEConnInfo connInfo = pServer->getPeerInfo(0);
+        Serial.println("Requesting stable connection parameters...");
+        // Use conservative parameters: 15ms interval, latency 0, timeout 4000ms
+        pServer->updateConnParams(connInfo.getConnHandle(), 12, 24, 0, 400);
     };
 
     void onDisconnect(NimBLEServer* pServer) {
         Serial.println("Client disconnected");
         deviceConnected = false;
-        
-        // Small delay before allowing advertising restart
-        delay(100);
     };
-};
 
-// Function to map angle values to the 0-255 range needed for HID
-// uint8_t mapAngleToHID(int32_t angle, int32_t minAngle, int32_t maxAngle) {
-//     // Constrain the angle to the min-max range
-//     int32_t constrainedAngle = constrain(angle, minAngle, maxAngle);
-    
-//     // Map to 0-255 range for HID
-//     return map(constrainedAngle, minAngle, maxAngle, 0, 255);
-// }
+    // Security callbacks moved to ServerCallbacks in NimBLE 2.0+
+    void onPassKeyDisplay(uint32_t pass_key) {
+        Serial.print("Passkey Display: ");
+        Serial.println(pass_key);
+    }
+
+    void onAuthenticationComplete(NimBLEConnInfo& connInfo) {
+        Serial.println("Authentication Complete");
+        Serial.print("Secure: ");
+        Serial.println(connInfo.isEncrypted() ? "Yes" : "No");
+        
+        // Print connection parameters for debugging
+        Serial.print("Connection interval: ");
+        Serial.print(connInfo.getConnInterval() * 1.25);
+        Serial.println("ms");
+        Serial.print("Connection latency: ");
+        Serial.println(connInfo.getConnLatency());
+        Serial.print("Supervision timeout: ");
+        Serial.print(connInfo.getConnTimeout() * 10);
+        Serial.println("ms");
+    }
+};
 
 // Gamepad descriptor layout for buttons and axes
 typedef struct {
@@ -411,52 +425,41 @@ class FeatureReportCallbacks : public NimBLECharacteristicCallbacks {
 };
 
 // Function to update LED status based on current state
-void updateLEDStatus() {
-    unsigned long currentTime = millis();
+// void updateLEDStatus() {
+//     unsigned long currentTime = millis();
     
-    // Special test mode for connected state LED
-    if (deviceConnected) {
-        // SIMPLIFIED: Just toggle LED every LED_FLASH_INTERVAL ms when connected
-        if (currentTime - debugLedTimer >= LED_FLASH_INTERVAL) {
-            debugLedTimer = currentTime;
-            // Toggle between full on and full off for debugging
-            ledState = !ledState;
-            
-            if (ledState) {
-                // Serial.println("TEST MODE: LED ON");
-                digitalWrite(LED_PIN, HIGH); // Full ON for testing
-            } else {
-                // Serial.println("TEST MODE: LED OFF");
-                digitalWrite(LED_PIN, LOW);  // Full OFF
-            }
-        }
-        return; // Skip normal LED logic when connected
-    }
+//     // SIMPLIFIED LED LOGIC FOR MAXIMUM PERFORMANCE
+//     if (deviceConnected) {
+//         // Simple fast blink when connected - minimal processing
+//         if (currentTime - debugLedTimer >= LED_FLASH_INTERVAL) {
+//             debugLedTimer = currentTime;
+//             ledState = !ledState;
+//             digitalWrite(LED_PIN, ledState ? HIGH : LOW);
+//         }
+//         return;
+//     }
     
-    // Handle IMU reset pattern with priority
-    if (currentLEDPattern == LED_IMU_RESET) {
-        digitalWrite(LED_PIN, HIGH); // Solid ON during IMU reset
+//     // Handle IMU reset pattern with priority
+//     if (currentLEDPattern == LED_IMU_RESET) {
+//         digitalWrite(LED_PIN, HIGH); // Solid ON during IMU reset
         
-        // Check if IMU reset period is over
-        if (currentTime - imuResetStartTime >= IMU_RESET_DURATION) {
-            // Return to appropriate pattern based on connection state
-            currentLEDPattern = deviceConnected ? LED_CONNECTED : LED_ADVERTISING;
-            ledLastUpdate = currentTime; // Reset timer to start new pattern immediately
-        }
-        return;
-    }
+//         // Check if IMU reset period is over
+//         if (currentTime - imuResetStartTime >= IMU_RESET_DURATION) {
+//             currentLEDPattern = deviceConnected ? LED_CONNECTED : LED_ADVERTISING;
+//             ledLastUpdate = currentTime;
+//         }
+//         return;
+//     }
     
-    // Only handle advertising when not connected
-    if (currentLEDPattern == LED_ADVERTISING) {
-        // Strobing brightness pattern (sine wave)
-        if (currentTime - ledLastUpdate >= 20) { // Update every 20ms for smooth animation
-            ledLastUpdate = currentTime;
-            // Create a sine wave brightness pattern (0-255)
-            ledBrightness = 128 + 127 * sin(currentTime / 500.0);
-            analogWrite(LED_PIN, ledBrightness);
-        }
-    }
-}
+//     // Simple advertising pattern - just slow blink instead of sine wave
+//     if (currentLEDPattern == LED_ADVERTISING) {
+//         if (currentTime - ledLastUpdate >= 500) { // Simple 1Hz blink
+//             ledLastUpdate = currentTime;
+//             ledState = !ledState;
+//             digitalWrite(LED_PIN, ledState ? HIGH : LOW);
+//         }
+//     }
+// }
 
 // Function to trigger IMU reset LED pattern
 void startIMUResetPattern() {
@@ -471,7 +474,7 @@ void setup() {
     Serial.println("\n\n----- Eidon Tracker Starting -----");
     
     // Setup LED pin
-    pinMode(LED_PIN, OUTPUT);
+    // pinMode(LED_PIN, OUTPUT);
     
     // Serial.println("Initializing finger tracking...");
     
@@ -499,14 +502,17 @@ void setup() {
     Serial.print("Advertising as: ");
     Serial.println(deviceName.c_str());
     
-    // Configure security for reliable pairing
+    // Configure security for reliable pairing - simplified for NimBLE 2.0+
     NimBLEDevice::setSecurityAuth(true, true, true);
     NimBLEDevice::setSecurityIOCap(BLE_HS_IO_NO_INPUT_OUTPUT);
-    NimBLEDevice::setSecurityInitKey(BLE_SM_PAIR_KEY_DIST_ENC | BLE_SM_PAIR_KEY_DIST_ID);
-    NimBLEDevice::setSecurityRespKey(BLE_SM_PAIR_KEY_DIST_ENC | BLE_SM_PAIR_KEY_DIST_ID);
+    // Note: setSecurityInitKey and setSecurityRespKey may not be available in all versions
+    // Security callbacks are now handled through ServerCallbacks in NimBLE 2.0+
     
     // Set consistent power level
-    NimBLEDevice::setPower(ESP_PWR_LVL_P9);
+    NimBLEDevice::setPower(9); // Use integer value instead of ESP_PWR_LVL_P9
+    
+    // Configure for low latency - faster connection intervals for ESP32-C6
+    // NimBLEDevice::setMTU(23); // Minimum MTU for fastest transmission
     
     // Create server
     pServer = NimBLEDevice::createServer();
@@ -546,10 +552,14 @@ void setup() {
     // Start the HID device
     hid->startServices();
     
-    // Configure advertising with consistent settings
+    // Configure advertising with conservative settings for stable connection
     NimBLEAdvertising* pAdvertising = NimBLEDevice::getAdvertising();
     pAdvertising->setAppearance(960); // BLE_APPEARANCE_GENERIC_HID
     pAdvertising->addServiceUUID(hid->getHidService()->getUUID());
+    
+    // Set conservative advertising intervals for stable connection
+    pAdvertising->setMinInterval(160);  // 100ms minimum (more conservative)
+    pAdvertising->setMaxInterval(320);  // 200ms maximum (more conservative)
     
     // Create scan response data
     NimBLEAdvertisementData scanResponse;
@@ -573,167 +583,17 @@ void setup() {
     setupBNO085();            // New BNO085 setup
 }
 
-// Function to update finger button states based on position changes
-void updateFingerButtons() {
-    unsigned long currentTime = millis();
-    static bool isCalibrated = false;
-    
-    // One-time calibration of baseline angles
-    if (!isCalibrated) {
-        Serial.println("Calibrating finger baseline positions...");
-        // Wait a moment for sensors to stabilize
-        delay(500);
-        
-        // Take multiple readings and average them for baseline
-        const int calibrationSamples = 10;
-        for (int i = 0; i < BUTTON_COUNT; i++) {
-            int32_t sum = 0;
-            for (int j = 0; j < calibrationSamples; j++) {
-                // calcFingerAngles();
-                // sum += angles[fingerIndices[i]];
-                delay(20);
-            }
-            fingerButtons[i].baselineAngle = 0; // sum / calibrationSamples;
-            fingerButtons[i].prevAngle = fingerButtons[i].baselineAngle;
-            
-            // Serial.print("Finger ");
-            // Serial.print(i);
-            // Serial.print(" baseline: ");
-            // Serial.print(fingerButtons[i].baselineAngle);
-            // Serial.print(" (Press threshold: ");
-            // Serial.print(PRESS_THRESHOLDS[i]);
-            // Serial.print(", Release threshold: ");
-            // Serial.print(RELEASE_THRESHOLDS[i]);
-            // Serial.println(")");
-        }
-        isCalibrated = true;
-        Serial.println("Calibration complete!");
-    }
-    
-    // Debug output - print values periodically
-    static unsigned long lastDebugTime = 0;
-    bool shouldPrintDebug = false; //(millis() - lastDebugTime > 500);
-    
-    if (shouldPrintDebug) {
-        lastDebugTime = millis();
-        Serial.println("Finger position values:");
-    }
-    
-    for (int i = 0; i < BUTTON_COUNT; i++) {
-        // Get current angle for this finger
-        int32_t currentAngle = 0;//angles[fingerIndices[i]];
-        
-        // Calculate distance from baseline (rest position)
-        int32_t distanceFromBaseline = currentAngle - fingerButtons[i].baselineAngle;
-        
-        // Print debug info
-        if (shouldPrintDebug) {
-            Serial.print("Finger ");
-            Serial.print(i);
-            Serial.print(": Angle=");
-            Serial.print(currentAngle);
-            Serial.print(" Baseline=");
-            Serial.print(fingerButtons[i].baselineAngle);
-            Serial.print(" Distance=");
-            Serial.print(distanceFromBaseline);
-            Serial.print(" State=");
-            Serial.println(fingerButtons[i].isPressed ? "PRESSED" : "released");
-        }
-        
-        // Very simple state machine based on absolute position relative to baseline
-        if (!fingerButtons[i].isPressed) {
-            // Check for press - need to exceed finger-specific threshold
-            if (distanceFromBaseline > PRESS_THRESHOLDS[i] && 
-                (currentTime - fingerButtons[i].lastChange > DEBOUNCE_TIME)) {
-                
-                fingerButtons[i].isPressed = true;
-                fingerButtons[i].lastChange = currentTime;
-                
-                Serial.print("BUTTON ");
-                Serial.print(i + 1);
-                Serial.print(" PRESSED! (Distance: ");
-                Serial.print(distanceFromBaseline);
-                Serial.print(", Threshold: ");
-                Serial.print(PRESS_THRESHOLDS[i]);
-                Serial.println(")");
-            }
-        } else {
-            // Check for release - need to return close to baseline
-            if (distanceFromBaseline < RELEASE_THRESHOLDS[i] && 
-                (currentTime - fingerButtons[i].lastChange > DEBOUNCE_TIME)) {
-                
-                fingerButtons[i].isPressed = false;
-                fingerButtons[i].lastChange = currentTime;
-                
-                Serial.print("BUTTON ");
-                Serial.print(i + 1);
-                Serial.print(" RELEASED! (Distance: ");
-                Serial.print(distanceFromBaseline);
-                Serial.print(", Threshold: ");
-                Serial.print(RELEASE_THRESHOLDS[i]);
-                Serial.println(")");
-            }
-        }
-        
-        // Store current angle for next iteration
-        fingerButtons[i].prevAngle = currentAngle;
-    }
-}
-
 void loop() {
     // Update LED status first
-    updateLEDStatus();
+    // updateLEDStatus();
     
-    // Check for calibration reset button hold (independent of connection state)
-    // bool bootButtonPressed = !digitalRead(BUTTON_BOOT_PIN);
-    
-    // if (bootButtonPressed) {
-    //     if (!buttonHoldInProgress) {
-    //         // Button just pressed, start timing
-    //         buttonHoldInProgress = true;
-    //         buttonHoldStartTime = millis();
-    //         calibrationResetTriggered = false;
-    //     } else {
-    //         // Button is being held, check if it's been long enough
-    //         unsigned long holdDuration = millis() - buttonHoldStartTime;
-            
-    //         if (holdDuration >= CALIBRATION_RESET_HOLD_TIME && !calibrationResetTriggered) {
-    //             // Button held long enough, reset calibration
-    //             Serial.println("Button held for 3+ seconds - resetting hall effect calibration!");
-    //             clearHallEffectCalibration();
-    //             calibrationResetTriggered = true;
-                
-    //             // Flash LED rapidly to indicate reset
-    //             for (int i = 0; i < 6; i++) {
-    //                 digitalWrite(LED_PIN, HIGH);
-    //                 delay(100);
-    //                 digitalWrite(LED_PIN, LOW);
-    //                 delay(100);
-    //             }
-    //         }
-    //     }
-    // } else {
-    //     if (buttonHoldInProgress) {
-    //         // Button was released
-    //         unsigned long holdDuration = millis() - buttonHoldStartTime;
-    //         if (holdDuration < CALIBRATION_RESET_HOLD_TIME && !calibrationResetTriggered) {
-    //             Serial.print("Button held for ");
-    //             Serial.print(holdDuration);
-    //             Serial.println("ms (need 3000ms for calibration reset)");
-    //         }
-    //         buttonHoldInProgress = false;
-    //     }
-    // }
-    
-    // Update deviceConnected state based on actual connection count
-    // This helps if the callbacks aren't working properly
+    // Simplified connection state management for maximum performance
     bool actuallyConnected = (pServer->getConnectedCount() > 0);
     if (actuallyConnected != deviceConnected) {
-        Serial.print("Connection state mismatch detected! deviceConnected=");
-        Serial.print(deviceConnected);
-        Serial.print(", actuallyConnected=");
-        Serial.println(actuallyConnected);
         deviceConnected = actuallyConnected;
+        // Minimal logging to avoid delays
+        // Serial.print("Connection state changed: ");
+        // Serial.println(deviceConnected ? "CONNECTED" : "DISCONNECTED");
     }
     
     // Handle connection state changes
@@ -743,11 +603,11 @@ void loop() {
         oldDeviceConnected = deviceConnected;
         
         // Force reset LED state and start fresh pattern
-        digitalWrite(LED_PIN, LOW);  // Start with LED OFF
-        ledState = false;
-        ledLastUpdate = 0; // Force immediate update
-        currentLEDPattern = LED_CONNECTED;
-        Serial.println("Switching to CONNECTED LED pattern - should flash dimmed");
+        // digitalWrite(LED_PIN, LOW);  // Start with LED OFF
+        // ledState = false;
+        // ledLastUpdate = 0; // Force immediate update
+        // currentLEDPattern = LED_CONNECTED;
+        // Serial.println("Switching to CONNECTED LED pattern - should flash dimmed");
     }
     
     if (!deviceConnected && oldDeviceConnected) {
@@ -768,27 +628,39 @@ void loop() {
 
     // Send data if connected
     if (deviceConnected) {
-        // Read the button state from the Xiao ESP32-C3 (for mode switching, separate from calibration reset)
-        int buttonsState = !digitalRead(BUTTON_BOOT_PIN);
+        // Rate limit data transmission to prevent overwhelming BLE connection
+        static unsigned long lastTransmission = 0;
+        const unsigned long TRANSMISSION_INTERVAL = 20; // 50Hz max (20ms interval) for stability
         
-        // Toggle between modes on button release (but only if it wasn't a long hold for calibration reset)
-        static int lastButtonState = 0;
-        if (!buttonsState && lastButtonState && !calibrationResetTriggered) {  // Button was released and wasn't a calibration reset
-            // cycleToNextMode();
-            if (isBNO085Available()) {
-                resetBNO085();
-                startIMUResetPattern(); // Start IMU reset LED pattern
-            }
+        if (millis() - lastTransmission < TRANSMISSION_INTERVAL) {
+            // Skip this transmission cycle to maintain stable rate
+            delay(1); // Small delay to prevent busy waiting
+            return; // Early return to avoid rest of loop processing
         }
-        lastButtonState = buttonsState;
+        
+        lastTransmission = millis();
+        
+        // Read the button state from the Xiao ESP32-C3 (for mode switching, separate from calibration reset)
+        // int buttonsState = !digitalRead(BUTTON_BOOT_PIN);
+        
+        // // Toggle between modes on button release (but only if it wasn't a long hold for calibration reset)
+        // static int lastButtonState = 0;
+        // if (!buttonsState && lastButtonState && !calibrationResetTriggered) {  // Button was released and wasn't a calibration reset
+        //     // cycleToNextMode();
+        //     if (isBNO085Available()) {
+        //         resetBNO085();
+        //         startIMUResetPattern(); // Start IMU reset LED pattern
+        //     }
+        // }
+        // lastButtonState = buttonsState;
         
         // Update the gamepad report structure
         // Clear all buttons first
         memset(&gamepadReport, 0, sizeof(GamepadReport));
 
         // Set button1 based on the physical button
-        gamepadReport.button1 = buttonsState & 0x01;
-        gamepadReport.button2 = buttonsState & 0x02;
+        // gamepadReport.button1 = buttonsState & 0x01;
+        // gamepadReport.button2 = buttonsState & 0x02;
         
         // Set button9 to indicate left/right hand
         gamepadReport.cfgbit0 = IS_LEFT_HAND;
@@ -799,49 +671,8 @@ void loop() {
         
         // Process data based on the current mode
         switch (currentMode) {
-            case GAME_MODE:
-                // GAME MODE: Use mapped controls for gameplay
-
-                // Update finger button states based on position changes
-                updateFingerButtons();
-                
-                // Only update quaternion if BNO085 is available
-                if (isBNO085Available()) {
-                    quaternionToEuler();
-                    // Map roll angle to X-axis (left/right movement)
-                    gamepadReport.axes[0] = constrain(map(ypr.roll, -45, 45, 0, 255), 0, 255);
-                } else {
-                    // Fallback: center the axis when IMU is not available
-                    gamepadReport.axes[0] = 127;  // Center position
-                }
-
-                // Set button states based on detected gestures
-                gamepadReport.button1 = fingerButtons[0].isPressed; // Thumb
-                gamepadReport.button2 = fingerButtons[1].isPressed; // Pinky finger
-                gamepadReport.button3 = fingerButtons[2].isPressed; // Ring finger
-                gamepadReport.button4 = fingerButtons[3].isPressed; // Middle finger
-                gamepadReport.button5 = fingerButtons[4].isPressed; // Index finger
-
-                // Map pitch angle to Y-axis (up/down movement)
-                // gamepadReport.axes[1] = constrain(map(ypr.pitch, -45, 45, 0, 255), 0, 255);
-
-                // Apply deadzone to both axes
-                // gamepadReport.axes[0] = applyDeadzone(gamepadReport.axes[0], DEADZONE);
-                // gamepadReport.axes[1] = applyDeadzone(gamepadReport.axes[1], DEADZONE);
-
-                // Fill remaining axes with zeros or other mapped values
-                for (int i = 2; i < 16; i++) {
-                    gamepadReport.axes[i] = 127;
-                }
-                break;
-                
             case RAW_ANGLES_MODE:
                 // RAW ANGLES MODE: Show all raw angle values
-
-                // Map all raw angle values directly to axes
-                for (int i = 0; i < NUM_JOINTS && i < 16; i++) {
-                    gamepadReport.axes[i] = 127;//mapAngleToHID(angles[i], 0, 255);
-                }
 
                 // Store quaternion values directly as 16-bit values (if BNO085 available)
                 if (isBNO085Available()) {
@@ -860,9 +691,9 @@ void loop() {
 
             default:
                 // Fallback mode - just use raw angles
-                for (int i = 0; i < NUM_JOINTS && i < 16; i++) {
-                    gamepadReport.axes[i] = 127;//mapAngleToHID(angles[i], 0, 255);
-                }
+                // for (int i = 0; i < NUM_JOINTS && i < 16; i++) {
+                //     gamepadReport.axes[i] = 127;//mapAngleToHID(angles[i], 0, 255);
+                // }
                 break;
         }
         
@@ -871,52 +702,39 @@ void loop() {
             uint8_t reportBuffer[sizeof(GamepadReport)];
             memcpy(reportBuffer, &gamepadReport, sizeof(GamepadReport));
             
-            // Send the report
+            // Send the report with error handling to prevent disconnections
             inputGamepad->setValue(reportBuffer, sizeof(reportBuffer));
-            inputGamepad->notify();
+            if (inputGamepad->notify()) {
+                // Successful transmission
+                static unsigned long successCount = 0;
+                successCount++;
+                
+                // Print success rate occasionally
+                static unsigned long lastSuccessReport = 0;
+                if (millis() - lastSuccessReport >= 5000) {
+                    Serial.print("Successful transmissions: ");
+                    Serial.println(successCount);
+                    lastSuccessReport = millis();
+                }
+            } else {
+                // Failed to send notification
+                Serial.println("Warning: Failed to send HID notification");
+                static unsigned long failCount = 0;
+                failCount++;
+                if (failCount % 10 == 0) {
+                    Serial.print("Failed transmissions: ");
+                    Serial.println(failCount);
+                }
+            }
             
             // Debug output - only show when mode changes or periodically
-            static unsigned long lastDebugTime = 0;
-            
-            if (modeJustChanged || millis() - lastDebugTime > 100) {
-                lastDebugTime = millis();
-                
-                // Serial.print("Current mode: ");
-                switch (currentMode) {
-                    // case GAME_MODE:
-                    //     Serial.println("Game Mode");
-                    //     Serial.println("Game controls active - mapped for gameplay");
-                    //     break;
-                    case RAW_ANGLES_MODE:
-                        // Serial.println("Raw Angles Mode");
-                        // Serial.println("Showing raw angle values on all axes");
-                        // printRawAngles();
-                        // printFingerAngles();
-                        break;
-                    default:
-                        // Serial.println("Unknown Mode");
-                        break;
-                }
-                
-                // // Print a few values for verification
-                // for (int i = 0; i < NUM_JOINTS; i++) {
-                //     Serial.print("Angle ");
-                //     Serial.print(i);
-                //     Serial.print(": ");
-                //     Serial.print(angles[i]);
-                //     Serial.print(" -> Axis value: ");
-                //     Serial.println(gamepadReport.axes[i]);
-                // }
-                // Serial.println("...");
-                
-                modeJustChanged = false;
-            }
+            modeJustChanged = false; // Reset flag without debug output
         } else {
             Serial.println("Error: inputGamepad is null");
         }
         
-        // Small delay to prevent flooding
-        delay(1); // High update rate
+        // No delay for maximum update rate - ESP32-C6 can handle this
+        // delay(1); // Removed to eliminate transmission delay
     } else {
         // Even when not connected, calculate and display angles for debugging
         // static unsigned long lastDebugTime = 0;
@@ -934,21 +752,22 @@ void loop() {
     // Add some debugging and rate limiting to prevent spam
     static unsigned long lastAdvertisingCheck = 0;
     static unsigned long lastAdvertisingRestart = 0;
-    static unsigned long lastDebugPrint = 0;
+    // static unsigned long lastDebugPrint = 0;  // Removed debug printing
     const unsigned long ADVERTISING_CHECK_INTERVAL = 1000; // Check every 1 second
     const unsigned long ADVERTISING_RESTART_COOLDOWN = 5000; // Wait 5 seconds between restarts
-    const unsigned long DEBUG_PRINT_INTERVAL = 5000; // Debug print every 5 seconds
+    // const unsigned long DEBUG_PRINT_INTERVAL = 5000; // Debug print every 5 seconds
     
+    // Debug printing disabled for maximum performance
     // Debug connection state periodically
-    if (millis() - lastDebugPrint > DEBUG_PRINT_INTERVAL) {
-        lastDebugPrint = millis();
-        Serial.print("DEBUG: deviceConnected=");
-        Serial.print(deviceConnected);
-        Serial.print(", isAdvertising=");
-        Serial.print(NimBLEDevice::getAdvertising()->isAdvertising());
-        Serial.print(", connectedClients=");
-        Serial.println(pServer->getConnectedCount());
-    }
+    // if (millis() - lastDebugPrint > DEBUG_PRINT_INTERVAL) {
+    //     lastDebugPrint = millis();
+    //     Serial.print("DEBUG: deviceConnected=");
+    //     Serial.print(deviceConnected);
+    //     Serial.print(", isAdvertising=");
+    //     Serial.print(NimBLEDevice::getAdvertising()->isAdvertising());
+    //     Serial.print(", connectedClients=");
+    //     Serial.println(pServer->getConnectedCount());
+    // }
     
     if (!deviceConnected && (millis() - lastAdvertisingCheck > ADVERTISING_CHECK_INTERVAL)) {
         lastAdvertisingCheck = millis();
@@ -956,7 +775,7 @@ void loop() {
         bool isCurrentlyAdvertising = NimBLEDevice::getAdvertising()->isAdvertising();
         
         if (!isCurrentlyAdvertising && (millis() - lastAdvertisingRestart > ADVERTISING_RESTART_COOLDOWN)) {
-            Serial.println("Restarting advertising to reconnect...");
+            // Serial.println("Restarting advertising to reconnect...");  // Reduced debug output
             NimBLEDevice::startAdvertising();
             lastAdvertisingRestart = millis();
         }
