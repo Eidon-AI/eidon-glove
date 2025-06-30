@@ -1,0 +1,32 @@
+Command: /Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python /Users/robert/esp-idf/tools/idf_monitor.py -p /dev/cu.usbmodem101 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32c6 --revision 0 --decode-panic backtrace /Users/robert/eidon/eidon-glove/firmware/build/eidon-glove.elf /Users/robert/eidon/eidon-glove/firmware/build/bootloader/bootloader.elf -m '/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python' '/Users/robert/esp-idf/tools/idf.py'
+[0;33mW (339) spi_flash: Detected size(409ESP-ROM:esp32c6-20220919[0m
+Build:Sep 19 2022
+rst:0x15 (USB_UART_HPSYS),boot:0x1e (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4002949e
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875730,len:0x1744
+load:0x4086b910,len:0xe50
+load:0x4086e610,len:0x318c
+entry 0x4086b91a
+[0;32mI (5) boot: ESP-IDF v6.0-dev-896-g1bbf04cb4c 2nd stage bootloader[0m
+[0;32mI (5) boot: compile time Jun 29 2025 22:45:12[0m
+[0;32mI (6) boot: chip revision: v0.1[0m
+[0;32mI (6) boot: efuse block revision: v0.3[0m
+[0;32mI (10) boot.esp32c6: SPI Speed      : 80MHz[0m
+[0;32mI (14) boot.esp32c6: SPI Mode       : DIO[0m
+[0;32mI (17) boot.esp32c6: SPI Flash Size : 2MB[0m
+[0;32mI (21) boot: Enabling RNG early entropy source...[0m
+[0;32mI (26) boot: Partition Table:[0m
+[0;32mI (28) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (35) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (41) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (48) boot:  2 factory          factory app      00 00 00010000 00177000[0m
+[0;32mI (54) boot: End of partition table[0m
+[0;32mI (57) esp_image: segment 0: paddr=00010020 vaddr=420b8020 size=22ce0h (142560) map[0m
+[0;32mI (91) esp_image: segment 1: paddr=00032d08 vaddr=40800000 size=05310h ( 21264) load[0m
+[0;32mI (97) esp_image: segment 2: paddr=00038020 vaddr=42000020 size=b1404h (726020) map[0m
+[0;32mI (231) esp_image: segment 3: paddr=000e942c vaddr=40805310 size=11ae4h ( 72420) load[0m
+[0;32mI (252) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (252) boot: Disabling RNG early entropy source...[0m
+[0;32mI (262) cpu_start: Unicore app[0m

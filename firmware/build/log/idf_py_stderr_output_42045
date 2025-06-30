@@ -1,0 +1,28 @@
+Command: make -j 12 all
+/Users/robert/eidon/eidon-glove/firmware/main/esp_hid_device_main.c: In function 'bno085_test_task':
+/Users/robert/eidon/eidon-glove/firmware/main/esp_hid_device_main.c:740:20: warning: unused variable 'MAX_INVALID_STATE' [-Wunused-variable]
+  740 |     const uint32_t MAX_INVALID_STATE = 5;  // Reinit after 5 consecutive invalid states
+      |                    ^~~~~~~~~~~~~~~~~
+/Users/robert/eidon/eidon-glove/firmware/main/esp_hid_device_main.c:739:14: warning: unused variable 'consecutive_invalid_state' [-Wunused-variable]
+  739 |     uint32_t consecutive_invalid_state = 0;
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/robert/eidon/eidon-glove/firmware/main/esp_hid_device_main.c:738:20: warning: unused variable 'LOG_INTERVAL_MS' [-Wunused-variable]
+  738 |     const uint32_t LOG_INTERVAL_MS = 1000;  // Log every 1 second
+      |                    ^~~~~~~~~~~~~~~
+/Users/robert/eidon/eidon-glove/firmware/main/esp_hid_device_main.c:737:14: warning: unused variable 'last_log_time' [-Wunused-variable]
+  737 |     uint32_t last_log_time = 0;
+      |              ^~~~~~~~~~~~~
+/Users/robert/eidon/eidon-glove/firmware/main/esp_hid_device_main.c:734:11: warning: unused variable 'demo_angle' [-Wunused-variable]
+  734 |     float demo_angle = 0.0f;
+      |           ^~~~~~~~~~
+/Users/robert/eidon/eidon-glove/firmware/main/esp_hid_device_main.c:733:10: warning: unused variable 'sensor_available' [-Wunused-variable]
+  733 |     bool sensor_available = (ret == ESP_OK);
+      |          ^~~~~~~~~~~~~~~~
+In file included from /Users/robert/eidon/eidon-glove/firmware/main/esp_hid_device_main.c:43:
+/Users/robert/eidon/eidon-glove/firmware/main/bno085.h: At top level:
+/Users/robert/eidon/eidon-glove/firmware/main/bno085.h:31:18: warning: 'shtp_send_packet' declared 'static' but never defined [-Wunused-function]
+   31 | static esp_err_t shtp_send_packet(uint8_t channel, uint8_t *data, uint16_t length);
+      |                  ^~~~~~~~~~~~~~~~
+/Users/robert/eidon/eidon-glove/firmware/main/bno085.h:32:18: warning: 'shtp_receive_packet' declared 'static' but never defined [-Wunused-function]
+   32 | static esp_err_t shtp_receive_packet(uint8_t *channel, uint8_t *data, uint16_t *length, uint32_t timeout_ms);
+      |                  ^~~~~~~~~~~~~~~~~~~

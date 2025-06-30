@@ -1,0 +1,12 @@
+Command: make -j 12 flash
+CMake Error at run_serial_tool.cmake:67 (message):
+  
+  /Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python;;/Users/robert/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32c6
+  failed.
+
+
+
+make[3]: *** [CMakeFiles/flash] Error 1
+make[2]: *** [CMakeFiles/flash.dir/all] Error 2
+make[1]: *** [CMakeFiles/flash.dir/rule] Error 2
+make: *** [flash] Error 2

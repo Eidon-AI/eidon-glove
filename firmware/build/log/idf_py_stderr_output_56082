@@ -1,0 +1,6 @@
+Command: make -j 12 all
+/Users/robert/eidon/eidon-glove/firmware/main/esp_hid_device_main.c:56: error: unterminated #if
+   56 | #if CONFIG_BT_BLE_ENABLED || CONFIG_BT_NIMBLE_ENABLED
+make[2]: *** [esp-idf/main/CMakeFiles/__idf_main.dir/esp_hid_device_main.c.obj] Error 1
+make[1]: *** [esp-idf/main/CMakeFiles/__idf_main.dir/all] Error 2
+make: *** [all] Error 2

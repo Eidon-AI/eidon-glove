@@ -1,0 +1,16 @@
+Command: make -j 12 all
+/Users/robert/eidon/eidon-glove/firmware/main/esp_hid_device_main.c: In function 'bno085_test_task':
+/Users/robert/eidon/eidon-glove/firmware/main/esp_hid_device_main.c:765:21: error: implicit declaration of function 'bno085_is_available'; did you mean 'bno085_data_available'? [-Wimplicit-function-declaration]
+  765 |                 if (bno085_is_available()) {
+      |                     ^~~~~~~~~~~~~~~~~~~
+      |                     bno085_data_available
+/Users/robert/eidon/eidon-glove/firmware/main/esp_hid_device_main.c:793:22: error: redefinition of 'now'
+  793 |             uint32_t now = xTaskGetTickCount() * portTICK_PERIOD_MS;
+      |                      ^~~
+/Users/robert/eidon/eidon-glove/firmware/main/esp_hid_device_main.c:762:22: note: previous definition of 'now' with type 'uint32_t' {aka 'long unsigned int'}
+  762 |             uint32_t now = xTaskGetTickCount() * portTICK_PERIOD_MS;
+      |                      ^~~
+make[2]: *** [esp-idf/main/CMakeFiles/__idf_main.dir/esp_hid_device_main.c.obj] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[1]: *** [esp-idf/main/CMakeFiles/__idf_main.dir/all] Error 2
+make: *** [all] Error 2

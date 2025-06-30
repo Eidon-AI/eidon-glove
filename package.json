@@ -1,0 +1,35 @@
+{
+  "name": "eidon-glove",
+  "version": "1.0.0",
+  "description": "Eidon Glove - ESP32-C6 based hand tracking glove",
+  "scripts": {
+    "build": "cd firmware && source ~/esp-idf/export.sh && idf.py build",
+    "clean": "cd firmware && source ~/esp-idf/export.sh && idf.py clean",
+    "fullclean": "cd firmware && source ~/esp-idf/export.sh && idf.py fullclean",
+    "flash": "cd firmware && source ~/esp-idf/export.sh && idf.py flash",
+    "monitor": "cd firmware && source ~/esp-idf/export.sh && idf.py monitor",
+    "menuconfig": "cd firmware && source ~/esp-idf/export.sh && idf.py menuconfig",
+    "flash-monitor": "cd firmware && source ~/esp-idf/export.sh && idf.py flash monitor",
+    "build-flash": "cd firmware && source ~/esp-idf/export.sh && idf.py build flash",
+    "build-flash-monitor": "cd firmware && source ~/esp-idf/export.sh && idf.py build flash monitor",
+    "size": "cd firmware && source ~/esp-idf/export.sh && idf.py size",
+    "size-components": "cd firmware && source ~/esp-idf/export.sh && idf.py size-components",
+    "erase-flash": "cd firmware && source ~/esp-idf/export.sh && idf.py erase-flash"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/eidon-glove.git"
+  },
+  "keywords": [
+    "esp32",
+    "esp32-c6",
+    "ble",
+    "hid",
+    "hand-tracking",
+    "glove",
+    "imu",
+    "esp-idf"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+} 

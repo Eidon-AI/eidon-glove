@@ -1,0 +1,604 @@
+Command: /Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python /Users/robert/esp-idf/tools/idf_monitor.py -p /dev/cu.usbmodem1101 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32c6 --revision 0 --decode-panic backtrace /Users/robert/eidon/eidon-glove/firmware/build/eidon-glove.elf /Users/robert/eidon/eidon-glove/firmware/build/bootloader/bootloader.elf -m '/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python' '/Users/robert/esp-idf/tools/idf.py' '-p' '/dev/cu.usbmodem1101'
+ESP-ROM:esp32c6-20220919
+Build:Sep 19 2022
+rst:0x15 (USB_UART_HPSYS),boot:0x1e (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4205802a
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875730,len:0x1744
+load:0x4086b910,len:0xe50
+load:0x4086e610,len:0x318c
+entry 0x4086b91a
+[0;32mI (5) boot: ESP-IDF v6.0-dev-896-g1bbf04cb4c 2nd stage bootloader[0m
+[0;32mI (5) boot: compile time Jun 29 2025 22:45:12[0m
+[0;32mI (6) boot: chip revision: v0.1[0m
+[0;32mI (6) boot: efuse block revision: v0.3[0m
+[0;32mI (10) boot.esp32c6: SPI Speed      : 80MHz[0m
+[0;32mI (14) boot.esp32c6: SPI Mode       : DIO[0m
+[0;32mI (17) boot.esp32c6: SPI Flash Size : 2MB[0m
+[0;32mI (21) boot: Enabling RNG early entropy source...[0m
+[0;32mI (26) boot: Partition Table:[0m
+[0;32mI (28) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (35) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (41) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (48) boot:  2 factory          factory app      00 00 00010000 00177000[0m
+[0;32mI (54) boot: End of partition table[0m
+[0;32mI (57) esp_image: segment 0: paddr=00010020 vaddr=420b8020 size=24db8h (150968) map[0m
+[0;32mI (93) esp_image: segment 1: paddr=00034de0 vaddr=40800000 size=03238h ( 12856) load[0m
+[0;32mI (96) esp_image: segment 2: paddr=00038020 vaddr=42000020 size=b6ff8h (749560) map[0m
+[0;32mI (235) esp_image: segment 3: paddr=000ef020 vaddr=40803238 size=11900h ( 71936) load[0m
+[0;32mI (251) esp_image: segment 4: paddr=00100928 vaddr=40814b40 size=02708h (  9992) load[0m
+[0;32mI (259) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (259) boot: Disabling RNG early entropy source...[0m
+[0;32mI (269) cpu_start: Unicore app[0m
+[0;32mI (278) cpu_start: Pro cpu start user code[0m
+[0;32mI (278) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (278) app_init: Application information:[0m
+[0;32mI (278) app_init: Project name:     eidon-glove[0m
+[0;32mI (282) app_init: App version:      8c13abb-dirty[0m
+[0;32mI (286) app_init: Compile time:     Jun 29 2025 22:45:36[0m
+[0;32mI (291) app_init: ELF file SHA256:  88f694c24...[0m
+[0;32mI (296) app_init: ESP-IDF:          v6.0-dev-896-g1bbf04cb4c[0m
+[0;32mI (301) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (305) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (309) efuse_init: Chip rev:         v0.1[0m
+[0;32mI (313) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (319) heap_init: At 4081B7C0 len 00060E50 (387 KiB): RAM[0m
+[0;32mI (324) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+[0;32mI (329) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM[0m
+[0;32mI (336) spi_flash: detected chip: generic[0m
+[0;32mI (339) spi_flash: flash io: dio[0m
+[0;33mW (341) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (354) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (360) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (366) coexist: coex firmware version: 831ec70[0m
+[0;32mI (371) coexist: coexist rom version 5b8dcfa[0m
+[0;32mI (375) main_task: Started on CPU0[0m
+[0;32mI (375) main_task: Calling app_main()[0m
+[0;32mI (375) HID_DEV_DEMO: app_main() started[0m
+[0;32mI (375) HID_DEV_DEMO: Initializing NVS...[0m
+[0;32mI (395) HID_DEV_DEMO: setting hid gap, mode:1[0m
+[0;32mI (395) BLE_INIT: Using main XTAL as clock source, chip ver: 1[0m
+[0;32mI (395) BLE_INIT: ble controller commit:[35fe65f][0m
+[0;32mI (405) BLE_INIT: Bluetooth MAC: e4:b3:23:ac:d4:da[0m
+[0;32mI (405) phy_init: phy_version 331,5b89037,Mar  3 2025,16:01:12[0m
+[0;32mI (485) phy: libbtbb version: ec2ecba, Mar  3 2025, 16:01:27[0m
+[0;32mI (505) ESP_HID_GAP: BLE GAP ADV_DATA_SET_COMPLETE: status = 0[0m
+[0;32mI (505) HID_DEV_DEMO: setting ble device[0m
+[0;32mI (505) HID_DEV_BLE: START[0m
+[0;32mI (505) ESP_HID_GAP: Device MAC: E4:B3:23:AC:D4:DA (type: 0)[0m
+[0;32mI (505) ESP_HID_GAP: Starting BLE advertising...[0m
+[0;32mI (515) ESP_HID_GAP: BLE GAP ADV_START_COMPLETE: status = 0[0m
+[0;32mI (515) ESP_HID_GAP: Device is now discoverable and advertising![0m
+[0;32mI (515) HID_DEV_DEMO: Starting BNO085 test task[0m
+[0;32mI (525) HID_DEV_DEMO: Starting BNO085 test task (monitor output only)[0m
+[0;32mI (535) HID_DEV_DEMO: Waiting 2 seconds for system stabilization...[0m
+[0;32mI (535) ESP_HID_GAP: BLE advertising started successfully[0m
+[0;32mI (545) main_task: Returned from app_main()[0m
+[0;32mI (2535) HID_DEV_DEMO: Initializing BNO085 on I2C addr 0x4B, SDA=20, SCL=18[0m
+[0;32mI (2535) HID_DEV_DEMO: BNO085 init attempt 1/10[0m
+[0;32mI (2535) BNO085: Initializing BNO085...[0m
+[0;32mI (2535) BNO085: Waiting for BNO085 to boot...[0m
+[0;32mI (2735) BNO085: Configuring I2C bus: port=0, SDA=20, SCL=18, freq=100000[0m
+[0;32mI (2735) BNO085: Creating I2C master bus...[0m
+[0;32mI (2735) BNO085: Adding BNO085 device at address 0x4B...[0m
+[0;32mI (2785) BNO085: Reading initial packets...[0m
+[0;32mI (2805) BNO085: Read initial packet 0: channel=0, length=272[0m
+[0;32mI (2805) BNO085:   Data[0-3]: 14 81 00 02[0m
+[0;32mI (2805) BNO085: Read initial packet 1: channel=0, length=4[0m
+[0;32mI (2815) BNO085:   Data[0-3]: 08 80 00 04[0m
+[0;32mI (2815) BNO085: Read initial packet 2: channel=0, length=4[0m
+[0;32mI (2815) BNO085:   Data[0-3]: 08 80 00 06[0m
+[0;32mI (2825) BNO085: Read initial packet 3: channel=0, length=4[0m
+[0;32mI (2825) BNO085:   Data[0-3]: 08 80 00 08[0m
+[0;32mI (2835) BNO085: Read initial packet 4: channel=0, length=4[0m
+[0;32mI (2835) BNO085:   Data[0-3]: 08 80 00 0A[0m
+[0;32mI (2845) BNO085: Sending soft reset...[0m
+[0;32mI (3145) BNO085: Read post-reset packet 0: channel=0, length=4[0m
+[0;32mI (3145) BNO085: Read post-reset packet 1: channel=0, length=4[0m
+[0;32mI (3145) BNO085: Read post-reset packet 2: channel=0, length=4[0m
+[0;32mI (3145) BNO085: Read post-reset packet 3: channel=0, length=4[0m
+[0;32mI (3155) BNO085: Read post-reset packet 4: channel=0, length=4[0m
+[0;32mI (3155) BNO085: Requesting product ID...[0m
+[0;33mW (4165) BNO085: Failed to receive product ID response: ESP_ERR_TIMEOUT[0m
+[0;32mI (4165) BNO085: BNO085 initialization complete[0m
+[0;32mI (4165) HID_DEV_DEMO: BNO085 initialized successfully after 1 attempt(s)![0m
+[0;32mI (4265) BNO085: Response 0 after enable: channel=0, length=4[0m
+[0;32mI (4265) BNO085:   Data[0-3]: 08 80 00 52[0m
+[0;32mI (4265) BNO085: Response 1 after enable: channel=0, length=4[0m
+[0;32mI (4265) BNO085:   Data[0-3]: 08 80 00 54[0m
+[0;32mI (4275) BNO085: Response 2 after enable: channel=0, length=4[0m
+[0;32mI (4275) BNO085:   Data[0-3]: 08 80 00 56[0m
+[0;32mI (4285) BNO085: Response 3 after enable: channel=0, length=4[0m
+[0;32mI (4285) BNO085:   Data[0-3]: 08 80 00 58[0m
+[0;32mI (4295) BNO085: Response 4 after enable: channel=0, length=4[0m
+[0;32mI (4295) BNO085:   Data[0-3]: 08 80 00 5A[0m
+[0;32mI (4295) BNO085: Response 5 after enable: channel=0, length=4[0m
+[0;32mI (4305) BNO085:   Data[0-3]: 08 80 00 5C[0m
+[0;32mI (4305) BNO085: Response 6 after enable: channel=0, length=4[0m
+[0;32mI (4315) BNO085:   Data[0-3]: 08 80 00 5E[0m
+[0;32mI (4315) BNO085: Response 7 after enable: channel=0, length=4[0m
+[0;32mI (4325) BNO085:   Data[0-3]: 08 80 00 60[0m
+[0;32mI (4325) BNO085: Response 8 after enable: channel=0, length=4[0m
+[0;32mI (4335) BNO085:   Data[0-3]: 08 80 00 62[0m
+[0;32mI (4335) BNO085: Response 9 after enable: channel=0, length=4[0m
+[0;32mI (4335) BNO085:   Data[0-3]: 08 80 00 64[0m
+[0;32mI (4345) HID_DEV_DEMO: Game rotation vector enabled successfully[0m
+[0;32mI (4345) HID_DEV_DEMO: Waiting for sensor to start producing data...[0m
+[0;33mW (7335) HID_DEV_DEMO: Read errors: 100 (last error: ESP_ERR_INVALID_STATE)[0m
+[0;33mW (9335) HID_DEV_DEMO: Read errors: 200 (last error: ESP_ERR_INVALID_STATE)[0m
+[0;32mI (10375) HID_DEV_DEMO: Status: reads=0, errors=252[0m
+Guru Meditation Error: Core  0 panic'ed (Store access fault). Exception was unhandled.
+
+Core  0 register dump:
+MEPC    : 0x40808cc0  RA      : 0x40808ca0  SP      : 0x40817bf0  GP      : 0x40815344  
+TP      : 0x4081eef0  T0      : 0x0000001f  T1      : 0x20001044  T2      : 0x00000002  
+S0/FP   : 0x4081d79c  S1      : 0x4082e100  A0      : 0x00000000  A1      : 0x00000000  
+A2      : 0x00000003  A3      : 0x00000064  A4      : 0x00000000  A5      : 0x00000000  
+A6      : 0x60004000  A7      : 0x00000000  S2      : 0x4082ca94  S3      : 0x00000001  
+S4      : 0x600c2000  S5      : 0x00000000  S6      : 0x00000000  S7      : 0x00000000  
+S8      : 0x00000000  S9      : 0x00000000  S10     : 0x00000000  S11     : 0x00000000  
+T3      : 0x00000000  T4      : 0x00000000  T5      : 0x00000000  T6      : 0x00000000  
+MSTATUS : 0x00001881  MTVEC   : 0x40800001  MCAUSE  : 0x00000007  MTVAL   : 0x00000000  
+MHARTID : 0x00000000  
+
+add symbol table from file "/Users/robert/eidon/eidon-glove/firmware/build/bootloader/bootloader.elf"
+0x40808cc0 in i2c_ll_read_rxfifo (hw=0x60004000, ptr=0x0, len=3 '\003') at /Users/robert/esp-idf/components/hal/esp32c6/include/hal/i2c_ll.h:669
+669	        ptr[i] = HAL_FORCE_READ_U32_REG_FIELD(hw->data, fifo_rdata);
+#0  0x40808cc0 in i2c_ll_read_rxfifo (hw=0x60004000, ptr=0x0, len=3 '\003') at /Users/robert/esp-idf/components/hal/esp32c6/include/hal/i2c_ll.h:669
+#1  i2c_isr_receive_handler (i2c_master=i2c_master@entry=0x4081d79c) at /Users/robert/esp-idf/components/esp_driver_i2c/i2c_master.c:696
+#2  0x4080a862 in i2c_master_isr_handler_default (arg=0x4081d79c) at /Users/robert/esp-idf/components/esp_driver_i2c/i2c_master.c:738
+#3  0x40800a6e in shared_intr_isr (arg=<optimized out>) at /Users/robert/esp-idf/components/esp_hw_support/intr_alloc.c:472
+#4  0x40812924 in _global_interrupt_handler (sp=<optimized out>, mcause=<optimized out>) at /Users/robert/esp-idf/components/riscv/interrupt.c:67
+#5  0x4080026c in _interrupt_handler () at /Users/robert/esp-idf/components/riscv/vectors.S:456
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+
+
+ELF file SHA256: 88f694c24
+
+Rebooting...
+ESP-ROM:esp32c6-20220919
+Build:Sep 19 2022
+rst:0xc (SW_CPU),boot:0x1e (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4001975a
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875730,len:0x1744
+load:0x4086b910,len:0xe50
+load:0x4086e610,len:0x318c
+entry 0x4086b91a
+[0;32mI (13) boot: ESP-IDF v6.0-dev-896-g1bbf04cb4c 2nd stage bootloader[0m
+[0;32mI (14) boot: compile time Jun 29 2025 22:45:12[0m
+[0;32mI (15) boot: chip revision: v0.1[0m
+[0;32mI (16) boot: efuse block revision: v0.3[0m
+[0;32mI (19) boot.esp32c6: SPI Speed      : 80MHz[0m
+[0;32mI (22) boot.esp32c6: SPI Mode       : DIO[0m
+[0;32mI (26) boot.esp32c6: SPI Flash Size : 2MB[0m
+[0;32mI (30) boot: Enabling RNG early entropy source...[0m
+[0;32mI (35) boot: Partition Table:[0m
+[0;32mI (37) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (43) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (50) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (56) boot:  2 factory          factory app      00 00 00010000 00177000[0m
+[0;32mI (63) boot: End of partition table[0m
+[0;32mI (66) esp_image: segment 0: paddr=00010020 vaddr=420b8020 size=24db8h (150968) map[0m
+[0;32mI (129) esp_image: segment 1: paddr=00034de0 vaddr=40800000 size=03238h ( 12856) load[0m
+[0;32mI (136) esp_image: segment 2: paddr=00038020 vaddr=42000020 size=b6ff8h (749560) map[0m
+[0;32mI (409) esp_image: segment 3: paddr=000ef020 vaddr=40803238 size=11900h ( 71936) load[0m
+[0;32mI (440) esp_image: segment 4: paddr=00100928 vaddr=40814b40 size=02708h (  9992) load[0m
+[0;32mI (455) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (456) boot: Disabling RNG early entropy source...[0m
+[0;32mI (466) cpu_start: Unicore app[0m
+[0;32mI (475) cpu_start: Pro cpu start user code[0m
+[0;32mI (475) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (475) app_init: Application information:[0m
+[0;32mI (476) app_init: Project name:     eidon-glove[0m
+[0;32mI (479) app_init: App version:      8c13abb-dirty[0m
+[0;32mI (484) app_init: Compile time:     Jun 29 2025 22:45:36[0m
+[0;32mI (489) app_init: ELF file SHA256:  88f694c24...[0m
+[0;32mI (493) app_init: ESP-IDF:          v6.0-dev-896-g1bbf04cb4c[0m
+[0;32mI (499) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (502) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (506) efuse_init: Chip rev:         v0.1[0m
+[0;32mI (510) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (516) heap_init: At 4081B7C0 len 00060E50 (387 KiB): RAM[0m
+[0;32mI (522) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+[0;32mI (527) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM[0m
+[0;32mI (533) spi_flash: detected chip: generic[0m
+[0;32mI (536) spi_flash: flash io: dio[0m
+[0;33mW (539) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (551) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (557) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (564) coexist: coex firmware version: 831ec70[0m
+[0;32mI (568) coexist: coexist rom version 5b8dcfa[0m
+[0;32mI (573) main_task: Started on CPU0[0m
+[0;32mI (573) main_task: Calling app_main()[0m
+[0;32mI (573) HID_DEV_DEMO: app_main() started[0m
+[0;32mI (573) HID_DEV_DEMO: Initializing NVS...[0m
+[0;32mI (593) HID_DEV_DEMO: setting hid gap, mode:1[0m
+[0;32mI (593) BLE_INIT: Using main XTAL as clock source, chip ver: 1[0m
+[0;32mI (593) BLE_INIT: ble controller commit:[35fe65f][0m
+[0;32mI (603) BLE_INIT: Bluetooth MAC: e4:b3:23:ac:d4:da[0m
+[0;32mI (603) phy_init: phy_version 331,5b89037,Mar  3 2025,16:01:12[0m
+[0;32mI (683) phy: libbtbb version: ec2ecba, Mar  3 2025, 16:01:27[0m
+[0;32mI (703) ESP_HID_GAP: BLE GAP ADV_DATA_SET_COMPLETE: status = 0[0m
+[0;32mI (703) HID_DEV_DEMO: setting ble device[0m
+[0;32mI (703) HID_DEV_BLE: START[0m
+[0;32mI (703) ESP_HID_GAP: Device MAC: E4:B3:23:AC:D4:DA (type: 0)[0m
+[0;32mI (703) ESP_HID_GAP: Starting BLE advertising...[0m
+[0;32mI (713) ESP_HID_GAP: BLE GAP ADV_START_COMPLETE: status = 0[0m
+[0;32mI (713) ESP_HID_GAP: Device is now discoverable and advertising![0m
+[0;32mI (713) HID_DEV_DEMO: Starting BNO085 test task[0m
+[0;32mI (723) HID_DEV_DEMO: Starting BNO085 test task (monitor output only)[0m
+[0;32mI (733) HID_DEV_DEMO: Waiting 2 seconds for system stabilization...[0m
+[0;32mI (733) ESP_HID_GAP: BLE advertising started successfully[0m
+[0;32mI (743) main_task: Returned from app_main()[0m
+[0;32mI (2733) HID_DEV_DEMO: Initializing BNO085 on I2C addr 0x4B, SDA=20, SCL=18[0m
+[0;32mI (2733) HID_DEV_DEMO: BNO085 init attempt 1/10[0m
+[0;32mI (2733) BNO085: Initializing BNO085...[0m
+[0;32mI (2733) BNO085: Waiting for BNO085 to boot...[0m
+[0;32mI (2933) BNO085: Configuring I2C bus: port=0, SDA=20, SCL=18, freq=100000[0m
+[0;32mI (2933) BNO085: Creating I2C master bus...[0m
+[0;32mI (2933) BNO085: Adding BNO085 device at address 0x4B...[0m
+[0;32mI (2983) BNO085: Reading initial packets...[0m
+[0;32mI (2983) BNO085: Read initial packet 0: channel=0, length=4[0m
+[0;32mI (2983) BNO085:   Data[0-3]: 08 80 00 66[0m
+[0;32mI (2983) BNO085: Read initial packet 1: channel=0, length=4[0m
+[0;32mI (2983) BNO085:   Data[0-3]: 08 80 00 68[0m
+[0;32mI (2993) BNO085: Read initial packet 2: channel=0, length=4[0m
+[0;32mI (2993) BNO085:   Data[0-3]: 08 80 00 6A[0m
+[0;32mI (3003) BNO085: Read initial packet 3: channel=0, length=4[0m
+[0;32mI (3003) BNO085:   Data[0-3]: 08 80 00 6C[0m
+[0;32mI (3013) BNO085: Read initial packet 4: channel=0, length=4[0m
+[0;32mI (3013) BNO085:   Data[0-3]: 08 80 00 6E[0m
+[0;32mI (3013) BNO085: Sending soft reset...[0m
+[0;32mI (3323) BNO085: Read post-reset packet 0: channel=0, length=4[0m
+[0;32mI (3323) BNO085: Read post-reset packet 1: channel=0, length=4[0m
+[0;32mI (3323) BNO085: Read post-reset packet 2: channel=0, length=4[0m
+[0;32mI (3323) BNO085: Read post-reset packet 3: channel=0, length=4[0m
+[0;32mI (3333) BNO085: Read post-reset packet 4: channel=0, length=4[0m
+[0;32mI (3333) BNO085: Requesting product ID...[0m
+[0;33mW (4343) BNO085: Failed to receive product ID response: ESP_ERR_TIMEOUT[0m
+[0;32mI (4343) BNO085: BNO085 initialization complete[0m
+[0;32mI (4343) HID_DEV_DEMO: BNO085 initialized successfully after 1 attempt(s)![0m
+[0;32mI (4453) BNO085: Response 0 after enable: channel=0, length=4[0m
+[0;32mI (4453) BNO085:   Data[0-3]: 08 80 00 B6[0m
+[0;32mI (4453) BNO085: Response 1 after enable: channel=0, length=4[0m
+[0;32mI (4453) BNO085:   Data[0-3]: 08 80 00 B8[0m
+[0;32mI (4463) BNO085: Response 2 after enable: channel=0, length=4[0m
+[0;32mI (4463) BNO085:   Data[0-3]: 08 80 00 BA[0m
+[0;32mI (4473) BNO085: Response 3 after enable: channel=0, length=4[0m
+[0;32mI (4473) BNO085:   Data[0-3]: 08 80 00 BC[0m
+[0;32mI (4483) BNO085: Response 4 after enable: channel=0, length=4[0m
+[0;32mI (4483) BNO085:   Data[0-3]: 08 80 00 BE[0m
+[0;32mI (4483) BNO085: Response 5 after enable: channel=0, length=4[0m
+[0;32mI (4493) BNO085:   Data[0-3]: 08 80 00 C0[0m
+[0;32mI (4493) BNO085: Response 6 after enable: channel=0, length=4[0m
+[0;32mI (4503) BNO085:   Data[0-3]: 08 80 00 C2[0m
+[0;32mI (4503) BNO085: Response 7 after enable: channel=0, length=4[0m
+[0;32mI (4513) BNO085:   Data[0-3]: 08 80 00 C4[0m
+[0;32mI (4513) BNO085: Response 8 after enable: channel=0, length=4[0m
+[0;32mI (4523) BNO085:   Data[0-3]: 08 80 00 C6[0m
+[0;32mI (4523) BNO085: Response 9 after enable: channel=0, length=4[0m
+[0;32mI (4523) BNO085:   Data[0-3]: 08 80 00 C8[0m
+[0;32mI (4533) HID_DEV_DEMO: Game rotation vector enabled successfully[0m
+[0;32mI (4533) HID_DEV_DEMO: Waiting for sensor to start producing data...[0m
+[0;33mW (7523) HID_DEV_DEMO: Read errors: 100 (last error: ESP_ERR_INVALID_STATE)[0m
+[0;33mW (9523) HID_DEV_DEMO: Read errors: 200 (last error: ESP_ERR_INVALID_STATE)[0m
+[0;32mI (10583) HID_DEV_DEMO: Status: reads=0, errors=253[0m
+Guru Meditation Error: Core  0 panic'ed (Store access fault). Exception was unhandled.
+
+Core  0 register dump:
+MEPC    : 0x40808cc0  RA      : 0x40808ca0  SP      : 0x40817bf0  GP      : 0x40815344  
+TP      : 0x4081eef0  T0      : 0x0000001f  T1      : 0x20001044  T2      : 0x00000002  
+S0/FP   : 0x4081d79c  S1      : 0x4082e100  A0      : 0x00000000  A1      : 0x00000000  
+A2      : 0x00000003  A3      : 0x000000c8  A4      : 0x00000000  A5      : 0x00000000  
+A6      : 0x60004000  A7      : 0x00000000  S2      : 0x4082ca94  S3      : 0x00000001  
+S4      : 0x600c2000  S5      : 0x00000000  S6      : 0x00000000  S7      : 0x00000000  
+S8      : 0x00000000  S9      : 0x00000000  S10     : 0x00000000  S11     : 0x00000000  
+T3      : 0x00000000  T4      : 0x00000000  T5      : 0x00000000  T6      : 0x00000000  
+MSTATUS : 0x00001881  MTVEC   : 0x40800001  MCAUSE  : 0x00000007  MTVAL   : 0x00000000  
+MHARTID : 0x00000000  
+
+add symbol table from file "/Users/robert/eidon/eidon-glove/firmware/build/bootloader/bootloader.elf"
+0x40808cc0 in i2c_ll_read_rxfifo (hw=0x60004000, ptr=0x0, len=3 '\003') at /Users/robert/esp-idf/components/hal/esp32c6/include/hal/i2c_ll.h:669
+669	        ptr[i] = HAL_FORCE_READ_U32_REG_FIELD(hw->data, fifo_rdata);
+#0  0x40808cc0 in i2c_ll_read_rxfifo (hw=0x60004000, ptr=0x0, len=3 '\003') at /Users/robert/esp-idf/components/hal/esp32c6/include/hal/i2c_ll.h:669
+#1  i2c_isr_receive_handler (i2c_master=i2c_master@entry=0x4081d79c) at /Users/robert/esp-idf/components/esp_driver_i2c/i2c_master.c:696
+#2  0x4080a862 in i2c_master_isr_handler_default (arg=0x4081d79c) at /Users/robert/esp-idf/components/esp_driver_i2c/i2c_master.c:738
+#3  0x40800a6e in shared_intr_isr (arg=<optimized out>) at /Users/robert/esp-idf/components/esp_hw_support/intr_alloc.c:472
+#4  0x40812924 in _global_interrupt_handler (sp=<optimized out>, mcause=<optimized out>) at /Users/robert/esp-idf/components/riscv/interrupt.c:67
+#5  0x4080026c in _interrupt_handler () at /Users/robert/esp-idf/components/riscv/vectors.S:456
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+
+
+ELF file SHA256: 88f694c24
+
+Rebooting...
+ESP-ROM:esp32c6-20220919
+Build:Sep 19 2022
+rst:0xc (SW_CPU),boot:0x1e (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4001975a
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875730,len:0x1744
+load:0x4086b910,len:0xe50
+load:0x4086e610,len:0x318c
+entry 0x4086b91a
+[0;32mI (13) boot: ESP-IDF v6.0-dev-896-g1bbf04cb4c 2nd stage bootloader[0m
+[0;32mI (14) boot: compile time Jun 29 2025 22:45:12[0m
+[0;32mI (15) boot: chip revision: v0.1[0m
+[0;32mI (16) boot: efuse block revision: v0.3[0m
+[0;32mI (19) boot.esp32c6: SPI Speed      : 80MHz[0m
+[0;32mI (22) boot.esp32c6: SPI Mode       : DIO[0m
+[0;32mI (26) boot.esp32c6: SPI Flash Size : 2MB[0m
+[0;32mI (30) boot: Enabling RNG early entropy source...[0m
+[0;32mI (35) boot: Partition Table:[0m
+[0;32mI (37) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (43) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (50) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (56) boot:  2 factory          factory app      00 00 00010000 00177000[0m
+[0;32mI (63) boot: End of partition table[0m
+[0;32mI (66) esp_image: segment 0: paddr=00010020 vaddr=420b8020 size=24db8h (150968) map[0m
+[0;32mI (129) esp_image: segment 1: paddr=00034de0 vaddr=40800000 size=03238h ( 12856) load[0m
+[0;32mI (136) esp_image: segment 2: paddr=00038020 vaddr=42000020 size=b6ff8h (749560) map[0m
+[0;32mI (409) esp_image: segment 3: paddr=000ef020 vaddr=40803238 size=11900h ( 71936) load[0m
+[0;32mI (440) esp_image: segment 4: paddr=00100928 vaddr=40814b40 size=02708h (  9992) load[0m
+[0;32mI (455) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (456) boot: Disabling RNG early entropy source...[0m
+[0;32mI (466) cpu_start: Unicore app[0m
+[0;32mI (475) cpu_start: Pro cpu start user code[0m
+[0;32mI (475) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (475) app_init: Application information:[0m
+[0;32mI (476) app_init: Project name:     eidon-glove[0m
+[0;32mI (479) app_init: App version:      8c13abb-dirty[0m
+[0;32mI (484) app_init: Compile time:     Jun 29 2025 22:45:36[0m
+[0;32mI (489) app_init: ELF file SHA256:  88f694c24...[0m
+[0;32mI (493) app_init: ESP-IDF:          v6.0-dev-896-g1bbf04cb4c[0m
+[0;32mI (499) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (502) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (506) efuse_init: Chip rev:         v0.1[0m
+[0;32mI (510) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (516) heap_init: At 4081B7C0 len 00060E50 (387 KiB): RAM[0m
+[0;32mI (522) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+[0;32mI (527) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM[0m
+[0;32mI (533) spi_flash: detected chip: generic[0m
+[0;32mI (536) spi_flash: flash io: dio[0m
+[0;33mW (539) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (551) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (557) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (564) coexist: coex firmware version: 831ec70[0m
+[0;32mI (568) coexist: coexist rom version 5b8dcfa[0m
+[0;32mI (573) main_task: Started on CPU0[0m
+[0;32mI (573) main_task: Calling app_main()[0m
+[0;32mI (573) HID_DEV_DEMO: app_main() started[0m
+[0;32mI (573) HID_DEV_DEMO: Initializing NVS...[0m
+[0;32mI (593) HID_DEV_DEMO: setting hid gap, mode:1[0m
+[0;32mI (593) BLE_INIT: Using main XTAL as clock source, chip ver: 1[0m
+[0;32mI (593) BLE_INIT: ble controller commit:[35fe65f][0m
+[0;32mI (603) BLE_INIT: Bluetooth MAC: e4:b3:23:ac:d4:da[0m
+[0;32mI (603) phy_init: phy_version 331,5b89037,Mar  3 2025,16:01:12[0m
+[0;32mI (683) phy: libbtbb version: ec2ecba, Mar  3 2025, 16:01:27[0m
+[0;32mI (703) ESP_HID_GAP: BLE GAP ADV_DATA_SET_COMPLETE: status = 0[0m
+[0;32mI (703) HID_DEV_DEMO: setting ble device[0m
+[0;32mI (703) HID_DEV_BLE: START[0m
+[0;32mI (703) ESP_HID_GAP: Device MAC: E4:B3:23:AC:D4:DA (type: 0)[0m
+[0;32mI (703) ESP_HID_GAP: Starting BLE advertising...[0m
+[0;32mI (713) ESP_HID_GAP: BLE GAP ADV_START_COMPLETE: status = 0[0m
+[0;32mI (713) ESP_HID_GAP: Device is now discoverable and advertising![0m
+[0;32mI (713) HID_DEV_DEMO: Starting BNO085 test task[0m
+[0;32mI (723) HID_DEV_DEMO: Starting BNO085 test task (monitor output only)[0m
+[0;32mI (733) HID_DEV_DEMO: Waiting 2 seconds for system stabilization...[0m
+[0;32mI (733) ESP_HID_GAP: BLE advertising started successfully[0m
+[0;32mI (743) main_task: Returned from app_main()[0m
+[0;32mI (2733) HID_DEV_DEMO: Initializing BNO085 on I2C addr 0x4B, SDA=20, SCL=18[0m
+[0;32mI (2733) HID_DEV_DEMO: BNO085 init attempt 1/10[0m
+[0;32mI (2733) BNO085: Initializing BNO085...[0m
+[0;32mI (2733) BNO085: Waiting for BNO085 to boot...[0m
+[0;32mI (2933) BNO085: Configuring I2C bus: port=0, SDA=20, SCL=18, freq=100000[0m
+[0;32mI (2933) BNO085: Creating I2C master bus...[0m
+[0;32mI (2933) BNO085: Adding BNO085 device at address 0x4B...[0m
+[0;32mI (2983) BNO085: Reading initial packets...[0m
+[0;32mI (2983) BNO085: Read initial packet 0: channel=0, length=4[0m
+[0;32mI (2983) BNO085:   Data[0-3]: 08 80 00 CA[0m
+[0;32mI (2983) BNO085: Read initial packet 1: channel=0, length=4[0m
+[0;32mI (2983) BNO085:   Data[0-3]: 08 80 00 CC[0m
+[0;32mI (2993) BNO085: Read initial packet 2: channel=0, length=4[0m
+[0;32mI (2993) BNO085:   Data[0-3]: 08 80 00 CE[0m
+[0;32mI (3003) BNO085: Read initial packet 3: channel=0, length=4[0m
+[0;32mI (3003) BNO085:   Data[0-3]: 08 80 00 D0[0m
+[0;32mI (3013) BNO085: Read initial packet 4: channel=0, length=4[0m
+[0;32mI (3013) BNO085:   Data[0-3]: 08 80 00 D2[0m
+[0;32mI (3013) BNO085: Sending soft reset...[0m
+[0;32mI (3323) BNO085: Read post-reset packet 0: channel=0, length=4[0m
+[0;32mI (3323) BNO085: Read post-reset packet 1: channel=0, length=4[0m
+[0;32mI (3323) BNO085: Read post-reset packet 2: channel=0, length=4[0m
+[0;32mI (3323) BNO085: Read post-reset packet 3: channel=0, length=4[0m
+[0;32mI (3333) BNO085: Read post-reset packet 4: channel=0, length=4[0m
+[0;32mI (3333) BNO085: Requesting product ID...[0m
+[0;33mW (4343) BNO085: Failed to receive product ID response: ESP_ERR_TIMEOUT[0m
+[0;32mI (4343) BNO085: BNO085 initialization complete[0m
+[0;32mI (4343) HID_DEV_DEMO: BNO085 initialized successfully after 1 attempt(s)![0m
+[0;32mI (4443) BNO085: Response 0 after enable: channel=0, length=4[0m
+[0;32mI (4443) BNO085:   Data[0-3]: 08 80 00 16[0m
+[0;32mI (4443) BNO085: Response 1 after enable: channel=0, length=4[0m
+[0;32mI (4443) BNO085:   Data[0-3]: 08 80 00 18[0m
+[0;32mI (4453) BNO085: Response 2 after enable: channel=0, length=4[0m
+[0;32mI (4453) BNO085:   Data[0-3]: 08 80 00 1A[0m
+[0;32mI (4463) BNO085: Response 3 after enable: channel=0, length=4[0m
+[0;32mI (4463) BNO085:   Data[0-3]: 08 80 00 1C[0m
+[0;32mI (4473) BNO085: Response 4 after enable: channel=0, length=4[0m
+[0;32mI (4473) BNO085:   Data[0-3]: 08 80 00 1E[0m
+[0;32mI (4473) BNO085: Response 5 after enable: channel=0, length=4[0m
+[0;32mI (4483) BNO085:   Data[0-3]: 08 80 00 20[0m
+[0;32mI (4483) BNO085: Response 6 after enable: channel=0, length=4[0m
+[0;32mI (4493) BNO085:   Data[0-3]: 08 80 00 22[0m
+[0;32mI (4493) BNO085: Response 7 after enable: channel=0, length=4[0m
+[0;32mI (4503) BNO085:   Data[0-3]: 08 80 00 24[0m
+[0;32mI (4503) BNO085: Response 8 after enable: channel=0, length=4[0m
+[0;32mI (4513) BNO085:   Data[0-3]: 08 80 00 26[0m
+[0;32mI (4513) BNO085: Response 9 after enable: channel=0, length=4[0m
+[0;32mI (4513) BNO085:   Data[0-3]: 08 80 00 28[0m
+[0;32mI (4523) HID_DEV_DEMO: Game rotation vector enabled successfully[0m
+[0;32mI (4523) HID_DEV_DEMO: Waiting for sensor to start producing data...[0m
+[0;33mW (7513) HID_DEV_DEMO: Read errors: 100 (last error: ESP_ERR_INVALID_STATE)[0m
+[0;33mW (9513) HID_DEV_DEMO: Read errors: 200 (last error: ESP_ERR_INVALID_STATE)[0m
+[0;32mI (10573) HID_DEV_DEMO: Status: reads=0, errors=253[0m
+Guru Meditation Error: Core  0 panic'ed (Store access fault). Exception was unhandled.
+
+Core  0 register dump:
+MEPC    : 0x40808cc0  RA      : 0x40808ca0  SP      : 0x40817bf0  GP      : 0x40815344  
+TP      : 0x4081eef0  T0      : 0x0000001f  T1      : 0x20001044  T2      : 0x00000002  
+S0/FP   : 0x4081d79c  S1      : 0x4082e100  A0      : 0x00000000  A1      : 0x00000000  
+A2      : 0x00000003  A3      : 0x00000028  A4      : 0x00000000  A5      : 0x00000000  
+A6      : 0x60004000  A7      : 0x00000000  S2      : 0x4082ca94  S3      : 0x00000001  
+S4      : 0x600c2000  S5      : 0x00000000  S6      : 0x00000000  S7      : 0x00000000  
+S8      : 0x00000000  S9      : 0x00000000  S10     : 0x00000000  S11     : 0x00000000  
+T3      : 0x00000000  T4      : 0x00000000  T5      : 0x00000000  T6      : 0x00000000  
+MSTATUS : 0x00001881  MTVEC   : 0x40800001  MCAUSE  : 0x00000007  MTVAL   : 0x00000000  
+MHARTID : 0x00000000  
+
+add symbol table from file "/Users/robert/eidon/eidon-glove/firmware/build/bootloader/bootloader.elf"
+0x40808cc0 in i2c_ll_read_rxfifo (hw=0x60004000, ptr=0x0, len=3 '\003') at /Users/robert/esp-idf/components/hal/esp32c6/include/hal/i2c_ll.h:669
+669	        ptr[i] = HAL_FORCE_READ_U32_REG_FIELD(hw->data, fifo_rdata);
+#0  0x40808cc0 in i2c_ll_read_rxfifo (hw=0x60004000, ptr=0x0, len=3 '\003') at /Users/robert/esp-idf/components/hal/esp32c6/include/hal/i2c_ll.h:669
+#1  i2c_isr_receive_handler (i2c_master=i2c_master@entry=0x4081d79c) at /Users/robert/esp-idf/components/esp_driver_i2c/i2c_master.c:696
+#2  0x4080a862 in i2c_master_isr_handler_default (arg=0x4081d79c) at /Users/robert/esp-idf/components/esp_driver_i2c/i2c_master.c:738
+#3  0x40800a6e in shared_intr_isr (arg=<optimized out>) at /Users/robert/esp-idf/components/esp_hw_support/intr_alloc.c:472
+#4  0x40812924 in _global_interrupt_handler (sp=<optimized out>, mcause=<optimized out>) at /Users/robert/esp-idf/components/riscv/interrupt.c:67
+#5  0x4080026c in _interrupt_handler () at /Users/robert/esp-idf/components/riscv/vectors.S:456
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+
+
+ELF file SHA256: 88f694c24
+
+Rebooting...
+ESP-ROM:esp32c6-20220919
+Build:Sep 19 2022
+rst:0xc (SW_CPU),boot:0x1e (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4001975a
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875730,len:0x1744
+load:0x4086b910,len:0xe50
+load:0x4086e610,len:0x318c
+entry 0x4086b91a
+[0;32mI (13) boot: ESP-IDF v6.0-dev-896-g1bbf04cb4c 2nd stage bootloader[0m
+[0;32mI (14) boot: compile time Jun 29 2025 22:45:12[0m
+[0;32mI (15) boot: chip revision: v0.1[0m
+[0;32mI (16) boot: efuse block revision: v0.3[0m
+[0;32mI (19) boot.esp32c6: SPI Speed      : 80MHz[0m
+[0;32mI (22) boot.esp32c6: SPI Mode       : DIO[0m
+[0;32mI (26) boot.esp32c6: SPI Flash Size : 2MB[0m
+[0;32mI (30) boot: Enabling RNG early entropy source...[0m
+[0;32mI (35) boot: Partition Table:[0m
+[0;32mI (37) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (43) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (50) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (56) boot:  2 factory          factory app      00 00 00010000 00177000[0m
+[0;32mI (63) boot: End of partition table[0m
+[0;32mI (66) esp_image: segment 0: paddr=00010020 vaddr=420b8020 size=24db8h (150968) map[0m
+[0;32mI (129) esp_image: segment 1: paddr=00034de0 vaddr=40800000 size=03238h ( 12856) load[0m
+[0;32mI (136) esp_image: segment 2: paddr=00038020 vaddr=42000020 size=b6ff8h (749560) map[0m
+[0;32mI (409) esp_image: segment 3: paddr=000ef020 vaddr=40803238 size=11900h ( 71936) load[0m
+[0;32mI (440) esp_image: segment 4: paddr=00100928 vaddr=40814b40 size=02708h (  9992) load[0m
+[0;32mI (455) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (456) boot: Disabling RNG early entropy source...[0m
+[0;32mI (466) cpu_start: Unicore app[0m
+[0;32mI (475) cpu_start: Pro cpu start user code[0m
+[0;32mI (475) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (476) app_init: Application information:[0m
+[0;32mI (476) app_init: Project name:     eidon-glove[0m
+[0;32mI (479) app_init: App version:      8c13abb-dirty[0m
+[0;32mI (484) app_init: Compile time:     Jun 29 2025 22:45:36[0m
+[0;32mI (489) app_init: ELF file SHA256:  88f694c24...[0m
+[0;32mI (493) app_init: ESP-IDF:          v6.0-dev-896-g1bbf04cb4c[0m
+[0;32mI (499) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (502) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (506) efuse_init: Chip rev:         v0.1[0m
+[0;32mI (510) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (517) heap_init: At 4081B7C0 len 00060E50 (387 KiB): RAM[0m
+[0;32mI (522) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+[0;32mI (527) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM[0m
+[0;32mI (533) spi_flash: detected chip: generic[0m
+[0;32mI (536) spi_flash: flash io: dio[0m
+[0;33mW (539) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (551) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (557) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (564) coexist: coex firmware version: 831ec70[0m
+[0;32mI (568) coexist: coexist rom version 5b8dcfa[0m
+[0;32mI (573) main_task: Started on CPU0[0m
+[0;32mI (573) main_task: Calling app_main()[0m
+[0;32mI (573) HID_DEV_DEMO: app_main() started[0m
+[0;32mI (573) HID_DEV_DEMO: Initializing NVS...[0m
+[0;32mI (593) HID_DEV_DEMO: setting hid gap, mode:1[0m
+[0;32mI (593) BLE_INIT: Using main XTAL as clock source, chip ver: 1[0m
+[0;32mI (593) BLE_INIT: ble controller commit:[35fe65f][0m
+[0;32mI (603) BLE_INIT: Bluetooth MAC: e4:b3:23:ac:d4:da[0m
+[0;32mI (603) phy_init: phy_version 331,5b89037,Mar  3 2025,16:01:12[0m
+[0;32mI (683) phy: libbtbb version: ec2ecba, Mar  3 2025, 16:01:27[0m
+[0;32mI (693) ESP_HID_GAP: BLE GAP ADV_DATA_SET_COMPLETE: status = 0[0m
+[0;32mI (703) HID_DEV_DEMO: setting ble device[0m
+[0;32mI (703) HID_DEV_BLE: START[0m
+[0;32mI (703) ESP_HID_GAP: Device MAC: E4:B3:23:AC:D4:DA (type: 0)[0m
+[0;32mI (703) ESP_HID_GAP: Starting BLE advertising...[0m
+[0;32mI (713) ESP_HID_GAP: BLE GAP ADV_START_COMPLETE: status = 0[0m
+[0;32mI (713) ESP_HID_GAP: Device is now discoverable and advertising![0m
+[0;32mI (713) HID_DEV_DEMO: Starting BNO085 test task[0m
+[0;32mI (723) HID_DEV_DEMO: Starting BNO085 test task (monitor output only)[0m
+[0;32mI (733) HID_DEV_DEMO: Waiting 2 seconds for system stabilization...[0m
+[0;32mI (733) ESP_HID_GAP: BLE advertising started successfully[0m
+[0;32mI (743) main_task: Returned from app_main()[0m
+[0;32mI (2733) HID_DEV_DEMO: Initializing BNO085 on I2C addr 0x4B, SDA=20, SCL=18[0m
+[0;32mI (2733) HID_DEV_DEMO: BNO085 init attempt 1/10[0m
+[0;32mI (2733) BNO085: Initializing BNO085...[0m
+[0;32mI (2733) BNO085: Waiting for BNO085 to boot...[0m
+[0;32mI (2933) BNO085: Configuring I2C bus: port=0, SDA=20, SCL=18, freq=100000[0m
+[0;32mI (2933) BNO085: Creating I2C master bus...[0m
+[0;32mI (2933) BNO085: Adding BNO085 device at address 0x4B...[0m
+[0;32mI (2983) BNO085: Reading initial packets...[0m
+[0;32mI (2983) BNO085: Read initial packet 0: channel=0, length=4[0m
+[0;32mI (2983) BNO085:   Data[0-3]: 08 80 00 2A[0m
+[0;32mI (2983) BNO085: Read initial packet 1: channel=0, length=4[0m
+[0;32mI (2983) BNO085:   Data[0-3]: 08 80 00 2C[0m
+[0;32mI (2993) BNO085: Read initial packet 2: channel=0, length=4[0m
+[0;32mI (2993) BNO085:   Data[0-3]: 08 80 00 2E[0m
+[0;32mI (3003) BNO085: Read initial packet 3: channel=0, length=4[0m
+[0;32mI (3003) BNO085:   Data[0-3]: 08 80 00 30[0m
+[0;32mI (3013) BNO085: Read initial packet 4: channel=0, length=4[0m
+[0;32mI (3013) BNO085:   Data[0-3]: 08 80 00 32[0m
+[0;32mI (3013) BNO085: Sending soft reset...[0m
+[0;32mI (3323) BNO085: Read post-reset packet 0: channel=0, length=4[0m
+[0;32mI (3323) BNO085: Read post-reset packet 1: channel=0, length=4[0m
+[0;32mI (3323) BNO085: Read post-reset packet 2: channel=0, length=4[0m
+[0;32mI (3323) BNO085: Read post-reset packet 3: channel=0, length=4[0m
+[0;32mI (3333) BNO085: Read post-reset packet 4: channel=0, length=4[0m
+[0;32mI (3333) BNO085: Requesting product ID...[0m
+[0;33mW (4343) BNO085: Failed to receive product ID response: ESP_ERR_TIMEOUT[0m
+[0;32mI (4343) BNO085: BNO085 initialization complete[0m
+[0;32mI (4343) HID_DEV_DEMO: BNO085 initialized successfully after 1 attempt(s)![0m
+[0;32mI (4443) BNO085: Response 0 after enable: channel=0, length=4[0m
+[0;32mI (4443) BNO085:   Data[0-3]: 08 80 00 78[0m
+[0;32mI (4443) BNO085: Response 1 after enable: channel=0, length=4[0m
+[0;32mI (4443) BNO085:   Data[0-3]: 08 80 00 7A[0m
+[0;32mI (4453) BNO085: Response 2 after enable: channel=0, length=4[0m
+[0;32mI (4453) BNO085:   Data[0-3]: 08 80 00 7C[0m
+[0;32mI (4463) BNO085: Response 3 after enable: channel=0, length=4[0m
+[0;32mI (4463) BNO085:   Data[0-3]: 08 80 00 7E[0m
+[0;32mI (4473) BNO085: Response 4 after enable: channel=0, length=4[0m
+[0;32mI (4473) BNO085:   Data[0-3]: 08 80 00 80[0m
+[0;32mI (4473) BNO085: Response 5 after enable: channel=0, length=4[0m
+[0;32mI (4483) BNO085:   Data[0-3]: 08 80 00 82[0m
+[0;32mI (4483) BNO085: Response 6 after enable: channel=0, length=4[0m
+[0;32mI (4493) BNO085:   Data[0-3]: 08 80 00 84[0m
+[0;32mI (4493) BNO085: Response 7 after enable: channel=0, length=4[0m
+[0;32mI (4503) BNO085:   Data[0-3]: 08 80 00 86[0m
+[0;32mI (4503) BNO085: Response 8 after enable: channel=0, length=4[0m
+[0;32mI (4513) BNO085:   Data[0-3]: 08 80 00 88[0m
+[0;32mI (4513) BNO085: Response 9 after enable: channel=0, length=4[0m
+[0;32mI (4513) BNO085:   Data[0-3]: 08 80 00 8A[0m
+[0;32mI (4523) HID_DEV_DEMO: Game rotation vector enabled successfully[0m
+[0;32mI (4523) HID_DEV_DEMO: Waiting for sensor to start producing data...[0m

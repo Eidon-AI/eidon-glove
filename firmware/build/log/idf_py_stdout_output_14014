@@ -1,0 +1,666 @@
+Command: /Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python /Users/robert/esp-idf/tools/idf_monitor.py -p /dev/cu.usbmodem1101 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32c6 --revision 0 --decode-panic backtrace /Users/robert/eidon/eidon-glove/firmware/build/eidon-glove.elf /Users/robert/eidon/eidon-glove/firmware/build/bootloader/bootloader.elf -m '/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python' '/Users/robert/esp-idf/tools/idf.py' '-p' '/dev/cu.usbmodem1101'
+ESP-ROM:esp32c6-20220919
+Build:Sep 19 2022
+rst:0x15 (USB_UART_HPSYS),boot:0x1e (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4080ac44
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875730,len:0x1744
+load:0x4086b910,len:0xe50
+load:0x4086e610,len:0x318c
+entry 0x4086b91a
+[0;32mI (5) boot: ESP-IDF v6.0-dev-896-g1bbf04cb4c 2nd stage bootloader[0m
+[0;32mI (5) boot: compile time Jun 29 2025 22:45:12[0m
+[0;32mI (6) boot: chip revision: v0.1[0m
+[0;32mI (6) boot: efuse block revision: v0.3[0m
+[0;32mI (10) boot.esp32c6: SPI Speed      : 80MHz[0m
+[0;32mI (14) boot.esp32c6: SPI Mode       : DIO[0m
+[0;32mI (17) boot.esp32c6: SPI Flash Size : 2MB[0m
+[0;32mI (21) boot: Enabling RNG early entropy source...[0m
+[0;32mI (26) boot: Partition Table:[0m
+[0;32mI (28) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (35) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (41) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (48) boot:  2 factory          factory app      00 00 00010000 00177000[0m
+[0;32mI (54) boot: End of partition table[0m
+[0;32mI (57) esp_image: segment 0: paddr=00010020 vaddr=420b8020 size=24994h (149908) map[0m
+[0;32mI (93) esp_image: segment 1: paddr=000349bc vaddr=40800000 size=0365ch ( 13916) load[0m
+[0;32mI (96) esp_image: segment 2: paddr=00038020 vaddr=42000020 size=b5964h (743780) map[0m
+[0;32mI (234) esp_image: segment 3: paddr=000ed98c vaddr=4080365c size=125dch ( 75228) load[0m
+[0;32mI (251) esp_image: segment 4: paddr=000fff70 vaddr=40815c40 size=02728h ( 10024) load[0m
+[0;32mI (259) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (259) boot: Disabling RNG early entropy source...[0m
+[0;32mI (269) cpu_start: Unicore app[0m
+[0;32mI (277) cpu_start: Pro cpu start user code[0m
+[0;32mI (278) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (278) app_init: Application information:[0m
+[0;32mI (278) app_init: Project name:     eidon-glove[0m
+[0;32mI (282) app_init: App version:      8c13abb-dirty[0m
+[0;32mI (286) app_init: Compile time:     Jun 29 2025 22:45:36[0m
+[0;32mI (291) app_init: ELF file SHA256:  cc88c8e2e...[0m
+[0;32mI (296) app_init: ESP-IDF:          v6.0-dev-896-g1bbf04cb4c[0m
+[0;32mI (301) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (305) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (309) efuse_init: Chip rev:         v0.1[0m
+[0;32mI (313) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (319) heap_init: At 4081C8D0 len 0005FD40 (383 KiB): RAM[0m
+[0;32mI (324) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+[0;32mI (329) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM[0m
+[0;32mI (335) spi_flash: detected chip: generic[0m
+[0;32mI (338) spi_flash: flash io: dio[0m
+[0;33mW (341) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (353) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (363) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (370) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (376) coexist: coex firmware version: 831ec70[0m
+[0;32mI (380) coexist: coexist rom version 5b8dcfa[0m
+[0;32mI (385) main_task: Started on CPU0[0m
+[0;32mI (385) main_task: Calling app_main()[0m
+[0;32mI (385) HID_DEV_DEMO: app_main() started[0m
+[0;32mI (385) HID_DEV_DEMO: Initializing NVS...[0m
+[0;32mI (405) HID_DEV_DEMO: setting hid gap, mode:1[0m
+[0;32mI (405) BLE_INIT: Using main XTAL as clock source, chip ver: 1[0m
+[0;32mI (405) BLE_INIT: ble controller commit:[35fe65f][0m
+[0;32mI (415) BLE_INIT: Bluetooth MAC: e4:b3:23:ac:d4:da[0m
+[0;32mI (415) phy_init: phy_version 331,5b89037,Mar  3 2025,16:01:12[0m
+[0;32mI (495) phy: libbtbb version: ec2ecba, Mar  3 2025, 16:01:27[0m
+[0;32mI (515) ESP_HID_GAP: BLE GAP ADV_DATA_SET_COMPLETE: status = 0[0m
+[0;32mI (515) HID_DEV_DEMO: setting ble device[0m
+[0;32mI (515) HID_DEV_BLE: START[0m
+[0;32mI (515) ESP_HID_GAP: Device MAC: E4:B3:23:AC:D4:DA (type: 0)[0m
+[0;32mI (515) ESP_HID_GAP: Starting BLE advertising...[0m
+[0;32mI (525) ESP_HID_GAP: BLE GAP ADV_START_COMPLETE: status = 0[0m
+[0;32mI (525) ESP_HID_GAP: Device is now discoverable and advertising![0m
+[0;32mI (525) HID_DEV_DEMO: Starting BNO085 test task[0m
+[0;32mI (535) HID_DEV_DEMO: Starting BNO085 test task (monitor output only)[0m
+[0;32mI (545) ESP_HID_GAP: BLE advertising started successfully[0m
+[0;32mI (545) main_task: Returned from app_main()[0m
+[0;32mI (1545) HID_DEV_DEMO: Initializing BNO085 on I2C addr 0x4B, SDA=20, SCL=18[0m
+[0;32mI (1545) HID_DEV_DEMO: BNO085 init attempt 1/10[0m
+[0;32mI (1545) BNO085: Initializing BNO085...[0m
+[0;32mI (1545) BNO085: Configuring I2C: port=0, SDA=20, SCL=18, freq=400000[0m
+[0;32mI (1545) BNO085: Calling i2c_param_config...[0m
+[0;32mI (1555) BNO085: Calling i2c_driver_install...[0m
+[0;32mI (1555) BNO085: I2C driver installed successfully[0m
+[0;32mI (1565) BNO085: Scanning I2C bus for devices...[0m
+[0;32mI (1675) BNO085: Testing I2C communication with BNO085 at address 0x4B[0m
+[1;31mE (1675) BNO085: I2C communication test failed: ESP_ERR_TIMEOUT[0m
+[1;31mE (1675) BNO085: Check wiring: SDA=20, SCL=18, I2C_ADDR=0x4B[0m
+[0;33mW (1675) HID_DEV_DEMO: BNO085 init failed (attempt 1): ESP_ERR_TIMEOUT[0m
+[0;32mI (1685) HID_DEV_DEMO: Waiting 500ms before retry...[0m
+[0;32mI (2185) HID_DEV_DEMO: BNO085 init attempt 2/10[0m
+[0;32mI (2185) BNO085: Initializing BNO085...[0m
+[0;32mI (2185) BNO085: Configuring I2C: port=0, SDA=20, SCL=18, freq=400000[0m
+[0;32mI (2185) BNO085: Calling i2c_param_config...[0m
+[0;32mI (2185) BNO085: Calling i2c_driver_install...[0m
+[1;31mE (2195) i2c: i2c driver install error[0m
+[1;31mE (2195) BNO085: I2C driver install failed: ESP_FAIL[0m
+[0;33mW (2195) HID_DEV_DEMO: BNO085 init failed (attempt 2): ESP_FAIL[0m
+[0;32mI (2205) HID_DEV_DEMO: Waiting 500ms before retry...[0m
+[0;32mI (2705) HID_DEV_DEMO: BNO085 init attempt 3/10[0m
+[0;32mI (2705) BNO085: Initializing BNO085...[0m
+[0;32mI (2705) BNO085: Configuring I2C: port=0, SDA=20, SCL=18, freq=400000[0m
+[0;32mI (2705) BNO085: Calling i2c_param_config...[0m
+[0;32mI (2705) BNO085: Calling i2c_driver_install...[0m
+[1;31mE (2715) i2c: i2c driver install error[0m
+[1;31mE (2715) BNO085: I2C driver install failed: ESP_FAIL[0m
+[0;33mW (2715) HID_DEV_DEMO: BNO085 init failed (attempt 3): ESP_FAIL[0m
+[0;32mI (2725) HID_DEV_DEMO: Waiting 500ms before retry...[0m
+[0;32mI (3225) HID_DEV_DEMO: BNO085 init attempt 4/10[0m
+[0;32mI (3225) BNO085: Initializing BNO085...[0m
+[0;32mI (3225) BNO085: Configuring I2C: port=0, SDA=20, SCL=18, freq=400000[0m
+[0;32mI (3225) BNO085: Calling i2c_param_config...[0m
+[0;32mI (3225) BNO085: Calling i2c_driver_install...[0m
+[1;31mE (3235) i2c: i2c driver install error[0m
+[1;31mE (3235) BNO085: I2C driver install failed: ESP_FAIL[0m
+[0;33mW (3235) HID_DEV_DEMO: BNO085 init failed (attempt 4): ESP_FAIL[0m
+[0;32mI (3245) HID_DEV_DEMO: Waiting 500ms before retry...[0m
+[0;32mI (3745) HID_DEV_DEMO: BNO085 init attempt 5/10[0m
+[0;32mI (3745) BNO085: Initializing BNO085...[0m
+[0;32mI (3745) BNO085: Configuring I2C: port=0, SDA=20, SCL=18, freq=400000[0m
+[0;32mI (3745) BNO085: Calling i2c_param_config...[0m
+[0;32mI (3745) BNO085: Calling i2c_driver_install...[0m
+[1;31mE (3755) i2c: i2c driver install error[0m
+[1;31mE (3755) BNO085: I2C driver install failed: ESP_FAIL[0m
+[0;33mW (3755) HID_DEV_DEMO: BNO085 init failed (attempt 5): ESP_FAIL[0m
+[0;32mI (3765) HID_DEV_DEMO: Waiting 500ms before retry...[0m
+[0;32mI (4265) HID_DEV_DEMO: BNO085 init attempt 6/10[0m
+[0;32mI (4265) BNO085: Initializing BNO085...[0m
+[0;32mI (4265) BNO085: Configuring I2C: port=0, SDA=20, SCL=18, freq=400000[0m
+[0;32mI (4265) BNO085: Calling i2c_param_config...[0m
+[0;32mI (4265) BNO085: Calling i2c_driver_install...[0m
+[1;31mE (4275) i2c: i2c driver install error[0m
+[1;31mE (4275) BNO085: I2C driver install failed: ESP_FAIL[0m
+[0;33mW (4275) HID_DEV_DEMO: BNO085 init failed (attempt 6): ESP_FAIL[0m
+[0;32mI (4285) HID_DEV_DEMO: Waiting 500ms before retry...[0m
+[0;32mI (4785) HID_DEV_DEMO: BNO085 init attempt 7/10[0m
+[0;32mI (4785) BNO085: Initializing BNO085...[0m
+[0;32mI (4785) BNO085: Configuring I2C: port=0, SDA=20, SCL=18, freq=400000[0m
+[0;32mI (4785) BNO085: Calling i2c_param_config...[0m
+[0;32mI (4785) BNO085: Calling i2c_driver_install...[0m
+[1;31mE (4795) i2c: i2c driver install error[0m
+[1;31mE (4795) BNO085: I2C driver install failed: ESP_FAIL[0m
+[0;33mW (4795) HID_DEV_DEMO: BNO085 init failed (attempt 7): ESP_FAIL[0m
+[0;32mI (4805) HID_DEV_DEMO: Waiting 500ms before retry...[0m
+[0;32mI (5305) HID_DEV_DEMO: BNO085 init attempt 8/10[0m
+[0;32mI (5305) BNO085: Initializing BNO085...[0m
+[0;32mI (5305) BNO085: Configuring I2C: port=0, SDA=20, SCL=18, freq=400000[0m
+[0;32mI (5305) BNO085: Calling i2c_param_config...[0m
+[0;32mI (5305) BNO085: Calling i2c_driver_install...[0m
+[1;31mE (5315) i2c: i2c driver install error[0m
+[1;31mE (5315) BNO085: I2C driver install failed: ESP_FAIL[0m
+[0;33mW (5315) HID_DEV_DEMO: BNO085 init failed (attempt 8): ESP_FAIL[0m
+[0;32mI (5325) HID_DEV_DEMO: Waiting 500ms before retry...[0m
+[0;32mI (5825) HID_DEV_DEMO: BNO085 init attempt 9/10[0m
+[0;32mI (5825) BNO085: Initializing BNO085...[0m
+[0;32mI (5825) BNO085: Configuring I2C: port=0, SDA=20, SCL=18, freq=400000[0m
+[0;32mI (5825) BNO085: Calling i2c_param_config...[0m
+[0;32mI (5825) BNO085: Calling i2c_driver_install...[0m
+[1;31mE (5835) i2c: i2c driver install error[0m
+[1;31mE (5835) BNO085: I2C driver install failed: ESP_FAIL[0m
+[0;33mW (5835) HID_DEV_DEMO: BNO085 init failed (attempt 9): ESP_FAIL[0m
+[0;32mI (5845) HID_DEV_DEMO: Waiting 500ms before retry...[0m
+[0;32mI (6345) HID_DEV_DEMO: BNO085 init attempt 10/10[0m
+[0;32mI (6345) BNO085: Initializing BNO085...[0m
+[0;32mI (6345) BNO085: Configuring I2C: port=0, SDA=20, SCL=18, freq=400000[0m
+[0;32mI (6345) BNO085: Calling i2c_param_config...[0m
+[0;32mI (6345) BNO085: Calling i2c_driver_install...[0m
+[1;31mE (6355) i2c: i2c driver install error[0m
+[1;31mE (6355) BNO085: I2C driver install failed: ESP_FAIL[0m
+[0;33mW (6355) HID_DEV_DEMO: BNO085 init failed (attempt 10): ESP_FAIL[0m
+[1;31mE (6365) HID_DEV_DEMO: Failed to initialize BNO085 after 10 attempts[0m
+[0;33mW (6375) HID_DEV_DEMO: Running in demo mode without BNO085[0m
+[0;32mI (6375) HID_DEV_DEMO: Demo Quat[1]: w=1.000, x=0.000, y=0.000, z=0.005[0m
+[0;32mI (6485) HID_DEV_DEMO: Demo Quat[2]: w=1.000, x=0.000, y=0.000, z=0.010[0m
+[0;32mI (6585) HID_DEV_DEMO: Demo Quat[3]: w=1.000, x=0.000, y=0.000, z=0.015[0m
+[0;32mI (6685) HID_DEV_DEMO: Demo Quat[4]: w=1.000, x=0.000, y=0.000, z=0.020[0m
+[0;32mI (6785) HID_DEV_DEMO: Demo Quat[5]: w=1.000, x=0.000, y=0.000, z=0.025[0m
+[0;32mI (6885) HID_DEV_DEMO: Demo Quat[6]: w=1.000, x=0.000, y=0.000, z=0.030[0m
+[0;32mI (6985) HID_DEV_DEMO: Demo Quat[7]: w=0.999, x=0.000, y=0.000, z=0.035[0m
+[0;32mI (7085) HID_DEV_DEMO: Demo Quat[8]: w=0.999, x=0.000, y=0.000, z=0.040[0m
+[0;32mI (7185) HID_DEV_DEMO: Demo Quat[9]: w=0.999, x=0.000, y=0.000, z=0.045[0m
+[0;32mI (7285) HID_DEV_DEMO: Demo Quat[10]: w=0.999, x=0.000, y=0.000, z=0.050[0m
+[0;32mI (7385) HID_DEV_DEMO: Demo Quat[11]: w=0.998, x=0.000, y=0.000, z=0.055[0m
+[0;32mI (7485) HID_DEV_DEMO: Demo Quat[12]: w=0.998, x=0.000, y=0.000, z=0.060[0m
+[0;32mI (7585) HID_DEV_DEMO: Demo Quat[13]: w=0.998, x=0.000, y=0.000, z=0.065[0m
+[0;32mI (7685) HID_DEV_DEMO: Demo Quat[14]: w=0.998, x=0.000, y=0.000, z=0.070[0m
+[0;32mI (7785) HID_DEV_DEMO: Demo Quat[15]: w=0.997, x=0.000, y=0.000, z=0.075[0m
+[0;32mI (7885) HID_DEV_DEMO: Demo Quat[16]: w=0.997, x=0.000, y=0.000, z=0.080[0m
+[0;32mI (7985) HID_DEV_DEMO: Demo Quat[17]: w=0.996, x=0.000, y=0.000, z=0.085[0m
+[0;32mI (8085) HID_DEV_DEMO: Demo Quat[18]: w=0.996, x=0.000, y=0.000, z=0.090[0m
+[0;32mI (8185) HID_DEV_DEMO: Demo Quat[19]: w=0.995, x=0.000, y=0.000, z=0.095[0m
+[0;32mI (8285) HID_DEV_DEMO: Demo Quat[20]: w=0.995, x=0.000, y=0.000, z=0.100[0m
+[0;32mI (8385) HID_DEV_DEMO: Demo Quat[21]: w=0.994, x=0.000, y=0.000, z=0.105[0m
+[0;32mI (8485) HID_DEV_DEMO: Demo Quat[22]: w=0.994, x=0.000, y=0.000, z=0.110[0m
+[0;32mI (8585) HID_DEV_DEMO: Demo Quat[23]: w=0.993, x=0.000, y=0.000, z=0.115[0m
+[0;32mI (8685) HID_DEV_DEMO: Demo Quat[24]: w=0.993, x=0.000, y=0.000, z=0.120[0m
+[0;32mI (8785) HID_DEV_DEMO: Demo Quat[25]: w=0.992, x=0.000, y=0.000, z=0.125[0m
+[0;32mI (8885) HID_DEV_DEMO: Demo Quat[26]: w=0.992, x=0.000, y=0.000, z=0.130[0m
+[0;32mI (8985) HID_DEV_DEMO: Demo Quat[27]: w=0.991, x=0.000, y=0.000, z=0.135[0m
+[0;32mI (9085) HID_DEV_DEMO: Demo Quat[28]: w=0.990, x=0.000, y=0.000, z=0.140[0m
+[0;32mI (9185) HID_DEV_DEMO: Demo Quat[29]: w=0.990, x=0.000, y=0.000, z=0.144[0m
+[0;32mI (9285) HID_DEV_DEMO: Demo Quat[30]: w=0.989, x=0.000, y=0.000, z=0.149[0m
+[0;32mI (9385) HID_DEV_DEMO: Demo Quat[31]: w=0.988, x=0.000, y=0.000, z=0.154[0m
+[0;32mI (9485) HID_DEV_DEMO: Demo Quat[32]: w=0.987, x=0.000, y=0.000, z=0.159[0m
+[0;32mI (9585) HID_DEV_DEMO: Demo Quat[33]: w=0.986, x=0.000, y=0.000, z=0.164[0m
+[0;32mI (9685) HID_DEV_DEMO: Demo Quat[34]: w=0.986, x=0.000, y=0.000, z=0.169[0m
+[0;32mI (9785) HID_DEV_DEMO: Demo Quat[35]: w=0.985, x=0.000, y=0.000, z=0.174[0m
+[0;32mI (9885) HID_DEV_DEMO: Demo Quat[36]: w=0.984, x=0.000, y=0.000, z=0.179[0m
+[0;32mI (9985) HID_DEV_DEMO: Demo Quat[37]: w=0.983, x=0.000, y=0.000, z=0.184[0m
+[0;32mI (10085) HID_DEV_DEMO: Demo Quat[38]: w=0.982, x=0.000, y=0.000, z=0.189[0m
+[0;32mI (10185) HID_DEV_DEMO: Demo Quat[39]: w=0.981, x=0.000, y=0.000, z=0.194[0m
+[0;32mI (10285) HID_DEV_DEMO: Demo Quat[40]: w=0.980, x=0.000, y=0.000, z=0.199[0m
+[0;32mI (10385) HID_DEV_DEMO: Demo Quat[41]: w=0.979, x=0.000, y=0.000, z=0.204[0m
+[0;32mI (10485) HID_DEV_DEMO: Demo Quat[42]: w=0.978, x=0.000, y=0.000, z=0.208[0m
+[0;32mI (10585) HID_DEV_DEMO: Demo Quat[43]: w=0.977, x=0.000, y=0.000, z=0.213[0m
+[0;32mI (10685) HID_DEV_DEMO: Demo Quat[44]: w=0.976, x=0.000, y=0.000, z=0.218[0m
+[0;32mI (10785) HID_DEV_DEMO: Demo Quat[45]: w=0.975, x=0.000, y=0.000, z=0.223[0m
+[0;32mI (10885) HID_DEV_DEMO: Demo Quat[46]: w=0.974, x=0.000, y=0.000, z=0.228[0m
+[0;32mI (10985) HID_DEV_DEMO: Demo Quat[47]: w=0.973, x=0.000, y=0.000, z=0.233[0m
+[0;32mI (11085) HID_DEV_DEMO: Demo Quat[48]: w=0.971, x=0.000, y=0.000, z=0.238[0m
+[0;32mI (11185) HID_DEV_DEMO: Demo Quat[49]: w=0.970, x=0.000, y=0.000, z=0.243[0m
+[0;32mI (11285) HID_DEV_DEMO: Demo Quat[50]: w=0.969, x=0.000, y=0.000, z=0.247[0m
+[0;32mI (11385) HID_DEV_DEMO: Demo Quat[51]: w=0.968, x=0.000, y=0.000, z=0.252[0m
+[0;32mI (11485) HID_DEV_DEMO: Demo Quat[52]: w=0.966, x=0.000, y=0.000, z=0.257[0m
+[0;32mI (11585) HID_DEV_DEMO: Demo Quat[53]: w=0.965, x=0.000, y=0.000, z=0.262[0m
+[0;32mI (11685) HID_DEV_DEMO: Demo Quat[54]: w=0.964, x=0.000, y=0.000, z=0.267[0m
+[0;32mI (11785) HID_DEV_DEMO: Demo Quat[55]: w=0.962, x=0.000, y=0.000, z=0.272[0m
+[0;32mI (11885) HID_DEV_DEMO: Demo Quat[56]: w=0.961, x=0.000, y=0.000, z=0.276[0m
+[0;32mI (11985) HID_DEV_DEMO: Demo Quat[57]: w=0.960, x=0.000, y=0.000, z=0.281[0m
+[0;32mI (12085) HID_DEV_DEMO: Demo Quat[58]: w=0.958, x=0.000, y=0.000, z=0.286[0m
+[0;32mI (12185) HID_DEV_DEMO: Demo Quat[59]: w=0.957, x=0.000, y=0.000, z=0.291[0m
+[0;32mI (12285) HID_DEV_DEMO: Demo Quat[60]: w=0.955, x=0.000, y=0.000, z=0.296[0m
+[0;32mI (12385) HID_DEV_DEMO: Demo Quat[61]: w=0.954, x=0.000, y=0.000, z=0.300[0m
+[0;32mI (12485) HID_DEV_DEMO: Demo Quat[62]: w=0.952, x=0.000, y=0.000, z=0.305[0m
+[0;32mI (12585) HID_DEV_DEMO: Demo Quat[63]: w=0.951, x=0.000, y=0.000, z=0.310[0m
+[0;32mI (12685) HID_DEV_DEMO: Demo Quat[64]: w=0.949, x=0.000, y=0.000, z=0.315[0m
+[0;32mI (12785) HID_DEV_DEMO: Demo Quat[65]: w=0.948, x=0.000, y=0.000, z=0.319[0m
+[0;32mI (12885) HID_DEV_DEMO: Demo Quat[66]: w=0.946, x=0.000, y=0.000, z=0.324[0m
+[0;32mI (12985) HID_DEV_DEMO: Demo Quat[67]: w=0.944, x=0.000, y=0.000, z=0.329[0m
+[0;32mI (13085) HID_DEV_DEMO: Demo Quat[68]: w=0.943, x=0.000, y=0.000, z=0.333[0m
+[0;32mI (13185) HID_DEV_DEMO: Demo Quat[69]: w=0.941, x=0.000, y=0.000, z=0.338[0m
+[0;32mI (13285) HID_DEV_DEMO: Demo Quat[70]: w=0.939, x=0.000, y=0.000, z=0.343[0m
+[0;32mI (13385) HID_DEV_DEMO: Demo Quat[71]: w=0.938, x=0.000, y=0.000, z=0.348[0m
+[0;32mI (13485) HID_DEV_DEMO: Demo Quat[72]: w=0.936, x=0.000, y=0.000, z=0.352[0m
+[0;32mI (13585) HID_DEV_DEMO: Demo Quat[73]: w=0.934, x=0.000, y=0.000, z=0.357[0m
+[0;32mI (13685) HID_DEV_DEMO: Demo Quat[74]: w=0.932, x=0.000, y=0.000, z=0.362[0m
+[0;32mI (13785) HID_DEV_DEMO: Demo Quat[75]: w=0.931, x=0.000, y=0.000, z=0.366[0m
+[0;32mI (13885) HID_DEV_DEMO: Demo Quat[76]: w=0.929, x=0.000, y=0.000, z=0.371[0m
+[0;32mI (13985) HID_DEV_DEMO: Demo Quat[77]: w=0.927, x=0.000, y=0.000, z=0.376[0m
+[0;32mI (14085) HID_DEV_DEMO: Demo Quat[78]: w=0.925, x=0.000, y=0.000, z=0.380[0m
+[0;32mI (14185) HID_DEV_DEMO: Demo Quat[79]: w=0.923, x=0.000, y=0.000, z=0.385[0m
+[0;32mI (14285) HID_DEV_DEMO: Demo Quat[80]: w=0.921, x=0.000, y=0.000, z=0.389[0m
+[0;32mI (14385) HID_DEV_DEMO: Demo Quat[81]: w=0.919, x=0.000, y=0.000, z=0.394[0m
+[0;32mI (14485) HID_DEV_DEMO: Demo Quat[82]: w=0.917, x=0.000, y=0.000, z=0.399[0m
+[0;32mI (14585) HID_DEV_DEMO: Demo Quat[83]: w=0.915, x=0.000, y=0.000, z=0.403[0m
+[0;32mI (14685) HID_DEV_DEMO: Demo Quat[84]: w=0.913, x=0.000, y=0.000, z=0.408[0m
+[0;32mI (14785) HID_DEV_DEMO: Demo Quat[85]: w=0.911, x=0.000, y=0.000, z=0.412[0m
+[0;32mI (14885) HID_DEV_DEMO: Demo Quat[86]: w=0.909, x=0.000, y=0.000, z=0.417[0m
+[0;32mI (14985) HID_DEV_DEMO: Demo Quat[87]: w=0.907, x=0.000, y=0.000, z=0.421[0m
+[0;32mI (15085) HID_DEV_DEMO: Demo Quat[88]: w=0.905, x=0.000, y=0.000, z=0.426[0m
+[0;32mI (15185) HID_DEV_DEMO: Demo Quat[89]: w=0.903, x=0.000, y=0.000, z=0.430[0m
+[0;32mI (15285) HID_DEV_DEMO: Demo Quat[90]: w=0.900, x=0.000, y=0.000, z=0.435[0m
+[0;32mI (15385) HID_DEV_DEMO: Demo Quat[91]: w=0.898, x=0.000, y=0.000, z=0.439[0m
+[0;32mI (15485) HID_DEV_DEMO: Demo Quat[92]: w=0.896, x=0.000, y=0.000, z=0.444[0m
+[0;32mI (15585) HID_DEV_DEMO: Demo Quat[93]: w=0.894, x=0.000, y=0.000, z=0.448[0m
+[0;32mI (15685) HID_DEV_DEMO: Demo Quat[94]: w=0.892, x=0.000, y=0.000, z=0.453[0m
+[0;32mI (15785) HID_DEV_DEMO: Demo Quat[95]: w=0.889, x=0.000, y=0.000, z=0.457[0m
+[0;32mI (15885) HID_DEV_DEMO: Demo Quat[96]: w=0.887, x=0.000, y=0.000, z=0.462[0m
+[0;32mI (15985) HID_DEV_DEMO: Demo Quat[97]: w=0.885, x=0.000, y=0.000, z=0.466[0m
+[0;32mI (16085) HID_DEV_DEMO: Demo Quat[98]: w=0.882, x=0.000, y=0.000, z=0.471[0m
+[0;32mI (16185) HID_DEV_DEMO: Demo Quat[99]: w=0.880, x=0.000, y=0.000, z=0.475[0m
+[0;32mI (16285) HID_DEV_DEMO: Demo Quat[100]: w=0.878, x=0.000, y=0.000, z=0.479[0m
+[0;32mI (16385) HID_DEV_DEMO: Demo Quat[101]: w=0.875, x=0.000, y=0.000, z=0.484[0m
+[0;32mI (16485) HID_DEV_DEMO: Demo Quat[102]: w=0.873, x=0.000, y=0.000, z=0.488[0m
+[0;32mI (16585) HID_DEV_DEMO: Demo Quat[103]: w=0.870, x=0.000, y=0.000, z=0.493[0m
+[0;32mI (16685) HID_DEV_DEMO: Demo Quat[104]: w=0.868, x=0.000, y=0.000, z=0.497[0m
+[0;32mI (16785) HID_DEV_DEMO: Demo Quat[105]: w=0.865, x=0.000, y=0.000, z=0.501[0m
+[0;32mI (16885) HID_DEV_DEMO: Demo Quat[106]: w=0.863, x=0.000, y=0.000, z=0.506[0m
+[0;32mI (16985) HID_DEV_DEMO: Demo Quat[107]: w=0.860, x=0.000, y=0.000, z=0.510[0m
+[0;32mI (17085) HID_DEV_DEMO: Demo Quat[108]: w=0.858, x=0.000, y=0.000, z=0.514[0m
+[0;32mI (17185) HID_DEV_DEMO: Demo Quat[109]: w=0.855, x=0.000, y=0.000, z=0.518[0m
+[0;32mI (17285) HID_DEV_DEMO: Demo Quat[110]: w=0.853, x=0.000, y=0.000, z=0.523[0m
+[0;32mI (17385) HID_DEV_DEMO: Demo Quat[111]: w=0.850, x=0.000, y=0.000, z=0.527[0m
+[0;32mI (17485) HID_DEV_DEMO: Demo Quat[112]: w=0.847, x=0.000, y=0.000, z=0.531[0m
+[0;32mI (17585) HID_DEV_DEMO: Demo Quat[113]: w=0.845, x=0.000, y=0.000, z=0.535[0m
+[0;32mI (17685) HID_DEV_DEMO: Demo Quat[114]: w=0.842, x=0.000, y=0.000, z=0.540[0m
+[0;32mI (17785) HID_DEV_DEMO: Demo Quat[115]: w=0.839, x=0.000, y=0.000, z=0.544[0m
+[0;32mI (17885) HID_DEV_DEMO: Demo Quat[116]: w=0.836, x=0.000, y=0.000, z=0.548[0m
+[0;32mI (17985) HID_DEV_DEMO: Demo Quat[117]: w=0.834, x=0.000, y=0.000, z=0.552[0m
+[0;32mI (18085) HID_DEV_DEMO: Demo Quat[118]: w=0.831, x=0.000, y=0.000, z=0.556[0m
+[0;32mI (18185) HID_DEV_DEMO: Demo Quat[119]: w=0.828, x=0.000, y=0.000, z=0.561[0m
+[0;32mI (18285) HID_DEV_DEMO: Demo Quat[120]: w=0.825, x=0.000, y=0.000, z=0.565[0m
+[0;32mI (18385) HID_DEV_DEMO: Demo Quat[121]: w=0.823, x=0.000, y=0.000, z=0.569[0m
+[0;32mI (18485) HID_DEV_DEMO: Demo Quat[122]: w=0.820, x=0.000, y=0.000, z=0.573[0m
+[0;32mI (18585) HID_DEV_DEMO: Demo Quat[123]: w=0.817, x=0.000, y=0.000, z=0.577[0m
+[0;32mI (18685) HID_DEV_DEMO: Demo Quat[124]: w=0.814, x=0.000, y=0.000, z=0.581[0m
+[0;32mI (18785) HID_DEV_DEMO: Demo Quat[125]: w=0.811, x=0.000, y=0.000, z=0.585[0m
+[0;32mI (18885) HID_DEV_DEMO: Demo Quat[126]: w=0.808, x=0.000, y=0.000, z=0.589[0m
+[0;32mI (18985) HID_DEV_DEMO: Demo Quat[127]: w=0.805, x=0.000, y=0.000, z=0.593[0m
+[0;32mI (19085) HID_DEV_DEMO: Demo Quat[128]: w=0.802, x=0.000, y=0.000, z=0.597[0m
+[0;32mI (19185) HID_DEV_DEMO: Demo Quat[129]: w=0.799, x=0.000, y=0.000, z=0.601[0m
+[0;32mI (19285) HID_DEV_DEMO: Demo Quat[130]: w=0.796, x=0.000, y=0.000, z=0.605[0m
+[0;32mI (19385) HID_DEV_DEMO: Demo Quat[131]: w=0.793, x=0.000, y=0.000, z=0.609[0m
+[0;32mI (19485) HID_DEV_DEMO: Demo Quat[132]: w=0.790, x=0.000, y=0.000, z=0.613[0m
+[0;32mI (19585) HID_DEV_DEMO: Demo Quat[133]: w=0.787, x=0.000, y=0.000, z=0.617[0m
+[0;32mI (19685) HID_DEV_DEMO: Demo Quat[134]: w=0.784, x=0.000, y=0.000, z=0.621[0m
+[0;32mI (19785) HID_DEV_DEMO: Demo Quat[135]: w=0.781, x=0.000, y=0.000, z=0.625[0m
+[0;32mI (19885) HID_DEV_DEMO: Demo Quat[136]: w=0.778, x=0.000, y=0.000, z=0.629[0m
+[0;32mI (19985) HID_DEV_DEMO: Demo Quat[137]: w=0.774, x=0.000, y=0.000, z=0.633[0m
+[0;32mI (20085) HID_DEV_DEMO: Demo Quat[138]: w=0.771, x=0.000, y=0.000, z=0.637[0m
+[0;32mI (20185) HID_DEV_DEMO: Demo Quat[139]: w=0.768, x=0.000, y=0.000, z=0.640[0m
+[0;32mI (20285) HID_DEV_DEMO: Demo Quat[140]: w=0.765, x=0.000, y=0.000, z=0.644[0m
+[0;32mI (20385) HID_DEV_DEMO: Demo Quat[141]: w=0.762, x=0.000, y=0.000, z=0.648[0m
+[0;32mI (20485) HID_DEV_DEMO: Demo Quat[142]: w=0.758, x=0.000, y=0.000, z=0.652[0m
+[0;32mI (20585) HID_DEV_DEMO: Demo Quat[143]: w=0.755, x=0.000, y=0.000, z=0.656[0m
+[0;32mI (20685) HID_DEV_DEMO: Demo Quat[144]: w=0.752, x=0.000, y=0.000, z=0.659[0m
+[0;32mI (20785) HID_DEV_DEMO: Demo Quat[145]: w=0.748, x=0.000, y=0.000, z=0.663[0m
+[0;32mI (20885) HID_DEV_DEMO: Demo Quat[146]: w=0.745, x=0.000, y=0.000, z=0.667[0m
+[0;32mI (20985) HID_DEV_DEMO: Demo Quat[147]: w=0.742, x=0.000, y=0.000, z=0.671[0m
+[0;32mI (21085) HID_DEV_DEMO: Demo Quat[148]: w=0.738, x=0.000, y=0.000, z=0.674[0m
+[0;32mI (21185) HID_DEV_DEMO: Demo Quat[149]: w=0.735, x=0.000, y=0.000, z=0.678[0m
+[0;32mI (21285) HID_DEV_DEMO: Demo Quat[150]: w=0.732, x=0.000, y=0.000, z=0.682[0m
+[0;32mI (21385) HID_DEV_DEMO: Demo Quat[151]: w=0.728, x=0.000, y=0.000, z=0.685[0m
+[0;32mI (21485) HID_DEV_DEMO: Demo Quat[152]: w=0.725, x=0.000, y=0.000, z=0.689[0m
+[0;32mI (21585) HID_DEV_DEMO: Demo Quat[153]: w=0.721, x=0.000, y=0.000, z=0.693[0m
+[0;32mI (21685) HID_DEV_DEMO: Demo Quat[154]: w=0.718, x=0.000, y=0.000, z=0.696[0m
+[0;32mI (21785) HID_DEV_DEMO: Demo Quat[155]: w=0.714, x=0.000, y=0.000, z=0.700[0m
+[0;32mI (21885) HID_DEV_DEMO: Demo Quat[156]: w=0.711, x=0.000, y=0.000, z=0.703[0m
+[0;32mI (21985) HID_DEV_DEMO: Demo Quat[157]: w=0.707, x=0.000, y=0.000, z=0.707[0m
+[0;32mI (22085) HID_DEV_DEMO: Demo Quat[158]: w=0.704, x=0.000, y=0.000, z=0.710[0m
+[0;32mI (22185) HID_DEV_DEMO: Demo Quat[159]: w=0.700, x=0.000, y=0.000, z=0.714[0m
+[0;32mI (22285) HID_DEV_DEMO: Demo Quat[160]: w=0.697, x=0.000, y=0.000, z=0.717[0m
+[0;32mI (22385) HID_DEV_DEMO: Demo Quat[161]: w=0.693, x=0.000, y=0.000, z=0.721[0m
+[0;32mI (22485) HID_DEV_DEMO: Demo Quat[162]: w=0.689, x=0.000, y=0.000, z=0.724[0m
+[0;32mI (22585) HID_DEV_DEMO: Demo Quat[163]: w=0.686, x=0.000, y=0.000, z=0.728[0m
+[0;32mI (22685) HID_DEV_DEMO: Demo Quat[164]: w=0.682, x=0.000, y=0.000, z=0.731[0m
+[0;32mI (22785) HID_DEV_DEMO: Demo Quat[165]: w=0.679, x=0.000, y=0.000, z=0.735[0m
+[0;32mI (22885) HID_DEV_DEMO: Demo Quat[166]: w=0.675, x=0.000, y=0.000, z=0.738[0m
+[0;32mI (22985) HID_DEV_DEMO: Demo Quat[167]: w=0.671, x=0.000, y=0.000, z=0.741[0m
+[0;32mI (23085) HID_DEV_DEMO: Demo Quat[168]: w=0.667, x=0.000, y=0.000, z=0.745[0m
+[0;32mI (23185) HID_DEV_DEMO: Demo Quat[169]: w=0.664, x=0.000, y=0.000, z=0.748[0m
+[0;32mI (23285) HID_DEV_DEMO: Demo Quat[170]: w=0.660, x=0.000, y=0.000, z=0.751[0m
+[0;32mI (23385) HID_DEV_DEMO: Demo Quat[171]: w=0.656, x=0.000, y=0.000, z=0.755[0m
+[0;32mI (23485) HID_DEV_DEMO: Demo Quat[172]: w=0.652, x=0.000, y=0.000, z=0.758[0m
+[0;32mI (23585) HID_DEV_DEMO: Demo Quat[173]: w=0.649, x=0.000, y=0.000, z=0.761[0m
+[0;32mI (23685) HID_DEV_DEMO: Demo Quat[174]: w=0.645, x=0.000, y=0.000, z=0.764[0m
+[0;32mI (23785) HID_DEV_DEMO: Demo Quat[175]: w=0.641, x=0.000, y=0.000, z=0.768[0m
+[0;32mI (23885) HID_DEV_DEMO: Demo Quat[176]: w=0.637, x=0.000, y=0.000, z=0.771[0m
+[0;32mI (23985) HID_DEV_DEMO: Demo Quat[177]: w=0.633, x=0.000, y=0.000, z=0.774[0m
+[0;32mI (24085) HID_DEV_DEMO: Demo Quat[178]: w=0.629, x=0.000, y=0.000, z=0.777[0m
+[0;32mI (24185) HID_DEV_DEMO: Demo Quat[179]: w=0.626, x=0.000, y=0.000, z=0.780[0m
+[0;32mI (24285) HID_DEV_DEMO: Demo Quat[180]: w=0.622, x=0.000, y=0.000, z=0.783[0m
+[0;32mI (24385) HID_DEV_DEMO: Demo Quat[181]: w=0.618, x=0.000, y=0.000, z=0.786[0m
+[0;32mI (24485) HID_DEV_DEMO: Demo Quat[182]: w=0.614, x=0.000, y=0.000, z=0.790[0m
+[0;32mI (24585) HID_DEV_DEMO: Demo Quat[183]: w=0.610, x=0.000, y=0.000, z=0.793[0m
+[0;32mI (24685) HID_DEV_DEMO: Demo Quat[184]: w=0.606, x=0.000, y=0.000, z=0.796[0m
+[0;32mI (24785) HID_DEV_DEMO: Demo Quat[185]: w=0.602, x=0.000, y=0.000, z=0.799[0m
+[0;32mI (24885) HID_DEV_DEMO: Demo Quat[186]: w=0.598, x=0.000, y=0.000, z=0.802[0m
+[0;32mI (24985) HID_DEV_DEMO: Demo Quat[187]: w=0.594, x=0.000, y=0.000, z=0.805[0m
+[0;32mI (25085) HID_DEV_DEMO: Demo Quat[188]: w=0.590, x=0.000, y=0.000, z=0.808[0m
+[0;32mI (25185) HID_DEV_DEMO: Demo Quat[189]: w=0.586, x=0.000, y=0.000, z=0.810[0m
+[0;32mI (25285) HID_DEV_DEMO: Demo Quat[190]: w=0.582, x=0.000, y=0.000, z=0.813[0m
+[0;32mI (25385) HID_DEV_DEMO: Demo Quat[191]: w=0.578, x=0.000, y=0.000, z=0.816[0m
+[0;32mI (25485) HID_DEV_DEMO: Demo Quat[192]: w=0.574, x=0.000, y=0.000, z=0.819[0m
+[0;32mI (25585) HID_DEV_DEMO: Demo Quat[193]: w=0.569, x=0.000, y=0.000, z=0.822[0m
+[0;32mI (25685) HID_DEV_DEMO: Demo Quat[194]: w=0.565, x=0.000, y=0.000, z=0.825[0m
+[0;32mI (25785) HID_DEV_DEMO: Demo Quat[195]: w=0.561, x=0.000, y=0.000, z=0.828[0m
+[0;32mI (25885) HID_DEV_DEMO: Demo Quat[196]: w=0.557, x=0.000, y=0.000, z=0.830[0m
+[0;32mI (25985) HID_DEV_DEMO: Demo Quat[197]: w=0.553, x=0.000, y=0.000, z=0.833[0m
+[0;32mI (26085) HID_DEV_DEMO: Demo Quat[198]: w=0.549, x=0.000, y=0.000, z=0.836[0m
+[0;32mI (26185) HID_DEV_DEMO: Demo Quat[199]: w=0.545, x=0.000, y=0.000, z=0.839[0m
+[0;32mI (26285) HID_DEV_DEMO: Demo Quat[200]: w=0.540, x=0.000, y=0.000, z=0.841[0m
+[0;32mI (26385) HID_DEV_DEMO: Demo Quat[201]: w=0.536, x=0.000, y=0.000, z=0.844[0m
+[0;32mI (26485) HID_DEV_DEMO: Demo Quat[202]: w=0.532, x=0.000, y=0.000, z=0.847[0m
+[0;32mI (26585) HID_DEV_DEMO: Demo Quat[203]: w=0.528, x=0.000, y=0.000, z=0.849[0m
+[0;32mI (26685) HID_DEV_DEMO: Demo Quat[204]: w=0.523, x=0.000, y=0.000, z=0.852[0m
+[0;32mI (26785) HID_DEV_DEMO: Demo Quat[205]: w=0.519, x=0.000, y=0.000, z=0.855[0m
+[0;32mI (26885) HID_DEV_DEMO: Demo Quat[206]: w=0.515, x=0.000, y=0.000, z=0.857[0m
+[0;32mI (26985) HID_DEV_DEMO: Demo Quat[207]: w=0.511, x=0.000, y=0.000, z=0.860[0m
+[0;32mI (27085) HID_DEV_DEMO: Demo Quat[208]: w=0.506, x=0.000, y=0.000, z=0.862[0m
+[0;32mI (27185) HID_DEV_DEMO: Demo Quat[209]: w=0.502, x=0.000, y=0.000, z=0.865[0m
+[0;32mI (27285) HID_DEV_DEMO: Demo Quat[210]: w=0.498, x=0.000, y=0.000, z=0.867[0m
+[0;32mI (27385) HID_DEV_DEMO: Demo Quat[211]: w=0.493, x=0.000, y=0.000, z=0.870[0m
+[0;32mI (27485) HID_DEV_DEMO: Demo Quat[212]: w=0.489, x=0.000, y=0.000, z=0.872[0m
+[0;32mI (27585) HID_DEV_DEMO: Demo Quat[213]: w=0.485, x=0.000, y=0.000, z=0.875[0m
+[0;32mI (27685) HID_DEV_DEMO: Demo Quat[214]: w=0.480, x=0.000, y=0.000, z=0.877[0m
+[0;32mI (27785) HID_DEV_DEMO: Demo Quat[215]: w=0.476, x=0.000, y=0.000, z=0.880[0m
+[0;32mI (27885) HID_DEV_DEMO: Demo Quat[216]: w=0.471, x=0.000, y=0.000, z=0.882[0m
+[0;32mI (27985) HID_DEV_DEMO: Demo Quat[217]: w=0.467, x=0.000, y=0.000, z=0.884[0m
+[0;32mI (28085) HID_DEV_DEMO: Demo Quat[218]: w=0.462, x=0.000, y=0.000, z=0.887[0m
+[0;32mI (28185) HID_DEV_DEMO: Demo Quat[219]: w=0.458, x=0.000, y=0.000, z=0.889[0m
+[0;32mI (28285) HID_DEV_DEMO: Demo Quat[220]: w=0.454, x=0.000, y=0.000, z=0.891[0m
+[0;32mI (28385) HID_DEV_DEMO: Demo Quat[221]: w=0.449, x=0.000, y=0.000, z=0.893[0m
+[0;32mI (28485) HID_DEV_DEMO: Demo Quat[222]: w=0.445, x=0.000, y=0.000, z=0.896[0m
+[0;32mI (28585) HID_DEV_DEMO: Demo Quat[223]: w=0.440, x=0.000, y=0.000, z=0.898[0m
+[0;32mI (28685) HID_DEV_DEMO: Demo Quat[224]: w=0.436, x=0.000, y=0.000, z=0.900[0m
+[0;32mI (28785) HID_DEV_DEMO: Demo Quat[225]: w=0.431, x=0.000, y=0.000, z=0.902[0m
+[0;32mI (28885) HID_DEV_DEMO: Demo Quat[226]: w=0.427, x=0.000, y=0.000, z=0.904[0m
+[0;32mI (28985) HID_DEV_DEMO: Demo Quat[227]: w=0.422, x=0.000, y=0.000, z=0.907[0m
+[0;32mI (29085) HID_DEV_DEMO: Demo Quat[228]: w=0.418, x=0.000, y=0.000, z=0.909[0m
+[0;32mI (29185) HID_DEV_DEMO: Demo Quat[229]: w=0.413, x=0.000, y=0.000, z=0.911[0m
+[0;32mI (29285) HID_DEV_DEMO: Demo Quat[230]: w=0.408, x=0.000, y=0.000, z=0.913[0m
+[0;32mI (29385) HID_DEV_DEMO: Demo Quat[231]: w=0.404, x=0.000, y=0.000, z=0.915[0m
+[0;32mI (29485) HID_DEV_DEMO: Demo Quat[232]: w=0.399, x=0.000, y=0.000, z=0.917[0m
+[0;32mI (29585) HID_DEV_DEMO: Demo Quat[233]: w=0.395, x=0.000, y=0.000, z=0.919[0m
+[0;32mI (29685) HID_DEV_DEMO: Demo Quat[234]: w=0.390, x=0.000, y=0.000, z=0.921[0m
+[0;32mI (29785) HID_DEV_DEMO: Demo Quat[235]: w=0.386, x=0.000, y=0.000, z=0.923[0m
+[0;32mI (29885) HID_DEV_DEMO: Demo Quat[236]: w=0.381, x=0.000, y=0.000, z=0.925[0m
+[0;32mI (29985) HID_DEV_DEMO: Demo Quat[237]: w=0.376, x=0.000, y=0.000, z=0.926[0m
+[0;32mI (30085) HID_DEV_DEMO: Demo Quat[238]: w=0.372, x=0.000, y=0.000, z=0.928[0m
+[0;32mI (30185) HID_DEV_DEMO: Demo Quat[239]: w=0.367, x=0.000, y=0.000, z=0.930[0m
+[0;32mI (30285) HID_DEV_DEMO: Demo Quat[240]: w=0.362, x=0.000, y=0.000, z=0.932[0m
+[0;32mI (30385) HID_DEV_DEMO: Demo Quat[241]: w=0.358, x=0.000, y=0.000, z=0.934[0m
+[0;32mI (30485) HID_DEV_DEMO: Demo Quat[242]: w=0.353, x=0.000, y=0.000, z=0.936[0m
+[0;32mI (30585) HID_DEV_DEMO: Demo Quat[243]: w=0.348, x=0.000, y=0.000, z=0.937[0m
+[0;32mI (30685) HID_DEV_DEMO: Demo Quat[244]: w=0.344, x=0.000, y=0.000, z=0.939[0m
+[0;32mI (30785) HID_DEV_DEMO: Demo Quat[245]: w=0.339, x=0.000, y=0.000, z=0.941[0m
+[0;32mI (30885) HID_DEV_DEMO: Demo Quat[246]: w=0.334, x=0.000, y=0.000, z=0.942[0m
+[0;32mI (30985) HID_DEV_DEMO: Demo Quat[247]: w=0.330, x=0.000, y=0.000, z=0.944[0m
+[0;32mI (31085) HID_DEV_DEMO: Demo Quat[248]: w=0.325, x=0.000, y=0.000, z=0.946[0m
+[0;32mI (31185) HID_DEV_DEMO: Demo Quat[249]: w=0.320, x=0.000, y=0.000, z=0.947[0m
+[0;32mI (31285) HID_DEV_DEMO: Demo Quat[250]: w=0.315, x=0.000, y=0.000, z=0.949[0m
+[0;32mI (31385) HID_DEV_DEMO: Demo Quat[251]: w=0.311, x=0.000, y=0.000, z=0.951[0m
+[0;32mI (31485) HID_DEV_DEMO: Demo Quat[252]: w=0.306, x=0.000, y=0.000, z=0.952[0m
+[0;32mI (31585) HID_DEV_DEMO: Demo Quat[253]: w=0.301, x=0.000, y=0.000, z=0.954[0m
+[0;32mI (31685) HID_DEV_DEMO: Demo Quat[254]: w=0.296, x=0.000, y=0.000, z=0.955[0m
+[0;32mI (31785) HID_DEV_DEMO: Demo Quat[255]: w=0.292, x=0.000, y=0.000, z=0.957[0m
+[0;32mI (31885) HID_DEV_DEMO: Demo Quat[256]: w=0.287, x=0.000, y=0.000, z=0.958[0m
+[0;32mI (31985) HID_DEV_DEMO: Demo Quat[257]: w=0.282, x=0.000, y=0.000, z=0.959[0m
+[0;32mI (32085) HID_DEV_DEMO: Demo Quat[258]: w=0.277, x=0.000, y=0.000, z=0.961[0m
+[0;32mI (32185) HID_DEV_DEMO: Demo Quat[259]: w=0.272, x=0.000, y=0.000, z=0.962[0m
+[0;32mI (32285) HID_DEV_DEMO: Demo Quat[260]: w=0.267, x=0.000, y=0.000, z=0.964[0m
+[0;32mI (32385) HID_DEV_DEMO: Demo Quat[261]: w=0.263, x=0.000, y=0.000, z=0.965[0m
+[0;32mI (32485) HID_DEV_DEMO: Demo Quat[262]: w=0.258, x=0.000, y=0.000, z=0.966[0m
+[0;32mI (32585) HID_DEV_DEMO: Demo Quat[263]: w=0.253, x=0.000, y=0.000, z=0.967[0m
+[0;32mI (32685) HID_DEV_DEMO: Demo Quat[264]: w=0.248, x=0.000, y=0.000, z=0.969[0m
+[0;32mI (32785) HID_DEV_DEMO: Demo Quat[265]: w=0.243, x=0.000, y=0.000, z=0.970[0m
+[0;32mI (32885) HID_DEV_DEMO: Demo Quat[266]: w=0.238, x=0.000, y=0.000, z=0.971[0m
+[0;32mI (32985) HID_DEV_DEMO: Demo Quat[267]: w=0.234, x=0.000, y=0.000, z=0.972[0m
+[0;32mI (33085) HID_DEV_DEMO: Demo Quat[268]: w=0.229, x=0.000, y=0.000, z=0.973[0m
+[0;32mI (33185) HID_DEV_DEMO: Demo Quat[269]: w=0.224, x=0.000, y=0.000, z=0.975[0m
+[0;32mI (33285) HID_DEV_DEMO: Demo Quat[270]: w=0.219, x=0.000, y=0.000, z=0.976[0m
+[0;32mI (33385) HID_DEV_DEMO: Demo Quat[271]: w=0.214, x=0.000, y=0.000, z=0.977[0m
+[0;32mI (33485) HID_DEV_DEMO: Demo Quat[272]: w=0.209, x=0.000, y=0.000, z=0.978[0m
+[0;32mI (33585) HID_DEV_DEMO: Demo Quat[273]: w=0.204, x=0.000, y=0.000, z=0.979[0m
+[0;32mI (33685) HID_DEV_DEMO: Demo Quat[274]: w=0.199, x=0.000, y=0.000, z=0.980[0m
+[0;32mI (33785) HID_DEV_DEMO: Demo Quat[275]: w=0.195, x=0.000, y=0.000, z=0.981[0m
+[0;32mI (33885) HID_DEV_DEMO: Demo Quat[276]: w=0.190, x=0.000, y=0.000, z=0.982[0m
+[0;32mI (33985) HID_DEV_DEMO: Demo Quat[277]: w=0.185, x=0.000, y=0.000, z=0.983[0m
+[0;32mI (34085) HID_DEV_DEMO: Demo Quat[278]: w=0.180, x=0.000, y=0.000, z=0.984[0m
+[0;32mI (34185) HID_DEV_DEMO: Demo Quat[279]: w=0.175, x=0.000, y=0.000, z=0.985[0m
+[0;32mI (34285) HID_DEV_DEMO: Demo Quat[280]: w=0.170, x=0.000, y=0.000, z=0.985[0m
+[0;32mI (34385) HID_DEV_DEMO: Demo Quat[281]: w=0.165, x=0.000, y=0.000, z=0.986[0m
+[0;32mI (34485) HID_DEV_DEMO: Demo Quat[282]: w=0.160, x=0.000, y=0.000, z=0.987[0m
+[0;32mI (34585) HID_DEV_DEMO: Demo Quat[283]: w=0.155, x=0.000, y=0.000, z=0.988[0m
+[0;32mI (34685) HID_DEV_DEMO: Demo Quat[284]: w=0.150, x=0.000, y=0.000, z=0.989[0m
+[0;32mI (34785) HID_DEV_DEMO: Demo Quat[285]: w=0.145, x=0.000, y=0.000, z=0.989[0m
+[0;32mI (34885) HID_DEV_DEMO: Demo Quat[286]: w=0.140, x=0.000, y=0.000, z=0.990[0m
+[0;32mI (34985) HID_DEV_DEMO: Demo Quat[287]: w=0.135, x=0.000, y=0.000, z=0.991[0m
+[0;32mI (35085) HID_DEV_DEMO: Demo Quat[288]: w=0.130, x=0.000, y=0.000, z=0.991[0m
+[0;32mI (35185) HID_DEV_DEMO: Demo Quat[289]: w=0.125, x=0.000, y=0.000, z=0.992[0m
+[0;32mI (35285) HID_DEV_DEMO: Demo Quat[290]: w=0.121, x=0.000, y=0.000, z=0.993[0m
+[0;32mI (35385) HID_DEV_DEMO: Demo Quat[291]: w=0.116, x=0.000, y=0.000, z=0.993[0m
+[0;32mI (35485) HID_DEV_DEMO: Demo Quat[292]: w=0.111, x=0.000, y=0.000, z=0.994[0m
+[0;32mI (35585) HID_DEV_DEMO: Demo Quat[293]: w=0.106, x=0.000, y=0.000, z=0.994[0m
+[0;32mI (35685) HID_DEV_DEMO: Demo Quat[294]: w=0.101, x=0.000, y=0.000, z=0.995[0m
+[0;32mI (35785) HID_DEV_DEMO: Demo Quat[295]: w=0.096, x=0.000, y=0.000, z=0.995[0m
+[0;32mI (35885) HID_DEV_DEMO: Demo Quat[296]: w=0.091, x=0.000, y=0.000, z=0.996[0m
+[0;32mI (35985) HID_DEV_DEMO: Demo Quat[297]: w=0.086, x=0.000, y=0.000, z=0.996[0m
+[0;32mI (36085) HID_DEV_DEMO: Demo Quat[298]: w=0.081, x=0.000, y=0.000, z=0.997[0m
+[0;32mI (36185) HID_DEV_DEMO: Demo Quat[299]: w=0.076, x=0.000, y=0.000, z=0.997[0m
+[0;32mI (36285) HID_DEV_DEMO: Demo Quat[300]: w=0.071, x=0.000, y=0.000, z=0.997[0m
+[0;32mI (36385) HID_DEV_DEMO: Demo Quat[301]: w=0.066, x=0.000, y=0.000, z=0.998[0m
+[0;32mI (36485) HID_DEV_DEMO: Demo Quat[302]: w=0.061, x=0.000, y=0.000, z=0.998[0m
+[0;32mI (36585) HID_DEV_DEMO: Demo Quat[303]: w=0.056, x=0.000, y=0.000, z=0.998[0m
+[0;32mI (36685) HID_DEV_DEMO: Demo Quat[304]: w=0.051, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (36785) HID_DEV_DEMO: Demo Quat[305]: w=0.046, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (36885) HID_DEV_DEMO: Demo Quat[306]: w=0.041, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (36985) HID_DEV_DEMO: Demo Quat[307]: w=0.036, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (37085) HID_DEV_DEMO: Demo Quat[308]: w=0.031, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (37185) HID_DEV_DEMO: Demo Quat[309]: w=0.026, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (37285) HID_DEV_DEMO: Demo Quat[310]: w=0.021, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (37385) HID_DEV_DEMO: Demo Quat[311]: w=0.016, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (37485) HID_DEV_DEMO: Demo Quat[312]: w=0.011, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (37585) HID_DEV_DEMO: Demo Quat[313]: w=0.006, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (37685) HID_DEV_DEMO: Demo Quat[314]: w=0.001, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (37785) HID_DEV_DEMO: Demo Quat[315]: w=-0.004, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (37885) HID_DEV_DEMO: Demo Quat[316]: w=-0.009, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (37985) HID_DEV_DEMO: Demo Quat[317]: w=-0.014, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (38085) HID_DEV_DEMO: Demo Quat[318]: w=-0.019, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (38185) HID_DEV_DEMO: Demo Quat[319]: w=-0.024, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (38285) HID_DEV_DEMO: Demo Quat[320]: w=-0.029, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (38385) HID_DEV_DEMO: Demo Quat[321]: w=-0.034, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (38485) HID_DEV_DEMO: Demo Quat[322]: w=-0.039, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (38585) HID_DEV_DEMO: Demo Quat[323]: w=-0.044, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (38685) HID_DEV_DEMO: Demo Quat[324]: w=-0.049, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (38785) HID_DEV_DEMO: Demo Quat[325]: w=-0.054, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (38885) HID_DEV_DEMO: Demo Quat[326]: w=-0.059, x=0.000, y=0.000, z=0.998[0m
+[0;32mI (38985) HID_DEV_DEMO: Demo Quat[327]: w=-0.064, x=0.000, y=0.000, z=0.998[0m
+[0;32mI (39085) HID_DEV_DEMO: Demo Quat[328]: w=-0.069, x=0.000, y=0.000, z=0.998[0m
+[0;32mI (39185) HID_DEV_DEMO: Demo Quat[329]: w=-0.074, x=0.000, y=0.000, z=0.997[0m
+[0;32mI (39285) HID_DEV_DEMO: Demo Quat[330]: w=-0.079, x=0.000, y=0.000, z=0.997[0m
+[0;32mI (39385) HID_DEV_DEMO: Demo Quat[331]: w=-0.084, x=0.000, y=0.000, z=0.996[0m
+[0;32mI (39485) HID_DEV_DEMO: Demo Quat[332]: w=-0.089, x=0.000, y=0.000, z=0.996[0m
+[0;32mI (39585) HID_DEV_DEMO: Demo Quat[333]: w=-0.094, x=0.000, y=0.000, z=0.996[0m
+[0;32mI (39685) HID_DEV_DEMO: Demo Quat[334]: w=-0.099, x=0.000, y=0.000, z=0.995[0m
+[0;32mI (39785) HID_DEV_DEMO: Demo Quat[335]: w=-0.104, x=0.000, y=0.000, z=0.995[0m
+[0;32mI (39885) HID_DEV_DEMO: Demo Quat[336]: w=-0.109, x=0.000, y=0.000, z=0.994[0m
+[0;32mI (39985) HID_DEV_DEMO: Demo Quat[337]: w=-0.114, x=0.000, y=0.000, z=0.993[0m
+[0;32mI (40085) HID_DEV_DEMO: Demo Quat[338]: w=-0.119, x=0.000, y=0.000, z=0.993[0m
+[0;32mI (40185) HID_DEV_DEMO: Demo Quat[339]: w=-0.124, x=0.000, y=0.000, z=0.992[0m
+[0;32mI (40285) HID_DEV_DEMO: Demo Quat[340]: w=-0.129, x=0.000, y=0.000, z=0.992[0m
+[0;32mI (40385) HID_DEV_DEMO: Demo Quat[341]: w=-0.134, x=0.000, y=0.000, z=0.991[0m
+[0;32mI (40485) HID_DEV_DEMO: Demo Quat[342]: w=-0.139, x=0.000, y=0.000, z=0.990[0m
+[0;32mI (40585) HID_DEV_DEMO: Demo Quat[343]: w=-0.144, x=0.000, y=0.000, z=0.990[0m
+[0;32mI (40685) HID_DEV_DEMO: Demo Quat[344]: w=-0.149, x=0.000, y=0.000, z=0.989[0m
+[0;32mI (40785) HID_DEV_DEMO: Demo Quat[345]: w=-0.154, x=0.000, y=0.000, z=0.988[0m
+[0;32mI (40885) HID_DEV_DEMO: Demo Quat[346]: w=-0.159, x=0.000, y=0.000, z=0.987[0m
+[0;32mI (40985) HID_DEV_DEMO: Demo Quat[347]: w=-0.163, x=0.000, y=0.000, z=0.987[0m
+[0;32mI (41085) HID_DEV_DEMO: Demo Quat[348]: w=-0.168, x=0.000, y=0.000, z=0.986[0m
+[0;32mI (41185) HID_DEV_DEMO: Demo Quat[349]: w=-0.173, x=0.000, y=0.000, z=0.985[0m
+[0;32mI (41285) HID_DEV_DEMO: Demo Quat[350]: w=-0.178, x=0.000, y=0.000, z=0.984[0m
+[0;32mI (41385) HID_DEV_DEMO: Demo Quat[351]: w=-0.183, x=0.000, y=0.000, z=0.983[0m
+[0;32mI (41485) HID_DEV_DEMO: Demo Quat[352]: w=-0.188, x=0.000, y=0.000, z=0.982[0m
+[0;32mI (41585) HID_DEV_DEMO: Demo Quat[353]: w=-0.193, x=0.000, y=0.000, z=0.981[0m
+[0;32mI (41685) HID_DEV_DEMO: Demo Quat[354]: w=-0.198, x=0.000, y=0.000, z=0.980[0m
+[0;32mI (41785) HID_DEV_DEMO: Demo Quat[355]: w=-0.203, x=0.000, y=0.000, z=0.979[0m
+[0;32mI (41885) HID_DEV_DEMO: Demo Quat[356]: w=-0.208, x=0.000, y=0.000, z=0.978[0m
+[0;32mI (41985) HID_DEV_DEMO: Demo Quat[357]: w=-0.213, x=0.000, y=0.000, z=0.977[0m
+[0;32mI (42085) HID_DEV_DEMO: Demo Quat[358]: w=-0.217, x=0.000, y=0.000, z=0.976[0m
+[0;32mI (42185) HID_DEV_DEMO: Demo Quat[359]: w=-0.222, x=0.000, y=0.000, z=0.975[0m
+[0;32mI (42285) HID_DEV_DEMO: Demo Quat[360]: w=-0.227, x=0.000, y=0.000, z=0.974[0m
+[0;32mI (42385) HID_DEV_DEMO: Demo Quat[361]: w=-0.232, x=0.000, y=0.000, z=0.973[0m
+[0;32mI (42485) HID_DEV_DEMO: Demo Quat[362]: w=-0.237, x=0.000, y=0.000, z=0.972[0m
+[0;32mI (42585) HID_DEV_DEMO: Demo Quat[363]: w=-0.242, x=0.000, y=0.000, z=0.970[0m
+[0;32mI (42685) HID_DEV_DEMO: Demo Quat[364]: w=-0.247, x=0.000, y=0.000, z=0.969[0m
+[0;32mI (42785) HID_DEV_DEMO: Demo Quat[365]: w=-0.251, x=0.000, y=0.000, z=0.968[0m
+[0;32mI (42885) HID_DEV_DEMO: Demo Quat[366]: w=-0.256, x=0.000, y=0.000, z=0.967[0m
+[0;32mI (42985) HID_DEV_DEMO: Demo Quat[367]: w=-0.261, x=0.000, y=0.000, z=0.965[0m
+[0;32mI (43085) HID_DEV_DEMO: Demo Quat[368]: w=-0.266, x=0.000, y=0.000, z=0.964[0m
+[0;32mI (43185) HID_DEV_DEMO: Demo Quat[369]: w=-0.271, x=0.000, y=0.000, z=0.963[0m
+[0;32mI (43285) HID_DEV_DEMO: Demo Quat[370]: w=-0.276, x=0.000, y=0.000, z=0.961[0m
+[0;32mI (43385) HID_DEV_DEMO: Demo Quat[371]: w=-0.280, x=0.000, y=0.000, z=0.960[0m
+[0;32mI (43485) HID_DEV_DEMO: Demo Quat[372]: w=-0.285, x=0.000, y=0.000, z=0.958[0m
+[0;32mI (43585) HID_DEV_DEMO: Demo Quat[373]: w=-0.290, x=0.000, y=0.000, z=0.957[0m
+[0;32mI (43685) HID_DEV_DEMO: Demo Quat[374]: w=-0.295, x=0.000, y=0.000, z=0.956[0m
+[0;32mI (43785) HID_DEV_DEMO: Demo Quat[375]: w=-0.300, x=0.000, y=0.000, z=0.954[0m
+[0;32mI (43885) HID_DEV_DEMO: Demo Quat[376]: w=-0.304, x=0.000, y=0.000, z=0.953[0m
+[0;32mI (43985) HID_DEV_DEMO: Demo Quat[377]: w=-0.309, x=0.000, y=0.000, z=0.951[0m
+[0;32mI (44085) HID_DEV_DEMO: Demo Quat[378]: w=-0.314, x=0.000, y=0.000, z=0.949[0m
+[0;32mI (44185) HID_DEV_DEMO: Demo Quat[379]: w=-0.319, x=0.000, y=0.000, z=0.948[0m
+[0;32mI (44285) HID_DEV_DEMO: Demo Quat[380]: w=-0.323, x=0.000, y=0.000, z=0.946[0m
+[0;32mI (44385) HID_DEV_DEMO: Demo Quat[381]: w=-0.328, x=0.000, y=0.000, z=0.945[0m
+[0;32mI (44485) HID_DEV_DEMO: Demo Quat[382]: w=-0.333, x=0.000, y=0.000, z=0.943[0m
+[0;32mI (44585) HID_DEV_DEMO: Demo Quat[383]: w=-0.337, x=0.000, y=0.000, z=0.941[0m
+[0;32mI (44685) HID_DEV_DEMO: Demo Quat[384]: w=-0.342, x=0.000, y=0.000, z=0.940[0m
+[0;32mI (44785) HID_DEV_DEMO: Demo Quat[385]: w=-0.347, x=0.000, y=0.000, z=0.938[0m
+[0;32mI (44885) HID_DEV_DEMO: Demo Quat[386]: w=-0.352, x=0.000, y=0.000, z=0.936[0m
+[0;32mI (44985) HID_DEV_DEMO: Demo Quat[387]: w=-0.356, x=0.000, y=0.000, z=0.934[0m
+[0;32mI (45085) HID_DEV_DEMO: Demo Quat[388]: w=-0.361, x=0.000, y=0.000, z=0.933[0m
+[0;32mI (45185) HID_DEV_DEMO: Demo Quat[389]: w=-0.366, x=0.000, y=0.000, z=0.931[0m
+[0;32mI (45285) HID_DEV_DEMO: Demo Quat[390]: w=-0.370, x=0.000, y=0.000, z=0.929[0m
+[0;32mI (45385) HID_DEV_DEMO: Demo Quat[391]: w=-0.375, x=0.000, y=0.000, z=0.927[0m
+[0;32mI (45485) HID_DEV_DEMO: Demo Quat[392]: w=-0.379, x=0.000, y=0.000, z=0.925[0m
+[0;32mI (45585) HID_DEV_DEMO: Demo Quat[393]: w=-0.384, x=0.000, y=0.000, z=0.923[0m
+[0;32mI (45685) HID_DEV_DEMO: Demo Quat[394]: w=-0.389, x=0.000, y=0.000, z=0.921[0m
+[0;32mI (45785) HID_DEV_DEMO: Demo Quat[395]: w=-0.393, x=0.000, y=0.000, z=0.919[0m
+[0;32mI (45885) HID_DEV_DEMO: Demo Quat[396]: w=-0.398, x=0.000, y=0.000, z=0.917[0m
+[0;32mI (45985) HID_DEV_DEMO: Demo Quat[397]: w=-0.402, x=0.000, y=0.000, z=0.915[0m
+[0;32mI (46085) HID_DEV_DEMO: Demo Quat[398]: w=-0.407, x=0.000, y=0.000, z=0.913[0m
+[0;32mI (46185) HID_DEV_DEMO: Demo Quat[399]: w=-0.412, x=0.000, y=0.000, z=0.911[0m
+[0;32mI (46285) HID_DEV_DEMO: Demo Quat[400]: w=-0.416, x=0.000, y=0.000, z=0.909[0m
+[0;32mI (46385) HID_DEV_DEMO: Demo Quat[401]: w=-0.421, x=0.000, y=0.000, z=0.907[0m
+[0;32mI (46485) HID_DEV_DEMO: Demo Quat[402]: w=-0.425, x=0.000, y=0.000, z=0.905[0m
+[0;32mI (46585) HID_DEV_DEMO: Demo Quat[403]: w=-0.430, x=0.000, y=0.000, z=0.903[0m
+[0;32mI (46685) HID_DEV_DEMO: Demo Quat[404]: w=-0.434, x=0.000, y=0.000, z=0.901[0m
+[0;32mI (46785) HID_DEV_DEMO: Demo Quat[405]: w=-0.439, x=0.000, y=0.000, z=0.899[0m
+[0;32mI (46885) HID_DEV_DEMO: Demo Quat[406]: w=-0.443, x=0.000, y=0.000, z=0.896[0m
+[0;32mI (46985) HID_DEV_DEMO: Demo Quat[407]: w=-0.448, x=0.000, y=0.000, z=0.894[0m
+[0;32mI (47085) HID_DEV_DEMO: Demo Quat[408]: w=-0.452, x=0.000, y=0.000, z=0.892[0m
+[0;32mI (47185) HID_DEV_DEMO: Demo Quat[409]: w=-0.457, x=0.000, y=0.000, z=0.890[0m
+[0;32mI (47285) HID_DEV_DEMO: Demo Quat[410]: w=-0.461, x=0.000, y=0.000, z=0.887[0m
+[0;32mI (47385) HID_DEV_DEMO: Demo Quat[411]: w=-0.466, x=0.000, y=0.000, z=0.885[0m
+[0;32mI (47485) HID_DEV_DEMO: Demo Quat[412]: w=-0.470, x=0.000, y=0.000, z=0.883[0m
+[0;32mI (47585) HID_DEV_DEMO: Demo Quat[413]: w=-0.474, x=0.000, y=0.000, z=0.880[0m
+[0;32mI (47685) HID_DEV_DEMO: Demo Quat[414]: w=-0.479, x=0.000, y=0.000, z=0.878[0m
+[0;32mI (47785) HID_DEV_DEMO: Demo Quat[415]: w=-0.483, x=0.000, y=0.000, z=0.876[0m
+[0;32mI (47885) HID_DEV_DEMO: Demo Quat[416]: w=-0.487, x=0.000, y=0.000, z=0.873[0m
+[0;32mI (47985) HID_DEV_DEMO: Demo Quat[417]: w=-0.492, x=0.000, y=0.000, z=0.871[0m
+[0;32mI (48085) HID_DEV_DEMO: Demo Quat[418]: w=-0.496, x=0.000, y=0.000, z=0.868[0m
+[0;32mI (48185) HID_DEV_DEMO: Demo Quat[419]: w=-0.501, x=0.000, y=0.000, z=0.866[0m
+[0;32mI (48285) HID_DEV_DEMO: Demo Quat[420]: w=-0.505, x=0.000, y=0.000, z=0.863[0m
+[0;32mI (48385) HID_DEV_DEMO: Demo Quat[421]: w=-0.509, x=0.000, y=0.000, z=0.861[0m
+[0;32mI (48485) HID_DEV_DEMO: Demo Quat[422]: w=-0.513, x=0.000, y=0.000, z=0.858[0m
+[0;32mI (48585) HID_DEV_DEMO: Demo Quat[423]: w=-0.518, x=0.000, y=0.000, z=0.856[0m
+[0;32mI (48685) HID_DEV_DEMO: Demo Quat[424]: w=-0.522, x=0.000, y=0.000, z=0.853[0m
+[0;32mI (48785) HID_DEV_DEMO: Demo Quat[425]: w=-0.526, x=0.000, y=0.000, z=0.850[0m
+[0;32mI (48885) HID_DEV_DEMO: Demo Quat[426]: w=-0.531, x=0.000, y=0.000, z=0.848[0m
+[0;32mI (48985) HID_DEV_DEMO: Demo Quat[427]: w=-0.535, x=0.000, y=0.000, z=0.845[0m
+[0;32mI (49085) HID_DEV_DEMO: Demo Quat[428]: w=-0.539, x=0.000, y=0.000, z=0.842[0m
+[0;32mI (49185) HID_DEV_DEMO: Demo Quat[429]: w=-0.543, x=0.000, y=0.000, z=0.840[0m
+[0;32mI (49285) HID_DEV_DEMO: Demo Quat[430]: w=-0.547, x=0.000, y=0.000, z=0.837[0m
+[0;32mI (49385) HID_DEV_DEMO: Demo Quat[431]: w=-0.552, x=0.000, y=0.000, z=0.834[0m
+[0;32mI (49485) HID_DEV_DEMO: Demo Quat[432]: w=-0.556, x=0.000, y=0.000, z=0.831[0m
+[0;32mI (49585) HID_DEV_DEMO: Demo Quat[433]: w=-0.560, x=0.000, y=0.000, z=0.829[0m
+[0;32mI (49685) HID_DEV_DEMO: Demo Quat[434]: w=-0.564, x=0.000, y=0.000, z=0.826[0m
+[0;32mI (49785) HID_DEV_DEMO: Demo Quat[435]: w=-0.568, x=0.000, y=0.000, z=0.823[0m
+[0;32mI (49885) HID_DEV_DEMO: Demo Quat[436]: w=-0.572, x=0.000, y=0.000, z=0.820[0m
+[0;32mI (49985) HID_DEV_DEMO: Demo Quat[437]: w=-0.576, x=0.000, y=0.000, z=0.817[0m
+[0;32mI (50085) HID_DEV_DEMO: Demo Quat[438]: w=-0.580, x=0.000, y=0.000, z=0.814[0m
+[0;32mI (50185) HID_DEV_DEMO: Demo Quat[439]: w=-0.584, x=0.000, y=0.000, z=0.811[0m
+[0;32mI (50285) HID_DEV_DEMO: Demo Quat[440]: w=-0.589, x=0.000, y=0.000, z=0.808[0m
+[0;32mI (50385) HID_DEV_DEMO: Demo Quat[441]: w=-0.593, x=0.000, y=0.000, z=0.806[0m
+[0;32mI (50485) HID_DEV_DEMO: Demo Quat[442]: w=-0.597, x=0.000, y=0.000, z=0.803[0m
+[0;32mI (50585) HID_DEV_DEMO: Demo Quat[443]: w=-0.601, x=0.000, y=0.000, z=0.800[0m
+[0;32mI (50685) HID_DEV_DEMO: Demo Quat[444]: w=-0.605, x=0.000, y=0.000, z=0.797[0m
+[0;32mI (50785) HID_DEV_DEMO: Demo Quat[445]: w=-0.609, x=0.000, y=0.000, z=0.794[0m
+[0;32mI (50885) HID_DEV_DEMO: Demo Quat[446]: w=-0.612, x=0.000, y=0.000, z=0.790[0m
+[0;32mI (50985) HID_DEV_DEMO: Demo Quat[447]: w=-0.616, x=0.000, y=0.000, z=0.787[0m
+[0;32mI (51085) HID_DEV_DEMO: Demo Quat[448]: w=-0.620, x=0.000, y=0.000, z=0.784[0m
+[0;32mI (51185) HID_DEV_DEMO: Demo Quat[449]: w=-0.624, x=0.000, y=0.000, z=0.781[0m
+[0;32mI (51285) HID_DEV_DEMO: Demo Quat[450]: w=-0.628, x=0.000, y=0.000, z=0.778[0m
+[0;32mI (51385) HID_DEV_DEMO: Demo Quat[451]: w=-0.632, x=0.000, y=0.000, z=0.775[0m
+[0;32mI (51485) HID_DEV_DEMO: Demo Quat[452]: w=-0.636, x=0.000, y=0.000, z=0.772[0m
+[0;32mI (51585) HID_DEV_DEMO: Demo Quat[453]: w=-0.640, x=0.000, y=0.000, z=0.769[0m
+[0;32mI (51685) HID_DEV_DEMO: Demo Quat[454]: w=-0.644, x=0.000, y=0.000, z=0.765[0m
+[0;32mI (51785) HID_DEV_DEMO: Demo Quat[455]: w=-0.647, x=0.000, y=0.000, z=0.762[0m
+[0;32mI (51885) HID_DEV_DEMO: Demo Quat[456]: w=-0.651, x=0.000, y=0.000, z=0.759[0m
+[0;32mI (51985) HID_DEV_DEMO: Demo Quat[457]: w=-0.655, x=0.000, y=0.000, z=0.756[0m
+[0;32mI (52085) HID_DEV_DEMO: Demo Quat[458]: w=-0.659, x=0.000, y=0.000, z=0.752[0m
+[0;32mI (52185) HID_DEV_DEMO: Demo Quat[459]: w=-0.663, x=0.000, y=0.000, z=0.749[0m
+[0;32mI (52285) HID_DEV_DEMO: Demo Quat[460]: w=-0.666, x=0.000, y=0.000, z=0.746[0m
+[0;32mI (52385) HID_DEV_DEMO: Demo Quat[461]: w=-0.670, x=0.000, y=0.000, z=0.742[0m
+[0;32mI (52485) HID_DEV_DEMO: Demo Quat[462]: w=-0.674, x=0.000, y=0.000, z=0.739[0m
+[0;32mI (52585) HID_DEV_DEMO: Demo Quat[463]: w=-0.677, x=0.000, y=0.000, z=0.736[0m
+[0;32mI (52685) HID_DEV_DEMO: Demo Quat[464]: w=-0.681, x=0.000, y=0.000, z=0.732[0m
+[0;32mI (52785) HID_DEV_DEMO: Demo Quat[465]: w=-0.685, x=0.000, y=0.000, z=0.729[0m
+[0;32mI (52885) HID_DEV_DEMO: Demo Quat[466]: w=-0.688, x=0.000, y=0.000, z=0.725[0m
+[0;32mI (52985) HID_DEV_DEMO: Demo Quat[467]: w=-0.692, x=0.000, y=0.000, z=0.722[0m
+[0;32mI (53085) HID_DEV_DEMO: Demo Quat[468]: w=-0.696, x=0.000, y=0.000, z=0.718[0m
+[0;32mI (53185) HID_DEV_DEMO: Demo Quat[469]: w=-0.699, x=0.000, y=0.000, z=0.715[0m
+[0;32mI (53285) HID_DEV_DEMO: Demo Quat[470]: w=-0.703, x=0.000, y=0.000, z=0.711[0m
+[0;32mI (53385) HID_DEV_DEMO: Demo Quat[471]: w=-0.706, x=0.000, y=0.000, z=0.708[0m
+[0;32mI (53485) HID_DEV_DEMO: Demo Quat[472]: w=-0.710, x=0.000, y=0.000, z=0.704[0m
+[0;32mI (53585) HID_DEV_DEMO: Demo Quat[473]: w=-0.713, x=0.000, y=0.000, z=0.701[0m
+[0;32mI (53685) HID_DEV_DEMO: Demo Quat[474]: w=-0.717, x=0.000, y=0.000, z=0.697[0m
+[0;32mI (53785) HID_DEV_DEMO: Demo Quat[475]: w=-0.720, x=0.000, y=0.000, z=0.694[0m
+[0;32mI (53885) HID_DEV_DEMO: Demo Quat[476]: w=-0.724, x=0.000, y=0.000, z=0.690[0m
+[0;32mI (53985) HID_DEV_DEMO: Demo Quat[477]: w=-0.727, x=0.000, y=0.000, z=0.686[0m
+[0;32mI (54085) HID_DEV_DEMO: Demo Quat[478]: w=-0.731, x=0.000, y=0.000, z=0.683[0m
+[0;32mI (54185) HID_DEV_DEMO: Demo Quat[479]: w=-0.734, x=0.000, y=0.000, z=0.679[0m
+[0;32mI (54285) HID_DEV_DEMO: Demo Quat[480]: w=-0.737, x=0.000, y=0.000, z=0.675[0m
+[0;32mI (54385) HID_DEV_DEMO: Demo Quat[481]: w=-0.741, x=0.000, y=0.000, z=0.672[0m
+[0;32mI (54485) HID_DEV_DEMO: Demo Quat[482]: w=-0.744, x=0.000, y=0.000, z=0.668[0m
+[0;32mI (54585) HID_DEV_DEMO: Demo Quat[483]: w=-0.747, x=0.000, y=0.000, z=0.664[0m
+[0;32mI (54685) HID_DEV_DEMO: Demo Quat[484]: w=-0.751, x=0.000, y=0.000, z=0.661[0m
+[0;32mI (54785) HID_DEV_DEMO: Demo Quat[485]: w=-0.754, x=0.000, y=0.000, z=0.657[0m
+[0;32mI (54885) HID_DEV_DEMO: Demo Quat[486]: w=-0.757, x=0.000, y=0.000, z=0.653[0m
+[0;32mI (54985) HID_DEV_DEMO: Demo Quat[487]: w=-0.761, x=0.000, y=0.000, z=0.649[0m
+[0;32mI (55085) HID_DEV_DEMO: Demo Quat[488]: w=-0.764, x=0.000, y=0.000, z=0.645[0m
+[0;32mI (55185) HID_DEV_DEMO: Demo Quat[489]: w=-0.767, x=0.000, y=0.000, z=0.642[0m
+[0;32mI (55285) HID_DEV_DEMO: Demo Quat[490]: w=-0.770, x=0.000, y=0.000, z=0.638[0m
+[0;32mI (55385) HID_DEV_DEMO: Demo Quat[491]: w=-0.773, x=0.000, y=0.000, z=0.634[0m
+[0;32mI (55485) HID_DEV_DEMO: Demo Quat[492]: w=-0.777, x=0.000, y=0.000, z=0.630[0m
+[0;32mI (55585) HID_DEV_DEMO: Demo Quat[493]: w=-0.780, x=0.000, y=0.000, z=0.626[0m
+[0;32mI (55685) HID_DEV_DEMO: Demo Quat[494]: w=-0.783, x=0.000, y=0.000, z=0.622[0m

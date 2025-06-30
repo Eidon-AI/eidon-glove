@@ -1,0 +1,2123 @@
+Command: /Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python /Users/robert/esp-idf/tools/idf_monitor.py -p /dev/cu.usbmodem1101 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32c6 --revision 0 --decode-panic backtrace /Users/robert/eidon/eidon-glove/firmware/build/eidon-glove.elf /Users/robert/eidon/eidon-glove/firmware/build/bootloader/bootloader.elf -m '/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python' '/Users/robert/esp-idf/tools/idf.py' '-p' '/dev/cu.usbmodem1101'
+[0;32mI (390) main_task: Calling app_main()[0m
+ESP-ROM:esp32c6-20220919
+Build:Sep 19 2022
+rst:0x15 (USB_UART_HPSYS),boot:0x1e (SPI_FAST_FLASH_BOOT)
+Saved PC:0x420079b0
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875730,len:0x1744
+load:0x4086b910,len:0xe50
+load:0x4086e610,len:0x318c
+entry 0x4086b91a
+[0;32mI (5) boot: ESP-IDF v6.0-dev-896-g1bbf04cb4c 2nd stage bootloader[0m
+[0;32mI (5) boot: compile time Jun 29 2025 22:45:12[0m
+[0;32mI (6) boot: chip revision: v0.1[0m
+[0;32mI (6) boot: efuse block revision: v0.3[0m
+[0;32mI (10) boot.esp32c6: SPI Speed      : 80MHz[0m
+[0;32mI (14) boot.esp32c6: SPI Mode       : DIO[0m
+[0;32mI (17) boot.esp32c6: SPI Flash Size : 2MB[0m
+[0;32mI (21) boot: Enabling RNG early entropy source...[0m
+[0;32mI (26) boot: Partition Table:[0m
+[0;32mI (28) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (35) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (41) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (48) boot:  2 factory          factory app      00 00 00010000 00177000[0m
+[0;32mI (54) boot: End of partition table[0m
+[0;32mI (57) esp_image: segment 0: paddr=00010020 vaddr=420b8020 size=24c5ch (150620) map[0m
+[0;32mI (93) esp_image: segment 1: paddr=00034c84 vaddr=40800000 size=03394h ( 13204) load[0m
+[0;32mI (96) esp_image: segment 2: paddr=00038020 vaddr=42000020 size=b5d28h (744744) map[0m
+[0;32mI (234) esp_image: segment 3: paddr=000edd50 vaddr=40803394 size=128a4h ( 75940) load[0m
+[0;32mI (251) esp_image: segment 4: paddr=001005fc vaddr=40815c40 size=02728h ( 10024) load[0m
+[0;32mI (259) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (259) boot: Disabling RNG early entropy source...[0m
+[0;32mI (269) cpu_start: Unicore app[0m
+[0;32mI (278) cpu_start: Pro cpu start user code[0m
+[0;32mI (278) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (278) app_init: Application information:[0m
+[0;32mI (279) app_init: Project name:     eidon-glove[0m
+[0;32mI (282) app_init: App version:      8c13abb-dirty[0m
+[0;32mI (287) app_init: Compile time:     Jun 29 2025 22:45:36[0m
+[0;32mI (292) app_init: ELF file SHA256:  cfc31ca42...[0m
+[0;32mI (296) app_init: ESP-IDF:          v6.0-dev-896-g1bbf04cb4c[0m
+[0;32mI (301) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (305) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (309) efuse_init: Chip rev:         v0.1[0m
+[0;32mI (313) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (319) heap_init: At 4081C8D0 len 0005FD40 (383 KiB): RAM[0m
+[0;32mI (324) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+[0;32mI (330) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM[0m
+[0;32mI (336) spi_flash: detected chip: generic[0m
+[0;32mI (339) spi_flash: flash io: dio[0m
+[0;33mW (342) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (354) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (364) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (370) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (376) coexist: coex firmware version: 831ec70[0m
+[0;32mI (381) coexist: coexist rom version 5b8dcfa[0m
+[0;32mI (385) main_task: Started on CPU0[0m
+[0;32mI (385) main_task: Calling app_main()[0m
+[0;32mI (385) HID_DEV_DEMO: app_main() started[0m
+[0;32mI (385) HID_DEV_DEMO: Initializing NVS...[0m
+[0;32mI (405) HID_DEV_DEMO: setting hid gap, mode:1[0m
+[0;32mI (405) BLE_INIT: Using main XTAL as clock source, chip ver: 1[0m
+[0;32mI (405) BLE_INIT: ble controller commit:[35fe65f][0m
+[0;32mI (415) BLE_INIT: Bluetooth MAC: e4:b3:23:ac:d4:da[0m
+[0;32mI (415) phy_init: phy_version 331,5b89037,Mar  3 2025,16:01:12[0m
+[0;32mI (495) phy: libbtbb version: ec2ecba, Mar  3 2025, 16:01:27[0m
+[0;32mI (515) ESP_HID_GAP: BLE GAP ADV_DATA_SET_COMPLETE: status = 0[0m
+[0;32mI (515) HID_DEV_DEMO: setting ble device[0m
+[0;32mI (515) HID_DEV_BLE: START[0m
+[0;32mI (515) ESP_HID_GAP: Device MAC: E4:B3:23:AC:D4:DA (type: 0)[0m
+[0;32mI (515) ESP_HID_GAP: Starting BLE advertising...[0m
+[0;32mI (525) ESP_HID_GAP: BLE GAP ADV_START_COMPLETE: status = 0[0m
+[0;32mI (525) ESP_HID_GAP: Device is now discoverable and advertising![0m
+[0;32mI (525) HID_DEV_DEMO: Starting BNO085 test task[0m
+[0;32mI (535) HID_DEV_DEMO: Starting BNO085 test task (monitor output only)[0m
+[0;32mI (545) HID_DEV_DEMO: Waiting 2 seconds for system stabilization...[0m
+[0;32mI (545) ESP_HID_GAP: BLE advertising started successfully[0m
+[0;32mI (555) main_task: Returned from app_main()[0m
+[0;32mI (1045) HID_DEV_BLE: CONNECT[0m
+[0;32mI (1055) HID_DEV_DEMO: ble_hid_task_start_up called[0m
+[0;32mI (1055) HID_DEV_DEMO: Creating media demo task[0m
+[0;32mI (1055) HID_DEV_DEMO: Media task started[0m
+[0;32mI (1055) HID_DEV_DEMO: Send the volume (loop 1)[0m
+[0;32mI (1525) ESP_HID_GAP: BLE GAP AUTH SUCCESS[0m
+[0;32mI (1525) HID_DEV_DEMO: ble_hid_task_start_up called[0m
+[0;32mI (1525) HID_DEV_DEMO: Task already exists[0m
+[0;32mI (2545) HID_DEV_DEMO: Initializing BNO085 on I2C addr 0x4B, SDA=20, SCL=18[0m
+[0;32mI (2545) HID_DEV_DEMO: BNO085 init attempt 1/10[0m
+[0;32mI (2545) BNO085: Initializing BNO085...[0m
+[0;32mI (2545) BNO085: Configuring I2C: port=0, SDA=20, SCL=18, freq=100000[0m
+[0;32mI (2545) BNO085: Calling i2c_param_config...[0m
+[0;32mI (2555) BNO085: Calling i2c_driver_install...[0m
+[0;32mI (2555) BNO085: I2C driver installed successfully[0m
+[0;32mI (2565) BNO085: Waiting for BNO085 to stabilize...[0m
+[0;32mI (2665) BNO085: Scanning I2C bus for devices...[0m
+[0;33mW (2675) BNO085: No I2C devices found on bus![0m
+[0;33mW (2675) BNO085: Please check:[0m
+[0;33mW (2675) BNO085:   - Power connections (3.3V and GND)[0m
+[0;33mW (2675) BNO085:   - I2C connections (SDA=20, SCL=18)[0m
+[0;33mW (2685) BNO085:   - Pull-up resistors (2.2k-10k on SDA and SCL)[0m
+[0;32mI (2695) BNO085: Waiting for BNO085 to boot...[0m
+[0;32mI (3155) HID_DEV_DEMO: Send the volume (loop 2)[0m
+[0;32mI (3195) BNO085: Testing basic I2C ACK from BNO085 at address 0x4B[0m
+[1;31mE (3195) BNO085: No ACK from BNO085: ESP_FAIL[0m
+[1;31mE (3195) BNO085: Check wiring: SDA=20, SCL=18, I2C_ADDR=0x4B[0m
+[0;33mW (3195) HID_DEV_DEMO: BNO085 init failed (attempt 1): ESP_FAIL[0m
+[0;32mI (3205) BNO085: Deinitializing BNO085...[0m
+[0;32mI (3205) HID_DEV_DEMO: Waiting 500ms before retry...[0m
+[0;32mI (3705) HID_DEV_DEMO: BNO085 init attempt 2/10[0m
+[0;32mI (3705) BNO085: Initializing BNO085...[0m
+[0;32mI (3705) BNO085: Configuring I2C: port=0, SDA=20, SCL=18, freq=100000[0m
+[0;32mI (3705) BNO085: Calling i2c_param_config...[0m
+[0;32mI (3705) BNO085: Calling i2c_driver_install...[0m
+[0;32mI (3715) BNO085: I2C driver installed successfully[0m
+[0;32mI (3715) BNO085: Waiting for BNO085 to stabilize...[0m
+[0;32mI (3825) BNO085: Scanning I2C bus for devices...[0m
+[0;33mW (3835) BNO085: No I2C devices found on bus![0m
+[0;33mW (3835) BNO085: Please check:[0m
+[0;33mW (3835) BNO085:   - Power connections (3.3V and GND)[0m
+[0;33mW (3835) BNO085:   - I2C connections (SDA=20, SCL=18)[0m
+[0;33mW (3845) BNO085:   - Pull-up resistors (2.2k-10k on SDA and SCL)[0m
+[0;32mI (3855) BNO085: Waiting for BNO085 to boot...[0m
+[0;32mI (4355) BNO085: Testing basic I2C ACK from BNO085 at address 0x4B[0m
+[1;31mE (4355) BNO085: No ACK from BNO085: ESP_FAIL[0m
+[1;31mE (4355) BNO085: Check wiring: SDA=20, SCL=18, I2C_ADDR=0x4B[0m
+[0;33mW (4355) HID_DEV_DEMO: BNO085 init failed (attempt 2): ESP_FAIL[0m
+[0;32mI (4365) BNO085: Deinitializing BNO085...[0m
+[0;32mI (4365) HID_DEV_DEMO: Waiting 500ms before retry...[0m
+[0;32mI (4865) HID_DEV_DEMO: BNO085 init attempt 3/10[0m
+[0;32mI (4865) BNO085: Initializing BNO085...[0m
+[0;32mI (4865) BNO085: Configuring I2C: port=0, SDA=20, SCL=18, freq=100000[0m
+[0;32mI (4865) BNO085: Calling i2c_param_config...[0m
+[0;32mI (4865) BNO085: Calling i2c_driver_install...[0m
+[0;32mI (4875) BNO085: I2C driver installed successfully[0m
+[0;32mI (4875) BNO085: Waiting for BNO085 to stabilize...[0m
+[0;32mI (4985) BNO085: Scanning I2C bus for devices...[0m
+[0;33mW (4995) BNO085: No I2C devices found on bus![0m
+[0;33mW (4995) BNO085: Please check:[0m
+[0;33mW (4995) BNO085:   - Power connections (3.3V and GND)[0m
+[0;33mW (4995) BNO085:   - I2C connections (SDA=20, SCL=18)[0m
+[0;33mW (5005) BNO085:   - Pull-up resistors (2.2k-10k on SDA and SCL)[0m
+[0;32mI (5015) BNO085: Waiting for BNO085 to boot...[0m
+[0;32mI (5255) HID_DEV_DEMO: Send the volume (loop 3)[0m
+[0;32mI (5515) BNO085: Testing basic I2C ACK from BNO085 at address 0x4B[0m
+[1;31mE (5515) BNO085: No ACK from BNO085: ESP_FAIL[0m
+[1;31mE (5515) BNO085: Check wiring: SDA=20, SCL=18, I2C_ADDR=0x4B[0m
+[0;33mW (5515) HID_DEV_DEMO: BNO085 init failed (attempt 3): ESP_FAIL[0m
+[0;32mI (5525) BNO085: Deinitializing BNO085...[0m
+[0;32mI (5525) HID_DEV_DEMO: Waiting 500ms before retry...[0m
+[0;32mI (6025) HID_DEV_DEMO: BNO085 init attempt 4/10[0m
+[0;32mI (6025) BNO085: Initializing BNO085...[0m
+[0;32mI (6025) BNO085: Configuring I2C: port=0, SDA=20, SCL=18, freq=100000[0m
+[0;32mI (6025) BNO085: Calling i2c_param_config...[0m
+[0;32mI (6025) BNO085: Calling i2c_driver_install...[0m
+[0;32mI (6035) BNO085: I2C driver installed successfully[0m
+[0;32mI (6035) BNO085: Waiting for BNO085 to stabilize...[0m
+[0;32mI (6145) BNO085: Scanning I2C bus for devices...[0m
+[0;33mW (6155) BNO085: No I2C devices found on bus![0m
+[0;33mW (6155) BNO085: Please check:[0m
+[0;33mW (6155) BNO085:   - Power connections (3.3V and GND)[0m
+[0;33mW (6155) BNO085:   - I2C connections (SDA=20, SCL=18)[0m
+[0;33mW (6165) BNO085:   - Pull-up resistors (2.2k-10k on SDA and SCL)[0m
+[0;32mI (6175) BNO085: Waiting for BNO085 to boot...[0m
+[0;32mI (6675) BNO085: Testing basic I2C ACK from BNO085 at address 0x4B[0m
+[1;31mE (6675) BNO085: No ACK from BNO085: ESP_FAIL[0m
+[1;31mE (6675) BNO085: Check wiring: SDA=20, SCL=18, I2C_ADDR=0x4B[0m
+[0;33mW (6675) HID_DEV_DEMO: BNO085 init failed (attempt 4): ESP_FAIL[0m
+[0;32mI (6685) BNO085: Deinitializing BNO085...[0m
+[0;32mI (6685) HID_DEV_DEMO: Waiting 500ms before retry...[0m
+[0;32mI (7185) HID_DEV_DEMO: BNO085 init attempt 5/10[0m
+[0;32mI (7185) BNO085: Initializing BNO085...[0m
+[0;32mI (7185) BNO085: Configuring I2C: port=0, SDA=20, SCL=18, freq=100000[0m
+[0;32mI (7185) BNO085: Calling i2c_param_config...[0m
+[0;32mI (7185) BNO085: Calling i2c_driver_install...[0m
+[0;32mI (7195) BNO085: I2C driver installed successfully[0m
+[0;32mI (7195) BNO085: Waiting for BNO085 to stabilize...[0m
+[0;32mI (7305) BNO085: Scanning I2C bus for devices...[0m
+[0;33mW (7315) BNO085: No I2C devices found on bus![0m
+[0;33mW (7315) BNO085: Please check:[0m
+[0;33mW (7315) BNO085:   - Power connections (3.3V and GND)[0m
+[0;33mW (7315) BNO085:   - I2C connections (SDA=20, SCL=18)[0m
+[0;33mW (7325) BNO085:   - Pull-up resistors (2.2k-10k on SDA and SCL)[0m
+[0;32mI (7335) BNO085: Waiting for BNO085 to boot...[0m
+[0;32mI (7355) HID_DEV_DEMO: Send the volume (loop 4)[0m
+[0;32mI (7835) BNO085: Testing basic I2C ACK from BNO085 at address 0x4B[0m
+[1;31mE (7835) BNO085: No ACK from BNO085: ESP_FAIL[0m
+[1;31mE (7835) BNO085: Check wiring: SDA=20, SCL=18, I2C_ADDR=0x4B[0m
+[0;33mW (7835) HID_DEV_DEMO: BNO085 init failed (attempt 5): ESP_FAIL[0m
+[0;32mI (7845) BNO085: Deinitializing BNO085...[0m
+[0;32mI (7845) HID_DEV_DEMO: Waiting 500ms before retry...[0m
+[0;32mI (8345) HID_DEV_DEMO: BNO085 init attempt 6/10[0m
+[0;32mI (8345) BNO085: Initializing BNO085...[0m
+[0;32mI (8345) BNO085: Configuring I2C: port=0, SDA=20, SCL=18, freq=100000[0m
+[0;32mI (8345) BNO085: Calling i2c_param_config...[0m
+[0;32mI (8345) BNO085: Calling i2c_driver_install...[0m
+[0;32mI (8355) BNO085: I2C driver installed successfully[0m
+[0;32mI (8355) BNO085: Waiting for BNO085 to stabilize...[0m
+[0;32mI (8465) BNO085: Scanning I2C bus for devices...[0m
+[0;33mW (8475) BNO085: No I2C devices found on bus![0m
+[0;33mW (8475) BNO085: Please check:[0m
+[0;33mW (8475) BNO085:   - Power connections (3.3V and GND)[0m
+[0;33mW (8475) BNO085:   - I2C connections (SDA=20, SCL=18)[0m
+[0;33mW (8485) BNO085:   - Pull-up resistors (2.2k-10k on SDA and SCL)[0m
+[0;32mI (8495) BNO085: Waiting for BNO085 to boot...[0m
+[0;32mI (8995) BNO085: Testing basic I2C ACK from BNO085 at address 0x4B[0m
+[1;31mE (8995) BNO085: No ACK from BNO085: ESP_FAIL[0m
+[1;31mE (8995) BNO085: Check wiring: SDA=20, SCL=18, I2C_ADDR=0x4B[0m
+[0;33mW (8995) HID_DEV_DEMO: BNO085 init failed (attempt 6): ESP_FAIL[0m
+[0;32mI (9005) BNO085: Deinitializing BNO085...[0m
+[0;32mI (9005) HID_DEV_DEMO: Waiting 500ms before retry...[0m
+[0;32mI (9455) HID_DEV_DEMO: Send the volume (loop 5)[0m
+[0;32mI (9505) HID_DEV_DEMO: BNO085 init attempt 7/10[0m
+[0;32mI (9505) BNO085: Initializing BNO085...[0m
+[0;32mI (9505) BNO085: Configuring I2C: port=0, SDA=20, SCL=18, freq=100000[0m
+[0;32mI (9505) BNO085: Calling i2c_param_config...[0m
+[0;32mI (9505) BNO085: Calling i2c_driver_install...[0m
+[0;32mI (9515) BNO085: I2C driver installed successfully[0m
+[0;32mI (9515) BNO085: Waiting for BNO085 to stabilize...[0m
+[0;32mI (9625) BNO085: Scanning I2C bus for devices...[0m
+[0;33mW (9635) BNO085: No I2C devices found on bus![0m
+[0;33mW (9635) BNO085: Please check:[0m
+[0;33mW (9635) BNO085:   - Power connections (3.3V and GND)[0m
+[0;33mW (9635) BNO085:   - I2C connections (SDA=20, SCL=18)[0m
+[0;33mW (9645) BNO085:   - Pull-up resistors (2.2k-10k on SDA and SCL)[0m
+[0;32mI (9655) BNO085: Waiting for BNO085 to boot...[0m
+[0;32mI (10155) BNO085: Testing basic I2C ACK from BNO085 at address 0x4B[0m
+[1;31mE (10155) BNO085: No ACK from BNO085: ESP_FAIL[0m
+[1;31mE (10155) BNO085: Check wiring: SDA=20, SCL=18, I2C_ADDR=0x4B[0m
+[0;33mW (10155) HID_DEV_DEMO: BNO085 init failed (attempt 7): ESP_FAIL[0m
+[0;32mI (10165) BNO085: Deinitializing BNO085...[0m
+[0;32mI (10165) HID_DEV_DEMO: Waiting 500ms before retry...[0m
+[0;32mI (10665) HID_DEV_DEMO: BNO085 init attempt 8/10[0m
+[0;32mI (10665) BNO085: Initializing BNO085...[0m
+[0;32mI (10665) BNO085: Configuring I2C: port=0, SDA=20, SCL=18, freq=100000[0m
+[0;32mI (10665) BNO085: Calling i2c_param_config...[0m
+[0;32mI (10665) BNO085: Calling i2c_driver_install...[0m
+[0;32mI (10675) BNO085: I2C driver installed successfully[0m
+[0;32mI (10675) BNO085: Waiting for BNO085 to stabilize...[0m
+[0;32mI (10785) BNO085: Scanning I2C bus for devices...[0m
+[0;33mW (10795) BNO085: No I2C devices found on bus![0m
+[0;33mW (10795) BNO085: Please check:[0m
+[0;33mW (10795) BNO085:   - Power connections (3.3V and GND)[0m
+[0;33mW (10805) BNO085:   - I2C connections (SDA=20, SCL=18)[0m
+[0;33mW (10805) BNO085:   - Pull-up resistors (2.2k-10k on SDA and SCL)[0m
+[0;32mI (10815) BNO085: Waiting for BNO085 to boot...[0m
+[0;32mI (11315) BNO085: Testing basic I2C ACK from BNO085 at address 0x4B[0m
+[1;31mE (11315) BNO085: No ACK from BNO085: ESP_FAIL[0m
+[1;31mE (11315) BNO085: Check wiring: SDA=20, SCL=18, I2C_ADDR=0x4B[0m
+[0;33mW (11315) HID_DEV_DEMO: BNO085 init failed (attempt 8): ESP_FAIL[0m
+[0;32mI (11325) BNO085: Deinitializing BNO085...[0m
+[0;32mI (11325) HID_DEV_DEMO: Waiting 500ms before retry...[0m
+[0;32mI (11555) HID_DEV_DEMO: Send the volume (loop 6)[0m
+[0;32mI (11825) HID_DEV_DEMO: BNO085 init attempt 9/10[0m
+[0;32mI (11825) BNO085: Initializing BNO085...[0m
+[0;32mI (11825) BNO085: Configuring I2C: port=0, SDA=20, SCL=18, freq=100000[0m
+[0;32mI (11825) BNO085: Calling i2c_param_config...[0m
+[0;32mI (11825) BNO085: Calling i2c_driver_install...[0m
+[0;32mI (11835) BNO085: I2C driver installed successfully[0m
+[0;32mI (11835) BNO085: Waiting for BNO085 to stabilize...[0m
+[0;32mI (11945) BNO085: Scanning I2C bus for devices...[0m
+[0;33mW (11955) BNO085: No I2C devices found on bus![0m
+[0;33mW (11955) BNO085: Please check:[0m
+[0;33mW (11955) BNO085:   - Power connections (3.3V and GND)[0m
+[0;33mW (11965) BNO085:   - I2C connections (SDA=20, SCL=18)[0m
+[0;33mW (11965) BNO085:   - Pull-up resistors (2.2k-10k on SDA and SCL)[0m
+[0;32mI (11975) BNO085: Waiting for BNO085 to boot...[0m
+[0;32mI (12475) BNO085: Testing basic I2C ACK from BNO085 at address 0x4B[0m
+[1;31mE (12475) BNO085: No ACK from BNO085: ESP_FAIL[0m
+[1;31mE (12475) BNO085: Check wiring: SDA=20, SCL=18, I2C_ADDR=0x4B[0m
+[0;33mW (12475) HID_DEV_DEMO: BNO085 init failed (attempt 9): ESP_FAIL[0m
+[0;32mI (12485) BNO085: Deinitializing BNO085...[0m
+[0;32mI (12485) HID_DEV_DEMO: Waiting 500ms before retry...[0m
+[0;32mI (12985) HID_DEV_DEMO: BNO085 init attempt 10/10[0m
+[0;32mI (12985) BNO085: Initializing BNO085...[0m
+[0;32mI (12985) BNO085: Configuring I2C: port=0, SDA=20, SCL=18, freq=100000[0m
+[0;32mI (12985) BNO085: Calling i2c_param_config...[0m
+[0;32mI (12985) BNO085: Calling i2c_driver_install...[0m
+[0;32mI (12995) BNO085: I2C driver installed successfully[0m
+[0;32mI (12995) BNO085: Waiting for BNO085 to stabilize...[0m
+[0;32mI (13105) BNO085: Scanning I2C bus for devices...[0m
+[0;33mW (13115) BNO085: No I2C devices found on bus![0m
+[0;33mW (13115) BNO085: Please check:[0m
+[0;33mW (13115) BNO085:   - Power connections (3.3V and GND)[0m
+[0;33mW (13125) BNO085:   - I2C connections (SDA=20, SCL=18)[0m
+[0;33mW (13125) BNO085:   - Pull-up resistors (2.2k-10k on SDA and SCL)[0m
+[0;32mI (13135) BNO085: Waiting for BNO085 to boot...[0m
+[0;32mI (13635) BNO085: Testing basic I2C ACK from BNO085 at address 0x4B[0m
+[1;31mE (13635) BNO085: No ACK from BNO085: ESP_FAIL[0m
+[1;31mE (13635) BNO085: Check wiring: SDA=20, SCL=18, I2C_ADDR=0x4B[0m
+[0;33mW (13635) HID_DEV_DEMO: BNO085 init failed (attempt 10): ESP_FAIL[0m
+[1;31mE (13645) HID_DEV_DEMO: Failed to initialize BNO085 after 10 attempts[0m
+[0;33mW (13645) HID_DEV_DEMO: Running in demo mode without BNO085[0m
+[0;32mI (13655) HID_DEV_DEMO: Send the volume (loop 7)[0m
+[0;32mI (13655) HID_DEV_DEMO: Demo Quat[1]: w=1.000, x=0.000, y=0.000, z=0.005[0m
+[0;32mI (13765) HID_DEV_DEMO: Demo Quat[2]: w=1.000, x=0.000, y=0.000, z=0.010[0m
+[0;32mI (13865) HID_DEV_DEMO: Demo Quat[3]: w=1.000, x=0.000, y=0.000, z=0.015[0m
+[0;32mI (13965) HID_DEV_DEMO: Demo Quat[4]: w=1.000, x=0.000, y=0.000, z=0.020[0m
+[0;32mI (14065) HID_DEV_DEMO: Demo Quat[5]: w=1.000, x=0.000, y=0.000, z=0.025[0m
+[0;32mI (14165) HID_DEV_DEMO: Demo Quat[6]: w=1.000, x=0.000, y=0.000, z=0.030[0m
+[0;32mI (14265) HID_DEV_DEMO: Demo Quat[7]: w=0.999, x=0.000, y=0.000, z=0.035[0m
+[0;32mI (14365) HID_DEV_DEMO: Demo Quat[8]: w=0.999, x=0.000, y=0.000, z=0.040[0m
+[0;32mI (14465) HID_DEV_DEMO: Demo Quat[9]: w=0.999, x=0.000, y=0.000, z=0.045[0m
+[0;32mI (14565) HID_DEV_DEMO: Demo Quat[10]: w=0.999, x=0.000, y=0.000, z=0.050[0m
+[0;32mI (14665) HID_DEV_DEMO: Demo Quat[11]: w=0.998, x=0.000, y=0.000, z=0.055[0m
+[0;32mI (14765) HID_DEV_DEMO: Demo Quat[12]: w=0.998, x=0.000, y=0.000, z=0.060[0m
+[0;32mI (14865) HID_DEV_DEMO: Demo Quat[13]: w=0.998, x=0.000, y=0.000, z=0.065[0m
+[0;32mI (14965) HID_DEV_DEMO: Demo Quat[14]: w=0.998, x=0.000, y=0.000, z=0.070[0m
+[0;32mI (15065) HID_DEV_DEMO: Demo Quat[15]: w=0.997, x=0.000, y=0.000, z=0.075[0m
+[0;32mI (15165) HID_DEV_DEMO: Demo Quat[16]: w=0.997, x=0.000, y=0.000, z=0.080[0m
+[0;32mI (15265) HID_DEV_DEMO: Demo Quat[17]: w=0.996, x=0.000, y=0.000, z=0.085[0m
+[0;32mI (15365) HID_DEV_DEMO: Demo Quat[18]: w=0.996, x=0.000, y=0.000, z=0.090[0m
+[0;32mI (15465) HID_DEV_DEMO: Demo Quat[19]: w=0.995, x=0.000, y=0.000, z=0.095[0m
+[0;32mI (15565) HID_DEV_DEMO: Demo Quat[20]: w=0.995, x=0.000, y=0.000, z=0.100[0m
+[0;32mI (15665) HID_DEV_DEMO: Demo Quat[21]: w=0.994, x=0.000, y=0.000, z=0.105[0m
+[0;32mI (15755) HID_DEV_DEMO: Send the volume (loop 8)[0m
+[0;32mI (15765) HID_DEV_DEMO: Demo Quat[22]: w=0.994, x=0.000, y=0.000, z=0.110[0m
+[0;32mI (15865) HID_DEV_DEMO: Demo Quat[23]: w=0.993, x=0.000, y=0.000, z=0.115[0m
+[0;32mI (15965) HID_DEV_DEMO: Demo Quat[24]: w=0.993, x=0.000, y=0.000, z=0.120[0m
+[0;32mI (16065) HID_DEV_DEMO: Demo Quat[25]: w=0.992, x=0.000, y=0.000, z=0.125[0m
+[0;32mI (16165) HID_DEV_DEMO: Demo Quat[26]: w=0.992, x=0.000, y=0.000, z=0.130[0m
+[0;32mI (16265) HID_DEV_DEMO: Demo Quat[27]: w=0.991, x=0.000, y=0.000, z=0.135[0m
+[0;32mI (16365) HID_DEV_DEMO: Demo Quat[28]: w=0.990, x=0.000, y=0.000, z=0.140[0m
+[0;32mI (16465) HID_DEV_DEMO: Demo Quat[29]: w=0.990, x=0.000, y=0.000, z=0.144[0m
+[0;32mI (16565) HID_DEV_DEMO: Demo Quat[30]: w=0.989, x=0.000, y=0.000, z=0.149[0m
+[0;32mI (16665) HID_DEV_DEMO: Demo Quat[31]: w=0.988, x=0.000, y=0.000, z=0.154[0m
+[0;32mI (16765) HID_DEV_DEMO: Demo Quat[32]: w=0.987, x=0.000, y=0.000, z=0.159[0m
+[0;32mI (16865) HID_DEV_DEMO: Demo Quat[33]: w=0.986, x=0.000, y=0.000, z=0.164[0m
+[0;32mI (16965) HID_DEV_DEMO: Demo Quat[34]: w=0.986, x=0.000, y=0.000, z=0.169[0m
+[0;32mI (17065) HID_DEV_DEMO: Demo Quat[35]: w=0.985, x=0.000, y=0.000, z=0.174[0m
+[0;32mI (17165) HID_DEV_DEMO: Demo Quat[36]: w=0.984, x=0.000, y=0.000, z=0.179[0m
+[0;32mI (17265) HID_DEV_DEMO: Demo Quat[37]: w=0.983, x=0.000, y=0.000, z=0.184[0m
+[0;32mI (17365) HID_DEV_DEMO: Demo Quat[38]: w=0.982, x=0.000, y=0.000, z=0.189[0m
+[0;32mI (17465) HID_DEV_DEMO: Demo Quat[39]: w=0.981, x=0.000, y=0.000, z=0.194[0m
+[0;32mI (17565) HID_DEV_DEMO: Demo Quat[40]: w=0.980, x=0.000, y=0.000, z=0.199[0m
+[0;32mI (17665) HID_DEV_DEMO: Demo Quat[41]: w=0.979, x=0.000, y=0.000, z=0.204[0m
+[0;32mI (17765) HID_DEV_DEMO: Demo Quat[42]: w=0.978, x=0.000, y=0.000, z=0.208[0m
+[0;32mI (17855) HID_DEV_DEMO: Send the volume (loop 9)[0m
+[0;32mI (17865) HID_DEV_DEMO: Demo Quat[43]: w=0.977, x=0.000, y=0.000, z=0.213[0m
+[0;32mI (17965) HID_DEV_DEMO: Demo Quat[44]: w=0.976, x=0.000, y=0.000, z=0.218[0m
+[0;32mI (18065) HID_DEV_DEMO: Demo Quat[45]: w=0.975, x=0.000, y=0.000, z=0.223[0m
+[0;32mI (18165) HID_DEV_DEMO: Demo Quat[46]: w=0.974, x=0.000, y=0.000, z=0.228[0m
+[0;32mI (18265) HID_DEV_DEMO: Demo Quat[47]: w=0.973, x=0.000, y=0.000, z=0.233[0m
+[0;32mI (18365) HID_DEV_DEMO: Demo Quat[48]: w=0.971, x=0.000, y=0.000, z=0.238[0m
+[0;32mI (18465) HID_DEV_DEMO: Demo Quat[49]: w=0.970, x=0.000, y=0.000, z=0.243[0m
+[0;32mI (18565) HID_DEV_DEMO: Demo Quat[50]: w=0.969, x=0.000, y=0.000, z=0.247[0m
+[0;32mI (18665) HID_DEV_DEMO: Demo Quat[51]: w=0.968, x=0.000, y=0.000, z=0.252[0m
+[0;32mI (18765) HID_DEV_DEMO: Demo Quat[52]: w=0.966, x=0.000, y=0.000, z=0.257[0m
+[0;32mI (18865) HID_DEV_DEMO: Demo Quat[53]: w=0.965, x=0.000, y=0.000, z=0.262[0m
+[0;32mI (18965) HID_DEV_DEMO: Demo Quat[54]: w=0.964, x=0.000, y=0.000, z=0.267[0m
+[0;32mI (19065) HID_DEV_DEMO: Demo Quat[55]: w=0.962, x=0.000, y=0.000, z=0.272[0m
+[0;32mI (19165) HID_DEV_DEMO: Demo Quat[56]: w=0.961, x=0.000, y=0.000, z=0.276[0m
+[0;32mI (19265) HID_DEV_DEMO: Demo Quat[57]: w=0.960, x=0.000, y=0.000, z=0.281[0m
+[0;32mI (19365) HID_DEV_DEMO: Demo Quat[58]: w=0.958, x=0.000, y=0.000, z=0.286[0m
+[0;32mI (19465) HID_DEV_DEMO: Demo Quat[59]: w=0.957, x=0.000, y=0.000, z=0.291[0m
+[0;32mI (19565) HID_DEV_DEMO: Demo Quat[60]: w=0.955, x=0.000, y=0.000, z=0.296[0m
+[0;32mI (19665) HID_DEV_DEMO: Demo Quat[61]: w=0.954, x=0.000, y=0.000, z=0.300[0m
+[0;32mI (19765) HID_DEV_DEMO: Demo Quat[62]: w=0.952, x=0.000, y=0.000, z=0.305[0m
+[0;32mI (19865) HID_DEV_DEMO: Demo Quat[63]: w=0.951, x=0.000, y=0.000, z=0.310[0m
+[0;32mI (19955) HID_DEV_DEMO: Send the volume (loop 10)[0m
+[0;32mI (19965) HID_DEV_DEMO: Demo Quat[64]: w=0.949, x=0.000, y=0.000, z=0.315[0m
+[0;32mI (20065) HID_DEV_DEMO: Demo Quat[65]: w=0.948, x=0.000, y=0.000, z=0.319[0m
+[0;32mI (20165) HID_DEV_DEMO: Demo Quat[66]: w=0.946, x=0.000, y=0.000, z=0.324[0m
+[0;32mI (20265) HID_DEV_DEMO: Demo Quat[67]: w=0.944, x=0.000, y=0.000, z=0.329[0m
+[0;32mI (20365) HID_DEV_DEMO: Demo Quat[68]: w=0.943, x=0.000, y=0.000, z=0.333[0m
+[0;32mI (20465) HID_DEV_DEMO: Demo Quat[69]: w=0.941, x=0.000, y=0.000, z=0.338[0m
+[0;32mI (20565) HID_DEV_DEMO: Demo Quat[70]: w=0.939, x=0.000, y=0.000, z=0.343[0m
+[0;32mI (20665) HID_DEV_DEMO: Demo Quat[71]: w=0.938, x=0.000, y=0.000, z=0.348[0m
+[0;32mI (20765) HID_DEV_DEMO: Demo Quat[72]: w=0.936, x=0.000, y=0.000, z=0.352[0m
+[0;32mI (20865) HID_DEV_DEMO: Demo Quat[73]: w=0.934, x=0.000, y=0.000, z=0.357[0m
+[0;32mI (20965) HID_DEV_DEMO: Demo Quat[74]: w=0.932, x=0.000, y=0.000, z=0.362[0m
+[0;32mI (21065) HID_DEV_DEMO: Demo Quat[75]: w=0.931, x=0.000, y=0.000, z=0.366[0m
+[0;32mI (21165) HID_DEV_DEMO: Demo Quat[76]: w=0.929, x=0.000, y=0.000, z=0.371[0m
+[0;32mI (21265) HID_DEV_DEMO: Demo Quat[77]: w=0.927, x=0.000, y=0.000, z=0.376[0m
+[0;32mI (21365) HID_DEV_DEMO: Demo Quat[78]: w=0.925, x=0.000, y=0.000, z=0.380[0m
+[0;32mI (21465) HID_DEV_DEMO: Demo Quat[79]: w=0.923, x=0.000, y=0.000, z=0.385[0m
+[0;32mI (21565) HID_DEV_DEMO: Demo Quat[80]: w=0.921, x=0.000, y=0.000, z=0.389[0m
+[0;32mI (21665) HID_DEV_DEMO: Demo Quat[81]: w=0.919, x=0.000, y=0.000, z=0.394[0m
+[0;32mI (21765) HID_DEV_DEMO: Demo Quat[82]: w=0.917, x=0.000, y=0.000, z=0.399[0m
+[0;32mI (21865) HID_DEV_DEMO: Demo Quat[83]: w=0.915, x=0.000, y=0.000, z=0.403[0m
+[0;32mI (21965) HID_DEV_DEMO: Demo Quat[84]: w=0.913, x=0.000, y=0.000, z=0.408[0m
+[0;32mI (22055) HID_DEV_DEMO: Send the volume (loop 11)[0m
+[0;32mI (22065) HID_DEV_DEMO: Demo Quat[85]: w=0.911, x=0.000, y=0.000, z=0.412[0m
+[0;32mI (22165) HID_DEV_DEMO: Demo Quat[86]: w=0.909, x=0.000, y=0.000, z=0.417[0m
+[0;32mI (22265) HID_DEV_DEMO: Demo Quat[87]: w=0.907, x=0.000, y=0.000, z=0.421[0m
+[0;32mI (22365) HID_DEV_DEMO: Demo Quat[88]: w=0.905, x=0.000, y=0.000, z=0.426[0m
+[0;32mI (22465) HID_DEV_DEMO: Demo Quat[89]: w=0.903, x=0.000, y=0.000, z=0.430[0m
+[0;32mI (22565) HID_DEV_DEMO: Demo Quat[90]: w=0.900, x=0.000, y=0.000, z=0.435[0m
+[0;32mI (22665) HID_DEV_DEMO: Demo Quat[91]: w=0.898, x=0.000, y=0.000, z=0.439[0m
+[0;32mI (22765) HID_DEV_DEMO: Demo Quat[92]: w=0.896, x=0.000, y=0.000, z=0.444[0m
+[0;32mI (22865) HID_DEV_DEMO: Demo Quat[93]: w=0.894, x=0.000, y=0.000, z=0.448[0m
+[0;32mI (22965) HID_DEV_DEMO: Demo Quat[94]: w=0.892, x=0.000, y=0.000, z=0.453[0m
+[0;32mI (23065) HID_DEV_DEMO: Demo Quat[95]: w=0.889, x=0.000, y=0.000, z=0.457[0m
+[0;32mI (23165) HID_DEV_DEMO: Demo Quat[96]: w=0.887, x=0.000, y=0.000, z=0.462[0m
+[0;32mI (23265) HID_DEV_DEMO: Demo Quat[97]: w=0.885, x=0.000, y=0.000, z=0.466[0m
+[0;32mI (23365) HID_DEV_DEMO: Demo Quat[98]: w=0.882, x=0.000, y=0.000, z=0.471[0m
+[0;32mI (23465) HID_DEV_DEMO: Demo Quat[99]: w=0.880, x=0.000, y=0.000, z=0.475[0m
+[0;32mI (23565) HID_DEV_DEMO: Demo Quat[100]: w=0.878, x=0.000, y=0.000, z=0.479[0m
+[0;32mI (23665) HID_DEV_DEMO: Demo Quat[101]: w=0.875, x=0.000, y=0.000, z=0.484[0m
+[0;32mI (23765) HID_DEV_DEMO: Demo Quat[102]: w=0.873, x=0.000, y=0.000, z=0.488[0m
+[0;32mI (23865) HID_DEV_DEMO: Demo Quat[103]: w=0.870, x=0.000, y=0.000, z=0.493[0m
+[0;32mI (23965) HID_DEV_DEMO: Demo Quat[104]: w=0.868, x=0.000, y=0.000, z=0.497[0m
+[0;32mI (24065) HID_DEV_DEMO: Demo Quat[105]: w=0.865, x=0.000, y=0.000, z=0.501[0m
+[0;32mI (24155) HID_DEV_DEMO: Send the volume (loop 12)[0m
+[0;32mI (24165) HID_DEV_DEMO: Demo Quat[106]: w=0.863, x=0.000, y=0.000, z=0.506[0m
+[0;32mI (24265) HID_DEV_DEMO: Demo Quat[107]: w=0.860, x=0.000, y=0.000, z=0.510[0m
+[0;32mI (24365) HID_DEV_DEMO: Demo Quat[108]: w=0.858, x=0.000, y=0.000, z=0.514[0m
+[0;32mI (24465) HID_DEV_DEMO: Demo Quat[109]: w=0.855, x=0.000, y=0.000, z=0.518[0m
+[0;32mI (24565) HID_DEV_DEMO: Demo Quat[110]: w=0.853, x=0.000, y=0.000, z=0.523[0m
+[0;32mI (24665) HID_DEV_DEMO: Demo Quat[111]: w=0.850, x=0.000, y=0.000, z=0.527[0m
+[0;32mI (24765) HID_DEV_DEMO: Demo Quat[112]: w=0.847, x=0.000, y=0.000, z=0.531[0m
+[0;32mI (24865) HID_DEV_DEMO: Demo Quat[113]: w=0.845, x=0.000, y=0.000, z=0.535[0m
+[0;32mI (24965) HID_DEV_DEMO: Demo Quat[114]: w=0.842, x=0.000, y=0.000, z=0.540[0m
+[0;32mI (25065) HID_DEV_DEMO: Demo Quat[115]: w=0.839, x=0.000, y=0.000, z=0.544[0m
+[0;32mI (25165) HID_DEV_DEMO: Demo Quat[116]: w=0.836, x=0.000, y=0.000, z=0.548[0m
+[0;32mI (25265) HID_DEV_DEMO: Demo Quat[117]: w=0.834, x=0.000, y=0.000, z=0.552[0m
+[0;32mI (25365) HID_DEV_DEMO: Demo Quat[118]: w=0.831, x=0.000, y=0.000, z=0.556[0m
+[0;32mI (25465) HID_DEV_DEMO: Demo Quat[119]: w=0.828, x=0.000, y=0.000, z=0.561[0m
+[0;32mI (25565) HID_DEV_DEMO: Demo Quat[120]: w=0.825, x=0.000, y=0.000, z=0.565[0m
+[0;32mI (25665) HID_DEV_DEMO: Demo Quat[121]: w=0.823, x=0.000, y=0.000, z=0.569[0m
+[0;32mI (25765) HID_DEV_DEMO: Demo Quat[122]: w=0.820, x=0.000, y=0.000, z=0.573[0m
+[0;32mI (25865) HID_DEV_DEMO: Demo Quat[123]: w=0.817, x=0.000, y=0.000, z=0.577[0m
+[0;32mI (25965) HID_DEV_DEMO: Demo Quat[124]: w=0.814, x=0.000, y=0.000, z=0.581[0m
+[0;32mI (26065) HID_DEV_DEMO: Demo Quat[125]: w=0.811, x=0.000, y=0.000, z=0.585[0m
+[0;32mI (26165) HID_DEV_DEMO: Demo Quat[126]: w=0.808, x=0.000, y=0.000, z=0.589[0m
+[0;32mI (26255) HID_DEV_DEMO: Send the volume (loop 13)[0m
+[0;32mI (26265) HID_DEV_DEMO: Demo Quat[127]: w=0.805, x=0.000, y=0.000, z=0.593[0m
+[0;32mI (26365) HID_DEV_DEMO: Demo Quat[128]: w=0.802, x=0.000, y=0.000, z=0.597[0m
+[0;32mI (26465) HID_DEV_DEMO: Demo Quat[129]: w=0.799, x=0.000, y=0.000, z=0.601[0m
+[0;32mI (26565) HID_DEV_DEMO: Demo Quat[130]: w=0.796, x=0.000, y=0.000, z=0.605[0m
+[0;32mI (26665) HID_DEV_DEMO: Demo Quat[131]: w=0.793, x=0.000, y=0.000, z=0.609[0m
+[0;32mI (26765) HID_DEV_DEMO: Demo Quat[132]: w=0.790, x=0.000, y=0.000, z=0.613[0m
+[0;32mI (26865) HID_DEV_DEMO: Demo Quat[133]: w=0.787, x=0.000, y=0.000, z=0.617[0m
+[0;32mI (26965) HID_DEV_DEMO: Demo Quat[134]: w=0.784, x=0.000, y=0.000, z=0.621[0m
+[0;32mI (27065) HID_DEV_DEMO: Demo Quat[135]: w=0.781, x=0.000, y=0.000, z=0.625[0m
+[0;32mI (27165) HID_DEV_DEMO: Demo Quat[136]: w=0.778, x=0.000, y=0.000, z=0.629[0m
+[0;32mI (27265) HID_DEV_DEMO: Demo Quat[137]: w=0.774, x=0.000, y=0.000, z=0.633[0m
+[0;32mI (27365) HID_DEV_DEMO: Demo Quat[138]: w=0.771, x=0.000, y=0.000, z=0.637[0m
+[0;32mI (27465) HID_DEV_DEMO: Demo Quat[139]: w=0.768, x=0.000, y=0.000, z=0.640[0m
+[0;32mI (27565) HID_DEV_DEMO: Demo Quat[140]: w=0.765, x=0.000, y=0.000, z=0.644[0m
+[0;32mI (27665) HID_DEV_DEMO: Demo Quat[141]: w=0.762, x=0.000, y=0.000, z=0.648[0m
+[0;32mI (27765) HID_DEV_DEMO: Demo Quat[142]: w=0.758, x=0.000, y=0.000, z=0.652[0m
+[0;32mI (27865) HID_DEV_DEMO: Demo Quat[143]: w=0.755, x=0.000, y=0.000, z=0.656[0m
+[0;32mI (27965) HID_DEV_DEMO: Demo Quat[144]: w=0.752, x=0.000, y=0.000, z=0.659[0m
+[0;32mI (28065) HID_DEV_DEMO: Demo Quat[145]: w=0.748, x=0.000, y=0.000, z=0.663[0m
+[0;32mI (28165) HID_DEV_DEMO: Demo Quat[146]: w=0.745, x=0.000, y=0.000, z=0.667[0m
+[0;32mI (28265) HID_DEV_DEMO: Demo Quat[147]: w=0.742, x=0.000, y=0.000, z=0.671[0m
+[0;32mI (28355) HID_DEV_DEMO: Send the volume (loop 14)[0m
+[0;32mI (28365) HID_DEV_DEMO: Demo Quat[148]: w=0.738, x=0.000, y=0.000, z=0.674[0m
+[0;32mI (28465) HID_DEV_DEMO: Demo Quat[149]: w=0.735, x=0.000, y=0.000, z=0.678[0m
+[0;32mI (28565) HID_DEV_DEMO: Demo Quat[150]: w=0.732, x=0.000, y=0.000, z=0.682[0m
+[0;32mI (28665) HID_DEV_DEMO: Demo Quat[151]: w=0.728, x=0.000, y=0.000, z=0.685[0m
+[0;32mI (28765) HID_DEV_DEMO: Demo Quat[152]: w=0.725, x=0.000, y=0.000, z=0.689[0m
+[0;32mI (28865) HID_DEV_DEMO: Demo Quat[153]: w=0.721, x=0.000, y=0.000, z=0.693[0m
+[0;32mI (28965) HID_DEV_DEMO: Demo Quat[154]: w=0.718, x=0.000, y=0.000, z=0.696[0m
+[0;32mI (29065) HID_DEV_DEMO: Demo Quat[155]: w=0.714, x=0.000, y=0.000, z=0.700[0m
+[0;32mI (29165) HID_DEV_DEMO: Demo Quat[156]: w=0.711, x=0.000, y=0.000, z=0.703[0m
+[0;32mI (29265) HID_DEV_DEMO: Demo Quat[157]: w=0.707, x=0.000, y=0.000, z=0.707[0m
+[0;32mI (29365) HID_DEV_DEMO: Demo Quat[158]: w=0.704, x=0.000, y=0.000, z=0.710[0m
+[0;32mI (29465) HID_DEV_DEMO: Demo Quat[159]: w=0.700, x=0.000, y=0.000, z=0.714[0m
+[0;32mI (29565) HID_DEV_DEMO: Demo Quat[160]: w=0.697, x=0.000, y=0.000, z=0.717[0m
+[0;32mI (29665) HID_DEV_DEMO: Demo Quat[161]: w=0.693, x=0.000, y=0.000, z=0.721[0m
+[0;32mI (29765) HID_DEV_DEMO: Demo Quat[162]: w=0.689, x=0.000, y=0.000, z=0.724[0m
+[0;32mI (29865) HID_DEV_DEMO: Demo Quat[163]: w=0.686, x=0.000, y=0.000, z=0.728[0m
+[0;32mI (29965) HID_DEV_DEMO: Demo Quat[164]: w=0.682, x=0.000, y=0.000, z=0.731[0m
+[0;32mI (30065) HID_DEV_DEMO: Demo Quat[165]: w=0.679, x=0.000, y=0.000, z=0.735[0m
+[0;32mI (30165) HID_DEV_DEMO: Demo Quat[166]: w=0.675, x=0.000, y=0.000, z=0.738[0m
+[0;32mI (30265) HID_DEV_DEMO: Demo Quat[167]: w=0.671, x=0.000, y=0.000, z=0.741[0m
+[0;32mI (30365) HID_DEV_DEMO: Demo Quat[168]: w=0.667, x=0.000, y=0.000, z=0.745[0m
+[0;32mI (30455) HID_DEV_DEMO: Send the volume (loop 15)[0m
+[0;32mI (30465) HID_DEV_DEMO: Demo Quat[169]: w=0.664, x=0.000, y=0.000, z=0.748[0m
+[0;32mI (30565) HID_DEV_DEMO: Demo Quat[170]: w=0.660, x=0.000, y=0.000, z=0.751[0m
+[0;32mI (30665) HID_DEV_DEMO: Demo Quat[171]: w=0.656, x=0.000, y=0.000, z=0.755[0m
+[0;32mI (30765) HID_DEV_DEMO: Demo Quat[172]: w=0.652, x=0.000, y=0.000, z=0.758[0m
+[0;32mI (30865) HID_DEV_DEMO: Demo Quat[173]: w=0.649, x=0.000, y=0.000, z=0.761[0m
+[0;32mI (30965) HID_DEV_DEMO: Demo Quat[174]: w=0.645, x=0.000, y=0.000, z=0.764[0m
+[0;32mI (31065) HID_DEV_DEMO: Demo Quat[175]: w=0.641, x=0.000, y=0.000, z=0.768[0m
+[0;32mI (31165) HID_DEV_DEMO: Demo Quat[176]: w=0.637, x=0.000, y=0.000, z=0.771[0m
+[0;32mI (31265) HID_DEV_DEMO: Demo Quat[177]: w=0.633, x=0.000, y=0.000, z=0.774[0m
+[0;32mI (31365) HID_DEV_DEMO: Demo Quat[178]: w=0.629, x=0.000, y=0.000, z=0.777[0m
+[0;32mI (31465) HID_DEV_DEMO: Demo Quat[179]: w=0.626, x=0.000, y=0.000, z=0.780[0m
+[0;32mI (31565) HID_DEV_DEMO: Demo Quat[180]: w=0.622, x=0.000, y=0.000, z=0.783[0m
+[0;32mI (31665) HID_DEV_DEMO: Demo Quat[181]: w=0.618, x=0.000, y=0.000, z=0.786[0m
+[0;32mI (31765) HID_DEV_DEMO: Demo Quat[182]: w=0.614, x=0.000, y=0.000, z=0.790[0m
+[0;32mI (31865) HID_DEV_DEMO: Demo Quat[183]: w=0.610, x=0.000, y=0.000, z=0.793[0m
+[0;32mI (31965) HID_DEV_DEMO: Demo Quat[184]: w=0.606, x=0.000, y=0.000, z=0.796[0m
+[0;32mI (32065) HID_DEV_DEMO: Demo Quat[185]: w=0.602, x=0.000, y=0.000, z=0.799[0m
+[0;32mI (32165) HID_DEV_DEMO: Demo Quat[186]: w=0.598, x=0.000, y=0.000, z=0.802[0m
+[0;32mI (32265) HID_DEV_DEMO: Demo Quat[187]: w=0.594, x=0.000, y=0.000, z=0.805[0m
+[0;32mI (32365) HID_DEV_DEMO: Demo Quat[188]: w=0.590, x=0.000, y=0.000, z=0.808[0m
+[0;32mI (32465) HID_DEV_DEMO: Demo Quat[189]: w=0.586, x=0.000, y=0.000, z=0.810[0m
+[0;32mI (32555) HID_DEV_DEMO: Send the volume (loop 16)[0m
+[0;32mI (32565) HID_DEV_DEMO: Demo Quat[190]: w=0.582, x=0.000, y=0.000, z=0.813[0m
+[0;32mI (32665) HID_DEV_DEMO: Demo Quat[191]: w=0.578, x=0.000, y=0.000, z=0.816[0m
+[0;32mI (32765) HID_DEV_DEMO: Demo Quat[192]: w=0.574, x=0.000, y=0.000, z=0.819[0m
+[0;32mI (32865) HID_DEV_DEMO: Demo Quat[193]: w=0.569, x=0.000, y=0.000, z=0.822[0m
+[0;32mI (32965) HID_DEV_DEMO: Demo Quat[194]: w=0.565, x=0.000, y=0.000, z=0.825[0m
+[0;32mI (33065) HID_DEV_DEMO: Demo Quat[195]: w=0.561, x=0.000, y=0.000, z=0.828[0m
+[0;32mI (33165) HID_DEV_DEMO: Demo Quat[196]: w=0.557, x=0.000, y=0.000, z=0.830[0m
+[0;32mI (33265) HID_DEV_DEMO: Demo Quat[197]: w=0.553, x=0.000, y=0.000, z=0.833[0m
+[0;32mI (33365) HID_DEV_DEMO: Demo Quat[198]: w=0.549, x=0.000, y=0.000, z=0.836[0m
+[0;32mI (33465) HID_DEV_DEMO: Demo Quat[199]: w=0.545, x=0.000, y=0.000, z=0.839[0m
+[0;32mI (33565) HID_DEV_DEMO: Demo Quat[200]: w=0.540, x=0.000, y=0.000, z=0.841[0m
+[0;32mI (33665) HID_DEV_DEMO: Demo Quat[201]: w=0.536, x=0.000, y=0.000, z=0.844[0m
+[0;32mI (33765) HID_DEV_DEMO: Demo Quat[202]: w=0.532, x=0.000, y=0.000, z=0.847[0m
+[0;32mI (33865) HID_DEV_DEMO: Demo Quat[203]: w=0.528, x=0.000, y=0.000, z=0.849[0m
+[0;32mI (33965) HID_DEV_DEMO: Demo Quat[204]: w=0.523, x=0.000, y=0.000, z=0.852[0m
+[0;32mI (34065) HID_DEV_DEMO: Demo Quat[205]: w=0.519, x=0.000, y=0.000, z=0.855[0m
+[0;32mI (34165) HID_DEV_DEMO: Demo Quat[206]: w=0.515, x=0.000, y=0.000, z=0.857[0m
+[0;32mI (34265) HID_DEV_DEMO: Demo Quat[207]: w=0.511, x=0.000, y=0.000, z=0.860[0m
+[0;32mI (34365) HID_DEV_DEMO: Demo Quat[208]: w=0.506, x=0.000, y=0.000, z=0.862[0m
+[0;32mI (34465) HID_DEV_DEMO: Demo Quat[209]: w=0.502, x=0.000, y=0.000, z=0.865[0m
+[0;32mI (34565) HID_DEV_DEMO: Demo Quat[210]: w=0.498, x=0.000, y=0.000, z=0.867[0m
+[0;32mI (34655) HID_DEV_DEMO: Send the volume (loop 17)[0m
+[0;32mI (34665) HID_DEV_DEMO: Demo Quat[211]: w=0.493, x=0.000, y=0.000, z=0.870[0m
+[0;32mI (34765) HID_DEV_DEMO: Demo Quat[212]: w=0.489, x=0.000, y=0.000, z=0.872[0m
+[0;32mI (34865) HID_DEV_DEMO: Demo Quat[213]: w=0.485, x=0.000, y=0.000, z=0.875[0m
+[0;32mI (34965) HID_DEV_DEMO: Demo Quat[214]: w=0.480, x=0.000, y=0.000, z=0.877[0m
+[0;32mI (35065) HID_DEV_DEMO: Demo Quat[215]: w=0.476, x=0.000, y=0.000, z=0.880[0m
+[0;32mI (35165) HID_DEV_DEMO: Demo Quat[216]: w=0.471, x=0.000, y=0.000, z=0.882[0m
+[0;32mI (35265) HID_DEV_DEMO: Demo Quat[217]: w=0.467, x=0.000, y=0.000, z=0.884[0m
+[0;32mI (35365) HID_DEV_DEMO: Demo Quat[218]: w=0.462, x=0.000, y=0.000, z=0.887[0m
+[0;32mI (35465) HID_DEV_DEMO: Demo Quat[219]: w=0.458, x=0.000, y=0.000, z=0.889[0m
+[0;32mI (35565) HID_DEV_DEMO: Demo Quat[220]: w=0.454, x=0.000, y=0.000, z=0.891[0m
+[0;32mI (35665) HID_DEV_DEMO: Demo Quat[221]: w=0.449, x=0.000, y=0.000, z=0.893[0m
+[0;32mI (35765) HID_DEV_DEMO: Demo Quat[222]: w=0.445, x=0.000, y=0.000, z=0.896[0m
+[0;32mI (35865) HID_DEV_DEMO: Demo Quat[223]: w=0.440, x=0.000, y=0.000, z=0.898[0m
+[0;32mI (35965) HID_DEV_DEMO: Demo Quat[224]: w=0.436, x=0.000, y=0.000, z=0.900[0m
+[0;32mI (36065) HID_DEV_DEMO: Demo Quat[225]: w=0.431, x=0.000, y=0.000, z=0.902[0m
+[0;32mI (36165) HID_DEV_DEMO: Demo Quat[226]: w=0.427, x=0.000, y=0.000, z=0.904[0m
+[0;32mI (36265) HID_DEV_DEMO: Demo Quat[227]: w=0.422, x=0.000, y=0.000, z=0.907[0m
+[0;32mI (36365) HID_DEV_DEMO: Demo Quat[228]: w=0.418, x=0.000, y=0.000, z=0.909[0m
+[0;32mI (36465) HID_DEV_DEMO: Demo Quat[229]: w=0.413, x=0.000, y=0.000, z=0.911[0m
+[0;32mI (36565) HID_DEV_DEMO: Demo Quat[230]: w=0.408, x=0.000, y=0.000, z=0.913[0m
+[0;32mI (36665) HID_DEV_DEMO: Demo Quat[231]: w=0.404, x=0.000, y=0.000, z=0.915[0m
+[0;32mI (36755) HID_DEV_DEMO: Send the volume (loop 18)[0m
+[0;32mI (36765) HID_DEV_DEMO: Demo Quat[232]: w=0.399, x=0.000, y=0.000, z=0.917[0m
+[0;32mI (36865) HID_DEV_DEMO: Demo Quat[233]: w=0.395, x=0.000, y=0.000, z=0.919[0m
+[0;32mI (36965) HID_DEV_DEMO: Demo Quat[234]: w=0.390, x=0.000, y=0.000, z=0.921[0m
+[0;32mI (37065) HID_DEV_DEMO: Demo Quat[235]: w=0.386, x=0.000, y=0.000, z=0.923[0m
+[0;32mI (37165) HID_DEV_DEMO: Demo Quat[236]: w=0.381, x=0.000, y=0.000, z=0.925[0m
+[0;32mI (37265) HID_DEV_DEMO: Demo Quat[237]: w=0.376, x=0.000, y=0.000, z=0.926[0m
+[0;32mI (37365) HID_DEV_DEMO: Demo Quat[238]: w=0.372, x=0.000, y=0.000, z=0.928[0m
+[0;32mI (37465) HID_DEV_DEMO: Demo Quat[239]: w=0.367, x=0.000, y=0.000, z=0.930[0m
+[0;32mI (37565) HID_DEV_DEMO: Demo Quat[240]: w=0.362, x=0.000, y=0.000, z=0.932[0m
+[0;32mI (37665) HID_DEV_DEMO: Demo Quat[241]: w=0.358, x=0.000, y=0.000, z=0.934[0m
+[0;32mI (37765) HID_DEV_DEMO: Demo Quat[242]: w=0.353, x=0.000, y=0.000, z=0.936[0m
+[0;32mI (37865) HID_DEV_DEMO: Demo Quat[243]: w=0.348, x=0.000, y=0.000, z=0.937[0m
+[0;32mI (37965) HID_DEV_DEMO: Demo Quat[244]: w=0.344, x=0.000, y=0.000, z=0.939[0m
+[0;32mI (38065) HID_DEV_DEMO: Demo Quat[245]: w=0.339, x=0.000, y=0.000, z=0.941[0m
+[0;32mI (38165) HID_DEV_DEMO: Demo Quat[246]: w=0.334, x=0.000, y=0.000, z=0.942[0m
+[0;32mI (38265) HID_DEV_DEMO: Demo Quat[247]: w=0.330, x=0.000, y=0.000, z=0.944[0m
+[0;32mI (38365) HID_DEV_DEMO: Demo Quat[248]: w=0.325, x=0.000, y=0.000, z=0.946[0m
+[0;32mI (38465) HID_DEV_DEMO: Demo Quat[249]: w=0.320, x=0.000, y=0.000, z=0.947[0m
+[0;32mI (38565) HID_DEV_DEMO: Demo Quat[250]: w=0.315, x=0.000, y=0.000, z=0.949[0m
+[0;32mI (38665) HID_DEV_DEMO: Demo Quat[251]: w=0.311, x=0.000, y=0.000, z=0.951[0m
+[0;32mI (38765) HID_DEV_DEMO: Demo Quat[252]: w=0.306, x=0.000, y=0.000, z=0.952[0m
+[0;32mI (38855) HID_DEV_DEMO: Send the volume (loop 19)[0m
+[0;32mI (38865) HID_DEV_DEMO: Demo Quat[253]: w=0.301, x=0.000, y=0.000, z=0.954[0m
+[0;32mI (38965) HID_DEV_DEMO: Demo Quat[254]: w=0.296, x=0.000, y=0.000, z=0.955[0m
+[0;32mI (39065) HID_DEV_DEMO: Demo Quat[255]: w=0.292, x=0.000, y=0.000, z=0.957[0m
+[0;32mI (39165) HID_DEV_DEMO: Demo Quat[256]: w=0.287, x=0.000, y=0.000, z=0.958[0m
+[0;32mI (39265) HID_DEV_DEMO: Demo Quat[257]: w=0.282, x=0.000, y=0.000, z=0.959[0m
+[0;32mI (39365) HID_DEV_DEMO: Demo Quat[258]: w=0.277, x=0.000, y=0.000, z=0.961[0m
+[0;32mI (39465) HID_DEV_DEMO: Demo Quat[259]: w=0.272, x=0.000, y=0.000, z=0.962[0m
+[0;32mI (39565) HID_DEV_DEMO: Demo Quat[260]: w=0.267, x=0.000, y=0.000, z=0.964[0m
+[0;32mI (39665) HID_DEV_DEMO: Demo Quat[261]: w=0.263, x=0.000, y=0.000, z=0.965[0m
+[0;32mI (39765) HID_DEV_DEMO: Demo Quat[262]: w=0.258, x=0.000, y=0.000, z=0.966[0m
+[0;32mI (39865) HID_DEV_DEMO: Demo Quat[263]: w=0.253, x=0.000, y=0.000, z=0.967[0m
+[0;32mI (39965) HID_DEV_DEMO: Demo Quat[264]: w=0.248, x=0.000, y=0.000, z=0.969[0m
+[0;32mI (40065) HID_DEV_DEMO: Demo Quat[265]: w=0.243, x=0.000, y=0.000, z=0.970[0m
+[0;32mI (40165) HID_DEV_DEMO: Demo Quat[266]: w=0.238, x=0.000, y=0.000, z=0.971[0m
+[0;32mI (40265) HID_DEV_DEMO: Demo Quat[267]: w=0.234, x=0.000, y=0.000, z=0.972[0m
+[0;32mI (40365) HID_DEV_DEMO: Demo Quat[268]: w=0.229, x=0.000, y=0.000, z=0.973[0m
+[0;32mI (40465) HID_DEV_DEMO: Demo Quat[269]: w=0.224, x=0.000, y=0.000, z=0.975[0m
+[0;32mI (40565) HID_DEV_DEMO: Demo Quat[270]: w=0.219, x=0.000, y=0.000, z=0.976[0m
+[0;32mI (40665) HID_DEV_DEMO: Demo Quat[271]: w=0.214, x=0.000, y=0.000, z=0.977[0m
+[0;32mI (40765) HID_DEV_DEMO: Demo Quat[272]: w=0.209, x=0.000, y=0.000, z=0.978[0m
+[0;32mI (40865) HID_DEV_DEMO: Demo Quat[273]: w=0.204, x=0.000, y=0.000, z=0.979[0m
+[0;32mI (40955) HID_DEV_DEMO: Send the volume (loop 20)[0m
+[0;32mI (40965) HID_DEV_DEMO: Demo Quat[274]: w=0.199, x=0.000, y=0.000, z=0.980[0m
+[0;32mI (41065) HID_DEV_DEMO: Demo Quat[275]: w=0.195, x=0.000, y=0.000, z=0.981[0m
+[0;32mI (41165) HID_DEV_DEMO: Demo Quat[276]: w=0.190, x=0.000, y=0.000, z=0.982[0m
+[0;32mI (41265) HID_DEV_DEMO: Demo Quat[277]: w=0.185, x=0.000, y=0.000, z=0.983[0m
+[0;32mI (41365) HID_DEV_DEMO: Demo Quat[278]: w=0.180, x=0.000, y=0.000, z=0.984[0m
+[0;32mI (41465) HID_DEV_DEMO: Demo Quat[279]: w=0.175, x=0.000, y=0.000, z=0.985[0m
+[0;32mI (41565) HID_DEV_DEMO: Demo Quat[280]: w=0.170, x=0.000, y=0.000, z=0.985[0m
+[0;32mI (41665) HID_DEV_DEMO: Demo Quat[281]: w=0.165, x=0.000, y=0.000, z=0.986[0m
+[0;32mI (41765) HID_DEV_DEMO: Demo Quat[282]: w=0.160, x=0.000, y=0.000, z=0.987[0m
+[0;32mI (41865) HID_DEV_DEMO: Demo Quat[283]: w=0.155, x=0.000, y=0.000, z=0.988[0m
+[0;32mI (41965) HID_DEV_DEMO: Demo Quat[284]: w=0.150, x=0.000, y=0.000, z=0.989[0m
+[0;32mI (42065) HID_DEV_DEMO: Demo Quat[285]: w=0.145, x=0.000, y=0.000, z=0.989[0m
+[0;32mI (42165) HID_DEV_DEMO: Demo Quat[286]: w=0.140, x=0.000, y=0.000, z=0.990[0m
+[0;32mI (42265) HID_DEV_DEMO: Demo Quat[287]: w=0.135, x=0.000, y=0.000, z=0.991[0m
+[0;32mI (42365) HID_DEV_DEMO: Demo Quat[288]: w=0.130, x=0.000, y=0.000, z=0.991[0m
+[0;32mI (42465) HID_DEV_DEMO: Demo Quat[289]: w=0.125, x=0.000, y=0.000, z=0.992[0m
+[0;32mI (42565) HID_DEV_DEMO: Demo Quat[290]: w=0.121, x=0.000, y=0.000, z=0.993[0m
+[0;32mI (42665) HID_DEV_DEMO: Demo Quat[291]: w=0.116, x=0.000, y=0.000, z=0.993[0m
+[0;32mI (42765) HID_DEV_DEMO: Demo Quat[292]: w=0.111, x=0.000, y=0.000, z=0.994[0m
+[0;32mI (42865) HID_DEV_DEMO: Demo Quat[293]: w=0.106, x=0.000, y=0.000, z=0.994[0m
+[0;32mI (42965) HID_DEV_DEMO: Demo Quat[294]: w=0.101, x=0.000, y=0.000, z=0.995[0m
+[0;32mI (43055) HID_DEV_DEMO: Send the volume (loop 21)[0m
+[0;32mI (43065) HID_DEV_DEMO: Demo Quat[295]: w=0.096, x=0.000, y=0.000, z=0.995[0m
+[0;32mI (43165) HID_DEV_DEMO: Demo Quat[296]: w=0.091, x=0.000, y=0.000, z=0.996[0m
+[0;32mI (43265) HID_DEV_DEMO: Demo Quat[297]: w=0.086, x=0.000, y=0.000, z=0.996[0m
+[0;32mI (43365) HID_DEV_DEMO: Demo Quat[298]: w=0.081, x=0.000, y=0.000, z=0.997[0m
+[0;32mI (43465) HID_DEV_DEMO: Demo Quat[299]: w=0.076, x=0.000, y=0.000, z=0.997[0m
+[0;32mI (43565) HID_DEV_DEMO: Demo Quat[300]: w=0.071, x=0.000, y=0.000, z=0.997[0m
+[0;32mI (43665) HID_DEV_DEMO: Demo Quat[301]: w=0.066, x=0.000, y=0.000, z=0.998[0m
+[0;32mI (43765) HID_DEV_DEMO: Demo Quat[302]: w=0.061, x=0.000, y=0.000, z=0.998[0m
+[0;32mI (43865) HID_DEV_DEMO: Demo Quat[303]: w=0.056, x=0.000, y=0.000, z=0.998[0m
+[0;32mI (43965) HID_DEV_DEMO: Demo Quat[304]: w=0.051, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (44065) HID_DEV_DEMO: Demo Quat[305]: w=0.046, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (44165) HID_DEV_DEMO: Demo Quat[306]: w=0.041, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (44265) HID_DEV_DEMO: Demo Quat[307]: w=0.036, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (44365) HID_DEV_DEMO: Demo Quat[308]: w=0.031, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (44465) HID_DEV_DEMO: Demo Quat[309]: w=0.026, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (44565) HID_DEV_DEMO: Demo Quat[310]: w=0.021, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (44665) HID_DEV_DEMO: Demo Quat[311]: w=0.016, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (44765) HID_DEV_DEMO: Demo Quat[312]: w=0.011, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (44865) HID_DEV_DEMO: Demo Quat[313]: w=0.006, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (44965) HID_DEV_DEMO: Demo Quat[314]: w=0.001, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (45065) HID_DEV_DEMO: Demo Quat[315]: w=-0.004, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (45155) HID_DEV_DEMO: Send the volume (loop 22)[0m
+[0;32mI (45165) HID_DEV_DEMO: Demo Quat[316]: w=-0.009, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (45265) HID_DEV_DEMO: Demo Quat[317]: w=-0.014, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (45365) HID_DEV_DEMO: Demo Quat[318]: w=-0.019, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (45465) HID_DEV_DEMO: Demo Quat[319]: w=-0.024, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (45565) HID_DEV_DEMO: Demo Quat[320]: w=-0.029, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (45665) HID_DEV_DEMO: Demo Quat[321]: w=-0.034, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (45765) HID_DEV_DEMO: Demo Quat[322]: w=-0.039, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (45865) HID_DEV_DEMO: Demo Quat[323]: w=-0.044, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (45965) HID_DEV_DEMO: Demo Quat[324]: w=-0.049, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (46065) HID_DEV_DEMO: Demo Quat[325]: w=-0.054, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (46165) HID_DEV_DEMO: Demo Quat[326]: w=-0.059, x=0.000, y=0.000, z=0.998[0m
+[0;32mI (46265) HID_DEV_DEMO: Demo Quat[327]: w=-0.064, x=0.000, y=0.000, z=0.998[0m
+[0;32mI (46365) HID_DEV_DEMO: Demo Quat[328]: w=-0.069, x=0.000, y=0.000, z=0.998[0m
+[0;32mI (46465) HID_DEV_DEMO: Demo Quat[329]: w=-0.074, x=0.000, y=0.000, z=0.997[0m
+[0;32mI (46565) HID_DEV_DEMO: Demo Quat[330]: w=-0.079, x=0.000, y=0.000, z=0.997[0m
+[0;32mI (46665) HID_DEV_DEMO: Demo Quat[331]: w=-0.084, x=0.000, y=0.000, z=0.996[0m
+[0;32mI (46765) HID_DEV_DEMO: Demo Quat[332]: w=-0.089, x=0.000, y=0.000, z=0.996[0m
+[0;32mI (46865) HID_DEV_DEMO: Demo Quat[333]: w=-0.094, x=0.000, y=0.000, z=0.996[0m
+[0;32mI (46965) HID_DEV_DEMO: Demo Quat[334]: w=-0.099, x=0.000, y=0.000, z=0.995[0m
+[0;32mI (47065) HID_DEV_DEMO: Demo Quat[335]: w=-0.104, x=0.000, y=0.000, z=0.995[0m
+[0;32mI (47165) HID_DEV_DEMO: Demo Quat[336]: w=-0.109, x=0.000, y=0.000, z=0.994[0m
+[0;32mI (47255) HID_DEV_DEMO: Send the volume (loop 23)[0m
+[0;32mI (47265) HID_DEV_DEMO: Demo Quat[337]: w=-0.114, x=0.000, y=0.000, z=0.993[0m
+[0;32mI (47365) HID_DEV_DEMO: Demo Quat[338]: w=-0.119, x=0.000, y=0.000, z=0.993[0m
+[0;32mI (47465) HID_DEV_DEMO: Demo Quat[339]: w=-0.124, x=0.000, y=0.000, z=0.992[0m
+[0;32mI (47565) HID_DEV_DEMO: Demo Quat[340]: w=-0.129, x=0.000, y=0.000, z=0.992[0m
+[0;32mI (47665) HID_DEV_DEMO: Demo Quat[341]: w=-0.134, x=0.000, y=0.000, z=0.991[0m
+[0;32mI (47765) HID_DEV_DEMO: Demo Quat[342]: w=-0.139, x=0.000, y=0.000, z=0.990[0m
+[0;32mI (47865) HID_DEV_DEMO: Demo Quat[343]: w=-0.144, x=0.000, y=0.000, z=0.990[0m
+[0;32mI (47965) HID_DEV_DEMO: Demo Quat[344]: w=-0.149, x=0.000, y=0.000, z=0.989[0m
+[0;32mI (48065) HID_DEV_DEMO: Demo Quat[345]: w=-0.154, x=0.000, y=0.000, z=0.988[0m
+[0;32mI (48165) HID_DEV_DEMO: Demo Quat[346]: w=-0.159, x=0.000, y=0.000, z=0.987[0m
+[0;32mI (48265) HID_DEV_DEMO: Demo Quat[347]: w=-0.163, x=0.000, y=0.000, z=0.987[0m
+[0;32mI (48365) HID_DEV_DEMO: Demo Quat[348]: w=-0.168, x=0.000, y=0.000, z=0.986[0m
+[0;32mI (48465) HID_DEV_DEMO: Demo Quat[349]: w=-0.173, x=0.000, y=0.000, z=0.985[0m
+[0;32mI (48565) HID_DEV_DEMO: Demo Quat[350]: w=-0.178, x=0.000, y=0.000, z=0.984[0m
+[0;32mI (48665) HID_DEV_DEMO: Demo Quat[351]: w=-0.183, x=0.000, y=0.000, z=0.983[0m
+[0;32mI (48765) HID_DEV_DEMO: Demo Quat[352]: w=-0.188, x=0.000, y=0.000, z=0.982[0m
+[0;32mI (48865) HID_DEV_DEMO: Demo Quat[353]: w=-0.193, x=0.000, y=0.000, z=0.981[0m
+[0;32mI (48965) HID_DEV_DEMO: Demo Quat[354]: w=-0.198, x=0.000, y=0.000, z=0.980[0m
+[0;32mI (49065) HID_DEV_DEMO: Demo Quat[355]: w=-0.203, x=0.000, y=0.000, z=0.979[0m
+[0;32mI (49165) HID_DEV_DEMO: Demo Quat[356]: w=-0.208, x=0.000, y=0.000, z=0.978[0m
+[0;32mI (49265) HID_DEV_DEMO: Demo Quat[357]: w=-0.213, x=0.000, y=0.000, z=0.977[0m
+[0;32mI (49355) HID_DEV_DEMO: Send the volume (loop 24)[0m
+[0;32mI (49365) HID_DEV_DEMO: Demo Quat[358]: w=-0.217, x=0.000, y=0.000, z=0.976[0m
+[0;32mI (49465) HID_DEV_DEMO: Demo Quat[359]: w=-0.222, x=0.000, y=0.000, z=0.975[0m
+[0;32mI (49565) HID_DEV_DEMO: Demo Quat[360]: w=-0.227, x=0.000, y=0.000, z=0.974[0m
+[0;32mI (49665) HID_DEV_DEMO: Demo Quat[361]: w=-0.232, x=0.000, y=0.000, z=0.973[0m
+[0;32mI (49765) HID_DEV_DEMO: Demo Quat[362]: w=-0.237, x=0.000, y=0.000, z=0.972[0m
+[0;32mI (49865) HID_DEV_DEMO: Demo Quat[363]: w=-0.242, x=0.000, y=0.000, z=0.970[0m
+[0;32mI (49965) HID_DEV_DEMO: Demo Quat[364]: w=-0.247, x=0.000, y=0.000, z=0.969[0m
+[0;32mI (50065) HID_DEV_DEMO: Demo Quat[365]: w=-0.251, x=0.000, y=0.000, z=0.968[0m
+[0;32mI (50165) HID_DEV_DEMO: Demo Quat[366]: w=-0.256, x=0.000, y=0.000, z=0.967[0m
+[0;32mI (50265) HID_DEV_DEMO: Demo Quat[367]: w=-0.261, x=0.000, y=0.000, z=0.965[0m
+[0;32mI (50365) HID_DEV_DEMO: Demo Quat[368]: w=-0.266, x=0.000, y=0.000, z=0.964[0m
+[0;32mI (50465) HID_DEV_DEMO: Demo Quat[369]: w=-0.271, x=0.000, y=0.000, z=0.963[0m
+[0;32mI (50565) HID_DEV_DEMO: Demo Quat[370]: w=-0.276, x=0.000, y=0.000, z=0.961[0m
+[0;32mI (50665) HID_DEV_DEMO: Demo Quat[371]: w=-0.280, x=0.000, y=0.000, z=0.960[0m
+[0;32mI (50765) HID_DEV_DEMO: Demo Quat[372]: w=-0.285, x=0.000, y=0.000, z=0.958[0m
+[0;32mI (50865) HID_DEV_DEMO: Demo Quat[373]: w=-0.290, x=0.000, y=0.000, z=0.957[0m
+[0;32mI (50965) HID_DEV_DEMO: Demo Quat[374]: w=-0.295, x=0.000, y=0.000, z=0.956[0m
+[0;32mI (51065) HID_DEV_DEMO: Demo Quat[375]: w=-0.300, x=0.000, y=0.000, z=0.954[0m
+[0;32mI (51165) HID_DEV_DEMO: Demo Quat[376]: w=-0.304, x=0.000, y=0.000, z=0.953[0m
+[0;32mI (51265) HID_DEV_DEMO: Demo Quat[377]: w=-0.309, x=0.000, y=0.000, z=0.951[0m
+[0;32mI (51365) HID_DEV_DEMO: Demo Quat[378]: w=-0.314, x=0.000, y=0.000, z=0.949[0m
+[0;32mI (51455) HID_DEV_DEMO: Send the volume (loop 25)[0m
+[0;32mI (51465) HID_DEV_DEMO: Demo Quat[379]: w=-0.319, x=0.000, y=0.000, z=0.948[0m
+[0;32mI (51565) HID_DEV_DEMO: Demo Quat[380]: w=-0.323, x=0.000, y=0.000, z=0.946[0m
+[0;32mI (51665) HID_DEV_DEMO: Demo Quat[381]: w=-0.328, x=0.000, y=0.000, z=0.945[0m
+[0;32mI (51765) HID_DEV_DEMO: Demo Quat[382]: w=-0.333, x=0.000, y=0.000, z=0.943[0m
+[0;32mI (51865) HID_DEV_DEMO: Demo Quat[383]: w=-0.337, x=0.000, y=0.000, z=0.941[0m
+[0;32mI (51965) HID_DEV_DEMO: Demo Quat[384]: w=-0.342, x=0.000, y=0.000, z=0.940[0m
+[0;32mI (52065) HID_DEV_DEMO: Demo Quat[385]: w=-0.347, x=0.000, y=0.000, z=0.938[0m
+[0;32mI (52165) HID_DEV_DEMO: Demo Quat[386]: w=-0.352, x=0.000, y=0.000, z=0.936[0m
+[0;32mI (52265) HID_DEV_DEMO: Demo Quat[387]: w=-0.356, x=0.000, y=0.000, z=0.934[0m
+[0;32mI (52365) HID_DEV_DEMO: Demo Quat[388]: w=-0.361, x=0.000, y=0.000, z=0.933[0m
+[0;32mI (52465) HID_DEV_DEMO: Demo Quat[389]: w=-0.366, x=0.000, y=0.000, z=0.931[0m
+[0;32mI (52565) HID_DEV_DEMO: Demo Quat[390]: w=-0.370, x=0.000, y=0.000, z=0.929[0m
+[0;32mI (52665) HID_DEV_DEMO: Demo Quat[391]: w=-0.375, x=0.000, y=0.000, z=0.927[0m
+[0;32mI (52765) HID_DEV_DEMO: Demo Quat[392]: w=-0.379, x=0.000, y=0.000, z=0.925[0m
+[0;32mI (52865) HID_DEV_DEMO: Demo Quat[393]: w=-0.384, x=0.000, y=0.000, z=0.923[0m
+[0;32mI (52965) HID_DEV_DEMO: Demo Quat[394]: w=-0.389, x=0.000, y=0.000, z=0.921[0m
+[0;32mI (53065) HID_DEV_DEMO: Demo Quat[395]: w=-0.393, x=0.000, y=0.000, z=0.919[0m
+[0;32mI (53165) HID_DEV_DEMO: Demo Quat[396]: w=-0.398, x=0.000, y=0.000, z=0.917[0m
+[0;32mI (53265) HID_DEV_DEMO: Demo Quat[397]: w=-0.402, x=0.000, y=0.000, z=0.915[0m
+[0;32mI (53365) HID_DEV_DEMO: Demo Quat[398]: w=-0.407, x=0.000, y=0.000, z=0.913[0m
+[0;32mI (53465) HID_DEV_DEMO: Demo Quat[399]: w=-0.412, x=0.000, y=0.000, z=0.911[0m
+[0;32mI (53555) HID_DEV_DEMO: Send the volume (loop 26)[0m
+[0;32mI (53565) HID_DEV_DEMO: Demo Quat[400]: w=-0.416, x=0.000, y=0.000, z=0.909[0m
+[0;32mI (53665) HID_DEV_DEMO: Demo Quat[401]: w=-0.421, x=0.000, y=0.000, z=0.907[0m
+[0;32mI (53765) HID_DEV_DEMO: Demo Quat[402]: w=-0.425, x=0.000, y=0.000, z=0.905[0m
+[0;32mI (53865) HID_DEV_DEMO: Demo Quat[403]: w=-0.430, x=0.000, y=0.000, z=0.903[0m
+[0;32mI (53965) HID_DEV_DEMO: Demo Quat[404]: w=-0.434, x=0.000, y=0.000, z=0.901[0m
+[0;32mI (54065) HID_DEV_DEMO: Demo Quat[405]: w=-0.439, x=0.000, y=0.000, z=0.899[0m
+[0;32mI (54165) HID_DEV_DEMO: Demo Quat[406]: w=-0.443, x=0.000, y=0.000, z=0.896[0m
+[0;32mI (54265) HID_DEV_DEMO: Demo Quat[407]: w=-0.448, x=0.000, y=0.000, z=0.894[0m
+[0;32mI (54365) HID_DEV_DEMO: Demo Quat[408]: w=-0.452, x=0.000, y=0.000, z=0.892[0m
+[0;32mI (54465) HID_DEV_DEMO: Demo Quat[409]: w=-0.457, x=0.000, y=0.000, z=0.890[0m
+[0;32mI (54565) HID_DEV_DEMO: Demo Quat[410]: w=-0.461, x=0.000, y=0.000, z=0.887[0m
+[0;32mI (54665) HID_DEV_DEMO: Demo Quat[411]: w=-0.466, x=0.000, y=0.000, z=0.885[0m
+[0;32mI (54765) HID_DEV_DEMO: Demo Quat[412]: w=-0.470, x=0.000, y=0.000, z=0.883[0m
+[0;32mI (54865) HID_DEV_DEMO: Demo Quat[413]: w=-0.474, x=0.000, y=0.000, z=0.880[0m
+[0;32mI (54965) HID_DEV_DEMO: Demo Quat[414]: w=-0.479, x=0.000, y=0.000, z=0.878[0m
+[0;32mI (55065) HID_DEV_DEMO: Demo Quat[415]: w=-0.483, x=0.000, y=0.000, z=0.876[0m
+[0;32mI (55165) HID_DEV_DEMO: Demo Quat[416]: w=-0.487, x=0.000, y=0.000, z=0.873[0m
+[0;32mI (55265) HID_DEV_DEMO: Demo Quat[417]: w=-0.492, x=0.000, y=0.000, z=0.871[0m
+[0;32mI (55365) HID_DEV_DEMO: Demo Quat[418]: w=-0.496, x=0.000, y=0.000, z=0.868[0m
+[0;32mI (55465) HID_DEV_DEMO: Demo Quat[419]: w=-0.501, x=0.000, y=0.000, z=0.866[0m
+[0;32mI (55565) HID_DEV_DEMO: Demo Quat[420]: w=-0.505, x=0.000, y=0.000, z=0.863[0m
+[0;32mI (55655) HID_DEV_DEMO: Send the volume (loop 27)[0m
+[0;32mI (55665) HID_DEV_DEMO: Demo Quat[421]: w=-0.509, x=0.000, y=0.000, z=0.861[0m
+[0;32mI (55765) HID_DEV_DEMO: Demo Quat[422]: w=-0.513, x=0.000, y=0.000, z=0.858[0m
+[0;32mI (55865) HID_DEV_DEMO: Demo Quat[423]: w=-0.518, x=0.000, y=0.000, z=0.856[0m
+[0;32mI (55965) HID_DEV_DEMO: Demo Quat[424]: w=-0.522, x=0.000, y=0.000, z=0.853[0m
+[0;32mI (56065) HID_DEV_DEMO: Demo Quat[425]: w=-0.526, x=0.000, y=0.000, z=0.850[0m
+[0;32mI (56165) HID_DEV_DEMO: Demo Quat[426]: w=-0.531, x=0.000, y=0.000, z=0.848[0m
+[0;32mI (56265) HID_DEV_DEMO: Demo Quat[427]: w=-0.535, x=0.000, y=0.000, z=0.845[0m
+[0;32mI (56365) HID_DEV_DEMO: Demo Quat[428]: w=-0.539, x=0.000, y=0.000, z=0.842[0m
+[0;32mI (56465) HID_DEV_DEMO: Demo Quat[429]: w=-0.543, x=0.000, y=0.000, z=0.840[0m
+[0;32mI (56565) HID_DEV_DEMO: Demo Quat[430]: w=-0.547, x=0.000, y=0.000, z=0.837[0m
+[0;32mI (56665) HID_DEV_DEMO: Demo Quat[431]: w=-0.552, x=0.000, y=0.000, z=0.834[0m
+[0;32mI (56765) HID_DEV_DEMO: Demo Quat[432]: w=-0.556, x=0.000, y=0.000, z=0.831[0m
+[0;32mI (56865) HID_DEV_DEMO: Demo Quat[433]: w=-0.560, x=0.000, y=0.000, z=0.829[0m
+[0;32mI (56965) HID_DEV_DEMO: Demo Quat[434]: w=-0.564, x=0.000, y=0.000, z=0.826[0m
+[0;32mI (57065) HID_DEV_DEMO: Demo Quat[435]: w=-0.568, x=0.000, y=0.000, z=0.823[0m
+[0;32mI (57165) HID_DEV_DEMO: Demo Quat[436]: w=-0.572, x=0.000, y=0.000, z=0.820[0m
+[0;32mI (57265) HID_DEV_DEMO: Demo Quat[437]: w=-0.576, x=0.000, y=0.000, z=0.817[0m
+[0;32mI (57365) HID_DEV_DEMO: Demo Quat[438]: w=-0.580, x=0.000, y=0.000, z=0.814[0m
+[0;32mI (57465) HID_DEV_DEMO: Demo Quat[439]: w=-0.584, x=0.000, y=0.000, z=0.811[0m
+[0;32mI (57565) HID_DEV_DEMO: Demo Quat[440]: w=-0.589, x=0.000, y=0.000, z=0.808[0m
+[0;32mI (57665) HID_DEV_DEMO: Demo Quat[441]: w=-0.593, x=0.000, y=0.000, z=0.806[0m
+[0;32mI (57755) HID_DEV_DEMO: Send the volume (loop 28)[0m
+[0;32mI (57765) HID_DEV_DEMO: Demo Quat[442]: w=-0.597, x=0.000, y=0.000, z=0.803[0m
+[0;32mI (57865) HID_DEV_DEMO: Demo Quat[443]: w=-0.601, x=0.000, y=0.000, z=0.800[0m
+[0;32mI (57965) HID_DEV_DEMO: Demo Quat[444]: w=-0.605, x=0.000, y=0.000, z=0.797[0m
+[0;32mI (58065) HID_DEV_DEMO: Demo Quat[445]: w=-0.609, x=0.000, y=0.000, z=0.794[0m
+[0;32mI (58165) HID_DEV_DEMO: Demo Quat[446]: w=-0.612, x=0.000, y=0.000, z=0.790[0m
+[0;32mI (58265) HID_DEV_DEMO: Demo Quat[447]: w=-0.616, x=0.000, y=0.000, z=0.787[0m
+[0;32mI (58365) HID_DEV_DEMO: Demo Quat[448]: w=-0.620, x=0.000, y=0.000, z=0.784[0m
+[0;32mI (58465) HID_DEV_DEMO: Demo Quat[449]: w=-0.624, x=0.000, y=0.000, z=0.781[0m
+[0;32mI (58565) HID_DEV_DEMO: Demo Quat[450]: w=-0.628, x=0.000, y=0.000, z=0.778[0m
+[0;32mI (58665) HID_DEV_DEMO: Demo Quat[451]: w=-0.632, x=0.000, y=0.000, z=0.775[0m
+[0;32mI (58765) HID_DEV_DEMO: Demo Quat[452]: w=-0.636, x=0.000, y=0.000, z=0.772[0m
+[0;32mI (58865) HID_DEV_DEMO: Demo Quat[453]: w=-0.640, x=0.000, y=0.000, z=0.769[0m
+[0;32mI (58965) HID_DEV_DEMO: Demo Quat[454]: w=-0.644, x=0.000, y=0.000, z=0.765[0m
+[0;32mI (59065) HID_DEV_DEMO: Demo Quat[455]: w=-0.647, x=0.000, y=0.000, z=0.762[0m
+[0;32mI (59165) HID_DEV_DEMO: Demo Quat[456]: w=-0.651, x=0.000, y=0.000, z=0.759[0m
+[0;32mI (59265) HID_DEV_DEMO: Demo Quat[457]: w=-0.655, x=0.000, y=0.000, z=0.756[0m
+[0;32mI (59365) HID_DEV_DEMO: Demo Quat[458]: w=-0.659, x=0.000, y=0.000, z=0.752[0m
+[0;32mI (59465) HID_DEV_DEMO: Demo Quat[459]: w=-0.663, x=0.000, y=0.000, z=0.749[0m
+[0;32mI (59565) HID_DEV_DEMO: Demo Quat[460]: w=-0.666, x=0.000, y=0.000, z=0.746[0m
+[0;32mI (59665) HID_DEV_DEMO: Demo Quat[461]: w=-0.670, x=0.000, y=0.000, z=0.742[0m
+[0;32mI (59765) HID_DEV_DEMO: Demo Quat[462]: w=-0.674, x=0.000, y=0.000, z=0.739[0m
+[0;32mI (59855) HID_DEV_DEMO: Send the volume (loop 29)[0m
+[0;32mI (59865) HID_DEV_DEMO: Demo Quat[463]: w=-0.677, x=0.000, y=0.000, z=0.736[0m
+[0;32mI (59965) HID_DEV_DEMO: Demo Quat[464]: w=-0.681, x=0.000, y=0.000, z=0.732[0m
+[0;32mI (60065) HID_DEV_DEMO: Demo Quat[465]: w=-0.685, x=0.000, y=0.000, z=0.729[0m
+[0;32mI (60165) HID_DEV_DEMO: Demo Quat[466]: w=-0.688, x=0.000, y=0.000, z=0.725[0m
+[0;32mI (60265) HID_DEV_DEMO: Demo Quat[467]: w=-0.692, x=0.000, y=0.000, z=0.722[0m
+[0;32mI (60365) HID_DEV_DEMO: Demo Quat[468]: w=-0.696, x=0.000, y=0.000, z=0.718[0m
+[0;32mI (60465) HID_DEV_DEMO: Demo Quat[469]: w=-0.699, x=0.000, y=0.000, z=0.715[0m
+[0;32mI (60565) HID_DEV_DEMO: Demo Quat[470]: w=-0.703, x=0.000, y=0.000, z=0.711[0m
+[0;32mI (60665) HID_DEV_DEMO: Demo Quat[471]: w=-0.706, x=0.000, y=0.000, z=0.708[0m
+[0;32mI (60765) HID_DEV_DEMO: Demo Quat[472]: w=-0.710, x=0.000, y=0.000, z=0.704[0m
+[0;32mI (60865) HID_DEV_DEMO: Demo Quat[473]: w=-0.713, x=0.000, y=0.000, z=0.701[0m
+[0;32mI (60965) HID_DEV_DEMO: Demo Quat[474]: w=-0.717, x=0.000, y=0.000, z=0.697[0m
+[0;32mI (61065) HID_DEV_DEMO: Demo Quat[475]: w=-0.720, x=0.000, y=0.000, z=0.694[0m
+[0;32mI (61165) HID_DEV_DEMO: Demo Quat[476]: w=-0.724, x=0.000, y=0.000, z=0.690[0m
+[0;32mI (61265) HID_DEV_DEMO: Demo Quat[477]: w=-0.727, x=0.000, y=0.000, z=0.686[0m
+[0;32mI (61365) HID_DEV_DEMO: Demo Quat[478]: w=-0.731, x=0.000, y=0.000, z=0.683[0m
+[0;32mI (61465) HID_DEV_DEMO: Demo Quat[479]: w=-0.734, x=0.000, y=0.000, z=0.679[0m
+[0;32mI (61565) HID_DEV_DEMO: Demo Quat[480]: w=-0.737, x=0.000, y=0.000, z=0.675[0m
+[0;32mI (61665) HID_DEV_DEMO: Demo Quat[481]: w=-0.741, x=0.000, y=0.000, z=0.672[0m
+[0;32mI (61765) HID_DEV_DEMO: Demo Quat[482]: w=-0.744, x=0.000, y=0.000, z=0.668[0m
+[0;32mI (61865) HID_DEV_DEMO: Demo Quat[483]: w=-0.747, x=0.000, y=0.000, z=0.664[0m
+[0;32mI (61955) HID_DEV_DEMO: Send the volume (loop 30)[0m
+[0;32mI (61965) HID_DEV_DEMO: Demo Quat[484]: w=-0.751, x=0.000, y=0.000, z=0.661[0m
+[0;32mI (62065) HID_DEV_DEMO: Demo Quat[485]: w=-0.754, x=0.000, y=0.000, z=0.657[0m
+[0;32mI (62165) HID_DEV_DEMO: Demo Quat[486]: w=-0.757, x=0.000, y=0.000, z=0.653[0m
+[0;32mI (62265) HID_DEV_DEMO: Demo Quat[487]: w=-0.761, x=0.000, y=0.000, z=0.649[0m
+[0;32mI (62365) HID_DEV_DEMO: Demo Quat[488]: w=-0.764, x=0.000, y=0.000, z=0.645[0m
+[0;32mI (62465) HID_DEV_DEMO: Demo Quat[489]: w=-0.767, x=0.000, y=0.000, z=0.642[0m
+[0;32mI (62565) HID_DEV_DEMO: Demo Quat[490]: w=-0.770, x=0.000, y=0.000, z=0.638[0m
+[0;32mI (62665) HID_DEV_DEMO: Demo Quat[491]: w=-0.773, x=0.000, y=0.000, z=0.634[0m
+[0;32mI (62765) HID_DEV_DEMO: Demo Quat[492]: w=-0.777, x=0.000, y=0.000, z=0.630[0m
+[0;32mI (62865) HID_DEV_DEMO: Demo Quat[493]: w=-0.780, x=0.000, y=0.000, z=0.626[0m
+[0;32mI (62965) HID_DEV_DEMO: Demo Quat[494]: w=-0.783, x=0.000, y=0.000, z=0.622[0m
+[0;32mI (63065) HID_DEV_DEMO: Demo Quat[495]: w=-0.786, x=0.000, y=0.000, z=0.618[0m
+[0;32mI (63165) HID_DEV_DEMO: Demo Quat[496]: w=-0.789, x=0.000, y=0.000, z=0.614[0m
+[0;32mI (63265) HID_DEV_DEMO: Demo Quat[497]: w=-0.792, x=0.000, y=0.000, z=0.610[0m
+[0;32mI (63365) HID_DEV_DEMO: Demo Quat[498]: w=-0.795, x=0.000, y=0.000, z=0.606[0m
+[0;32mI (63465) HID_DEV_DEMO: Demo Quat[499]: w=-0.798, x=0.000, y=0.000, z=0.602[0m
+[0;32mI (63565) HID_DEV_DEMO: Demo Quat[500]: w=-0.801, x=0.000, y=0.000, z=0.598[0m
+[0;32mI (63665) HID_DEV_DEMO: Demo Quat[501]: w=-0.804, x=0.000, y=0.000, z=0.594[0m
+[0;32mI (63765) HID_DEV_DEMO: Demo Quat[502]: w=-0.807, x=0.000, y=0.000, z=0.590[0m
+[0;32mI (63865) HID_DEV_DEMO: Demo Quat[503]: w=-0.810, x=0.000, y=0.000, z=0.586[0m
+[0;32mI (63965) HID_DEV_DEMO: Demo Quat[504]: w=-0.813, x=0.000, y=0.000, z=0.582[0m
+[0;32mI (64055) HID_DEV_DEMO: Send the volume (loop 31)[0m
+[0;32mI (64065) HID_DEV_DEMO: Demo Quat[505]: w=-0.816, x=0.000, y=0.000, z=0.578[0m
+[0;32mI (64165) HID_DEV_DEMO: Demo Quat[506]: w=-0.819, x=0.000, y=0.000, z=0.574[0m
+[0;32mI (64265) HID_DEV_DEMO: Demo Quat[507]: w=-0.822, x=0.000, y=0.000, z=0.570[0m
+[0;32mI (64365) HID_DEV_DEMO: Demo Quat[508]: w=-0.824, x=0.000, y=0.000, z=0.566[0m
+[0;32mI (64465) HID_DEV_DEMO: Demo Quat[509]: w=-0.827, x=0.000, y=0.000, z=0.562[0m
+[0;32mI (64565) HID_DEV_DEMO: Demo Quat[510]: w=-0.830, x=0.000, y=0.000, z=0.558[0m
+[0;32mI (64665) HID_DEV_DEMO: Demo Quat[511]: w=-0.833, x=0.000, y=0.000, z=0.554[0m
+[0;32mI (64765) HID_DEV_DEMO: Demo Quat[512]: w=-0.836, x=0.000, y=0.000, z=0.549[0m
+[0;32mI (64865) HID_DEV_DEMO: Demo Quat[513]: w=-0.838, x=0.000, y=0.000, z=0.545[0m
+[0;32mI (64965) HID_DEV_DEMO: Demo Quat[514]: w=-0.841, x=0.000, y=0.000, z=0.541[0m
+[0;32mI (65065) HID_DEV_DEMO: Demo Quat[515]: w=-0.844, x=0.000, y=0.000, z=0.537[0m
+[0;32mI (65165) HID_DEV_DEMO: Demo Quat[516]: w=-0.846, x=0.000, y=0.000, z=0.533[0m
+[0;32mI (65265) HID_DEV_DEMO: Demo Quat[517]: w=-0.849, x=0.000, y=0.000, z=0.528[0m
+[0;32mI (65365) HID_DEV_DEMO: Demo Quat[518]: w=-0.852, x=0.000, y=0.000, z=0.524[0m
+[0;32mI (65465) HID_DEV_DEMO: Demo Quat[519]: w=-0.854, x=0.000, y=0.000, z=0.520[0m
+[0;32mI (65565) HID_DEV_DEMO: Demo Quat[520]: w=-0.857, x=0.000, y=0.000, z=0.515[0m
+[0;32mI (65665) HID_DEV_DEMO: Demo Quat[521]: w=-0.859, x=0.000, y=0.000, z=0.511[0m
+[0;32mI (65765) HID_DEV_DEMO: Demo Quat[522]: w=-0.862, x=0.000, y=0.000, z=0.507[0m
+[0;32mI (65865) HID_DEV_DEMO: Demo Quat[523]: w=-0.865, x=0.000, y=0.000, z=0.503[0m
+[0;32mI (65965) HID_DEV_DEMO: Demo Quat[524]: w=-0.867, x=0.000, y=0.000, z=0.498[0m
+[0;32mI (66065) HID_DEV_DEMO: Demo Quat[525]: w=-0.870, x=0.000, y=0.000, z=0.494[0m
+[0;32mI (66155) HID_DEV_DEMO: Send the volume (loop 32)[0m
+[0;32mI (66165) HID_DEV_DEMO: Demo Quat[526]: w=-0.872, x=0.000, y=0.000, z=0.490[0m
+[0;32mI (66265) HID_DEV_DEMO: Demo Quat[527]: w=-0.874, x=0.000, y=0.000, z=0.485[0m
+[0;32mI (66365) HID_DEV_DEMO: Demo Quat[528]: w=-0.877, x=0.000, y=0.000, z=0.481[0m
+[0;32mI (66465) HID_DEV_DEMO: Demo Quat[529]: w=-0.879, x=0.000, y=0.000, z=0.476[0m
+[0;32mI (66565) HID_DEV_DEMO: Demo Quat[530]: w=-0.882, x=0.000, y=0.000, z=0.472[0m
+[0;32mI (66665) HID_DEV_DEMO: Demo Quat[531]: w=-0.884, x=0.000, y=0.000, z=0.468[0m
+[0;32mI (66765) HID_DEV_DEMO: Demo Quat[532]: w=-0.886, x=0.000, y=0.000, z=0.463[0m
+[0;32mI (66865) HID_DEV_DEMO: Demo Quat[533]: w=-0.889, x=0.000, y=0.000, z=0.459[0m
+[0;32mI (66965) HID_DEV_DEMO: Demo Quat[534]: w=-0.891, x=0.000, y=0.000, z=0.454[0m
+[0;32mI (67065) HID_DEV_DEMO: Demo Quat[535]: w=-0.893, x=0.000, y=0.000, z=0.450[0m
+[0;32mI (67165) HID_DEV_DEMO: Demo Quat[536]: w=-0.895, x=0.000, y=0.000, z=0.445[0m
+[0;32mI (67265) HID_DEV_DEMO: Demo Quat[537]: w=-0.898, x=0.000, y=0.000, z=0.441[0m
+[0;32mI (67365) HID_DEV_DEMO: Demo Quat[538]: w=-0.900, x=0.000, y=0.000, z=0.436[0m
+[0;32mI (67465) HID_DEV_DEMO: Demo Quat[539]: w=-0.902, x=0.000, y=0.000, z=0.432[0m
+[0;32mI (67565) HID_DEV_DEMO: Demo Quat[540]: w=-0.904, x=0.000, y=0.000, z=0.427[0m
+[0;32mI (67665) HID_DEV_DEMO: Demo Quat[541]: w=-0.906, x=0.000, y=0.000, z=0.423[0m
+[0;32mI (67765) HID_DEV_DEMO: Demo Quat[542]: w=-0.908, x=0.000, y=0.000, z=0.418[0m
+[0;32mI (67865) HID_DEV_DEMO: Demo Quat[543]: w=-0.910, x=0.000, y=0.000, z=0.414[0m
+[0;32mI (67965) HID_DEV_DEMO: Demo Quat[544]: w=-0.912, x=0.000, y=0.000, z=0.409[0m
+[0;32mI (68065) HID_DEV_DEMO: Demo Quat[545]: w=-0.914, x=0.000, y=0.000, z=0.405[0m
+[0;32mI (68165) HID_DEV_DEMO: Demo Quat[546]: w=-0.916, x=0.000, y=0.000, z=0.400[0m
+[0;32mI (68255) HID_DEV_DEMO: Send the volume (loop 33)[0m
+[0;32mI (68265) HID_DEV_DEMO: Demo Quat[547]: w=-0.918, x=0.000, y=0.000, z=0.395[0m
+[0;32mI (68365) HID_DEV_DEMO: Demo Quat[548]: w=-0.920, x=0.000, y=0.000, z=0.391[0m
+[0;32mI (68465) HID_DEV_DEMO: Demo Quat[549]: w=-0.922, x=0.000, y=0.000, z=0.386[0m
+[0;32mI (68565) HID_DEV_DEMO: Demo Quat[550]: w=-0.924, x=0.000, y=0.000, z=0.382[0m
+[0;32mI (68665) HID_DEV_DEMO: Demo Quat[551]: w=-0.926, x=0.000, y=0.000, z=0.377[0m
+[0;32mI (68765) HID_DEV_DEMO: Demo Quat[552]: w=-0.928, x=0.000, y=0.000, z=0.372[0m
+[0;32mI (68865) HID_DEV_DEMO: Demo Quat[553]: w=-0.930, x=0.000, y=0.000, z=0.368[0m
+[0;32mI (68965) HID_DEV_DEMO: Demo Quat[554]: w=-0.932, x=0.000, y=0.000, z=0.363[0m
+[0;32mI (69065) HID_DEV_DEMO: Demo Quat[555]: w=-0.934, x=0.000, y=0.000, z=0.358[0m
+[0;32mI (69165) HID_DEV_DEMO: Demo Quat[556]: w=-0.935, x=0.000, y=0.000, z=0.354[0m
+[0;32mI (69265) HID_DEV_DEMO: Demo Quat[557]: w=-0.937, x=0.000, y=0.000, z=0.349[0m
+[0;32mI (69365) HID_DEV_DEMO: Demo Quat[558]: w=-0.939, x=0.000, y=0.000, z=0.344[0m
+[0;32mI (69465) HID_DEV_DEMO: Demo Quat[559]: w=-0.941, x=0.000, y=0.000, z=0.340[0m
+[0;32mI (69565) HID_DEV_DEMO: Demo Quat[560]: w=-0.942, x=0.000, y=0.000, z=0.335[0m
+[0;32mI (69665) HID_DEV_DEMO: Demo Quat[561]: w=-0.944, x=0.000, y=0.000, z=0.330[0m
+[0;32mI (69765) HID_DEV_DEMO: Demo Quat[562]: w=-0.946, x=0.000, y=0.000, z=0.326[0m
+[0;32mI (69865) HID_DEV_DEMO: Demo Quat[563]: w=-0.947, x=0.000, y=0.000, z=0.321[0m
+[0;32mI (69965) HID_DEV_DEMO: Demo Quat[564]: w=-0.949, x=0.000, y=0.000, z=0.316[0m
+[0;32mI (70065) HID_DEV_DEMO: Demo Quat[565]: w=-0.950, x=0.000, y=0.000, z=0.311[0m
+[0;32mI (70165) HID_DEV_DEMO: Demo Quat[566]: w=-0.952, x=0.000, y=0.000, z=0.307[0m
+[0;32mI (70265) HID_DEV_DEMO: Demo Quat[567]: w=-0.953, x=0.000, y=0.000, z=0.302[0m
+[0;32mI (70355) HID_DEV_DEMO: Send the volume (loop 34)[0m
+[0;32mI (70365) HID_DEV_DEMO: Demo Quat[568]: w=-0.955, x=0.000, y=0.000, z=0.297[0m
+[0;32mI (70465) HID_DEV_DEMO: Demo Quat[569]: w=-0.956, x=0.000, y=0.000, z=0.292[0m
+[0;32mI (70565) HID_DEV_DEMO: Demo Quat[570]: w=-0.958, x=0.000, y=0.000, z=0.287[0m
+[0;32mI (70665) HID_DEV_DEMO: Demo Quat[571]: w=-0.959, x=0.000, y=0.000, z=0.283[0m
+[0;32mI (70765) HID_DEV_DEMO: Demo Quat[572]: w=-0.961, x=0.000, y=0.000, z=0.278[0m
+[0;32mI (70865) HID_DEV_DEMO: Demo Quat[573]: w=-0.962, x=0.000, y=0.000, z=0.273[0m
+[0;32mI (70965) HID_DEV_DEMO: Demo Quat[574]: w=-0.963, x=0.000, y=0.000, z=0.268[0m
+[0;32mI (71065) HID_DEV_DEMO: Demo Quat[575]: w=-0.965, x=0.000, y=0.000, z=0.263[0m
+[0;32mI (71165) HID_DEV_DEMO: Demo Quat[576]: w=-0.966, x=0.000, y=0.000, z=0.259[0m
+[0;32mI (71265) HID_DEV_DEMO: Demo Quat[577]: w=-0.967, x=0.000, y=0.000, z=0.254[0m
+[0;32mI (71365) HID_DEV_DEMO: Demo Quat[578]: w=-0.969, x=0.000, y=0.000, z=0.249[0m
+[0;32mI (71465) HID_DEV_DEMO: Demo Quat[579]: w=-0.970, x=0.000, y=0.000, z=0.244[0m
+[0;32mI (71565) HID_DEV_DEMO: Demo Quat[580]: w=-0.971, x=0.000, y=0.000, z=0.239[0m
+[0;32mI (71665) HID_DEV_DEMO: Demo Quat[581]: w=-0.972, x=0.000, y=0.000, z=0.234[0m
+[0;32mI (71765) HID_DEV_DEMO: Demo Quat[582]: w=-0.973, x=0.000, y=0.000, z=0.230[0m
+[0;32mI (71865) HID_DEV_DEMO: Demo Quat[583]: w=-0.974, x=0.000, y=0.000, z=0.225[0m
+[0;32mI (71965) HID_DEV_DEMO: Demo Quat[584]: w=-0.976, x=0.000, y=0.000, z=0.220[0m
+[0;32mI (72065) HID_DEV_DEMO: Demo Quat[585]: w=-0.977, x=0.000, y=0.000, z=0.215[0m
+[0;32mI (72165) HID_DEV_DEMO: Demo Quat[586]: w=-0.978, x=0.000, y=0.000, z=0.210[0m
+[0;32mI (72265) HID_DEV_DEMO: Demo Quat[587]: w=-0.979, x=0.000, y=0.000, z=0.205[0m
+[0;32mI (72365) HID_DEV_DEMO: Demo Quat[588]: w=-0.980, x=0.000, y=0.000, z=0.200[0m
+[0;32mI (72455) HID_DEV_DEMO: Send the volume (loop 35)[0m
+[0;32mI (72465) HID_DEV_DEMO: Demo Quat[589]: w=-0.981, x=0.000, y=0.000, z=0.195[0m
+[0;32mI (72565) HID_DEV_DEMO: Demo Quat[590]: w=-0.982, x=0.000, y=0.000, z=0.190[0m
+[0;32mI (72665) HID_DEV_DEMO: Demo Quat[591]: w=-0.983, x=0.000, y=0.000, z=0.185[0m
+[0;32mI (72765) HID_DEV_DEMO: Demo Quat[592]: w=-0.984, x=0.000, y=0.000, z=0.181[0m
+[0;32mI (72865) HID_DEV_DEMO: Demo Quat[593]: w=-0.984, x=0.000, y=0.000, z=0.176[0m
+[0;32mI (72965) HID_DEV_DEMO: Demo Quat[594]: w=-0.985, x=0.000, y=0.000, z=0.171[0m
+[0;32mI (73065) HID_DEV_DEMO: Demo Quat[595]: w=-0.986, x=0.000, y=0.000, z=0.166[0m
+[0;32mI (73165) HID_DEV_DEMO: Demo Quat[596]: w=-0.987, x=0.000, y=0.000, z=0.161[0m
+[0;32mI (73265) HID_DEV_DEMO: Demo Quat[597]: w=-0.988, x=0.000, y=0.000, z=0.156[0m
+[0;32mI (73365) HID_DEV_DEMO: Demo Quat[598]: w=-0.989, x=0.000, y=0.000, z=0.151[0m
+[0;32mI (73465) HID_DEV_DEMO: Demo Quat[599]: w=-0.989, x=0.000, y=0.000, z=0.146[0m
+[0;32mI (73565) HID_DEV_DEMO: Demo Quat[600]: w=-0.990, x=0.000, y=0.000, z=0.141[0m
+[0;32mI (73665) HID_DEV_DEMO: Demo Quat[601]: w=-0.991, x=0.000, y=0.000, z=0.136[0m
+[0;32mI (73765) HID_DEV_DEMO: Demo Quat[602]: w=-0.991, x=0.000, y=0.000, z=0.131[0m
+[0;32mI (73865) HID_DEV_DEMO: Demo Quat[603]: w=-0.992, x=0.000, y=0.000, z=0.126[0m
+[0;32mI (73965) HID_DEV_DEMO: Demo Quat[604]: w=-0.993, x=0.000, y=0.000, z=0.121[0m
+[0;32mI (74065) HID_DEV_DEMO: Demo Quat[605]: w=-0.993, x=0.000, y=0.000, z=0.116[0m
+[0;32mI (74165) HID_DEV_DEMO: Demo Quat[606]: w=-0.994, x=0.000, y=0.000, z=0.111[0m
+[0;32mI (74265) HID_DEV_DEMO: Demo Quat[607]: w=-0.994, x=0.000, y=0.000, z=0.106[0m
+[0;32mI (74365) HID_DEV_DEMO: Demo Quat[608]: w=-0.995, x=0.000, y=0.000, z=0.101[0m
+[0;32mI (74465) HID_DEV_DEMO: Demo Quat[609]: w=-0.995, x=0.000, y=0.000, z=0.096[0m
+[0;32mI (74555) HID_DEV_DEMO: Send the volume (loop 36)[0m
+[0;32mI (74565) HID_DEV_DEMO: Demo Quat[610]: w=-0.996, x=0.000, y=0.000, z=0.091[0m
+[0;32mI (74665) HID_DEV_DEMO: Demo Quat[611]: w=-0.996, x=0.000, y=0.000, z=0.086[0m
+[0;32mI (74765) HID_DEV_DEMO: Demo Quat[612]: w=-0.997, x=0.000, y=0.000, z=0.081[0m
+[0;32mI (74865) HID_DEV_DEMO: Demo Quat[613]: w=-0.997, x=0.000, y=0.000, z=0.076[0m
+[0;32mI (74965) HID_DEV_DEMO: Demo Quat[614]: w=-0.997, x=0.000, y=0.000, z=0.072[0m
+[0;32mI (75065) HID_DEV_DEMO: Demo Quat[615]: w=-0.998, x=0.000, y=0.000, z=0.067[0m
+[0;32mI (75165) HID_DEV_DEMO: Demo Quat[616]: w=-0.998, x=0.000, y=0.000, z=0.062[0m
+[0;32mI (75265) HID_DEV_DEMO: Demo Quat[617]: w=-0.998, x=0.000, y=0.000, z=0.057[0m
+[0;32mI (75365) HID_DEV_DEMO: Demo Quat[618]: w=-0.999, x=0.000, y=0.000, z=0.052[0m
+[0;32mI (75465) HID_DEV_DEMO: Demo Quat[619]: w=-0.999, x=0.000, y=0.000, z=0.047[0m
+[0;32mI (75565) HID_DEV_DEMO: Demo Quat[620]: w=-0.999, x=0.000, y=0.000, z=0.042[0m
+[0;32mI (75665) HID_DEV_DEMO: Demo Quat[621]: w=-0.999, x=0.000, y=0.000, z=0.037[0m
+[0;32mI (75765) HID_DEV_DEMO: Demo Quat[622]: w=-1.000, x=0.000, y=0.000, z=0.032[0m
+[0;32mI (75865) HID_DEV_DEMO: Demo Quat[623]: w=-1.000, x=0.000, y=0.000, z=0.027[0m
+[0;32mI (75965) HID_DEV_DEMO: Demo Quat[624]: w=-1.000, x=0.000, y=0.000, z=0.022[0m
+[0;32mI (76065) HID_DEV_DEMO: Demo Quat[625]: w=-1.000, x=0.000, y=0.000, z=0.017[0m
+[0;32mI (76165) HID_DEV_DEMO: Demo Quat[626]: w=-1.000, x=0.000, y=0.000, z=0.012[0m
+[0;32mI (76265) HID_DEV_DEMO: Demo Quat[627]: w=-1.000, x=0.000, y=0.000, z=0.007[0m
+[0;32mI (76365) HID_DEV_DEMO: Demo Quat[628]: w=-1.000, x=0.000, y=0.000, z=0.002[0m
+[0;32mI (76465) HID_DEV_DEMO: Demo Quat[629]: w=1.000, x=0.000, y=0.000, z=0.003[0m
+[0;32mI (76565) HID_DEV_DEMO: Demo Quat[630]: w=1.000, x=0.000, y=0.000, z=0.008[0m
+[0;32mI (76655) HID_DEV_DEMO: Send the volume (loop 37)[0m
+[0;32mI (76665) HID_DEV_DEMO: Demo Quat[631]: w=1.000, x=0.000, y=0.000, z=0.013[0m
+[0;32mI (76765) HID_DEV_DEMO: Demo Quat[632]: w=1.000, x=0.000, y=0.000, z=0.018[0m
+[0;32mI (76865) HID_DEV_DEMO: Demo Quat[633]: w=1.000, x=0.000, y=0.000, z=0.023[0m
+[0;32mI (76965) HID_DEV_DEMO: Demo Quat[634]: w=1.000, x=0.000, y=0.000, z=0.028[0m
+[0;32mI (77065) HID_DEV_DEMO: Demo Quat[635]: w=0.999, x=0.000, y=0.000, z=0.033[0m
+[0;32mI (77165) HID_DEV_DEMO: Demo Quat[636]: w=0.999, x=0.000, y=0.000, z=0.038[0m
+[0;32mI (77265) HID_DEV_DEMO: Demo Quat[637]: w=0.999, x=0.000, y=0.000, z=0.043[0m
+[0;32mI (77365) HID_DEV_DEMO: Demo Quat[638]: w=0.999, x=0.000, y=0.000, z=0.048[0m
+[0;32mI (77465) HID_DEV_DEMO: Demo Quat[639]: w=0.999, x=0.000, y=0.000, z=0.053[0m
+[0;32mI (77565) HID_DEV_DEMO: Demo Quat[640]: w=0.998, x=0.000, y=0.000, z=0.058[0m
+[0;32mI (77665) HID_DEV_DEMO: Demo Quat[641]: w=0.998, x=0.000, y=0.000, z=0.063[0m
+[0;32mI (77765) HID_DEV_DEMO: Demo Quat[642]: w=0.998, x=0.000, y=0.000, z=0.068[0m
+[0;32mI (77865) HID_DEV_DEMO: Demo Quat[643]: w=0.997, x=0.000, y=0.000, z=0.073[0m
+[0;32mI (77965) HID_DEV_DEMO: Demo Quat[644]: w=0.997, x=0.000, y=0.000, z=0.078[0m
+[0;32mI (78065) HID_DEV_DEMO: Demo Quat[645]: w=0.997, x=0.000, y=0.000, z=0.083[0m
+[0;32mI (78165) HID_DEV_DEMO: Demo Quat[646]: w=0.996, x=0.000, y=0.000, z=0.088[0m
+[0;32mI (78265) HID_DEV_DEMO: Demo Quat[647]: w=0.996, x=0.000, y=0.000, z=0.093[0m
+[0;32mI (78365) HID_DEV_DEMO: Demo Quat[648]: w=0.995, x=0.000, y=0.000, z=0.098[0m
+[0;32mI (78465) HID_DEV_DEMO: Demo Quat[649]: w=0.995, x=0.000, y=0.000, z=0.103[0m
+[0;32mI (78565) HID_DEV_DEMO: Demo Quat[650]: w=0.994, x=0.000, y=0.000, z=0.108[0m
+[0;32mI (78665) HID_DEV_DEMO: Demo Quat[651]: w=0.994, x=0.000, y=0.000, z=0.113[0m
+[0;32mI (78755) HID_DEV_DEMO: Send the volume (loop 38)[0m
+[0;32mI (78765) HID_DEV_DEMO: Demo Quat[652]: w=0.993, x=0.000, y=0.000, z=0.118[0m
+[0;32mI (78865) HID_DEV_DEMO: Demo Quat[653]: w=0.992, x=0.000, y=0.000, z=0.123[0m
+[0;32mI (78965) HID_DEV_DEMO: Demo Quat[654]: w=0.992, x=0.000, y=0.000, z=0.128[0m
+[0;32mI (79065) HID_DEV_DEMO: Demo Quat[655]: w=0.991, x=0.000, y=0.000, z=0.133[0m
+[0;32mI (79165) HID_DEV_DEMO: Demo Quat[656]: w=0.990, x=0.000, y=0.000, z=0.138[0m
+[0;32mI (79265) HID_DEV_DEMO: Demo Quat[657]: w=0.990, x=0.000, y=0.000, z=0.143[0m
+[0;32mI (79365) HID_DEV_DEMO: Demo Quat[658]: w=0.989, x=0.000, y=0.000, z=0.148[0m
+[0;32mI (79465) HID_DEV_DEMO: Demo Quat[659]: w=0.988, x=0.000, y=0.000, z=0.153[0m
+[0;32mI (79565) HID_DEV_DEMO: Demo Quat[660]: w=0.987, x=0.000, y=0.000, z=0.158[0m
+[0;32mI (79665) HID_DEV_DEMO: Demo Quat[661]: w=0.987, x=0.000, y=0.000, z=0.163[0m
+[0;32mI (79765) HID_DEV_DEMO: Demo Quat[662]: w=0.986, x=0.000, y=0.000, z=0.168[0m
+[0;32mI (79865) HID_DEV_DEMO: Demo Quat[663]: w=0.985, x=0.000, y=0.000, z=0.173[0m
+[0;32mI (79965) HID_DEV_DEMO: Demo Quat[664]: w=0.984, x=0.000, y=0.000, z=0.177[0m
+[0;32mI (80065) HID_DEV_DEMO: Demo Quat[665]: w=0.983, x=0.000, y=0.000, z=0.182[0m
+[0;32mI (80165) HID_DEV_DEMO: Demo Quat[666]: w=0.982, x=0.000, y=0.000, z=0.187[0m
+[0;32mI (80265) HID_DEV_DEMO: Demo Quat[667]: w=0.981, x=0.000, y=0.000, z=0.192[0m
+[0;32mI (80365) HID_DEV_DEMO: Demo Quat[668]: w=0.980, x=0.000, y=0.000, z=0.197[0m
+[0;32mI (80465) HID_DEV_DEMO: Demo Quat[669]: w=0.979, x=0.000, y=0.000, z=0.202[0m
+[0;32mI (80565) HID_DEV_DEMO: Demo Quat[670]: w=0.978, x=0.000, y=0.000, z=0.207[0m
+[0;32mI (80665) HID_DEV_DEMO: Demo Quat[671]: w=0.977, x=0.000, y=0.000, z=0.212[0m
+[0;32mI (80765) HID_DEV_DEMO: Demo Quat[672]: w=0.976, x=0.000, y=0.000, z=0.217[0m
+[0;32mI (80855) HID_DEV_DEMO: Send the volume (loop 39)[0m
+[0;32mI (80865) HID_DEV_DEMO: Demo Quat[673]: w=0.975, x=0.000, y=0.000, z=0.222[0m
+[0;32mI (80965) HID_DEV_DEMO: Demo Quat[674]: w=0.974, x=0.000, y=0.000, z=0.226[0m
+[0;32mI (81065) HID_DEV_DEMO: Demo Quat[675]: w=0.973, x=0.000, y=0.000, z=0.231[0m
+[0;32mI (81165) HID_DEV_DEMO: Demo Quat[676]: w=0.972, x=0.000, y=0.000, z=0.236[0m
+[0;32mI (81265) HID_DEV_DEMO: Demo Quat[677]: w=0.971, x=0.000, y=0.000, z=0.241[0m
+[0;32mI (81365) HID_DEV_DEMO: Demo Quat[678]: w=0.969, x=0.000, y=0.000, z=0.246[0m
+[0;32mI (81465) HID_DEV_DEMO: Demo Quat[679]: w=0.968, x=0.000, y=0.000, z=0.251[0m
+[0;32mI (81565) HID_DEV_DEMO: Demo Quat[680]: w=0.967, x=0.000, y=0.000, z=0.256[0m
+[0;32mI (81665) HID_DEV_DEMO: Demo Quat[681]: w=0.966, x=0.000, y=0.000, z=0.260[0m
+[0;32mI (81765) HID_DEV_DEMO: Demo Quat[682]: w=0.964, x=0.000, y=0.000, z=0.265[0m
+[0;32mI (81865) HID_DEV_DEMO: Demo Quat[683]: w=0.963, x=0.000, y=0.000, z=0.270[0m
+[0;32mI (81965) HID_DEV_DEMO: Demo Quat[684]: w=0.961, x=0.000, y=0.000, z=0.275[0m
+[0;32mI (82065) HID_DEV_DEMO: Demo Quat[685]: w=0.960, x=0.000, y=0.000, z=0.280[0m
+[0;32mI (82165) HID_DEV_DEMO: Demo Quat[686]: w=0.959, x=0.000, y=0.000, z=0.284[0m
+[0;32mI (82265) HID_DEV_DEMO: Demo Quat[687]: w=0.957, x=0.000, y=0.000, z=0.289[0m
+[0;32mI (82365) HID_DEV_DEMO: Demo Quat[688]: w=0.956, x=0.000, y=0.000, z=0.294[0m
+[0;32mI (82465) HID_DEV_DEMO: Demo Quat[689]: w=0.954, x=0.000, y=0.000, z=0.299[0m
+[0;32mI (82565) HID_DEV_DEMO: Demo Quat[690]: w=0.953, x=0.000, y=0.000, z=0.304[0m
+[0;32mI (82665) HID_DEV_DEMO: Demo Quat[691]: w=0.951, x=0.000, y=0.000, z=0.308[0m
+[0;32mI (82765) HID_DEV_DEMO: Demo Quat[692]: w=0.950, x=0.000, y=0.000, z=0.313[0m
+[0;32mI (82865) HID_DEV_DEMO: Demo Quat[693]: w=0.948, x=0.000, y=0.000, z=0.318[0m
+[0;32mI (82955) HID_DEV_DEMO: Send the volume (loop 40)[0m
+[0;32mI (82965) HID_DEV_DEMO: Demo Quat[694]: w=0.947, x=0.000, y=0.000, z=0.323[0m
+[0;32mI (83065) HID_DEV_DEMO: Demo Quat[695]: w=0.945, x=0.000, y=0.000, z=0.327[0m
+[0;32mI (83165) HID_DEV_DEMO: Demo Quat[696]: w=0.943, x=0.000, y=0.000, z=0.332[0m
+[0;32mI (83265) HID_DEV_DEMO: Demo Quat[697]: w=0.942, x=0.000, y=0.000, z=0.337[0m
+[0;32mI (83365) HID_DEV_DEMO: Demo Quat[698]: w=0.940, x=0.000, y=0.000, z=0.341[0m
+[0;32mI (83465) HID_DEV_DEMO: Demo Quat[699]: w=0.938, x=0.000, y=0.000, z=0.346[0m
+[0;32mI (83565) HID_DEV_DEMO: Demo Quat[700]: w=0.936, x=0.000, y=0.000, z=0.351[0m
+[0;32mI (83665) HID_DEV_DEMO: Demo Quat[701]: w=0.935, x=0.000, y=0.000, z=0.355[0m
+[0;32mI (83765) HID_DEV_DEMO: Demo Quat[702]: w=0.933, x=0.000, y=0.000, z=0.360[0m
+[0;32mI (83865) HID_DEV_DEMO: Demo Quat[703]: w=0.931, x=0.000, y=0.000, z=0.365[0m
+[0;32mI (83965) HID_DEV_DEMO: Demo Quat[704]: w=0.929, x=0.000, y=0.000, z=0.369[0m
+[0;32mI (84065) HID_DEV_DEMO: Demo Quat[705]: w=0.927, x=0.000, y=0.000, z=0.374[0m
+[0;32mI (84165) HID_DEV_DEMO: Demo Quat[706]: w=0.926, x=0.000, y=0.000, z=0.379[0m
+[0;32mI (84265) HID_DEV_DEMO: Demo Quat[707]: w=0.924, x=0.000, y=0.000, z=0.383[0m
+[0;32mI (84365) HID_DEV_DEMO: Demo Quat[708]: w=0.922, x=0.000, y=0.000, z=0.388[0m
+[0;32mI (84465) HID_DEV_DEMO: Demo Quat[709]: w=0.920, x=0.000, y=0.000, z=0.393[0m
+[0;32mI (84565) HID_DEV_DEMO: Demo Quat[710]: w=0.918, x=0.000, y=0.000, z=0.397[0m
+[0;32mI (84665) HID_DEV_DEMO: Demo Quat[711]: w=0.916, x=0.000, y=0.000, z=0.402[0m
+[0;32mI (84765) HID_DEV_DEMO: Demo Quat[712]: w=0.914, x=0.000, y=0.000, z=0.406[0m
+[0;32mI (84865) HID_DEV_DEMO: Demo Quat[713]: w=0.912, x=0.000, y=0.000, z=0.411[0m
+[0;32mI (84965) HID_DEV_DEMO: Demo Quat[714]: w=0.910, x=0.000, y=0.000, z=0.415[0m
+[0;32mI (85055) HID_DEV_DEMO: Send the volume (loop 41)[0m
+[0;32mI (85065) HID_DEV_DEMO: Demo Quat[715]: w=0.908, x=0.000, y=0.000, z=0.420[0m
+[0;32mI (85165) HID_DEV_DEMO: Demo Quat[716]: w=0.905, x=0.000, y=0.000, z=0.425[0m
+[0;32mI (85265) HID_DEV_DEMO: Demo Quat[717]: w=0.903, x=0.000, y=0.000, z=0.429[0m
+[0;32mI (85365) HID_DEV_DEMO: Demo Quat[718]: w=0.901, x=0.000, y=0.000, z=0.434[0m
+[0;32mI (85465) HID_DEV_DEMO: Demo Quat[719]: w=0.899, x=0.000, y=0.000, z=0.438[0m
+[0;32mI (85565) HID_DEV_DEMO: Demo Quat[720]: w=0.897, x=0.000, y=0.000, z=0.443[0m
+[0;32mI (85665) HID_DEV_DEMO: Demo Quat[721]: w=0.895, x=0.000, y=0.000, z=0.447[0m
+[0;32mI (85765) HID_DEV_DEMO: Demo Quat[722]: w=0.892, x=0.000, y=0.000, z=0.451[0m
+[0;32mI (85865) HID_DEV_DEMO: Demo Quat[723]: w=0.890, x=0.000, y=0.000, z=0.456[0m
+[0;32mI (85965) HID_DEV_DEMO: Demo Quat[724]: w=0.888, x=0.000, y=0.000, z=0.460[0m
+[0;32mI (86065) HID_DEV_DEMO: Demo Quat[725]: w=0.885, x=0.000, y=0.000, z=0.465[0m
+[0;32mI (86165) HID_DEV_DEMO: Demo Quat[726]: w=0.883, x=0.000, y=0.000, z=0.469[0m
+[0;32mI (86265) HID_DEV_DEMO: Demo Quat[727]: w=0.881, x=0.000, y=0.000, z=0.474[0m
+[0;32mI (86365) HID_DEV_DEMO: Demo Quat[728]: w=0.878, x=0.000, y=0.000, z=0.478[0m
+[0;32mI (86465) HID_DEV_DEMO: Demo Quat[729]: w=0.876, x=0.000, y=0.000, z=0.482[0m
+[0;32mI (86565) HID_DEV_DEMO: Demo Quat[730]: w=0.874, x=0.000, y=0.000, z=0.487[0m
+[0;32mI (86665) HID_DEV_DEMO: Demo Quat[731]: w=0.871, x=0.000, y=0.000, z=0.491[0m
+[0;32mI (86765) HID_DEV_DEMO: Demo Quat[732]: w=0.869, x=0.000, y=0.000, z=0.496[0m
+[0;32mI (86865) HID_DEV_DEMO: Demo Quat[733]: w=0.866, x=0.000, y=0.000, z=0.500[0m
+[0;32mI (86965) HID_DEV_DEMO: Demo Quat[734]: w=0.864, x=0.000, y=0.000, z=0.504[0m
+[0;32mI (87065) HID_DEV_DEMO: Demo Quat[735]: w=0.861, x=0.000, y=0.000, z=0.508[0m
+[0;32mI (87155) HID_DEV_DEMO: Send the volume (loop 42)[0m
+[0;32mI (87165) HID_DEV_DEMO: Demo Quat[736]: w=0.859, x=0.000, y=0.000, z=0.513[0m
+[0;32mI (87265) HID_DEV_DEMO: Demo Quat[737]: w=0.856, x=0.000, y=0.000, z=0.517[0m
+[0;32mI (87365) HID_DEV_DEMO: Demo Quat[738]: w=0.853, x=0.000, y=0.000, z=0.521[0m
+[0;32mI (87465) HID_DEV_DEMO: Demo Quat[739]: w=0.851, x=0.000, y=0.000, z=0.526[0m
+[0;32mI (87565) HID_DEV_DEMO: Demo Quat[740]: w=0.848, x=0.000, y=0.000, z=0.530[0m
+[0;32mI (87665) HID_DEV_DEMO: Demo Quat[741]: w=0.845, x=0.000, y=0.000, z=0.534[0m
+[0;32mI (87765) HID_DEV_DEMO: Demo Quat[742]: w=0.843, x=0.000, y=0.000, z=0.538[0m
+[0;32mI (87865) HID_DEV_DEMO: Demo Quat[743]: w=0.840, x=0.000, y=0.000, z=0.543[0m
+[0;32mI (87965) HID_DEV_DEMO: Demo Quat[744]: w=0.837, x=0.000, y=0.000, z=0.547[0m
+[0;32mI (88065) HID_DEV_DEMO: Demo Quat[745]: w=0.835, x=0.000, y=0.000, z=0.551[0m
+[0;32mI (88165) HID_DEV_DEMO: Demo Quat[746]: w=0.832, x=0.000, y=0.000, z=0.555[0m
+[0;32mI (88265) HID_DEV_DEMO: Demo Quat[747]: w=0.829, x=0.000, y=0.000, z=0.559[0m
+[0;32mI (88365) HID_DEV_DEMO: Demo Quat[748]: w=0.826, x=0.000, y=0.000, z=0.563[0m
+[0;32mI (88465) HID_DEV_DEMO: Demo Quat[749]: w=0.823, x=0.000, y=0.000, z=0.567[0m
+[0;32mI (88565) HID_DEV_DEMO: Demo Quat[750]: w=0.821, x=0.000, y=0.000, z=0.572[0m
+[0;32mI (88665) HID_DEV_DEMO: Demo Quat[751]: w=0.818, x=0.000, y=0.000, z=0.576[0m
+[0;32mI (88765) HID_DEV_DEMO: Demo Quat[752]: w=0.815, x=0.000, y=0.000, z=0.580[0m
+[0;32mI (88865) HID_DEV_DEMO: Demo Quat[753]: w=0.812, x=0.000, y=0.000, z=0.584[0m
+[0;32mI (88965) HID_DEV_DEMO: Demo Quat[754]: w=0.809, x=0.000, y=0.000, z=0.588[0m
+[0;32mI (89065) HID_DEV_DEMO: Demo Quat[755]: w=0.806, x=0.000, y=0.000, z=0.592[0m
+[0;32mI (89165) HID_DEV_DEMO: Demo Quat[756]: w=0.803, x=0.000, y=0.000, z=0.596[0m
+[0;32mI (89255) HID_DEV_DEMO: Send the volume (loop 43)[0m
+[0;32mI (89265) HID_DEV_DEMO: Demo Quat[757]: w=0.800, x=0.000, y=0.000, z=0.600[0m
+[0;32mI (89365) HID_DEV_DEMO: Demo Quat[758]: w=0.797, x=0.000, y=0.000, z=0.604[0m
+[0;32mI (89465) HID_DEV_DEMO: Demo Quat[759]: w=0.794, x=0.000, y=0.000, z=0.608[0m
+[0;32mI (89565) HID_DEV_DEMO: Demo Quat[760]: w=0.791, x=0.000, y=0.000, z=0.612[0m
+[0;32mI (89665) HID_DEV_DEMO: Demo Quat[761]: w=0.788, x=0.000, y=0.000, z=0.616[0m
+[0;32mI (89765) HID_DEV_DEMO: Demo Quat[762]: w=0.785, x=0.000, y=0.000, z=0.620[0m
+[0;32mI (89865) HID_DEV_DEMO: Demo Quat[763]: w=0.782, x=0.000, y=0.000, z=0.624[0m
+[0;32mI (89965) HID_DEV_DEMO: Demo Quat[764]: w=0.779, x=0.000, y=0.000, z=0.628[0m
+[0;32mI (90065) HID_DEV_DEMO: Demo Quat[765]: w=0.775, x=0.000, y=0.000, z=0.631[0m
+[0;32mI (90165) HID_DEV_DEMO: Demo Quat[766]: w=0.772, x=0.000, y=0.000, z=0.635[0m
+[0;32mI (90265) HID_DEV_DEMO: Demo Quat[767]: w=0.769, x=0.000, y=0.000, z=0.639[0m
+[0;32mI (90365) HID_DEV_DEMO: Demo Quat[768]: w=0.766, x=0.000, y=0.000, z=0.643[0m
+[0;32mI (90465) HID_DEV_DEMO: Demo Quat[769]: w=0.763, x=0.000, y=0.000, z=0.647[0m
+[0;32mI (90565) HID_DEV_DEMO: Demo Quat[770]: w=0.759, x=0.000, y=0.000, z=0.651[0m
+[0;32mI (90665) HID_DEV_DEMO: Demo Quat[771]: w=0.756, x=0.000, y=0.000, z=0.654[0m
+[0;32mI (90765) HID_DEV_DEMO: Demo Quat[772]: w=0.753, x=0.000, y=0.000, z=0.658[0m
+[0;32mI (90865) HID_DEV_DEMO: Demo Quat[773]: w=0.750, x=0.000, y=0.000, z=0.662[0m
+[0;32mI (90965) HID_DEV_DEMO: Demo Quat[774]: w=0.746, x=0.000, y=0.000, z=0.666[0m
+[0;32mI (91065) HID_DEV_DEMO: Demo Quat[775]: w=0.743, x=0.000, y=0.000, z=0.669[0m
+[0;32mI (91165) HID_DEV_DEMO: Demo Quat[776]: w=0.740, x=0.000, y=0.000, z=0.673[0m
+[0;32mI (91265) HID_DEV_DEMO: Demo Quat[777]: w=0.736, x=0.000, y=0.000, z=0.677[0m
+[0;32mI (91355) HID_DEV_DEMO: Send the volume (loop 44)[0m
+[0;32mI (91365) HID_DEV_DEMO: Demo Quat[778]: w=0.733, x=0.000, y=0.000, z=0.680[0m
+[0;32mI (91465) HID_DEV_DEMO: Demo Quat[779]: w=0.729, x=0.000, y=0.000, z=0.684[0m
+[0;32mI (91565) HID_DEV_DEMO: Demo Quat[780]: w=0.726, x=0.000, y=0.000, z=0.688[0m
+[0;32mI (91665) HID_DEV_DEMO: Demo Quat[781]: w=0.722, x=0.000, y=0.000, z=0.691[0m
+[0;32mI (91765) HID_DEV_DEMO: Demo Quat[782]: w=0.719, x=0.000, y=0.000, z=0.695[0m
+[0;32mI (91865) HID_DEV_DEMO: Demo Quat[783]: w=0.716, x=0.000, y=0.000, z=0.699[0m
+[0;32mI (91965) HID_DEV_DEMO: Demo Quat[784]: w=0.712, x=0.000, y=0.000, z=0.702[0m
+[0;32mI (92065) HID_DEV_DEMO: Demo Quat[785]: w=0.708, x=0.000, y=0.000, z=0.706[0m
+[0;32mI (92165) HID_DEV_DEMO: Demo Quat[786]: w=0.705, x=0.000, y=0.000, z=0.709[0m
+[0;32mI (92265) HID_DEV_DEMO: Demo Quat[787]: w=0.701, x=0.000, y=0.000, z=0.713[0m
+[0;32mI (92365) HID_DEV_DEMO: Demo Quat[788]: w=0.698, x=0.000, y=0.000, z=0.716[0m
+[0;32mI (92465) HID_DEV_DEMO: Demo Quat[789]: w=0.694, x=0.000, y=0.000, z=0.720[0m
+[0;32mI (92565) HID_DEV_DEMO: Demo Quat[790]: w=0.691, x=0.000, y=0.000, z=0.723[0m
+[0;32mI (92665) HID_DEV_DEMO: Demo Quat[791]: w=0.687, x=0.000, y=0.000, z=0.727[0m
+[0;32mI (92765) HID_DEV_DEMO: Demo Quat[792]: w=0.683, x=0.000, y=0.000, z=0.730[0m
+[0;32mI (92865) HID_DEV_DEMO: Demo Quat[793]: w=0.680, x=0.000, y=0.000, z=0.733[0m
+[0;32mI (92965) HID_DEV_DEMO: Demo Quat[794]: w=0.676, x=0.000, y=0.000, z=0.737[0m
+[0;32mI (93065) HID_DEV_DEMO: Demo Quat[795]: w=0.672, x=0.000, y=0.000, z=0.740[0m
+[0;32mI (93165) HID_DEV_DEMO: Demo Quat[796]: w=0.669, x=0.000, y=0.000, z=0.744[0m
+[0;32mI (93265) HID_DEV_DEMO: Demo Quat[797]: w=0.665, x=0.000, y=0.000, z=0.747[0m
+[0;32mI (93365) HID_DEV_DEMO: Demo Quat[798]: w=0.661, x=0.000, y=0.000, z=0.750[0m
+[0;32mI (93455) HID_DEV_DEMO: Send the volume (loop 45)[0m
+[0;32mI (93465) HID_DEV_DEMO: Demo Quat[799]: w=0.657, x=0.000, y=0.000, z=0.754[0m
+[0;32mI (93565) HID_DEV_DEMO: Demo Quat[800]: w=0.654, x=0.000, y=0.000, z=0.757[0m
+[0;32mI (93665) HID_DEV_DEMO: Demo Quat[801]: w=0.650, x=0.000, y=0.000, z=0.760[0m
+[0;32mI (93765) HID_DEV_DEMO: Demo Quat[802]: w=0.646, x=0.000, y=0.000, z=0.763[0m
+[0;32mI (93865) HID_DEV_DEMO: Demo Quat[803]: w=0.642, x=0.000, y=0.000, z=0.767[0m
+[0;32mI (93965) HID_DEV_DEMO: Demo Quat[804]: w=0.638, x=0.000, y=0.000, z=0.770[0m
+[0;32mI (94065) HID_DEV_DEMO: Demo Quat[805]: w=0.635, x=0.000, y=0.000, z=0.773[0m
+[0;32mI (94165) HID_DEV_DEMO: Demo Quat[806]: w=0.631, x=0.000, y=0.000, z=0.776[0m
+[0;32mI (94265) HID_DEV_DEMO: Demo Quat[807]: w=0.627, x=0.000, y=0.000, z=0.779[0m
+[0;32mI (94365) HID_DEV_DEMO: Demo Quat[808]: w=0.623, x=0.000, y=0.000, z=0.782[0m
+[0;32mI (94465) HID_DEV_DEMO: Demo Quat[809]: w=0.619, x=0.000, y=0.000, z=0.785[0m
+[0;32mI (94565) HID_DEV_DEMO: Demo Quat[810]: w=0.615, x=0.000, y=0.000, z=0.789[0m
+[0;32mI (94665) HID_DEV_DEMO: Demo Quat[811]: w=0.611, x=0.000, y=0.000, z=0.792[0m
+[0;32mI (94765) HID_DEV_DEMO: Demo Quat[812]: w=0.607, x=0.000, y=0.000, z=0.795[0m
+[0;32mI (94865) HID_DEV_DEMO: Demo Quat[813]: w=0.603, x=0.000, y=0.000, z=0.798[0m
+[0;32mI (94965) HID_DEV_DEMO: Demo Quat[814]: w=0.599, x=0.000, y=0.000, z=0.801[0m
+[0;32mI (95065) HID_DEV_DEMO: Demo Quat[815]: w=0.595, x=0.000, y=0.000, z=0.804[0m
+[0;32mI (95165) HID_DEV_DEMO: Demo Quat[816]: w=0.591, x=0.000, y=0.000, z=0.807[0m
+[0;32mI (95265) HID_DEV_DEMO: Demo Quat[817]: w=0.587, x=0.000, y=0.000, z=0.810[0m
+[0;32mI (95365) HID_DEV_DEMO: Demo Quat[818]: w=0.583, x=0.000, y=0.000, z=0.813[0m
+[0;32mI (95465) HID_DEV_DEMO: Demo Quat[819]: w=0.579, x=0.000, y=0.000, z=0.815[0m
+[0;32mI (95555) HID_DEV_DEMO: Send the volume (loop 46)[0m
+[0;32mI (95565) HID_DEV_DEMO: Demo Quat[820]: w=0.575, x=0.000, y=0.000, z=0.818[0m
+[0;32mI (95665) HID_DEV_DEMO: Demo Quat[821]: w=0.571, x=0.000, y=0.000, z=0.821[0m
+[0;32mI (95765) HID_DEV_DEMO: Demo Quat[822]: w=0.567, x=0.000, y=0.000, z=0.824[0m
+[0;32mI (95865) HID_DEV_DEMO: Demo Quat[823]: w=0.562, x=0.000, y=0.000, z=0.827[0m
+[0;32mI (95965) HID_DEV_DEMO: Demo Quat[824]: w=0.558, x=0.000, y=0.000, z=0.830[0m
+[0;32mI (96065) HID_DEV_DEMO: Demo Quat[825]: w=0.554, x=0.000, y=0.000, z=0.832[0m
+[0;32mI (96165) HID_DEV_DEMO: Demo Quat[826]: w=0.550, x=0.000, y=0.000, z=0.835[0m
+[0;32mI (96265) HID_DEV_DEMO: Demo Quat[827]: w=0.546, x=0.000, y=0.000, z=0.838[0m
+[0;32mI (96365) HID_DEV_DEMO: Demo Quat[828]: w=0.542, x=0.000, y=0.000, z=0.841[0m
+[0;32mI (96465) HID_DEV_DEMO: Demo Quat[829]: w=0.537, x=0.000, y=0.000, z=0.843[0m
+[0;32mI (96565) HID_DEV_DEMO: Demo Quat[830]: w=0.533, x=0.000, y=0.000, z=0.846[0m
+[0;32mI (96665) HID_DEV_DEMO: Demo Quat[831]: w=0.529, x=0.000, y=0.000, z=0.849[0m
+[0;32mI (96765) HID_DEV_DEMO: Demo Quat[832]: w=0.525, x=0.000, y=0.000, z=0.851[0m
+[0;32mI (96865) HID_DEV_DEMO: Demo Quat[833]: w=0.520, x=0.000, y=0.000, z=0.854[0m
+[0;32mI (96965) HID_DEV_DEMO: Demo Quat[834]: w=0.516, x=0.000, y=0.000, z=0.856[0m
+[0;32mI (97065) HID_DEV_DEMO: Demo Quat[835]: w=0.512, x=0.000, y=0.000, z=0.859[0m
+[0;32mI (97165) HID_DEV_DEMO: Demo Quat[836]: w=0.508, x=0.000, y=0.000, z=0.862[0m
+[0;32mI (97265) HID_DEV_DEMO: Demo Quat[837]: w=0.503, x=0.000, y=0.000, z=0.864[0m
+[0;32mI (97365) HID_DEV_DEMO: Demo Quat[838]: w=0.499, x=0.000, y=0.000, z=0.867[0m
+[0;32mI (97465) HID_DEV_DEMO: Demo Quat[839]: w=0.495, x=0.000, y=0.000, z=0.869[0m
+[0;32mI (97565) HID_DEV_DEMO: Demo Quat[840]: w=0.490, x=0.000, y=0.000, z=0.872[0m
+[0;32mI (97655) HID_DEV_DEMO: Send the volume (loop 47)[0m
+[0;32mI (97665) HID_DEV_DEMO: Demo Quat[841]: w=0.486, x=0.000, y=0.000, z=0.874[0m
+[0;32mI (97765) HID_DEV_DEMO: Demo Quat[842]: w=0.481, x=0.000, y=0.000, z=0.876[0m
+[0;32mI (97865) HID_DEV_DEMO: Demo Quat[843]: w=0.477, x=0.000, y=0.000, z=0.879[0m
+[0;32mI (97965) HID_DEV_DEMO: Demo Quat[844]: w=0.473, x=0.000, y=0.000, z=0.881[0m
+[0;32mI (98065) HID_DEV_DEMO: Demo Quat[845]: w=0.468, x=0.000, y=0.000, z=0.884[0m
+[0;32mI (98165) HID_DEV_DEMO: Demo Quat[846]: w=0.464, x=0.000, y=0.000, z=0.886[0m
+[0;32mI (98265) HID_DEV_DEMO: Demo Quat[847]: w=0.459, x=0.000, y=0.000, z=0.888[0m
+[0;32mI (98365) HID_DEV_DEMO: Demo Quat[848]: w=0.455, x=0.000, y=0.000, z=0.890[0m
+[0;32mI (98465) HID_DEV_DEMO: Demo Quat[849]: w=0.451, x=0.000, y=0.000, z=0.893[0m
+[0;32mI (98565) HID_DEV_DEMO: Demo Quat[850]: w=0.446, x=0.000, y=0.000, z=0.895[0m
+[0;32mI (98665) HID_DEV_DEMO: Demo Quat[851]: w=0.442, x=0.000, y=0.000, z=0.897[0m
+[0;32mI (98765) HID_DEV_DEMO: Demo Quat[852]: w=0.437, x=0.000, y=0.000, z=0.899[0m
+[0;32mI (98865) HID_DEV_DEMO: Demo Quat[853]: w=0.433, x=0.000, y=0.000, z=0.902[0m
+[0;32mI (98965) HID_DEV_DEMO: Demo Quat[854]: w=0.428, x=0.000, y=0.000, z=0.904[0m
+[0;32mI (99065) HID_DEV_DEMO: Demo Quat[855]: w=0.424, x=0.000, y=0.000, z=0.906[0m
+[0;32mI (99165) HID_DEV_DEMO: Demo Quat[856]: w=0.419, x=0.000, y=0.000, z=0.908[0m
+[0;32mI (99265) HID_DEV_DEMO: Demo Quat[857]: w=0.414, x=0.000, y=0.000, z=0.910[0m
+[0;32mI (99365) HID_DEV_DEMO: Demo Quat[858]: w=0.410, x=0.000, y=0.000, z=0.912[0m
+[0;32mI (99465) HID_DEV_DEMO: Demo Quat[859]: w=0.405, x=0.000, y=0.000, z=0.914[0m
+[0;32mI (99565) HID_DEV_DEMO: Demo Quat[860]: w=0.401, x=0.000, y=0.000, z=0.916[0m
+[0;32mI (99665) HID_DEV_DEMO: Demo Quat[861]: w=0.396, x=0.000, y=0.000, z=0.918[0m
+[0;32mI (99755) HID_DEV_DEMO: Send the volume (loop 48)[0m
+[0;32mI (99765) HID_DEV_DEMO: Demo Quat[862]: w=0.392, x=0.000, y=0.000, z=0.920[0m
+[0;32mI (99865) HID_DEV_DEMO: Demo Quat[863]: w=0.387, x=0.000, y=0.000, z=0.922[0m
+[0;32mI (99965) HID_DEV_DEMO: Demo Quat[864]: w=0.382, x=0.000, y=0.000, z=0.924[0m
+[0;32mI (100065) HID_DEV_DEMO: Demo Quat[865]: w=0.378, x=0.000, y=0.000, z=0.926[0m
+[0;32mI (100165) HID_DEV_DEMO: Demo Quat[866]: w=0.373, x=0.000, y=0.000, z=0.928[0m
+[0;32mI (100265) HID_DEV_DEMO: Demo Quat[867]: w=0.368, x=0.000, y=0.000, z=0.930[0m
+[0;32mI (100365) HID_DEV_DEMO: Demo Quat[868]: w=0.364, x=0.000, y=0.000, z=0.931[0m
+[0;32mI (100465) HID_DEV_DEMO: Demo Quat[869]: w=0.359, x=0.000, y=0.000, z=0.933[0m
+[0;32mI (100565) HID_DEV_DEMO: Demo Quat[870]: w=0.354, x=0.000, y=0.000, z=0.935[0m
+[0;32mI (100665) HID_DEV_DEMO: Demo Quat[871]: w=0.350, x=0.000, y=0.000, z=0.937[0m
+[0;32mI (100765) HID_DEV_DEMO: Demo Quat[872]: w=0.345, x=0.000, y=0.000, z=0.939[0m
+[0;32mI (100865) HID_DEV_DEMO: Demo Quat[873]: w=0.340, x=0.000, y=0.000, z=0.940[0m
+[0;32mI (100965) HID_DEV_DEMO: Demo Quat[874]: w=0.336, x=0.000, y=0.000, z=0.942[0m
+[0;32mI (101065) HID_DEV_DEMO: Demo Quat[875]: w=0.331, x=0.000, y=0.000, z=0.944[0m
+[0;32mI (101165) HID_DEV_DEMO: Demo Quat[876]: w=0.326, x=0.000, y=0.000, z=0.945[0m
+[0;32mI (101265) HID_DEV_DEMO: Demo Quat[877]: w=0.322, x=0.000, y=0.000, z=0.947[0m
+[0;32mI (101365) HID_DEV_DEMO: Demo Quat[878]: w=0.317, x=0.000, y=0.000, z=0.948[0m
+[0;32mI (101465) HID_DEV_DEMO: Demo Quat[879]: w=0.312, x=0.000, y=0.000, z=0.950[0m
+[0;32mI (101565) HID_DEV_DEMO: Demo Quat[880]: w=0.307, x=0.000, y=0.000, z=0.952[0m
+[0;32mI (101665) HID_DEV_DEMO: Demo Quat[881]: w=0.303, x=0.000, y=0.000, z=0.953[0m
+[0;32mI (101765) HID_DEV_DEMO: Demo Quat[882]: w=0.298, x=0.000, y=0.000, z=0.955[0m
+[0;32mI (101855) HID_DEV_DEMO: Send the volume (loop 49)[0m
+[0;32mI (101865) HID_DEV_DEMO: Demo Quat[883]: w=0.293, x=0.000, y=0.000, z=0.956[0m
+[0;32mI (101965) HID_DEV_DEMO: Demo Quat[884]: w=0.288, x=0.000, y=0.000, z=0.958[0m
+[0;32mI (102065) HID_DEV_DEMO: Demo Quat[885]: w=0.283, x=0.000, y=0.000, z=0.959[0m
+[0;32mI (102165) HID_DEV_DEMO: Demo Quat[886]: w=0.279, x=0.000, y=0.000, z=0.960[0m
+[0;32mI (102265) HID_DEV_DEMO: Demo Quat[887]: w=0.274, x=0.000, y=0.000, z=0.962[0m
+[0;32mI (102365) HID_DEV_DEMO: Demo Quat[888]: w=0.269, x=0.000, y=0.000, z=0.963[0m
+[0;32mI (102465) HID_DEV_DEMO: Demo Quat[889]: w=0.264, x=0.000, y=0.000, z=0.964[0m
+[0;32mI (102565) HID_DEV_DEMO: Demo Quat[890]: w=0.259, x=0.000, y=0.000, z=0.966[0m
+[0;32mI (102665) HID_DEV_DEMO: Demo Quat[891]: w=0.255, x=0.000, y=0.000, z=0.967[0m
+[0;32mI (102765) HID_DEV_DEMO: Demo Quat[892]: w=0.250, x=0.000, y=0.000, z=0.968[0m
+[0;32mI (102865) HID_DEV_DEMO: Demo Quat[893]: w=0.245, x=0.000, y=0.000, z=0.970[0m
+[0;32mI (102965) HID_DEV_DEMO: Demo Quat[894]: w=0.240, x=0.000, y=0.000, z=0.971[0m
+[0;32mI (103065) HID_DEV_DEMO: Demo Quat[895]: w=0.235, x=0.000, y=0.000, z=0.972[0m
+[0;32mI (103165) HID_DEV_DEMO: Demo Quat[896]: w=0.230, x=0.000, y=0.000, z=0.973[0m
+[0;32mI (103265) HID_DEV_DEMO: Demo Quat[897]: w=0.225, x=0.000, y=0.000, z=0.974[0m
+[0;32mI (103365) HID_DEV_DEMO: Demo Quat[898]: w=0.221, x=0.000, y=0.000, z=0.975[0m
+[0;32mI (103465) HID_DEV_DEMO: Demo Quat[899]: w=0.216, x=0.000, y=0.000, z=0.976[0m
+[0;32mI (103565) HID_DEV_DEMO: Demo Quat[900]: w=0.211, x=0.000, y=0.000, z=0.978[0m
+[0;32mI (103665) HID_DEV_DEMO: Demo Quat[901]: w=0.206, x=0.000, y=0.000, z=0.979[0m
+[0;32mI (103765) HID_DEV_DEMO: Demo Quat[902]: w=0.201, x=0.000, y=0.000, z=0.980[0m
+[0;32mI (103865) HID_DEV_DEMO: Demo Quat[903]: w=0.196, x=0.000, y=0.000, z=0.981[0m
+[0;32mI (103955) HID_DEV_DEMO: Send the volume (loop 50)[0m
+[0;32mI (103965) HID_DEV_DEMO: Demo Quat[904]: w=0.191, x=0.000, y=0.000, z=0.982[0m
+[0;32mI (104065) HID_DEV_DEMO: Demo Quat[905]: w=0.186, x=0.000, y=0.000, z=0.982[0m
+[0;32mI (104165) HID_DEV_DEMO: Demo Quat[906]: w=0.181, x=0.000, y=0.000, z=0.983[0m
+[0;32mI (104265) HID_DEV_DEMO: Demo Quat[907]: w=0.176, x=0.000, y=0.000, z=0.984[0m
+[0;32mI (104365) HID_DEV_DEMO: Demo Quat[908]: w=0.172, x=0.000, y=0.000, z=0.985[0m
+[0;32mI (104465) HID_DEV_DEMO: Demo Quat[909]: w=0.167, x=0.000, y=0.000, z=0.986[0m
+[0;32mI (104565) HID_DEV_DEMO: Demo Quat[910]: w=0.162, x=0.000, y=0.000, z=0.987[0m
+[0;32mI (104665) HID_DEV_DEMO: Demo Quat[911]: w=0.157, x=0.000, y=0.000, z=0.988[0m
+[0;32mI (104765) HID_DEV_DEMO: Demo Quat[912]: w=0.152, x=0.000, y=0.000, z=0.988[0m
+[0;32mI (104865) HID_DEV_DEMO: Demo Quat[913]: w=0.147, x=0.000, y=0.000, z=0.989[0m
+[0;32mI (104965) HID_DEV_DEMO: Demo Quat[914]: w=0.142, x=0.000, y=0.000, z=0.990[0m
+[0;32mI (105065) HID_DEV_DEMO: Demo Quat[915]: w=0.137, x=0.000, y=0.000, z=0.991[0m
+[0;32mI (105165) HID_DEV_DEMO: Demo Quat[916]: w=0.132, x=0.000, y=0.000, z=0.991[0m
+[0;32mI (105265) HID_DEV_DEMO: Demo Quat[917]: w=0.127, x=0.000, y=0.000, z=0.992[0m
+[0;32mI (105365) HID_DEV_DEMO: Demo Quat[918]: w=0.122, x=0.000, y=0.000, z=0.993[0m
+[0;32mI (105465) HID_DEV_DEMO: Demo Quat[919]: w=0.117, x=0.000, y=0.000, z=0.993[0m
+[0;32mI (105565) HID_DEV_DEMO: Demo Quat[920]: w=0.112, x=0.000, y=0.000, z=0.994[0m
+[0;32mI (105665) HID_DEV_DEMO: Demo Quat[921]: w=0.107, x=0.000, y=0.000, z=0.994[0m
+[0;32mI (105765) HID_DEV_DEMO: Demo Quat[922]: w=0.102, x=0.000, y=0.000, z=0.995[0m
+[0;32mI (105865) HID_DEV_DEMO: Demo Quat[923]: w=0.097, x=0.000, y=0.000, z=0.995[0m
+[0;32mI (105965) HID_DEV_DEMO: Demo Quat[924]: w=0.092, x=0.000, y=0.000, z=0.996[0m
+[0;32mI (106055) HID_DEV_DEMO: Send the volume (loop 51)[0m
+[0;32mI (106065) HID_DEV_DEMO: Demo Quat[925]: w=0.087, x=0.000, y=0.000, z=0.996[0m
+[0;32mI (106165) HID_DEV_DEMO: Demo Quat[926]: w=0.082, x=0.000, y=0.000, z=0.997[0m
+[0;32mI (106265) HID_DEV_DEMO: Demo Quat[927]: w=0.077, x=0.000, y=0.000, z=0.997[0m
+[0;32mI (106365) HID_DEV_DEMO: Demo Quat[928]: w=0.072, x=0.000, y=0.000, z=0.997[0m
+[0;32mI (106465) HID_DEV_DEMO: Demo Quat[929]: w=0.067, x=0.000, y=0.000, z=0.998[0m
+[0;32mI (106565) HID_DEV_DEMO: Demo Quat[930]: w=0.062, x=0.000, y=0.000, z=0.998[0m
+[0;32mI (106665) HID_DEV_DEMO: Demo Quat[931]: w=0.057, x=0.000, y=0.000, z=0.998[0m
+[0;32mI (106765) HID_DEV_DEMO: Demo Quat[932]: w=0.052, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (106865) HID_DEV_DEMO: Demo Quat[933]: w=0.047, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (106965) HID_DEV_DEMO: Demo Quat[934]: w=0.042, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (107065) HID_DEV_DEMO: Demo Quat[935]: w=0.037, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (107165) HID_DEV_DEMO: Demo Quat[936]: w=0.032, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (107265) HID_DEV_DEMO: Demo Quat[937]: w=0.027, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (107365) HID_DEV_DEMO: Demo Quat[938]: w=0.022, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (107465) HID_DEV_DEMO: Demo Quat[939]: w=0.017, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (107565) HID_DEV_DEMO: Demo Quat[940]: w=0.012, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (107665) HID_DEV_DEMO: Demo Quat[941]: w=0.007, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (107765) HID_DEV_DEMO: Demo Quat[942]: w=0.002, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (107865) HID_DEV_DEMO: Demo Quat[943]: w=-0.003, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (107965) HID_DEV_DEMO: Demo Quat[944]: w=-0.008, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (108065) HID_DEV_DEMO: Demo Quat[945]: w=-0.013, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (108155) HID_DEV_DEMO: Send the volume (loop 52)[0m
+[0;32mI (108165) HID_DEV_DEMO: Demo Quat[946]: w=-0.018, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (108265) HID_DEV_DEMO: Demo Quat[947]: w=-0.023, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (108365) HID_DEV_DEMO: Demo Quat[948]: w=-0.028, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (108465) HID_DEV_DEMO: Demo Quat[949]: w=-0.033, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (108565) HID_DEV_DEMO: Demo Quat[950]: w=-0.038, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (108665) HID_DEV_DEMO: Demo Quat[951]: w=-0.043, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (108765) HID_DEV_DEMO: Demo Quat[952]: w=-0.048, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (108865) HID_DEV_DEMO: Demo Quat[953]: w=-0.053, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (108965) HID_DEV_DEMO: Demo Quat[954]: w=-0.058, x=0.000, y=0.000, z=0.998[0m
+[0;32mI (109065) HID_DEV_DEMO: Demo Quat[955]: w=-0.063, x=0.000, y=0.000, z=0.998[0m
+[0;32mI (109165) HID_DEV_DEMO: Demo Quat[956]: w=-0.068, x=0.000, y=0.000, z=0.998[0m
+[0;32mI (109265) HID_DEV_DEMO: Demo Quat[957]: w=-0.073, x=0.000, y=0.000, z=0.997[0m
+[0;32mI (109365) HID_DEV_DEMO: Demo Quat[958]: w=-0.078, x=0.000, y=0.000, z=0.997[0m
+[0;32mI (109465) HID_DEV_DEMO: Demo Quat[959]: w=-0.083, x=0.000, y=0.000, z=0.997[0m
+[0;32mI (109565) HID_DEV_DEMO: Demo Quat[960]: w=-0.088, x=0.000, y=0.000, z=0.996[0m
+[0;32mI (109665) HID_DEV_DEMO: Demo Quat[961]: w=-0.093, x=0.000, y=0.000, z=0.996[0m
+[0;32mI (109765) HID_DEV_DEMO: Demo Quat[962]: w=-0.097, x=0.000, y=0.000, z=0.995[0m
+[0;32mI (109865) HID_DEV_DEMO: Demo Quat[963]: w=-0.102, x=0.000, y=0.000, z=0.995[0m
+[0;32mI (109965) HID_DEV_DEMO: Demo Quat[964]: w=-0.107, x=0.000, y=0.000, z=0.994[0m
+[0;32mI (110065) HID_DEV_DEMO: Demo Quat[965]: w=-0.112, x=0.000, y=0.000, z=0.994[0m
+[0;32mI (110165) HID_DEV_DEMO: Demo Quat[966]: w=-0.117, x=0.000, y=0.000, z=0.993[0m
+[0;32mI (110255) HID_DEV_DEMO: Send the volume (loop 53)[0m
+[0;32mI (110265) HID_DEV_DEMO: Demo Quat[967]: w=-0.122, x=0.000, y=0.000, z=0.992[0m
+[0;32mI (110365) HID_DEV_DEMO: Demo Quat[968]: w=-0.127, x=0.000, y=0.000, z=0.992[0m
+[0;32mI (110465) HID_DEV_DEMO: Demo Quat[969]: w=-0.132, x=0.000, y=0.000, z=0.991[0m
+[0;32mI (110565) HID_DEV_DEMO: Demo Quat[970]: w=-0.137, x=0.000, y=0.000, z=0.991[0m
+[0;32mI (110665) HID_DEV_DEMO: Demo Quat[971]: w=-0.142, x=0.000, y=0.000, z=0.990[0m
+[0;32mI (110765) HID_DEV_DEMO: Demo Quat[972]: w=-0.147, x=0.000, y=0.000, z=0.989[0m
+[0;32mI (110865) HID_DEV_DEMO: Demo Quat[973]: w=-0.152, x=0.000, y=0.000, z=0.988[0m
+[0;32mI (110965) HID_DEV_DEMO: Demo Quat[974]: w=-0.157, x=0.000, y=0.000, z=0.988[0m
+[0;32mI (111065) HID_DEV_DEMO: Demo Quat[975]: w=-0.162, x=0.000, y=0.000, z=0.987[0m
+[0;32mI (111165) HID_DEV_DEMO: Demo Quat[976]: w=-0.167, x=0.000, y=0.000, z=0.986[0m
+[0;32mI (111265) HID_DEV_DEMO: Demo Quat[977]: w=-0.172, x=0.000, y=0.000, z=0.985[0m
+[0;32mI (111365) HID_DEV_DEMO: Demo Quat[978]: w=-0.177, x=0.000, y=0.000, z=0.984[0m
+[0;32mI (111465) HID_DEV_DEMO: Demo Quat[979]: w=-0.182, x=0.000, y=0.000, z=0.983[0m
+[0;32mI (111565) HID_DEV_DEMO: Demo Quat[980]: w=-0.187, x=0.000, y=0.000, z=0.982[0m
+[0;32mI (111665) HID_DEV_DEMO: Demo Quat[981]: w=-0.191, x=0.000, y=0.000, z=0.982[0m
+[0;32mI (111765) HID_DEV_DEMO: Demo Quat[982]: w=-0.196, x=0.000, y=0.000, z=0.981[0m
+[0;32mI (111865) HID_DEV_DEMO: Demo Quat[983]: w=-0.201, x=0.000, y=0.000, z=0.980[0m
+[0;32mI (111965) HID_DEV_DEMO: Demo Quat[984]: w=-0.206, x=0.000, y=0.000, z=0.979[0m
+[0;32mI (112065) HID_DEV_DEMO: Demo Quat[985]: w=-0.211, x=0.000, y=0.000, z=0.977[0m
+[0;32mI (112165) HID_DEV_DEMO: Demo Quat[986]: w=-0.216, x=0.000, y=0.000, z=0.976[0m
+[0;32mI (112265) HID_DEV_DEMO: Demo Quat[987]: w=-0.221, x=0.000, y=0.000, z=0.975[0m
+[0;32mI (112355) HID_DEV_DEMO: Send the volume (loop 54)[0m
+[0;32mI (112365) HID_DEV_DEMO: Demo Quat[988]: w=-0.226, x=0.000, y=0.000, z=0.974[0m
+[0;32mI (112465) HID_DEV_DEMO: Demo Quat[989]: w=-0.231, x=0.000, y=0.000, z=0.973[0m
+[0;32mI (112565) HID_DEV_DEMO: Demo Quat[990]: w=-0.235, x=0.000, y=0.000, z=0.972[0m
+[0;32mI (112665) HID_DEV_DEMO: Demo Quat[991]: w=-0.240, x=0.000, y=0.000, z=0.971[0m
+[0;32mI (112765) HID_DEV_DEMO: Demo Quat[992]: w=-0.245, x=0.000, y=0.000, z=0.969[0m
+[0;32mI (112865) HID_DEV_DEMO: Demo Quat[993]: w=-0.250, x=0.000, y=0.000, z=0.968[0m
+[0;32mI (112965) HID_DEV_DEMO: Demo Quat[994]: w=-0.255, x=0.000, y=0.000, z=0.967[0m
+[0;32mI (113065) HID_DEV_DEMO: Demo Quat[995]: w=-0.260, x=0.000, y=0.000, z=0.966[0m
+[0;32mI (113165) HID_DEV_DEMO: Demo Quat[996]: w=-0.264, x=0.000, y=0.000, z=0.964[0m
+[0;32mI (113265) HID_DEV_DEMO: Demo Quat[997]: w=-0.269, x=0.000, y=0.000, z=0.963[0m
+[0;32mI (113365) HID_DEV_DEMO: Demo Quat[998]: w=-0.274, x=0.000, y=0.000, z=0.962[0m
+[0;32mI (113465) HID_DEV_DEMO: Demo Quat[999]: w=-0.279, x=0.000, y=0.000, z=0.960[0m
+[0;32mI (113565) HID_DEV_DEMO: Demo Quat[1000]: w=-0.284, x=0.000, y=0.000, z=0.959[0m
+[0;32mI (113665) HID_DEV_DEMO: Demo Quat[1001]: w=-0.288, x=0.000, y=0.000, z=0.957[0m
+[0;32mI (113765) HID_DEV_DEMO: Demo Quat[1002]: w=-0.293, x=0.000, y=0.000, z=0.956[0m
+[0;32mI (113865) HID_DEV_DEMO: Demo Quat[1003]: w=-0.298, x=0.000, y=0.000, z=0.955[0m
+[0;32mI (113965) HID_DEV_DEMO: Demo Quat[1004]: w=-0.303, x=0.000, y=0.000, z=0.953[0m
+[0;32mI (114065) HID_DEV_DEMO: Demo Quat[1005]: w=-0.308, x=0.000, y=0.000, z=0.952[0m
+[0;32mI (114165) HID_DEV_DEMO: Demo Quat[1006]: w=-0.312, x=0.000, y=0.000, z=0.950[0m
+[0;32mI (114265) HID_DEV_DEMO: Demo Quat[1007]: w=-0.317, x=0.000, y=0.000, z=0.948[0m
+[0;32mI (114365) HID_DEV_DEMO: Demo Quat[1008]: w=-0.322, x=0.000, y=0.000, z=0.947[0m
+[0;32mI (114455) HID_DEV_DEMO: Send the volume (loop 55)[0m
+[0;32mI (114465) HID_DEV_DEMO: Demo Quat[1009]: w=-0.327, x=0.000, y=0.000, z=0.945[0m
+[0;32mI (114565) HID_DEV_DEMO: Demo Quat[1010]: w=-0.331, x=0.000, y=0.000, z=0.944[0m
+[0;32mI (114665) HID_DEV_DEMO: Demo Quat[1011]: w=-0.336, x=0.000, y=0.000, z=0.942[0m
+[0;32mI (114765) HID_DEV_DEMO: Demo Quat[1012]: w=-0.341, x=0.000, y=0.000, z=0.940[0m
+[0;32mI (114865) HID_DEV_DEMO: Demo Quat[1013]: w=-0.345, x=0.000, y=0.000, z=0.938[0m
+[0;32mI (114965) HID_DEV_DEMO: Demo Quat[1014]: w=-0.350, x=0.000, y=0.000, z=0.937[0m
+[0;32mI (115065) HID_DEV_DEMO: Demo Quat[1015]: w=-0.355, x=0.000, y=0.000, z=0.935[0m
+[0;32mI (115165) HID_DEV_DEMO: Demo Quat[1016]: w=-0.359, x=0.000, y=0.000, z=0.933[0m
+[0;32mI (115265) HID_DEV_DEMO: Demo Quat[1017]: w=-0.364, x=0.000, y=0.000, z=0.931[0m
+[0;32mI (115365) HID_DEV_DEMO: Demo Quat[1018]: w=-0.369, x=0.000, y=0.000, z=0.930[0m
+[0;32mI (115465) HID_DEV_DEMO: Demo Quat[1019]: w=-0.373, x=0.000, y=0.000, z=0.928[0m
+[0;32mI (115565) HID_DEV_DEMO: Demo Quat[1020]: w=-0.378, x=0.000, y=0.000, z=0.926[0m
+[0;32mI (115665) HID_DEV_DEMO: Demo Quat[1021]: w=-0.383, x=0.000, y=0.000, z=0.924[0m
+[0;32mI (115765) HID_DEV_DEMO: Demo Quat[1022]: w=-0.387, x=0.000, y=0.000, z=0.922[0m
+[0;32mI (115865) HID_DEV_DEMO: Demo Quat[1023]: w=-0.392, x=0.000, y=0.000, z=0.920[0m
+[0;32mI (115965) HID_DEV_DEMO: Demo Quat[1024]: w=-0.396, x=0.000, y=0.000, z=0.918[0m
+[0;32mI (116065) HID_DEV_DEMO: Demo Quat[1025]: w=-0.401, x=0.000, y=0.000, z=0.916[0m
+[0;32mI (116165) HID_DEV_DEMO: Demo Quat[1026]: w=-0.406, x=0.000, y=0.000, z=0.914[0m
+[0;32mI (116265) HID_DEV_DEMO: Demo Quat[1027]: w=-0.410, x=0.000, y=0.000, z=0.912[0m
+[0;32mI (116365) HID_DEV_DEMO: Demo Quat[1028]: w=-0.415, x=0.000, y=0.000, z=0.910[0m
+[0;32mI (116465) HID_DEV_DEMO: Demo Quat[1029]: w=-0.419, x=0.000, y=0.000, z=0.908[0m
+[0;32mI (116555) HID_DEV_DEMO: Send the volume (loop 56)[0m
+[0;32mI (116565) HID_DEV_DEMO: Demo Quat[1030]: w=-0.424, x=0.000, y=0.000, z=0.906[0m
+[0;32mI (116665) HID_DEV_DEMO: Demo Quat[1031]: w=-0.428, x=0.000, y=0.000, z=0.904[0m
+[0;32mI (116765) HID_DEV_DEMO: Demo Quat[1032]: w=-0.433, x=0.000, y=0.000, z=0.901[0m
+[0;32mI (116865) HID_DEV_DEMO: Demo Quat[1033]: w=-0.437, x=0.000, y=0.000, z=0.899[0m
+[0;32mI (116965) HID_DEV_DEMO: Demo Quat[1034]: w=-0.442, x=0.000, y=0.000, z=0.897[0m
+[0;32mI (117065) HID_DEV_DEMO: Demo Quat[1035]: w=-0.446, x=0.000, y=0.000, z=0.895[0m
+[0;32mI (117165) HID_DEV_DEMO: Demo Quat[1036]: w=-0.451, x=0.000, y=0.000, z=0.893[0m
+[0;32mI (117265) HID_DEV_DEMO: Demo Quat[1037]: w=-0.455, x=0.000, y=0.000, z=0.890[0m
+[0;32mI (117365) HID_DEV_DEMO: Demo Quat[1038]: w=-0.460, x=0.000, y=0.000, z=0.888[0m
+[0;32mI (117465) HID_DEV_DEMO: Demo Quat[1039]: w=-0.464, x=0.000, y=0.000, z=0.886[0m
+[0;32mI (117565) HID_DEV_DEMO: Demo Quat[1040]: w=-0.469, x=0.000, y=0.000, z=0.883[0m
+[0;32mI (117665) HID_DEV_DEMO: Demo Quat[1041]: w=-0.473, x=0.000, y=0.000, z=0.881[0m
+[0;32mI (117765) HID_DEV_DEMO: Demo Quat[1042]: w=-0.477, x=0.000, y=0.000, z=0.879[0m
+[0;32mI (117865) HID_DEV_DEMO: Demo Quat[1043]: w=-0.482, x=0.000, y=0.000, z=0.876[0m
+[0;32mI (117965) HID_DEV_DEMO: Demo Quat[1044]: w=-0.486, x=0.000, y=0.000, z=0.874[0m
+[0;32mI (118065) HID_DEV_DEMO: Demo Quat[1045]: w=-0.490, x=0.000, y=0.000, z=0.871[0m
+[0;32mI (118165) HID_DEV_DEMO: Demo Quat[1046]: w=-0.495, x=0.000, y=0.000, z=0.869[0m
+[0;32mI (118265) HID_DEV_DEMO: Demo Quat[1047]: w=-0.499, x=0.000, y=0.000, z=0.867[0m
+[0;32mI (118365) HID_DEV_DEMO: Demo Quat[1048]: w=-0.503, x=0.000, y=0.000, z=0.864[0m
+[0;32mI (118465) HID_DEV_DEMO: Demo Quat[1049]: w=-0.508, x=0.000, y=0.000, z=0.861[0m
+[0;32mI (118565) HID_DEV_DEMO: Demo Quat[1050]: w=-0.512, x=0.000, y=0.000, z=0.859[0m
+[0;32mI (118655) HID_DEV_DEMO: Send the volume (loop 57)[0m
+[0;32mI (118665) HID_DEV_DEMO: Demo Quat[1051]: w=-0.516, x=0.000, y=0.000, z=0.856[0m
+[0;32mI (118765) HID_DEV_DEMO: Demo Quat[1052]: w=-0.521, x=0.000, y=0.000, z=0.854[0m
+[0;32mI (118865) HID_DEV_DEMO: Demo Quat[1053]: w=-0.525, x=0.000, y=0.000, z=0.851[0m
+[0;32mI (118965) HID_DEV_DEMO: Demo Quat[1054]: w=-0.529, x=0.000, y=0.000, z=0.849[0m
+[0;32mI (119065) HID_DEV_DEMO: Demo Quat[1055]: w=-0.533, x=0.000, y=0.000, z=0.846[0m
+[0;32mI (119165) HID_DEV_DEMO: Demo Quat[1056]: w=-0.538, x=0.000, y=0.000, z=0.843[0m
+[0;32mI (119265) HID_DEV_DEMO: Demo Quat[1057]: w=-0.542, x=0.000, y=0.000, z=0.840[0m
+[0;32mI (119365) HID_DEV_DEMO: Demo Quat[1058]: w=-0.546, x=0.000, y=0.000, z=0.838[0m
+[0;32mI (119465) HID_DEV_DEMO: Demo Quat[1059]: w=-0.550, x=0.000, y=0.000, z=0.835[0m
+[0;32mI (119565) HID_DEV_DEMO: Demo Quat[1060]: w=-0.554, x=0.000, y=0.000, z=0.832[0m
+[0;32mI (119665) HID_DEV_DEMO: Demo Quat[1061]: w=-0.559, x=0.000, y=0.000, z=0.829[0m
+[0;32mI (119765) HID_DEV_DEMO: Demo Quat[1062]: w=-0.563, x=0.000, y=0.000, z=0.827[0m
+[0;32mI (119865) HID_DEV_DEMO: Demo Quat[1063]: w=-0.567, x=0.000, y=0.000, z=0.824[0m
+[0;32mI (119965) HID_DEV_DEMO: Demo Quat[1064]: w=-0.571, x=0.000, y=0.000, z=0.821[0m
+[0;32mI (120065) HID_DEV_DEMO: Demo Quat[1065]: w=-0.575, x=0.000, y=0.000, z=0.818[0m
+[0;32mI (120165) HID_DEV_DEMO: Demo Quat[1066]: w=-0.579, x=0.000, y=0.000, z=0.815[0m
+[0;32mI (120265) HID_DEV_DEMO: Demo Quat[1067]: w=-0.583, x=0.000, y=0.000, z=0.812[0m
+[0;32mI (120365) HID_DEV_DEMO: Demo Quat[1068]: w=-0.587, x=0.000, y=0.000, z=0.809[0m
+[0;32mI (120465) HID_DEV_DEMO: Demo Quat[1069]: w=-0.591, x=0.000, y=0.000, z=0.806[0m
+[0;32mI (120565) HID_DEV_DEMO: Demo Quat[1070]: w=-0.595, x=0.000, y=0.000, z=0.804[0m
+[0;32mI (120665) HID_DEV_DEMO: Demo Quat[1071]: w=-0.599, x=0.000, y=0.000, z=0.801[0m
+[0;32mI (120755) HID_DEV_DEMO: Send the volume (loop 58)[0m
+[0;32mI (120765) HID_DEV_DEMO: Demo Quat[1072]: w=-0.603, x=0.000, y=0.000, z=0.798[0m
+[0;32mI (120865) HID_DEV_DEMO: Demo Quat[1073]: w=-0.607, x=0.000, y=0.000, z=0.794[0m
+[0;32mI (120965) HID_DEV_DEMO: Demo Quat[1074]: w=-0.611, x=0.000, y=0.000, z=0.791[0m
+[0;32mI (121065) HID_DEV_DEMO: Demo Quat[1075]: w=-0.615, x=0.000, y=0.000, z=0.788[0m
+[0;32mI (121165) HID_DEV_DEMO: Demo Quat[1076]: w=-0.619, x=0.000, y=0.000, z=0.785[0m
+[0;32mI (121265) HID_DEV_DEMO: Demo Quat[1077]: w=-0.623, x=0.000, y=0.000, z=0.782[0m
+[0;32mI (121365) HID_DEV_DEMO: Demo Quat[1078]: w=-0.627, x=0.000, y=0.000, z=0.779[0m
+[0;32mI (121465) HID_DEV_DEMO: Demo Quat[1079]: w=-0.631, x=0.000, y=0.000, z=0.776[0m
+[0;32mI (121565) HID_DEV_DEMO: Demo Quat[1080]: w=-0.635, x=0.000, y=0.000, z=0.773[0m
+[0;32mI (121665) HID_DEV_DEMO: Demo Quat[1081]: w=-0.639, x=0.000, y=0.000, z=0.770[0m
+[0;32mI (121765) HID_DEV_DEMO: Demo Quat[1082]: w=-0.642, x=0.000, y=0.000, z=0.766[0m
+[0;32mI (121865) HID_DEV_DEMO: Demo Quat[1083]: w=-0.646, x=0.000, y=0.000, z=0.763[0m
+[0;32mI (121965) HID_DEV_DEMO: Demo Quat[1084]: w=-0.650, x=0.000, y=0.000, z=0.760[0m
+[0;32mI (122065) HID_DEV_DEMO: Demo Quat[1085]: w=-0.654, x=0.000, y=0.000, z=0.757[0m
+[0;32mI (122165) HID_DEV_DEMO: Demo Quat[1086]: w=-0.658, x=0.000, y=0.000, z=0.753[0m
+[0;32mI (122265) HID_DEV_DEMO: Demo Quat[1087]: w=-0.661, x=0.000, y=0.000, z=0.750[0m
+[0;32mI (122365) HID_DEV_DEMO: Demo Quat[1088]: w=-0.665, x=0.000, y=0.000, z=0.747[0m
+[0;32mI (122465) HID_DEV_DEMO: Demo Quat[1089]: w=-0.669, x=0.000, y=0.000, z=0.743[0m
+[0;32mI (122565) HID_DEV_DEMO: Demo Quat[1090]: w=-0.673, x=0.000, y=0.000, z=0.740[0m
+[0;32mI (122665) HID_DEV_DEMO: Demo Quat[1091]: w=-0.676, x=0.000, y=0.000, z=0.737[0m
+[0;32mI (122765) HID_DEV_DEMO: Demo Quat[1092]: w=-0.680, x=0.000, y=0.000, z=0.733[0m
+[0;32mI (122855) HID_DEV_DEMO: Send the volume (loop 59)[0m
+[0;32mI (122865) HID_DEV_DEMO: Demo Quat[1093]: w=-0.684, x=0.000, y=0.000, z=0.730[0m
+[0;32mI (122965) HID_DEV_DEMO: Demo Quat[1094]: w=-0.687, x=0.000, y=0.000, z=0.726[0m
+[0;32mI (123065) HID_DEV_DEMO: Demo Quat[1095]: w=-0.691, x=0.000, y=0.000, z=0.723[0m
+[0;32mI (123165) HID_DEV_DEMO: Demo Quat[1096]: w=-0.694, x=0.000, y=0.000, z=0.720[0m
+[0;32mI (123265) HID_DEV_DEMO: Demo Quat[1097]: w=-0.698, x=0.000, y=0.000, z=0.716[0m
+[0;32mI (123365) HID_DEV_DEMO: Demo Quat[1098]: w=-0.702, x=0.000, y=0.000, z=0.713[0m
+[0;32mI (123465) HID_DEV_DEMO: Demo Quat[1099]: w=-0.705, x=0.000, y=0.000, z=0.709[0m
+[0;32mI (123565) HID_DEV_DEMO: Demo Quat[1100]: w=-0.709, x=0.000, y=0.000, z=0.706[0m
+[0;32mI (123665) HID_DEV_DEMO: Demo Quat[1101]: w=-0.712, x=0.000, y=0.000, z=0.702[0m
+[0;32mI (123765) HID_DEV_DEMO: Demo Quat[1102]: w=-0.716, x=0.000, y=0.000, z=0.698[0m
+[0;32mI (123865) HID_DEV_DEMO: Demo Quat[1103]: w=-0.719, x=0.000, y=0.000, z=0.695[0m
+[0;32mI (123965) HID_DEV_DEMO: Demo Quat[1104]: w=-0.723, x=0.000, y=0.000, z=0.691[0m
+[0;32mI (124065) HID_DEV_DEMO: Demo Quat[1105]: w=-0.726, x=0.000, y=0.000, z=0.688[0m
+[0;32mI (124165) HID_DEV_DEMO: Demo Quat[1106]: w=-0.730, x=0.000, y=0.000, z=0.684[0m
+[0;32mI (124265) HID_DEV_DEMO: Demo Quat[1107]: w=-0.733, x=0.000, y=0.000, z=0.680[0m
+[0;32mI (124365) HID_DEV_DEMO: Demo Quat[1108]: w=-0.736, x=0.000, y=0.000, z=0.677[0m
+[0;32mI (124465) HID_DEV_DEMO: Demo Quat[1109]: w=-0.740, x=0.000, y=0.000, z=0.673[0m
+[0;32mI (124565) HID_DEV_DEMO: Demo Quat[1110]: w=-0.743, x=0.000, y=0.000, z=0.669[0m
+[0;32mI (124665) HID_DEV_DEMO: Demo Quat[1111]: w=-0.746, x=0.000, y=0.000, z=0.665[0m
+[0;32mI (124765) HID_DEV_DEMO: Demo Quat[1112]: w=-0.750, x=0.000, y=0.000, z=0.662[0m
+[0;32mI (124865) HID_DEV_DEMO: Demo Quat[1113]: w=-0.753, x=0.000, y=0.000, z=0.658[0m
+[0;32mI (124955) HID_DEV_DEMO: Send the volume (loop 60)[0m
+[0;32mI (124965) HID_DEV_DEMO: Demo Quat[1114]: w=-0.756, x=0.000, y=0.000, z=0.654[0m
+[0;32mI (125065) HID_DEV_DEMO: Demo Quat[1115]: w=-0.760, x=0.000, y=0.000, z=0.650[0m
+[0;32mI (125165) HID_DEV_DEMO: Demo Quat[1116]: w=-0.763, x=0.000, y=0.000, z=0.647[0m
+[0;32mI (125265) HID_DEV_DEMO: Demo Quat[1117]: w=-0.766, x=0.000, y=0.000, z=0.643[0m
+[0;32mI (125365) HID_DEV_DEMO: Demo Quat[1118]: w=-0.769, x=0.000, y=0.000, z=0.639[0m
+[0;32mI (125465) HID_DEV_DEMO: Demo Quat[1119]: w=-0.772, x=0.000, y=0.000, z=0.635[0m
+[0;32mI (125565) HID_DEV_DEMO: Demo Quat[1120]: w=-0.776, x=0.000, y=0.000, z=0.631[0m
+[0;32mI (125665) HID_DEV_DEMO: Demo Quat[1121]: w=-0.779, x=0.000, y=0.000, z=0.627[0m
+[0;32mI (125765) HID_DEV_DEMO: Demo Quat[1122]: w=-0.782, x=0.000, y=0.000, z=0.623[0m
+[0;32mI (125865) HID_DEV_DEMO: Demo Quat[1123]: w=-0.785, x=0.000, y=0.000, z=0.620[0m
+[0;32mI (125965) HID_DEV_DEMO: Demo Quat[1124]: w=-0.788, x=0.000, y=0.000, z=0.616[0m
+[0;32mI (126065) HID_DEV_DEMO: Demo Quat[1125]: w=-0.791, x=0.000, y=0.000, z=0.612[0m
+[0;32mI (126165) HID_DEV_DEMO: Demo Quat[1126]: w=-0.794, x=0.000, y=0.000, z=0.608[0m
+[0;32mI (126265) HID_DEV_DEMO: Demo Quat[1127]: w=-0.797, x=0.000, y=0.000, z=0.604[0m
+[0;32mI (126365) HID_DEV_DEMO: Demo Quat[1128]: w=-0.800, x=0.000, y=0.000, z=0.600[0m
+[0;32mI (126465) HID_DEV_DEMO: Demo Quat[1129]: w=-0.803, x=0.000, y=0.000, z=0.596[0m
+[0;32mI (126565) HID_DEV_DEMO: Demo Quat[1130]: w=-0.806, x=0.000, y=0.000, z=0.592[0m
+[0;32mI (126665) HID_DEV_DEMO: Demo Quat[1131]: w=-0.809, x=0.000, y=0.000, z=0.588[0m
+[0;32mI (126765) HID_DEV_DEMO: Demo Quat[1132]: w=-0.812, x=0.000, y=0.000, z=0.584[0m
+[0;32mI (126865) HID_DEV_DEMO: Demo Quat[1133]: w=-0.815, x=0.000, y=0.000, z=0.580[0m
+[0;32mI (126965) HID_DEV_DEMO: Demo Quat[1134]: w=-0.818, x=0.000, y=0.000, z=0.575[0m
+[0;32mI (127055) HID_DEV_DEMO: Send the volume (loop 61)[0m
+[0;32mI (127065) HID_DEV_DEMO: Demo Quat[1135]: w=-0.821, x=0.000, y=0.000, z=0.571[0m
+[0;32mI (127165) HID_DEV_DEMO: Demo Quat[1136]: w=-0.824, x=0.000, y=0.000, z=0.567[0m
+[0;32mI (127265) HID_DEV_DEMO: Demo Quat[1137]: w=-0.826, x=0.000, y=0.000, z=0.563[0m
+[0;32mI (127365) HID_DEV_DEMO: Demo Quat[1138]: w=-0.829, x=0.000, y=0.000, z=0.559[0m
+[0;32mI (127465) HID_DEV_DEMO: Demo Quat[1139]: w=-0.832, x=0.000, y=0.000, z=0.555[0m
+[0;32mI (127565) HID_DEV_DEMO: Demo Quat[1140]: w=-0.835, x=0.000, y=0.000, z=0.551[0m
+[0;32mI (127665) HID_DEV_DEMO: Demo Quat[1141]: w=-0.837, x=0.000, y=0.000, z=0.546[0m
+[0;32mI (127765) HID_DEV_DEMO: Demo Quat[1142]: w=-0.840, x=0.000, y=0.000, z=0.542[0m
+[0;32mI (127865) HID_DEV_DEMO: Demo Quat[1143]: w=-0.843, x=0.000, y=0.000, z=0.538[0m
+[0;32mI (127965) HID_DEV_DEMO: Demo Quat[1144]: w=-0.846, x=0.000, y=0.000, z=0.534[0m
+[0;32mI (128065) HID_DEV_DEMO: Demo Quat[1145]: w=-0.848, x=0.000, y=0.000, z=0.530[0m
+[0;32mI (128165) HID_DEV_DEMO: Demo Quat[1146]: w=-0.851, x=0.000, y=0.000, z=0.525[0m
+[0;32mI (128265) HID_DEV_DEMO: Demo Quat[1147]: w=-0.853, x=0.000, y=0.000, z=0.521[0m
+[0;32mI (128365) HID_DEV_DEMO: Demo Quat[1148]: w=-0.856, x=0.000, y=0.000, z=0.517[0m
+[0;32mI (128465) HID_DEV_DEMO: Demo Quat[1149]: w=-0.859, x=0.000, y=0.000, z=0.513[0m
+[0;32mI (128565) HID_DEV_DEMO: Demo Quat[1150]: w=-0.861, x=0.000, y=0.000, z=0.508[0m
+[0;32mI (128665) HID_DEV_DEMO: Demo Quat[1151]: w=-0.864, x=0.000, y=0.000, z=0.504[0m
+[0;32mI (128765) HID_DEV_DEMO: Demo Quat[1152]: w=-0.866, x=0.000, y=0.000, z=0.500[0m
+[0;32mI (128865) HID_DEV_DEMO: Demo Quat[1153]: w=-0.869, x=0.000, y=0.000, z=0.495[0m
+[0;32mI (128965) HID_DEV_DEMO: Demo Quat[1154]: w=-0.871, x=0.000, y=0.000, z=0.491[0m
+[0;32mI (129065) HID_DEV_DEMO: Demo Quat[1155]: w=-0.874, x=0.000, y=0.000, z=0.487[0m
+[0;32mI (129155) HID_DEV_DEMO: Send the volume (loop 62)[0m
+[0;32mI (129165) HID_DEV_DEMO: Demo Quat[1156]: w=-0.876, x=0.000, y=0.000, z=0.482[0m
+[0;32mI (129265) HID_DEV_DEMO: Demo Quat[1157]: w=-0.878, x=0.000, y=0.000, z=0.478[0m
+[0;32mI (129365) HID_DEV_DEMO: Demo Quat[1158]: w=-0.881, x=0.000, y=0.000, z=0.473[0m
+[0;32mI (129465) HID_DEV_DEMO: Demo Quat[1159]: w=-0.883, x=0.000, y=0.000, z=0.469[0m
+[0;32mI (129565) HID_DEV_DEMO: Demo Quat[1160]: w=-0.886, x=0.000, y=0.000, z=0.465[0m
+[0;32mI (129665) HID_DEV_DEMO: Demo Quat[1161]: w=-0.888, x=0.000, y=0.000, z=0.460[0m
+[0;32mI (129765) HID_DEV_DEMO: Demo Quat[1162]: w=-0.890, x=0.000, y=0.000, z=0.456[0m
+[0;32mI (129865) HID_DEV_DEMO: Demo Quat[1163]: w=-0.892, x=0.000, y=0.000, z=0.451[0m
+[0;32mI (129965) HID_DEV_DEMO: Demo Quat[1164]: w=-0.895, x=0.000, y=0.000, z=0.447[0m
+[0;32mI (130065) HID_DEV_DEMO: Demo Quat[1165]: w=-0.897, x=0.000, y=0.000, z=0.442[0m
+[0;32mI (130165) HID_DEV_DEMO: Demo Quat[1166]: w=-0.899, x=0.000, y=0.000, z=0.438[0m
+[0;32mI (130265) HID_DEV_DEMO: Demo Quat[1167]: w=-0.901, x=0.000, y=0.000, z=0.433[0m
+[0;32mI (130365) HID_DEV_DEMO: Demo Quat[1168]: w=-0.903, x=0.000, y=0.000, z=0.429[0m
+[0;32mI (130465) HID_DEV_DEMO: Demo Quat[1169]: w=-0.906, x=0.000, y=0.000, z=0.424[0m
+[0;32mI (130565) HID_DEV_DEMO: Demo Quat[1170]: w=-0.908, x=0.000, y=0.000, z=0.420[0m
+[0;32mI (130665) HID_DEV_DEMO: Demo Quat[1171]: w=-0.910, x=0.000, y=0.000, z=0.415[0m
+[0;32mI (130765) HID_DEV_DEMO: Demo Quat[1172]: w=-0.912, x=0.000, y=0.000, z=0.411[0m
+[0;32mI (130865) HID_DEV_DEMO: Demo Quat[1173]: w=-0.914, x=0.000, y=0.000, z=0.406[0m
+[0;32mI (130965) HID_DEV_DEMO: Demo Quat[1174]: w=-0.916, x=0.000, y=0.000, z=0.401[0m
+[0;32mI (131065) HID_DEV_DEMO: Demo Quat[1175]: w=-0.918, x=0.000, y=0.000, z=0.397[0m
+[0;32mI (131165) HID_DEV_DEMO: Demo Quat[1176]: w=-0.920, x=0.000, y=0.000, z=0.392[0m
+[0;32mI (131255) HID_DEV_DEMO: Send the volume (loop 63)[0m
+[0;32mI (131265) HID_DEV_DEMO: Demo Quat[1177]: w=-0.922, x=0.000, y=0.000, z=0.388[0m
+[0;32mI (131365) HID_DEV_DEMO: Demo Quat[1178]: w=-0.924, x=0.000, y=0.000, z=0.383[0m
+[0;32mI (131465) HID_DEV_DEMO: Demo Quat[1179]: w=-0.926, x=0.000, y=0.000, z=0.378[0m
+[0;32mI (131565) HID_DEV_DEMO: Demo Quat[1180]: w=-0.927, x=0.000, y=0.000, z=0.374[0m
+[0;32mI (131665) HID_DEV_DEMO: Demo Quat[1181]: w=-0.929, x=0.000, y=0.000, z=0.369[0m
+[0;32mI (131765) HID_DEV_DEMO: Demo Quat[1182]: w=-0.931, x=0.000, y=0.000, z=0.365[0m
+[0;32mI (131865) HID_DEV_DEMO: Demo Quat[1183]: w=-0.933, x=0.000, y=0.000, z=0.360[0m
+[0;32mI (131965) HID_DEV_DEMO: Demo Quat[1184]: w=-0.935, x=0.000, y=0.000, z=0.355[0m
+[0;32mI (132065) HID_DEV_DEMO: Demo Quat[1185]: w=-0.937, x=0.000, y=0.000, z=0.351[0m
+[0;32mI (132165) HID_DEV_DEMO: Demo Quat[1186]: w=-0.938, x=0.000, y=0.000, z=0.346[0m
+[0;32mI (132265) HID_DEV_DEMO: Demo Quat[1187]: w=-0.940, x=0.000, y=0.000, z=0.341[0m
+[0;32mI (132365) HID_DEV_DEMO: Demo Quat[1188]: w=-0.942, x=0.000, y=0.000, z=0.336[0m
+[0;32mI (132465) HID_DEV_DEMO: Demo Quat[1189]: w=-0.943, x=0.000, y=0.000, z=0.332[0m
+[0;32mI (132565) HID_DEV_DEMO: Demo Quat[1190]: w=-0.945, x=0.000, y=0.000, z=0.327[0m
+[0;32mI (132665) HID_DEV_DEMO: Demo Quat[1191]: w=-0.947, x=0.000, y=0.000, z=0.322[0m
+[0;32mI (132765) HID_DEV_DEMO: Demo Quat[1192]: w=-0.948, x=0.000, y=0.000, z=0.318[0m
+[0;32mI (132865) HID_DEV_DEMO: Demo Quat[1193]: w=-0.950, x=0.000, y=0.000, z=0.313[0m
+[0;32mI (132965) HID_DEV_DEMO: Demo Quat[1194]: w=-0.951, x=0.000, y=0.000, z=0.308[0m
+I (133065) HID_DEV_DEMO: Demo Quat[1195]: w=-0.953, x=0.000, y=0.000, z=0.303
+[0;32mI (133165) HID_DEV_DEMO: Demo Quat[1196]: w=-0.954, x=0.000, y=0.000, z=0.299[0m
+[0;32mI (133265) HID_DEV_DEMO: Demo Quat[1197]: w=-0.956, x=0.000, y=0.000, z=0.294[0m
+[0;32mI (133355) HID_DEV_DEMO: Send the volume (loop 64)[0m
+[0;32mI (133365) HID_DEV_DEMO: Demo Quat[1198]: w=-0.957, x=0.000, y=0.000, z=0.289[0m
+[0;32mI (133465) HID_DEV_DEMO: Demo Quat[1199]: w=-0.959, x=0.000, y=0.000, z=0.284[0m
+[0;32mI (133565) HID_DEV_DEMO: Demo Quat[1200]: w=-0.960, x=0.000, y=0.000, z=0.279[0m
+[0;32mI (133665) HID_DEV_DEMO: Demo Quat[1201]: w=-0.962, x=0.000, y=0.000, z=0.275[0m
+[0;32mI (133765) HID_DEV_DEMO: Demo Quat[1202]: w=-0.963, x=0.000, y=0.000, z=0.270[0m
+[0;32mI (133865) HID_DEV_DEMO: Demo Quat[1203]: w=-0.964, x=0.000, y=0.000, z=0.265[0m
+[0;32mI (133965) HID_DEV_DEMO: Demo Quat[1204]: w=-0.966, x=0.000, y=0.000, z=0.260[0m
+[0;32mI (134065) HID_DEV_DEMO: Demo Quat[1205]: w=-0.967, x=0.000, y=0.000, z=0.255[0m
+[0;32mI (134165) HID_DEV_DEMO: Demo Quat[1206]: w=-0.968, x=0.000, y=0.000, z=0.250[0m
+[0;32mI (134265) HID_DEV_DEMO: Demo Quat[1207]: w=-0.969, x=0.000, y=0.000, z=0.246[0m
+[0;32mI (134365) HID_DEV_DEMO: Demo Quat[1208]: w=-0.971, x=0.000, y=0.000, z=0.241[0m
+[0;32mI (134465) HID_DEV_DEMO: Demo Quat[1209]: w=-0.972, x=0.000, y=0.000, z=0.236[0m
+[0;32mI (134565) HID_DEV_DEMO: Demo Quat[1210]: w=-0.973, x=0.000, y=0.000, z=0.231[0m
+[0;32mI (134665) HID_DEV_DEMO: Demo Quat[1211]: w=-0.974, x=0.000, y=0.000, z=0.226[0m
+[0;32mI (134765) HID_DEV_DEMO: Demo Quat[1212]: w=-0.975, x=0.000, y=0.000, z=0.221[0m
+[0;32mI (134865) HID_DEV_DEMO: Demo Quat[1213]: w=-0.976, x=0.000, y=0.000, z=0.216[0m
+[0;32mI (134965) HID_DEV_DEMO: Demo Quat[1214]: w=-0.977, x=0.000, y=0.000, z=0.212[0m
+[0;32mI (135065) HID_DEV_DEMO: Demo Quat[1215]: w=-0.978, x=0.000, y=0.000, z=0.207[0m
+[0;32mI (135165) HID_DEV_DEMO: Demo Quat[1216]: w=-0.979, x=0.000, y=0.000, z=0.202[0m
+[0;32mI (135265) HID_DEV_DEMO: Demo Quat[1217]: w=-0.980, x=0.000, y=0.000, z=0.197[0m
+[0;32mI (135365) HID_DEV_DEMO: Demo Quat[1218]: w=-0.981, x=0.000, y=0.000, z=0.192[0m
+[0;32mI (135455) HID_DEV_DEMO: Send the volume (loop 65)[0m
+[0;32mI (135465) HID_DEV_DEMO: Demo Quat[1219]: w=-0.982, x=0.000, y=0.000, z=0.187[0m
+[0;32mI (135565) HID_DEV_DEMO: Demo Quat[1220]: w=-0.983, x=0.000, y=0.000, z=0.182[0m
+[0;32mI (135665) HID_DEV_DEMO: Demo Quat[1221]: w=-0.984, x=0.000, y=0.000, z=0.177[0m
+[0;32mI (135765) HID_DEV_DEMO: Demo Quat[1222]: w=-0.985, x=0.000, y=0.000, z=0.172[0m
+[0;32mI (135865) HID_DEV_DEMO: Demo Quat[1223]: w=-0.986, x=0.000, y=0.000, z=0.167[0m
+[0;32mI (135965) HID_DEV_DEMO: Demo Quat[1224]: w=-0.987, x=0.000, y=0.000, z=0.162[0m
+[0;32mI (136065) HID_DEV_DEMO: Demo Quat[1225]: w=-0.988, x=0.000, y=0.000, z=0.157[0m
+[0;32mI (136165) HID_DEV_DEMO: Demo Quat[1226]: w=-0.988, x=0.000, y=0.000, z=0.153[0m
+[0;32mI (136265) HID_DEV_DEMO: Demo Quat[1227]: w=-0.989, x=0.000, y=0.000, z=0.148[0m
+[0;32mI (136365) HID_DEV_DEMO: Demo Quat[1228]: w=-0.990, x=0.000, y=0.000, z=0.143[0m
+[0;32mI (136465) HID_DEV_DEMO: Demo Quat[1229]: w=-0.990, x=0.000, y=0.000, z=0.138[0m
+[0;32mI (136565) HID_DEV_DEMO: Demo Quat[1230]: w=-0.991, x=0.000, y=0.000, z=0.133[0m
+[0;32mI (136665) HID_DEV_DEMO: Demo Quat[1231]: w=-0.992, x=0.000, y=0.000, z=0.128[0m
+[0;32mI (136765) HID_DEV_DEMO: Demo Quat[1232]: w=-0.992, x=0.000, y=0.000, z=0.123[0m
+[0;32mI (136865) HID_DEV_DEMO: Demo Quat[1233]: w=-0.993, x=0.000, y=0.000, z=0.118[0m
+[0;32mI (136965) HID_DEV_DEMO: Demo Quat[1234]: w=-0.994, x=0.000, y=0.000, z=0.113[0m
+[0;32mI (137065) HID_DEV_DEMO: Demo Quat[1235]: w=-0.994, x=0.000, y=0.000, z=0.108[0m
+[0;32mI (137165) HID_DEV_DEMO: Demo Quat[1236]: w=-0.995, x=0.000, y=0.000, z=0.103[0m
+[0;32mI (137265) HID_DEV_DEMO: Demo Quat[1237]: w=-0.995, x=0.000, y=0.000, z=0.098[0m
+[0;32mI (137365) HID_DEV_DEMO: Demo Quat[1238]: w=-0.996, x=0.000, y=0.000, z=0.093[0m
+[0;32mI (137465) HID_DEV_DEMO: Demo Quat[1239]: w=-0.996, x=0.000, y=0.000, z=0.088[0m
+[0;32mI (137555) HID_DEV_DEMO: Send the volume (loop 66)[0m
+[0;32mI (137565) HID_DEV_DEMO: Demo Quat[1240]: w=-0.997, x=0.000, y=0.000, z=0.083[0m
+[0;32mI (137665) HID_DEV_DEMO: Demo Quat[1241]: w=-0.997, x=0.000, y=0.000, z=0.078[0m
+[0;32mI (137765) HID_DEV_DEMO: Demo Quat[1242]: w=-0.997, x=0.000, y=0.000, z=0.073[0m
+[0;32mI (137865) HID_DEV_DEMO: Demo Quat[1243]: w=-0.998, x=0.000, y=0.000, z=0.068[0m
+[0;32mI (137965) HID_DEV_DEMO: Demo Quat[1244]: w=-0.998, x=0.000, y=0.000, z=0.063[0m
+[0;32mI (138065) HID_DEV_DEMO: Demo Quat[1245]: w=-0.998, x=0.000, y=0.000, z=0.058[0m
+[0;32mI (138165) HID_DEV_DEMO: Demo Quat[1246]: w=-0.999, x=0.000, y=0.000, z=0.053[0m
+[0;32mI (138265) HID_DEV_DEMO: Demo Quat[1247]: w=-0.999, x=0.000, y=0.000, z=0.048[0m
+[0;32mI (138365) HID_DEV_DEMO: Demo Quat[1248]: w=-0.999, x=0.000, y=0.000, z=0.043[0m
+[0;32mI (138465) HID_DEV_DEMO: Demo Quat[1249]: w=-0.999, x=0.000, y=0.000, z=0.038[0m
+[0;32mI (138565) HID_DEV_DEMO: Demo Quat[1250]: w=-0.999, x=0.000, y=0.000, z=0.033[0m
+[0;32mI (138665) HID_DEV_DEMO: Demo Quat[1251]: w=-1.000, x=0.000, y=0.000, z=0.028[0m
+[0;32mI (138765) HID_DEV_DEMO: Demo Quat[1252]: w=-1.000, x=0.000, y=0.000, z=0.023[0m
+[0;32mI (138865) HID_DEV_DEMO: Demo Quat[1253]: w=-1.000, x=0.000, y=0.000, z=0.018[0m
+[0;32mI (138965) HID_DEV_DEMO: Demo Quat[1254]: w=-1.000, x=0.000, y=0.000, z=0.013[0m
+[0;32mI (139065) HID_DEV_DEMO: Demo Quat[1255]: w=-1.000, x=0.000, y=0.000, z=0.008[0m
+[0;32mI (139165) HID_DEV_DEMO: Demo Quat[1256]: w=-1.000, x=0.000, y=0.000, z=0.003[0m
+[0;32mI (139265) HID_DEV_DEMO: Demo Quat[1257]: w=1.000, x=0.000, y=0.000, z=0.002[0m
+[0;32mI (139365) HID_DEV_DEMO: Demo Quat[1258]: w=1.000, x=0.000, y=0.000, z=0.007[0m
+[0;32mI (139465) HID_DEV_DEMO: Demo Quat[1259]: w=1.000, x=0.000, y=0.000, z=0.012[0m
+[0;32mI (139565) HID_DEV_DEMO: Demo Quat[1260]: w=1.000, x=0.000, y=0.000, z=0.017[0m
+[0;32mI (139655) HID_DEV_DEMO: Send the volume (loop 67)[0m
+[0;32mI (139665) HID_DEV_DEMO: Demo Quat[1261]: w=1.000, x=0.000, y=0.000, z=0.022[0m
+[0;32mI (139765) HID_DEV_DEMO: Demo Quat[1262]: w=1.000, x=0.000, y=0.000, z=0.027[0m
+[0;32mI (139865) HID_DEV_DEMO: Demo Quat[1263]: w=0.999, x=0.000, y=0.000, z=0.032[0m
+[0;32mI (139965) HID_DEV_DEMO: Demo Quat[1264]: w=0.999, x=0.000, y=0.000, z=0.037[0m
+[0;32mI (140065) HID_DEV_DEMO: Demo Quat[1265]: w=0.999, x=0.000, y=0.000, z=0.042[0m
+[0;32mI (140165) HID_DEV_DEMO: Demo Quat[1266]: w=0.999, x=0.000, y=0.000, z=0.047[0m
+[0;32mI (140265) HID_DEV_DEMO: Demo Quat[1267]: w=0.999, x=0.000, y=0.000, z=0.052[0m
+[0;32mI (140365) HID_DEV_DEMO: Demo Quat[1268]: w=0.998, x=0.000, y=0.000, z=0.057[0m
+[0;32mI (140465) HID_DEV_DEMO: Demo Quat[1269]: w=0.998, x=0.000, y=0.000, z=0.062[0m
+[0;32mI (140565) HID_DEV_DEMO: Demo Quat[1270]: w=0.998, x=0.000, y=0.000, z=0.067[0m
+[0;32mI (140665) HID_DEV_DEMO: Demo Quat[1271]: w=0.997, x=0.000, y=0.000, z=0.072[0m
+[0;32mI (140765) HID_DEV_DEMO: Demo Quat[1272]: w=0.997, x=0.000, y=0.000, z=0.077[0m
+[0;32mI (140865) HID_DEV_DEMO: Demo Quat[1273]: w=0.997, x=0.000, y=0.000, z=0.082[0m
+[0;32mI (140965) HID_DEV_DEMO: Demo Quat[1274]: w=0.996, x=0.000, y=0.000, z=0.087[0m
+[0;32mI (141065) HID_DEV_DEMO: Demo Quat[1275]: w=0.996, x=0.000, y=0.000, z=0.092[0m
+[0;32mI (141165) HID_DEV_DEMO: Demo Quat[1276]: w=0.995, x=0.000, y=0.000, z=0.097[0m
+[0;32mI (141265) HID_DEV_DEMO: Demo Quat[1277]: w=0.995, x=0.000, y=0.000, z=0.102[0m
+[0;32mI (141365) HID_DEV_DEMO: Demo Quat[1278]: w=0.994, x=0.000, y=0.000, z=0.107[0m
+[0;32mI (141465) HID_DEV_DEMO: Demo Quat[1279]: w=0.994, x=0.000, y=0.000, z=0.112[0m
+[0;32mI (141565) HID_DEV_DEMO: Demo Quat[1280]: w=0.993, x=0.000, y=0.000, z=0.117[0m
+[0;32mI (141665) HID_DEV_DEMO: Demo Quat[1281]: w=0.993, x=0.000, y=0.000, z=0.122[0m
+[0;32mI (141755) HID_DEV_DEMO: Send the volume (loop 68)[0m
+[0;32mI (141765) HID_DEV_DEMO: Demo Quat[1282]: w=0.992, x=0.000, y=0.000, z=0.127[0m
+[0;32mI (141865) HID_DEV_DEMO: Demo Quat[1283]: w=0.991, x=0.000, y=0.000, z=0.131[0m
+[0;32mI (141965) HID_DEV_DEMO: Demo Quat[1284]: w=0.991, x=0.000, y=0.000, z=0.136[0m
+[0;32mI (142065) HID_DEV_DEMO: Demo Quat[1285]: w=0.990, x=0.000, y=0.000, z=0.141[0m
+[0;32mI (142165) HID_DEV_DEMO: Demo Quat[1286]: w=0.989, x=0.000, y=0.000, z=0.146[0m
+[0;32mI (142265) HID_DEV_DEMO: Demo Quat[1287]: w=0.988, x=0.000, y=0.000, z=0.151[0m
+[0;32mI (142365) HID_DEV_DEMO: Demo Quat[1288]: w=0.988, x=0.000, y=0.000, z=0.156[0m
+[0;32mI (142465) HID_DEV_DEMO: Demo Quat[1289]: w=0.987, x=0.000, y=0.000, z=0.161[0m
+[0;32mI (142565) HID_DEV_DEMO: Demo Quat[1290]: w=0.986, x=0.000, y=0.000, z=0.166[0m
+[0;32mI (142665) HID_DEV_DEMO: Demo Quat[1291]: w=0.985, x=0.000, y=0.000, z=0.171[0m
+[0;32mI (142765) HID_DEV_DEMO: Demo Quat[1292]: w=0.984, x=0.000, y=0.000, z=0.176[0m
+[0;32mI (142865) HID_DEV_DEMO: Demo Quat[1293]: w=0.984, x=0.000, y=0.000, z=0.181[0m
+[0;32mI (142965) HID_DEV_DEMO: Demo Quat[1294]: w=0.983, x=0.000, y=0.000, z=0.186[0m
+[0;32mI (143065) HID_DEV_DEMO: Demo Quat[1295]: w=0.982, x=0.000, y=0.000, z=0.191[0m
+[0;32mI (143165) HID_DEV_DEMO: Demo Quat[1296]: w=0.981, x=0.000, y=0.000, z=0.196[0m
+[0;32mI (143265) HID_DEV_DEMO: Demo Quat[1297]: w=0.980, x=0.000, y=0.000, z=0.200[0m
+[0;32mI (143365) HID_DEV_DEMO: Demo Quat[1298]: w=0.979, x=0.000, y=0.000, z=0.205[0m
+[0;32mI (143465) HID_DEV_DEMO: Demo Quat[1299]: w=0.978, x=0.000, y=0.000, z=0.210[0m
+[0;32mI (143565) HID_DEV_DEMO: Demo Quat[1300]: w=0.977, x=0.000, y=0.000, z=0.215[0m
+[0;32mI (143665) HID_DEV_DEMO: Demo Quat[1301]: w=0.975, x=0.000, y=0.000, z=0.220[0m
+[0;32mI (143765) HID_DEV_DEMO: Demo Quat[1302]: w=0.974, x=0.000, y=0.000, z=0.225[0m
+[0;32mI (143855) HID_DEV_DEMO: Send the volume (loop 69)[0m
+[0;32mI (143865) HID_DEV_DEMO: Demo Quat[1303]: w=0.973, x=0.000, y=0.000, z=0.230[0m
+[0;32mI (143965) HID_DEV_DEMO: Demo Quat[1304]: w=0.972, x=0.000, y=0.000, z=0.235[0m
+[0;32mI (144065) HID_DEV_DEMO: Demo Quat[1305]: w=0.971, x=0.000, y=0.000, z=0.240[0m
+[0;32mI (144165) HID_DEV_DEMO: Demo Quat[1306]: w=0.970, x=0.000, y=0.000, z=0.244[0m
+[0;32mI (144265) HID_DEV_DEMO: Demo Quat[1307]: w=0.968, x=0.000, y=0.000, z=0.249[0m
+[0;32mI (144365) HID_DEV_DEMO: Demo Quat[1308]: w=0.967, x=0.000, y=0.000, z=0.254[0m
+[0;32mI (144465) HID_DEV_DEMO: Demo Quat[1309]: w=0.966, x=0.000, y=0.000, z=0.259[0m
+[0;32mI (144565) HID_DEV_DEMO: Demo Quat[1310]: w=0.965, x=0.000, y=0.000, z=0.264[0m
+[0;32mI (144665) HID_DEV_DEMO: Demo Quat[1311]: w=0.963, x=0.000, y=0.000, z=0.269[0m
+[0;32mI (144765) HID_DEV_DEMO: Demo Quat[1312]: w=0.962, x=0.000, y=0.000, z=0.273[0m
+[0;32mI (144865) HID_DEV_DEMO: Demo Quat[1313]: w=0.961, x=0.000, y=0.000, z=0.278[0m
+[0;32mI (144965) HID_DEV_DEMO: Demo Quat[1314]: w=0.959, x=0.000, y=0.000, z=0.283[0m
+[0;32mI (145065) HID_DEV_DEMO: Demo Quat[1315]: w=0.958, x=0.000, y=0.000, z=0.288[0m
+[0;32mI (145165) HID_DEV_DEMO: Demo Quat[1316]: w=0.956, x=0.000, y=0.000, z=0.293[0m
+[0;32mI (145265) HID_DEV_DEMO: Demo Quat[1317]: w=0.955, x=0.000, y=0.000, z=0.297[0m
+[0;32mI (145365) HID_DEV_DEMO: Demo Quat[1318]: w=0.953, x=0.000, y=0.000, z=0.302[0m
+[0;32mI (145465) HID_DEV_DEMO: Demo Quat[1319]: w=0.952, x=0.000, y=0.000, z=0.307[0m
+[0;32mI (145565) HID_DEV_DEMO: Demo Quat[1320]: w=0.950, x=0.000, y=0.000, z=0.312[0m
+[0;32mI (145665) HID_DEV_DEMO: Demo Quat[1321]: w=0.949, x=0.000, y=0.000, z=0.316[0m
+[0;32mI (145765) HID_DEV_DEMO: Demo Quat[1322]: w=0.947, x=0.000, y=0.000, z=0.321[0m
+[0;32mI (145865) HID_DEV_DEMO: Demo Quat[1323]: w=0.945, x=0.000, y=0.000, z=0.326[0m
+[0;32mI (145955) HID_DEV_DEMO: Send the volume (loop 70)[0m
+[0;32mI (145965) HID_DEV_DEMO: Demo Quat[1324]: w=0.944, x=0.000, y=0.000, z=0.331[0m
+[0;32mI (146065) HID_DEV_DEMO: Demo Quat[1325]: w=0.942, x=0.000, y=0.000, z=0.335[0m
+[0;32mI (146165) HID_DEV_DEMO: Demo Quat[1326]: w=0.940, x=0.000, y=0.000, z=0.340[0m
+[0;32mI (146265) HID_DEV_DEMO: Demo Quat[1327]: w=0.939, x=0.000, y=0.000, z=0.345[0m
+[0;32mI (146365) HID_DEV_DEMO: Demo Quat[1328]: w=0.937, x=0.000, y=0.000, z=0.349[0m
+[0;32mI (146465) HID_DEV_DEMO: Demo Quat[1329]: w=0.935, x=0.000, y=0.000, z=0.354[0m
+[0;32mI (146565) HID_DEV_DEMO: Demo Quat[1330]: w=0.933, x=0.000, y=0.000, z=0.359[0m
+[0;32mI (146665) HID_DEV_DEMO: Demo Quat[1331]: w=0.932, x=0.000, y=0.000, z=0.363[0m
+[0;32mI (146765) HID_DEV_DEMO: Demo Quat[1332]: w=0.930, x=0.000, y=0.000, z=0.368[0m
+[0;32mI (146865) HID_DEV_DEMO: Demo Quat[1333]: w=0.928, x=0.000, y=0.000, z=0.373[0m
+[0;32mI (146965) HID_DEV_DEMO: Demo Quat[1334]: w=0.926, x=0.000, y=0.000, z=0.377[0m
+[0;32mI (147065) HID_DEV_DEMO: Demo Quat[1335]: w=0.924, x=0.000, y=0.000, z=0.382[0m
+[0;32mI (147165) HID_DEV_DEMO: Demo Quat[1336]: w=0.922, x=0.000, y=0.000, z=0.387[0m
+[0;32mI (147265) HID_DEV_DEMO: Demo Quat[1337]: w=0.920, x=0.000, y=0.000, z=0.391[0m
+[0;32mI (147365) HID_DEV_DEMO: Demo Quat[1338]: w=0.918, x=0.000, y=0.000, z=0.396[0m
+[0;32mI (147465) HID_DEV_DEMO: Demo Quat[1339]: w=0.916, x=0.000, y=0.000, z=0.400[0m
+[0;32mI (147565) HID_DEV_DEMO: Demo Quat[1340]: w=0.914, x=0.000, y=0.000, z=0.405[0m
+[0;32mI (147665) HID_DEV_DEMO: Demo Quat[1341]: w=0.912, x=0.000, y=0.000, z=0.409[0m
+[0;32mI (147765) HID_DEV_DEMO: Demo Quat[1342]: w=0.910, x=0.000, y=0.000, z=0.414[0m
+[0;32mI (147865) HID_DEV_DEMO: Demo Quat[1343]: w=0.908, x=0.000, y=0.000, z=0.419[0m
+[0;32mI (147965) HID_DEV_DEMO: Demo Quat[1344]: w=0.906, x=0.000, y=0.000, z=0.423[0m
+[0;32mI (148055) HID_DEV_DEMO: Send the volume (loop 71)[0m
+[0;32mI (148065) HID_DEV_DEMO: Demo Quat[1345]: w=0.904, x=0.000, y=0.000, z=0.428[0m
+[0;32mI (148165) HID_DEV_DEMO: Demo Quat[1346]: w=0.902, x=0.000, y=0.000, z=0.432[0m
+[0;32mI (148265) HID_DEV_DEMO: Demo Quat[1347]: w=0.900, x=0.000, y=0.000, z=0.437[0m
+[0;32mI (148365) HID_DEV_DEMO: Demo Quat[1348]: w=0.897, x=0.000, y=0.000, z=0.441[0m
+[0;32mI (148465) HID_DEV_DEMO: Demo Quat[1349]: w=0.895, x=0.000, y=0.000, z=0.446[0m
+[0;32mI (148565) HID_DEV_DEMO: Demo Quat[1350]: w=0.893, x=0.000, y=0.000, z=0.450[0m
+[0;32mI (148665) HID_DEV_DEMO: Demo Quat[1351]: w=0.891, x=0.000, y=0.000, z=0.455[0m
+[0;32mI (148765) HID_DEV_DEMO: Demo Quat[1352]: w=0.888, x=0.000, y=0.000, z=0.459[0m
+[0;32mI (148865) HID_DEV_DEMO: Demo Quat[1353]: w=0.886, x=0.000, y=0.000, z=0.463[0m
+[0;32mI (148965) HID_DEV_DEMO: Demo Quat[1354]: w=0.884, x=0.000, y=0.000, z=0.468[0m
+[0;32mI (149065) HID_DEV_DEMO: Demo Quat[1355]: w=0.881, x=0.000, y=0.000, z=0.472[0m
+[0;32mI (149165) HID_DEV_DEMO: Demo Quat[1356]: w=0.879, x=0.000, y=0.000, z=0.477[0m
+[0;32mI (149265) HID_DEV_DEMO: Demo Quat[1357]: w=0.877, x=0.000, y=0.000, z=0.481[0m
+[0;32mI (149365) HID_DEV_DEMO: Demo Quat[1358]: w=0.874, x=0.000, y=0.000, z=0.485[0m
+[0;32mI (149465) HID_DEV_DEMO: Demo Quat[1359]: w=0.872, x=0.000, y=0.000, z=0.490[0m
+[0;32mI (149565) HID_DEV_DEMO: Demo Quat[1360]: w=0.869, x=0.000, y=0.000, z=0.494[0m
+[0;32mI (149665) HID_DEV_DEMO: Demo Quat[1361]: w=0.867, x=0.000, y=0.000, z=0.498[0m
+[0;32mI (149765) HID_DEV_DEMO: Demo Quat[1362]: w=0.864, x=0.000, y=0.000, z=0.503[0m
+[0;32mI (149865) HID_DEV_DEMO: Demo Quat[1363]: w=0.862, x=0.000, y=0.000, z=0.507[0m
+[0;32mI (149965) HID_DEV_DEMO: Demo Quat[1364]: w=0.859, x=0.000, y=0.000, z=0.511[0m
+[0;32mI (150065) HID_DEV_DEMO: Demo Quat[1365]: w=0.857, x=0.000, y=0.000, z=0.516[0m
+[0;32mI (150155) HID_DEV_DEMO: Send the volume (loop 72)[0m
+[0;32mI (150165) HID_DEV_DEMO: Demo Quat[1366]: w=0.854, x=0.000, y=0.000, z=0.520[0m
+[0;32mI (150265) HID_DEV_DEMO: Demo Quat[1367]: w=0.852, x=0.000, y=0.000, z=0.524[0m
+[0;32mI (150365) HID_DEV_DEMO: Demo Quat[1368]: w=0.849, x=0.000, y=0.000, z=0.529[0m
+[0;32mI (150465) HID_DEV_DEMO: Demo Quat[1369]: w=0.846, x=0.000, y=0.000, z=0.533[0m
+[0;32mI (150565) HID_DEV_DEMO: Demo Quat[1370]: w=0.844, x=0.000, y=0.000, z=0.537[0m
+[0;32mI (150665) HID_DEV_DEMO: Demo Quat[1371]: w=0.841, x=0.000, y=0.000, z=0.541[0m
+[0;32mI (150765) HID_DEV_DEMO: Demo Quat[1372]: w=0.838, x=0.000, y=0.000, z=0.545[0m
+[0;32mI (150865) HID_DEV_DEMO: Demo Quat[1373]: w=0.835, x=0.000, y=0.000, z=0.550[0m
+[0;32mI (150965) HID_DEV_DEMO: Demo Quat[1374]: w=0.833, x=0.000, y=0.000, z=0.554[0m
+[0;32mI (151065) HID_DEV_DEMO: Demo Quat[1375]: w=0.830, x=0.000, y=0.000, z=0.558[0m
+[0;32mI (151165) HID_DEV_DEMO: Demo Quat[1376]: w=0.827, x=0.000, y=0.000, z=0.562[0m
+[0;32mI (151265) HID_DEV_DEMO: Demo Quat[1377]: w=0.824, x=0.000, y=0.000, z=0.566[0m
+[0;32mI (151365) HID_DEV_DEMO: Demo Quat[1378]: w=0.821, x=0.000, y=0.000, z=0.570[0m
+[0;32mI (151465) HID_DEV_DEMO: Demo Quat[1379]: w=0.819, x=0.000, y=0.000, z=0.574[0m
+[0;32mI (151565) HID_DEV_DEMO: Demo Quat[1380]: w=0.816, x=0.000, y=0.000, z=0.578[0m
+[0;32mI (151665) HID_DEV_DEMO: Demo Quat[1381]: w=0.813, x=0.000, y=0.000, z=0.583[0m
+[0;32mI (151765) HID_DEV_DEMO: Demo Quat[1382]: w=0.810, x=0.000, y=0.000, z=0.587[0m
+[0;32mI (151865) HID_DEV_DEMO: Demo Quat[1383]: w=0.807, x=0.000, y=0.000, z=0.591[0m
+[0;32mI (151965) HID_DEV_DEMO: Demo Quat[1384]: w=0.804, x=0.000, y=0.000, z=0.595[0m
+[0;32mI (152065) HID_DEV_DEMO: Demo Quat[1385]: w=0.801, x=0.000, y=0.000, z=0.599[0m
+[0;32mI (152165) HID_DEV_DEMO: Demo Quat[1386]: w=0.798, x=0.000, y=0.000, z=0.603[0m
+[0;32mI (152255) HID_DEV_DEMO: Send the volume (loop 73)[0m
+[0;32mI (152265) HID_DEV_DEMO: Demo Quat[1387]: w=0.795, x=0.000, y=0.000, z=0.607[0m
+[0;32mI (152365) HID_DEV_DEMO: Demo Quat[1388]: w=0.792, x=0.000, y=0.000, z=0.611[0m
+[0;32mI (152465) HID_DEV_DEMO: Demo Quat[1389]: w=0.789, x=0.000, y=0.000, z=0.615[0m
+[0;32mI (152565) HID_DEV_DEMO: Demo Quat[1390]: w=0.786, x=0.000, y=0.000, z=0.619[0m
+[0;32mI (152665) HID_DEV_DEMO: Demo Quat[1391]: w=0.783, x=0.000, y=0.000, z=0.622[0m
+[0;32mI (152765) HID_DEV_DEMO: Demo Quat[1392]: w=0.780, x=0.000, y=0.000, z=0.626[0m
+[0;32mI (152865) HID_DEV_DEMO: Demo Quat[1393]: w=0.776, x=0.000, y=0.000, z=0.630[0m
+[0;32mI (152965) HID_DEV_DEMO: Demo Quat[1394]: w=0.773, x=0.000, y=0.000, z=0.634[0m
+[0;32mI (153065) HID_DEV_DEMO: Demo Quat[1395]: w=0.770, x=0.000, y=0.000, z=0.638[0m
+[0;32mI (153165) HID_DEV_DEMO: Demo Quat[1396]: w=0.767, x=0.000, y=0.000, z=0.642[0m
+[0;32mI (153265) HID_DEV_DEMO: Demo Quat[1397]: w=0.764, x=0.000, y=0.000, z=0.646[0m
+[0;32mI (153365) HID_DEV_DEMO: Demo Quat[1398]: w=0.760, x=0.000, y=0.000, z=0.649[0m
+[0;32mI (153465) HID_DEV_DEMO: Demo Quat[1399]: w=0.757, x=0.000, y=0.000, z=0.653[0m
+[0;32mI (153565) HID_DEV_DEMO: Demo Quat[1400]: w=0.754, x=0.000, y=0.000, z=0.657[0m
+[0;32mI (153665) HID_DEV_DEMO: Demo Quat[1401]: w=0.751, x=0.000, y=0.000, z=0.661[0m
+[0;32mI (153765) HID_DEV_DEMO: Demo Quat[1402]: w=0.747, x=0.000, y=0.000, z=0.665[0m
+[0;32mI (153865) HID_DEV_DEMO: Demo Quat[1403]: w=0.744, x=0.000, y=0.000, z=0.668[0m
+[0;32mI (153965) HID_DEV_DEMO: Demo Quat[1404]: w=0.741, x=0.000, y=0.000, z=0.672[0m
+[0;32mI (154065) HID_DEV_DEMO: Demo Quat[1405]: w=0.737, x=0.000, y=0.000, z=0.676[0m
+[0;32mI (154165) HID_DEV_DEMO: Demo Quat[1406]: w=0.734, x=0.000, y=0.000, z=0.679[0m
+[0;32mI (154265) HID_DEV_DEMO: Demo Quat[1407]: w=0.730, x=0.000, y=0.000, z=0.683[0m
+[0;32mI (154355) HID_DEV_DEMO: Send the volume (loop 74)[0m
+[0;32mI (154365) HID_DEV_DEMO: Demo Quat[1408]: w=0.727, x=0.000, y=0.000, z=0.687[0m
+[0;32mI (154465) HID_DEV_DEMO: Demo Quat[1409]: w=0.724, x=0.000, y=0.000, z=0.690[0m
+[0;32mI (154565) HID_DEV_DEMO: Demo Quat[1410]: w=0.720, x=0.000, y=0.000, z=0.694[0m
+[0;32mI (154665) HID_DEV_DEMO: Demo Quat[1411]: w=0.717, x=0.000, y=0.000, z=0.697[0m
+[0;32mI (154765) HID_DEV_DEMO: Demo Quat[1412]: w=0.713, x=0.000, y=0.000, z=0.701[0m
+[0;32mI (154865) HID_DEV_DEMO: Demo Quat[1413]: w=0.710, x=0.000, y=0.000, z=0.705[0m
+[0;32mI (154965) HID_DEV_DEMO: Demo Quat[1414]: w=0.706, x=0.000, y=0.000, z=0.708[0m
+[0;32mI (155065) HID_DEV_DEMO: Demo Quat[1415]: w=0.703, x=0.000, y=0.000, z=0.712[0m
+[0;32mI (155165) HID_DEV_DEMO: Demo Quat[1416]: w=0.699, x=0.000, y=0.000, z=0.715[0m
+[0;32mI (155265) HID_DEV_DEMO: Demo Quat[1417]: w=0.695, x=0.000, y=0.000, z=0.719[0m
+[0;32mI (155365) HID_DEV_DEMO: Demo Quat[1418]: w=0.692, x=0.000, y=0.000, z=0.722[0m
+[0;32mI (155465) HID_DEV_DEMO: Demo Quat[1419]: w=0.688, x=0.000, y=0.000, z=0.726[0m
+[0;32mI (155565) HID_DEV_DEMO: Demo Quat[1420]: w=0.685, x=0.000, y=0.000, z=0.729[0m
+[0;32mI (155665) HID_DEV_DEMO: Demo Quat[1421]: w=0.681, x=0.000, y=0.000, z=0.732[0m
+[0;32mI (155765) HID_DEV_DEMO: Demo Quat[1422]: w=0.677, x=0.000, y=0.000, z=0.736[0m
+[0;32mI (155865) HID_DEV_DEMO: Demo Quat[1423]: w=0.673, x=0.000, y=0.000, z=0.739[0m
+[0;32mI (155965) HID_DEV_DEMO: Demo Quat[1424]: w=0.670, x=0.000, y=0.000, z=0.743[0m
+[0;32mI (156065) HID_DEV_DEMO: Demo Quat[1425]: w=0.666, x=0.000, y=0.000, z=0.746[0m
+[0;32mI (156165) HID_DEV_DEMO: Demo Quat[1426]: w=0.662, x=0.000, y=0.000, z=0.749[0m
+[0;32mI (156265) HID_DEV_DEMO: Demo Quat[1427]: w=0.659, x=0.000, y=0.000, z=0.753[0m
+[0;32mI (156365) HID_DEV_DEMO: Demo Quat[1428]: w=0.655, x=0.000, y=0.000, z=0.756[0m
+[0;32mI (156455) HID_DEV_DEMO: Send the volume (loop 75)[0m
+[0;32mI (156465) HID_DEV_DEMO: Demo Quat[1429]: w=0.651, x=0.000, y=0.000, z=0.759[0m
+[0;32mI (156565) HID_DEV_DEMO: Demo Quat[1430]: w=0.647, x=0.000, y=0.000, z=0.762[0m
+[0;32mI (156665) HID_DEV_DEMO: Demo Quat[1431]: w=0.643, x=0.000, y=0.000, z=0.766[0m
+[0;32mI (156765) HID_DEV_DEMO: Demo Quat[1432]: w=0.640, x=0.000, y=0.000, z=0.769[0m
+[0;32mI (156865) HID_DEV_DEMO: Demo Quat[1433]: w=0.636, x=0.000, y=0.000, z=0.772[0m
+[0;32mI (156965) HID_DEV_DEMO: Demo Quat[1434]: w=0.632, x=0.000, y=0.000, z=0.775[0m
+[0;32mI (157065) HID_DEV_DEMO: Demo Quat[1435]: w=0.628, x=0.000, y=0.000, z=0.778[0m
+[0;32mI (157165) HID_DEV_DEMO: Demo Quat[1436]: w=0.624, x=0.000, y=0.000, z=0.781[0m
+[0;32mI (157265) HID_DEV_DEMO: Demo Quat[1437]: w=0.620, x=0.000, y=0.000, z=0.784[0m
+[0;32mI (157365) HID_DEV_DEMO: Demo Quat[1438]: w=0.616, x=0.000, y=0.000, z=0.788[0m
+[0;32mI (157465) HID_DEV_DEMO: Demo Quat[1439]: w=0.612, x=0.000, y=0.000, z=0.791[0m
+[0;32mI (157565) HID_DEV_DEMO: Demo Quat[1440]: w=0.608, x=0.000, y=0.000, z=0.794[0m
+[0;32mI (157665) HID_DEV_DEMO: Demo Quat[1441]: w=0.604, x=0.000, y=0.000, z=0.797[0m
+[0;32mI (157765) HID_DEV_DEMO: Demo Quat[1442]: w=0.600, x=0.000, y=0.000, z=0.800[0m
+[0;32mI (157865) HID_DEV_DEMO: Demo Quat[1443]: w=0.596, x=0.000, y=0.000, z=0.803[0m
+[0;32mI (157965) HID_DEV_DEMO: Demo Quat[1444]: w=0.592, x=0.000, y=0.000, z=0.806[0m
+[0;32mI (158065) HID_DEV_DEMO: Demo Quat[1445]: w=0.588, x=0.000, y=0.000, z=0.809[0m
+[0;32mI (158165) HID_DEV_DEMO: Demo Quat[1446]: w=0.584, x=0.000, y=0.000, z=0.812[0m
+[0;32mI (158265) HID_DEV_DEMO: Demo Quat[1447]: w=0.580, x=0.000, y=0.000, z=0.814[0m
+[0;32mI (158365) HID_DEV_DEMO: Demo Quat[1448]: w=0.576, x=0.000, y=0.000, z=0.817[0m
+[0;32mI (158465) HID_DEV_DEMO: Demo Quat[1449]: w=0.572, x=0.000, y=0.000, z=0.820[0m
+[0;32mI (158555) HID_DEV_DEMO: Send the volume (loop 76)[0m
+[0;32mI (158565) HID_DEV_DEMO: Demo Quat[1450]: w=0.568, x=0.000, y=0.000, z=0.823[0m
+[0;32mI (158665) HID_DEV_DEMO: Demo Quat[1451]: w=0.564, x=0.000, y=0.000, z=0.826[0m
+[0;32mI (158765) HID_DEV_DEMO: Demo Quat[1452]: w=0.560, x=0.000, y=0.000, z=0.829[0m
+[0;32mI (158865) HID_DEV_DEMO: Demo Quat[1453]: w=0.555, x=0.000, y=0.000, z=0.832[0m
+[0;32mI (158965) HID_DEV_DEMO: Demo Quat[1454]: w=0.551, x=0.000, y=0.000, z=0.834[0m
+[0;32mI (159065) HID_DEV_DEMO: Demo Quat[1455]: w=0.547, x=0.000, y=0.000, z=0.837[0m
+[0;32mI (159165) HID_DEV_DEMO: Demo Quat[1456]: w=0.543, x=0.000, y=0.000, z=0.840[0m
+[0;32mI (159265) HID_DEV_DEMO: Demo Quat[1457]: w=0.539, x=0.000, y=0.000, z=0.842[0m
+[0;32mI (159365) HID_DEV_DEMO: Demo Quat[1458]: w=0.535, x=0.000, y=0.000, z=0.845[0m
+[0;32mI (159465) HID_DEV_DEMO: Demo Quat[1459]: w=0.530, x=0.000, y=0.000, z=0.848[0m
+[0;32mI (159565) HID_DEV_DEMO: Demo Quat[1460]: w=0.526, x=0.000, y=0.000, z=0.850[0m
+[0;32mI (159665) HID_DEV_DEMO: Demo Quat[1461]: w=0.522, x=0.000, y=0.000, z=0.853[0m
+[0;32mI (159765) HID_DEV_DEMO: Demo Quat[1462]: w=0.518, x=0.000, y=0.000, z=0.856[0m
+[0;32mI (159865) HID_DEV_DEMO: Demo Quat[1463]: w=0.513, x=0.000, y=0.000, z=0.858[0m
+[0;32mI (159965) HID_DEV_DEMO: Demo Quat[1464]: w=0.509, x=0.000, y=0.000, z=0.861[0m
+[0;32mI (160065) HID_DEV_DEMO: Demo Quat[1465]: w=0.505, x=0.000, y=0.000, z=0.863[0m
+[0;32mI (160165) HID_DEV_DEMO: Demo Quat[1466]: w=0.500, x=0.000, y=0.000, z=0.866[0m
+[0;32mI (160265) HID_DEV_DEMO: Demo Quat[1467]: w=0.496, x=0.000, y=0.000, z=0.868[0m
+[0;32mI (160365) HID_DEV_DEMO: Demo Quat[1468]: w=0.492, x=0.000, y=0.000, z=0.871[0m
+[0;32mI (160465) HID_DEV_DEMO: Demo Quat[1469]: w=0.487, x=0.000, y=0.000, z=0.873[0m
+[0;32mI (160565) HID_DEV_DEMO: Demo Quat[1470]: w=0.483, x=0.000, y=0.000, z=0.876[0m
+[0;32mI (160655) HID_DEV_DEMO: Send the volume (loop 77)[0m
+[0;32mI (160665) HID_DEV_DEMO: Demo Quat[1471]: w=0.478, x=0.000, y=0.000, z=0.878[0m
+[0;32mI (160765) HID_DEV_DEMO: Demo Quat[1472]: w=0.474, x=0.000, y=0.000, z=0.880[0m
+[0;32mI (160865) HID_DEV_DEMO: Demo Quat[1473]: w=0.470, x=0.000, y=0.000, z=0.883[0m
+[0;32mI (160965) HID_DEV_DEMO: Demo Quat[1474]: w=0.465, x=0.000, y=0.000, z=0.885[0m
+[0;32mI (161065) HID_DEV_DEMO: Demo Quat[1475]: w=0.461, x=0.000, y=0.000, z=0.887[0m
+[0;32mI (161165) HID_DEV_DEMO: Demo Quat[1476]: w=0.456, x=0.000, y=0.000, z=0.890[0m
+[0;32mI (161265) HID_DEV_DEMO: Demo Quat[1477]: w=0.452, x=0.000, y=0.000, z=0.892[0m
+[0;32mI (161365) HID_DEV_DEMO: Demo Quat[1478]: w=0.447, x=0.000, y=0.000, z=0.894[0m
+[0;32mI (161465) HID_DEV_DEMO: Demo Quat[1479]: w=0.443, x=0.000, y=0.000, z=0.897[0m
+[0;32mI (161565) HID_DEV_DEMO: Demo Quat[1480]: w=0.439, x=0.000, y=0.000, z=0.899[0m
+[0;32mI (161665) HID_DEV_DEMO: Demo Quat[1481]: w=0.434, x=0.000, y=0.000, z=0.901[0m
+[0;32mI (161765) HID_DEV_DEMO: Demo Quat[1482]: w=0.429, x=0.000, y=0.000, z=0.903[0m
+[0;32mI (161865) HID_DEV_DEMO: Demo Quat[1483]: w=0.425, x=0.000, y=0.000, z=0.905[0m
+[0;32mI (161965) HID_DEV_DEMO: Demo Quat[1484]: w=0.420, x=0.000, y=0.000, z=0.907[0m
+[0;32mI (162065) HID_DEV_DEMO: Demo Quat[1485]: w=0.416, x=0.000, y=0.000, z=0.909[0m
+[0;32mI (162165) HID_DEV_DEMO: Demo Quat[1486]: w=0.411, x=0.000, y=0.000, z=0.911[0m
+[0;32mI (162265) HID_DEV_DEMO: Demo Quat[1487]: w=0.407, x=0.000, y=0.000, z=0.914[0m
+[0;32mI (162365) HID_DEV_DEMO: Demo Quat[1488]: w=0.402, x=0.000, y=0.000, z=0.916[0m
+[0;32mI (162465) HID_DEV_DEMO: Demo Quat[1489]: w=0.398, x=0.000, y=0.000, z=0.918[0m
+[0;32mI (162565) HID_DEV_DEMO: Demo Quat[1490]: w=0.393, x=0.000, y=0.000, z=0.920[0m
+[0;32mI (162665) HID_DEV_DEMO: Demo Quat[1491]: w=0.388, x=0.000, y=0.000, z=0.921[0m
+[0;32mI (162755) HID_DEV_DEMO: Send the volume (loop 78)[0m
+[0;32mI (162765) HID_DEV_DEMO: Demo Quat[1492]: w=0.384, x=0.000, y=0.000, z=0.923[0m
+[0;32mI (162865) HID_DEV_DEMO: Demo Quat[1493]: w=0.379, x=0.000, y=0.000, z=0.925[0m
+[0;32mI (162965) HID_DEV_DEMO: Demo Quat[1494]: w=0.375, x=0.000, y=0.000, z=0.927[0m
+[0;32mI (163065) HID_DEV_DEMO: Demo Quat[1495]: w=0.370, x=0.000, y=0.000, z=0.929[0m
+[0;32mI (163165) HID_DEV_DEMO: Demo Quat[1496]: w=0.365, x=0.000, y=0.000, z=0.931[0m
+[0;32mI (163265) HID_DEV_DEMO: Demo Quat[1497]: w=0.361, x=0.000, y=0.000, z=0.933[0m
+[0;32mI (163365) HID_DEV_DEMO: Demo Quat[1498]: w=0.356, x=0.000, y=0.000, z=0.935[0m
+[0;32mI (163465) HID_DEV_DEMO: Demo Quat[1499]: w=0.351, x=0.000, y=0.000, z=0.936[0m
+[0;32mI (163565) HID_DEV_DEMO: Demo Quat[1500]: w=0.347, x=0.000, y=0.000, z=0.938[0m
+[0;32mI (163665) HID_DEV_DEMO: Demo Quat[1501]: w=0.342, x=0.000, y=0.000, z=0.940[0m
+[0;32mI (163765) HID_DEV_DEMO: Demo Quat[1502]: w=0.337, x=0.000, y=0.000, z=0.941[0m
+[0;32mI (163865) HID_DEV_DEMO: Demo Quat[1503]: w=0.332, x=0.000, y=0.000, z=0.943[0m
+[0;32mI (163965) HID_DEV_DEMO: Demo Quat[1504]: w=0.328, x=0.000, y=0.000, z=0.945[0m
+[0;32mI (164065) HID_DEV_DEMO: Demo Quat[1505]: w=0.323, x=0.000, y=0.000, z=0.946[0m
+[0;32mI (164165) HID_DEV_DEMO: Demo Quat[1506]: w=0.318, x=0.000, y=0.000, z=0.948[0m
+[0;32mI (164265) HID_DEV_DEMO: Demo Quat[1507]: w=0.314, x=0.000, y=0.000, z=0.950[0m
+[0;32mI (164365) HID_DEV_DEMO: Demo Quat[1508]: w=0.309, x=0.000, y=0.000, z=0.951[0m
+[0;32mI (164465) HID_DEV_DEMO: Demo Quat[1509]: w=0.304, x=0.000, y=0.000, z=0.953[0m
+[0;32mI (164565) HID_DEV_DEMO: Demo Quat[1510]: w=0.299, x=0.000, y=0.000, z=0.954[0m
+[0;32mI (164665) HID_DEV_DEMO: Demo Quat[1511]: w=0.295, x=0.000, y=0.000, z=0.956[0m
+[0;32mI (164765) HID_DEV_DEMO: Demo Quat[1512]: w=0.290, x=0.000, y=0.000, z=0.957[0m
+[0;32mI (164855) HID_DEV_DEMO: Send the volume (loop 79)[0m
+[0;32mI (164865) HID_DEV_DEMO: Demo Quat[1513]: w=0.285, x=0.000, y=0.000, z=0.959[0m
+[0;32mI (164965) HID_DEV_DEMO: Demo Quat[1514]: w=0.280, x=0.000, y=0.000, z=0.960[0m
+[0;32mI (165065) HID_DEV_DEMO: Demo Quat[1515]: w=0.275, x=0.000, y=0.000, z=0.961[0m
+[0;32mI (165165) HID_DEV_DEMO: Demo Quat[1516]: w=0.271, x=0.000, y=0.000, z=0.963[0m
+[0;32mI (165265) HID_DEV_DEMO: Demo Quat[1517]: w=0.266, x=0.000, y=0.000, z=0.964[0m
+[0;32mI (165365) HID_DEV_DEMO: Demo Quat[1518]: w=0.261, x=0.000, y=0.000, z=0.965[0m
+[0;32mI (165465) HID_DEV_DEMO: Demo Quat[1519]: w=0.256, x=0.000, y=0.000, z=0.967[0m
+[0;32mI (165565) HID_DEV_DEMO: Demo Quat[1520]: w=0.251, x=0.000, y=0.000, z=0.968[0m
+[0;32mI (165665) HID_DEV_DEMO: Demo Quat[1521]: w=0.246, x=0.000, y=0.000, z=0.969[0m
+[0;32mI (165765) HID_DEV_DEMO: Demo Quat[1522]: w=0.242, x=0.000, y=0.000, z=0.970[0m
+[0;32mI (165865) HID_DEV_DEMO: Demo Quat[1523]: w=0.237, x=0.000, y=0.000, z=0.972[0m
+[0;32mI (165965) HID_DEV_DEMO: Demo Quat[1524]: w=0.232, x=0.000, y=0.000, z=0.973[0m
+[0;32mI (166065) HID_DEV_DEMO: Demo Quat[1525]: w=0.227, x=0.000, y=0.000, z=0.974[0m
+[0;32mI (166165) HID_DEV_DEMO: Demo Quat[1526]: w=0.222, x=0.000, y=0.000, z=0.975[0m
+[0;32mI (166265) HID_DEV_DEMO: Demo Quat[1527]: w=0.217, x=0.000, y=0.000, z=0.976[0m
+[0;32mI (166365) HID_DEV_DEMO: Demo Quat[1528]: w=0.212, x=0.000, y=0.000, z=0.977[0m
+[0;32mI (166465) HID_DEV_DEMO: Demo Quat[1529]: w=0.207, x=0.000, y=0.000, z=0.978[0m
+[0;32mI (166565) HID_DEV_DEMO: Demo Quat[1530]: w=0.203, x=0.000, y=0.000, z=0.979[0m
+[0;32mI (166665) HID_DEV_DEMO: Demo Quat[1531]: w=0.198, x=0.000, y=0.000, z=0.980[0m
+[0;32mI (166765) HID_DEV_DEMO: Demo Quat[1532]: w=0.193, x=0.000, y=0.000, z=0.981[0m
+[0;32mI (166865) HID_DEV_DEMO: Demo Quat[1533]: w=0.188, x=0.000, y=0.000, z=0.982[0m
+[0;32mI (166955) HID_DEV_DEMO: Send the volume (loop 80)[0m
+[0;32mI (166965) HID_DEV_DEMO: Demo Quat[1534]: w=0.183, x=0.000, y=0.000, z=0.983[0m
+[0;32mI (167065) HID_DEV_DEMO: Demo Quat[1535]: w=0.178, x=0.000, y=0.000, z=0.984[0m
+[0;32mI (167165) HID_DEV_DEMO: Demo Quat[1536]: w=0.173, x=0.000, y=0.000, z=0.985[0m
+[0;32mI (167265) HID_DEV_DEMO: Demo Quat[1537]: w=0.168, x=0.000, y=0.000, z=0.986[0m
+[0;32mI (167365) HID_DEV_DEMO: Demo Quat[1538]: w=0.163, x=0.000, y=0.000, z=0.987[0m
+[0;32mI (167465) HID_DEV_DEMO: Demo Quat[1539]: w=0.158, x=0.000, y=0.000, z=0.987[0m
+[0;32mI (167565) HID_DEV_DEMO: Demo Quat[1540]: w=0.153, x=0.000, y=0.000, z=0.988[0m
+[0;32mI (167665) HID_DEV_DEMO: Demo Quat[1541]: w=0.148, x=0.000, y=0.000, z=0.989[0m
+[0;32mI (167765) HID_DEV_DEMO: Demo Quat[1542]: w=0.143, x=0.000, y=0.000, z=0.990[0m
+[0;32mI (167865) HID_DEV_DEMO: Demo Quat[1543]: w=0.138, x=0.000, y=0.000, z=0.990[0m
+[0;32mI (167965) HID_DEV_DEMO: Demo Quat[1544]: w=0.134, x=0.000, y=0.000, z=0.991[0m
+[0;32mI (168065) HID_DEV_DEMO: Demo Quat[1545]: w=0.129, x=0.000, y=0.000, z=0.992[0m
+[0;32mI (168165) HID_DEV_DEMO: Demo Quat[1546]: w=0.124, x=0.000, y=0.000, z=0.992[0m
+[0;32mI (168265) HID_DEV_DEMO: Demo Quat[1547]: w=0.119, x=0.000, y=0.000, z=0.993[0m
+[0;32mI (168365) HID_DEV_DEMO: Demo Quat[1548]: w=0.114, x=0.000, y=0.000, z=0.994[0m
+[0;32mI (168465) HID_DEV_DEMO: Demo Quat[1549]: w=0.109, x=0.000, y=0.000, z=0.994[0m
+[0;32mI (168565) HID_DEV_DEMO: Demo Quat[1550]: w=0.104, x=0.000, y=0.000, z=0.995[0m
+[0;32mI (168665) HID_DEV_DEMO: Demo Quat[1551]: w=0.099, x=0.000, y=0.000, z=0.995[0m
+[0;32mI (168765) HID_DEV_DEMO: Demo Quat[1552]: w=0.094, x=0.000, y=0.000, z=0.996[0m
+[0;32mI (168865) HID_DEV_DEMO: Demo Quat[1553]: w=0.089, x=0.000, y=0.000, z=0.996[0m
+[0;32mI (168965) HID_DEV_DEMO: Demo Quat[1554]: w=0.084, x=0.000, y=0.000, z=0.996[0m
+[0;32mI (169055) HID_DEV_DEMO: Send the volume (loop 81)[0m
+[0;32mI (169065) HID_DEV_DEMO: Demo Quat[1555]: w=0.079, x=0.000, y=0.000, z=0.997[0m
+[0;32mI (169165) HID_DEV_DEMO: Demo Quat[1556]: w=0.074, x=0.000, y=0.000, z=0.997[0m
+[0;32mI (169265) HID_DEV_DEMO: Demo Quat[1557]: w=0.069, x=0.000, y=0.000, z=0.998[0m
+[0;32mI (169365) HID_DEV_DEMO: Demo Quat[1558]: w=0.064, x=0.000, y=0.000, z=0.998[0m
+[0;32mI (169465) HID_DEV_DEMO: Demo Quat[1559]: w=0.059, x=0.000, y=0.000, z=0.998[0m
+[0;32mI (169565) HID_DEV_DEMO: Demo Quat[1560]: w=0.054, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (169665) HID_DEV_DEMO: Demo Quat[1561]: w=0.049, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (169765) HID_DEV_DEMO: Demo Quat[1562]: w=0.044, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (169865) HID_DEV_DEMO: Demo Quat[1563]: w=0.039, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (169965) HID_DEV_DEMO: Demo Quat[1564]: w=0.034, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (170065) HID_DEV_DEMO: Demo Quat[1565]: w=0.029, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (170165) HID_DEV_DEMO: Demo Quat[1566]: w=0.024, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (170265) HID_DEV_DEMO: Demo Quat[1567]: w=0.019, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (170365) HID_DEV_DEMO: Demo Quat[1568]: w=0.014, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (170465) HID_DEV_DEMO: Demo Quat[1569]: w=0.009, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (170565) HID_DEV_DEMO: Demo Quat[1570]: w=0.004, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (170665) HID_DEV_DEMO: Demo Quat[1571]: w=-0.001, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (170765) HID_DEV_DEMO: Demo Quat[1572]: w=-0.006, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (170865) HID_DEV_DEMO: Demo Quat[1573]: w=-0.011, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (170965) HID_DEV_DEMO: Demo Quat[1574]: w=-0.016, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (171065) HID_DEV_DEMO: Demo Quat[1575]: w=-0.021, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (171155) HID_DEV_DEMO: Send the volume (loop 82)[0m
+[0;32mI (171165) HID_DEV_DEMO: Demo Quat[1576]: w=-0.026, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (171265) HID_DEV_DEMO: Demo Quat[1577]: w=-0.031, x=0.000, y=0.000, z=1.000[0m
+[0;32mI (171365) HID_DEV_DEMO: Demo Quat[1578]: w=-0.036, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (171465) HID_DEV_DEMO: Demo Quat[1579]: w=-0.041, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (171565) HID_DEV_DEMO: Demo Quat[1580]: w=-0.046, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (171665) HID_DEV_DEMO: Demo Quat[1581]: w=-0.051, x=0.000, y=0.000, z=0.999[0m
+[0;32mI (171765) HID_DEV_DEMO: Demo Quat[1582]: w=-0.056, x=0.000, y=0.000, z=0.998[0m
+[0;32mI (171865) HID_DEV_DEMO: Demo Quat[1583]: w=-0.061, x=0.000, y=0.000, z=0.998[0m
+[0;32mI (171965) HID_DEV_DEMO: Demo Quat[1584]: w=-0.066, x=0.000, y=0.000, z=0.998[0m
+[0;32mI (172065) HID_DEV_DEMO: Demo Quat[1585]: w=-0.071, x=0.000, y=0.000, z=0.997[0m
+[0;32mI (172165) HID_DEV_DEMO: Demo Quat[1586]: w=-0.076, x=0.000, y=0.000, z=0.997[0m
+[0;32mI (172265) HID_DEV_DEMO: Demo Quat[1587]: w=-0.081, x=0.000, y=0.000, z=0.997[0m
+[0;32mI (172365) HID_DEV_DEMO: Demo Quat[1588]: w=-0.086, x=0.000, y=0.000, z=0.996[0m
+[0;32mI (172465) HID_DEV_DEMO: Demo Quat[1589]: w=-0.091, x=0.000, y=0.000, z=0.996[0m
+[0;32mI (172565) HID_DEV_DEMO: Demo Quat[1590]: w=-0.096, x=0.000, y=0.000, z=0.995[0m
+[0;32mI (172665) HID_DEV_DEMO: Demo Quat[1591]: w=-0.101, x=0.000, y=0.000, z=0.995[0m
+[0;32mI (172765) HID_DEV_DEMO: Demo Quat[1592]: w=-0.106, x=0.000, y=0.000, z=0.994[0m
+[0;32mI (172865) HID_DEV_DEMO: Demo Quat[1593]: w=-0.111, x=0.000, y=0.000, z=0.994[0m
+[0;32mI (172965) HID_DEV_DEMO: Demo Quat[1594]: w=-0.116, x=0.000, y=0.000, z=0.993[0m
+[0;32mI (173065) HID_DEV_DEMO: Demo Quat[1595]: w=-0.121, x=0.000, y=0.000, z=0.993[0m
+[0;32mI (173165) HID_DEV_DEMO: Demo Quat[1596]: w=-0.126, x=0.000, y=0.000, z=0.992[0m
+[0;32mI (173255) HID_DEV_DEMO: Send the volume (loop 83)[0m
+[0;32mI (173265) HID_DEV_DEMO: Demo Quat[1597]: w=-0.131, x=0.000, y=0.000, z=0.991[0m
+[0;32mI (173365) HID_DEV_DEMO: Demo Quat[1598]: w=-0.136, x=0.000, y=0.000, z=0.991[0m
+[0;32mI (173465) HID_DEV_DEMO: Demo Quat[1599]: w=-0.141, x=0.000, y=0.000, z=0.990[0m
+[0;32mI (173565) HID_DEV_DEMO: Demo Quat[1600]: w=-0.146, x=0.000, y=0.000, z=0.989[0m
+[0;32mI (173665) HID_DEV_DEMO: Demo Quat[1601]: w=-0.150, x=0.000, y=0.000, z=0.989[0m
+[0;32mI (173765) HID_DEV_DEMO: Demo Quat[1602]: w=-0.155, x=0.000, y=0.000, z=0.988[0m
+[0;32mI (173865) HID_DEV_DEMO: Demo Quat[1603]: w=-0.160, x=0.000, y=0.000, z=0.987[0m
+[0;32mI (173965) HID_DEV_DEMO: Demo Quat[1604]: w=-0.165, x=0.000, y=0.000, z=0.986[0m
+[0;32mI (174065) HID_DEV_DEMO: Demo Quat[1605]: w=-0.170, x=0.000, y=0.000, z=0.985[0m
+[0;32mI (174165) HID_DEV_DEMO: Demo Quat[1606]: w=-0.175, x=0.000, y=0.000, z=0.985[0m
+[0;32mI (174265) HID_DEV_DEMO: Demo Quat[1607]: w=-0.180, x=0.000, y=0.000, z=0.984[0m
+[0;32mI (174365) HID_DEV_DEMO: Demo Quat[1608]: w=-0.185, x=0.000, y=0.000, z=0.983[0m
+[0;32mI (174465) HID_DEV_DEMO: Demo Quat[1609]: w=-0.190, x=0.000, y=0.000, z=0.982[0m
+[0;32mI (174565) HID_DEV_DEMO: Demo Quat[1610]: w=-0.195, x=0.000, y=0.000, z=0.981[0m
+[0;32mI (174665) HID_DEV_DEMO: Demo Quat[1611]: w=-0.200, x=0.000, y=0.000, z=0.980[0m
+[0;32mI (174765) HID_DEV_DEMO: Demo Quat[1612]: w=-0.205, x=0.000, y=0.000, z=0.979[0m
+[0;32mI (174865) HID_DEV_DEMO: Demo Quat[1613]: w=-0.210, x=0.000, y=0.000, z=0.978[0m
+[0;32mI (174965) HID_DEV_DEMO: Demo Quat[1614]: w=-0.214, x=0.000, y=0.000, z=0.977[0m
+[0;32mI (175065) HID_DEV_DEMO: Demo Quat[1615]: w=-0.219, x=0.000, y=0.000, z=0.976[0m
+[0;32mI (175165) HID_DEV_DEMO: Demo Quat[1616]: w=-0.224, x=0.000, y=0.000, z=0.975[0m
+[0;32mI (175265) HID_DEV_DEMO: Demo Quat[1617]: w=-0.229, x=0.000, y=0.000, z=0.973[0m
+[0;32mI (175355) HID_DEV_DEMO: Send the volume (loop 84)[0m
+[0;32mI (175365) HID_DEV_DEMO: Demo Quat[1618]: w=-0.234, x=0.000, y=0.000, z=0.972[0m
+[0;32mI (175465) HID_DEV_DEMO: Demo Quat[1619]: w=-0.239, x=0.000, y=0.000, z=0.971[0m
+[0;32mI (175565) HID_DEV_DEMO: Demo Quat[1620]: w=-0.244, x=0.000, y=0.000, z=0.970[0m
+[0;32mI (175665) HID_DEV_DEMO: Demo Quat[1621]: w=-0.248, x=0.000, y=0.000, z=0.969[0m
+[0;32mI (175765) HID_DEV_DEMO: Demo Quat[1622]: w=-0.253, x=0.000, y=0.000, z=0.967[0m
+[0;32mI (175865) HID_DEV_DEMO: Demo Quat[1623]: w=-0.258, x=0.000, y=0.000, z=0.966[0m
+[0;32mI (175965) HID_DEV_DEMO: Demo Quat[1624]: w=-0.263, x=0.000, y=0.000, z=0.965[0m
+[0;32mI (176065) HID_DEV_DEMO: Demo Quat[1625]: w=-0.268, x=0.000, y=0.000, z=0.963[0m
+[0;32mI (176165) HID_DEV_DEMO: Demo Quat[1626]: w=-0.273, x=0.000, y=0.000, z=0.962[0m
+[0;32mI (176265) HID_DEV_DEMO: Demo Quat[1627]: w=-0.277, x=0.000, y=0.000, z=0.961[0m
+[0;32mI (176365) HID_DEV_DEMO: Demo Quat[1628]: w=-0.282, x=0.000, y=0.000, z=0.959[0m
+[0;32mI (176465) HID_DEV_DEMO: Demo Quat[1629]: w=-0.287, x=0.000, y=0.000, z=0.958[0m
+[0;32mI (176565) HID_DEV_DEMO: Demo Quat[1630]: w=-0.292, x=0.000, y=0.000, z=0.956[0m
+[0;32mI (176665) HID_DEV_DEMO: Demo Quat[1631]: w=-0.297, x=0.000, y=0.000, z=0.955[0m
+[0;32mI (176765) HID_DEV_DEMO: Demo Quat[1632]: w=-0.301, x=0.000, y=0.000, z=0.954[0m
+[0;32mI (176865) HID_DEV_DEMO: Demo Quat[1633]: w=-0.306, x=0.000, y=0.000, z=0.952[0m
+[0;32mI (176965) HID_DEV_DEMO: Demo Quat[1634]: w=-0.311, x=0.000, y=0.000, z=0.950[0m
+[0;32mI (177065) HID_DEV_DEMO: Demo Quat[1635]: w=-0.316, x=0.000, y=0.000, z=0.949[0m
+[0;32mI (177165) HID_DEV_DEMO: Demo Quat[1636]: w=-0.320, x=0.000, y=0.000, z=0.947[0m
+[0;32mI (177265) HID_DEV_DEMO: Demo Quat[1637]: w=-0.325, x=0.000, y=0.000, z=0.946[0m
+[0;32mI (177365) HID_DEV_DEMO: Demo Quat[1638]: w=-0.330, x=0.000, y=0.000, z=0.944[0m
+[0;32mI (177455) HID_DEV_DEMO: Send the volume (loop 85)[0m
+[0;32mI (177465) HID_DEV_DEMO: Demo Quat[1639]: w=-0.334, x=0.000, y=0.000, z=0.942[0m
+[0;32mI (177565) HID_DEV_DEMO: Demo Quat[1640]: w=-0.339, x=0.000, y=0.000, z=0.941[0m
+[0;32mI (177665) HID_DEV_DEMO: Demo Quat[1641]: w=-0.344, x=0.000, y=0.000, z=0.939[0m
+[0;32mI (177765) HID_DEV_DEMO: Demo Quat[1642]: w=-0.349, x=0.000, y=0.000, z=0.937[0m
+[0;32mI (177865) HID_DEV_DEMO: Demo Quat[1643]: w=-0.353, x=0.000, y=0.000, z=0.936[0m
+[0;32mI (177965) HID_DEV_DEMO: Demo Quat[1644]: w=-0.358, x=0.000, y=0.000, z=0.934[0m
+[0;32mI (178065) HID_DEV_DEMO: Demo Quat[1645]: w=-0.363, x=0.000, y=0.000, z=0.932[0m
+[0;32mI (178165) HID_DEV_DEMO: Demo Quat[1646]: w=-0.367, x=0.000, y=0.000, z=0.930[0m
+[0;32mI (178265) HID_DEV_DEMO: Demo Quat[1647]: w=-0.372, x=0.000, y=0.000, z=0.928[0m
+[0;32mI (178365) HID_DEV_DEMO: Demo Quat[1648]: w=-0.377, x=0.000, y=0.000, z=0.926[0m
+[0;32mI (178465) HID_DEV_DEMO: Demo Quat[1649]: w=-0.381, x=0.000, y=0.000, z=0.925[0m
+[0;32mI (178565) HID_DEV_DEMO: Demo Quat[1650]: w=-0.386, x=0.000, y=0.000, z=0.923[0m
+[0;32mI (178665) HID_DEV_DEMO: Demo Quat[1651]: w=-0.390, x=0.000, y=0.000, z=0.921[0m
+[0;32mI (178765) HID_DEV_DEMO: Demo Quat[1652]: w=-0.395, x=0.000, y=0.000, z=0.919[0m
+[0;32mI (178865) HID_DEV_DEMO: Demo Quat[1653]: w=-0.400, x=0.000, y=0.000, z=0.917[0m
+[0;32mI (178965) HID_DEV_DEMO: Demo Quat[1654]: w=-0.404, x=0.000, y=0.000, z=0.915[0m
+[0;32mI (179065) HID_DEV_DEMO: Demo Quat[1655]: w=-0.409, x=0.000, y=0.000, z=0.913[0m
+[0;32mI (179165) HID_DEV_DEMO: Demo Quat[1656]: w=-0.413, x=0.000, y=0.000, z=0.911[0m
+[0;32mI (179265) HID_DEV_DEMO: Demo Quat[1657]: w=-0.418, x=0.000, y=0.000, z=0.909[0m
+[0;32mI (179365) HID_DEV_DEMO: Demo Quat[1658]: w=-0.422, x=0.000, y=0.000, z=0.906[0m
+[0;32mI (179465) HID_DEV_DEMO: Demo Quat[1659]: w=-0.427, x=0.000, y=0.000, z=0.904[0m
+[0;32mI (179555) HID_DEV_DEMO: Send the volume (loop 86)[0m
+[0;32mI (179565) HID_DEV_DEMO: Demo Quat[1660]: w=-0.431, x=0.000, y=0.000, z=0.902[0m
+[0;32mI (179665) HID_DEV_DEMO: Demo Quat[1661]: w=-0.436, x=0.000, y=0.000, z=0.900[0m
+[0;32mI (179765) HID_DEV_DEMO: Demo Quat[1662]: w=-0.440, x=0.000, y=0.000, z=0.898[0m
+[0;32mI (179865) HID_DEV_DEMO: Demo Quat[1663]: w=-0.445, x=0.000, y=0.000, z=0.896[0m
+[0;32mI (179965) HID_DEV_DEMO: Demo Quat[1664]: w=-0.449, x=0.000, y=0.000, z=0.893[0m
+[0;32mI (180065) HID_DEV_DEMO: Demo Quat[1665]: w=-0.454, x=0.000, y=0.000, z=0.891[0m
+[0;32mI (180165) HID_DEV_DEMO: Demo Quat[1666]: w=-0.458, x=0.000, y=0.000, z=0.889[0m
+[0;32mI (180265) HID_DEV_DEMO: Demo Quat[1667]: w=-0.463, x=0.000, y=0.000, z=0.887[0m
+[0;32mI (180365) HID_DEV_DEMO: Demo Quat[1668]: w=-0.467, x=0.000, y=0.000, z=0.884[0m
+[0;32mI (180465) HID_DEV_DEMO: Demo Quat[1669]: w=-0.472, x=0.000, y=0.000, z=0.882[0m
+[0;32mI (180565) HID_DEV_DEMO: Demo Quat[1670]: w=-0.476, x=0.000, y=0.000, z=0.879[0m
+[0;32mI (180665) HID_DEV_DEMO: Demo Quat[1671]: w=-0.480, x=0.000, y=0.000, z=0.877[0m
+[0;32mI (180765) HID_DEV_DEMO: Demo Quat[1672]: w=-0.485, x=0.000, y=0.000, z=0.875[0m
+[0;32mI (180865) HID_DEV_DEMO: Demo Quat[1673]: w=-0.489, x=0.000, y=0.000, z=0.872[0m
+[0;32mI (180965) HID_DEV_DEMO: Demo Quat[1674]: w=-0.493, x=0.000, y=0.000, z=0.870[0m
+[0;32mI (181065) HID_DEV_DEMO: Demo Quat[1675]: w=-0.498, x=0.000, y=0.000, z=0.867[0m
+[0;32mI (181165) HID_DEV_DEMO: Demo Quat[1676]: w=-0.502, x=0.000, y=0.000, z=0.865[0m
+[0;32mI (181265) HID_DEV_DEMO: Demo Quat[1677]: w=-0.506, x=0.000, y=0.000, z=0.862[0m
+[0;32mI (181365) HID_DEV_DEMO: Demo Quat[1678]: w=-0.511, x=0.000, y=0.000, z=0.860[0m
+[0;32mI (181465) HID_DEV_DEMO: Demo Quat[1679]: w=-0.515, x=0.000, y=0.000, z=0.857[0m
+[0;32mI (181565) HID_DEV_DEMO: Demo Quat[1680]: w=-0.519, x=0.000, y=0.000, z=0.855[0m
+[0;32mI (181655) HID_DEV_DEMO: Send the volume (loop 87)[0m
+[0;32mI (181665) HID_DEV_DEMO: Demo Quat[1681]: w=-0.524, x=0.000, y=0.000, z=0.852[0m
+[0;32mI (181765) HID_DEV_DEMO: Demo Quat[1682]: w=-0.528, x=0.000, y=0.000, z=0.849[0m
+[0;32mI (181865) HID_DEV_DEMO: Demo Quat[1683]: w=-0.532, x=0.000, y=0.000, z=0.847[0m
+[0;32mI (181965) HID_DEV_DEMO: Demo Quat[1684]: w=-0.536, x=0.000, y=0.000, z=0.844[0m
+[0;32mI (182065) HID_DEV_DEMO: Demo Quat[1685]: w=-0.541, x=0.000, y=0.000, z=0.841[0m
+[0;32mI (182165) HID_DEV_DEMO: Demo Quat[1686]: w=-0.545, x=0.000, y=0.000, z=0.839[0m
+[0;32mI (182265) HID_DEV_DEMO: Demo Quat[1687]: w=-0.549, x=0.000, y=0.000, z=0.836[0m
+[0;32mI (182365) HID_DEV_DEMO: Demo Quat[1688]: w=-0.553, x=0.000, y=0.000, z=0.833[0m
+[0;32mI (182465) HID_DEV_DEMO: Demo Quat[1689]: w=-0.557, x=0.000, y=0.000, z=0.830[0m
+[0;32mI (182565) HID_DEV_DEMO: Demo Quat[1690]: w=-0.561, x=0.000, y=0.000, z=0.828[0m
+[0;32mI (182665) HID_DEV_DEMO: Demo Quat[1691]: w=-0.566, x=0.000, y=0.000, z=0.825[0m
+[0;32mI (182765) HID_DEV_DEMO: Demo Quat[1692]: w=-0.570, x=0.000, y=0.000, z=0.822[0m
+[0;32mI (182865) HID_DEV_DEMO: Demo Quat[1693]: w=-0.574, x=0.000, y=0.000, z=0.819[0m
+[0;32mI (182965) HID_DEV_DEMO: Demo Quat[1694]: w=-0.578, x=0.000, y=0.000, z=0.816[0m
+[0;32mI (183065) HID_DEV_DEMO: Demo Quat[1695]: w=-0.582, x=0.000, y=0.000, z=0.813[0m
+[0;32mI (183165) HID_DEV_DEMO: Demo Quat[1696]: w=-0.586, x=0.000, y=0.000, z=0.810[0m
+[0;32mI (183265) HID_DEV_DEMO: Demo Quat[1697]: w=-0.590, x=0.000, y=0.000, z=0.807[0m
+[0;32mI (183365) HID_DEV_DEMO: Demo Quat[1698]: w=-0.594, x=0.000, y=0.000, z=0.804[0m
+[0;32mI (183465) HID_DEV_DEMO: Demo Quat[1699]: w=-0.598, x=0.000, y=0.000, z=0.801[0m
+[0;32mI (183565) HID_DEV_DEMO: Demo Quat[1700]: w=-0.602, x=0.000, y=0.000, z=0.798[0m
+[0;32mI (183665) HID_DEV_DEMO: Demo Quat[1701]: w=-0.606, x=0.000, y=0.000, z=0.795[0m
+[0;32mI (183755) HID_DEV_DEMO: Send the volume (loop 88)[0m
+[0;32mI (183765) HID_DEV_DEMO: Demo Quat[1702]: w=-0.610, x=0.000, y=0.000, z=0.792[0m
+[0;32mI (183865) HID_DEV_DEMO: Demo Quat[1703]: w=-0.614, x=0.000, y=0.000, z=0.789[0m
+[0;32mI (183965) HID_DEV_DEMO: Demo Quat[1704]: w=-0.618, x=0.000, y=0.000, z=0.786[0m
+[0;32mI (184065) HID_DEV_DEMO: Demo Quat[1705]: w=-0.622, x=0.000, y=0.000, z=0.783[0m
+[0;32mI (184165) HID_DEV_DEMO: Demo Quat[1706]: w=-0.626, x=0.000, y=0.000, z=0.780[0m
+[0;32mI (184265) HID_DEV_DEMO: Demo Quat[1707]: w=-0.630, x=0.000, y=0.000, z=0.777[0m
+[0;32mI (184365) HID_DEV_DEMO: Demo Quat[1708]: w=-0.634, x=0.000, y=0.000, z=0.774[0m
+[0;32mI (184465) HID_DEV_DEMO: Demo Quat[1709]: w=-0.637, x=0.000, y=0.000, z=0.771[0m
+[0;32mI (184565) HID_DEV_DEMO: Demo Quat[1710]: w=-0.641, x=0.000, y=0.000, z=0.767[0m
+[0;32mI (184665) HID_DEV_DEMO: Demo Quat[1711]: w=-0.645, x=0.000, y=0.000, z=0.764[0m
+[0;32mI (184765) HID_DEV_DEMO: Demo Quat[1712]: w=-0.649, x=0.000, y=0.000, z=0.761[0m
+[0;32mI (184865) HID_DEV_DEMO: Demo Quat[1713]: w=-0.653, x=0.000, y=0.000, z=0.758[0m
+[0;32mI (184965) HID_DEV_DEMO: Demo Quat[1714]: w=-0.656, x=0.000, y=0.000, z=0.754[0m
+[0;32mI (185065) HID_DEV_DEMO: Demo Quat[1715]: w=-0.660, x=0.000, y=0.000, z=0.751[0m
+[0;32mI (185165) HID_DEV_DEMO: Demo Quat[1716]: w=-0.664, x=0.000, y=0.000, z=0.748[0m
+[0;32mI (185265) HID_DEV_DEMO: Demo Quat[1717]: w=-0.668, x=0.000, y=0.000, z=0.744[0m
+[0;32mI (185365) HID_DEV_DEMO: Demo Quat[1718]: w=-0.671, x=0.000, y=0.000, z=0.741[0m
+[0;32mI (185465) HID_DEV_DEMO: Demo Quat[1719]: w=-0.675, x=0.000, y=0.000, z=0.738[0m
+[0;32mI (185565) HID_DEV_DEMO: Demo Quat[1720]: w=-0.679, x=0.000, y=0.000, z=0.734[0m
+[0;32mI (185665) HID_DEV_DEMO: Demo Quat[1721]: w=-0.682, x=0.000, y=0.000, z=0.731[0m
+[0;32mI (185765) HID_DEV_DEMO: Demo Quat[1722]: w=-0.686, x=0.000, y=0.000, z=0.728[0m
+[0;32mI (185855) HID_DEV_DEMO: Send the volume (loop 89)[0m
+[0;32mI (185865) HID_DEV_DEMO: Demo Quat[1723]: w=-0.690, x=0.000, y=0.000, z=0.724[0m
+[0;32mI (185965) HID_DEV_DEMO: Demo Quat[1724]: w=-0.693, x=0.000, y=0.000, z=0.721[0m
+[0;32mI (186065) HID_DEV_DEMO: Demo Quat[1725]: w=-0.697, x=0.000, y=0.000, z=0.717[0m
+[0;32mI (186165) HID_DEV_DEMO: Demo Quat[1726]: w=-0.700, x=0.000, y=0.000, z=0.714[0m
+[0;32mI (186265) HID_DEV_DEMO: Demo Quat[1727]: w=-0.704, x=0.000, y=0.000, z=0.710[0m
+[0;32mI (186365) HID_DEV_DEMO: Demo Quat[1728]: w=-0.708, x=0.000, y=0.000, z=0.707[0m
+[0;32mI (186465) HID_DEV_DEMO: Demo Quat[1729]: w=-0.711, x=0.000, y=0.000, z=0.703[0m
+[0;32mI (186565) HID_DEV_DEMO: Demo Quat[1730]: w=-0.715, x=0.000, y=0.000, z=0.700[0m
+[0;32mI (186665) HID_DEV_DEMO: Demo Quat[1731]: w=-0.718, x=0.000, y=0.000, z=0.696[0m
+[0;32mI (186765) HID_DEV_DEMO: Demo Quat[1732]: w=-0.722, x=0.000, y=0.000, z=0.692[0m
+[0;32mI (186865) HID_DEV_DEMO: Demo Quat[1733]: w=-0.725, x=0.000, y=0.000, z=0.689[0m
+[0;32mI (186965) HID_DEV_DEMO: Demo Quat[1734]: w=-0.728, x=0.000, y=0.000, z=0.685[0m
+[0;32mI (187065) HID_DEV_DEMO: Demo Quat[1735]: w=-0.732, x=0.000, y=0.000, z=0.681[0m
+[0;32mI (187165) HID_DEV_DEMO: Demo Quat[1736]: w=-0.735, x=0.000, y=0.000, z=0.678[0m
+[0;32mI (187265) HID_DEV_DEMO: Demo Quat[1737]: w=-0.739, x=0.000, y=0.000, z=0.674[0m
+[0;32mI (187365) HID_DEV_DEMO: Demo Quat[1738]: w=-0.742, x=0.000, y=0.000, z=0.670[0m
+[0;32mI (187465) HID_DEV_DEMO: Demo Quat[1739]: w=-0.745, x=0.000, y=0.000, z=0.667[0m
+[0;32mI (187565) HID_DEV_DEMO: Demo Quat[1740]: w=-0.749, x=0.000, y=0.000, z=0.663[0m
+[0;32mI (187665) HID_DEV_DEMO: Demo Quat[1741]: w=-0.752, x=0.000, y=0.000, z=0.659[0m
+[0;32mI (187765) HID_DEV_DEMO: Demo Quat[1742]: w=-0.755, x=0.000, y=0.000, z=0.655[0m
+[0;32mI (187865) HID_DEV_DEMO: Demo Quat[1743]: w=-0.759, x=0.000, y=0.000, z=0.652[0m
+[0;32mI (187955) HID_DEV_DEMO: Send the volume (loop 90)[0m
+[0;32mI (187965) HID_DEV_DEMO: Demo Quat[1744]: w=-0.762, x=0.000, y=0.000, z=0.648[0m
+[0;32mI (188065) HID_DEV_DEMO: Demo Quat[1745]: w=-0.765, x=0.000, y=0.000, z=0.644[0m
+[0;32mI (188165) HID_DEV_DEMO: Demo Quat[1746]: w=-0.768, x=0.000, y=0.000, z=0.640[0m

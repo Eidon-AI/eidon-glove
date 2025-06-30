@@ -1,0 +1,172 @@
+Command: make -j 12 all
+-- Minimal build - OFF
+-- Building ESP-IDF components for target esp32c6
+-- Project sdkconfig file /Users/robert/eidon/eidon-glove/firmware/sdkconfig
+Loading defaults file /Users/robert/eidon/eidon-glove/firmware/sdkconfig.defaults...
+warning: unknown kconfig symbol 'BTDM_CTRL_MODE_BTDM' assigned to 'y' in /Users/robert/eidon/eidon-glove/firmware/sdkconfig.defaults
+-- Adding linker script /Users/robert/esp-idf/components/riscv/ld/rom.api.ld
+-- USING O3
+-- App "eidon-glove" version: 8c13abb-dirty
+-- Adding linker script /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_system/ld/memory.ld
+-- Adding linker script /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_system/ld/sections.ld.in
+-- Adding linker script /Users/robert/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.ld
+-- Adding linker script /Users/robert/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.api.ld
+-- Adding linker script /Users/robert/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.rvfp.ld
+-- Adding linker script /Users/robert/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.wdt.ld
+-- Adding linker script /Users/robert/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.systimer.ld
+-- Adding linker script /Users/robert/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.version.ld
+-- Adding linker script /Users/robert/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.phy.ld
+-- Adding linker script /Users/robert/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.coexist.ld
+-- Adding linker script /Users/robert/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.net80211.ld
+-- Adding linker script /Users/robert/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.pp.ld
+-- Adding linker script /Users/robert/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.libc.ld
+-- Adding linker script /Users/robert/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.libc-suboptimal_for_misaligned_mem.ld
+-- Adding linker script /Users/robert/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.newlib.ld
+-- Adding linker script /Users/robert/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.newlib-normal.ld
+-- Adding linker script /Users/robert/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.heap.ld
+-- Adding linker script /Users/robert/esp-idf/components/soc/esp32c6/ld/esp32c6.peripherals.ld
+-- Components: app_trace app_update bootloader bootloader_support bt cmock console cxx driver efuse esp-tls esp_adc esp_app_format esp_bootloader_format esp_coex esp_common esp_driver_ana_cmpr esp_driver_bitscrambler esp_driver_cam esp_driver_dac esp_driver_gpio esp_driver_gptimer esp_driver_i2c esp_driver_i2s esp_driver_isp esp_driver_jpeg esp_driver_ledc esp_driver_mcpwm esp_driver_parlio esp_driver_pcnt esp_driver_ppa esp_driver_rmt esp_driver_sd_intf esp_driver_sdio esp_driver_sdm esp_driver_sdmmc esp_driver_sdspi esp_driver_spi esp_driver_touch_sens esp_driver_tsens esp_driver_twai esp_driver_uart esp_driver_usb_serial_jtag esp_eth esp_event esp_gdbstub esp_hid esp_http_client esp_http_server esp_https_ota esp_https_server esp_hw_support esp_lcd esp_local_ctrl esp_mm esp_netif esp_netif_stack esp_partition esp_phy esp_pm esp_psram esp_ringbuf esp_rom esp_security esp_system esp_tee esp_timer esp_vfs_console esp_wifi espcoredump esptool_py fatfs freertos hal heap http_parser idf_test ieee802154 json log lwip main mbedtls mqtt newlib nvs_flash nvs_sec_provider openthread partition_table protobuf-c protocomm pthread riscv rt sdmmc soc spi_flash spiffs tcp_transport ulp unity usb vfs wear_levelling wifi_provisioning wpa_supplicant
+-- Component paths: /Users/robert/esp-idf/components/app_trace /Users/robert/esp-idf/components/app_update /Users/robert/esp-idf/components/bootloader /Users/robert/esp-idf/components/bootloader_support /Users/robert/esp-idf/components/bt /Users/robert/esp-idf/components/cmock /Users/robert/esp-idf/components/console /Users/robert/esp-idf/components/cxx /Users/robert/esp-idf/components/driver /Users/robert/esp-idf/components/efuse /Users/robert/esp-idf/components/esp-tls /Users/robert/esp-idf/components/esp_adc /Users/robert/esp-idf/components/esp_app_format /Users/robert/esp-idf/components/esp_bootloader_format /Users/robert/esp-idf/components/esp_coex /Users/robert/esp-idf/components/esp_common /Users/robert/esp-idf/components/esp_driver_ana_cmpr /Users/robert/esp-idf/components/esp_driver_bitscrambler /Users/robert/esp-idf/components/esp_driver_cam /Users/robert/esp-idf/components/esp_driver_dac /Users/robert/esp-idf/components/esp_driver_gpio /Users/robert/esp-idf/components/esp_driver_gptimer /Users/robert/esp-idf/components/esp_driver_i2c /Users/robert/esp-idf/components/esp_driver_i2s /Users/robert/esp-idf/components/esp_driver_isp /Users/robert/esp-idf/components/esp_driver_jpeg /Users/robert/esp-idf/components/esp_driver_ledc /Users/robert/esp-idf/components/esp_driver_mcpwm /Users/robert/esp-idf/components/esp_driver_parlio /Users/robert/esp-idf/components/esp_driver_pcnt /Users/robert/esp-idf/components/esp_driver_ppa /Users/robert/esp-idf/components/esp_driver_rmt /Users/robert/esp-idf/components/esp_driver_sd_intf /Users/robert/esp-idf/components/esp_driver_sdio /Users/robert/esp-idf/components/esp_driver_sdm /Users/robert/esp-idf/components/esp_driver_sdmmc /Users/robert/esp-idf/components/esp_driver_sdspi /Users/robert/esp-idf/components/esp_driver_spi /Users/robert/esp-idf/components/esp_driver_touch_sens /Users/robert/esp-idf/components/esp_driver_tsens /Users/robert/esp-idf/components/esp_driver_twai /Users/robert/esp-idf/components/esp_driver_uart /Users/robert/esp-idf/components/esp_driver_usb_serial_jtag /Users/robert/esp-idf/components/esp_eth /Users/robert/esp-idf/components/esp_event /Users/robert/esp-idf/components/esp_gdbstub /Users/robert/esp-idf/components/esp_hid /Users/robert/esp-idf/components/esp_http_client /Users/robert/esp-idf/components/esp_http_server /Users/robert/esp-idf/components/esp_https_ota /Users/robert/esp-idf/components/esp_https_server /Users/robert/esp-idf/components/esp_hw_support /Users/robert/esp-idf/components/esp_lcd /Users/robert/esp-idf/components/esp_local_ctrl /Users/robert/esp-idf/components/esp_mm /Users/robert/esp-idf/components/esp_netif /Users/robert/esp-idf/components/esp_netif_stack /Users/robert/esp-idf/components/esp_partition /Users/robert/esp-idf/components/esp_phy /Users/robert/esp-idf/components/esp_pm /Users/robert/esp-idf/components/esp_psram /Users/robert/esp-idf/components/esp_ringbuf /Users/robert/esp-idf/components/esp_rom /Users/robert/esp-idf/components/esp_security /Users/robert/esp-idf/components/esp_system /Users/robert/esp-idf/components/esp_tee /Users/robert/esp-idf/components/esp_timer /Users/robert/esp-idf/components/esp_vfs_console /Users/robert/esp-idf/components/esp_wifi /Users/robert/esp-idf/components/espcoredump /Users/robert/esp-idf/components/esptool_py /Users/robert/esp-idf/components/fatfs /Users/robert/esp-idf/components/freertos /Users/robert/esp-idf/components/hal /Users/robert/esp-idf/components/heap /Users/robert/esp-idf/components/http_parser /Users/robert/esp-idf/components/idf_test /Users/robert/esp-idf/components/ieee802154 /Users/robert/esp-idf/components/json /Users/robert/esp-idf/components/log /Users/robert/esp-idf/components/lwip /Users/robert/eidon/eidon-glove/firmware/main /Users/robert/esp-idf/components/mbedtls /Users/robert/esp-idf/components/mqtt /Users/robert/esp-idf/components/newlib /Users/robert/esp-idf/components/nvs_flash /Users/robert/esp-idf/components/nvs_sec_provider /Users/robert/esp-idf/components/openthread /Users/robert/esp-idf/components/partition_table /Users/robert/esp-idf/components/protobuf-c /Users/robert/esp-idf/components/protocomm /Users/robert/esp-idf/components/pthread /Users/robert/esp-idf/components/riscv /Users/robert/esp-idf/components/rt /Users/robert/esp-idf/components/sdmmc /Users/robert/esp-idf/components/soc /Users/robert/esp-idf/components/spi_flash /Users/robert/esp-idf/components/spiffs /Users/robert/esp-idf/components/tcp_transport /Users/robert/esp-idf/components/ulp /Users/robert/esp-idf/components/unity /Users/robert/esp-idf/components/usb /Users/robert/esp-idf/components/vfs /Users/robert/esp-idf/components/wear_levelling /Users/robert/esp-idf/components/wifi_provisioning /Users/robert/esp-idf/components/wpa_supplicant
+-- Configuring done (3.7s)
+-- Generating done (0.9s)
+-- Build files have been written to: /Users/robert/eidon/eidon-glove/firmware/build
+[  0%] Built target partition_table_bin
+[  0%] Built target memory.ld
+[  0%] Built target sections.ld.in
+[  0%] Built target _project_elf_src
+[  0%] Built target custom_bundle
+[  0%] Performing build step for 'bootloader'
+[  0%] Built target __idf_esp_https_ota
+[  0%] Built target __idf_esp_http_server
+[  1%] Built target _project_elf_src
+[  9%] Built target __idf_log
+[  1%] Built target __idf_esp_http_client
+[ 18%] Built target __idf_esp_rom
+[  2%] Built target __idf_tcp_transport
+[ 19%] Built target __idf_esp_common
+[  3%] Built target __idf_esp_adc
+[ 30%] Built target __idf_esp_hw_support
+[ 32%] Built target __idf_esp_system
+[  3%] Built target __idf_esp-tls
+[ 40%] Built target __idf_efuse
+[  3%] Built target __idf_http_parser
+[ 59%] Built target __idf_bootloader_support
+[  3%] Built target __idf_driver
+[ 61%] Built target __idf_esp_bootloader_format
+[  3%] Built target __idf_esp_driver_twai
+[ 62%] Built target __idf_spi_flash
+[  4%] Built target __idf_esp_driver_parlio
+[ 63%] Built target __idf_micro-ecc
+[  4%] Built target __idf_esp_driver_ledc
+[ 87%] Built target __idf_soc
+[  4%] Built target __idf_esp_driver_i2c
+[ 89%] Built target __idf_riscv
+[  4%] Built target __idf_esp_driver_sdm
+[ 94%] Built target __idf_hal
+[  4%] Built target __idf_esp_driver_tsens
+[ 96%] Built target __idf_main
+[  5%] Built target __idf_esp_driver_rmt
+[ 98%] Built target bootloader.elf
+[  5%] Built target __idf_esp_driver_sdio
+[100%] Built target gen_project_binary
+[  5%] Built target __idf_esp_driver_sdspi
+[  5%] Built target __idf_esp_driver_sd_intf
+Bootloader binary size 0x5780 bytes. 0x2880 bytes (32%) free.
+[100%] Built target bootloader_check_size
+[  5%] Built target __idf_sdmmc
+[100%] Built target app
+[  6%] Built target __idf_esp_driver_i2s
+[  6%] No install step for 'bootloader'
+[  6%] Completed 'bootloader'
+[  6%] Built target __idf_esp_driver_mcpwm
+[  6%] Built target bootloader
+[  6%] Built target __idf_esp_driver_pcnt
+[  7%] Built target __idf_esp_gdbstub
+[  8%] Built target __idf_esp_driver_spi
+[  9%] Built target __idf_esp_wifi
+[ 10%] Built target __idf_esp_coex
+[ 17%] Built target __idf_wpa_supplicant
+[ 17%] Built target __idf_esp_netif
+[ 24%] Built target __idf_lwip
+[ 25%] Built target __idf_vfs
+[ 25%] Built target __idf_esp_vfs_console
+[ 26%] Built target __idf_esp_driver_usb_serial_jtag
+[ 27%] Built target __idf_esp_phy
+[ 28%] Built target __idf_nvs_flash
+[ 28%] Built target __idf_esp_event
+[ 28%] Built target __idf_esp_driver_uart
+[ 28%] Built target __idf_esp_ringbuf
+[ 28%] Built target __idf_esp_driver_gptimer
+[ 29%] Built target __idf_esp_timer
+[ 30%] Built target __idf_cxx
+[ 31%] Built target __idf_pthread
+[ 33%] Built target __idf_newlib
+[ 34%] Built target __idf_freertos
+[ 38%] Built target __idf_esp_hw_support
+[ 39%] Built target __idf_esp_security
+[ 41%] Built target __idf_soc
+[ 42%] Built target __idf_heap
+[ 43%] Built target __idf_log
+[ 47%] Built target __idf_hal
+[ 48%] Built target __idf_esp_rom
+[ 48%] Built target __idf_esp_common
+[ 50%] Built target __idf_esp_system
+[ 52%] Built target __idf_spi_flash
+[ 53%] Built target __idf_esp_mm
+[ 54%] Built target __idf_bootloader_support
+[ 55%] Built target __idf_efuse
+[ 55%] Built target __idf_esp_partition
+[ 55%] Built target __idf_app_update
+[ 55%] Built target __idf_esp_bootloader_format
+[ 55%] Built target __idf_esp_app_format
+[ 56%] Built target mbedtls
+[ 57%] Built target mbedx509
+[ 65%] Built target mbedcrypto
+[ 65%] Built target p256m
+[ 65%] Built target everest
+[ 66%] Built target __idf_mbedtls
+[ 66%] Built target __idf_esp_pm
+[ 67%] Built target __idf_esp_driver_gpio
+[ 67%] Built target __idf_riscv
+[ 68%] Built target __idf_protobuf-c
+[ 68%] Built target __idf_esp_https_server
+[ 68%] Built target __idf_esp_driver_cam
+[ 68%] Built target __idf_app_trace
+[ 68%] Built target __idf_unity
+[ 68%] Built target __idf_wear_levelling
+[ 69%] Built target __idf_ieee802154
+[ 69%] Built target __idf_esp_eth
+[ 70%] Built target __idf_espcoredump
+[ 71%] Built target __idf_console
+[ 72%] Built target __idf_esp_lcd
+[ 72%] Built target __idf_json
+[ 72%] Built target __idf_nvs_sec_provider
+[ 72%] Built target __idf_mqtt
+[ 72%] Built target __idf_cmock
+[ 72%] Built target __idf_spiffs
+[ 73%] Built target __idf_rt
+[ 73%] Built target __idf_fatfs
+[ 96%] Built target __idf_bt
+[ 96%] Built target __idf_esp_hid
+[ 97%] Built target __idf_protocomm
+[ 97%] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/bno085.c.obj
+[ 97%] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/esp_hid_device_main.c.obj
+[ 97%] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/esp_hid_gap.c.obj
+[ 97%] Built target __idf_esp_local_ctrl
+[ 98%] Built target __idf_wifi_provisioning
+[ 98%] Linking C static library libmain.a
+[ 98%] Built target __idf_main
+[ 98%] Generating esp-idf/esp_system/ld/sections.ld
+[ 98%] Built target __ldgen_output_sections.ld
+[ 98%] Linking CXX executable eidon-glove.elf
+[100%] Built target eidon-glove.elf
+[100%] Generating binary image from built executable
+esptool.py v4.9.0
+Creating esp32c6 image...
+Merged 1 ELF section
+Successfully created esp32c6 image.
+Generated /Users/robert/eidon/eidon-glove/firmware/build/eidon-glove.bin
+[100%] Built target gen_project_binary
+eidon-glove.bin binary size 0xf4340 bytes. Smallest app partition is 0x177000 bytes. 0x82cc0 bytes (35%) free.
+[100%] Built target app_check_size
+[100%] Built target app

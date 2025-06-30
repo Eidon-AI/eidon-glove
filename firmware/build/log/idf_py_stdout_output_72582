@@ -1,0 +1,183 @@
+Command: /Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python /Users/robert/esp-idf/tools/idf_monitor.py -p /dev/cu.usbmodem101 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32c6 --revision 0 --decode-panic backtrace /Users/robert/eidon/eidon-glove/firmware/build/eidon-glove.elf /Users/robert/eidon/eidon-glove/firmware/build/bootloader/bootloader.elf -m '/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python' '/Users/robert/esp-idf/tools/idf.py' '-p' '/dev/cu.usbmodem101'
+[0;33mW (339) spi_flash: Detected size(409ESP-ROM:esp32c6-20220919[0m
+Build:Sep 19 2022
+rst:0x15 (USB_UART_HPSYS),boot:0x1e (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40022bc6
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875730,len:0x1744
+load:0x4086b910,len:0xe50
+load:0x4086e610,len:0x318c
+entry 0x4086b91a
+[0;32mI (5) boot: ESP-IDF v6.0-dev-896-g1bbf04cb4c 2nd stage bootloader[0m
+[0;32mI (5) boot: compile time Jun 29 2025 22:45:12[0m
+[0;32mI (6) boot: chip revision: v0.1[0m
+[0;32mI (6) boot: efuse block revision: v0.3[0m
+[0;32mI (10) boot.esp32c6: SPI Speed      : 80MHz[0m
+[0;32mI (14) boot.esp32c6: SPI Mode       : DIO[0m
+[0;32mI (17) boot.esp32c6: SPI Flash Size : 2MB[0m
+[0;32mI (21) boot: Enabling RNG early entropy source...[0m
+[0;32mI (26) boot: Partition Table:[0m
+[0;32mI (28) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (35) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (41) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (48) boot:  2 factory          factory app      00 00 00010000 00177000[0m
+[0;32mI (54) boot: End of partition table[0m
+[0;32mI (58) esp_image: segment 0: paddr=00010020 vaddr=420b8020 size=22ca4h (142500) map[0m
+[0;32mI (91) esp_image: segment 1: paddr=00032ccc vaddr=40800000 size=0534ch ( 21324) load[0m
+[0;32mI (97) esp_image: segment 2: paddr=00038020 vaddr=42000020 size=b15fch (726524) map[0m
+[0;32mI (231) esp_image: segment 3: paddr=000e9624 vaddr=4080534c size=11aa8h ( 72360) load[0m
+[0;32mI (252) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (252) boot: Disabling RNG early entropy source...[0m
+[0;32mI (262) cpu_start: Unicore app[0m
+[0;32mI (43906) HID_DEV_BLE: CONNECT[0m
+[0;32mI (43906) HID_DEV_DEMO: ble_hid_task_start_up called[0m
+[0;32mI (43906) HID_DEV_DEMO: Creating media demo task[0m
+[0;32mI (43906) HID_DEV_DEMO: Send the volume[0m
+[0;33mW (45226) BT_SMP: FOR LE SC LTK IS USED INSTEAD OF STK[0m
+[0;32mI (45286) ESP_HID_GAP: BLE GAP KEY type = ESP_LE_KEY_LENC[0m
+[0;32mI (45286) ESP_HID_GAP: BLE GAP KEY type = ESP_LE_KEY_PENC[0m
+[0;32mI (45286) ESP_HID_GAP: BLE GAP KEY type = ESP_LE_KEY_LID[0m
+[0;32mI (45356) ESP_HID_GAP: BLE GAP KEY type = ESP_LE_KEY_PID[0m
+[0;32mI (45376) ESP_HID_GAP: BLE GAP AUTH SUCCESS[0m
+[0;32mI (45376) HID_DEV_DEMO: ble_hid_task_start_up called[0m
+[0;32mI (45376) HID_DEV_DEMO: Task already exists[0m
+[0;32mI (46006) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (48106) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (50206) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (52306) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (54406) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (56506) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (58606) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (60706) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (62806) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (64906) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (67006) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (69106) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (71206) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (73306) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (75406) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (77506) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (79606) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (81706) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (83806) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (85906) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (88006) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (90106) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (92206) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (94306) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (96406) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (98506) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (100606) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (102706) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (104806) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (106906) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (109006) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (111106) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (113206) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (115306) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (117406) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (119506) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (121606) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (123706) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (125806) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (127906) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (130006) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (132106) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (134206) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (136306) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (138406) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (140506) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (142606) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (144706) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (146806) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (148906) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (151006) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (153106) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (155206) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (157306) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (159406) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (161506) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (163606) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (165706) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (167806) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (169906) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (172006) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (174106) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (176206) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (178306) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (180406) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (182506) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (184606) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (186706) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (188806) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (190906) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (193006) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (195106) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (197206) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (199306) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (201406) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (203506) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (205606) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (207706) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (209806) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (211906) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (214006) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (216106) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (218206) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (220306) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (222406) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (224506) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (226606) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (228706) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (230806) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (232906) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (235006) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (237106) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (239206) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (241306) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (243406) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (245506) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (247606) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (249706) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (251806) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (253906) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (256006) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (258106) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (260206) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (262306) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (264406) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (266506) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (268606) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (270706) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (272806) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (274906) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (277006) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (279106) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (281206) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (283306) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (285406) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (287506) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (289606) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (291706) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (293806) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (295906) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (298006) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (300106) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (302206) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (304306) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (306406) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (308506) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (310606) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (312706) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (314806) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (316906) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (319006) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (321106) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (323206) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (325306) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (327406) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (329506) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (331606) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (333706) HID_DEV_DEMO: Send the volume[0m
+[0;32mI (335806) HID_DEV_DEMO: Send the volume[0m

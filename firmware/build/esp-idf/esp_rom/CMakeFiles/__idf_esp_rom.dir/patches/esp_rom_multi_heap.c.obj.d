@@ -1,0 +1,34 @@
+esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_multi_heap.c.obj: \
+ /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_multi_heap.c \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/lib/gcc/riscv32-esp-elf/15.1.0/include/stddef.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/lib/gcc/riscv32-esp-elf/15.1.0/include/stdbool.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/riscv32-esp-elf/include/string.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/riscv32-esp-elf/include/_ansi.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/riscv32-esp-elf/include/newlib.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/riscv32-esp-elf/include/_newlib_version.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/riscv32-esp-elf/include/sys/config.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/riscv32-esp-elf/include/machine/ieeefp.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/riscv32-esp-elf/include/sys/features.h \
+ /Users/robert/esp-idf/components/newlib/platform_include/sys/reent.h \
+ /Users/robert/eidon/eidon-glove/firmware/build/config/sdkconfig.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/riscv32-esp-elf/include/sys/reent.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/riscv32-esp-elf/include/_ansi.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/riscv32-esp-elf/include/sys/cdefs.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/riscv32-esp-elf/include/machine/_default_types.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/riscv32-esp-elf/include/sys/_types.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/riscv32-esp-elf/include/machine/_types.h \
+ /Users/robert/esp-idf/components/newlib/platform_include/sys/lock.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/riscv32-esp-elf/include/sys/lock.h \
+ /Users/robert/esp-idf/components/newlib/platform_include/assert.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/riscv32-esp-elf/include/stdlib.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/riscv32-esp-elf/include/machine/stdlib.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/riscv32-esp-elf/include/alloca.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/riscv32-esp-elf/include/sys/_locale.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/lib/gcc/riscv32-esp-elf/15.1.0/include/stdint.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/riscv32-esp-elf/include/stdint.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/riscv32-esp-elf/include/sys/_intsup.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/riscv32-esp-elf/include/sys/_stdint.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/riscv32-esp-elf/include/assert.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/riscv32-esp-elf/include/strings.h \
+ /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/riscv32-esp-elf/include/sys/string.h \
+ /Users/robert/esp-idf/components/esp_rom/include/esp_rom_multi_heap.h

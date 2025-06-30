@@ -1,0 +1,19 @@
+Command: /Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python /Users/robert/esp-idf/tools/idf_monitor.py -p /dev/cu.usbmodem1101 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32c6 --revision 0 --decode-panic backtrace /Users/robert/eidon/eidon-glove/firmware/build/eidon-glove.elf /Users/robert/eidon/eidon-glove/firmware/build/bootloader/bootloader.elf -m '/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python' '/Users/robert/esp-idf/tools/idf.py' '-p' '/dev/cu.usbmodem1101'
+[0;33m--- esp-idf-monitor 1.6.2 on /dev/cu.usbmodem1101 115200[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H[0m
+[0;33m--- 0x4080ac44: rv_utils_wait_for_intr at /Users/robert/esp-idf/components/riscv/include/riscv/rv_utils.h:79
+---  (inlined by) esp_cpu_wait_for_intr at /Users/robert/esp-idf/components/esp_hw_support/cpu.c:62
+[0m
+[0;33m--- 0x4086b910: esp_bootloader_get_description at /Users/robert/esp-idf/components/esp_bootloader_format/esp_bootloader_desc.c:40
+[0m
+[0;33m--- 0x4086e610: esp_flash_encryption_enabled at /Users/robert/esp-idf/components/bootloader_support/src/flash_encrypt.c:89
+[0m
+[0;33m--- 0x4086b91a: call_start_cpu0 at /Users/robert/esp-idf/components/bootloader/subproject/main/bootloader_start.c:25
+[0m
+[1;31m--- Error: read failed: [Errno 6] Device not configured[0m
+[0;33m--- Waiting for the device to reconnect[0m[0;33m.[0m[0;33m.[0m[0;33m.[0m[0;33m[0m
+[1;31m--- Error: read failed: [Errno 6] Device not configured[0m
+[0;33m--- Waiting for the device to reconnect[0m[0;33m.[0m[0;33m.[0m[0;33m[0m
+[1;31m--- Error: read failed: [Errno 6] Device not configured[0m
+[0;33m--- Waiting for the device to reconnect[0m[0;33m.[0m[0;33m.[0m[0;33m.[0m[0;33m.[0m[0;33m.[0m[0;33m[0m
+[0m

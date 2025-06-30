@@ -1,0 +1,2 @@
+/Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-ar qc libdriver.a CMakeFiles/__idf_driver.dir/i2c/i2c.c.obj CMakeFiles/__idf_driver.dir/deprecated/rmt_legacy.c.obj CMakeFiles/__idf_driver.dir/deprecated/sigma_delta_legacy.c.obj CMakeFiles/__idf_driver.dir/twai/twai.c.obj
+/Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-ranlib libdriver.a

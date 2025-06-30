@@ -1,0 +1,2 @@
+/Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-ar qc libesp_eth.a CMakeFiles/__idf_esp_eth.dir/src/esp_eth.c.obj CMakeFiles/__idf_esp_eth.dir/src/phy/esp_eth_phy_802_3.c.obj CMakeFiles/__idf_esp_eth.dir/src/esp_eth_netif_glue.c.obj
+/Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-ranlib libesp_eth.a

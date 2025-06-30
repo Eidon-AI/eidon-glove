@@ -1,0 +1,2 @@
+/Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-ar qc libesp_mm.a CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.obj CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.obj CMakeFiles/__idf_esp_mm.dir/esp_cache_msync.c.obj CMakeFiles/__idf_esp_mm.dir/esp_cache_utils.c.obj CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.obj
+/Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-ranlib libesp_mm.a

@@ -1,0 +1,2 @@
+/Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-ar qc libspi_flash.a CMakeFiles/__idf_spi_flash.dir/spi_flash_wrap.c.obj
+/Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-ranlib libspi_flash.a

@@ -1,0 +1,2 @@
+/Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-ar qc libesp_driver_ledc.a CMakeFiles/__idf_esp_driver_ledc.dir/src/ledc.c.obj
+/Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-ranlib libesp_driver_ledc.a

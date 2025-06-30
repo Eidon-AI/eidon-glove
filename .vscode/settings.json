@@ -1,5 +1,31 @@
 {
-  // VS-Code reads this every time it starts; PlatformIO never rewrites it.
-  "C_Cpp.default.configurationProvider": "platformio.platformio-ide",
-  "C_Cpp.default.intelliSenseMode": "linux-gcc-arm"
+  "idf.espIdfPath": "~/esp-idf",
+  "idf.pythonBinPath": "python3",
+  "idf.port": "/dev/cu.usbmodem2101",
+  "idf.openOcdConfigs": [
+    "board/esp32c6-builtin.cfg"
+  ],
+  "idf.adapterTargetName": "esp32c6",
+  "idf.buildPath": "${workspaceFolder}/firmware/build",
+  "idf.buildPathWin": "${workspaceFolder}\\firmware\\build",
+  "idf.enableCCache": true,
+  "idf.monitorBaudRate": "115200",
+  "idf.customExtraPaths": "",
+  "idf.customExtraVars": {
+    "IDF_CCACHE_ENABLE": "1"
+  },
+  "idf.flashType": "UART",
+  "idf.pythonInstallPath": "/opt/miniconda3/bin/python",
+  "files.associations": {
+    "*.h": "c",
+    "*.c": "c",
+    "*.cpp": "cpp",
+    "*.hpp": "cpp"
+  },
+  "C_Cpp.intelliSenseEngine": "default",
+  "C_Cpp.default.compilerPath": "~/.espressif/tools/riscv32-esp-elf/13.2.0_20240530/riscv32-esp-elf/bin/riscv32-esp-elf-gcc",
+  "C_Cpp.default.includePath": [
+    "${workspaceFolder}/firmware/main",
+    "~/esp-idf/components/**"
+  ]
 }

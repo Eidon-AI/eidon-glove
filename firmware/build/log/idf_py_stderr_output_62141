@@ -1,0 +1,57 @@
+Command: make -j 12 all
+/Users/robert/eidon/eidon-glove/firmware/main/bno085.c: In function 'bno085_init':
+/Users/robert/eidon/eidon-glove/firmware/main/bno085.c:127:5: error: implicit declaration of function 'bno085_soft_reset' [-Wimplicit-function-declaration]
+  127 |     bno085_soft_reset();
+      |     ^~~~~~~~~~~~~~~~~
+/Users/robert/eidon/eidon-glove/firmware/main/bno085.c: In function 'bno085_get_rotation_vector':
+/Users/robert/eidon/eidon-glove/firmware/main/bno085.c:294:9: error: 'bno085_quaternion_t' has no member named 'w'
+  294 |     quat->w = raw_w * scale;
+      |         ^~
+/Users/robert/eidon/eidon-glove/firmware/main/bno085.c:295:9: error: 'bno085_quaternion_t' has no member named 'x'
+  295 |     quat->x = raw_x * scale;
+      |         ^~
+/Users/robert/eidon/eidon-glove/firmware/main/bno085.c:296:9: error: 'bno085_quaternion_t' has no member named 'y'
+  296 |     quat->y = raw_y * scale;
+      |         ^~
+/Users/robert/eidon/eidon-glove/firmware/main/bno085.c:297:9: error: 'bno085_quaternion_t' has no member named 'z'
+  297 |     quat->z = raw_z * scale;
+      |         ^~
+/Users/robert/eidon/eidon-glove/firmware/main/bno085.c:300:28: error: 'bno085_quaternion_t' has no member named 'w'
+  300 |     float norm = sqrtf(quat->w * quat->w + quat->x * quat->x +
+      |                            ^~
+/Users/robert/eidon/eidon-glove/firmware/main/bno085.c:300:38: error: 'bno085_quaternion_t' has no member named 'w'
+  300 |     float norm = sqrtf(quat->w * quat->w + quat->x * quat->x +
+      |                                      ^~
+/Users/robert/eidon/eidon-glove/firmware/main/bno085.c:300:48: error: 'bno085_quaternion_t' has no member named 'x'
+  300 |     float norm = sqrtf(quat->w * quat->w + quat->x * quat->x +
+      |                                                ^~
+/Users/robert/eidon/eidon-glove/firmware/main/bno085.c:300:58: error: 'bno085_quaternion_t' has no member named 'x'
+  300 |     float norm = sqrtf(quat->w * quat->w + quat->x * quat->x +
+      |                                                          ^~
+/Users/robert/eidon/eidon-glove/firmware/main/bno085.c:301:27: error: 'bno085_quaternion_t' has no member named 'y'
+  301 |                       quat->y * quat->y + quat->z * quat->z);
+      |                           ^~
+/Users/robert/eidon/eidon-glove/firmware/main/bno085.c:301:37: error: 'bno085_quaternion_t' has no member named 'y'
+  301 |                       quat->y * quat->y + quat->z * quat->z);
+      |                                     ^~
+/Users/robert/eidon/eidon-glove/firmware/main/bno085.c:301:47: error: 'bno085_quaternion_t' has no member named 'z'
+  301 |                       quat->y * quat->y + quat->z * quat->z);
+      |                                               ^~
+/Users/robert/eidon/eidon-glove/firmware/main/bno085.c:301:57: error: 'bno085_quaternion_t' has no member named 'z'
+  301 |                       quat->y * quat->y + quat->z * quat->z);
+      |                                                         ^~
+/Users/robert/eidon/eidon-glove/firmware/main/bno085.c:303:13: error: 'bno085_quaternion_t' has no member named 'w'
+  303 |         quat->w /= norm;
+      |             ^~
+/Users/robert/eidon/eidon-glove/firmware/main/bno085.c:304:13: error: 'bno085_quaternion_t' has no member named 'x'
+  304 |         quat->x /= norm;
+      |             ^~
+/Users/robert/eidon/eidon-glove/firmware/main/bno085.c:305:13: error: 'bno085_quaternion_t' has no member named 'y'
+  305 |         quat->y /= norm;
+      |             ^~
+/Users/robert/eidon/eidon-glove/firmware/main/bno085.c:306:13: error: 'bno085_quaternion_t' has no member named 'z'
+  306 |         quat->z /= norm;
+      |             ^~
+make[2]: *** [esp-idf/main/CMakeFiles/__idf_main.dir/bno085.c.obj] Error 1
+make[1]: *** [esp-idf/main/CMakeFiles/__idf_main.dir/all] Error 2
+make: *** [all] Error 2

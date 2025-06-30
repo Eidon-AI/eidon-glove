@@ -1,0 +1,89 @@
+Command: /Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python /Users/robert/esp-idf/tools/idf_monitor.py -p /dev/cu.usbmodem1101 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32c6 --revision 0 --decode-panic backtrace /Users/robert/eidon/eidon-glove/firmware/build/eidon-glove.elf /Users/robert/eidon/eidon-glove/firmware/build/bootloader/bootloader.elf -m '/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python' '/Users/robert/esp-idf/tools/idf.py'
+[0;32mI (314) efuse_init: Chip rev:         v0.1[0m
+[0;32mI (317) heapESP-ROM:esp32c6-20220919[0m
+Build:Sep 19 2022
+rst:0x15 (USB_UART_HPSYS),boot:0x1e (SPI_FAST_FLASH_BOOT)
+Saved PC:0x400294a6
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875730,len:0x1744
+load:0x4086b910,len:0xe50
+load:0x4086e610,len:0x318c
+entry 0x4086b91a
+[0;32mI (5) boot: ESP-IDF v6.0-dev-896-g1bbf04cb4c 2nd stage bootloader[0m
+[0;32mI (5) boot: compile time Jun 29 2025 22:45:12[0m
+[0;32mI (6) boot: chip revision: v0.1[0m
+[0;32mI (6) boot: efuse block revision: v0.3[0m
+[0;32mI (10) boot.esp32c6: SPI Speed      : 80MHz[0m
+[0;32mI (14) boot.esp32c6: SPI Mode       : DIO[0m
+[0;32mI (17) boot.esp32c6: SPI Flash Size : 2MB[0m
+[0;32mI (21) boot: Enabling RNG early entropy source...[0m
+[0;32mI (26) boot: Partition Table:[0m
+[0;32mI (28) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (35) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (41) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (48) boot:  2 factory          factory app      00 00 00010000 00177000[0m
+[0;32mI (54) boot: End of partition table[0m
+[0;32mI (58) esp_image: segment 0: paddr=00010020 vaddr=420b8020 size=24c08h (150536) map[0m
+[0;32mI (93) esp_image: segment 1: paddr=00034c30 vaddr=40800000 size=033e8h ( 13288) load[0m
+[0;32mI (96) esp_image: segment 2: paddr=00038020 vaddr=42000020 size=b6d90h (748944) map[0m
+[0;32mI (235) esp_image: segment 3: paddr=000eedb8 vaddr=408033e8 size=11750h ( 71504) load[0m
+[0;32mI (251) esp_image: segment 4: paddr=00100510 vaddr=40814b40 size=02708h (  9992) load[0m
+[0;32mI (259) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (259) boot: Disabling RNG early entropy source...[0m
+[0;32mI (269) cpu_start: Unicore app[0m
+[0;32mI (2563) HID_DEV_DEMO: Initializing BNO085 on I2C addr 0x4B, SDA=20, SCL=18[0m
+[0;32mI (2563) HID_DEV_DEMO: BNO085 init attempt 1/10[0m
+[0;32mI (2563) BNO085: Initializing BNO085...[0m
+[0;32mI (2563) BNO085: Waiting for BNO085 to boot...[0m
+[0;32mI (2763) BNO085: Configuring I2C bus: port=0, SDA=20, SCL=18, freq=100000[0m
+[0;32mI (2763) BNO085: Creating I2C master bus...[0m
+[0;32mI (2763) BNO085: Adding BNO085 device at address 0x4B...[0m
+[0;32mI (2813) BNO085: Reading initial packets...[0m
+[0;32mI (2833) BNO085: Read initial packet 0: channel=0, length=4[0m
+[0;32mI (2833) BNO085:   Data[0-3]: 29 0C 2A 0E[0m
+[0;32mI (2863) BNO085: Read initial packet 1: channel=1, length=1[0m
+[0;32mI (2863) BNO085:   Data[0-3]: 01 00 00 00[0m
+[0;32mI (2893) BNO085: Read initial packet 2: channel=2, length=16[0m
+[0;32mI (2893) BNO085:   Data[0-3]: F1 00 84 00[0m
+[0;32mI (2923) BNO085: Read initial packet 3: channel=0, length=2[0m
+[0;32mI (2923) BNO085:   Data[0-3]: 01 0B 00 00[0m
+[0;33mW (2953) BNO085: Invalid packet size: 0[0m
+[0;33mW (2953) BNO085: Error reading initial packet: ESP_ERR_INVALID_SIZE[0m
+[0;32mI (2953) BNO085: Sending soft reset...[0m
+[0;32mI (3273) BNO085: Read post-reset packet 0: channel=0, length=272[0m
+[0;32mI (3303) BNO085: Read post-reset packet 1: channel=1, length=1[0m
+[0;32mI (3333) BNO085: Read post-reset packet 2: channel=2, length=16[0m
+[0;33mW (3363) BNO085: Invalid packet size: 0[0m
+[0;32mI (3363) BNO085: BNO085 initialization complete[0m
+[0;32mI (3363) HID_DEV_DEMO: BNO085 initialized successfully after 1 attempt(s)![0m
+[0;33mW (3483) BNO085: Invalid packet size: 0[0m
+[0;33mW (3483) BNO085: Error reading response: ESP_ERR_INVALID_SIZE[0m
+[0;33mW (3513) BNO085: Invalid packet size: 0[0m
+[0;33mW (3513) BNO085: Error reading response: ESP_ERR_INVALID_SIZE[0m
+[0;33mW (3543) BNO085: Invalid packet size: 0[0m
+[0;33mW (3543) BNO085: Error reading response: ESP_ERR_INVALID_SIZE[0m
+[0;33mW (3573) BNO085: Invalid packet size: 0[0m
+[0;33mW (3573) BNO085: Error reading response: ESP_ERR_INVALID_SIZE[0m
+[0;33mW (3593) BNO085: Invalid packet size: 0[0m
+[0;33mW (3593) BNO085: Error reading response: ESP_ERR_INVALID_SIZE[0m
+[0;33mW (3623) BNO085: Invalid packet size: 0[0m
+[0;33mW (3623) BNO085: Error reading response: ESP_ERR_INVALID_SIZE[0m
+[0;33mW (3653) BNO085: Invalid packet size: 0[0m
+[0;33mW (3653) BNO085: Error reading response: ESP_ERR_INVALID_SIZE[0m
+[0;33mW (3683) BNO085: Invalid packet size: 0[0m
+[0;33mW (3683) BNO085: Error reading response: ESP_ERR_INVALID_SIZE[0m
+[0;33mW (3713) BNO085: Invalid packet size: 0[0m
+[0;33mW (3713) BNO085: Error reading response: ESP_ERR_INVALID_SIZE[0m
+[0;33mW (3733) BNO085: Invalid packet size: 0[0m
+[0;33mW (3733) BNO085: Error reading response: ESP_ERR_INVALID_SIZE[0m
+[0;32mI (3743) HID_DEV_DEMO: Game rotation vector enabled successfully[0m
+[0;32mI (3743) HID_DEV_DEMO: Waiting for sensor to start producing data...[0m
+[0;33mW (6723) HID_DEV_DEMO: Read errors: 100[0m
+[0;33mW (8723) HID_DEV_DEMO: Read errors: 200[0m
+[0;32mI (10403) HID_DEV_DEMO: Status: reads=0, errors=284[0m
+[0;32mI (10403) HID_DEV_DEMO: BNO085 is still responding[0m
+[0;33mW (10723) HID_DEV_DEMO: Read errors: 300[0m
+[0;33mW (12723) HID_DEV_DEMO: Read errors: 400[0m
+[0;33mW (14723) HID_DEV_DEMO: Read errors: 500[0m
+[0;33mW (16723) HID_DEV_DEMO: Read errors: 600[0m

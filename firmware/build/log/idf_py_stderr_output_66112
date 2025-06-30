@@ -1,0 +1,15 @@
+Command: make -j 12 all
+/Users/robert/eidon/eidon-glove/firmware/main/esp_hid_gap.c: In function 'esp_hid_ble_gap_adv_start':
+/Users/robert/eidon/eidon-glove/firmware/main/esp_hid_gap.c:771:64: error: passing argument 2 of 'esp_ble_gap_get_local_used_addr' from incompatible pointer type [-Wincompatible-pointer-types]
+  771 |     esp_err_t addr_ret = esp_ble_gap_get_local_used_addr(addr, &hidd_adv_params.own_addr_type);
+      |                                                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                                                |
+      |                                                                esp_ble_addr_type_t *
+In file included from /Users/robert/eidon/eidon-glove/firmware/main/esp_hid_gap.h:42,
+                 from /Users/robert/eidon/eidon-glove/firmware/main/esp_hid_gap.c:16:
+/Users/robert/esp-idf/components/bt/host/bluedroid/api/include/api/esp_gap_ble_api.h:2198:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'esp_ble_addr_type_t *'
+ 2198 | esp_err_t esp_ble_gap_get_local_used_addr(esp_bd_addr_t local_used_addr, uint8_t * addr_type);
+      |                                                                          ~~~~~~~~~~^~~~~~~~~
+make[2]: *** [esp-idf/main/CMakeFiles/__idf_main.dir/esp_hid_gap.c.obj] Error 1
+make[1]: *** [esp-idf/main/CMakeFiles/__idf_main.dir/all] Error 2
+make: *** [all] Error 2

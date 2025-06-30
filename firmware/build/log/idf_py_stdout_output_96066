@@ -1,0 +1,285 @@
+Command: /Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python /Users/robert/esp-idf/tools/idf_monitor.py -p /dev/cu.usbmodem1101 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32c6 --revision 0 --decode-panic backtrace /Users/robert/eidon/eidon-glove/firmware/build/eidon-glove.elf /Users/robert/eidon/eidon-glove/firmware/build/bootloader/bootloader.elf -m '/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python' '/Users/robert/esp-idf/tools/idf.py' '-p' '/dev/cu.usbmodem1101'
+[0;32mI (325) heap_init: At 4081B7B0 len 00060E60 (387 KiB): ESP-ROM:esp32c6-20220919[0m
+Build:Sep 19 2022
+rst:0x15 (USB_UART_HPSYS),boot:0x1e (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40022bc4
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875730,len:0x1744
+load:0x4086b910,len:0xe50
+load:0x4086e610,len:0x318c
+entry 0x4086b91a
+[0;32mI (5) boot: ESP-IDF v6.0-dev-896-g1bbf04cb4c 2nd stage bootloader[0m
+[0;32mI (5) boot: compile time Jun 29 2025 22:45:12[0m
+[0;32mI (6) boot: chip revision: v0.1[0m
+[0;32mI (6) boot: efuse block revision: v0.3[0m
+[0;32mI (10) boot.esp32c6: SPI Speed      : 80MHz[0m
+[0;32mI (14) boot.esp32c6: SPI Mode       : DIO[0m
+[0;32mI (18) boot.esp32c6: SPI Flash Size : 2MB[0m
+[0;32mI (21) boot: Enabling RNG early entropy source...[0m
+[0;32mI (26) boot: Partition Table:[0m
+[0;32mI (28) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (35) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (41) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (48) boot:  2 factory          factory app      00 00 00010000 00177000[0m
+[0;32mI (54) boot: End of partition table[0m
+[0;32mI (58) esp_image: segment 0: paddr=00010020 vaddr=420c0020 size=25010h (151568) map[0m
+[0;32mI (93) esp_image: segment 1: paddr=00035038 vaddr=40800000 size=02fe0h ( 12256) load[0m
+[0;32mI (96) esp_image: segment 2: paddr=00038020 vaddr=42000020 size=b8028h (753704) map[0m
+[0;32mI (236) esp_image: segment 3: paddr=000f0050 vaddr=40802fe0 size=11b58h ( 72536) load[0m
+[0;32mI (252) esp_image: segment 4: paddr=00101bb0 vaddr=40814b40 size=02708h (  9992) load[0m
+[0;32mI (260) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (260) boot: Disabling RNG early entropy source...[0m
+[0;32mI (270) cpu_start: Unicore app[0m
+[0;32mI (1914) ESP_HID_GAP: BLE GAP AUTH SUCCESS[0m
+[0;32mI (1914) HID_DEV_DEMO: ble_hid_task_start_up called[0m
+[0;32mI (1914) HID_DEV_DEMO: Creating media demo task[0m
+[0;32mI (1924) HID_DEV_DEMO: Media task started[0m
+[0;32mI (1924) HID_DEV_DEMO: Media task waiting for connection (loop 1)[0m
+[0;32mI (1974) HID_DEV_BLE: CONNECT[0m
+[0;32mI (1974) HID_DEV_DEMO: ble_hid_task_start_up called[0m
+[0;32mI (1974) HID_DEV_DEMO: Task already exists[0m
+[0;32mI (2564) HID_DEV_DEMO: Initializing BNO085 on I2C addr 0x4B, SDA=20, SCL=18[0m
+[0;32mI (2564) HID_DEV_DEMO: BNO085 init attempt 1/10[0m
+[0;32mI (2564) BNO085: Initializing BNO085 with new I2C driver...[0m
+[0;32mI (2564) BNO085: Waiting for BNO085 to boot...[0m
+[0;32mI (3924) HID_DEV_DEMO: Send the volume (loop 2)[0m
+[0;32mI (4564) BNO085: Configuring I2C bus: port=0, SDA=20, SCL=18, freq=100000[0m
+[0;32mI (4564) BNO085: Creating I2C master bus...[0m
+[0;32mI (4564) BNO085: Probing I2C bus for devices...[0m
+[0;32mI (4574) BNO085: Adding BNO085 device at address 0x4B...[0m
+[0;32mI (4574) BNO085: Probing BNO085 at address 0x4B...[0m
+[1;31mE (4574) BNO085: BNO085 not detected at address 0x4B: ESP_ERR_NOT_FOUND[0m
+[0;32mI (4584) BNO085: Attempting SHTP communication...[0m
+[0;32mI (4684) BNO085: Initial read successful, packet size: 276[0m
+[0;32mI (4704) BNO085: Full initial packet read successfully[0m
+[0;32mI (4704) BNO085: Attempting soft reset...[0m
+[0;32mI (5004) BNO085: BNO085 initialization complete[0m
+[0;32mI (5004) HID_DEV_DEMO: BNO085 initialized successfully after 1 attempt(s)![0m
+[1;31mE (5114) i2c.master: I2C software timeout[0m
+[1;31mE (5114) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5114) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5114) BNO085: Failed to read payload: ESP_ERR_INVALID_STATE[0m
+[0;33mW (5124) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5134) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5134) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5144) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5144) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5164) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5164) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5164) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5174) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5184) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5184) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5184) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5194) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5214) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5214) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5214) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5224) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5244) i2c.master: I2C software timeout[0m
+[1;31mE (5244) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5244) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5244) BNO085: Failed to read payload: ESP_ERR_INVALID_STATE[0m
+[0;33mW (5254) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5264) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5264) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5274) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5274) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5294) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5294) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5294) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5304) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5314) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5314) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5314) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5324) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5344) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5344) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5344) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5354) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5374) i2c.master: I2C software timeout[0m
+[1;31mE (5374) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5374) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5374) BNO085: Failed to read payload: ESP_ERR_INVALID_STATE[0m
+[0;33mW (5384) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5394) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5394) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5404) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5404) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5424) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5424) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5424) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5434) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5444) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5444) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5444) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5454) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5474) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5474) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5474) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5484) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5504) i2c.master: I2C software timeout[0m
+[1;31mE (5504) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5504) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5504) BNO085: Failed to read payload: ESP_ERR_INVALID_STATE[0m
+[0;33mW (5514) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5524) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5524) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5534) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5534) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5554) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5554) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5554) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5564) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5574) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5574) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5574) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5584) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5604) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5604) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5604) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5614) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5634) i2c.master: I2C software timeout[0m
+[1;31mE (5634) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5634) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5634) BNO085: Failed to read payload: ESP_ERR_INVALID_STATE[0m
+[0;33mW (5644) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5654) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5654) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5664) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5664) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5684) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5684) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5684) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5694) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5704) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5704) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5704) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5714) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5734) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5734) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5734) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5744) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5764) i2c.master: I2C software timeout[0m
+[1;31mE (5764) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5764) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5764) BNO085: Failed to read payload: ESP_ERR_INVALID_STATE[0m
+[0;33mW (5774) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5784) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5784) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5794) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5794) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5814) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5814) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5814) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5824) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5834) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5834) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5834) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5844) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5864) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5864) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5864) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5874) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5894) i2c.master: I2C software timeout[0m
+[1;31mE (5894) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5894) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5894) BNO085: Failed to read payload: ESP_ERR_INVALID_STATE[0m
+[0;33mW (5904) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5914) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5914) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5924) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5924) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5944) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5944) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5944) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5954) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5964) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5964) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5964) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (5974) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (5994) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5994) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5994) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (6004) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[0;32mI (6024) HID_DEV_DEMO: Send the volume (loop 3)[0m
+[1;31mE (6024) i2c.master: I2C software timeout[0m
+[1;31mE (6024) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (6024) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (6034) BNO085: Failed to read payload: ESP_ERR_INVALID_STATE[0m
+[0;33mW (6034) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (6054) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (6054) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (6054) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (6064) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (6074) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (6074) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (6074) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (6084) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (6104) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (6104) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (6104) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (6104) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (6124) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (6124) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (6124) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (6134) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (6164) i2c.master: I2C software timeout[0m
+[1;31mE (6164) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (6164) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (6164) BNO085: Failed to read payload: ESP_ERR_INVALID_STATE[0m
+[0;33mW (6174) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (6184) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (6184) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (6194) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (6194) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (6214) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (6214) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (6214) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (6224) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (6234) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (6234) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (6234) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (6244) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (6264) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (6264) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (6264) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (6274) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (6294) i2c.master: I2C software timeout[0m
+[1;31mE (6294) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (6294) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (6294) BNO085: Failed to read payload: ESP_ERR_INVALID_STATE[0m
+[0;33mW (6304) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (6314) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (6314) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (6324) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (6324) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (6344) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (6344) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (6344) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (6354) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (6364) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (6364) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (6364) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (6374) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[1;31mE (6394) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (6394) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (6394) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;33mW (6404) BNO085: Error while waiting for ack: ESP_ERR_INVALID_STATE[0m
+[0;33mW (6414) BNO085: Did not receive explicit acknowledgment, but continuing anyway[0m
+[0;32mI (6414) HID_DEV_DEMO: Game rotation vector enabled[0m
+[0;32mI (6414) HID_DEV_DEMO: Waiting for sensor to start producing data...[0m
+[0;32mI (7424) HID_DEV_DEMO: BNO085 Status: reads=0, errors=1[0m
+[0;32mI (8124) HID_DEV_DEMO: Send the volume (loop 4)[0m
+[0;32mI (10224) HID_DEV_DEMO: Send the volume (loop 5)[0m
+[0;32mI (12324) HID_DEV_DEMO: Send the volume (loop 6)[0m
+[0;32mI (12424) HID_DEV_DEMO: BNO085 Status: reads=0, errors=251[0m
+[0;32mI (14424) HID_DEV_DEMO: Send the volume (loop 7)[0m
+[0;32mI (16524) HID_DEV_DEMO: Send the volume (loop 8)[0m
+[0;32mI (17424) HID_DEV_DEMO: BNO085 Status: reads=0, errors=501[0m
+[0;32mI (18624) HID_DEV_DEMO: Send the volume (loop 9)[0m
+[0;32mI (20724) HID_DEV_DEMO: Send the volume (loop 10)[0m
+[0;32mI (22424) HID_DEV_DEMO: BNO085 Status: reads=0, errors=751[0m
+[0;32mI (22824) HID_DEV_DEMO: Send the volume (loop 11)[0m
+[0;32mI (24924) HID_DEV_DEMO: Send the volume (loop 12)[0m

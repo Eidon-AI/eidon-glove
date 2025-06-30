@@ -1,0 +1,8 @@
+Command: make -j 12 all
+/Users/robert/eidon/eidon-glove/firmware/main/bno085.c: In function 'bno085_init':
+/Users/robert/eidon/eidon-glove/firmware/main/bno085.c:127:5: error: implicit declaration of function 'bno085_soft_reset' [-Wimplicit-function-declaration]
+  127 |     bno085_soft_reset();
+      |     ^~~~~~~~~~~~~~~~~
+make[2]: *** [esp-idf/main/CMakeFiles/__idf_main.dir/bno085.c.obj] Error 1
+make[1]: *** [esp-idf/main/CMakeFiles/__idf_main.dir/all] Error 2
+make: *** [all] Error 2

@@ -1,0 +1,93 @@
+Command: /Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python /Users/robert/esp-idf/tools/idf_monitor.py -p /dev/cu.usbmodem1101 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32c6 --revision 0 --decode-panic backtrace /Users/robert/eidon/eidon-glove/firmware/build/eidon-glove.elf /Users/robert/eidon/eidon-glove/firmware/build/bootloader/bootloader.elf -m '/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python' '/Users/robert/esp-idf/tools/idf.py'
+ation:
+[0;32mI (325) heap_init: At 4081B7B0 leESP-ROM:esp32c6-20220919[0m
+Build:Sep 19 2022
+rst:0x15 (USB_UART_HPSYS),boot:0x1e (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40022bc8
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875730,len:0x1744
+load:0x4086b910,len:0xe50
+load:0x4086e610,len:0x318c
+entry 0x4086b91a
+[0;32mI (5) boot: ESP-IDF v6.0-dev-896-g1bbf04cb4c 2nd stage bootloader[0m
+[0;32mI (5) boot: compile time Jun 29 2025 22:45:12[0m
+[0;32mI (6) boot: chip revision: v0.1[0m
+[0;32mI (6) boot: efuse block revision: v0.3[0m
+[0;32mI (10) boot.esp32c6: SPI Speed      : 80MHz[0m
+[0;32mI (14) boot.esp32c6: SPI Mode       : DIO[0m
+[0;32mI (17) boot.esp32c6: SPI Flash Size : 2MB[0m
+[0;32mI (21) boot: Enabling RNG early entropy source...[0m
+[0;32mI (26) boot: Partition Table:[0m
+[0;32mI (28) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (35) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (41) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (48) boot:  2 factory          factory app      00 00 00010000 00177000[0m
+[0;32mI (54) boot: End of partition table[0m
+[0;32mI (58) esp_image: segment 0: paddr=00010020 vaddr=420b8020 size=24ec8h (151240) map[0m
+[0;32mI (93) esp_image: segment 1: paddr=00034ef0 vaddr=40800000 size=03128h ( 12584) load[0m
+[0;32mI (96) esp_image: segment 2: paddr=00038020 vaddr=42000020 size=b7e94h (753300) map[0m
+[0;32mI (236) esp_image: segment 3: paddr=000efebc vaddr=40803128 size=11a10h ( 72208) load[0m
+[0;32mI (252) esp_image: segment 4: paddr=001018d4 vaddr=40814b40 size=02708h (  9992) load[0m
+[0;32mI (260) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (260) boot: Disabling RNG early entropy source...[0m
+[0;32mI (270) cpu_start: Unicore app[0m
+[0;32mI (814) HID_DEV_BLE: CONNECT[0m
+[0;32mI (814) HID_DEV_DEMO: ble_hid_task_start_up called[0m
+[0;32mI (814) HID_DEV_DEMO: Task already exists[0m
+[0;32mI (2564) HID_DEV_DEMO: Initializing BNO085 on I2C addr 0x4B, SDA=20, SCL=18[0m
+[0;32mI (2564) HID_DEV_DEMO: BNO085 init attempt 1/10[0m
+[0;32mI (2564) BNO085: Initializing BNO085 with new I2C driver...[0m
+[0;32mI (2564) BNO085: Waiting for BNO085 to boot...[0m
+[0;32mI (2764) HID_DEV_DEMO: Send the volume (loop 2)[0m
+[0;32mI (4564) BNO085: Configuring I2C bus: port=0, SDA=20, SCL=18, freq=100000[0m
+[0;32mI (4564) BNO085: Creating I2C master bus...[0m
+[0;32mI (4564) BNO085: Probing I2C bus for devices...[0m
+[0;32mI (4574) BNO085: Adding BNO085 device at address 0x4B...[0m
+[0;32mI (4574) BNO085: Probing BNO085 at address 0x4B...[0m
+[1;31mE (4574) BNO085: BNO085 not detected at address 0x4B: ESP_ERR_NOT_FOUND[0m
+[0;32mI (4584) BNO085: Attempting SHTP communication...[0m
+[0;32mI (4684) BNO085: Initial read successful, packet size: 276[0m
+[0;32mI (4704) BNO085: Full initial packet read successfully[0m
+[0;32mI (4704) BNO085: Attempting soft reset...[0m
+[0;32mI (4864) HID_DEV_DEMO: Send the volume (loop 3)[0m
+[0;32mI (5004) BNO085: BNO085 initialization complete[0m
+[0;32mI (5004) HID_DEV_DEMO: BNO085 initialized successfully after 1 attempt(s)![0m
+[1;31mE (5014) i2c.master: I2C software timeout[0m
+[1;31mE (5014) i2c.master: s_i2c_synchronous_transaction(948): I2C transaction failed[0m
+[1;31mE (5014) i2c.master: i2c_master_receive(1271): I2C transaction failed[0m
+[0;32mI (5014) HID_DEV_DEMO: Game rotation vector enabled[0m
+[0;32mI (5024) HID_DEV_DEMO: Waiting for sensor to start producing data...[0m
+[0;32mI (6024) HID_DEV_DEMO: BNO085 Status: reads=0, errors=1[0m
+[0;32mI (6964) HID_DEV_DEMO: Send the volume (loop 4)[0m
+[0;32mI (9064) HID_DEV_DEMO: Send the volume (loop 5)[0m
+[0;32mI (11024) HID_DEV_DEMO: BNO085 Status: reads=0, errors=251[0m
+[0;32mI (11164) HID_DEV_DEMO: Send the volume (loop 6)[0m
+[0;32mI (13264) HID_DEV_DEMO: Send the volume (loop 7)[0m
+[0;32mI (15364) HID_DEV_DEMO: Send the volume (loop 8)[0m
+[0;32mI (16024) HID_DEV_DEMO: BNO085 Status: reads=0, errors=501[0m
+[0;32mI (17464) HID_DEV_DEMO: Send the volume (loop 9)[0m
+[0;32mI (19564) HID_DEV_DEMO: Send the volume (loop 10)[0m
+[0;32mI (21024) HID_DEV_DEMO: BNO085 Status: reads=0, errors=751[0m
+[0;32mI (21664) HID_DEV_DEMO: Send the volume (loop 11)[0m
+[0;32mI (23764) HID_DEV_DEMO: Send the volume (loop 12)[0m
+[0;32mI (25864) HID_DEV_DEMO: Send the volume (loop 13)[0m
+[0;32mI (26024) HID_DEV_DEMO: BNO085 Status: reads=0, errors=1001[0m
+[0;32mI (27964) HID_DEV_DEMO: Send the volume (loop 14)[0m
+[0;32mI (30064) HID_DEV_DEMO: Send the volume (loop 15)[0m
+[0;32mI (31024) HID_DEV_DEMO: BNO085 Status: reads=0, errors=1251[0m
+[0;32mI (32164) HID_DEV_DEMO: Send the volume (loop 16)[0m
+[0;32mI (34264) HID_DEV_DEMO: Send the volume (loop 17)[0m
+[0;32mI (36024) HID_DEV_DEMO: BNO085 Status: reads=0, errors=1501[0m
+[0;32mI (36364) HID_DEV_DEMO: Send the volume (loop 18)[0m
+[0;32mI (38464) HID_DEV_DEMO: Send the volume (loop 19)[0m
+[0;32mI (40564) HID_DEV_DEMO: Send the volume (loop 20)[0m
+[0;32mI (41024) HID_DEV_DEMO: BNO085 Status: reads=0, errors=1751[0m
+[0;32mI (42664) HID_DEV_DEMO: Send the volume (loop 21)[0m
+[0;32mI (44764) HID_DEV_DEMO: Send the volume (loop 22)[0m
+[0;32mI (46024) HID_DEV_DEMO: BNO085 Status: reads=0, errors=2001[0m
+[0;32mI (46864) HID_DEV_DEMO: Send the volume (loop 23)[0m
+[0;32mI (48964) HID_DEV_DEMO: Send the volume (loop 24)[0m
+[0;32mI (51024) HID_DEV_DEMO: BNO085 Status: reads=0, errors=2227[0m
+[0;32mI (51064) HID_DEV_DEMO: Send the volume (loop 25)[0m
+[0;32mI (53164) HID_DEV_DEMO: Send the volume (loop 26)[0m
