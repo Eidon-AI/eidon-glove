@@ -271,6 +271,30 @@ cpu.c.s:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/build.make esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/cpu.c.s
 .PHONY : cpu.c.s
 
+deprecated/gdma_legacy.obj: deprecated/gdma_legacy.c.obj
+.PHONY : deprecated/gdma_legacy.obj
+
+# target to build an object file
+deprecated/gdma_legacy.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/build.make esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/deprecated/gdma_legacy.c.obj
+.PHONY : deprecated/gdma_legacy.c.obj
+
+deprecated/gdma_legacy.i: deprecated/gdma_legacy.c.i
+.PHONY : deprecated/gdma_legacy.i
+
+# target to preprocess a source file
+deprecated/gdma_legacy.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/build.make esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/deprecated/gdma_legacy.c.i
+.PHONY : deprecated/gdma_legacy.c.i
+
+deprecated/gdma_legacy.s: deprecated/gdma_legacy.c.s
+.PHONY : deprecated/gdma_legacy.s
+
+# target to generate assembly for a file
+deprecated/gdma_legacy.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/build.make esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/deprecated/gdma_legacy.c.s
+.PHONY : deprecated/gdma_legacy.c.s
+
 dma/async_memcpy_gdma.obj: dma/async_memcpy_gdma.c.obj
 .PHONY : dma/async_memcpy_gdma.obj
 
@@ -735,29 +759,29 @@ modem_clock.c.s:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/build.make esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/modem_clock.c.s
 .PHONY : modem_clock.c.s
 
-mspi_timing_tuning/mspi_timing_tuning.obj: mspi_timing_tuning/mspi_timing_tuning.c.obj
-.PHONY : mspi_timing_tuning/mspi_timing_tuning.obj
+mspi_timing_tuning.obj: mspi_timing_tuning.c.obj
+.PHONY : mspi_timing_tuning.obj
 
 # target to build an object file
-mspi_timing_tuning/mspi_timing_tuning.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/build.make esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/mspi_timing_tuning/mspi_timing_tuning.c.obj
-.PHONY : mspi_timing_tuning/mspi_timing_tuning.c.obj
+mspi_timing_tuning.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/build.make esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/mspi_timing_tuning.c.obj
+.PHONY : mspi_timing_tuning.c.obj
 
-mspi_timing_tuning/mspi_timing_tuning.i: mspi_timing_tuning/mspi_timing_tuning.c.i
-.PHONY : mspi_timing_tuning/mspi_timing_tuning.i
+mspi_timing_tuning.i: mspi_timing_tuning.c.i
+.PHONY : mspi_timing_tuning.i
 
 # target to preprocess a source file
-mspi_timing_tuning/mspi_timing_tuning.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/build.make esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/mspi_timing_tuning/mspi_timing_tuning.c.i
-.PHONY : mspi_timing_tuning/mspi_timing_tuning.c.i
+mspi_timing_tuning.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/build.make esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/mspi_timing_tuning.c.i
+.PHONY : mspi_timing_tuning.c.i
 
-mspi_timing_tuning/mspi_timing_tuning.s: mspi_timing_tuning/mspi_timing_tuning.c.s
-.PHONY : mspi_timing_tuning/mspi_timing_tuning.s
+mspi_timing_tuning.s: mspi_timing_tuning.c.s
+.PHONY : mspi_timing_tuning.s
 
 # target to generate assembly for a file
-mspi_timing_tuning/mspi_timing_tuning.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/build.make esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/mspi_timing_tuning/mspi_timing_tuning.c.s
-.PHONY : mspi_timing_tuning/mspi_timing_tuning.c.s
+mspi_timing_tuning.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/build.make esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/mspi_timing_tuning.c.s
+.PHONY : mspi_timing_tuning.c.s
 
 periph_ctrl.obj: periph_ctrl.c.obj
 .PHONY : periph_ctrl.obj
@@ -1191,30 +1215,6 @@ port/regdma_link.c.s:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/build.make esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/regdma_link.c.s
 .PHONY : port/regdma_link.c.s
 
-power_supply/brownout.obj: power_supply/brownout.c.obj
-.PHONY : power_supply/brownout.obj
-
-# target to build an object file
-power_supply/brownout.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/build.make esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/power_supply/brownout.c.obj
-.PHONY : power_supply/brownout.c.obj
-
-power_supply/brownout.i: power_supply/brownout.c.i
-.PHONY : power_supply/brownout.i
-
-# target to preprocess a source file
-power_supply/brownout.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/build.make esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/power_supply/brownout.c.i
-.PHONY : power_supply/brownout.c.i
-
-power_supply/brownout.s: power_supply/brownout.c.s
-.PHONY : power_supply/brownout.s
-
-# target to generate assembly for a file
-power_supply/brownout.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/build.make esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/power_supply/brownout.c.s
-.PHONY : power_supply/brownout.c.s
-
 regi2c_ctrl.obj: regi2c_ctrl.c.obj
 .PHONY : regi2c_ctrl.obj
 
@@ -1600,6 +1600,9 @@ help:
 	@echo "... cpu.obj"
 	@echo "... cpu.i"
 	@echo "... cpu.s"
+	@echo "... deprecated/gdma_legacy.obj"
+	@echo "... deprecated/gdma_legacy.i"
+	@echo "... deprecated/gdma_legacy.s"
 	@echo "... dma/async_memcpy_gdma.obj"
 	@echo "... dma/async_memcpy_gdma.i"
 	@echo "... dma/async_memcpy_gdma.s"
@@ -1658,9 +1661,9 @@ help:
 	@echo "... modem_clock.obj"
 	@echo "... modem_clock.i"
 	@echo "... modem_clock.s"
-	@echo "... mspi_timing_tuning/mspi_timing_tuning.obj"
-	@echo "... mspi_timing_tuning/mspi_timing_tuning.i"
-	@echo "... mspi_timing_tuning/mspi_timing_tuning.s"
+	@echo "... mspi_timing_tuning.obj"
+	@echo "... mspi_timing_tuning.i"
+	@echo "... mspi_timing_tuning.s"
 	@echo "... periph_ctrl.obj"
 	@echo "... periph_ctrl.i"
 	@echo "... periph_ctrl.s"
@@ -1715,9 +1718,6 @@ help:
 	@echo "... port/regdma_link.obj"
 	@echo "... port/regdma_link.i"
 	@echo "... port/regdma_link.s"
-	@echo "... power_supply/brownout.obj"
-	@echo "... power_supply/brownout.i"
-	@echo "... power_supply/brownout.s"
 	@echo "... regi2c_ctrl.obj"
 	@echo "... regi2c_ctrl.i"
 	@echo "... regi2c_ctrl.s"

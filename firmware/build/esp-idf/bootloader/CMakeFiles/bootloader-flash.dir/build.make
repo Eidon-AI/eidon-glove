@@ -67,7 +67,7 @@ include esp-idf/bootloader/CMakeFiles/bootloader-flash.dir/compiler_depend.make
 include esp-idf/bootloader/CMakeFiles/bootloader-flash.dir/progress.make
 
 esp-idf/bootloader/CMakeFiles/bootloader-flash:
-	cd /Users/robert/esp-idf/components/bootloader && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -D IDF_PATH=/Users/robert/esp-idf -D "SERIAL_TOOL=/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python;;/Users/robert/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32c6" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@bootloader-flash_args" -D WORKING_DIRECTORY=/Users/robert/eidon/eidon-glove/firmware/build -P /Users/robert/esp-idf/components/esptool_py/run_serial_tool.cmake
+	cd /Users/robert/esp/esp-idf/components/bootloader && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -D IDF_PATH=/Users/robert/esp/esp-idf -D "SERIAL_TOOL=/Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python;;/Users/robert/esp/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32c6" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@bootloader-flash_args" -D WORKING_DIRECTORY=/Users/robert/eidon/eidon-glove/firmware/build -P /Users/robert/esp/esp-idf/components/esptool_py/run_serial_tool.cmake
 
 esp-idf/bootloader/CMakeFiles/bootloader-flash.dir/codegen:
 .PHONY : esp-idf/bootloader/CMakeFiles/bootloader-flash.dir/codegen
@@ -85,6 +85,6 @@ esp-idf/bootloader/CMakeFiles/bootloader-flash.dir/clean:
 .PHONY : esp-idf/bootloader/CMakeFiles/bootloader-flash.dir/clean
 
 esp-idf/bootloader/CMakeFiles/bootloader-flash.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/bootloader /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/bootloader /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/bootloader/CMakeFiles/bootloader-flash.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/bootloader /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/bootloader /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/bootloader/CMakeFiles/bootloader-flash.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/bootloader/CMakeFiles/bootloader-flash.dir/depend
 

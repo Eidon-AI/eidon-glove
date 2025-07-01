@@ -73,88 +73,88 @@ esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/codegen:
 .PHONY : esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/codegen
 
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_common.c.obj: esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/flags.make
-esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_common.c.obj: /Users/robert/esp-idf/components/esp_driver_i2s/i2s_common.c
+esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_common.c.obj: /Users/robert/esp/esp-idf/components/esp_driver_i2s/i2s_common.c
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_common.c.obj: esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_common.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_common.c.obj -MF CMakeFiles/__idf_esp_driver_i2s.dir/i2s_common.c.obj.d -o CMakeFiles/__idf_esp_driver_i2s.dir/i2s_common.c.obj -c /Users/robert/esp-idf/components/esp_driver_i2s/i2s_common.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_common.c.obj -MF CMakeFiles/__idf_esp_driver_i2s.dir/i2s_common.c.obj.d -o CMakeFiles/__idf_esp_driver_i2s.dir/i2s_common.c.obj -c /Users/robert/esp/esp-idf/components/esp_driver_i2s/i2s_common.c
 
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_common.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_driver_i2s.dir/i2s_common.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_driver_i2s/i2s_common.c > CMakeFiles/__idf_esp_driver_i2s.dir/i2s_common.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_driver_i2s/i2s_common.c > CMakeFiles/__idf_esp_driver_i2s.dir/i2s_common.c.i
 
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_common.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_driver_i2s.dir/i2s_common.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_driver_i2s/i2s_common.c -o CMakeFiles/__idf_esp_driver_i2s.dir/i2s_common.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_driver_i2s/i2s_common.c -o CMakeFiles/__idf_esp_driver_i2s.dir/i2s_common.c.s
 
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_std.c.obj: esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/flags.make
-esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_std.c.obj: /Users/robert/esp-idf/components/esp_driver_i2s/i2s_std.c
+esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_std.c.obj: /Users/robert/esp/esp-idf/components/esp_driver_i2s/i2s_std.c
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_std.c.obj: esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_std.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_std.c.obj -MF CMakeFiles/__idf_esp_driver_i2s.dir/i2s_std.c.obj.d -o CMakeFiles/__idf_esp_driver_i2s.dir/i2s_std.c.obj -c /Users/robert/esp-idf/components/esp_driver_i2s/i2s_std.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_std.c.obj -MF CMakeFiles/__idf_esp_driver_i2s.dir/i2s_std.c.obj.d -o CMakeFiles/__idf_esp_driver_i2s.dir/i2s_std.c.obj -c /Users/robert/esp/esp-idf/components/esp_driver_i2s/i2s_std.c
 
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_std.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_driver_i2s.dir/i2s_std.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_driver_i2s/i2s_std.c > CMakeFiles/__idf_esp_driver_i2s.dir/i2s_std.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_driver_i2s/i2s_std.c > CMakeFiles/__idf_esp_driver_i2s.dir/i2s_std.c.i
 
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_std.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_driver_i2s.dir/i2s_std.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_driver_i2s/i2s_std.c -o CMakeFiles/__idf_esp_driver_i2s.dir/i2s_std.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_driver_i2s/i2s_std.c -o CMakeFiles/__idf_esp_driver_i2s.dir/i2s_std.c.s
 
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_pdm.c.obj: esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/flags.make
-esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_pdm.c.obj: /Users/robert/esp-idf/components/esp_driver_i2s/i2s_pdm.c
+esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_pdm.c.obj: /Users/robert/esp/esp-idf/components/esp_driver_i2s/i2s_pdm.c
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_pdm.c.obj: esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_pdm.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_pdm.c.obj -MF CMakeFiles/__idf_esp_driver_i2s.dir/i2s_pdm.c.obj.d -o CMakeFiles/__idf_esp_driver_i2s.dir/i2s_pdm.c.obj -c /Users/robert/esp-idf/components/esp_driver_i2s/i2s_pdm.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_pdm.c.obj -MF CMakeFiles/__idf_esp_driver_i2s.dir/i2s_pdm.c.obj.d -o CMakeFiles/__idf_esp_driver_i2s.dir/i2s_pdm.c.obj -c /Users/robert/esp/esp-idf/components/esp_driver_i2s/i2s_pdm.c
 
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_pdm.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_driver_i2s.dir/i2s_pdm.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_driver_i2s/i2s_pdm.c > CMakeFiles/__idf_esp_driver_i2s.dir/i2s_pdm.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_driver_i2s/i2s_pdm.c > CMakeFiles/__idf_esp_driver_i2s.dir/i2s_pdm.c.i
 
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_pdm.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_driver_i2s.dir/i2s_pdm.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_driver_i2s/i2s_pdm.c -o CMakeFiles/__idf_esp_driver_i2s.dir/i2s_pdm.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_driver_i2s/i2s_pdm.c -o CMakeFiles/__idf_esp_driver_i2s.dir/i2s_pdm.c.s
 
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_tdm.c.obj: esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/flags.make
-esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_tdm.c.obj: /Users/robert/esp-idf/components/esp_driver_i2s/i2s_tdm.c
+esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_tdm.c.obj: /Users/robert/esp/esp-idf/components/esp_driver_i2s/i2s_tdm.c
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_tdm.c.obj: esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_tdm.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_tdm.c.obj -MF CMakeFiles/__idf_esp_driver_i2s.dir/i2s_tdm.c.obj.d -o CMakeFiles/__idf_esp_driver_i2s.dir/i2s_tdm.c.obj -c /Users/robert/esp-idf/components/esp_driver_i2s/i2s_tdm.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_tdm.c.obj -MF CMakeFiles/__idf_esp_driver_i2s.dir/i2s_tdm.c.obj.d -o CMakeFiles/__idf_esp_driver_i2s.dir/i2s_tdm.c.obj -c /Users/robert/esp/esp-idf/components/esp_driver_i2s/i2s_tdm.c
 
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_tdm.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_driver_i2s.dir/i2s_tdm.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_driver_i2s/i2s_tdm.c > CMakeFiles/__idf_esp_driver_i2s.dir/i2s_tdm.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_driver_i2s/i2s_tdm.c > CMakeFiles/__idf_esp_driver_i2s.dir/i2s_tdm.c.i
 
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_tdm.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_driver_i2s.dir/i2s_tdm.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_driver_i2s/i2s_tdm.c -o CMakeFiles/__idf_esp_driver_i2s.dir/i2s_tdm.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_driver_i2s/i2s_tdm.c -o CMakeFiles/__idf_esp_driver_i2s.dir/i2s_tdm.c.s
 
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_etm.c.obj: esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/flags.make
-esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_etm.c.obj: /Users/robert/esp-idf/components/esp_driver_i2s/i2s_etm.c
+esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_etm.c.obj: /Users/robert/esp/esp-idf/components/esp_driver_i2s/i2s_etm.c
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_etm.c.obj: esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_etm.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_etm.c.obj -MF CMakeFiles/__idf_esp_driver_i2s.dir/i2s_etm.c.obj.d -o CMakeFiles/__idf_esp_driver_i2s.dir/i2s_etm.c.obj -c /Users/robert/esp-idf/components/esp_driver_i2s/i2s_etm.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_etm.c.obj -MF CMakeFiles/__idf_esp_driver_i2s.dir/i2s_etm.c.obj.d -o CMakeFiles/__idf_esp_driver_i2s.dir/i2s_etm.c.obj -c /Users/robert/esp/esp-idf/components/esp_driver_i2s/i2s_etm.c
 
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_etm.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_driver_i2s.dir/i2s_etm.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_driver_i2s/i2s_etm.c > CMakeFiles/__idf_esp_driver_i2s.dir/i2s_etm.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_driver_i2s/i2s_etm.c > CMakeFiles/__idf_esp_driver_i2s.dir/i2s_etm.c.i
 
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_etm.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_driver_i2s.dir/i2s_etm.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_driver_i2s/i2s_etm.c -o CMakeFiles/__idf_esp_driver_i2s.dir/i2s_etm.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_driver_i2s/i2s_etm.c -o CMakeFiles/__idf_esp_driver_i2s.dir/i2s_etm.c.s
 
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_platform.c.obj: esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/flags.make
-esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_platform.c.obj: /Users/robert/esp-idf/components/esp_driver_i2s/i2s_platform.c
+esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_platform.c.obj: /Users/robert/esp/esp-idf/components/esp_driver_i2s/i2s_platform.c
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_platform.c.obj: esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_platform.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_platform.c.obj -MF CMakeFiles/__idf_esp_driver_i2s.dir/i2s_platform.c.obj.d -o CMakeFiles/__idf_esp_driver_i2s.dir/i2s_platform.c.obj -c /Users/robert/esp-idf/components/esp_driver_i2s/i2s_platform.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_platform.c.obj -MF CMakeFiles/__idf_esp_driver_i2s.dir/i2s_platform.c.obj.d -o CMakeFiles/__idf_esp_driver_i2s.dir/i2s_platform.c.obj -c /Users/robert/esp/esp-idf/components/esp_driver_i2s/i2s_platform.c
 
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_platform.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_driver_i2s.dir/i2s_platform.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_driver_i2s/i2s_platform.c > CMakeFiles/__idf_esp_driver_i2s.dir/i2s_platform.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_driver_i2s/i2s_platform.c > CMakeFiles/__idf_esp_driver_i2s.dir/i2s_platform.c.i
 
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_platform.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_driver_i2s.dir/i2s_platform.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_driver_i2s/i2s_platform.c -o CMakeFiles/__idf_esp_driver_i2s.dir/i2s_platform.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_driver_i2s/i2s_platform.c -o CMakeFiles/__idf_esp_driver_i2s.dir/i2s_platform.c.s
 
 # Object files for target __idf_esp_driver_i2s
 __idf_esp_driver_i2s_OBJECTS = \
@@ -189,6 +189,6 @@ esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/clean:
 .PHONY : esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/clean
 
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/esp_driver_i2s /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/esp_driver_i2s /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/depend
 

@@ -203,6 +203,20 @@ sections.ld.in/fast:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_system/CMakeFiles/sections.ld.in.dir/build.make esp-idf/esp_system/CMakeFiles/sections.ld.in.dir/build
 .PHONY : sections.ld.in/fast
 
+# Convenience name for target.
+esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/rule:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/rule
+.PHONY : esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/rule
+
+# Convenience name for target.
+__ldgen_output_sections.ld: esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/rule
+.PHONY : __ldgen_output_sections.ld
+
+# fast build rule for target.
+__ldgen_output_sections.ld/fast:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/build.make esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/build
+.PHONY : __ldgen_output_sections.ld/fast
+
 crosscore_int.obj: crosscore_int.c.obj
 .PHONY : crosscore_int.obj
 
@@ -298,30 +312,6 @@ esp_system.s: esp_system.c.s
 esp_system.c.s:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/build.make esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/esp_system.c.s
 .PHONY : esp_system.c.s
-
-esp_system_console.obj: esp_system_console.c.obj
-.PHONY : esp_system_console.obj
-
-# target to build an object file
-esp_system_console.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/build.make esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/esp_system_console.c.obj
-.PHONY : esp_system_console.c.obj
-
-esp_system_console.i: esp_system_console.c.i
-.PHONY : esp_system_console.i
-
-# target to preprocess a source file
-esp_system_console.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/build.make esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/esp_system_console.c.i
-.PHONY : esp_system_console.c.i
-
-esp_system_console.s: esp_system_console.c.s
-.PHONY : esp_system_console.s
-
-# target to generate assembly for a file
-esp_system_console.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/build.make esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/esp_system_console.c.s
-.PHONY : esp_system_console.c.s
 
 freertos_hooks.obj: freertos_hooks.c.obj
 .PHONY : freertos_hooks.obj
@@ -514,6 +504,30 @@ port/arch/riscv/panic_arch.s: port/arch/riscv/panic_arch.c.s
 port/arch/riscv/panic_arch.c.s:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/build.make esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/port/arch/riscv/panic_arch.c.s
 .PHONY : port/arch/riscv/panic_arch.c.s
+
+port/brownout.obj: port/brownout.c.obj
+.PHONY : port/brownout.obj
+
+# target to build an object file
+port/brownout.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/build.make esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/port/brownout.c.obj
+.PHONY : port/brownout.c.obj
+
+port/brownout.i: port/brownout.c.i
+.PHONY : port/brownout.i
+
+# target to preprocess a source file
+port/brownout.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/build.make esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/port/brownout.c.i
+.PHONY : port/brownout.c.i
+
+port/brownout.s: port/brownout.c.s
+.PHONY : port/brownout.s
+
+# target to generate assembly for a file
+port/brownout.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/build.make esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/port/brownout.c.s
+.PHONY : port/brownout.c.s
 
 port/cpu_start.obj: port/cpu_start.c.obj
 .PHONY : port/cpu_start.obj
@@ -935,6 +949,7 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... __ldgen_output_sections.ld"
 	@echo "... memory.ld"
 	@echo "... sections.ld.in"
 	@echo "... __idf_esp_system"
@@ -950,9 +965,6 @@ help:
 	@echo "... esp_system.obj"
 	@echo "... esp_system.i"
 	@echo "... esp_system.s"
-	@echo "... esp_system_console.obj"
-	@echo "... esp_system_console.i"
-	@echo "... esp_system_console.s"
 	@echo "... freertos_hooks.obj"
 	@echo "... freertos_hooks.i"
 	@echo "... freertos_hooks.s"
@@ -977,6 +989,9 @@ help:
 	@echo "... port/arch/riscv/panic_arch.obj"
 	@echo "... port/arch/riscv/panic_arch.i"
 	@echo "... port/arch/riscv/panic_arch.s"
+	@echo "... port/brownout.obj"
+	@echo "... port/brownout.i"
+	@echo "... port/brownout.s"
 	@echo "... port/cpu_start.obj"
 	@echo "... port/cpu_start.i"
 	@echo "... port/cpu_start.s"

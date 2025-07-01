@@ -73,32 +73,32 @@ esp-idf/json/CMakeFiles/__idf_json.dir/codegen:
 .PHONY : esp-idf/json/CMakeFiles/__idf_json.dir/codegen
 
 esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON.c.obj: esp-idf/json/CMakeFiles/__idf_json.dir/flags.make
-esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON.c.obj: /Users/robert/esp-idf/components/json/cJSON/cJSON.c
+esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON.c.obj: /Users/robert/esp/esp-idf/components/json/cJSON/cJSON.c
 esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON.c.obj: esp-idf/json/CMakeFiles/__idf_json.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/json && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON.c.obj -MF CMakeFiles/__idf_json.dir/cJSON/cJSON.c.obj.d -o CMakeFiles/__idf_json.dir/cJSON/cJSON.c.obj -c /Users/robert/esp-idf/components/json/cJSON/cJSON.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/json && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON.c.obj -MF CMakeFiles/__idf_json.dir/cJSON/cJSON.c.obj.d -o CMakeFiles/__idf_json.dir/cJSON/cJSON.c.obj -c /Users/robert/esp/esp-idf/components/json/cJSON/cJSON.c
 
 esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_json.dir/cJSON/cJSON.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/json && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/json/cJSON/cJSON.c > CMakeFiles/__idf_json.dir/cJSON/cJSON.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/json && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/json/cJSON/cJSON.c > CMakeFiles/__idf_json.dir/cJSON/cJSON.c.i
 
 esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_json.dir/cJSON/cJSON.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/json && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/json/cJSON/cJSON.c -o CMakeFiles/__idf_json.dir/cJSON/cJSON.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/json && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/json/cJSON/cJSON.c -o CMakeFiles/__idf_json.dir/cJSON/cJSON.c.s
 
 esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON_Utils.c.obj: esp-idf/json/CMakeFiles/__idf_json.dir/flags.make
-esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON_Utils.c.obj: /Users/robert/esp-idf/components/json/cJSON/cJSON_Utils.c
+esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON_Utils.c.obj: /Users/robert/esp/esp-idf/components/json/cJSON/cJSON_Utils.c
 esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON_Utils.c.obj: esp-idf/json/CMakeFiles/__idf_json.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON_Utils.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/json && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON_Utils.c.obj -MF CMakeFiles/__idf_json.dir/cJSON/cJSON_Utils.c.obj.d -o CMakeFiles/__idf_json.dir/cJSON/cJSON_Utils.c.obj -c /Users/robert/esp-idf/components/json/cJSON/cJSON_Utils.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/json && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON_Utils.c.obj -MF CMakeFiles/__idf_json.dir/cJSON/cJSON_Utils.c.obj.d -o CMakeFiles/__idf_json.dir/cJSON/cJSON_Utils.c.obj -c /Users/robert/esp/esp-idf/components/json/cJSON/cJSON_Utils.c
 
 esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON_Utils.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_json.dir/cJSON/cJSON_Utils.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/json && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/json/cJSON/cJSON_Utils.c > CMakeFiles/__idf_json.dir/cJSON/cJSON_Utils.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/json && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/json/cJSON/cJSON_Utils.c > CMakeFiles/__idf_json.dir/cJSON/cJSON_Utils.c.i
 
 esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON_Utils.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_json.dir/cJSON/cJSON_Utils.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/json && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/json/cJSON/cJSON_Utils.c -o CMakeFiles/__idf_json.dir/cJSON/cJSON_Utils.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/json && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/json/cJSON/cJSON_Utils.c -o CMakeFiles/__idf_json.dir/cJSON/cJSON_Utils.c.s
 
 # Object files for target __idf_json
 __idf_json_OBJECTS = \
@@ -125,6 +125,6 @@ esp-idf/json/CMakeFiles/__idf_json.dir/clean:
 .PHONY : esp-idf/json/CMakeFiles/__idf_json.dir/clean
 
 esp-idf/json/CMakeFiles/__idf_json.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/json /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/json /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/json/CMakeFiles/__idf_json.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/json /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/json /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/json/CMakeFiles/__idf_json.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/json/CMakeFiles/__idf_json.dir/depend
 

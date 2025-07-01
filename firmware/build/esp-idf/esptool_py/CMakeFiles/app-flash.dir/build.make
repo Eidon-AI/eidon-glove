@@ -67,7 +67,7 @@ include esp-idf/esptool_py/CMakeFiles/app-flash.dir/compiler_depend.make
 include esp-idf/esptool_py/CMakeFiles/app-flash.dir/progress.make
 
 esp-idf/esptool_py/CMakeFiles/app-flash:
-	cd /Users/robert/esp-idf/components/esptool_py && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -D IDF_PATH=/Users/robert/esp-idf -D "SERIAL_TOOL=/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python;;/Users/robert/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32c6" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@app-flash_args" -D WORKING_DIRECTORY=/Users/robert/eidon/eidon-glove/firmware/build -P /Users/robert/esp-idf/components/esptool_py/run_serial_tool.cmake
+	cd /Users/robert/esp/esp-idf/components/esptool_py && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -D IDF_PATH=/Users/robert/esp/esp-idf -D "SERIAL_TOOL=/Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python;;/Users/robert/esp/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32c6" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@app-flash_args" -D WORKING_DIRECTORY=/Users/robert/eidon/eidon-glove/firmware/build -P /Users/robert/esp/esp-idf/components/esptool_py/run_serial_tool.cmake
 
 esp-idf/esptool_py/CMakeFiles/app-flash.dir/codegen:
 .PHONY : esp-idf/esptool_py/CMakeFiles/app-flash.dir/codegen
@@ -85,6 +85,6 @@ esp-idf/esptool_py/CMakeFiles/app-flash.dir/clean:
 .PHONY : esp-idf/esptool_py/CMakeFiles/app-flash.dir/clean
 
 esp-idf/esptool_py/CMakeFiles/app-flash.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/esptool_py /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esptool_py /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esptool_py/CMakeFiles/app-flash.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/esptool_py /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esptool_py /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esptool_py/CMakeFiles/app-flash.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/esptool_py/CMakeFiles/app-flash.dir/depend
 

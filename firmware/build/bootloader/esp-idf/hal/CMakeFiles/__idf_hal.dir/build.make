@@ -53,7 +53,7 @@ RM = /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/robert/esp-idf/components/bootloader/subproject
+CMAKE_SOURCE_DIR = /Users/robert/esp/esp-idf/components/bootloader/subproject
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /Users/robert/eidon/eidon-glove/firmware/build/bootloader
@@ -73,88 +73,88 @@ esp-idf/hal/CMakeFiles/__idf_hal.dir/codegen:
 .PHONY : esp-idf/hal/CMakeFiles/__idf_hal.dir/codegen
 
 esp-idf/hal/CMakeFiles/__idf_hal.dir/hal_utils.c.obj: esp-idf/hal/CMakeFiles/__idf_hal.dir/flags.make
-esp-idf/hal/CMakeFiles/__idf_hal.dir/hal_utils.c.obj: /Users/robert/esp-idf/components/hal/hal_utils.c
+esp-idf/hal/CMakeFiles/__idf_hal.dir/hal_utils.c.obj: /Users/robert/esp/esp-idf/components/hal/hal_utils.c
 esp-idf/hal/CMakeFiles/__idf_hal.dir/hal_utils.c.obj: esp-idf/hal/CMakeFiles/__idf_hal.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/hal/CMakeFiles/__idf_hal.dir/hal_utils.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/hal/CMakeFiles/__idf_hal.dir/hal_utils.c.obj -MF CMakeFiles/__idf_hal.dir/hal_utils.c.obj.d -o CMakeFiles/__idf_hal.dir/hal_utils.c.obj -c /Users/robert/esp-idf/components/hal/hal_utils.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/hal/CMakeFiles/__idf_hal.dir/hal_utils.c.obj -MF CMakeFiles/__idf_hal.dir/hal_utils.c.obj.d -o CMakeFiles/__idf_hal.dir/hal_utils.c.obj -c /Users/robert/esp/esp-idf/components/hal/hal_utils.c
 
 esp-idf/hal/CMakeFiles/__idf_hal.dir/hal_utils.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_hal.dir/hal_utils.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/hal/hal_utils.c > CMakeFiles/__idf_hal.dir/hal_utils.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/hal/hal_utils.c > CMakeFiles/__idf_hal.dir/hal_utils.c.i
 
 esp-idf/hal/CMakeFiles/__idf_hal.dir/hal_utils.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_hal.dir/hal_utils.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/hal/hal_utils.c -o CMakeFiles/__idf_hal.dir/hal_utils.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/hal/hal_utils.c -o CMakeFiles/__idf_hal.dir/hal_utils.c.s
 
 esp-idf/hal/CMakeFiles/__idf_hal.dir/efuse_hal.c.obj: esp-idf/hal/CMakeFiles/__idf_hal.dir/flags.make
-esp-idf/hal/CMakeFiles/__idf_hal.dir/efuse_hal.c.obj: /Users/robert/esp-idf/components/hal/efuse_hal.c
+esp-idf/hal/CMakeFiles/__idf_hal.dir/efuse_hal.c.obj: /Users/robert/esp/esp-idf/components/hal/efuse_hal.c
 esp-idf/hal/CMakeFiles/__idf_hal.dir/efuse_hal.c.obj: esp-idf/hal/CMakeFiles/__idf_hal.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object esp-idf/hal/CMakeFiles/__idf_hal.dir/efuse_hal.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/hal/CMakeFiles/__idf_hal.dir/efuse_hal.c.obj -MF CMakeFiles/__idf_hal.dir/efuse_hal.c.obj.d -o CMakeFiles/__idf_hal.dir/efuse_hal.c.obj -c /Users/robert/esp-idf/components/hal/efuse_hal.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/hal/CMakeFiles/__idf_hal.dir/efuse_hal.c.obj -MF CMakeFiles/__idf_hal.dir/efuse_hal.c.obj.d -o CMakeFiles/__idf_hal.dir/efuse_hal.c.obj -c /Users/robert/esp/esp-idf/components/hal/efuse_hal.c
 
 esp-idf/hal/CMakeFiles/__idf_hal.dir/efuse_hal.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_hal.dir/efuse_hal.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/hal/efuse_hal.c > CMakeFiles/__idf_hal.dir/efuse_hal.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/hal/efuse_hal.c > CMakeFiles/__idf_hal.dir/efuse_hal.c.i
 
 esp-idf/hal/CMakeFiles/__idf_hal.dir/efuse_hal.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_hal.dir/efuse_hal.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/hal/efuse_hal.c -o CMakeFiles/__idf_hal.dir/efuse_hal.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/hal/efuse_hal.c -o CMakeFiles/__idf_hal.dir/efuse_hal.c.s
 
 esp-idf/hal/CMakeFiles/__idf_hal.dir/esp32c6/efuse_hal.c.obj: esp-idf/hal/CMakeFiles/__idf_hal.dir/flags.make
-esp-idf/hal/CMakeFiles/__idf_hal.dir/esp32c6/efuse_hal.c.obj: /Users/robert/esp-idf/components/hal/esp32c6/efuse_hal.c
+esp-idf/hal/CMakeFiles/__idf_hal.dir/esp32c6/efuse_hal.c.obj: /Users/robert/esp/esp-idf/components/hal/esp32c6/efuse_hal.c
 esp-idf/hal/CMakeFiles/__idf_hal.dir/esp32c6/efuse_hal.c.obj: esp-idf/hal/CMakeFiles/__idf_hal.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object esp-idf/hal/CMakeFiles/__idf_hal.dir/esp32c6/efuse_hal.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/hal/CMakeFiles/__idf_hal.dir/esp32c6/efuse_hal.c.obj -MF CMakeFiles/__idf_hal.dir/esp32c6/efuse_hal.c.obj.d -o CMakeFiles/__idf_hal.dir/esp32c6/efuse_hal.c.obj -c /Users/robert/esp-idf/components/hal/esp32c6/efuse_hal.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/hal/CMakeFiles/__idf_hal.dir/esp32c6/efuse_hal.c.obj -MF CMakeFiles/__idf_hal.dir/esp32c6/efuse_hal.c.obj.d -o CMakeFiles/__idf_hal.dir/esp32c6/efuse_hal.c.obj -c /Users/robert/esp/esp-idf/components/hal/esp32c6/efuse_hal.c
 
 esp-idf/hal/CMakeFiles/__idf_hal.dir/esp32c6/efuse_hal.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_hal.dir/esp32c6/efuse_hal.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/hal/esp32c6/efuse_hal.c > CMakeFiles/__idf_hal.dir/esp32c6/efuse_hal.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/hal/esp32c6/efuse_hal.c > CMakeFiles/__idf_hal.dir/esp32c6/efuse_hal.c.i
 
 esp-idf/hal/CMakeFiles/__idf_hal.dir/esp32c6/efuse_hal.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_hal.dir/esp32c6/efuse_hal.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/hal/esp32c6/efuse_hal.c -o CMakeFiles/__idf_hal.dir/esp32c6/efuse_hal.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/hal/esp32c6/efuse_hal.c -o CMakeFiles/__idf_hal.dir/esp32c6/efuse_hal.c.s
 
 esp-idf/hal/CMakeFiles/__idf_hal.dir/lp_timer_hal.c.obj: esp-idf/hal/CMakeFiles/__idf_hal.dir/flags.make
-esp-idf/hal/CMakeFiles/__idf_hal.dir/lp_timer_hal.c.obj: /Users/robert/esp-idf/components/hal/lp_timer_hal.c
+esp-idf/hal/CMakeFiles/__idf_hal.dir/lp_timer_hal.c.obj: /Users/robert/esp/esp-idf/components/hal/lp_timer_hal.c
 esp-idf/hal/CMakeFiles/__idf_hal.dir/lp_timer_hal.c.obj: esp-idf/hal/CMakeFiles/__idf_hal.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object esp-idf/hal/CMakeFiles/__idf_hal.dir/lp_timer_hal.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/hal/CMakeFiles/__idf_hal.dir/lp_timer_hal.c.obj -MF CMakeFiles/__idf_hal.dir/lp_timer_hal.c.obj.d -o CMakeFiles/__idf_hal.dir/lp_timer_hal.c.obj -c /Users/robert/esp-idf/components/hal/lp_timer_hal.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/hal/CMakeFiles/__idf_hal.dir/lp_timer_hal.c.obj -MF CMakeFiles/__idf_hal.dir/lp_timer_hal.c.obj.d -o CMakeFiles/__idf_hal.dir/lp_timer_hal.c.obj -c /Users/robert/esp/esp-idf/components/hal/lp_timer_hal.c
 
 esp-idf/hal/CMakeFiles/__idf_hal.dir/lp_timer_hal.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_hal.dir/lp_timer_hal.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/hal/lp_timer_hal.c > CMakeFiles/__idf_hal.dir/lp_timer_hal.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/hal/lp_timer_hal.c > CMakeFiles/__idf_hal.dir/lp_timer_hal.c.i
 
 esp-idf/hal/CMakeFiles/__idf_hal.dir/lp_timer_hal.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_hal.dir/lp_timer_hal.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/hal/lp_timer_hal.c -o CMakeFiles/__idf_hal.dir/lp_timer_hal.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/hal/lp_timer_hal.c -o CMakeFiles/__idf_hal.dir/lp_timer_hal.c.s
 
 esp-idf/hal/CMakeFiles/__idf_hal.dir/mmu_hal.c.obj: esp-idf/hal/CMakeFiles/__idf_hal.dir/flags.make
-esp-idf/hal/CMakeFiles/__idf_hal.dir/mmu_hal.c.obj: /Users/robert/esp-idf/components/hal/mmu_hal.c
+esp-idf/hal/CMakeFiles/__idf_hal.dir/mmu_hal.c.obj: /Users/robert/esp/esp-idf/components/hal/mmu_hal.c
 esp-idf/hal/CMakeFiles/__idf_hal.dir/mmu_hal.c.obj: esp-idf/hal/CMakeFiles/__idf_hal.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object esp-idf/hal/CMakeFiles/__idf_hal.dir/mmu_hal.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/hal/CMakeFiles/__idf_hal.dir/mmu_hal.c.obj -MF CMakeFiles/__idf_hal.dir/mmu_hal.c.obj.d -o CMakeFiles/__idf_hal.dir/mmu_hal.c.obj -c /Users/robert/esp-idf/components/hal/mmu_hal.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/hal/CMakeFiles/__idf_hal.dir/mmu_hal.c.obj -MF CMakeFiles/__idf_hal.dir/mmu_hal.c.obj.d -o CMakeFiles/__idf_hal.dir/mmu_hal.c.obj -c /Users/robert/esp/esp-idf/components/hal/mmu_hal.c
 
 esp-idf/hal/CMakeFiles/__idf_hal.dir/mmu_hal.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_hal.dir/mmu_hal.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/hal/mmu_hal.c > CMakeFiles/__idf_hal.dir/mmu_hal.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/hal/mmu_hal.c > CMakeFiles/__idf_hal.dir/mmu_hal.c.i
 
 esp-idf/hal/CMakeFiles/__idf_hal.dir/mmu_hal.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_hal.dir/mmu_hal.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/hal/mmu_hal.c -o CMakeFiles/__idf_hal.dir/mmu_hal.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/hal/mmu_hal.c -o CMakeFiles/__idf_hal.dir/mmu_hal.c.s
 
 esp-idf/hal/CMakeFiles/__idf_hal.dir/cache_hal.c.obj: esp-idf/hal/CMakeFiles/__idf_hal.dir/flags.make
-esp-idf/hal/CMakeFiles/__idf_hal.dir/cache_hal.c.obj: /Users/robert/esp-idf/components/hal/cache_hal.c
+esp-idf/hal/CMakeFiles/__idf_hal.dir/cache_hal.c.obj: /Users/robert/esp/esp-idf/components/hal/cache_hal.c
 esp-idf/hal/CMakeFiles/__idf_hal.dir/cache_hal.c.obj: esp-idf/hal/CMakeFiles/__idf_hal.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object esp-idf/hal/CMakeFiles/__idf_hal.dir/cache_hal.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/hal/CMakeFiles/__idf_hal.dir/cache_hal.c.obj -MF CMakeFiles/__idf_hal.dir/cache_hal.c.obj.d -o CMakeFiles/__idf_hal.dir/cache_hal.c.obj -c /Users/robert/esp-idf/components/hal/cache_hal.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/hal/CMakeFiles/__idf_hal.dir/cache_hal.c.obj -MF CMakeFiles/__idf_hal.dir/cache_hal.c.obj.d -o CMakeFiles/__idf_hal.dir/cache_hal.c.obj -c /Users/robert/esp/esp-idf/components/hal/cache_hal.c
 
 esp-idf/hal/CMakeFiles/__idf_hal.dir/cache_hal.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_hal.dir/cache_hal.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/hal/cache_hal.c > CMakeFiles/__idf_hal.dir/cache_hal.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/hal/cache_hal.c > CMakeFiles/__idf_hal.dir/cache_hal.c.i
 
 esp-idf/hal/CMakeFiles/__idf_hal.dir/cache_hal.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_hal.dir/cache_hal.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/hal/cache_hal.c -o CMakeFiles/__idf_hal.dir/cache_hal.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/hal/cache_hal.c -o CMakeFiles/__idf_hal.dir/cache_hal.c.s
 
 # Object files for target __idf_hal
 __idf_hal_OBJECTS = \
@@ -189,6 +189,6 @@ esp-idf/hal/CMakeFiles/__idf_hal.dir/clean:
 .PHONY : esp-idf/hal/CMakeFiles/__idf_hal.dir/clean
 
 esp-idf/hal/CMakeFiles/__idf_hal.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp-idf/components/bootloader/subproject /Users/robert/esp-idf/components/hal /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal/CMakeFiles/__idf_hal.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp/esp-idf/components/bootloader/subproject /Users/robert/esp/esp-idf/components/hal /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal/CMakeFiles/__idf_hal.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/hal/CMakeFiles/__idf_hal.dir/depend
 

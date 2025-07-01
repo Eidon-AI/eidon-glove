@@ -415,30 +415,6 @@ src/bootloader_random_esp32c6.c.s:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/build.make esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_random_esp32c6.c.s
 .PHONY : src/bootloader_random_esp32c6.c.s
 
-src/bootloader_sha.obj: src/bootloader_sha.c.obj
-.PHONY : src/bootloader_sha.obj
-
-# target to build an object file
-src/bootloader_sha.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/build.make esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_sha.c.obj
-.PHONY : src/bootloader_sha.c.obj
-
-src/bootloader_sha.i: src/bootloader_sha.c.i
-.PHONY : src/bootloader_sha.i
-
-# target to preprocess a source file
-src/bootloader_sha.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/build.make esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_sha.c.i
-.PHONY : src/bootloader_sha.c.i
-
-src/bootloader_sha.s: src/bootloader_sha.c.s
-.PHONY : src/bootloader_sha.s
-
-# target to generate assembly for a file
-src/bootloader_sha.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/build.make esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_sha.c.s
-.PHONY : src/bootloader_sha.c.s
-
 src/bootloader_utility.obj: src/bootloader_utility.c.obj
 .PHONY : src/bootloader_utility.obj
 
@@ -583,6 +559,30 @@ src/flash_partitions.c.s:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/build.make esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/flash_partitions.c.s
 .PHONY : src/flash_partitions.c.s
 
+src/idf/bootloader_sha.obj: src/idf/bootloader_sha.c.obj
+.PHONY : src/idf/bootloader_sha.obj
+
+# target to build an object file
+src/idf/bootloader_sha.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/build.make esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/idf/bootloader_sha.c.obj
+.PHONY : src/idf/bootloader_sha.c.obj
+
+src/idf/bootloader_sha.i: src/idf/bootloader_sha.c.i
+.PHONY : src/idf/bootloader_sha.i
+
+# target to preprocess a source file
+src/idf/bootloader_sha.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/build.make esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/idf/bootloader_sha.c.i
+.PHONY : src/idf/bootloader_sha.c.i
+
+src/idf/bootloader_sha.s: src/idf/bootloader_sha.c.s
+.PHONY : src/idf/bootloader_sha.s
+
+# target to generate assembly for a file
+src/idf/bootloader_sha.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/build.make esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/idf/bootloader_sha.c.s
+.PHONY : src/idf/bootloader_sha.c.s
+
 src/secure_boot.obj: src/secure_boot.c.obj
 .PHONY : src/secure_boot.obj
 
@@ -650,9 +650,6 @@ help:
 	@echo "... src/bootloader_random_esp32c6.obj"
 	@echo "... src/bootloader_random_esp32c6.i"
 	@echo "... src/bootloader_random_esp32c6.s"
-	@echo "... src/bootloader_sha.obj"
-	@echo "... src/bootloader_sha.i"
-	@echo "... src/bootloader_sha.s"
 	@echo "... src/bootloader_utility.obj"
 	@echo "... src/bootloader_utility.i"
 	@echo "... src/bootloader_utility.s"
@@ -671,6 +668,9 @@ help:
 	@echo "... src/flash_partitions.obj"
 	@echo "... src/flash_partitions.i"
 	@echo "... src/flash_partitions.s"
+	@echo "... src/idf/bootloader_sha.obj"
+	@echo "... src/idf/bootloader_sha.i"
+	@echo "... src/idf/bootloader_sha.s"
 	@echo "... src/secure_boot.obj"
 	@echo "... src/secure_boot.i"
 	@echo "... src/secure_boot.s"

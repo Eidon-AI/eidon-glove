@@ -8,11 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/robert/esp-idf/components/esp_mm/esp_cache_msync.c" "esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_msync.c.obj" "gcc" "esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_msync.c.obj.d"
-  "/Users/robert/esp-idf/components/esp_mm/esp_cache_utils.c" "esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_utils.c.obj" "gcc" "esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_utils.c.obj.d"
-  "/Users/robert/esp-idf/components/esp_mm/esp_mmu_map.c" "esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.obj" "gcc" "esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.obj.d"
-  "/Users/robert/esp-idf/components/esp_mm/heap_align_hw.c" "esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.obj" "gcc" "esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.obj.d"
-  "/Users/robert/esp-idf/components/esp_mm/port/esp32c6/ext_mem_layout.c" "esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.obj" "gcc" "esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/esp_mm/esp_cache.c" "esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache.c.obj" "gcc" "esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/esp_mm/esp_mmu_map.c" "esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.obj" "gcc" "esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/esp_mm/heap_align_hw.c" "esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.obj" "gcc" "esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/esp_mm/port/esp32c6/ext_mem_layout.c" "esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.obj" "gcc" "esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

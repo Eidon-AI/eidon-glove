@@ -67,7 +67,7 @@ include esp-idf/mbedtls/mbedtls/CMakeFiles/apidoc.dir/compiler_depend.make
 include esp-idf/mbedtls/mbedtls/CMakeFiles/apidoc.dir/progress.make
 
 esp-idf/mbedtls/mbedtls/CMakeFiles/apidoc:
-	cd /Users/robert/esp-idf/components/mbedtls/mbedtls/doxygen && doxygen mbedtls.doxyfile
+	cd /Users/robert/esp/esp-idf/components/mbedtls/mbedtls/doxygen && doxygen mbedtls.doxyfile
 
 esp-idf/mbedtls/mbedtls/CMakeFiles/apidoc.dir/codegen:
 .PHONY : esp-idf/mbedtls/mbedtls/CMakeFiles/apidoc.dir/codegen
@@ -85,6 +85,6 @@ esp-idf/mbedtls/mbedtls/CMakeFiles/apidoc.dir/clean:
 .PHONY : esp-idf/mbedtls/mbedtls/CMakeFiles/apidoc.dir/clean
 
 esp-idf/mbedtls/mbedtls/CMakeFiles/apidoc.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/mbedtls/mbedtls /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/mbedtls /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/mbedtls/CMakeFiles/apidoc.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/mbedtls/mbedtls /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/mbedtls /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/mbedtls/CMakeFiles/apidoc.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/mbedtls/mbedtls/CMakeFiles/apidoc.dir/depend
 

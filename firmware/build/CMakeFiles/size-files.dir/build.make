@@ -67,7 +67,7 @@ include CMakeFiles/size-files.dir/compiler_depend.make
 include CMakeFiles/size-files.dir/progress.make
 
 CMakeFiles/size-files: eidon-glove.map
-	/opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -D "IDF_SIZE_TOOL=/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python;-m;esp_idf_size" -D IDF_SIZE_MODE=--files -D MAP_FILE=/Users/robert/eidon/eidon-glove/firmware/build/eidon-glove.map -D OUTPUT_JSON= -P /Users/robert/esp-idf/tools/cmake/run_size_tool.cmake
+	/opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -D "IDF_SIZE_TOOL=/Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python;-m;esp_idf_size" -D IDF_SIZE_MODE=--files -D MAP_FILE=/Users/robert/eidon/eidon-glove/firmware/build/eidon-glove.map -D OUTPUT_JSON= -P /Users/robert/esp/esp-idf/tools/cmake/run_size_tool.cmake
 
 CMakeFiles/size-files.dir/codegen:
 .PHONY : CMakeFiles/size-files.dir/codegen

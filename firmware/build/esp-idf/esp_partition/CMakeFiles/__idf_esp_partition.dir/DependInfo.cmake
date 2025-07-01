@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/robert/esp-idf/components/esp_partition/partition.c" "esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition.c.obj" "gcc" "esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition.c.obj.d"
-  "/Users/robert/esp-idf/components/esp_partition/partition_target.c" "esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition_target.c.obj" "gcc" "esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition_target.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/esp_partition/partition.c" "esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition.c.obj" "gcc" "esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/esp_partition/partition_target.c" "esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition_target.c.obj" "gcc" "esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition_target.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -76,49 +76,139 @@ esp-idf/main/CMakeFiles/__idf_main.dir/esp_hid_device_main.c.obj: esp-idf/main/C
 esp-idf/main/CMakeFiles/__idf_main.dir/esp_hid_device_main.c.obj: /Users/robert/eidon/eidon-glove/firmware/main/esp_hid_device_main.c
 esp-idf/main/CMakeFiles/__idf_main.dir/esp_hid_device_main.c.obj: esp-idf/main/CMakeFiles/__idf_main.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/main/CMakeFiles/__idf_main.dir/esp_hid_device_main.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/main/CMakeFiles/__idf_main.dir/esp_hid_device_main.c.obj -MF CMakeFiles/__idf_main.dir/esp_hid_device_main.c.obj.d -o CMakeFiles/__idf_main.dir/esp_hid_device_main.c.obj -c /Users/robert/eidon/eidon-glove/firmware/main/esp_hid_device_main.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/main/CMakeFiles/__idf_main.dir/esp_hid_device_main.c.obj -MF CMakeFiles/__idf_main.dir/esp_hid_device_main.c.obj.d -o CMakeFiles/__idf_main.dir/esp_hid_device_main.c.obj -c /Users/robert/eidon/eidon-glove/firmware/main/esp_hid_device_main.c
 
 esp-idf/main/CMakeFiles/__idf_main.dir/esp_hid_device_main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_main.dir/esp_hid_device_main.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/eidon/eidon-glove/firmware/main/esp_hid_device_main.c > CMakeFiles/__idf_main.dir/esp_hid_device_main.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/eidon/eidon-glove/firmware/main/esp_hid_device_main.c > CMakeFiles/__idf_main.dir/esp_hid_device_main.c.i
 
 esp-idf/main/CMakeFiles/__idf_main.dir/esp_hid_device_main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_main.dir/esp_hid_device_main.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/eidon/eidon-glove/firmware/main/esp_hid_device_main.c -o CMakeFiles/__idf_main.dir/esp_hid_device_main.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/eidon/eidon-glove/firmware/main/esp_hid_device_main.c -o CMakeFiles/__idf_main.dir/esp_hid_device_main.c.s
 
 esp-idf/main/CMakeFiles/__idf_main.dir/esp_hid_gap.c.obj: esp-idf/main/CMakeFiles/__idf_main.dir/flags.make
 esp-idf/main/CMakeFiles/__idf_main.dir/esp_hid_gap.c.obj: /Users/robert/eidon/eidon-glove/firmware/main/esp_hid_gap.c
 esp-idf/main/CMakeFiles/__idf_main.dir/esp_hid_gap.c.obj: esp-idf/main/CMakeFiles/__idf_main.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object esp-idf/main/CMakeFiles/__idf_main.dir/esp_hid_gap.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/main/CMakeFiles/__idf_main.dir/esp_hid_gap.c.obj -MF CMakeFiles/__idf_main.dir/esp_hid_gap.c.obj.d -o CMakeFiles/__idf_main.dir/esp_hid_gap.c.obj -c /Users/robert/eidon/eidon-glove/firmware/main/esp_hid_gap.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/main/CMakeFiles/__idf_main.dir/esp_hid_gap.c.obj -MF CMakeFiles/__idf_main.dir/esp_hid_gap.c.obj.d -o CMakeFiles/__idf_main.dir/esp_hid_gap.c.obj -c /Users/robert/eidon/eidon-glove/firmware/main/esp_hid_gap.c
 
 esp-idf/main/CMakeFiles/__idf_main.dir/esp_hid_gap.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_main.dir/esp_hid_gap.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/eidon/eidon-glove/firmware/main/esp_hid_gap.c > CMakeFiles/__idf_main.dir/esp_hid_gap.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/eidon/eidon-glove/firmware/main/esp_hid_gap.c > CMakeFiles/__idf_main.dir/esp_hid_gap.c.i
 
 esp-idf/main/CMakeFiles/__idf_main.dir/esp_hid_gap.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_main.dir/esp_hid_gap.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/eidon/eidon-glove/firmware/main/esp_hid_gap.c -o CMakeFiles/__idf_main.dir/esp_hid_gap.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/eidon/eidon-glove/firmware/main/esp_hid_gap.c -o CMakeFiles/__idf_main.dir/esp_hid_gap.c.s
 
 esp-idf/main/CMakeFiles/__idf_main.dir/bno085.c.obj: esp-idf/main/CMakeFiles/__idf_main.dir/flags.make
 esp-idf/main/CMakeFiles/__idf_main.dir/bno085.c.obj: /Users/robert/eidon/eidon-glove/firmware/main/bno085.c
 esp-idf/main/CMakeFiles/__idf_main.dir/bno085.c.obj: esp-idf/main/CMakeFiles/__idf_main.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object esp-idf/main/CMakeFiles/__idf_main.dir/bno085.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/main/CMakeFiles/__idf_main.dir/bno085.c.obj -MF CMakeFiles/__idf_main.dir/bno085.c.obj.d -o CMakeFiles/__idf_main.dir/bno085.c.obj -c /Users/robert/eidon/eidon-glove/firmware/main/bno085.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/main/CMakeFiles/__idf_main.dir/bno085.c.obj -MF CMakeFiles/__idf_main.dir/bno085.c.obj.d -o CMakeFiles/__idf_main.dir/bno085.c.obj -c /Users/robert/eidon/eidon-glove/firmware/main/bno085.c
 
 esp-idf/main/CMakeFiles/__idf_main.dir/bno085.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_main.dir/bno085.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/eidon/eidon-glove/firmware/main/bno085.c > CMakeFiles/__idf_main.dir/bno085.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/eidon/eidon-glove/firmware/main/bno085.c > CMakeFiles/__idf_main.dir/bno085.c.i
 
 esp-idf/main/CMakeFiles/__idf_main.dir/bno085.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_main.dir/bno085.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/eidon/eidon-glove/firmware/main/bno085.c -o CMakeFiles/__idf_main.dir/bno085.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/eidon/eidon-glove/firmware/main/bno085.c -o CMakeFiles/__idf_main.dir/bno085.c.s
+
+esp-idf/main/CMakeFiles/__idf_main.dir/bno085_sh2.c.obj: esp-idf/main/CMakeFiles/__idf_main.dir/flags.make
+esp-idf/main/CMakeFiles/__idf_main.dir/bno085_sh2.c.obj: /Users/robert/eidon/eidon-glove/firmware/main/bno085_sh2.c
+esp-idf/main/CMakeFiles/__idf_main.dir/bno085_sh2.c.obj: esp-idf/main/CMakeFiles/__idf_main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object esp-idf/main/CMakeFiles/__idf_main.dir/bno085_sh2.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/main/CMakeFiles/__idf_main.dir/bno085_sh2.c.obj -MF CMakeFiles/__idf_main.dir/bno085_sh2.c.obj.d -o CMakeFiles/__idf_main.dir/bno085_sh2.c.obj -c /Users/robert/eidon/eidon-glove/firmware/main/bno085_sh2.c
+
+esp-idf/main/CMakeFiles/__idf_main.dir/bno085_sh2.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_main.dir/bno085_sh2.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/eidon/eidon-glove/firmware/main/bno085_sh2.c > CMakeFiles/__idf_main.dir/bno085_sh2.c.i
+
+esp-idf/main/CMakeFiles/__idf_main.dir/bno085_sh2.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_main.dir/bno085_sh2.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/eidon/eidon-glove/firmware/main/bno085_sh2.c -o CMakeFiles/__idf_main.dir/bno085_sh2.c.s
+
+esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2.c.obj: esp-idf/main/CMakeFiles/__idf_main.dir/flags.make
+esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2.c.obj: /Users/robert/eidon/eidon-glove/firmware/components/sh2/sh2.c
+esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2.c.obj: esp-idf/main/CMakeFiles/__idf_main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2.c.obj -MF CMakeFiles/__idf_main.dir/__/components/sh2/sh2.c.obj.d -o CMakeFiles/__idf_main.dir/__/components/sh2/sh2.c.obj -c /Users/robert/eidon/eidon-glove/firmware/components/sh2/sh2.c
+
+esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_main.dir/__/components/sh2/sh2.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/eidon/eidon-glove/firmware/components/sh2/sh2.c > CMakeFiles/__idf_main.dir/__/components/sh2/sh2.c.i
+
+esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_main.dir/__/components/sh2/sh2.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/eidon/eidon-glove/firmware/components/sh2/sh2.c -o CMakeFiles/__idf_main.dir/__/components/sh2/sh2.c.s
+
+esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2_SensorValue.c.obj: esp-idf/main/CMakeFiles/__idf_main.dir/flags.make
+esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2_SensorValue.c.obj: /Users/robert/eidon/eidon-glove/firmware/components/sh2/sh2_SensorValue.c
+esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2_SensorValue.c.obj: esp-idf/main/CMakeFiles/__idf_main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2_SensorValue.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2_SensorValue.c.obj -MF CMakeFiles/__idf_main.dir/__/components/sh2/sh2_SensorValue.c.obj.d -o CMakeFiles/__idf_main.dir/__/components/sh2/sh2_SensorValue.c.obj -c /Users/robert/eidon/eidon-glove/firmware/components/sh2/sh2_SensorValue.c
+
+esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2_SensorValue.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_main.dir/__/components/sh2/sh2_SensorValue.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/eidon/eidon-glove/firmware/components/sh2/sh2_SensorValue.c > CMakeFiles/__idf_main.dir/__/components/sh2/sh2_SensorValue.c.i
+
+esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2_SensorValue.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_main.dir/__/components/sh2/sh2_SensorValue.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/eidon/eidon-glove/firmware/components/sh2/sh2_SensorValue.c -o CMakeFiles/__idf_main.dir/__/components/sh2/sh2_SensorValue.c.s
+
+esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2_util.c.obj: esp-idf/main/CMakeFiles/__idf_main.dir/flags.make
+esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2_util.c.obj: /Users/robert/eidon/eidon-glove/firmware/components/sh2/sh2_util.c
+esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2_util.c.obj: esp-idf/main/CMakeFiles/__idf_main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2_util.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2_util.c.obj -MF CMakeFiles/__idf_main.dir/__/components/sh2/sh2_util.c.obj.d -o CMakeFiles/__idf_main.dir/__/components/sh2/sh2_util.c.obj -c /Users/robert/eidon/eidon-glove/firmware/components/sh2/sh2_util.c
+
+esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2_util.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_main.dir/__/components/sh2/sh2_util.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/eidon/eidon-glove/firmware/components/sh2/sh2_util.c > CMakeFiles/__idf_main.dir/__/components/sh2/sh2_util.c.i
+
+esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2_util.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_main.dir/__/components/sh2/sh2_util.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/eidon/eidon-glove/firmware/components/sh2/sh2_util.c -o CMakeFiles/__idf_main.dir/__/components/sh2/sh2_util.c.s
+
+esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/shtp.c.obj: esp-idf/main/CMakeFiles/__idf_main.dir/flags.make
+esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/shtp.c.obj: /Users/robert/eidon/eidon-glove/firmware/components/sh2/shtp.c
+esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/shtp.c.obj: esp-idf/main/CMakeFiles/__idf_main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/shtp.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/shtp.c.obj -MF CMakeFiles/__idf_main.dir/__/components/sh2/shtp.c.obj.d -o CMakeFiles/__idf_main.dir/__/components/sh2/shtp.c.obj -c /Users/robert/eidon/eidon-glove/firmware/components/sh2/shtp.c
+
+esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/shtp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_main.dir/__/components/sh2/shtp.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/eidon/eidon-glove/firmware/components/sh2/shtp.c > CMakeFiles/__idf_main.dir/__/components/sh2/shtp.c.i
+
+esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/shtp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_main.dir/__/components/sh2/shtp.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/eidon/eidon-glove/firmware/components/sh2/shtp.c -o CMakeFiles/__idf_main.dir/__/components/sh2/shtp.c.s
+
+esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/euler.c.obj: esp-idf/main/CMakeFiles/__idf_main.dir/flags.make
+esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/euler.c.obj: /Users/robert/eidon/eidon-glove/firmware/components/sh2/euler.c
+esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/euler.c.obj: esp-idf/main/CMakeFiles/__idf_main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/euler.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/euler.c.obj -MF CMakeFiles/__idf_main.dir/__/components/sh2/euler.c.obj.d -o CMakeFiles/__idf_main.dir/__/components/sh2/euler.c.obj -c /Users/robert/eidon/eidon-glove/firmware/components/sh2/euler.c
+
+esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/euler.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_main.dir/__/components/sh2/euler.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/eidon/eidon-glove/firmware/components/sh2/euler.c > CMakeFiles/__idf_main.dir/__/components/sh2/euler.c.i
+
+esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/euler.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_main.dir/__/components/sh2/euler.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/eidon/eidon-glove/firmware/components/sh2/euler.c -o CMakeFiles/__idf_main.dir/__/components/sh2/euler.c.s
 
 # Object files for target __idf_main
 __idf_main_OBJECTS = \
 "CMakeFiles/__idf_main.dir/esp_hid_device_main.c.obj" \
 "CMakeFiles/__idf_main.dir/esp_hid_gap.c.obj" \
-"CMakeFiles/__idf_main.dir/bno085.c.obj"
+"CMakeFiles/__idf_main.dir/bno085.c.obj" \
+"CMakeFiles/__idf_main.dir/bno085_sh2.c.obj" \
+"CMakeFiles/__idf_main.dir/__/components/sh2/sh2.c.obj" \
+"CMakeFiles/__idf_main.dir/__/components/sh2/sh2_SensorValue.c.obj" \
+"CMakeFiles/__idf_main.dir/__/components/sh2/sh2_util.c.obj" \
+"CMakeFiles/__idf_main.dir/__/components/sh2/shtp.c.obj" \
+"CMakeFiles/__idf_main.dir/__/components/sh2/euler.c.obj"
 
 # External object files for target __idf_main
 __idf_main_EXTERNAL_OBJECTS =
@@ -126,9 +216,15 @@ __idf_main_EXTERNAL_OBJECTS =
 esp-idf/main/libmain.a: esp-idf/main/CMakeFiles/__idf_main.dir/esp_hid_device_main.c.obj
 esp-idf/main/libmain.a: esp-idf/main/CMakeFiles/__idf_main.dir/esp_hid_gap.c.obj
 esp-idf/main/libmain.a: esp-idf/main/CMakeFiles/__idf_main.dir/bno085.c.obj
+esp-idf/main/libmain.a: esp-idf/main/CMakeFiles/__idf_main.dir/bno085_sh2.c.obj
+esp-idf/main/libmain.a: esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2.c.obj
+esp-idf/main/libmain.a: esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2_SensorValue.c.obj
+esp-idf/main/libmain.a: esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2_util.c.obj
+esp-idf/main/libmain.a: esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/shtp.c.obj
+esp-idf/main/libmain.a: esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/euler.c.obj
 esp-idf/main/libmain.a: esp-idf/main/CMakeFiles/__idf_main.dir/build.make
 esp-idf/main/libmain.a: esp-idf/main/CMakeFiles/__idf_main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C static library libmain.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking C static library libmain.a"
 	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && $(CMAKE_COMMAND) -P CMakeFiles/__idf_main.dir/cmake_clean_target.cmake
 	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/main && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/__idf_main.dir/link.txt --verbose=$(VERBOSE)
 

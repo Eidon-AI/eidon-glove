@@ -88,4 +88,10 @@ void bno085_quaternion_to_hid(const bno085_quaternion_t *quat, uint16_t *hid_dat
 // Test raw I2C read
 esp_err_t bno085_test_raw_read(void);
 
+// Debug function to read and log all available packets
+esp_err_t bno085_debug_read_all(void);
+
+// External function for direct SHTP packet reading (for buffer clearing)
+esp_err_t shtp_receive_packet(uint8_t *channel, uint8_t *data, uint16_t *length, uint32_t timeout_ms);
+
 #endif // BNO085_H 

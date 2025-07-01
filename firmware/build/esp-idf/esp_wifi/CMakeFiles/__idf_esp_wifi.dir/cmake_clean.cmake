@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/__idf_esp_wifi.dir/esp32c6/esp_adapter.c.obj"
   "CMakeFiles/__idf_esp_wifi.dir/esp32c6/esp_adapter.c.obj.d"
-  "CMakeFiles/__idf_esp_wifi.dir/regulatory/esp_wifi_regulatory.c.obj"
-  "CMakeFiles/__idf_esp_wifi.dir/regulatory/esp_wifi_regulatory.c.obj.d"
   "CMakeFiles/__idf_esp_wifi.dir/src/lib_printf.c.obj"
   "CMakeFiles/__idf_esp_wifi.dir/src/lib_printf.c.obj.d"
   "CMakeFiles/__idf_esp_wifi.dir/src/mesh_event.c.obj"

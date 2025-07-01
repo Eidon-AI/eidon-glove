@@ -53,7 +53,7 @@ RM = /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/robert/esp-idf/components/bootloader/subproject
+CMAKE_SOURCE_DIR = /Users/robert/esp/esp-idf/components/bootloader/subproject
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /Users/robert/eidon/eidon-glove/firmware/build/bootloader
@@ -89,6 +89,6 @@ CMakeFiles/_project_elf_src.dir/clean:
 .PHONY : CMakeFiles/_project_elf_src.dir/clean
 
 CMakeFiles/_project_elf_src.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp-idf/components/bootloader/subproject /Users/robert/esp-idf/components/bootloader/subproject /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles/_project_elf_src.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp/esp-idf/components/bootloader/subproject /Users/robert/esp/esp-idf/components/bootloader/subproject /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles/_project_elf_src.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/_project_elf_src.dir/depend
 

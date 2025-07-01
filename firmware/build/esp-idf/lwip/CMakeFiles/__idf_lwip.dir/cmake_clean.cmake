@@ -181,8 +181,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/__idf_lwip.dir/port/hooks/lwip_default_hooks.c.obj.d"
   "CMakeFiles/__idf_lwip.dir/port/hooks/tcp_isn_default.c.obj"
   "CMakeFiles/__idf_lwip.dir/port/hooks/tcp_isn_default.c.obj.d"
-  "CMakeFiles/__idf_lwip.dir/port/if_index.c.obj"
-  "CMakeFiles/__idf_lwip.dir/port/if_index.c.obj.d"
   "CMakeFiles/__idf_lwip.dir/port/sockets_ext.c.obj"
   "CMakeFiles/__idf_lwip.dir/port/sockets_ext.c.obj.d"
   "liblwip.a"

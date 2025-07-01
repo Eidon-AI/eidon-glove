@@ -223,54 +223,6 @@ src/nvs_bootloader.c.s:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/nvs_flash/CMakeFiles/__idf_nvs_flash.dir/build.make esp-idf/nvs_flash/CMakeFiles/__idf_nvs_flash.dir/src/nvs_bootloader.c.s
 .PHONY : src/nvs_bootloader.c.s
 
-src/nvs_bootloader_aes.obj: src/nvs_bootloader_aes.c.obj
-.PHONY : src/nvs_bootloader_aes.obj
-
-# target to build an object file
-src/nvs_bootloader_aes.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/nvs_flash/CMakeFiles/__idf_nvs_flash.dir/build.make esp-idf/nvs_flash/CMakeFiles/__idf_nvs_flash.dir/src/nvs_bootloader_aes.c.obj
-.PHONY : src/nvs_bootloader_aes.c.obj
-
-src/nvs_bootloader_aes.i: src/nvs_bootloader_aes.c.i
-.PHONY : src/nvs_bootloader_aes.i
-
-# target to preprocess a source file
-src/nvs_bootloader_aes.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/nvs_flash/CMakeFiles/__idf_nvs_flash.dir/build.make esp-idf/nvs_flash/CMakeFiles/__idf_nvs_flash.dir/src/nvs_bootloader_aes.c.i
-.PHONY : src/nvs_bootloader_aes.c.i
-
-src/nvs_bootloader_aes.s: src/nvs_bootloader_aes.c.s
-.PHONY : src/nvs_bootloader_aes.s
-
-# target to generate assembly for a file
-src/nvs_bootloader_aes.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/nvs_flash/CMakeFiles/__idf_nvs_flash.dir/build.make esp-idf/nvs_flash/CMakeFiles/__idf_nvs_flash.dir/src/nvs_bootloader_aes.c.s
-.PHONY : src/nvs_bootloader_aes.c.s
-
-src/nvs_bootloader_xts_aes.obj: src/nvs_bootloader_xts_aes.c.obj
-.PHONY : src/nvs_bootloader_xts_aes.obj
-
-# target to build an object file
-src/nvs_bootloader_xts_aes.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/nvs_flash/CMakeFiles/__idf_nvs_flash.dir/build.make esp-idf/nvs_flash/CMakeFiles/__idf_nvs_flash.dir/src/nvs_bootloader_xts_aes.c.obj
-.PHONY : src/nvs_bootloader_xts_aes.c.obj
-
-src/nvs_bootloader_xts_aes.i: src/nvs_bootloader_xts_aes.c.i
-.PHONY : src/nvs_bootloader_xts_aes.i
-
-# target to preprocess a source file
-src/nvs_bootloader_xts_aes.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/nvs_flash/CMakeFiles/__idf_nvs_flash.dir/build.make esp-idf/nvs_flash/CMakeFiles/__idf_nvs_flash.dir/src/nvs_bootloader_xts_aes.c.i
-.PHONY : src/nvs_bootloader_xts_aes.c.i
-
-src/nvs_bootloader_xts_aes.s: src/nvs_bootloader_xts_aes.c.s
-.PHONY : src/nvs_bootloader_xts_aes.s
-
-# target to generate assembly for a file
-src/nvs_bootloader_xts_aes.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/nvs_flash/CMakeFiles/__idf_nvs_flash.dir/build.make esp-idf/nvs_flash/CMakeFiles/__idf_nvs_flash.dir/src/nvs_bootloader_xts_aes.c.s
-.PHONY : src/nvs_bootloader_xts_aes.c.s
-
 src/nvs_cxx_api.obj: src/nvs_cxx_api.cpp.obj
 .PHONY : src/nvs_cxx_api.obj
 
@@ -602,12 +554,6 @@ help:
 	@echo "... src/nvs_bootloader.obj"
 	@echo "... src/nvs_bootloader.i"
 	@echo "... src/nvs_bootloader.s"
-	@echo "... src/nvs_bootloader_aes.obj"
-	@echo "... src/nvs_bootloader_aes.i"
-	@echo "... src/nvs_bootloader_aes.s"
-	@echo "... src/nvs_bootloader_xts_aes.obj"
-	@echo "... src/nvs_bootloader_xts_aes.i"
-	@echo "... src/nvs_bootloader_xts_aes.s"
 	@echo "... src/nvs_cxx_api.obj"
 	@echo "... src/nvs_cxx_api.i"
 	@echo "... src/nvs_cxx_api.s"

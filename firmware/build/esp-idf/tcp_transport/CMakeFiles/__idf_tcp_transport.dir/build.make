@@ -73,74 +73,74 @@ esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/codegen:
 .PHONY : esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/codegen
 
 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport.c.obj: esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/flags.make
-esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport.c.obj: /Users/robert/esp-idf/components/tcp_transport/transport.c
+esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport.c.obj: /Users/robert/esp/esp-idf/components/tcp_transport/transport.c
 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport.c.obj: esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport.c.obj -MF CMakeFiles/__idf_tcp_transport.dir/transport.c.obj.d -o CMakeFiles/__idf_tcp_transport.dir/transport.c.obj -c /Users/robert/esp-idf/components/tcp_transport/transport.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport.c.obj -MF CMakeFiles/__idf_tcp_transport.dir/transport.c.obj.d -o CMakeFiles/__idf_tcp_transport.dir/transport.c.obj -c /Users/robert/esp/esp-idf/components/tcp_transport/transport.c
 
 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_tcp_transport.dir/transport.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/tcp_transport/transport.c > CMakeFiles/__idf_tcp_transport.dir/transport.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/tcp_transport/transport.c > CMakeFiles/__idf_tcp_transport.dir/transport.c.i
 
 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_tcp_transport.dir/transport.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/tcp_transport/transport.c -o CMakeFiles/__idf_tcp_transport.dir/transport.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/tcp_transport/transport.c -o CMakeFiles/__idf_tcp_transport.dir/transport.c.s
 
 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_ssl.c.obj: esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/flags.make
-esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_ssl.c.obj: /Users/robert/esp-idf/components/tcp_transport/transport_ssl.c
+esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_ssl.c.obj: /Users/robert/esp/esp-idf/components/tcp_transport/transport_ssl.c
 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_ssl.c.obj: esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_ssl.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_ssl.c.obj -MF CMakeFiles/__idf_tcp_transport.dir/transport_ssl.c.obj.d -o CMakeFiles/__idf_tcp_transport.dir/transport_ssl.c.obj -c /Users/robert/esp-idf/components/tcp_transport/transport_ssl.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_ssl.c.obj -MF CMakeFiles/__idf_tcp_transport.dir/transport_ssl.c.obj.d -o CMakeFiles/__idf_tcp_transport.dir/transport_ssl.c.obj -c /Users/robert/esp/esp-idf/components/tcp_transport/transport_ssl.c
 
 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_ssl.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_tcp_transport.dir/transport_ssl.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/tcp_transport/transport_ssl.c > CMakeFiles/__idf_tcp_transport.dir/transport_ssl.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/tcp_transport/transport_ssl.c > CMakeFiles/__idf_tcp_transport.dir/transport_ssl.c.i
 
 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_ssl.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_tcp_transport.dir/transport_ssl.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/tcp_transport/transport_ssl.c -o CMakeFiles/__idf_tcp_transport.dir/transport_ssl.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/tcp_transport/transport_ssl.c -o CMakeFiles/__idf_tcp_transport.dir/transport_ssl.c.s
 
 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_internal.c.obj: esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/flags.make
-esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_internal.c.obj: /Users/robert/esp-idf/components/tcp_transport/transport_internal.c
+esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_internal.c.obj: /Users/robert/esp/esp-idf/components/tcp_transport/transport_internal.c
 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_internal.c.obj: esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_internal.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_internal.c.obj -MF CMakeFiles/__idf_tcp_transport.dir/transport_internal.c.obj.d -o CMakeFiles/__idf_tcp_transport.dir/transport_internal.c.obj -c /Users/robert/esp-idf/components/tcp_transport/transport_internal.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_internal.c.obj -MF CMakeFiles/__idf_tcp_transport.dir/transport_internal.c.obj.d -o CMakeFiles/__idf_tcp_transport.dir/transport_internal.c.obj -c /Users/robert/esp/esp-idf/components/tcp_transport/transport_internal.c
 
 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_internal.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_tcp_transport.dir/transport_internal.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/tcp_transport/transport_internal.c > CMakeFiles/__idf_tcp_transport.dir/transport_internal.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/tcp_transport/transport_internal.c > CMakeFiles/__idf_tcp_transport.dir/transport_internal.c.i
 
 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_internal.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_tcp_transport.dir/transport_internal.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/tcp_transport/transport_internal.c -o CMakeFiles/__idf_tcp_transport.dir/transport_internal.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/tcp_transport/transport_internal.c -o CMakeFiles/__idf_tcp_transport.dir/transport_internal.c.s
 
 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_socks_proxy.c.obj: esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/flags.make
-esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_socks_proxy.c.obj: /Users/robert/esp-idf/components/tcp_transport/transport_socks_proxy.c
+esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_socks_proxy.c.obj: /Users/robert/esp/esp-idf/components/tcp_transport/transport_socks_proxy.c
 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_socks_proxy.c.obj: esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_socks_proxy.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_socks_proxy.c.obj -MF CMakeFiles/__idf_tcp_transport.dir/transport_socks_proxy.c.obj.d -o CMakeFiles/__idf_tcp_transport.dir/transport_socks_proxy.c.obj -c /Users/robert/esp-idf/components/tcp_transport/transport_socks_proxy.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_socks_proxy.c.obj -MF CMakeFiles/__idf_tcp_transport.dir/transport_socks_proxy.c.obj.d -o CMakeFiles/__idf_tcp_transport.dir/transport_socks_proxy.c.obj -c /Users/robert/esp/esp-idf/components/tcp_transport/transport_socks_proxy.c
 
 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_socks_proxy.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_tcp_transport.dir/transport_socks_proxy.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/tcp_transport/transport_socks_proxy.c > CMakeFiles/__idf_tcp_transport.dir/transport_socks_proxy.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/tcp_transport/transport_socks_proxy.c > CMakeFiles/__idf_tcp_transport.dir/transport_socks_proxy.c.i
 
 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_socks_proxy.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_tcp_transport.dir/transport_socks_proxy.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/tcp_transport/transport_socks_proxy.c -o CMakeFiles/__idf_tcp_transport.dir/transport_socks_proxy.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/tcp_transport/transport_socks_proxy.c -o CMakeFiles/__idf_tcp_transport.dir/transport_socks_proxy.c.s
 
 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_ws.c.obj: esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/flags.make
-esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_ws.c.obj: /Users/robert/esp-idf/components/tcp_transport/transport_ws.c
+esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_ws.c.obj: /Users/robert/esp/esp-idf/components/tcp_transport/transport_ws.c
 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_ws.c.obj: esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_ws.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_ws.c.obj -MF CMakeFiles/__idf_tcp_transport.dir/transport_ws.c.obj.d -o CMakeFiles/__idf_tcp_transport.dir/transport_ws.c.obj -c /Users/robert/esp-idf/components/tcp_transport/transport_ws.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_ws.c.obj -MF CMakeFiles/__idf_tcp_transport.dir/transport_ws.c.obj.d -o CMakeFiles/__idf_tcp_transport.dir/transport_ws.c.obj -c /Users/robert/esp/esp-idf/components/tcp_transport/transport_ws.c
 
 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_ws.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_tcp_transport.dir/transport_ws.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/tcp_transport/transport_ws.c > CMakeFiles/__idf_tcp_transport.dir/transport_ws.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/tcp_transport/transport_ws.c > CMakeFiles/__idf_tcp_transport.dir/transport_ws.c.i
 
 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_ws.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_tcp_transport.dir/transport_ws.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/tcp_transport/transport_ws.c -o CMakeFiles/__idf_tcp_transport.dir/transport_ws.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/tcp_transport/transport_ws.c -o CMakeFiles/__idf_tcp_transport.dir/transport_ws.c.s
 
 # Object files for target __idf_tcp_transport
 __idf_tcp_transport_OBJECTS = \
@@ -173,6 +173,6 @@ esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/clean:
 .PHONY : esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/clean
 
 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/tcp_transport /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/tcp_transport /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/depend
 

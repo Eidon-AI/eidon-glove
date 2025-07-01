@@ -1159,30 +1159,6 @@ host/bluedroid/api/esp_l2cap_bt_api.c.s:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/api/esp_l2cap_bt_api.c.s
 .PHONY : host/bluedroid/api/esp_l2cap_bt_api.c.s
 
-host/bluedroid/api/esp_pbac_api.obj: host/bluedroid/api/esp_pbac_api.c.obj
-.PHONY : host/bluedroid/api/esp_pbac_api.obj
-
-# target to build an object file
-host/bluedroid/api/esp_pbac_api.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/api/esp_pbac_api.c.obj
-.PHONY : host/bluedroid/api/esp_pbac_api.c.obj
-
-host/bluedroid/api/esp_pbac_api.i: host/bluedroid/api/esp_pbac_api.c.i
-.PHONY : host/bluedroid/api/esp_pbac_api.i
-
-# target to preprocess a source file
-host/bluedroid/api/esp_pbac_api.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/api/esp_pbac_api.c.i
-.PHONY : host/bluedroid/api/esp_pbac_api.c.i
-
-host/bluedroid/api/esp_pbac_api.s: host/bluedroid/api/esp_pbac_api.c.s
-.PHONY : host/bluedroid/api/esp_pbac_api.s
-
-# target to generate assembly for a file
-host/bluedroid/api/esp_pbac_api.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/api/esp_pbac_api.c.s
-.PHONY : host/bluedroid/api/esp_pbac_api.c.s
-
 host/bluedroid/api/esp_sdp_api.obj: host/bluedroid/api/esp_sdp_api.c.obj
 .PHONY : host/bluedroid/api/esp_sdp_api.obj
 
@@ -2743,102 +2719,6 @@ host/bluedroid/bta/jv/bta_jv_main.c.s:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/bta/jv/bta_jv_main.c.s
 .PHONY : host/bluedroid/bta/jv/bta_jv_main.c.s
 
-host/bluedroid/bta/pba/bta_pba_client_act.obj: host/bluedroid/bta/pba/bta_pba_client_act.c.obj
-.PHONY : host/bluedroid/bta/pba/bta_pba_client_act.obj
-
-# target to build an object file
-host/bluedroid/bta/pba/bta_pba_client_act.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/bta/pba/bta_pba_client_act.c.obj
-.PHONY : host/bluedroid/bta/pba/bta_pba_client_act.c.obj
-
-host/bluedroid/bta/pba/bta_pba_client_act.i: host/bluedroid/bta/pba/bta_pba_client_act.c.i
-.PHONY : host/bluedroid/bta/pba/bta_pba_client_act.i
-
-# target to preprocess a source file
-host/bluedroid/bta/pba/bta_pba_client_act.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/bta/pba/bta_pba_client_act.c.i
-.PHONY : host/bluedroid/bta/pba/bta_pba_client_act.c.i
-
-host/bluedroid/bta/pba/bta_pba_client_act.s: host/bluedroid/bta/pba/bta_pba_client_act.c.s
-.PHONY : host/bluedroid/bta/pba/bta_pba_client_act.s
-
-# target to generate assembly for a file
-host/bluedroid/bta/pba/bta_pba_client_act.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/bta/pba/bta_pba_client_act.c.s
-.PHONY : host/bluedroid/bta/pba/bta_pba_client_act.c.s
-
-host/bluedroid/bta/pba/bta_pba_client_api.obj: host/bluedroid/bta/pba/bta_pba_client_api.c.obj
-.PHONY : host/bluedroid/bta/pba/bta_pba_client_api.obj
-
-# target to build an object file
-host/bluedroid/bta/pba/bta_pba_client_api.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/bta/pba/bta_pba_client_api.c.obj
-.PHONY : host/bluedroid/bta/pba/bta_pba_client_api.c.obj
-
-host/bluedroid/bta/pba/bta_pba_client_api.i: host/bluedroid/bta/pba/bta_pba_client_api.c.i
-.PHONY : host/bluedroid/bta/pba/bta_pba_client_api.i
-
-# target to preprocess a source file
-host/bluedroid/bta/pba/bta_pba_client_api.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/bta/pba/bta_pba_client_api.c.i
-.PHONY : host/bluedroid/bta/pba/bta_pba_client_api.c.i
-
-host/bluedroid/bta/pba/bta_pba_client_api.s: host/bluedroid/bta/pba/bta_pba_client_api.c.s
-.PHONY : host/bluedroid/bta/pba/bta_pba_client_api.s
-
-# target to generate assembly for a file
-host/bluedroid/bta/pba/bta_pba_client_api.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/bta/pba/bta_pba_client_api.c.s
-.PHONY : host/bluedroid/bta/pba/bta_pba_client_api.c.s
-
-host/bluedroid/bta/pba/bta_pba_client_main.obj: host/bluedroid/bta/pba/bta_pba_client_main.c.obj
-.PHONY : host/bluedroid/bta/pba/bta_pba_client_main.obj
-
-# target to build an object file
-host/bluedroid/bta/pba/bta_pba_client_main.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/bta/pba/bta_pba_client_main.c.obj
-.PHONY : host/bluedroid/bta/pba/bta_pba_client_main.c.obj
-
-host/bluedroid/bta/pba/bta_pba_client_main.i: host/bluedroid/bta/pba/bta_pba_client_main.c.i
-.PHONY : host/bluedroid/bta/pba/bta_pba_client_main.i
-
-# target to preprocess a source file
-host/bluedroid/bta/pba/bta_pba_client_main.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/bta/pba/bta_pba_client_main.c.i
-.PHONY : host/bluedroid/bta/pba/bta_pba_client_main.c.i
-
-host/bluedroid/bta/pba/bta_pba_client_main.s: host/bluedroid/bta/pba/bta_pba_client_main.c.s
-.PHONY : host/bluedroid/bta/pba/bta_pba_client_main.s
-
-# target to generate assembly for a file
-host/bluedroid/bta/pba/bta_pba_client_main.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/bta/pba/bta_pba_client_main.c.s
-.PHONY : host/bluedroid/bta/pba/bta_pba_client_main.c.s
-
-host/bluedroid/bta/pba/bta_pba_client_sdp.obj: host/bluedroid/bta/pba/bta_pba_client_sdp.c.obj
-.PHONY : host/bluedroid/bta/pba/bta_pba_client_sdp.obj
-
-# target to build an object file
-host/bluedroid/bta/pba/bta_pba_client_sdp.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/bta/pba/bta_pba_client_sdp.c.obj
-.PHONY : host/bluedroid/bta/pba/bta_pba_client_sdp.c.obj
-
-host/bluedroid/bta/pba/bta_pba_client_sdp.i: host/bluedroid/bta/pba/bta_pba_client_sdp.c.i
-.PHONY : host/bluedroid/bta/pba/bta_pba_client_sdp.i
-
-# target to preprocess a source file
-host/bluedroid/bta/pba/bta_pba_client_sdp.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/bta/pba/bta_pba_client_sdp.c.i
-.PHONY : host/bluedroid/bta/pba/bta_pba_client_sdp.c.i
-
-host/bluedroid/bta/pba/bta_pba_client_sdp.s: host/bluedroid/bta/pba/bta_pba_client_sdp.c.s
-.PHONY : host/bluedroid/bta/pba/bta_pba_client_sdp.s
-
-# target to generate assembly for a file
-host/bluedroid/bta/pba/bta_pba_client_sdp.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/bta/pba/bta_pba_client_sdp.c.s
-.PHONY : host/bluedroid/bta/pba/bta_pba_client_sdp.c.s
-
 host/bluedroid/bta/sdp/bta_sdp.obj: host/bluedroid/bta/sdp/bta_sdp.c.obj
 .PHONY : host/bluedroid/bta/sdp/bta_sdp.obj
 
@@ -3343,30 +3223,6 @@ host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink.c.s:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink.c.s
 .PHONY : host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink.c.s
 
-host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink_ext_coedc.obj: host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink_ext_coedc.c.obj
-.PHONY : host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink_ext_coedc.obj
-
-# target to build an object file
-host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink_ext_coedc.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink_ext_coedc.c.obj
-.PHONY : host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink_ext_coedc.c.obj
-
-host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink_ext_coedc.i: host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink_ext_coedc.c.i
-.PHONY : host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink_ext_coedc.i
-
-# target to preprocess a source file
-host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink_ext_coedc.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink_ext_coedc.c.i
-.PHONY : host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink_ext_coedc.c.i
-
-host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink_ext_coedc.s: host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink_ext_coedc.c.s
-.PHONY : host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink_ext_coedc.s
-
-# target to generate assembly for a file
-host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink_ext_coedc.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink_ext_coedc.c.s
-.PHONY : host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink_ext_coedc.c.s
-
 host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source.obj: host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source.c.obj
 .PHONY : host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source.obj
 
@@ -3390,30 +3246,6 @@ host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source.s: host/bluedroid/btc/profil
 host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source.c.s:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source.c.s
 .PHONY : host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source.c.s
-
-host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source_ext_codec.obj: host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source_ext_codec.c.obj
-.PHONY : host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source_ext_codec.obj
-
-# target to build an object file
-host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source_ext_codec.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source_ext_codec.c.obj
-.PHONY : host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source_ext_codec.c.obj
-
-host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source_ext_codec.i: host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source_ext_codec.c.i
-.PHONY : host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source_ext_codec.i
-
-# target to preprocess a source file
-host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source_ext_codec.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source_ext_codec.c.i
-.PHONY : host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source_ext_codec.c.i
-
-host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source_ext_codec.s: host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source_ext_codec.c.s
-.PHONY : host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source_ext_codec.s
-
-# target to generate assembly for a file
-host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source_ext_codec.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source_ext_codec.c.s
-.PHONY : host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source_ext_codec.c.s
 
 host/bluedroid/btc/profile/std/a2dp/btc_av.obj: host/bluedroid/btc/profile/std/a2dp/btc_av.c.obj
 .PHONY : host/bluedroid/btc/profile/std/a2dp/btc_av.obj
@@ -3846,30 +3678,6 @@ host/bluedroid/btc/profile/std/l2cap/btc_l2cap.s: host/bluedroid/btc/profile/std
 host/bluedroid/btc/profile/std/l2cap/btc_l2cap.c.s:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/btc/profile/std/l2cap/btc_l2cap.c.s
 .PHONY : host/bluedroid/btc/profile/std/l2cap/btc_l2cap.c.s
-
-host/bluedroid/btc/profile/std/pba/btc_pba_client.obj: host/bluedroid/btc/profile/std/pba/btc_pba_client.c.obj
-.PHONY : host/bluedroid/btc/profile/std/pba/btc_pba_client.obj
-
-# target to build an object file
-host/bluedroid/btc/profile/std/pba/btc_pba_client.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/btc/profile/std/pba/btc_pba_client.c.obj
-.PHONY : host/bluedroid/btc/profile/std/pba/btc_pba_client.c.obj
-
-host/bluedroid/btc/profile/std/pba/btc_pba_client.i: host/bluedroid/btc/profile/std/pba/btc_pba_client.c.i
-.PHONY : host/bluedroid/btc/profile/std/pba/btc_pba_client.i
-
-# target to preprocess a source file
-host/bluedroid/btc/profile/std/pba/btc_pba_client.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/btc/profile/std/pba/btc_pba_client.c.i
-.PHONY : host/bluedroid/btc/profile/std/pba/btc_pba_client.c.i
-
-host/bluedroid/btc/profile/std/pba/btc_pba_client.s: host/bluedroid/btc/profile/std/pba/btc_pba_client.c.s
-.PHONY : host/bluedroid/btc/profile/std/pba/btc_pba_client.s
-
-# target to generate assembly for a file
-host/bluedroid/btc/profile/std/pba/btc_pba_client.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/btc/profile/std/pba/btc_pba_client.c.s
-.PHONY : host/bluedroid/btc/profile/std/pba/btc_pba_client.c.s
 
 host/bluedroid/btc/profile/std/sdp/btc_sdp.obj: host/bluedroid/btc/profile/std/sdp/btc_sdp.c.obj
 .PHONY : host/bluedroid/btc/profile/std/sdp/btc_sdp.obj
@@ -6631,30 +6439,6 @@ host/bluedroid/stack/obex/obex_tl_l2cap.c.s:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/stack/obex/obex_tl_l2cap.c.s
 .PHONY : host/bluedroid/stack/obex/obex_tl_l2cap.c.s
 
-host/bluedroid/stack/obex/obex_tl_rfcomm.obj: host/bluedroid/stack/obex/obex_tl_rfcomm.c.obj
-.PHONY : host/bluedroid/stack/obex/obex_tl_rfcomm.obj
-
-# target to build an object file
-host/bluedroid/stack/obex/obex_tl_rfcomm.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/stack/obex/obex_tl_rfcomm.c.obj
-.PHONY : host/bluedroid/stack/obex/obex_tl_rfcomm.c.obj
-
-host/bluedroid/stack/obex/obex_tl_rfcomm.i: host/bluedroid/stack/obex/obex_tl_rfcomm.c.i
-.PHONY : host/bluedroid/stack/obex/obex_tl_rfcomm.i
-
-# target to preprocess a source file
-host/bluedroid/stack/obex/obex_tl_rfcomm.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/stack/obex/obex_tl_rfcomm.c.i
-.PHONY : host/bluedroid/stack/obex/obex_tl_rfcomm.c.i
-
-host/bluedroid/stack/obex/obex_tl_rfcomm.s: host/bluedroid/stack/obex/obex_tl_rfcomm.c.s
-.PHONY : host/bluedroid/stack/obex/obex_tl_rfcomm.s
-
-# target to generate assembly for a file
-host/bluedroid/stack/obex/obex_tl_rfcomm.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/bt/CMakeFiles/__idf_bt.dir/build.make esp-idf/bt/CMakeFiles/__idf_bt.dir/host/bluedroid/stack/obex/obex_tl_rfcomm.c.s
-.PHONY : host/bluedroid/stack/obex/obex_tl_rfcomm.c.s
-
 host/bluedroid/stack/rfcomm/port_api.obj: host/bluedroid/stack/rfcomm/port_api.c.obj
 .PHONY : host/bluedroid/stack/rfcomm/port_api.obj
 
@@ -7559,9 +7343,6 @@ help:
 	@echo "... host/bluedroid/api/esp_l2cap_bt_api.obj"
 	@echo "... host/bluedroid/api/esp_l2cap_bt_api.i"
 	@echo "... host/bluedroid/api/esp_l2cap_bt_api.s"
-	@echo "... host/bluedroid/api/esp_pbac_api.obj"
-	@echo "... host/bluedroid/api/esp_pbac_api.i"
-	@echo "... host/bluedroid/api/esp_pbac_api.s"
 	@echo "... host/bluedroid/api/esp_sdp_api.obj"
 	@echo "... host/bluedroid/api/esp_sdp_api.i"
 	@echo "... host/bluedroid/api/esp_sdp_api.s"
@@ -7757,18 +7538,6 @@ help:
 	@echo "... host/bluedroid/bta/jv/bta_jv_main.obj"
 	@echo "... host/bluedroid/bta/jv/bta_jv_main.i"
 	@echo "... host/bluedroid/bta/jv/bta_jv_main.s"
-	@echo "... host/bluedroid/bta/pba/bta_pba_client_act.obj"
-	@echo "... host/bluedroid/bta/pba/bta_pba_client_act.i"
-	@echo "... host/bluedroid/bta/pba/bta_pba_client_act.s"
-	@echo "... host/bluedroid/bta/pba/bta_pba_client_api.obj"
-	@echo "... host/bluedroid/bta/pba/bta_pba_client_api.i"
-	@echo "... host/bluedroid/bta/pba/bta_pba_client_api.s"
-	@echo "... host/bluedroid/bta/pba/bta_pba_client_main.obj"
-	@echo "... host/bluedroid/bta/pba/bta_pba_client_main.i"
-	@echo "... host/bluedroid/bta/pba/bta_pba_client_main.s"
-	@echo "... host/bluedroid/bta/pba/bta_pba_client_sdp.obj"
-	@echo "... host/bluedroid/bta/pba/bta_pba_client_sdp.i"
-	@echo "... host/bluedroid/bta/pba/bta_pba_client_sdp.s"
 	@echo "... host/bluedroid/bta/sdp/bta_sdp.obj"
 	@echo "... host/bluedroid/bta/sdp/bta_sdp.i"
 	@echo "... host/bluedroid/bta/sdp/bta_sdp.s"
@@ -7832,15 +7601,9 @@ help:
 	@echo "... host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink.obj"
 	@echo "... host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink.i"
 	@echo "... host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink.s"
-	@echo "... host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink_ext_coedc.obj"
-	@echo "... host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink_ext_coedc.i"
-	@echo "... host/bluedroid/btc/profile/std/a2dp/btc_a2dp_sink_ext_coedc.s"
 	@echo "... host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source.obj"
 	@echo "... host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source.i"
 	@echo "... host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source.s"
-	@echo "... host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source_ext_codec.obj"
-	@echo "... host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source_ext_codec.i"
-	@echo "... host/bluedroid/btc/profile/std/a2dp/btc_a2dp_source_ext_codec.s"
 	@echo "... host/bluedroid/btc/profile/std/a2dp/btc_av.obj"
 	@echo "... host/bluedroid/btc/profile/std/a2dp/btc_av.i"
 	@echo "... host/bluedroid/btc/profile/std/a2dp/btc_av.s"
@@ -7895,9 +7658,6 @@ help:
 	@echo "... host/bluedroid/btc/profile/std/l2cap/btc_l2cap.obj"
 	@echo "... host/bluedroid/btc/profile/std/l2cap/btc_l2cap.i"
 	@echo "... host/bluedroid/btc/profile/std/l2cap/btc_l2cap.s"
-	@echo "... host/bluedroid/btc/profile/std/pba/btc_pba_client.obj"
-	@echo "... host/bluedroid/btc/profile/std/pba/btc_pba_client.i"
-	@echo "... host/bluedroid/btc/profile/std/pba/btc_pba_client.s"
 	@echo "... host/bluedroid/btc/profile/std/sdp/btc_sdp.obj"
 	@echo "... host/bluedroid/btc/profile/std/sdp/btc_sdp.i"
 	@echo "... host/bluedroid/btc/profile/std/sdp/btc_sdp.s"
@@ -8243,9 +8003,6 @@ help:
 	@echo "... host/bluedroid/stack/obex/obex_tl_l2cap.obj"
 	@echo "... host/bluedroid/stack/obex/obex_tl_l2cap.i"
 	@echo "... host/bluedroid/stack/obex/obex_tl_l2cap.s"
-	@echo "... host/bluedroid/stack/obex/obex_tl_rfcomm.obj"
-	@echo "... host/bluedroid/stack/obex/obex_tl_rfcomm.i"
-	@echo "... host/bluedroid/stack/obex/obex_tl_rfcomm.s"
 	@echo "... host/bluedroid/stack/rfcomm/port_api.obj"
 	@echo "... host/bluedroid/stack/rfcomm/port_api.i"
 	@echo "... host/bluedroid/stack/rfcomm/port_api.s"

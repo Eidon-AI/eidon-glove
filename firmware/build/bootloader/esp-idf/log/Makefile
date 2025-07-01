@@ -57,7 +57,7 @@ RM = /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/robert/esp-idf/components/bootloader/subproject
+CMAKE_SOURCE_DIR = /Users/robert/esp/esp-idf/components/bootloader/subproject
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /Users/robert/eidon/eidon-glove/firmware/build/bootloader
@@ -129,102 +129,6 @@ __idf_log: esp-idf/log/CMakeFiles/__idf_log.dir/rule
 __idf_log/fast:
 	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(MAKE) $(MAKESILENT) -f esp-idf/log/CMakeFiles/__idf_log.dir/build.make esp-idf/log/CMakeFiles/__idf_log.dir/build
 .PHONY : __idf_log/fast
-
-src/buffer/log_buffers.obj: src/buffer/log_buffers.c.obj
-.PHONY : src/buffer/log_buffers.obj
-
-# target to build an object file
-src/buffer/log_buffers.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(MAKE) $(MAKESILENT) -f esp-idf/log/CMakeFiles/__idf_log.dir/build.make esp-idf/log/CMakeFiles/__idf_log.dir/src/buffer/log_buffers.c.obj
-.PHONY : src/buffer/log_buffers.c.obj
-
-src/buffer/log_buffers.i: src/buffer/log_buffers.c.i
-.PHONY : src/buffer/log_buffers.i
-
-# target to preprocess a source file
-src/buffer/log_buffers.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(MAKE) $(MAKESILENT) -f esp-idf/log/CMakeFiles/__idf_log.dir/build.make esp-idf/log/CMakeFiles/__idf_log.dir/src/buffer/log_buffers.c.i
-.PHONY : src/buffer/log_buffers.c.i
-
-src/buffer/log_buffers.s: src/buffer/log_buffers.c.s
-.PHONY : src/buffer/log_buffers.s
-
-# target to generate assembly for a file
-src/buffer/log_buffers.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(MAKE) $(MAKESILENT) -f esp-idf/log/CMakeFiles/__idf_log.dir/build.make esp-idf/log/CMakeFiles/__idf_log.dir/src/buffer/log_buffers.c.s
-.PHONY : src/buffer/log_buffers.c.s
-
-src/log.obj: src/log.c.obj
-.PHONY : src/log.obj
-
-# target to build an object file
-src/log.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(MAKE) $(MAKESILENT) -f esp-idf/log/CMakeFiles/__idf_log.dir/build.make esp-idf/log/CMakeFiles/__idf_log.dir/src/log.c.obj
-.PHONY : src/log.c.obj
-
-src/log.i: src/log.c.i
-.PHONY : src/log.i
-
-# target to preprocess a source file
-src/log.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(MAKE) $(MAKESILENT) -f esp-idf/log/CMakeFiles/__idf_log.dir/build.make esp-idf/log/CMakeFiles/__idf_log.dir/src/log.c.i
-.PHONY : src/log.c.i
-
-src/log.s: src/log.c.s
-.PHONY : src/log.s
-
-# target to generate assembly for a file
-src/log.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(MAKE) $(MAKESILENT) -f esp-idf/log/CMakeFiles/__idf_log.dir/build.make esp-idf/log/CMakeFiles/__idf_log.dir/src/log.c.s
-.PHONY : src/log.c.s
-
-src/log_format_text.obj: src/log_format_text.c.obj
-.PHONY : src/log_format_text.obj
-
-# target to build an object file
-src/log_format_text.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(MAKE) $(MAKESILENT) -f esp-idf/log/CMakeFiles/__idf_log.dir/build.make esp-idf/log/CMakeFiles/__idf_log.dir/src/log_format_text.c.obj
-.PHONY : src/log_format_text.c.obj
-
-src/log_format_text.i: src/log_format_text.c.i
-.PHONY : src/log_format_text.i
-
-# target to preprocess a source file
-src/log_format_text.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(MAKE) $(MAKESILENT) -f esp-idf/log/CMakeFiles/__idf_log.dir/build.make esp-idf/log/CMakeFiles/__idf_log.dir/src/log_format_text.c.i
-.PHONY : src/log_format_text.c.i
-
-src/log_format_text.s: src/log_format_text.c.s
-.PHONY : src/log_format_text.s
-
-# target to generate assembly for a file
-src/log_format_text.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(MAKE) $(MAKESILENT) -f esp-idf/log/CMakeFiles/__idf_log.dir/build.make esp-idf/log/CMakeFiles/__idf_log.dir/src/log_format_text.c.s
-.PHONY : src/log_format_text.c.s
-
-src/log_print.obj: src/log_print.c.obj
-.PHONY : src/log_print.obj
-
-# target to build an object file
-src/log_print.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(MAKE) $(MAKESILENT) -f esp-idf/log/CMakeFiles/__idf_log.dir/build.make esp-idf/log/CMakeFiles/__idf_log.dir/src/log_print.c.obj
-.PHONY : src/log_print.c.obj
-
-src/log_print.i: src/log_print.c.i
-.PHONY : src/log_print.i
-
-# target to preprocess a source file
-src/log_print.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(MAKE) $(MAKESILENT) -f esp-idf/log/CMakeFiles/__idf_log.dir/build.make esp-idf/log/CMakeFiles/__idf_log.dir/src/log_print.c.i
-.PHONY : src/log_print.c.i
-
-src/log_print.s: src/log_print.c.s
-.PHONY : src/log_print.s
-
-# target to generate assembly for a file
-src/log_print.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(MAKE) $(MAKESILENT) -f esp-idf/log/CMakeFiles/__idf_log.dir/build.make esp-idf/log/CMakeFiles/__idf_log.dir/src/log_print.c.s
-.PHONY : src/log_print.c.s
 
 src/log_timestamp_common.obj: src/log_timestamp_common.c.obj
 .PHONY : src/log_timestamp_common.obj
@@ -298,54 +202,6 @@ src/noos/log_timestamp.c.s:
 	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(MAKE) $(MAKESILENT) -f esp-idf/log/CMakeFiles/__idf_log.dir/build.make esp-idf/log/CMakeFiles/__idf_log.dir/src/noos/log_timestamp.c.s
 .PHONY : src/noos/log_timestamp.c.s
 
-src/noos/util.obj: src/noos/util.c.obj
-.PHONY : src/noos/util.obj
-
-# target to build an object file
-src/noos/util.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(MAKE) $(MAKESILENT) -f esp-idf/log/CMakeFiles/__idf_log.dir/build.make esp-idf/log/CMakeFiles/__idf_log.dir/src/noos/util.c.obj
-.PHONY : src/noos/util.c.obj
-
-src/noos/util.i: src/noos/util.c.i
-.PHONY : src/noos/util.i
-
-# target to preprocess a source file
-src/noos/util.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(MAKE) $(MAKESILENT) -f esp-idf/log/CMakeFiles/__idf_log.dir/build.make esp-idf/log/CMakeFiles/__idf_log.dir/src/noos/util.c.i
-.PHONY : src/noos/util.c.i
-
-src/noos/util.s: src/noos/util.c.s
-.PHONY : src/noos/util.s
-
-# target to generate assembly for a file
-src/noos/util.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(MAKE) $(MAKESILENT) -f esp-idf/log/CMakeFiles/__idf_log.dir/build.make esp-idf/log/CMakeFiles/__idf_log.dir/src/noos/util.c.s
-.PHONY : src/noos/util.c.s
-
-src/util.obj: src/util.c.obj
-.PHONY : src/util.obj
-
-# target to build an object file
-src/util.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(MAKE) $(MAKESILENT) -f esp-idf/log/CMakeFiles/__idf_log.dir/build.make esp-idf/log/CMakeFiles/__idf_log.dir/src/util.c.obj
-.PHONY : src/util.c.obj
-
-src/util.i: src/util.c.i
-.PHONY : src/util.i
-
-# target to preprocess a source file
-src/util.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(MAKE) $(MAKESILENT) -f esp-idf/log/CMakeFiles/__idf_log.dir/build.make esp-idf/log/CMakeFiles/__idf_log.dir/src/util.c.i
-.PHONY : src/util.c.i
-
-src/util.s: src/util.c.s
-.PHONY : src/util.s
-
-# target to generate assembly for a file
-src/util.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(MAKE) $(MAKESILENT) -f esp-idf/log/CMakeFiles/__idf_log.dir/build.make esp-idf/log/CMakeFiles/__idf_log.dir/src/util.c.s
-.PHONY : src/util.c.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -355,18 +211,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... __idf_log"
-	@echo "... src/buffer/log_buffers.obj"
-	@echo "... src/buffer/log_buffers.i"
-	@echo "... src/buffer/log_buffers.s"
-	@echo "... src/log.obj"
-	@echo "... src/log.i"
-	@echo "... src/log.s"
-	@echo "... src/log_format_text.obj"
-	@echo "... src/log_format_text.i"
-	@echo "... src/log_format_text.s"
-	@echo "... src/log_print.obj"
-	@echo "... src/log_print.i"
-	@echo "... src/log_print.s"
 	@echo "... src/log_timestamp_common.obj"
 	@echo "... src/log_timestamp_common.i"
 	@echo "... src/log_timestamp_common.s"
@@ -376,12 +220,6 @@ help:
 	@echo "... src/noos/log_timestamp.obj"
 	@echo "... src/noos/log_timestamp.i"
 	@echo "... src/noos/log_timestamp.s"
-	@echo "... src/noos/util.obj"
-	@echo "... src/noos/util.i"
-	@echo "... src/noos/util.s"
-	@echo "... src/util.obj"
-	@echo "... src/util.i"
-	@echo "... src/util.s"
 .PHONY : help
 
 

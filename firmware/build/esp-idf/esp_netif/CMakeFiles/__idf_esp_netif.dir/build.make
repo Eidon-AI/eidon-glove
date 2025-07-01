@@ -73,130 +73,130 @@ esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/codegen:
 .PHONY : esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/codegen
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_handlers.c.obj: esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/flags.make
-esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_handlers.c.obj: /Users/robert/esp-idf/components/esp_netif/esp_netif_handlers.c
+esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_handlers.c.obj: /Users/robert/esp/esp-idf/components/esp_netif/esp_netif_handlers.c
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_handlers.c.obj: esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_handlers.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_handlers.c.obj -MF CMakeFiles/__idf_esp_netif.dir/esp_netif_handlers.c.obj.d -o CMakeFiles/__idf_esp_netif.dir/esp_netif_handlers.c.obj -c /Users/robert/esp-idf/components/esp_netif/esp_netif_handlers.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_handlers.c.obj -MF CMakeFiles/__idf_esp_netif.dir/esp_netif_handlers.c.obj.d -o CMakeFiles/__idf_esp_netif.dir/esp_netif_handlers.c.obj -c /Users/robert/esp/esp-idf/components/esp_netif/esp_netif_handlers.c
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_handlers.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_netif.dir/esp_netif_handlers.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_netif/esp_netif_handlers.c > CMakeFiles/__idf_esp_netif.dir/esp_netif_handlers.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_netif/esp_netif_handlers.c > CMakeFiles/__idf_esp_netif.dir/esp_netif_handlers.c.i
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_handlers.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_netif.dir/esp_netif_handlers.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_netif/esp_netif_handlers.c -o CMakeFiles/__idf_esp_netif.dir/esp_netif_handlers.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_netif/esp_netif_handlers.c -o CMakeFiles/__idf_esp_netif.dir/esp_netif_handlers.c.s
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_objects.c.obj: esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/flags.make
-esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_objects.c.obj: /Users/robert/esp-idf/components/esp_netif/esp_netif_objects.c
+esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_objects.c.obj: /Users/robert/esp/esp-idf/components/esp_netif/esp_netif_objects.c
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_objects.c.obj: esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_objects.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_objects.c.obj -MF CMakeFiles/__idf_esp_netif.dir/esp_netif_objects.c.obj.d -o CMakeFiles/__idf_esp_netif.dir/esp_netif_objects.c.obj -c /Users/robert/esp-idf/components/esp_netif/esp_netif_objects.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_objects.c.obj -MF CMakeFiles/__idf_esp_netif.dir/esp_netif_objects.c.obj.d -o CMakeFiles/__idf_esp_netif.dir/esp_netif_objects.c.obj -c /Users/robert/esp/esp-idf/components/esp_netif/esp_netif_objects.c
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_objects.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_netif.dir/esp_netif_objects.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_netif/esp_netif_objects.c > CMakeFiles/__idf_esp_netif.dir/esp_netif_objects.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_netif/esp_netif_objects.c > CMakeFiles/__idf_esp_netif.dir/esp_netif_objects.c.i
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_objects.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_netif.dir/esp_netif_objects.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_netif/esp_netif_objects.c -o CMakeFiles/__idf_esp_netif.dir/esp_netif_objects.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_netif/esp_netif_objects.c -o CMakeFiles/__idf_esp_netif.dir/esp_netif_objects.c.s
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_defaults.c.obj: esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/flags.make
-esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_defaults.c.obj: /Users/robert/esp-idf/components/esp_netif/esp_netif_defaults.c
+esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_defaults.c.obj: /Users/robert/esp/esp-idf/components/esp_netif/esp_netif_defaults.c
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_defaults.c.obj: esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_defaults.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_defaults.c.obj -MF CMakeFiles/__idf_esp_netif.dir/esp_netif_defaults.c.obj.d -o CMakeFiles/__idf_esp_netif.dir/esp_netif_defaults.c.obj -c /Users/robert/esp-idf/components/esp_netif/esp_netif_defaults.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_defaults.c.obj -MF CMakeFiles/__idf_esp_netif.dir/esp_netif_defaults.c.obj.d -o CMakeFiles/__idf_esp_netif.dir/esp_netif_defaults.c.obj -c /Users/robert/esp/esp-idf/components/esp_netif/esp_netif_defaults.c
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_defaults.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_netif.dir/esp_netif_defaults.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_netif/esp_netif_defaults.c > CMakeFiles/__idf_esp_netif.dir/esp_netif_defaults.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_netif/esp_netif_defaults.c > CMakeFiles/__idf_esp_netif.dir/esp_netif_defaults.c.i
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_defaults.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_netif.dir/esp_netif_defaults.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_netif/esp_netif_defaults.c -o CMakeFiles/__idf_esp_netif.dir/esp_netif_defaults.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_netif/esp_netif_defaults.c -o CMakeFiles/__idf_esp_netif.dir/esp_netif_defaults.c.s
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip.c.obj: esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/flags.make
-esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip.c.obj: /Users/robert/esp-idf/components/esp_netif/lwip/esp_netif_lwip.c
+esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip.c.obj: /Users/robert/esp/esp-idf/components/esp_netif/lwip/esp_netif_lwip.c
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip.c.obj: esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip.c.obj -MF CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip.c.obj.d -o CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip.c.obj -c /Users/robert/esp-idf/components/esp_netif/lwip/esp_netif_lwip.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip.c.obj -MF CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip.c.obj.d -o CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip.c.obj -c /Users/robert/esp/esp-idf/components/esp_netif/lwip/esp_netif_lwip.c
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_netif/lwip/esp_netif_lwip.c > CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_netif/lwip/esp_netif_lwip.c > CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip.c.i
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_netif/lwip/esp_netif_lwip.c -o CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_netif/lwip/esp_netif_lwip.c -o CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip.c.s
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_sntp.c.obj: esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/flags.make
-esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_sntp.c.obj: /Users/robert/esp-idf/components/esp_netif/lwip/esp_netif_sntp.c
+esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_sntp.c.obj: /Users/robert/esp/esp-idf/components/esp_netif/lwip/esp_netif_sntp.c
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_sntp.c.obj: esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_sntp.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_sntp.c.obj -MF CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_sntp.c.obj.d -o CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_sntp.c.obj -c /Users/robert/esp-idf/components/esp_netif/lwip/esp_netif_sntp.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_sntp.c.obj -MF CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_sntp.c.obj.d -o CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_sntp.c.obj -c /Users/robert/esp/esp-idf/components/esp_netif/lwip/esp_netif_sntp.c
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_sntp.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_sntp.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_netif/lwip/esp_netif_sntp.c > CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_sntp.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_netif/lwip/esp_netif_sntp.c > CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_sntp.c.i
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_sntp.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_sntp.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_netif/lwip/esp_netif_sntp.c -o CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_sntp.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_netif/lwip/esp_netif_sntp.c -o CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_sntp.c.s
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip_defaults.c.obj: esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/flags.make
-esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip_defaults.c.obj: /Users/robert/esp-idf/components/esp_netif/lwip/esp_netif_lwip_defaults.c
+esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip_defaults.c.obj: /Users/robert/esp/esp-idf/components/esp_netif/lwip/esp_netif_lwip_defaults.c
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip_defaults.c.obj: esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip_defaults.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip_defaults.c.obj -MF CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip_defaults.c.obj.d -o CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip_defaults.c.obj -c /Users/robert/esp-idf/components/esp_netif/lwip/esp_netif_lwip_defaults.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip_defaults.c.obj -MF CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip_defaults.c.obj.d -o CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip_defaults.c.obj -c /Users/robert/esp/esp-idf/components/esp_netif/lwip/esp_netif_lwip_defaults.c
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip_defaults.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip_defaults.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_netif/lwip/esp_netif_lwip_defaults.c > CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip_defaults.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_netif/lwip/esp_netif_lwip_defaults.c > CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip_defaults.c.i
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip_defaults.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip_defaults.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_netif/lwip/esp_netif_lwip_defaults.c -o CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip_defaults.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_netif/lwip/esp_netif_lwip_defaults.c -o CMakeFiles/__idf_esp_netif.dir/lwip/esp_netif_lwip_defaults.c.s
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/wlanif.c.obj: esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/flags.make
-esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/wlanif.c.obj: /Users/robert/esp-idf/components/esp_netif/lwip/netif/wlanif.c
+esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/wlanif.c.obj: /Users/robert/esp/esp-idf/components/esp_netif/lwip/netif/wlanif.c
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/wlanif.c.obj: esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/wlanif.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/wlanif.c.obj -MF CMakeFiles/__idf_esp_netif.dir/lwip/netif/wlanif.c.obj.d -o CMakeFiles/__idf_esp_netif.dir/lwip/netif/wlanif.c.obj -c /Users/robert/esp-idf/components/esp_netif/lwip/netif/wlanif.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/wlanif.c.obj -MF CMakeFiles/__idf_esp_netif.dir/lwip/netif/wlanif.c.obj.d -o CMakeFiles/__idf_esp_netif.dir/lwip/netif/wlanif.c.obj -c /Users/robert/esp/esp-idf/components/esp_netif/lwip/netif/wlanif.c
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/wlanif.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_netif.dir/lwip/netif/wlanif.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_netif/lwip/netif/wlanif.c > CMakeFiles/__idf_esp_netif.dir/lwip/netif/wlanif.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_netif/lwip/netif/wlanif.c > CMakeFiles/__idf_esp_netif.dir/lwip/netif/wlanif.c.i
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/wlanif.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_netif.dir/lwip/netif/wlanif.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_netif/lwip/netif/wlanif.c -o CMakeFiles/__idf_esp_netif.dir/lwip/netif/wlanif.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_netif/lwip/netif/wlanif.c -o CMakeFiles/__idf_esp_netif.dir/lwip/netif/wlanif.c.s
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/ethernetif.c.obj: esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/flags.make
-esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/ethernetif.c.obj: /Users/robert/esp-idf/components/esp_netif/lwip/netif/ethernetif.c
+esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/ethernetif.c.obj: /Users/robert/esp/esp-idf/components/esp_netif/lwip/netif/ethernetif.c
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/ethernetif.c.obj: esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/ethernetif.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/ethernetif.c.obj -MF CMakeFiles/__idf_esp_netif.dir/lwip/netif/ethernetif.c.obj.d -o CMakeFiles/__idf_esp_netif.dir/lwip/netif/ethernetif.c.obj -c /Users/robert/esp-idf/components/esp_netif/lwip/netif/ethernetif.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/ethernetif.c.obj -MF CMakeFiles/__idf_esp_netif.dir/lwip/netif/ethernetif.c.obj.d -o CMakeFiles/__idf_esp_netif.dir/lwip/netif/ethernetif.c.obj -c /Users/robert/esp/esp-idf/components/esp_netif/lwip/netif/ethernetif.c
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/ethernetif.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_netif.dir/lwip/netif/ethernetif.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_netif/lwip/netif/ethernetif.c > CMakeFiles/__idf_esp_netif.dir/lwip/netif/ethernetif.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_netif/lwip/netif/ethernetif.c > CMakeFiles/__idf_esp_netif.dir/lwip/netif/ethernetif.c.i
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/ethernetif.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_netif.dir/lwip/netif/ethernetif.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_netif/lwip/netif/ethernetif.c -o CMakeFiles/__idf_esp_netif.dir/lwip/netif/ethernetif.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_netif/lwip/netif/ethernetif.c -o CMakeFiles/__idf_esp_netif.dir/lwip/netif/ethernetif.c.s
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/esp_pbuf_ref.c.obj: esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/flags.make
-esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/esp_pbuf_ref.c.obj: /Users/robert/esp-idf/components/esp_netif/lwip/netif/esp_pbuf_ref.c
+esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/esp_pbuf_ref.c.obj: /Users/robert/esp/esp-idf/components/esp_netif/lwip/netif/esp_pbuf_ref.c
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/esp_pbuf_ref.c.obj: esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/esp_pbuf_ref.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/esp_pbuf_ref.c.obj -MF CMakeFiles/__idf_esp_netif.dir/lwip/netif/esp_pbuf_ref.c.obj.d -o CMakeFiles/__idf_esp_netif.dir/lwip/netif/esp_pbuf_ref.c.obj -c /Users/robert/esp-idf/components/esp_netif/lwip/netif/esp_pbuf_ref.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/esp_pbuf_ref.c.obj -MF CMakeFiles/__idf_esp_netif.dir/lwip/netif/esp_pbuf_ref.c.obj.d -o CMakeFiles/__idf_esp_netif.dir/lwip/netif/esp_pbuf_ref.c.obj -c /Users/robert/esp/esp-idf/components/esp_netif/lwip/netif/esp_pbuf_ref.c
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/esp_pbuf_ref.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_netif.dir/lwip/netif/esp_pbuf_ref.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_netif/lwip/netif/esp_pbuf_ref.c > CMakeFiles/__idf_esp_netif.dir/lwip/netif/esp_pbuf_ref.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_netif/lwip/netif/esp_pbuf_ref.c > CMakeFiles/__idf_esp_netif.dir/lwip/netif/esp_pbuf_ref.c.i
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/esp_pbuf_ref.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_netif.dir/lwip/netif/esp_pbuf_ref.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_netif/lwip/netif/esp_pbuf_ref.c -o CMakeFiles/__idf_esp_netif.dir/lwip/netif/esp_pbuf_ref.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_netif/lwip/netif/esp_pbuf_ref.c -o CMakeFiles/__idf_esp_netif.dir/lwip/netif/esp_pbuf_ref.c.s
 
 # Object files for target __idf_esp_netif
 __idf_esp_netif_OBJECTS = \
@@ -237,6 +237,6 @@ esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/clean:
 .PHONY : esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/clean
 
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/esp_netif /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/esp_netif /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/depend
 

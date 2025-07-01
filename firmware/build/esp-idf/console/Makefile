@@ -583,30 +583,6 @@ esp_console_repl_chip.c.s:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/console/CMakeFiles/__idf_console.dir/build.make esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_repl_chip.c.s
 .PHONY : esp_console_repl_chip.c.s
 
-esp_console_repl_internal.obj: esp_console_repl_internal.c.obj
-.PHONY : esp_console_repl_internal.obj
-
-# target to build an object file
-esp_console_repl_internal.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/console/CMakeFiles/__idf_console.dir/build.make esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_repl_internal.c.obj
-.PHONY : esp_console_repl_internal.c.obj
-
-esp_console_repl_internal.i: esp_console_repl_internal.c.i
-.PHONY : esp_console_repl_internal.i
-
-# target to preprocess a source file
-esp_console_repl_internal.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/console/CMakeFiles/__idf_console.dir/build.make esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_repl_internal.c.i
-.PHONY : esp_console_repl_internal.c.i
-
-esp_console_repl_internal.s: esp_console_repl_internal.c.s
-.PHONY : esp_console_repl_internal.s
-
-# target to generate assembly for a file
-esp_console_repl_internal.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/console/CMakeFiles/__idf_console.dir/build.make esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_repl_internal.c.s
-.PHONY : esp_console_repl_internal.c.s
-
 linenoise/linenoise.obj: linenoise/linenoise.c.obj
 .PHONY : linenoise/linenoise.obj
 
@@ -719,9 +695,6 @@ help:
 	@echo "... esp_console_repl_chip.obj"
 	@echo "... esp_console_repl_chip.i"
 	@echo "... esp_console_repl_chip.s"
-	@echo "... esp_console_repl_internal.obj"
-	@echo "... esp_console_repl_internal.i"
-	@echo "... esp_console_repl_internal.s"
 	@echo "... linenoise/linenoise.obj"
 	@echo "... linenoise/linenoise.i"
 	@echo "... linenoise/linenoise.s"

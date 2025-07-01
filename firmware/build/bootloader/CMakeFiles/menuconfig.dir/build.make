@@ -53,7 +53,7 @@ RM = /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/robert/esp-idf/components/bootloader/subproject
+CMAKE_SOURCE_DIR = /Users/robert/esp/esp-idf/components/bootloader/subproject
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /Users/robert/eidon/eidon-glove/firmware/build/bootloader
@@ -67,11 +67,11 @@ include CMakeFiles/menuconfig.dir/compiler_depend.make
 include CMakeFiles/menuconfig.dir/progress.make
 
 CMakeFiles/menuconfig:
-	/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python /Users/robert/esp-idf/tools/kconfig_new/prepare_kconfig_files.py --list-separator=semicolon --env-file /Users/robert/eidon/eidon-glove/firmware/build/bootloader/config.env
-	/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python -m kconfgen --list-separator=semicolon --kconfig /Users/robert/esp-idf/Kconfig --sdkconfig-rename /Users/robert/esp-idf/sdkconfig.rename --config /Users/robert/eidon/eidon-glove/firmware/sdkconfig --env IDF_MINIMAL_BUILD=n --env-file /Users/robert/eidon/eidon-glove/firmware/build/bootloader/config.env --env IDF_TARGET=esp32c6 --env IDF_TOOLCHAIN=gcc --env IDF_ENV_FPGA= --env IDF_INIT_VERSION=6.0.0 --dont-write-deprecated --output config /Users/robert/eidon/eidon-glove/firmware/sdkconfig
-	/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python /Users/robert/esp-idf/tools/check_term.py
-	/opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E env COMPONENT_KCONFIGS_SOURCE_FILE=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/kconfigs.in COMPONENT_KCONFIGS_PROJBUILD_SOURCE_FILE=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/kconfigs_projbuild.in KCONFIG_CONFIG=/Users/robert/eidon/eidon-glove/firmware/sdkconfig IDF_TARGET=esp32c6 IDF_TOOLCHAIN=gcc IDF_ENV_FPGA= IDF_INIT_VERSION=6.0.0 IDF_MINIMAL_BUILD=n /Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python -m menuconfig /Users/robert/esp-idf/Kconfig
-	/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python -m kconfgen --list-separator=semicolon --kconfig /Users/robert/esp-idf/Kconfig --sdkconfig-rename /Users/robert/esp-idf/sdkconfig.rename --config /Users/robert/eidon/eidon-glove/firmware/sdkconfig --env IDF_MINIMAL_BUILD=n --env-file /Users/robert/eidon/eidon-glove/firmware/build/bootloader/config.env --env IDF_TARGET=esp32c6 --env IDF_TOOLCHAIN=gcc --env IDF_ENV_FPGA= --env IDF_INIT_VERSION=6.0.0 --output config /Users/robert/eidon/eidon-glove/firmware/sdkconfig
+	/Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python /Users/robert/esp/esp-idf/tools/kconfig_new/prepare_kconfig_files.py --list-separator=semicolon --env-file /Users/robert/eidon/eidon-glove/firmware/build/bootloader/config.env
+	/Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python -m kconfgen --list-separator=semicolon --kconfig /Users/robert/esp/esp-idf/Kconfig --sdkconfig-rename /Users/robert/esp/esp-idf/sdkconfig.rename --config /Users/robert/eidon/eidon-glove/firmware/sdkconfig --env-file /Users/robert/eidon/eidon-glove/firmware/build/bootloader/config.env --env IDF_TARGET=esp32c6 --env IDF_TOOLCHAIN=gcc --env IDF_ENV_FPGA= --env IDF_INIT_VERSION=5.4.2 --dont-write-deprecated --output config /Users/robert/eidon/eidon-glove/firmware/sdkconfig
+	/Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python /Users/robert/esp/esp-idf/tools/check_term.py
+	/opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E env COMPONENT_KCONFIGS_SOURCE_FILE=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/kconfigs.in COMPONENT_KCONFIGS_PROJBUILD_SOURCE_FILE=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/kconfigs_projbuild.in KCONFIG_CONFIG=/Users/robert/eidon/eidon-glove/firmware/sdkconfig IDF_TARGET=esp32c6 IDF_TOOLCHAIN=gcc IDF_ENV_FPGA= IDF_INIT_VERSION=5.4.2 /Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python -m menuconfig /Users/robert/esp/esp-idf/Kconfig
+	/Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python -m kconfgen --list-separator=semicolon --kconfig /Users/robert/esp/esp-idf/Kconfig --sdkconfig-rename /Users/robert/esp/esp-idf/sdkconfig.rename --config /Users/robert/eidon/eidon-glove/firmware/sdkconfig --env-file /Users/robert/eidon/eidon-glove/firmware/build/bootloader/config.env --env IDF_TARGET=esp32c6 --env IDF_TOOLCHAIN=gcc --env IDF_ENV_FPGA= --env IDF_INIT_VERSION=5.4.2 --output config /Users/robert/eidon/eidon-glove/firmware/sdkconfig
 
 CMakeFiles/menuconfig.dir/codegen:
 .PHONY : CMakeFiles/menuconfig.dir/codegen
@@ -89,6 +89,6 @@ CMakeFiles/menuconfig.dir/clean:
 .PHONY : CMakeFiles/menuconfig.dir/clean
 
 CMakeFiles/menuconfig.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp-idf/components/bootloader/subproject /Users/robert/esp-idf/components/bootloader/subproject /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles/menuconfig.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp/esp-idf/components/bootloader/subproject /Users/robert/esp/esp-idf/components/bootloader/subproject /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles/menuconfig.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/menuconfig.dir/depend
 

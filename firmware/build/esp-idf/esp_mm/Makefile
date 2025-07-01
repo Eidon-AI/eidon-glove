@@ -175,53 +175,29 @@ __idf_esp_mm/fast:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/build.make esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/build
 .PHONY : __idf_esp_mm/fast
 
-esp_cache_msync.obj: esp_cache_msync.c.obj
-.PHONY : esp_cache_msync.obj
+esp_cache.obj: esp_cache.c.obj
+.PHONY : esp_cache.obj
 
 # target to build an object file
-esp_cache_msync.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/build.make esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_msync.c.obj
-.PHONY : esp_cache_msync.c.obj
+esp_cache.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/build.make esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache.c.obj
+.PHONY : esp_cache.c.obj
 
-esp_cache_msync.i: esp_cache_msync.c.i
-.PHONY : esp_cache_msync.i
-
-# target to preprocess a source file
-esp_cache_msync.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/build.make esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_msync.c.i
-.PHONY : esp_cache_msync.c.i
-
-esp_cache_msync.s: esp_cache_msync.c.s
-.PHONY : esp_cache_msync.s
-
-# target to generate assembly for a file
-esp_cache_msync.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/build.make esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_msync.c.s
-.PHONY : esp_cache_msync.c.s
-
-esp_cache_utils.obj: esp_cache_utils.c.obj
-.PHONY : esp_cache_utils.obj
-
-# target to build an object file
-esp_cache_utils.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/build.make esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_utils.c.obj
-.PHONY : esp_cache_utils.c.obj
-
-esp_cache_utils.i: esp_cache_utils.c.i
-.PHONY : esp_cache_utils.i
+esp_cache.i: esp_cache.c.i
+.PHONY : esp_cache.i
 
 # target to preprocess a source file
-esp_cache_utils.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/build.make esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_utils.c.i
-.PHONY : esp_cache_utils.c.i
+esp_cache.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/build.make esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache.c.i
+.PHONY : esp_cache.c.i
 
-esp_cache_utils.s: esp_cache_utils.c.s
-.PHONY : esp_cache_utils.s
+esp_cache.s: esp_cache.c.s
+.PHONY : esp_cache.s
 
 # target to generate assembly for a file
-esp_cache_utils.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/build.make esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_utils.c.s
-.PHONY : esp_cache_utils.c.s
+esp_cache.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/build.make esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache.c.s
+.PHONY : esp_cache.c.s
 
 esp_mmu_map.obj: esp_mmu_map.c.obj
 .PHONY : esp_mmu_map.obj
@@ -308,12 +284,9 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... __idf_esp_mm"
-	@echo "... esp_cache_msync.obj"
-	@echo "... esp_cache_msync.i"
-	@echo "... esp_cache_msync.s"
-	@echo "... esp_cache_utils.obj"
-	@echo "... esp_cache_utils.i"
-	@echo "... esp_cache_utils.s"
+	@echo "... esp_cache.obj"
+	@echo "... esp_cache.i"
+	@echo "... esp_cache.s"
 	@echo "... esp_mmu_map.obj"
 	@echo "... esp_mmu_map.i"
 	@echo "... esp_mmu_map.s"

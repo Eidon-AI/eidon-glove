@@ -21,8 +21,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_tlsf.c.obj.d"
   "CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_uart.c.obj"
   "CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_uart.c.obj.d"
-  "CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_usb_serial.c.obj"
-  "CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_usb_serial.c.obj.d"
   "CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_wdt.c.obj"
   "CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_wdt.c.obj.d"
   "libesp_rom.a"

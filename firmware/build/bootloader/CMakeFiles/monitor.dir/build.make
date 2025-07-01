@@ -53,7 +53,7 @@ RM = /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/robert/esp-idf/components/bootloader/subproject
+CMAKE_SOURCE_DIR = /Users/robert/esp/esp-idf/components/bootloader/subproject
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /Users/robert/eidon/eidon-glove/firmware/build/bootloader
@@ -67,7 +67,7 @@ include CMakeFiles/monitor.dir/compiler_depend.make
 include CMakeFiles/monitor.dir/progress.make
 
 CMakeFiles/monitor:
-	cd /Users/robert/esp-idf/components/esptool_py && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -D IDF_PATH=/Users/robert/esp-idf -D "SERIAL_TOOL=/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python;-m;esp_idf_monitor" -D "SERIAL_TOOL_ARGS=--toolchain-prefix;riscv32-esp-elf-;;--target;esp32c6;;--revision;0;;--decode-panic;backtrace;;/Users/robert/eidon/eidon-glove/firmware/build/bootloader/bootloader.elf" -D WORKING_DIRECTORY=/Users/robert/eidon/eidon-glove/firmware/build/bootloader -P run_serial_tool.cmake
+	cd /Users/robert/esp/esp-idf/components/esptool_py && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -D IDF_PATH=/Users/robert/esp/esp-idf -D "SERIAL_TOOL=/Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python;-m;esp_idf_monitor" -D "SERIAL_TOOL_ARGS=--toolchain-prefix;riscv32-esp-elf-;;--target;esp32c6;;--revision;0;;--decode-panic;backtrace;;/Users/robert/eidon/eidon-glove/firmware/build/bootloader/bootloader.elf" -D WORKING_DIRECTORY=/Users/robert/eidon/eidon-glove/firmware/build/bootloader -P run_serial_tool.cmake
 
 CMakeFiles/monitor.dir/codegen:
 .PHONY : CMakeFiles/monitor.dir/codegen
@@ -85,6 +85,6 @@ CMakeFiles/monitor.dir/clean:
 .PHONY : CMakeFiles/monitor.dir/clean
 
 CMakeFiles/monitor.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp-idf/components/bootloader/subproject /Users/robert/esp-idf/components/bootloader/subproject /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles/monitor.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp/esp-idf/components/bootloader/subproject /Users/robert/esp/esp-idf/components/bootloader/subproject /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles/monitor.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/monitor.dir/depend
 

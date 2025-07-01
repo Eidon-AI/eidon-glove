@@ -73,18 +73,18 @@ esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/codegen:
 .PHONY : esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/codegen
 
 esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/nvs_sec_provider.c.obj: esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/flags.make
-esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/nvs_sec_provider.c.obj: /Users/robert/esp-idf/components/nvs_sec_provider/nvs_sec_provider.c
+esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/nvs_sec_provider.c.obj: /Users/robert/esp/esp-idf/components/nvs_sec_provider/nvs_sec_provider.c
 esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/nvs_sec_provider.c.obj: esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/nvs_sec_provider.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/nvs_sec_provider && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/nvs_sec_provider.c.obj -MF CMakeFiles/__idf_nvs_sec_provider.dir/nvs_sec_provider.c.obj.d -o CMakeFiles/__idf_nvs_sec_provider.dir/nvs_sec_provider.c.obj -c /Users/robert/esp-idf/components/nvs_sec_provider/nvs_sec_provider.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/nvs_sec_provider && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/nvs_sec_provider.c.obj -MF CMakeFiles/__idf_nvs_sec_provider.dir/nvs_sec_provider.c.obj.d -o CMakeFiles/__idf_nvs_sec_provider.dir/nvs_sec_provider.c.obj -c /Users/robert/esp/esp-idf/components/nvs_sec_provider/nvs_sec_provider.c
 
 esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/nvs_sec_provider.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_nvs_sec_provider.dir/nvs_sec_provider.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/nvs_sec_provider && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/nvs_sec_provider/nvs_sec_provider.c > CMakeFiles/__idf_nvs_sec_provider.dir/nvs_sec_provider.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/nvs_sec_provider && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/nvs_sec_provider/nvs_sec_provider.c > CMakeFiles/__idf_nvs_sec_provider.dir/nvs_sec_provider.c.i
 
 esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/nvs_sec_provider.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_nvs_sec_provider.dir/nvs_sec_provider.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/nvs_sec_provider && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/nvs_sec_provider/nvs_sec_provider.c -o CMakeFiles/__idf_nvs_sec_provider.dir/nvs_sec_provider.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/nvs_sec_provider && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/nvs_sec_provider/nvs_sec_provider.c -o CMakeFiles/__idf_nvs_sec_provider.dir/nvs_sec_provider.c.s
 
 # Object files for target __idf_nvs_sec_provider
 __idf_nvs_sec_provider_OBJECTS = \
@@ -109,6 +109,6 @@ esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/clean:
 .PHONY : esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/clean
 
 esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/nvs_sec_provider /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/nvs_sec_provider /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/nvs_sec_provider /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/nvs_sec_provider /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/depend
 

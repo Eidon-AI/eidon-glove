@@ -73,46 +73,46 @@ esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/codegen:
 .PHONY : esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/codegen
 
 esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_crc.c.obj: esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/flags.make
-esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_crc.c.obj: /Users/robert/esp-idf/components/esp_driver_sdspi/src/sdspi_crc.c
+esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_crc.c.obj: /Users/robert/esp/esp-idf/components/esp_driver_sdspi/src/sdspi_crc.c
 esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_crc.c.obj: esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_crc.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_sdspi && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_crc.c.obj -MF CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_crc.c.obj.d -o CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_crc.c.obj -c /Users/robert/esp-idf/components/esp_driver_sdspi/src/sdspi_crc.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_sdspi && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_crc.c.obj -MF CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_crc.c.obj.d -o CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_crc.c.obj -c /Users/robert/esp/esp-idf/components/esp_driver_sdspi/src/sdspi_crc.c
 
 esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_crc.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_crc.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_sdspi && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_driver_sdspi/src/sdspi_crc.c > CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_crc.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_sdspi && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_driver_sdspi/src/sdspi_crc.c > CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_crc.c.i
 
 esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_crc.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_crc.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_sdspi && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_driver_sdspi/src/sdspi_crc.c -o CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_crc.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_sdspi && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_driver_sdspi/src/sdspi_crc.c -o CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_crc.c.s
 
 esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_host.c.obj: esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/flags.make
-esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_host.c.obj: /Users/robert/esp-idf/components/esp_driver_sdspi/src/sdspi_host.c
+esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_host.c.obj: /Users/robert/esp/esp-idf/components/esp_driver_sdspi/src/sdspi_host.c
 esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_host.c.obj: esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_host.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_sdspi && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_host.c.obj -MF CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_host.c.obj.d -o CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_host.c.obj -c /Users/robert/esp-idf/components/esp_driver_sdspi/src/sdspi_host.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_sdspi && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_host.c.obj -MF CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_host.c.obj.d -o CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_host.c.obj -c /Users/robert/esp/esp-idf/components/esp_driver_sdspi/src/sdspi_host.c
 
 esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_host.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_host.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_sdspi && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_driver_sdspi/src/sdspi_host.c > CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_host.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_sdspi && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_driver_sdspi/src/sdspi_host.c > CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_host.c.i
 
 esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_host.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_host.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_sdspi && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_driver_sdspi/src/sdspi_host.c -o CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_host.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_sdspi && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_driver_sdspi/src/sdspi_host.c -o CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_host.c.s
 
 esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_transaction.c.obj: esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/flags.make
-esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_transaction.c.obj: /Users/robert/esp-idf/components/esp_driver_sdspi/src/sdspi_transaction.c
+esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_transaction.c.obj: /Users/robert/esp/esp-idf/components/esp_driver_sdspi/src/sdspi_transaction.c
 esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_transaction.c.obj: esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_transaction.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_sdspi && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_transaction.c.obj -MF CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_transaction.c.obj.d -o CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_transaction.c.obj -c /Users/robert/esp-idf/components/esp_driver_sdspi/src/sdspi_transaction.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_sdspi && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_transaction.c.obj -MF CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_transaction.c.obj.d -o CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_transaction.c.obj -c /Users/robert/esp/esp-idf/components/esp_driver_sdspi/src/sdspi_transaction.c
 
 esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_transaction.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_transaction.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_sdspi && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_driver_sdspi/src/sdspi_transaction.c > CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_transaction.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_sdspi && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_driver_sdspi/src/sdspi_transaction.c > CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_transaction.c.i
 
 esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_transaction.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_transaction.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_sdspi && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_driver_sdspi/src/sdspi_transaction.c -o CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_transaction.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_sdspi && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_driver_sdspi/src/sdspi_transaction.c -o CMakeFiles/__idf_esp_driver_sdspi.dir/src/sdspi_transaction.c.s
 
 # Object files for target __idf_esp_driver_sdspi
 __idf_esp_driver_sdspi_OBJECTS = \
@@ -141,6 +141,6 @@ esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/clean:
 .PHONY : esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/clean
 
 esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/esp_driver_sdspi /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_sdspi /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/esp_driver_sdspi /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_sdspi /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/depend
 

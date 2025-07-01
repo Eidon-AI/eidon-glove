@@ -223,78 +223,6 @@ src/rmt_encoder.c.s:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/build.make esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/src/rmt_encoder.c.s
 .PHONY : src/rmt_encoder.c.s
 
-src/rmt_encoder_bytes.obj: src/rmt_encoder_bytes.c.obj
-.PHONY : src/rmt_encoder_bytes.obj
-
-# target to build an object file
-src/rmt_encoder_bytes.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/build.make esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/src/rmt_encoder_bytes.c.obj
-.PHONY : src/rmt_encoder_bytes.c.obj
-
-src/rmt_encoder_bytes.i: src/rmt_encoder_bytes.c.i
-.PHONY : src/rmt_encoder_bytes.i
-
-# target to preprocess a source file
-src/rmt_encoder_bytes.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/build.make esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/src/rmt_encoder_bytes.c.i
-.PHONY : src/rmt_encoder_bytes.c.i
-
-src/rmt_encoder_bytes.s: src/rmt_encoder_bytes.c.s
-.PHONY : src/rmt_encoder_bytes.s
-
-# target to generate assembly for a file
-src/rmt_encoder_bytes.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/build.make esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/src/rmt_encoder_bytes.c.s
-.PHONY : src/rmt_encoder_bytes.c.s
-
-src/rmt_encoder_copy.obj: src/rmt_encoder_copy.c.obj
-.PHONY : src/rmt_encoder_copy.obj
-
-# target to build an object file
-src/rmt_encoder_copy.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/build.make esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/src/rmt_encoder_copy.c.obj
-.PHONY : src/rmt_encoder_copy.c.obj
-
-src/rmt_encoder_copy.i: src/rmt_encoder_copy.c.i
-.PHONY : src/rmt_encoder_copy.i
-
-# target to preprocess a source file
-src/rmt_encoder_copy.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/build.make esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/src/rmt_encoder_copy.c.i
-.PHONY : src/rmt_encoder_copy.c.i
-
-src/rmt_encoder_copy.s: src/rmt_encoder_copy.c.s
-.PHONY : src/rmt_encoder_copy.s
-
-# target to generate assembly for a file
-src/rmt_encoder_copy.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/build.make esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/src/rmt_encoder_copy.c.s
-.PHONY : src/rmt_encoder_copy.c.s
-
-src/rmt_encoder_simple.obj: src/rmt_encoder_simple.c.obj
-.PHONY : src/rmt_encoder_simple.obj
-
-# target to build an object file
-src/rmt_encoder_simple.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/build.make esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/src/rmt_encoder_simple.c.obj
-.PHONY : src/rmt_encoder_simple.c.obj
-
-src/rmt_encoder_simple.i: src/rmt_encoder_simple.c.i
-.PHONY : src/rmt_encoder_simple.i
-
-# target to preprocess a source file
-src/rmt_encoder_simple.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/build.make esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/src/rmt_encoder_simple.c.i
-.PHONY : src/rmt_encoder_simple.c.i
-
-src/rmt_encoder_simple.s: src/rmt_encoder_simple.c.s
-.PHONY : src/rmt_encoder_simple.s
-
-# target to generate assembly for a file
-src/rmt_encoder_simple.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/build.make esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/src/rmt_encoder_simple.c.s
-.PHONY : src/rmt_encoder_simple.c.s
-
 src/rmt_rx.obj: src/rmt_rx.c.obj
 .PHONY : src/rmt_rx.obj
 
@@ -362,15 +290,6 @@ help:
 	@echo "... src/rmt_encoder.obj"
 	@echo "... src/rmt_encoder.i"
 	@echo "... src/rmt_encoder.s"
-	@echo "... src/rmt_encoder_bytes.obj"
-	@echo "... src/rmt_encoder_bytes.i"
-	@echo "... src/rmt_encoder_bytes.s"
-	@echo "... src/rmt_encoder_copy.obj"
-	@echo "... src/rmt_encoder_copy.i"
-	@echo "... src/rmt_encoder_copy.s"
-	@echo "... src/rmt_encoder_simple.obj"
-	@echo "... src/rmt_encoder_simple.i"
-	@echo "... src/rmt_encoder_simple.s"
 	@echo "... src/rmt_rx.obj"
 	@echo "... src/rmt_rx.i"
 	@echo "... src/rmt_rx.s"

@@ -67,7 +67,7 @@ include esp-idf/partition_table/CMakeFiles/partition-table-flash.dir/compiler_de
 include esp-idf/partition_table/CMakeFiles/partition-table-flash.dir/progress.make
 
 esp-idf/partition_table/CMakeFiles/partition-table-flash:
-	cd /Users/robert/esp-idf/components/partition_table && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -D IDF_PATH=/Users/robert/esp-idf -D "SERIAL_TOOL=/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python;;/Users/robert/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32c6" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@partition-table-flash_args" -D WORKING_DIRECTORY=/Users/robert/eidon/eidon-glove/firmware/build -P /Users/robert/esp-idf/components/esptool_py/run_serial_tool.cmake
+	cd /Users/robert/esp/esp-idf/components/partition_table && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -D IDF_PATH=/Users/robert/esp/esp-idf -D "SERIAL_TOOL=/Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python;;/Users/robert/esp/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32c6" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@partition-table-flash_args" -D WORKING_DIRECTORY=/Users/robert/eidon/eidon-glove/firmware/build -P /Users/robert/esp/esp-idf/components/esptool_py/run_serial_tool.cmake
 
 esp-idf/partition_table/CMakeFiles/partition-table-flash.dir/codegen:
 .PHONY : esp-idf/partition_table/CMakeFiles/partition-table-flash.dir/codegen
@@ -85,6 +85,6 @@ esp-idf/partition_table/CMakeFiles/partition-table-flash.dir/clean:
 .PHONY : esp-idf/partition_table/CMakeFiles/partition-table-flash.dir/clean
 
 esp-idf/partition_table/CMakeFiles/partition-table-flash.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/partition_table /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/partition_table /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/partition_table/CMakeFiles/partition-table-flash.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/partition_table /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/partition_table /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/partition_table/CMakeFiles/partition-table-flash.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/partition_table/CMakeFiles/partition-table-flash.dir/depend
 

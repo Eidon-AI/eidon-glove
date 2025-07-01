@@ -12,7 +12,7 @@
  */
 /*
  * Automatically generated file. DO NOT EDIT.
- * Espressif IoT Development Framework (ESP-IDF) 6.0.0 Configuration Header
+ * Espressif IoT Development Framework (ESP-IDF) 5.4.2 Configuration Header
  */
        
 /* List of deprecated options */
@@ -54,8 +54,8 @@ MEMORY
    * Shared data RAM, excluding memory reserved for ROM bss/data/stack.
    * Enabling Bluetooth & Trace Memory features in menuconfig will decrease the amount of RAM available.
    */
-  sram_seg (RWX) : org = (0x40800000), len = 0x4086E610 - (0x40800000)
-  /* Flash mapped instruction data */
+  sram_seg (RWX) : org = 0x40800000, len = 0x4086E610 - 0x40800000
+  /* Flash mapped constant data */
   drom_seg (R) : org = 0x42000020, len = (0x8000 << 8) - 0x20
   /* (See irom_seg for meaning of 0x20 offset in the above.) */
   /**

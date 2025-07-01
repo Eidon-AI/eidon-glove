@@ -199,6 +199,30 @@ src/gpspi/spi_common.c.s:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/build.make esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/src/gpspi/spi_common.c.s
 .PHONY : src/gpspi/spi_common.c.s
 
+src/gpspi/spi_dma.obj: src/gpspi/spi_dma.c.obj
+.PHONY : src/gpspi/spi_dma.obj
+
+# target to build an object file
+src/gpspi/spi_dma.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/build.make esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/src/gpspi/spi_dma.c.obj
+.PHONY : src/gpspi/spi_dma.c.obj
+
+src/gpspi/spi_dma.i: src/gpspi/spi_dma.c.i
+.PHONY : src/gpspi/spi_dma.i
+
+# target to preprocess a source file
+src/gpspi/spi_dma.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/build.make esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/src/gpspi/spi_dma.c.i
+.PHONY : src/gpspi/spi_dma.c.i
+
+src/gpspi/spi_dma.s: src/gpspi/spi_dma.c.s
+.PHONY : src/gpspi/spi_dma.s
+
+# target to generate assembly for a file
+src/gpspi/spi_dma.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/build.make esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/src/gpspi/spi_dma.c.s
+.PHONY : src/gpspi/spi_dma.c.s
+
 src/gpspi/spi_master.obj: src/gpspi/spi_master.c.obj
 .PHONY : src/gpspi/spi_master.obj
 
@@ -287,6 +311,9 @@ help:
 	@echo "... src/gpspi/spi_common.obj"
 	@echo "... src/gpspi/spi_common.i"
 	@echo "... src/gpspi/spi_common.s"
+	@echo "... src/gpspi/spi_dma.obj"
+	@echo "... src/gpspi/spi_dma.i"
+	@echo "... src/gpspi/spi_dma.s"
 	@echo "... src/gpspi/spi_master.obj"
 	@echo "... src/gpspi/spi_master.i"
 	@echo "... src/gpspi/spi_master.s"

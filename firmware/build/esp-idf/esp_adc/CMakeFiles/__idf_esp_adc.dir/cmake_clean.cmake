@@ -13,6 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/__idf_esp_adc.dir/adc_monitor.c.obj.d"
   "CMakeFiles/__idf_esp_adc.dir/adc_oneshot.c.obj"
   "CMakeFiles/__idf_esp_adc.dir/adc_oneshot.c.obj.d"
+  "CMakeFiles/__idf_esp_adc.dir/deprecated/esp_adc_cal_common_legacy.c.obj"
+  "CMakeFiles/__idf_esp_adc.dir/deprecated/esp_adc_cal_common_legacy.c.obj.d"
   "CMakeFiles/__idf_esp_adc.dir/esp32c6/curve_fitting_coefficients.c.obj"
   "CMakeFiles/__idf_esp_adc.dir/esp32c6/curve_fitting_coefficients.c.obj.d"
   "CMakeFiles/__idf_esp_adc.dir/gdma/adc_dma.c.obj"

@@ -57,7 +57,7 @@ RM = /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/robert/esp-idf/components/bootloader/subproject
+CMAKE_SOURCE_DIR = /Users/robert/esp/esp-idf/components/bootloader/subproject
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /Users/robert/eidon/eidon-glove/firmware/build/bootloader
@@ -312,32 +312,6 @@ uf2-app/fast:
 .PHONY : uf2-app/fast
 
 #=============================================================================
-# Target rules for targets named __idf_hal
-
-# Build rule for target.
-__idf_hal: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 __idf_hal
-.PHONY : __idf_hal
-
-# fast build rule for target.
-__idf_hal/fast:
-	$(MAKE) $(MAKESILENT) -f esp-idf/hal/CMakeFiles/__idf_hal.dir/build.make esp-idf/hal/CMakeFiles/__idf_hal.dir/build
-.PHONY : __idf_hal/fast
-
-#=============================================================================
-# Target rules for targets named __idf_riscv
-
-# Build rule for target.
-__idf_riscv: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 __idf_riscv
-.PHONY : __idf_riscv
-
-# fast build rule for target.
-__idf_riscv/fast:
-	$(MAKE) $(MAKESILENT) -f esp-idf/riscv/CMakeFiles/__idf_riscv.dir/build.make esp-idf/riscv/CMakeFiles/__idf_riscv.dir/build
-.PHONY : __idf_riscv/fast
-
-#=============================================================================
 # Target rules for targets named __idf_soc
 
 # Build rule for target.
@@ -362,6 +336,19 @@ __idf_micro-ecc: cmake_check_build_system
 __idf_micro-ecc/fast:
 	$(MAKE) $(MAKESILENT) -f esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir/build.make esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir/build
 .PHONY : __idf_micro-ecc/fast
+
+#=============================================================================
+# Target rules for targets named __idf_hal
+
+# Build rule for target.
+__idf_hal: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 __idf_hal
+.PHONY : __idf_hal
+
+# fast build rule for target.
+__idf_hal/fast:
+	$(MAKE) $(MAKESILENT) -f esp-idf/hal/CMakeFiles/__idf_hal.dir/build.make esp-idf/hal/CMakeFiles/__idf_hal.dir/build
+.PHONY : __idf_hal/fast
 
 #=============================================================================
 # Target rules for targets named __idf_spi_flash
@@ -662,7 +649,6 @@ help:
 	@echo "... __idf_log"
 	@echo "... __idf_main"
 	@echo "... __idf_micro-ecc"
-	@echo "... __idf_riscv"
 	@echo "... __idf_soc"
 	@echo "... __idf_spi_flash"
 	@echo "... bootloader.elf"

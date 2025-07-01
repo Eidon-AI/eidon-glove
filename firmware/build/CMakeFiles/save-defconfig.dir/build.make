@@ -67,8 +67,8 @@ include CMakeFiles/save-defconfig.dir/compiler_depend.make
 include CMakeFiles/save-defconfig.dir/progress.make
 
 CMakeFiles/save-defconfig:
-	/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python /Users/robert/esp-idf/tools/kconfig_new/prepare_kconfig_files.py --list-separator=semicolon --env-file /Users/robert/eidon/eidon-glove/firmware/build/config.env
-	/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python -m kconfgen --list-separator=semicolon --kconfig /Users/robert/esp-idf/Kconfig --sdkconfig-rename /Users/robert/esp-idf/sdkconfig.rename --config /Users/robert/eidon/eidon-glove/firmware/sdkconfig --defaults /Users/robert/eidon/eidon-glove/firmware/sdkconfig.defaults --env IDF_MINIMAL_BUILD=n --env-file /Users/robert/eidon/eidon-glove/firmware/build/config.env --dont-write-deprecated --output savedefconfig /Users/robert/eidon/eidon-glove/firmware/sdkconfig.defaults
+	/Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python /Users/robert/esp/esp-idf/tools/kconfig_new/prepare_kconfig_files.py --list-separator=semicolon --env-file /Users/robert/eidon/eidon-glove/firmware/build/config.env
+	/Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python -m kconfgen --list-separator=semicolon --kconfig /Users/robert/esp/esp-idf/Kconfig --sdkconfig-rename /Users/robert/esp/esp-idf/sdkconfig.rename --config /Users/robert/eidon/eidon-glove/firmware/sdkconfig --defaults /Users/robert/eidon/eidon-glove/firmware/sdkconfig.defaults --env-file /Users/robert/eidon/eidon-glove/firmware/build/config.env --dont-write-deprecated --output savedefconfig /Users/robert/eidon/eidon-glove/firmware/sdkconfig.defaults
 
 CMakeFiles/save-defconfig.dir/codegen:
 .PHONY : CMakeFiles/save-defconfig.dir/codegen

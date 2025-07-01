@@ -67,7 +67,7 @@ include esp-idf/efuse/CMakeFiles/efuse-common-table.dir/compiler_depend.make
 include esp-idf/efuse/CMakeFiles/efuse-common-table.dir/progress.make
 
 esp-idf/efuse/CMakeFiles/efuse-common-table:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/efuse && /Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python /Users/robert/esp-idf/components/efuse/efuse_table_gen.py /Users/robert/esp-idf/components/efuse/esp32c6/esp_efuse_table.csv -t esp32c6 --max_blk_len 256
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/efuse && /Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python /Users/robert/esp/esp-idf/components/efuse/efuse_table_gen.py /Users/robert/esp/esp-idf/components/efuse/esp32c6/esp_efuse_table.csv -t esp32c6 --max_blk_len 256
 
 esp-idf/efuse/CMakeFiles/efuse-common-table.dir/codegen:
 .PHONY : esp-idf/efuse/CMakeFiles/efuse-common-table.dir/codegen
@@ -85,6 +85,6 @@ esp-idf/efuse/CMakeFiles/efuse-common-table.dir/clean:
 .PHONY : esp-idf/efuse/CMakeFiles/efuse-common-table.dir/clean
 
 esp-idf/efuse/CMakeFiles/efuse-common-table.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/efuse /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/efuse /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/efuse/CMakeFiles/efuse-common-table.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/efuse /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/efuse /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/efuse/CMakeFiles/efuse-common-table.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/efuse/CMakeFiles/efuse-common-table.dir/depend
 

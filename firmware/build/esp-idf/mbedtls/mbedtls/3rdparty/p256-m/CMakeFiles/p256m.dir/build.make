@@ -73,32 +73,32 @@ esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/codegen:
 .PHONY : esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/codegen
 
 esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/p256-m_driver_entrypoints.c.obj: esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/flags.make
-esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/p256-m_driver_entrypoints.c.obj: /Users/robert/esp-idf/components/mbedtls/mbedtls/3rdparty/p256-m/p256-m_driver_entrypoints.c
+esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/p256-m_driver_entrypoints.c.obj: /Users/robert/esp/esp-idf/components/mbedtls/mbedtls/3rdparty/p256-m/p256-m_driver_entrypoints.c
 esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/p256-m_driver_entrypoints.c.obj: esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/p256-m_driver_entrypoints.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/mbedtls/3rdparty/p256-m && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/p256-m_driver_entrypoints.c.obj -MF CMakeFiles/p256m.dir/p256-m_driver_entrypoints.c.obj.d -o CMakeFiles/p256m.dir/p256-m_driver_entrypoints.c.obj -c /Users/robert/esp-idf/components/mbedtls/mbedtls/3rdparty/p256-m/p256-m_driver_entrypoints.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/mbedtls/3rdparty/p256-m && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/p256-m_driver_entrypoints.c.obj -MF CMakeFiles/p256m.dir/p256-m_driver_entrypoints.c.obj.d -o CMakeFiles/p256m.dir/p256-m_driver_entrypoints.c.obj -c /Users/robert/esp/esp-idf/components/mbedtls/mbedtls/3rdparty/p256-m/p256-m_driver_entrypoints.c
 
 esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/p256-m_driver_entrypoints.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/p256m.dir/p256-m_driver_entrypoints.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/mbedtls/3rdparty/p256-m && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/mbedtls/mbedtls/3rdparty/p256-m/p256-m_driver_entrypoints.c > CMakeFiles/p256m.dir/p256-m_driver_entrypoints.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/mbedtls/3rdparty/p256-m && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/mbedtls/mbedtls/3rdparty/p256-m/p256-m_driver_entrypoints.c > CMakeFiles/p256m.dir/p256-m_driver_entrypoints.c.i
 
 esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/p256-m_driver_entrypoints.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/p256m.dir/p256-m_driver_entrypoints.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/mbedtls/3rdparty/p256-m && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/mbedtls/mbedtls/3rdparty/p256-m/p256-m_driver_entrypoints.c -o CMakeFiles/p256m.dir/p256-m_driver_entrypoints.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/mbedtls/3rdparty/p256-m && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/mbedtls/mbedtls/3rdparty/p256-m/p256-m_driver_entrypoints.c -o CMakeFiles/p256m.dir/p256-m_driver_entrypoints.c.s
 
 esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/p256-m/p256-m.c.obj: esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/flags.make
-esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/p256-m/p256-m.c.obj: /Users/robert/esp-idf/components/mbedtls/mbedtls/3rdparty/p256-m/p256-m/p256-m.c
+esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/p256-m/p256-m.c.obj: /Users/robert/esp/esp-idf/components/mbedtls/mbedtls/3rdparty/p256-m/p256-m/p256-m.c
 esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/p256-m/p256-m.c.obj: esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/p256-m/p256-m.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/mbedtls/3rdparty/p256-m && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/p256-m/p256-m.c.obj -MF CMakeFiles/p256m.dir/p256-m/p256-m.c.obj.d -o CMakeFiles/p256m.dir/p256-m/p256-m.c.obj -c /Users/robert/esp-idf/components/mbedtls/mbedtls/3rdparty/p256-m/p256-m/p256-m.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/mbedtls/3rdparty/p256-m && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/p256-m/p256-m.c.obj -MF CMakeFiles/p256m.dir/p256-m/p256-m.c.obj.d -o CMakeFiles/p256m.dir/p256-m/p256-m.c.obj -c /Users/robert/esp/esp-idf/components/mbedtls/mbedtls/3rdparty/p256-m/p256-m/p256-m.c
 
 esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/p256-m/p256-m.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/p256m.dir/p256-m/p256-m.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/mbedtls/3rdparty/p256-m && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/mbedtls/mbedtls/3rdparty/p256-m/p256-m/p256-m.c > CMakeFiles/p256m.dir/p256-m/p256-m.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/mbedtls/3rdparty/p256-m && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/mbedtls/mbedtls/3rdparty/p256-m/p256-m/p256-m.c > CMakeFiles/p256m.dir/p256-m/p256-m.c.i
 
 esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/p256-m/p256-m.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/p256m.dir/p256-m/p256-m.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/mbedtls/3rdparty/p256-m && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/mbedtls/mbedtls/3rdparty/p256-m/p256-m/p256-m.c -o CMakeFiles/p256m.dir/p256-m/p256-m.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/mbedtls/3rdparty/p256-m && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/mbedtls/mbedtls/3rdparty/p256-m/p256-m/p256-m.c -o CMakeFiles/p256m.dir/p256-m/p256-m.c.s
 
 # Object files for target p256m
 p256m_OBJECTS = \
@@ -125,6 +125,6 @@ esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/clean:
 .PHONY : esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/clean
 
 esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/mbedtls/mbedtls/3rdparty/p256-m /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/mbedtls/3rdparty/p256-m /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/mbedtls/mbedtls/3rdparty/p256-m /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/mbedtls/3rdparty/p256-m /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/depend
 

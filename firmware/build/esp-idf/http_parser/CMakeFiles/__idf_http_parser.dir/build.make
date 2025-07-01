@@ -73,18 +73,18 @@ esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/codegen:
 .PHONY : esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/codegen
 
 esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/http_parser.c.obj: esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/flags.make
-esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/http_parser.c.obj: /Users/robert/esp-idf/components/http_parser/http_parser.c
+esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/http_parser.c.obj: /Users/robert/esp/esp-idf/components/http_parser/http_parser.c
 esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/http_parser.c.obj: esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/http_parser.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/http_parser && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/http_parser.c.obj -MF CMakeFiles/__idf_http_parser.dir/http_parser.c.obj.d -o CMakeFiles/__idf_http_parser.dir/http_parser.c.obj -c /Users/robert/esp-idf/components/http_parser/http_parser.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/http_parser && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/http_parser.c.obj -MF CMakeFiles/__idf_http_parser.dir/http_parser.c.obj.d -o CMakeFiles/__idf_http_parser.dir/http_parser.c.obj -c /Users/robert/esp/esp-idf/components/http_parser/http_parser.c
 
 esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/http_parser.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_http_parser.dir/http_parser.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/http_parser && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/http_parser/http_parser.c > CMakeFiles/__idf_http_parser.dir/http_parser.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/http_parser && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/http_parser/http_parser.c > CMakeFiles/__idf_http_parser.dir/http_parser.c.i
 
 esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/http_parser.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_http_parser.dir/http_parser.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/http_parser && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/http_parser/http_parser.c -o CMakeFiles/__idf_http_parser.dir/http_parser.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/http_parser && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/http_parser/http_parser.c -o CMakeFiles/__idf_http_parser.dir/http_parser.c.s
 
 # Object files for target __idf_http_parser
 __idf_http_parser_OBJECTS = \
@@ -109,6 +109,6 @@ esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/clean:
 .PHONY : esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/clean
 
 esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/http_parser /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/http_parser /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/http_parser /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/http_parser /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/depend
 

@@ -8,6 +8,4 @@ file(REMOVE_RECURSE
   "flash_project_args"
   "eidon-glove.map"
   "project_elf_src_esp32c6.c"
-  "ldgen_libraries.in"
-  "ldgen_libraries"
 )

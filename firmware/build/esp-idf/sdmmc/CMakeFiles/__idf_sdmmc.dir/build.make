@@ -73,102 +73,102 @@ esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/codegen:
 .PHONY : esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/codegen
 
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_cmd.c.obj: esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/flags.make
-esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_cmd.c.obj: /Users/robert/esp-idf/components/sdmmc/sdmmc_cmd.c
+esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_cmd.c.obj: /Users/robert/esp/esp-idf/components/sdmmc/sdmmc_cmd.c
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_cmd.c.obj: esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_cmd.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_cmd.c.obj -MF CMakeFiles/__idf_sdmmc.dir/sdmmc_cmd.c.obj.d -o CMakeFiles/__idf_sdmmc.dir/sdmmc_cmd.c.obj -c /Users/robert/esp-idf/components/sdmmc/sdmmc_cmd.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_cmd.c.obj -MF CMakeFiles/__idf_sdmmc.dir/sdmmc_cmd.c.obj.d -o CMakeFiles/__idf_sdmmc.dir/sdmmc_cmd.c.obj -c /Users/robert/esp/esp-idf/components/sdmmc/sdmmc_cmd.c
 
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_cmd.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_sdmmc.dir/sdmmc_cmd.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/sdmmc/sdmmc_cmd.c > CMakeFiles/__idf_sdmmc.dir/sdmmc_cmd.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/sdmmc/sdmmc_cmd.c > CMakeFiles/__idf_sdmmc.dir/sdmmc_cmd.c.i
 
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_cmd.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_sdmmc.dir/sdmmc_cmd.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/sdmmc/sdmmc_cmd.c -o CMakeFiles/__idf_sdmmc.dir/sdmmc_cmd.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/sdmmc/sdmmc_cmd.c -o CMakeFiles/__idf_sdmmc.dir/sdmmc_cmd.c.s
 
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_common.c.obj: esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/flags.make
-esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_common.c.obj: /Users/robert/esp-idf/components/sdmmc/sdmmc_common.c
+esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_common.c.obj: /Users/robert/esp/esp-idf/components/sdmmc/sdmmc_common.c
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_common.c.obj: esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_common.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_common.c.obj -MF CMakeFiles/__idf_sdmmc.dir/sdmmc_common.c.obj.d -o CMakeFiles/__idf_sdmmc.dir/sdmmc_common.c.obj -c /Users/robert/esp-idf/components/sdmmc/sdmmc_common.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_common.c.obj -MF CMakeFiles/__idf_sdmmc.dir/sdmmc_common.c.obj.d -o CMakeFiles/__idf_sdmmc.dir/sdmmc_common.c.obj -c /Users/robert/esp/esp-idf/components/sdmmc/sdmmc_common.c
 
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_common.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_sdmmc.dir/sdmmc_common.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/sdmmc/sdmmc_common.c > CMakeFiles/__idf_sdmmc.dir/sdmmc_common.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/sdmmc/sdmmc_common.c > CMakeFiles/__idf_sdmmc.dir/sdmmc_common.c.i
 
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_common.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_sdmmc.dir/sdmmc_common.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/sdmmc/sdmmc_common.c -o CMakeFiles/__idf_sdmmc.dir/sdmmc_common.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/sdmmc/sdmmc_common.c -o CMakeFiles/__idf_sdmmc.dir/sdmmc_common.c.s
 
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_init.c.obj: esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/flags.make
-esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_init.c.obj: /Users/robert/esp-idf/components/sdmmc/sdmmc_init.c
+esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_init.c.obj: /Users/robert/esp/esp-idf/components/sdmmc/sdmmc_init.c
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_init.c.obj: esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_init.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_init.c.obj -MF CMakeFiles/__idf_sdmmc.dir/sdmmc_init.c.obj.d -o CMakeFiles/__idf_sdmmc.dir/sdmmc_init.c.obj -c /Users/robert/esp-idf/components/sdmmc/sdmmc_init.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_init.c.obj -MF CMakeFiles/__idf_sdmmc.dir/sdmmc_init.c.obj.d -o CMakeFiles/__idf_sdmmc.dir/sdmmc_init.c.obj -c /Users/robert/esp/esp-idf/components/sdmmc/sdmmc_init.c
 
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_init.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_sdmmc.dir/sdmmc_init.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/sdmmc/sdmmc_init.c > CMakeFiles/__idf_sdmmc.dir/sdmmc_init.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/sdmmc/sdmmc_init.c > CMakeFiles/__idf_sdmmc.dir/sdmmc_init.c.i
 
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_init.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_sdmmc.dir/sdmmc_init.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/sdmmc/sdmmc_init.c -o CMakeFiles/__idf_sdmmc.dir/sdmmc_init.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/sdmmc/sdmmc_init.c -o CMakeFiles/__idf_sdmmc.dir/sdmmc_init.c.s
 
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_io.c.obj: esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/flags.make
-esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_io.c.obj: /Users/robert/esp-idf/components/sdmmc/sdmmc_io.c
+esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_io.c.obj: /Users/robert/esp/esp-idf/components/sdmmc/sdmmc_io.c
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_io.c.obj: esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_io.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_io.c.obj -MF CMakeFiles/__idf_sdmmc.dir/sdmmc_io.c.obj.d -o CMakeFiles/__idf_sdmmc.dir/sdmmc_io.c.obj -c /Users/robert/esp-idf/components/sdmmc/sdmmc_io.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_io.c.obj -MF CMakeFiles/__idf_sdmmc.dir/sdmmc_io.c.obj.d -o CMakeFiles/__idf_sdmmc.dir/sdmmc_io.c.obj -c /Users/robert/esp/esp-idf/components/sdmmc/sdmmc_io.c
 
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_io.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_sdmmc.dir/sdmmc_io.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/sdmmc/sdmmc_io.c > CMakeFiles/__idf_sdmmc.dir/sdmmc_io.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/sdmmc/sdmmc_io.c > CMakeFiles/__idf_sdmmc.dir/sdmmc_io.c.i
 
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_io.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_sdmmc.dir/sdmmc_io.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/sdmmc/sdmmc_io.c -o CMakeFiles/__idf_sdmmc.dir/sdmmc_io.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/sdmmc/sdmmc_io.c -o CMakeFiles/__idf_sdmmc.dir/sdmmc_io.c.s
 
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_mmc.c.obj: esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/flags.make
-esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_mmc.c.obj: /Users/robert/esp-idf/components/sdmmc/sdmmc_mmc.c
+esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_mmc.c.obj: /Users/robert/esp/esp-idf/components/sdmmc/sdmmc_mmc.c
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_mmc.c.obj: esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_mmc.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_mmc.c.obj -MF CMakeFiles/__idf_sdmmc.dir/sdmmc_mmc.c.obj.d -o CMakeFiles/__idf_sdmmc.dir/sdmmc_mmc.c.obj -c /Users/robert/esp-idf/components/sdmmc/sdmmc_mmc.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_mmc.c.obj -MF CMakeFiles/__idf_sdmmc.dir/sdmmc_mmc.c.obj.d -o CMakeFiles/__idf_sdmmc.dir/sdmmc_mmc.c.obj -c /Users/robert/esp/esp-idf/components/sdmmc/sdmmc_mmc.c
 
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_mmc.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_sdmmc.dir/sdmmc_mmc.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/sdmmc/sdmmc_mmc.c > CMakeFiles/__idf_sdmmc.dir/sdmmc_mmc.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/sdmmc/sdmmc_mmc.c > CMakeFiles/__idf_sdmmc.dir/sdmmc_mmc.c.i
 
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_mmc.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_sdmmc.dir/sdmmc_mmc.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/sdmmc/sdmmc_mmc.c -o CMakeFiles/__idf_sdmmc.dir/sdmmc_mmc.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/sdmmc/sdmmc_mmc.c -o CMakeFiles/__idf_sdmmc.dir/sdmmc_mmc.c.s
 
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_sd.c.obj: esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/flags.make
-esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_sd.c.obj: /Users/robert/esp-idf/components/sdmmc/sdmmc_sd.c
+esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_sd.c.obj: /Users/robert/esp/esp-idf/components/sdmmc/sdmmc_sd.c
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_sd.c.obj: esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_sd.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_sd.c.obj -MF CMakeFiles/__idf_sdmmc.dir/sdmmc_sd.c.obj.d -o CMakeFiles/__idf_sdmmc.dir/sdmmc_sd.c.obj -c /Users/robert/esp-idf/components/sdmmc/sdmmc_sd.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_sd.c.obj -MF CMakeFiles/__idf_sdmmc.dir/sdmmc_sd.c.obj.d -o CMakeFiles/__idf_sdmmc.dir/sdmmc_sd.c.obj -c /Users/robert/esp/esp-idf/components/sdmmc/sdmmc_sd.c
 
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_sd.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_sdmmc.dir/sdmmc_sd.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/sdmmc/sdmmc_sd.c > CMakeFiles/__idf_sdmmc.dir/sdmmc_sd.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/sdmmc/sdmmc_sd.c > CMakeFiles/__idf_sdmmc.dir/sdmmc_sd.c.i
 
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sdmmc_sd.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_sdmmc.dir/sdmmc_sd.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/sdmmc/sdmmc_sd.c -o CMakeFiles/__idf_sdmmc.dir/sdmmc_sd.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/sdmmc/sdmmc_sd.c -o CMakeFiles/__idf_sdmmc.dir/sdmmc_sd.c.s
 
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sd_pwr_ctrl/sd_pwr_ctrl.c.obj: esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/flags.make
-esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sd_pwr_ctrl/sd_pwr_ctrl.c.obj: /Users/robert/esp-idf/components/sdmmc/sd_pwr_ctrl/sd_pwr_ctrl.c
+esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sd_pwr_ctrl/sd_pwr_ctrl.c.obj: /Users/robert/esp/esp-idf/components/sdmmc/sd_pwr_ctrl/sd_pwr_ctrl.c
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sd_pwr_ctrl/sd_pwr_ctrl.c.obj: esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sd_pwr_ctrl/sd_pwr_ctrl.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sd_pwr_ctrl/sd_pwr_ctrl.c.obj -MF CMakeFiles/__idf_sdmmc.dir/sd_pwr_ctrl/sd_pwr_ctrl.c.obj.d -o CMakeFiles/__idf_sdmmc.dir/sd_pwr_ctrl/sd_pwr_ctrl.c.obj -c /Users/robert/esp-idf/components/sdmmc/sd_pwr_ctrl/sd_pwr_ctrl.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sd_pwr_ctrl/sd_pwr_ctrl.c.obj -MF CMakeFiles/__idf_sdmmc.dir/sd_pwr_ctrl/sd_pwr_ctrl.c.obj.d -o CMakeFiles/__idf_sdmmc.dir/sd_pwr_ctrl/sd_pwr_ctrl.c.obj -c /Users/robert/esp/esp-idf/components/sdmmc/sd_pwr_ctrl/sd_pwr_ctrl.c
 
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sd_pwr_ctrl/sd_pwr_ctrl.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_sdmmc.dir/sd_pwr_ctrl/sd_pwr_ctrl.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/sdmmc/sd_pwr_ctrl/sd_pwr_ctrl.c > CMakeFiles/__idf_sdmmc.dir/sd_pwr_ctrl/sd_pwr_ctrl.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/sdmmc/sd_pwr_ctrl/sd_pwr_ctrl.c > CMakeFiles/__idf_sdmmc.dir/sd_pwr_ctrl/sd_pwr_ctrl.c.i
 
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/sd_pwr_ctrl/sd_pwr_ctrl.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_sdmmc.dir/sd_pwr_ctrl/sd_pwr_ctrl.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/sdmmc/sd_pwr_ctrl/sd_pwr_ctrl.c -o CMakeFiles/__idf_sdmmc.dir/sd_pwr_ctrl/sd_pwr_ctrl.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/sdmmc/sd_pwr_ctrl/sd_pwr_ctrl.c -o CMakeFiles/__idf_sdmmc.dir/sd_pwr_ctrl/sd_pwr_ctrl.c.s
 
 # Object files for target __idf_sdmmc
 __idf_sdmmc_OBJECTS = \
@@ -205,6 +205,6 @@ esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/clean:
 .PHONY : esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/clean
 
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/sdmmc /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/sdmmc /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/depend
 

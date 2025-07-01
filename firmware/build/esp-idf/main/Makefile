@@ -175,6 +175,126 @@ __idf_main/fast:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/build
 .PHONY : __idf_main/fast
 
+__/components/sh2/euler.obj: __/components/sh2/euler.c.obj
+.PHONY : __/components/sh2/euler.obj
+
+# target to build an object file
+__/components/sh2/euler.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/euler.c.obj
+.PHONY : __/components/sh2/euler.c.obj
+
+__/components/sh2/euler.i: __/components/sh2/euler.c.i
+.PHONY : __/components/sh2/euler.i
+
+# target to preprocess a source file
+__/components/sh2/euler.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/euler.c.i
+.PHONY : __/components/sh2/euler.c.i
+
+__/components/sh2/euler.s: __/components/sh2/euler.c.s
+.PHONY : __/components/sh2/euler.s
+
+# target to generate assembly for a file
+__/components/sh2/euler.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/euler.c.s
+.PHONY : __/components/sh2/euler.c.s
+
+__/components/sh2/sh2.obj: __/components/sh2/sh2.c.obj
+.PHONY : __/components/sh2/sh2.obj
+
+# target to build an object file
+__/components/sh2/sh2.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2.c.obj
+.PHONY : __/components/sh2/sh2.c.obj
+
+__/components/sh2/sh2.i: __/components/sh2/sh2.c.i
+.PHONY : __/components/sh2/sh2.i
+
+# target to preprocess a source file
+__/components/sh2/sh2.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2.c.i
+.PHONY : __/components/sh2/sh2.c.i
+
+__/components/sh2/sh2.s: __/components/sh2/sh2.c.s
+.PHONY : __/components/sh2/sh2.s
+
+# target to generate assembly for a file
+__/components/sh2/sh2.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2.c.s
+.PHONY : __/components/sh2/sh2.c.s
+
+__/components/sh2/sh2_SensorValue.obj: __/components/sh2/sh2_SensorValue.c.obj
+.PHONY : __/components/sh2/sh2_SensorValue.obj
+
+# target to build an object file
+__/components/sh2/sh2_SensorValue.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2_SensorValue.c.obj
+.PHONY : __/components/sh2/sh2_SensorValue.c.obj
+
+__/components/sh2/sh2_SensorValue.i: __/components/sh2/sh2_SensorValue.c.i
+.PHONY : __/components/sh2/sh2_SensorValue.i
+
+# target to preprocess a source file
+__/components/sh2/sh2_SensorValue.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2_SensorValue.c.i
+.PHONY : __/components/sh2/sh2_SensorValue.c.i
+
+__/components/sh2/sh2_SensorValue.s: __/components/sh2/sh2_SensorValue.c.s
+.PHONY : __/components/sh2/sh2_SensorValue.s
+
+# target to generate assembly for a file
+__/components/sh2/sh2_SensorValue.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2_SensorValue.c.s
+.PHONY : __/components/sh2/sh2_SensorValue.c.s
+
+__/components/sh2/sh2_util.obj: __/components/sh2/sh2_util.c.obj
+.PHONY : __/components/sh2/sh2_util.obj
+
+# target to build an object file
+__/components/sh2/sh2_util.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2_util.c.obj
+.PHONY : __/components/sh2/sh2_util.c.obj
+
+__/components/sh2/sh2_util.i: __/components/sh2/sh2_util.c.i
+.PHONY : __/components/sh2/sh2_util.i
+
+# target to preprocess a source file
+__/components/sh2/sh2_util.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2_util.c.i
+.PHONY : __/components/sh2/sh2_util.c.i
+
+__/components/sh2/sh2_util.s: __/components/sh2/sh2_util.c.s
+.PHONY : __/components/sh2/sh2_util.s
+
+# target to generate assembly for a file
+__/components/sh2/sh2_util.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/sh2_util.c.s
+.PHONY : __/components/sh2/sh2_util.c.s
+
+__/components/sh2/shtp.obj: __/components/sh2/shtp.c.obj
+.PHONY : __/components/sh2/shtp.obj
+
+# target to build an object file
+__/components/sh2/shtp.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/shtp.c.obj
+.PHONY : __/components/sh2/shtp.c.obj
+
+__/components/sh2/shtp.i: __/components/sh2/shtp.c.i
+.PHONY : __/components/sh2/shtp.i
+
+# target to preprocess a source file
+__/components/sh2/shtp.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/shtp.c.i
+.PHONY : __/components/sh2/shtp.c.i
+
+__/components/sh2/shtp.s: __/components/sh2/shtp.c.s
+.PHONY : __/components/sh2/shtp.s
+
+# target to generate assembly for a file
+__/components/sh2/shtp.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/__/components/sh2/shtp.c.s
+.PHONY : __/components/sh2/shtp.c.s
+
 bno085.obj: bno085.c.obj
 .PHONY : bno085.obj
 
@@ -198,6 +318,30 @@ bno085.s: bno085.c.s
 bno085.c.s:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/bno085.c.s
 .PHONY : bno085.c.s
+
+bno085_sh2.obj: bno085_sh2.c.obj
+.PHONY : bno085_sh2.obj
+
+# target to build an object file
+bno085_sh2.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/bno085_sh2.c.obj
+.PHONY : bno085_sh2.c.obj
+
+bno085_sh2.i: bno085_sh2.c.i
+.PHONY : bno085_sh2.i
+
+# target to preprocess a source file
+bno085_sh2.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/bno085_sh2.c.i
+.PHONY : bno085_sh2.c.i
+
+bno085_sh2.s: bno085_sh2.c.s
+.PHONY : bno085_sh2.s
+
+# target to generate assembly for a file
+bno085_sh2.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/bno085_sh2.c.s
+.PHONY : bno085_sh2.c.s
 
 esp_hid_device_main.obj: esp_hid_device_main.c.obj
 .PHONY : esp_hid_device_main.obj
@@ -260,9 +404,27 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... __idf_main"
+	@echo "... __/components/sh2/euler.obj"
+	@echo "... __/components/sh2/euler.i"
+	@echo "... __/components/sh2/euler.s"
+	@echo "... __/components/sh2/sh2.obj"
+	@echo "... __/components/sh2/sh2.i"
+	@echo "... __/components/sh2/sh2.s"
+	@echo "... __/components/sh2/sh2_SensorValue.obj"
+	@echo "... __/components/sh2/sh2_SensorValue.i"
+	@echo "... __/components/sh2/sh2_SensorValue.s"
+	@echo "... __/components/sh2/sh2_util.obj"
+	@echo "... __/components/sh2/sh2_util.i"
+	@echo "... __/components/sh2/sh2_util.s"
+	@echo "... __/components/sh2/shtp.obj"
+	@echo "... __/components/sh2/shtp.i"
+	@echo "... __/components/sh2/shtp.s"
 	@echo "... bno085.obj"
 	@echo "... bno085.i"
 	@echo "... bno085.s"
+	@echo "... bno085_sh2.obj"
+	@echo "... bno085_sh2.i"
+	@echo "... bno085_sh2.s"
 	@echo "... esp_hid_device_main.obj"
 	@echo "... esp_hid_device_main.i"
 	@echo "... esp_hid_device_main.s"

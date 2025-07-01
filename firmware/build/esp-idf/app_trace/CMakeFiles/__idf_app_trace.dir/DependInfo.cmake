@@ -8,10 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/robert/esp-idf/components/app_trace/app_trace.c" "esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace.c.obj" "gcc" "esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace.c.obj.d"
-  "/Users/robert/esp-idf/components/app_trace/app_trace_util.c" "esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace_util.c.obj" "gcc" "esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace_util.c.obj.d"
-  "/Users/robert/esp-idf/components/app_trace/host_file_io.c" "esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/host_file_io.c.obj" "gcc" "esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/host_file_io.c.obj.d"
-  "/Users/robert/esp-idf/components/app_trace/port/port_uart.c" "esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/port/port_uart.c.obj" "gcc" "esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/port/port_uart.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/app_trace/app_trace.c" "esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace.c.obj" "gcc" "esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/app_trace/app_trace_util.c" "esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace_util.c.obj" "gcc" "esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace_util.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/app_trace/host_file_io.c" "esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/host_file_io.c.obj" "gcc" "esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/host_file_io.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/app_trace/port/port_uart.c" "esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/port/port_uart.c.obj" "gcc" "esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/port/port_uart.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

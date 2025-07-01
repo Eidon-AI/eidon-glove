@@ -73,32 +73,32 @@ esp-idf/rt/CMakeFiles/__idf_rt.dir/codegen:
 .PHONY : esp-idf/rt/CMakeFiles/__idf_rt.dir/codegen
 
 esp-idf/rt/CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_mqueue.c.obj: esp-idf/rt/CMakeFiles/__idf_rt.dir/flags.make
-esp-idf/rt/CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_mqueue.c.obj: /Users/robert/esp-idf/components/rt/FreeRTOS_POSIX_mqueue.c
+esp-idf/rt/CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_mqueue.c.obj: /Users/robert/esp/esp-idf/components/rt/FreeRTOS_POSIX_mqueue.c
 esp-idf/rt/CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_mqueue.c.obj: esp-idf/rt/CMakeFiles/__idf_rt.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/rt/CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_mqueue.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/rt && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/rt/CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_mqueue.c.obj -MF CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_mqueue.c.obj.d -o CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_mqueue.c.obj -c /Users/robert/esp-idf/components/rt/FreeRTOS_POSIX_mqueue.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/rt && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/rt/CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_mqueue.c.obj -MF CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_mqueue.c.obj.d -o CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_mqueue.c.obj -c /Users/robert/esp/esp-idf/components/rt/FreeRTOS_POSIX_mqueue.c
 
 esp-idf/rt/CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_mqueue.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_mqueue.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/rt && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/rt/FreeRTOS_POSIX_mqueue.c > CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_mqueue.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/rt && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/rt/FreeRTOS_POSIX_mqueue.c > CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_mqueue.c.i
 
 esp-idf/rt/CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_mqueue.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_mqueue.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/rt && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/rt/FreeRTOS_POSIX_mqueue.c -o CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_mqueue.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/rt && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/rt/FreeRTOS_POSIX_mqueue.c -o CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_mqueue.c.s
 
 esp-idf/rt/CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_utils.c.obj: esp-idf/rt/CMakeFiles/__idf_rt.dir/flags.make
-esp-idf/rt/CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_utils.c.obj: /Users/robert/esp-idf/components/rt/FreeRTOS_POSIX_utils.c
+esp-idf/rt/CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_utils.c.obj: /Users/robert/esp/esp-idf/components/rt/FreeRTOS_POSIX_utils.c
 esp-idf/rt/CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_utils.c.obj: esp-idf/rt/CMakeFiles/__idf_rt.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object esp-idf/rt/CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_utils.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/rt && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/rt/CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_utils.c.obj -MF CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_utils.c.obj.d -o CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_utils.c.obj -c /Users/robert/esp-idf/components/rt/FreeRTOS_POSIX_utils.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/rt && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/rt/CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_utils.c.obj -MF CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_utils.c.obj.d -o CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_utils.c.obj -c /Users/robert/esp/esp-idf/components/rt/FreeRTOS_POSIX_utils.c
 
 esp-idf/rt/CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_utils.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_utils.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/rt && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/rt/FreeRTOS_POSIX_utils.c > CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_utils.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/rt && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/rt/FreeRTOS_POSIX_utils.c > CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_utils.c.i
 
 esp-idf/rt/CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_utils.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_utils.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/rt && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/rt/FreeRTOS_POSIX_utils.c -o CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_utils.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/rt && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/rt/FreeRTOS_POSIX_utils.c -o CMakeFiles/__idf_rt.dir/FreeRTOS_POSIX_utils.c.s
 
 # Object files for target __idf_rt
 __idf_rt_OBJECTS = \
@@ -125,6 +125,6 @@ esp-idf/rt/CMakeFiles/__idf_rt.dir/clean:
 .PHONY : esp-idf/rt/CMakeFiles/__idf_rt.dir/clean
 
 esp-idf/rt/CMakeFiles/__idf_rt.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/rt /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/rt /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/rt/CMakeFiles/__idf_rt.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/rt /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/rt /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/rt/CMakeFiles/__idf_rt.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/rt/CMakeFiles/__idf_rt.dir/depend
 

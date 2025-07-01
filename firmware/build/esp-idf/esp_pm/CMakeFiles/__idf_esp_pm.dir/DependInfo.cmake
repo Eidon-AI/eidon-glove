@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/robert/esp-idf/components/esp_pm/pm_impl.c" "esp-idf/esp_pm/CMakeFiles/__idf_esp_pm.dir/pm_impl.c.obj" "gcc" "esp-idf/esp_pm/CMakeFiles/__idf_esp_pm.dir/pm_impl.c.obj.d"
-  "/Users/robert/esp-idf/components/esp_pm/pm_locks.c" "esp-idf/esp_pm/CMakeFiles/__idf_esp_pm.dir/pm_locks.c.obj" "gcc" "esp-idf/esp_pm/CMakeFiles/__idf_esp_pm.dir/pm_locks.c.obj.d"
-  "/Users/robert/esp-idf/components/esp_pm/pm_trace.c" "esp-idf/esp_pm/CMakeFiles/__idf_esp_pm.dir/pm_trace.c.obj" "gcc" "esp-idf/esp_pm/CMakeFiles/__idf_esp_pm.dir/pm_trace.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/esp_pm/pm_impl.c" "esp-idf/esp_pm/CMakeFiles/__idf_esp_pm.dir/pm_impl.c.obj" "gcc" "esp-idf/esp_pm/CMakeFiles/__idf_esp_pm.dir/pm_impl.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/esp_pm/pm_locks.c" "esp-idf/esp_pm/CMakeFiles/__idf_esp_pm.dir/pm_locks.c.obj" "gcc" "esp-idf/esp_pm/CMakeFiles/__idf_esp_pm.dir/pm_locks.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/esp_pm/pm_trace.c" "esp-idf/esp_pm/CMakeFiles/__idf_esp_pm.dir/pm_trace.c.obj" "gcc" "esp-idf/esp_pm/CMakeFiles/__idf_esp_pm.dir/pm_trace.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

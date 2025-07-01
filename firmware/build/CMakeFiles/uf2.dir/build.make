@@ -67,7 +67,7 @@ include CMakeFiles/uf2.dir/compiler_depend.make
 include CMakeFiles/uf2.dir/progress.make
 
 CMakeFiles/uf2:
-	/opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -D IDF_PATH=/Users/robert/esp-idf -D "UF2_CMD=/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python;/Users/robert/esp-idf/tools/mkuf2.py;write;--chip;esp32c6" -D "UF2_ARGS=--json;/Users/robert/eidon/eidon-glove/firmware/build/flasher_args.json;-o;/Users/robert/eidon/eidon-glove/firmware/build/uf2.bin" -P /Users/robert/esp-idf/tools/cmake/run_uf2_cmds.cmake
+	/opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -D IDF_PATH=/Users/robert/esp/esp-idf -D "UF2_CMD=/Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python;/Users/robert/esp/esp-idf/tools/mkuf2.py;write;--chip;esp32c6" -D "UF2_ARGS=--json;/Users/robert/eidon/eidon-glove/firmware/build/flasher_args.json;-o;/Users/robert/eidon/eidon-glove/firmware/build/uf2.bin" -P /Users/robert/esp/esp-idf/tools/cmake/run_uf2_cmds.cmake
 
 CMakeFiles/uf2.dir/codegen:
 .PHONY : CMakeFiles/uf2.dir/codegen

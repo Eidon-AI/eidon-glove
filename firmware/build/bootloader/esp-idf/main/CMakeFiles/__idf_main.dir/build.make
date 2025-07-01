@@ -53,7 +53,7 @@ RM = /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/robert/esp-idf/components/bootloader/subproject
+CMAKE_SOURCE_DIR = /Users/robert/esp/esp-idf/components/bootloader/subproject
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /Users/robert/eidon/eidon-glove/firmware/build/bootloader
@@ -73,18 +73,18 @@ esp-idf/main/CMakeFiles/__idf_main.dir/codegen:
 .PHONY : esp-idf/main/CMakeFiles/__idf_main.dir/codegen
 
 esp-idf/main/CMakeFiles/__idf_main.dir/bootloader_start.c.obj: esp-idf/main/CMakeFiles/__idf_main.dir/flags.make
-esp-idf/main/CMakeFiles/__idf_main.dir/bootloader_start.c.obj: /Users/robert/esp-idf/components/bootloader/subproject/main/bootloader_start.c
+esp-idf/main/CMakeFiles/__idf_main.dir/bootloader_start.c.obj: /Users/robert/esp/esp-idf/components/bootloader/subproject/main/bootloader_start.c
 esp-idf/main/CMakeFiles/__idf_main.dir/bootloader_start.c.obj: esp-idf/main/CMakeFiles/__idf_main.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/main/CMakeFiles/__idf_main.dir/bootloader_start.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/main/CMakeFiles/__idf_main.dir/bootloader_start.c.obj -MF CMakeFiles/__idf_main.dir/bootloader_start.c.obj.d -o CMakeFiles/__idf_main.dir/bootloader_start.c.obj -c /Users/robert/esp-idf/components/bootloader/subproject/main/bootloader_start.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/main/CMakeFiles/__idf_main.dir/bootloader_start.c.obj -MF CMakeFiles/__idf_main.dir/bootloader_start.c.obj.d -o CMakeFiles/__idf_main.dir/bootloader_start.c.obj -c /Users/robert/esp/esp-idf/components/bootloader/subproject/main/bootloader_start.c
 
 esp-idf/main/CMakeFiles/__idf_main.dir/bootloader_start.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_main.dir/bootloader_start.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/bootloader/subproject/main/bootloader_start.c > CMakeFiles/__idf_main.dir/bootloader_start.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/bootloader/subproject/main/bootloader_start.c > CMakeFiles/__idf_main.dir/bootloader_start.c.i
 
 esp-idf/main/CMakeFiles/__idf_main.dir/bootloader_start.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_main.dir/bootloader_start.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/bootloader/subproject/main/bootloader_start.c -o CMakeFiles/__idf_main.dir/bootloader_start.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/main && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/bootloader/subproject/main/bootloader_start.c -o CMakeFiles/__idf_main.dir/bootloader_start.c.s
 
 # Object files for target __idf_main
 __idf_main_OBJECTS = \
@@ -109,6 +109,6 @@ esp-idf/main/CMakeFiles/__idf_main.dir/clean:
 .PHONY : esp-idf/main/CMakeFiles/__idf_main.dir/clean
 
 esp-idf/main/CMakeFiles/__idf_main.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp-idf/components/bootloader/subproject /Users/robert/esp-idf/components/bootloader/subproject/main /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/main /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/main/CMakeFiles/__idf_main.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp/esp-idf/components/bootloader/subproject /Users/robert/esp/esp-idf/components/bootloader/subproject/main /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/main /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/main/CMakeFiles/__idf_main.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/main/CMakeFiles/__idf_main.dir/depend
 

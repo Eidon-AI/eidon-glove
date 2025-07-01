@@ -69,7 +69,7 @@ include esp-idf/partition_table/CMakeFiles/partition-table.dir/progress.make
 esp-idf/partition_table/CMakeFiles/partition-table:
 	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/partition_table && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E echo "Partition table binary generated. Contents:"
 	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/partition_table && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E echo "*******************************************************************************"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/partition_table && /Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python /Users/robert/esp-idf/components/partition_table/gen_esp32part.py -q --offset 0x8000 --primary-bootloader-offset 0x0 --flash-size 2MB -- /Users/robert/eidon/eidon-glove/firmware/build/partition_table/partition-table.bin
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/partition_table && /Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python /Users/robert/esp/esp-idf/components/partition_table/gen_esp32part.py -q --offset 0x8000 --flash-size 2MB -- /Users/robert/eidon/eidon-glove/firmware/build/partition_table/partition-table.bin
 	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/partition_table && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E echo "*******************************************************************************"
 
 esp-idf/partition_table/CMakeFiles/partition-table.dir/codegen:
@@ -88,6 +88,6 @@ esp-idf/partition_table/CMakeFiles/partition-table.dir/clean:
 .PHONY : esp-idf/partition_table/CMakeFiles/partition-table.dir/clean
 
 esp-idf/partition_table/CMakeFiles/partition-table.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/partition_table /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/partition_table /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/partition_table/CMakeFiles/partition-table.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/partition_table /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/partition_table /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/partition_table/CMakeFiles/partition-table.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/partition_table/CMakeFiles/partition-table.dir/depend
 

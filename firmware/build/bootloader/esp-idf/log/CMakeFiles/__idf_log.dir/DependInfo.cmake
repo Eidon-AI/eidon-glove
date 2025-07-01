@@ -8,15 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/robert/esp-idf/components/log/src/buffer/log_buffers.c" "esp-idf/log/CMakeFiles/__idf_log.dir/src/buffer/log_buffers.c.obj" "gcc" "esp-idf/log/CMakeFiles/__idf_log.dir/src/buffer/log_buffers.c.obj.d"
-  "/Users/robert/esp-idf/components/log/src/log.c" "esp-idf/log/CMakeFiles/__idf_log.dir/src/log.c.obj" "gcc" "esp-idf/log/CMakeFiles/__idf_log.dir/src/log.c.obj.d"
-  "/Users/robert/esp-idf/components/log/src/log_format_text.c" "esp-idf/log/CMakeFiles/__idf_log.dir/src/log_format_text.c.obj" "gcc" "esp-idf/log/CMakeFiles/__idf_log.dir/src/log_format_text.c.obj.d"
-  "/Users/robert/esp-idf/components/log/src/log_print.c" "esp-idf/log/CMakeFiles/__idf_log.dir/src/log_print.c.obj" "gcc" "esp-idf/log/CMakeFiles/__idf_log.dir/src/log_print.c.obj.d"
-  "/Users/robert/esp-idf/components/log/src/log_timestamp_common.c" "esp-idf/log/CMakeFiles/__idf_log.dir/src/log_timestamp_common.c.obj" "gcc" "esp-idf/log/CMakeFiles/__idf_log.dir/src/log_timestamp_common.c.obj.d"
-  "/Users/robert/esp-idf/components/log/src/noos/log_lock.c" "esp-idf/log/CMakeFiles/__idf_log.dir/src/noos/log_lock.c.obj" "gcc" "esp-idf/log/CMakeFiles/__idf_log.dir/src/noos/log_lock.c.obj.d"
-  "/Users/robert/esp-idf/components/log/src/noos/log_timestamp.c" "esp-idf/log/CMakeFiles/__idf_log.dir/src/noos/log_timestamp.c.obj" "gcc" "esp-idf/log/CMakeFiles/__idf_log.dir/src/noos/log_timestamp.c.obj.d"
-  "/Users/robert/esp-idf/components/log/src/noos/util.c" "esp-idf/log/CMakeFiles/__idf_log.dir/src/noos/util.c.obj" "gcc" "esp-idf/log/CMakeFiles/__idf_log.dir/src/noos/util.c.obj.d"
-  "/Users/robert/esp-idf/components/log/src/util.c" "esp-idf/log/CMakeFiles/__idf_log.dir/src/util.c.obj" "gcc" "esp-idf/log/CMakeFiles/__idf_log.dir/src/util.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/log/src/log_timestamp_common.c" "esp-idf/log/CMakeFiles/__idf_log.dir/src/log_timestamp_common.c.obj" "gcc" "esp-idf/log/CMakeFiles/__idf_log.dir/src/log_timestamp_common.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/log/src/noos/log_lock.c" "esp-idf/log/CMakeFiles/__idf_log.dir/src/noos/log_lock.c.obj" "gcc" "esp-idf/log/CMakeFiles/__idf_log.dir/src/noos/log_lock.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/log/src/noos/log_timestamp.c" "esp-idf/log/CMakeFiles/__idf_log.dir/src/noos/log_timestamp.c.obj" "gcc" "esp-idf/log/CMakeFiles/__idf_log.dir/src/noos/log_timestamp.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

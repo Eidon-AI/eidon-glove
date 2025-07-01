@@ -439,30 +439,6 @@ patches/esp_rom_uart.c.s:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/build.make esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_uart.c.s
 .PHONY : patches/esp_rom_uart.c.s
 
-patches/esp_rom_usb_serial.obj: patches/esp_rom_usb_serial.c.obj
-.PHONY : patches/esp_rom_usb_serial.obj
-
-# target to build an object file
-patches/esp_rom_usb_serial.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/build.make esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_usb_serial.c.obj
-.PHONY : patches/esp_rom_usb_serial.c.obj
-
-patches/esp_rom_usb_serial.i: patches/esp_rom_usb_serial.c.i
-.PHONY : patches/esp_rom_usb_serial.i
-
-# target to preprocess a source file
-patches/esp_rom_usb_serial.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/build.make esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_usb_serial.c.i
-.PHONY : patches/esp_rom_usb_serial.c.i
-
-patches/esp_rom_usb_serial.s: patches/esp_rom_usb_serial.c.s
-.PHONY : patches/esp_rom_usb_serial.s
-
-# target to generate assembly for a file
-patches/esp_rom_usb_serial.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/build.make esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_usb_serial.c.s
-.PHONY : patches/esp_rom_usb_serial.c.s
-
 patches/esp_rom_wdt.obj: patches/esp_rom_wdt.c.obj
 .PHONY : patches/esp_rom_wdt.obj
 
@@ -533,9 +509,6 @@ help:
 	@echo "... patches/esp_rom_uart.obj"
 	@echo "... patches/esp_rom_uart.i"
 	@echo "... patches/esp_rom_uart.s"
-	@echo "... patches/esp_rom_usb_serial.obj"
-	@echo "... patches/esp_rom_usb_serial.i"
-	@echo "... patches/esp_rom_usb_serial.s"
 	@echo "... patches/esp_rom_wdt.obj"
 	@echo "... patches/esp_rom_wdt.i"
 	@echo "... patches/esp_rom_wdt.s"

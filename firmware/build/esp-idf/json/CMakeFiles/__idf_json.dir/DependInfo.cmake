@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/robert/esp-idf/components/json/cJSON/cJSON.c" "esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON.c.obj" "gcc" "esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON.c.obj.d"
-  "/Users/robert/esp-idf/components/json/cJSON/cJSON_Utils.c" "esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON_Utils.c.obj" "gcc" "esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON_Utils.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/json/cJSON/cJSON.c" "esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON.c.obj" "gcc" "esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/json/cJSON/cJSON_Utils.c" "esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON_Utils.c.obj" "gcc" "esp-idf/json/CMakeFiles/__idf_json.dir/cJSON/cJSON_Utils.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

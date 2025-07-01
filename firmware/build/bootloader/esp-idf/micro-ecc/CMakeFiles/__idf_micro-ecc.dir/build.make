@@ -53,7 +53,7 @@ RM = /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/robert/esp-idf/components/bootloader/subproject
+CMAKE_SOURCE_DIR = /Users/robert/esp/esp-idf/components/bootloader/subproject
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /Users/robert/eidon/eidon-glove/firmware/build/bootloader
@@ -73,18 +73,18 @@ esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir/codegen:
 .PHONY : esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir/codegen
 
 esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir/uECC_verify_antifault.c.obj: esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir/flags.make
-esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir/uECC_verify_antifault.c.obj: /Users/robert/esp-idf/components/bootloader/subproject/components/micro-ecc/uECC_verify_antifault.c
+esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir/uECC_verify_antifault.c.obj: /Users/robert/esp/esp-idf/components/bootloader/subproject/components/micro-ecc/uECC_verify_antifault.c
 esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir/uECC_verify_antifault.c.obj: esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir/uECC_verify_antifault.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/micro-ecc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir/uECC_verify_antifault.c.obj -MF CMakeFiles/__idf_micro-ecc.dir/uECC_verify_antifault.c.obj.d -o CMakeFiles/__idf_micro-ecc.dir/uECC_verify_antifault.c.obj -c /Users/robert/esp-idf/components/bootloader/subproject/components/micro-ecc/uECC_verify_antifault.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/micro-ecc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir/uECC_verify_antifault.c.obj -MF CMakeFiles/__idf_micro-ecc.dir/uECC_verify_antifault.c.obj.d -o CMakeFiles/__idf_micro-ecc.dir/uECC_verify_antifault.c.obj -c /Users/robert/esp/esp-idf/components/bootloader/subproject/components/micro-ecc/uECC_verify_antifault.c
 
 esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir/uECC_verify_antifault.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_micro-ecc.dir/uECC_verify_antifault.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/micro-ecc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/bootloader/subproject/components/micro-ecc/uECC_verify_antifault.c > CMakeFiles/__idf_micro-ecc.dir/uECC_verify_antifault.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/micro-ecc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/bootloader/subproject/components/micro-ecc/uECC_verify_antifault.c > CMakeFiles/__idf_micro-ecc.dir/uECC_verify_antifault.c.i
 
 esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir/uECC_verify_antifault.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_micro-ecc.dir/uECC_verify_antifault.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/micro-ecc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/bootloader/subproject/components/micro-ecc/uECC_verify_antifault.c -o CMakeFiles/__idf_micro-ecc.dir/uECC_verify_antifault.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/micro-ecc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/bootloader/subproject/components/micro-ecc/uECC_verify_antifault.c -o CMakeFiles/__idf_micro-ecc.dir/uECC_verify_antifault.c.s
 
 # Object files for target __idf_micro-ecc
 __idf_micro__ecc_OBJECTS = \
@@ -109,6 +109,6 @@ esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir/clean:
 .PHONY : esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir/clean
 
 esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp-idf/components/bootloader/subproject /Users/robert/esp-idf/components/bootloader/subproject/components/micro-ecc /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/micro-ecc /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp/esp-idf/components/bootloader/subproject /Users/robert/esp/esp-idf/components/bootloader/subproject/components/micro-ecc /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/micro-ecc /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir/depend
 

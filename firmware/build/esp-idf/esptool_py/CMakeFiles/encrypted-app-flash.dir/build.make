@@ -69,7 +69,7 @@ include esp-idf/esptool_py/CMakeFiles/encrypted-app-flash.dir/progress.make
 esp-idf/esptool_py/CMakeFiles/encrypted-app-flash:
 	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esptool_py && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E echo "Error: The target encrypted-app-flash requires"
 	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esptool_py && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E echo "CONFIG_SECURE_FLASH_ENCRYPTION_MODE_DEVELOPMENT to be enabled."
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esptool_py && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E env "FAIL_MESSAGE=Failed executing target (see errors on lines above)" /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -P /Users/robert/esp-idf/tools/cmake/scripts/fail.cmake
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esptool_py && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E env "FAIL_MESSAGE=Failed executing target (see errors on lines above)" /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -P /Users/robert/esp/esp-idf/tools/cmake/scripts/fail.cmake
 
 esp-idf/esptool_py/CMakeFiles/encrypted-app-flash.dir/codegen:
 .PHONY : esp-idf/esptool_py/CMakeFiles/encrypted-app-flash.dir/codegen
@@ -87,6 +87,6 @@ esp-idf/esptool_py/CMakeFiles/encrypted-app-flash.dir/clean:
 .PHONY : esp-idf/esptool_py/CMakeFiles/encrypted-app-flash.dir/clean
 
 esp-idf/esptool_py/CMakeFiles/encrypted-app-flash.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/esptool_py /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esptool_py /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esptool_py/CMakeFiles/encrypted-app-flash.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/esptool_py /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esptool_py /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esptool_py/CMakeFiles/encrypted-app-flash.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/esptool_py/CMakeFiles/encrypted-app-flash.dir/depend
 

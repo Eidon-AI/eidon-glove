@@ -73,60 +73,60 @@ esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/codegen:
 .PHONY : esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/codegen
 
 esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace.c.obj: esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/flags.make
-esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace.c.obj: /Users/robert/esp-idf/components/app_trace/app_trace.c
+esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace.c.obj: /Users/robert/esp/esp-idf/components/app_trace/app_trace.c
 esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace.c.obj: esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace.c.obj -MF CMakeFiles/__idf_app_trace.dir/app_trace.c.obj.d -o CMakeFiles/__idf_app_trace.dir/app_trace.c.obj -c /Users/robert/esp-idf/components/app_trace/app_trace.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace.c.obj -MF CMakeFiles/__idf_app_trace.dir/app_trace.c.obj.d -o CMakeFiles/__idf_app_trace.dir/app_trace.c.obj -c /Users/robert/esp/esp-idf/components/app_trace/app_trace.c
 
 esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_app_trace.dir/app_trace.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/app_trace/app_trace.c > CMakeFiles/__idf_app_trace.dir/app_trace.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/app_trace/app_trace.c > CMakeFiles/__idf_app_trace.dir/app_trace.c.i
 
 esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_app_trace.dir/app_trace.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/app_trace/app_trace.c -o CMakeFiles/__idf_app_trace.dir/app_trace.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/app_trace/app_trace.c -o CMakeFiles/__idf_app_trace.dir/app_trace.c.s
 
 esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace_util.c.obj: esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/flags.make
-esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace_util.c.obj: /Users/robert/esp-idf/components/app_trace/app_trace_util.c
+esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace_util.c.obj: /Users/robert/esp/esp-idf/components/app_trace/app_trace_util.c
 esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace_util.c.obj: esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace_util.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace_util.c.obj -MF CMakeFiles/__idf_app_trace.dir/app_trace_util.c.obj.d -o CMakeFiles/__idf_app_trace.dir/app_trace_util.c.obj -c /Users/robert/esp-idf/components/app_trace/app_trace_util.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace_util.c.obj -MF CMakeFiles/__idf_app_trace.dir/app_trace_util.c.obj.d -o CMakeFiles/__idf_app_trace.dir/app_trace_util.c.obj -c /Users/robert/esp/esp-idf/components/app_trace/app_trace_util.c
 
 esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace_util.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_app_trace.dir/app_trace_util.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/app_trace/app_trace_util.c > CMakeFiles/__idf_app_trace.dir/app_trace_util.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/app_trace/app_trace_util.c > CMakeFiles/__idf_app_trace.dir/app_trace_util.c.i
 
 esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace_util.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_app_trace.dir/app_trace_util.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/app_trace/app_trace_util.c -o CMakeFiles/__idf_app_trace.dir/app_trace_util.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/app_trace/app_trace_util.c -o CMakeFiles/__idf_app_trace.dir/app_trace_util.c.s
 
 esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/host_file_io.c.obj: esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/flags.make
-esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/host_file_io.c.obj: /Users/robert/esp-idf/components/app_trace/host_file_io.c
+esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/host_file_io.c.obj: /Users/robert/esp/esp-idf/components/app_trace/host_file_io.c
 esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/host_file_io.c.obj: esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/host_file_io.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/host_file_io.c.obj -MF CMakeFiles/__idf_app_trace.dir/host_file_io.c.obj.d -o CMakeFiles/__idf_app_trace.dir/host_file_io.c.obj -c /Users/robert/esp-idf/components/app_trace/host_file_io.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/host_file_io.c.obj -MF CMakeFiles/__idf_app_trace.dir/host_file_io.c.obj.d -o CMakeFiles/__idf_app_trace.dir/host_file_io.c.obj -c /Users/robert/esp/esp-idf/components/app_trace/host_file_io.c
 
 esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/host_file_io.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_app_trace.dir/host_file_io.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/app_trace/host_file_io.c > CMakeFiles/__idf_app_trace.dir/host_file_io.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/app_trace/host_file_io.c > CMakeFiles/__idf_app_trace.dir/host_file_io.c.i
 
 esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/host_file_io.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_app_trace.dir/host_file_io.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/app_trace/host_file_io.c -o CMakeFiles/__idf_app_trace.dir/host_file_io.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/app_trace/host_file_io.c -o CMakeFiles/__idf_app_trace.dir/host_file_io.c.s
 
 esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/port/port_uart.c.obj: esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/flags.make
-esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/port/port_uart.c.obj: /Users/robert/esp-idf/components/app_trace/port/port_uart.c
+esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/port/port_uart.c.obj: /Users/robert/esp/esp-idf/components/app_trace/port/port_uart.c
 esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/port/port_uart.c.obj: esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/port/port_uart.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/port/port_uart.c.obj -MF CMakeFiles/__idf_app_trace.dir/port/port_uart.c.obj.d -o CMakeFiles/__idf_app_trace.dir/port/port_uart.c.obj -c /Users/robert/esp-idf/components/app_trace/port/port_uart.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/port/port_uart.c.obj -MF CMakeFiles/__idf_app_trace.dir/port/port_uart.c.obj.d -o CMakeFiles/__idf_app_trace.dir/port/port_uart.c.obj -c /Users/robert/esp/esp-idf/components/app_trace/port/port_uart.c
 
 esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/port/port_uart.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_app_trace.dir/port/port_uart.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/app_trace/port/port_uart.c > CMakeFiles/__idf_app_trace.dir/port/port_uart.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/app_trace/port/port_uart.c > CMakeFiles/__idf_app_trace.dir/port/port_uart.c.i
 
 esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/port/port_uart.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_app_trace.dir/port/port_uart.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/app_trace/port/port_uart.c -o CMakeFiles/__idf_app_trace.dir/port/port_uart.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/app_trace/port/port_uart.c -o CMakeFiles/__idf_app_trace.dir/port/port_uart.c.s
 
 # Object files for target __idf_app_trace
 __idf_app_trace_OBJECTS = \
@@ -157,6 +157,6 @@ esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/clean:
 .PHONY : esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/clean
 
 esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/app_trace /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/app_trace /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/depend
 

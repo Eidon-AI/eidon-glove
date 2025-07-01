@@ -73,88 +73,74 @@ esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/codegen:
 .PHONY : esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/codegen
 
 esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/init.c.obj: esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/flags.make
-esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/init.c.obj: /Users/robert/esp-idf/components/esp_security/src/init.c
+esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/init.c.obj: /Users/robert/esp/esp-idf/components/esp_security/src/init.c
 esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/init.c.obj: esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/init.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/init.c.obj -MF CMakeFiles/__idf_esp_security.dir/src/init.c.obj.d -o CMakeFiles/__idf_esp_security.dir/src/init.c.obj -c /Users/robert/esp-idf/components/esp_security/src/init.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/init.c.obj -MF CMakeFiles/__idf_esp_security.dir/src/init.c.obj.d -o CMakeFiles/__idf_esp_security.dir/src/init.c.obj -c /Users/robert/esp/esp-idf/components/esp_security/src/init.c
 
 esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/init.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_security.dir/src/init.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_security/src/init.c > CMakeFiles/__idf_esp_security.dir/src/init.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_security/src/init.c > CMakeFiles/__idf_esp_security.dir/src/init.c.i
 
 esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/init.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_security.dir/src/init.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_security/src/init.c -o CMakeFiles/__idf_esp_security.dir/src/init.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_security/src/init.c -o CMakeFiles/__idf_esp_security.dir/src/init.c.s
 
 esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_hmac.c.obj: esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/flags.make
-esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_hmac.c.obj: /Users/robert/esp-idf/components/esp_security/src/esp_hmac.c
+esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_hmac.c.obj: /Users/robert/esp/esp-idf/components/esp_security/src/esp_hmac.c
 esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_hmac.c.obj: esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_hmac.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_hmac.c.obj -MF CMakeFiles/__idf_esp_security.dir/src/esp_hmac.c.obj.d -o CMakeFiles/__idf_esp_security.dir/src/esp_hmac.c.obj -c /Users/robert/esp-idf/components/esp_security/src/esp_hmac.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_hmac.c.obj -MF CMakeFiles/__idf_esp_security.dir/src/esp_hmac.c.obj.d -o CMakeFiles/__idf_esp_security.dir/src/esp_hmac.c.obj -c /Users/robert/esp/esp-idf/components/esp_security/src/esp_hmac.c
 
 esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_hmac.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_security.dir/src/esp_hmac.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_security/src/esp_hmac.c > CMakeFiles/__idf_esp_security.dir/src/esp_hmac.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_security/src/esp_hmac.c > CMakeFiles/__idf_esp_security.dir/src/esp_hmac.c.i
 
 esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_hmac.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_security.dir/src/esp_hmac.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_security/src/esp_hmac.c -o CMakeFiles/__idf_esp_security.dir/src/esp_hmac.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_security/src/esp_hmac.c -o CMakeFiles/__idf_esp_security.dir/src/esp_hmac.c.s
 
 esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_ds.c.obj: esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/flags.make
-esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_ds.c.obj: /Users/robert/esp-idf/components/esp_security/src/esp_ds.c
+esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_ds.c.obj: /Users/robert/esp/esp-idf/components/esp_security/src/esp_ds.c
 esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_ds.c.obj: esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_ds.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_ds.c.obj -MF CMakeFiles/__idf_esp_security.dir/src/esp_ds.c.obj.d -o CMakeFiles/__idf_esp_security.dir/src/esp_ds.c.obj -c /Users/robert/esp-idf/components/esp_security/src/esp_ds.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_ds.c.obj -MF CMakeFiles/__idf_esp_security.dir/src/esp_ds.c.obj.d -o CMakeFiles/__idf_esp_security.dir/src/esp_ds.c.obj -c /Users/robert/esp/esp-idf/components/esp_security/src/esp_ds.c
 
 esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_ds.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_security.dir/src/esp_ds.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_security/src/esp_ds.c > CMakeFiles/__idf_esp_security.dir/src/esp_ds.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_security/src/esp_ds.c > CMakeFiles/__idf_esp_security.dir/src/esp_ds.c.i
 
 esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_ds.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_security.dir/src/esp_ds.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_security/src/esp_ds.c -o CMakeFiles/__idf_esp_security.dir/src/esp_ds.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_security/src/esp_ds.c -o CMakeFiles/__idf_esp_security.dir/src/esp_ds.c.s
 
 esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_dpa_protection.c.obj: esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/flags.make
-esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_dpa_protection.c.obj: /Users/robert/esp-idf/components/esp_security/src/esp_dpa_protection.c
+esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_dpa_protection.c.obj: /Users/robert/esp/esp-idf/components/esp_security/src/esp_dpa_protection.c
 esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_dpa_protection.c.obj: esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_dpa_protection.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_dpa_protection.c.obj -MF CMakeFiles/__idf_esp_security.dir/src/esp_dpa_protection.c.obj.d -o CMakeFiles/__idf_esp_security.dir/src/esp_dpa_protection.c.obj -c /Users/robert/esp-idf/components/esp_security/src/esp_dpa_protection.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_dpa_protection.c.obj -MF CMakeFiles/__idf_esp_security.dir/src/esp_dpa_protection.c.obj.d -o CMakeFiles/__idf_esp_security.dir/src/esp_dpa_protection.c.obj -c /Users/robert/esp/esp-idf/components/esp_security/src/esp_dpa_protection.c
 
 esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_dpa_protection.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_security.dir/src/esp_dpa_protection.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_security/src/esp_dpa_protection.c > CMakeFiles/__idf_esp_security.dir/src/esp_dpa_protection.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_security/src/esp_dpa_protection.c > CMakeFiles/__idf_esp_security.dir/src/esp_dpa_protection.c.i
 
 esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_dpa_protection.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_security.dir/src/esp_dpa_protection.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_security/src/esp_dpa_protection.c -o CMakeFiles/__idf_esp_security.dir/src/esp_dpa_protection.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_security/src/esp_dpa_protection.c -o CMakeFiles/__idf_esp_security.dir/src/esp_dpa_protection.c.s
 
 esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.obj: esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/flags.make
-esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.obj: /Users/robert/esp-idf/components/esp_security/src/esp_crypto_lock.c
+esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.obj: /Users/robert/esp/esp-idf/components/esp_security/src/esp_crypto_lock.c
 esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.obj: esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.obj -MF CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.obj.d -o CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.obj -c /Users/robert/esp-idf/components/esp_security/src/esp_crypto_lock.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.obj -MF CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.obj.d -o CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.obj -c /Users/robert/esp/esp-idf/components/esp_security/src/esp_crypto_lock.c
 
 esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_security/src/esp_crypto_lock.c > CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_security/src/esp_crypto_lock.c > CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.i
 
 esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_security/src/esp_crypto_lock.c -o CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.s
-
-esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_crypto_periph_clk.c.obj: esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/flags.make
-esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_crypto_periph_clk.c.obj: /Users/robert/esp-idf/components/esp_security/src/esp_crypto_periph_clk.c
-esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_crypto_periph_clk.c.obj: esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_crypto_periph_clk.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_crypto_periph_clk.c.obj -MF CMakeFiles/__idf_esp_security.dir/src/esp_crypto_periph_clk.c.obj.d -o CMakeFiles/__idf_esp_security.dir/src/esp_crypto_periph_clk.c.obj -c /Users/robert/esp-idf/components/esp_security/src/esp_crypto_periph_clk.c
-
-esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_crypto_periph_clk.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_security.dir/src/esp_crypto_periph_clk.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_security/src/esp_crypto_periph_clk.c > CMakeFiles/__idf_esp_security.dir/src/esp_crypto_periph_clk.c.i
-
-esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_crypto_periph_clk.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_security.dir/src/esp_crypto_periph_clk.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_security/src/esp_crypto_periph_clk.c -o CMakeFiles/__idf_esp_security.dir/src/esp_crypto_periph_clk.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_security/src/esp_crypto_lock.c -o CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.s
 
 # Object files for target __idf_esp_security
 __idf_esp_security_OBJECTS = \
@@ -162,8 +148,7 @@ __idf_esp_security_OBJECTS = \
 "CMakeFiles/__idf_esp_security.dir/src/esp_hmac.c.obj" \
 "CMakeFiles/__idf_esp_security.dir/src/esp_ds.c.obj" \
 "CMakeFiles/__idf_esp_security.dir/src/esp_dpa_protection.c.obj" \
-"CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.obj" \
-"CMakeFiles/__idf_esp_security.dir/src/esp_crypto_periph_clk.c.obj"
+"CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.obj"
 
 # External object files for target __idf_esp_security
 __idf_esp_security_EXTERNAL_OBJECTS =
@@ -173,10 +158,9 @@ esp-idf/esp_security/libesp_security.a: esp-idf/esp_security/CMakeFiles/__idf_es
 esp-idf/esp_security/libesp_security.a: esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_ds.c.obj
 esp-idf/esp_security/libesp_security.a: esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_dpa_protection.c.obj
 esp-idf/esp_security/libesp_security.a: esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.obj
-esp-idf/esp_security/libesp_security.a: esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_crypto_periph_clk.c.obj
 esp-idf/esp_security/libesp_security.a: esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/build.make
 esp-idf/esp_security/libesp_security.a: esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C static library libesp_security.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C static library libesp_security.a"
 	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && $(CMAKE_COMMAND) -P CMakeFiles/__idf_esp_security.dir/cmake_clean_target.cmake
 	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/__idf_esp_security.dir/link.txt --verbose=$(VERBOSE)
 
@@ -189,6 +173,6 @@ esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/clean:
 .PHONY : esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/clean
 
 esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/esp_security /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/esp_security /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/depend
 

@@ -86,6 +86,6 @@ esp-idf/partition_table/CMakeFiles/partition_table-flash.dir/clean:
 .PHONY : esp-idf/partition_table/CMakeFiles/partition_table-flash.dir/clean
 
 esp-idf/partition_table/CMakeFiles/partition_table-flash.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/partition_table /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/partition_table /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/partition_table/CMakeFiles/partition_table-flash.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/partition_table /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/partition_table /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/partition_table/CMakeFiles/partition_table-flash.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/partition_table/CMakeFiles/partition_table-flash.dir/depend
 

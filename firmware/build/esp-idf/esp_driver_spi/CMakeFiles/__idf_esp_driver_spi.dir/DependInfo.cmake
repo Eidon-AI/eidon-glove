@@ -8,10 +8,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/robert/esp-idf/components/esp_driver_spi/src/gpspi/spi_common.c" "esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/src/gpspi/spi_common.c.obj" "gcc" "esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/src/gpspi/spi_common.c.obj.d"
-  "/Users/robert/esp-idf/components/esp_driver_spi/src/gpspi/spi_master.c" "esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/src/gpspi/spi_master.c.obj" "gcc" "esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/src/gpspi/spi_master.c.obj.d"
-  "/Users/robert/esp-idf/components/esp_driver_spi/src/gpspi/spi_slave.c" "esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/src/gpspi/spi_slave.c.obj" "gcc" "esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/src/gpspi/spi_slave.c.obj.d"
-  "/Users/robert/esp-idf/components/esp_driver_spi/src/gpspi/spi_slave_hd.c" "esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/src/gpspi/spi_slave_hd.c.obj" "gcc" "esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/src/gpspi/spi_slave_hd.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/esp_driver_spi/src/gpspi/spi_common.c" "esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/src/gpspi/spi_common.c.obj" "gcc" "esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/src/gpspi/spi_common.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/esp_driver_spi/src/gpspi/spi_dma.c" "esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/src/gpspi/spi_dma.c.obj" "gcc" "esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/src/gpspi/spi_dma.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/esp_driver_spi/src/gpspi/spi_master.c" "esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/src/gpspi/spi_master.c.obj" "gcc" "esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/src/gpspi/spi_master.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/esp_driver_spi/src/gpspi/spi_slave.c" "esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/src/gpspi/spi_slave.c.obj" "gcc" "esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/src/gpspi/spi_slave.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/esp_driver_spi/src/gpspi/spi_slave_hd.c" "esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/src/gpspi/spi_slave_hd.c.obj" "gcc" "esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/src/gpspi/spi_slave_hd.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

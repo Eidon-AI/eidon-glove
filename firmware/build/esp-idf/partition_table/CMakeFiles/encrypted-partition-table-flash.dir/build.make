@@ -69,7 +69,7 @@ include esp-idf/partition_table/CMakeFiles/encrypted-partition-table-flash.dir/p
 esp-idf/partition_table/CMakeFiles/encrypted-partition-table-flash:
 	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/partition_table && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E echo "Error: The target encrypted-partition-table-flash requires"
 	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/partition_table && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E echo "CONFIG_SECURE_FLASH_ENCRYPTION_MODE_DEVELOPMENT to be enabled."
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/partition_table && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E env "FAIL_MESSAGE=Failed executing target (see errors on lines above)" /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -P /Users/robert/esp-idf/tools/cmake/scripts/fail.cmake
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/partition_table && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E env "FAIL_MESSAGE=Failed executing target (see errors on lines above)" /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -P /Users/robert/esp/esp-idf/tools/cmake/scripts/fail.cmake
 
 esp-idf/partition_table/CMakeFiles/encrypted-partition-table-flash.dir/codegen:
 .PHONY : esp-idf/partition_table/CMakeFiles/encrypted-partition-table-flash.dir/codegen
@@ -87,6 +87,6 @@ esp-idf/partition_table/CMakeFiles/encrypted-partition-table-flash.dir/clean:
 .PHONY : esp-idf/partition_table/CMakeFiles/encrypted-partition-table-flash.dir/clean
 
 esp-idf/partition_table/CMakeFiles/encrypted-partition-table-flash.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/partition_table /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/partition_table /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/partition_table/CMakeFiles/encrypted-partition-table-flash.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/partition_table /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/partition_table /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/partition_table/CMakeFiles/encrypted-partition-table-flash.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/partition_table/CMakeFiles/encrypted-partition-table-flash.dir/depend
 

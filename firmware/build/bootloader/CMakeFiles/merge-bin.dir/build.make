@@ -53,7 +53,7 @@ RM = /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/robert/esp-idf/components/bootloader/subproject
+CMAKE_SOURCE_DIR = /Users/robert/esp/esp-idf/components/bootloader/subproject
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /Users/robert/eidon/eidon-glove/firmware/build/bootloader
@@ -67,7 +67,7 @@ include CMakeFiles/merge-bin.dir/compiler_depend.make
 include CMakeFiles/merge-bin.dir/progress.make
 
 CMakeFiles/merge-bin: bootloader
-	cd /Users/robert/esp-idf/components/esptool_py && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -D IDF_PATH=/Users/robert/esp-idf -D "SERIAL_TOOL=/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python;;/Users/robert/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32c6" -D "SERIAL_TOOL_ARGS=merge_bin;-o;/Users/robert/eidon/eidon-glove/firmware/build/bootloader/merged-binary.bin;@/Users/robert/eidon/eidon-glove/firmware/build/bootloader/flash_args" -D WORKING_DIRECTORY=/Users/robert/eidon/eidon-glove/firmware/build/bootloader -P run_serial_tool.cmake
+	cd /Users/robert/esp/esp-idf/components/esptool_py && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -D IDF_PATH=/Users/robert/esp/esp-idf -D "SERIAL_TOOL=/Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python;;/Users/robert/esp/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32c6" -D "SERIAL_TOOL_ARGS=merge_bin;-o;/Users/robert/eidon/eidon-glove/firmware/build/bootloader/merged-binary.bin;@/Users/robert/eidon/eidon-glove/firmware/build/bootloader/flash_args" -D WORKING_DIRECTORY=/Users/robert/eidon/eidon-glove/firmware/build/bootloader -P run_serial_tool.cmake
 
 CMakeFiles/merge-bin.dir/codegen:
 .PHONY : CMakeFiles/merge-bin.dir/codegen
@@ -85,6 +85,6 @@ CMakeFiles/merge-bin.dir/clean:
 .PHONY : CMakeFiles/merge-bin.dir/clean
 
 CMakeFiles/merge-bin.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp-idf/components/bootloader/subproject /Users/robert/esp-idf/components/bootloader/subproject /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles/merge-bin.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp/esp-idf/components/bootloader/subproject /Users/robert/esp/esp-idf/components/bootloader/subproject /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles/merge-bin.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/merge-bin.dir/depend
 

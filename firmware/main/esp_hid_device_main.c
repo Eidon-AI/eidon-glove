@@ -19,6 +19,7 @@
 #include "esp_log.h"
 #include "nvs_flash.h"
 #include "esp_bt.h"
+#include "esp_mac.h"
 
 #if CONFIG_BT_NIMBLE_ENABLED
 #include "host/ble_hs.h"
@@ -40,10 +41,123 @@
 
 #include "esp_hidd.h"
 #include "esp_hid_gap.h"
-#include "bno085.h"
-// #include "sensor_descriptor.h"
+#include "bno085_sh2.h"
+#include "sensor_descriptor.h"
+#include "esp_efuse.h"
 
 static const char *TAG = "HID_DEV_DEMO";
+
+// Firmware version information
+#define FIRMWARE_VERSION_MAJOR   1
+#define FIRMWARE_VERSION_MINOR   0
+#define FIRMWARE_VERSION_PATCH   0
+#define FIRMWARE_VERSION_STRING  "1.0.0"
+
+// Device Information Service UUIDs
+#define DIS_SERVICE_UUID    0x180A
+#define DIS_CHAR_MANUFACTURER_NAME_UUID  0x2A29
+#define DIS_CHAR_MODEL_NUMBER_UUID       0x2A24
+#define DIS_CHAR_SERIAL_NUMBER_UUID      0x2A25
+#define DIS_CHAR_FIRMWARE_REVISION_UUID  0x2A26
+
+// DIS attribute values - DISABLED FOR NOW
+/*
+static const char dis_manufacturer[] = "Eidon AI";
+static const char dis_model[] = "Eidon Glove";
+static char dis_serial[32] = ""; // Will be set dynamically
+static const char dis_firmware[] = FIRMWARE_VERSION_STRING;
+
+// DIS handles
+static uint16_t dis_service_handle = 0;
+static uint16_t dis_char_handle_manufacturer = 0;
+static uint16_t dis_char_handle_model = 0;
+static uint16_t dis_char_handle_serial = 0;
+static uint16_t dis_char_handle_firmware = 0;
+*/
+
+// DIS GATT server event handler - DISABLED FOR NOW
+/*
+static void dis_gatts_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_t gatts_if, esp_ble_gatts_cb_param_t *param)
+{
+    esp_err_t ret;
+    switch (event) {
+    case ESP_GATTS_REG_EVT: {
+        // Create DIS service
+        esp_gatt_srvc_id_t service_id = {
+            .is_primary = true,
+            .id = {
+                .inst_id = 0,
+                .uuid = {
+                    .len = ESP_UUID_LEN_16,
+                    .uuid = {.uuid16 = DIS_SERVICE_UUID}
+                }
+            }
+        };
+        ret = esp_ble_gatts_create_service(gatts_if, &service_id, 8);
+        if (ret != ESP_OK) {
+            ESP_LOGE(TAG, "Failed to create DIS service: %s", esp_err_to_name(ret));
+        }
+        break;
+    }
+    case ESP_GATTS_CREATE_EVT: {
+        dis_service_handle = param->create.service_handle;
+        // Add Manufacturer Name
+        esp_bt_uuid_t char_uuid = {.len = ESP_UUID_LEN_16, .uuid = {.uuid16 = DIS_CHAR_MANUFACTURER_NAME_UUID}};
+        esp_attr_value_t attr_val = {
+            .attr_max_len = sizeof(dis_manufacturer),
+            .attr_len = strlen(dis_manufacturer),
+            .attr_value = (uint8_t*)dis_manufacturer
+        };
+        ret = esp_ble_gatts_add_char(dis_service_handle, &char_uuid, ESP_GATT_PERM_READ, ESP_GATT_CHAR_PROP_BIT_READ, &attr_val, NULL);
+        if (ret != ESP_OK) ESP_LOGE(TAG, "Failed to add DIS manufacturer char: %s", esp_err_to_name(ret));
+        // Add Model Number
+        char_uuid.uuid.uuid16 = DIS_CHAR_MODEL_NUMBER_UUID;
+        attr_val.attr_max_len = sizeof(dis_model);
+        attr_val.attr_len = strlen(dis_model);
+        attr_val.attr_value = (uint8_t*)dis_model;
+        ret = esp_ble_gatts_add_char(dis_service_handle, &char_uuid, ESP_GATT_PERM_READ, ESP_GATT_CHAR_PROP_BIT_READ, &attr_val, NULL);
+        if (ret != ESP_OK) ESP_LOGE(TAG, "Failed to add DIS model char: %s", esp_err_to_name(ret));
+        // Add Serial Number (set after creation)
+        char_uuid.uuid.uuid16 = DIS_CHAR_SERIAL_NUMBER_UUID;
+        attr_val.attr_max_len = sizeof(dis_serial);
+        attr_val.attr_len = strlen(dis_serial);
+        attr_val.attr_value = (uint8_t*)dis_serial;
+        ret = esp_ble_gatts_add_char(dis_service_handle, &char_uuid, ESP_GATT_PERM_READ, ESP_GATT_CHAR_PROP_BIT_READ, &attr_val, NULL);
+        if (ret != ESP_OK) ESP_LOGE(TAG, "Failed to add DIS serial char: %s", esp_err_to_name(ret));
+        // Add Firmware Revision
+        char_uuid.uuid.uuid16 = DIS_CHAR_FIRMWARE_REVISION_UUID;
+        attr_val.attr_max_len = sizeof(dis_firmware);
+        attr_val.attr_len = strlen(dis_firmware);
+        attr_val.attr_value = (uint8_t*)dis_firmware;
+        ret = esp_ble_gatts_add_char(dis_service_handle, &char_uuid, ESP_GATT_PERM_READ, ESP_GATT_CHAR_PROP_BIT_READ, &attr_val, NULL);
+        if (ret != ESP_OK) ESP_LOGE(TAG, "Failed to add DIS firmware char: %s", esp_err_to_name(ret));
+        // Start service
+        esp_ble_gatts_start_service(dis_service_handle);
+        break;
+    }
+    case ESP_GATTS_ADD_CHAR_EVT: {
+        // Save handles for later updates
+        uint16_t uuid = param->add_char.char_uuid.uuid.uuid16;
+        if (uuid == DIS_CHAR_MANUFACTURER_NAME_UUID) dis_char_handle_manufacturer = param->add_char.attr_handle;
+        else if (uuid == DIS_CHAR_MODEL_NUMBER_UUID) dis_char_handle_model = param->add_char.attr_handle;
+        else if (uuid == DIS_CHAR_SERIAL_NUMBER_UUID) dis_char_handle_serial = param->add_char.attr_handle;
+        else if (uuid == DIS_CHAR_FIRMWARE_REVISION_UUID) dis_char_handle_firmware = param->add_char.attr_handle;
+        break;
+    }
+    default:
+        break;
+    }
+}
+*/
+
+// BNO085 I2C configuration
+#define I2C_SCL  18   // GPIO 18 for SCL
+#define I2C_SDA  20   // GPIO 20 for SDA
+#define I2C_FREQ 100000
+#define I2C_ADDR 0x4B
+
+// SHTP constants
+#define SHTP_MAX_TRANSFER_SIZE 300
 
 typedef struct
 {
@@ -307,42 +421,41 @@ void ble_hid_demo_task_kbd(void *pvParameters)
     }
 }
 #endif
-// Simple media descriptor with byte-aligned reports
-const unsigned char mediaReportMap[] = {
-    0x05, 0x0C,        // Usage Page (Consumer)
-    0x09, 0x01,        // Usage (Consumer Control)
-    0xA1, 0x01,        // Collection (Application)
-    0x85, 0x03,        //   Report ID (3)
-    0x15, 0x00,        //   Logical Minimum (0)
-    0x25, 0x01,        //   Logical Maximum (1)
-    0x75, 0x01,        //   Report Size (1)
-    0x95, 0x10,        //   Report Count (16) - 2 bytes total
-    0x09, 0xE9,        //   Usage (Volume Increment)
-    0x09, 0xEA,        //   Usage (Volume Decrement)
-    0x09, 0xE2,        //   Usage (Mute)
-    0x09, 0xB0,        //   Usage (Play)
-    0x09, 0xB1,        //   Usage (Pause)
-    0x09, 0xB2,        //   Usage (Record)
-    0x09, 0xB3,        //   Usage (Fast Forward)
-    0x09, 0xB4,        //   Usage (Rewind)
-    0x09, 0xB5,        //   Usage (Scan Next Track)
-    0x09, 0xB6,        //   Usage (Scan Previous Track)
-    0x09, 0xB7,        //   Usage (Stop)
-    0x09, 0xB8,        //   Usage (Eject)
-    0x09, 0xCD,        //   Usage (Play/Pause)
-    0x09, 0x30,        //   Usage (Power)
-    0x09, 0x32,        //   Usage (Sleep)
-    0x09, 0x40,        //   Usage (Menu)
-    0x81, 0x02,        //   Input (Data,Var,Abs)
-    0xC0               // End Collection
+// Sensor orientation descriptor with quaternion data (byte-aligned)
+const unsigned char sensorReportMap[] = {
+    0x05, 0x20,             /* UsagePage (Sensor)                    */
+    0x09, 0x80,             /* Usage     (Orientation)               */
+    0xA1, 0x01,             /* Collection (Application)              */
+
+      0x85, 0x01,           /*   Report ID (1)                       */
+
+      /* --- quaternion : 4 × 16-bit -------------------------------------- */
+      0x0A, 0x83, 0x04,     /*   Usage 0x0483 – Quaternion           */
+      0x75, 0x10,           /*   ReportSize 16                       */
+      0x95, 0x04,           /*   ReportCount 4                       */
+      0x17, 0x00,0x00,0x00,0x00, /* Logical Min 0                    */
+      0x27, 0xFF,0xFF,0x00,0x00, /* Logical Max 65535                */
+      0x81, 0x02,           /*   Input (Data,Var,Abs)                */
+
+      /* --- 8 button bits to make total 72 bits (9 bytes) --------------- */
+      0x05, 0x09,           /*   UsagePage (Button)                  */
+      0x19, 0x01,           /*   Usage Minimum (Button 1)            */
+      0x29, 0x08,           /*   Usage Maximum (Button 8)            */
+      0x15, 0x00,           /*   Logical Minimum (0)                 */
+      0x25, 0x01,           /*   Logical Maximum (1)                 */
+      0x75, 0x01,           /*   Report Size (1)                     */
+      0x95, 0x08,           /*   Report Count (8)                    */
+      0x81, 0x02,           /*   Input (Data,Var,Abs)                */
+      
+      0xC0                   /* End Collection                        */
 };
 
 static esp_hid_raw_report_map_t ble_report_maps[] = {
 #if !CONFIG_BT_NIMBLE_ENABLED || CONFIG_EXAMPLE_HID_DEVICE_ROLE == 1
     /* This block is compiled for bluedroid as well */
     {
-        .data = mediaReportMap,
-        .len = sizeof(mediaReportMap)
+        .data = sensorReportMap,
+        .len = sizeof(sensorReportMap)
     }
 #elif CONFIG_EXAMPLE_HID_DEVICE_ROLE && CONFIG_EXAMPLE_HID_DEVICE_ROLE == 2
     {
@@ -358,18 +471,18 @@ static esp_hid_raw_report_map_t ble_report_maps[] = {
 };
 
 static esp_hid_device_config_t ble_hid_config = {
-    .vendor_id          = 0x16C0,
-    .product_id         = 0x05DF,
+    .vendor_id          = 0xE1D0,  // Eidon AI vendor ID
+    .product_id         = 0x0002,  // Eidon Tracker product ID
     .version            = 0x0100,
 #if CONFIG_EXAMPLE_HID_DEVICE_ROLE == 2
     .device_name        = "ESP Keyboard",
 #elif CONFIG_EXAMPLE_HID_DEVICE_ROLE == 3
     .device_name        = "ESP Mouse",
 #else
-    .device_name        = "ESP HID",
+    .device_name        = NULL,  // Will be set dynamically
 #endif
-    .manufacturer_name  = "Espressif",
-    .serial_number      = "1234567890",
+    .manufacturer_name  = "Eidon AI",
+    .serial_number      = NULL,  // Will be set dynamically
     .report_maps        = ble_report_maps,
     .report_maps_len    = 1
 };
@@ -527,31 +640,27 @@ void esp_hidd_send_consumer_value(uint8_t key_cmd, bool key_pressed)
 
 #if !CONFIG_BT_NIMBLE_ENABLED || CONFIG_EXAMPLE_HID_DEVICE_ROLE == 1
 
-void ble_hid_media_task(void *pvParameters)
+// Sensor task to send quaternion data via HID
+void ble_hid_sensor_task(void *pvParameters)
 {
-    static bool send_volum_up = false;
-    static uint32_t loop_count = 0;
+    ESP_LOGI(TAG, "Sensor task started");
     
-    ESP_LOGI(TAG, "Media task started");
+    // Wait for BNO085 to initialize
+    vTaskDelay(pdMS_TO_TICKS(3000));
     
     while (1) {
-        loop_count++;
         if (s_ble_hid_param.hid_dev && esp_hidd_dev_connected(s_ble_hid_param.hid_dev)) {
-            ESP_LOGI(TAG, "Send the volume (loop %lu)", loop_count);
-            if (send_volum_up) {
-                esp_hidd_send_consumer_value(HID_CONSUMER_VOLUME_UP, true);
-                vTaskDelay(100 / portTICK_PERIOD_MS);
-                esp_hidd_send_consumer_value(HID_CONSUMER_VOLUME_UP, false);
-            } else {
-                esp_hidd_send_consumer_value(HID_CONSUMER_VOLUME_DOWN, true);
-                vTaskDelay(100 / portTICK_PERIOD_MS);
-                esp_hidd_send_consumer_value(HID_CONSUMER_VOLUME_DOWN, false);
-            }
-            send_volum_up = !send_volum_up;
+            ESP_LOGI(TAG, "HID device connected and ready for sensor data");
+            break;
         } else {
-            ESP_LOGI(TAG, "Media task waiting for connection (loop %lu)", loop_count);
+            ESP_LOGI(TAG, "Waiting for HID connection...");
         }
-        vTaskDelay(2000 / portTICK_PERIOD_MS);
+        vTaskDelay(pdMS_TO_TICKS(1000));
+    }
+    
+    // The actual sensor data sending is handled by the bno085_task
+    while (1) {
+        vTaskDelay(pdMS_TO_TICKS(1000));
     }
 }
 
@@ -657,130 +766,71 @@ void ble_hid_demo_task(void *pvParameters)
 #endif  // #if 0
 #endif  // #if !CONFIG_BT_NIMBLE_ENABLED || CONFIG_EXAMPLE_HID_DEVICE_ROLE == 1
 
-// Define I2C pins
-#define I2C_SCL 18  // D10 on XIAO ESP32-C6 (GPIO18)
-#define I2C_SDA 20  // D9 on XIAO ESP32-C6 (GPIO20)
-#define I2C_INT 19
-#define I2C_ADDR 0x4B
 
-// BNO085 configuration
-static bno085_config_t bno085_config = {
-    .i2c_port = I2C_NUM_0,  // ESP32-C6 has only I2C_NUM_0
-    .i2c_addr = I2C_ADDR,
-    .sda_pin = I2C_SDA,
-    .scl_pin = I2C_SCL,
-    .i2c_freq = 100000  // Start with 100kHz instead of 400kHz
-};
 
-// BNO085 test task - only outputs to monitor
-void bno085_test_task(void *pvParameters)
+// HID report structure for sensor data (exactly 9 bytes)
+typedef struct {
+    uint8_t report_id;      // Report ID (1)
+    uint16_t quaternion[4]; // 4 quaternion components (w, x, y, z) as 16-bit values
+    uint8_t buttons;        // 8 button bits (packed into 1 byte)
+} __attribute__((packed)) sensor_hid_report_t;
+
+// BNO085 task to read sensor data
+static void bno085_task(void *pvParameters)
 {
-    ESP_LOGI(TAG, "Starting BNO085 test task (monitor output only)");
+    ESP_LOGI(TAG, "BNO085 task started");
     
-    // Wait longer for system to stabilize and BNO085 to fully boot
-    ESP_LOGI(TAG, "Waiting 2 seconds for system stabilization...");
-    vTaskDelay(pdMS_TO_TICKS(2000));
-    
-    ESP_LOGI(TAG, "Initializing BNO085 on I2C addr 0x%02X, SDA=%d, SCL=%d", 
-             I2C_ADDR, I2C_SDA, I2C_SCL);
-    
-    // Initialize BNO085 with retries
-    esp_err_t ret = ESP_FAIL;
-    int retry_count = 0;
-    const int max_retries = 10;
-    
-    while (retry_count < max_retries && ret != ESP_OK) {
-        ESP_LOGI(TAG, "BNO085 init attempt %d/%d", retry_count + 1, max_retries);
-        ret = bno085_init(&bno085_config);
-        
-        if (ret != ESP_OK) {
-            ESP_LOGW(TAG, "BNO085 init failed (attempt %d): %s", 
-                     retry_count + 1, esp_err_to_name(ret));
-            if (retry_count < max_retries - 1) {
-                // Cleanup before retry
-                bno085_deinit();
-                ESP_LOGI(TAG, "Waiting 500ms before retry...");
-                vTaskDelay(pdMS_TO_TICKS(500));
-            }
-            retry_count++;
-        } else {
-            // Success - break out of retry loop
-            break;
-        }
-    }
-    
+    // Initialize BNO085 with SH2 library
+    esp_err_t ret = bno085_sh2_init();
     if (ret != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to initialize BNO085 after %d attempts", max_retries);
-        ESP_LOGW(TAG, "Running in demo mode without BNO085");
-    } else {
-        ESP_LOGI(TAG, "BNO085 initialized successfully after %d attempt(s)!", retry_count + 1);
-        
-        // Enable game rotation vector (no magnetometer)
-        ret = bno085_enable_game_rotation_vector(20); // 20ms = 50Hz
-        if (ret != ESP_OK) {
-            ESP_LOGE(TAG, "Failed to enable game rotation vector: %s", esp_err_to_name(ret));
-            // Continue anyway, maybe it will still work
-        } else {
-            ESP_LOGI(TAG, "Game rotation vector enabled successfully");
-        }
-        
-        // Give the sensor time to start producing data
-        ESP_LOGI(TAG, "Waiting for sensor to start producing data...");
-        vTaskDelay(pdMS_TO_TICKS(1000));  // Wait 1 second
+        ESP_LOGE(TAG, "Failed to initialize BNO085");
+        vTaskDelete(NULL);
+        return;
     }
     
-    bno085_quaternion_t quat;
-    bool sensor_available = (ret == ESP_OK);
-    float demo_angle = 0.0f;
-    uint32_t read_count = 0;
-    uint32_t error_count = 0;
-    uint32_t last_log_time = 0;
-    const uint32_t LOG_INTERVAL_MS = 1000;  // Log every 1 second
-    uint32_t consecutive_invalid_state = 0;
-    const uint32_t MAX_INVALID_STATE = 5;  // Reinit after 5 consecutive invalid states
+    // Enable game rotation vector at 50Hz (20ms = 20000us)
+    ret = bno085_sh2_enable_game_rotation_vector(20000);
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to enable game rotation vector");
+        bno085_sh2_deinit();
+        vTaskDelete(NULL);
+        return;
+    }
     
-    // Disable I2C driver error logs to reduce spam
-    esp_log_level_set("i2c.master", ESP_LOG_NONE);
+    ESP_LOGI(TAG, "BNO085 initialized successfully, starting sensor loop");
     
-    // Enable debug logging for BNO085 to see what's happening
-    esp_log_level_set("BNO085", ESP_LOG_DEBUG);
+    sensor_hid_report_t report = {0};
+    report.report_id = 1;
+    report.buttons = 0;  // No buttons pressed
     
     while (1) {
-        // Try to get quaternion data
-        esp_err_t read_ret = bno085_get_quaternion(&quat);
-        if (read_ret == ESP_OK) {
-            read_count++;
-            
-            // Always log successful reads
-            ESP_LOGI(TAG, "BNO085 Quat[%lu]: w=%.3f, x=%.3f, y=%.3f, z=%.3f", 
-                    read_count, quat.real, quat.i, quat.j, quat.k);
-        } else if (read_ret == ESP_ERR_NOT_FOUND || read_ret == ESP_ERR_TIMEOUT) {
-            // No data available - this is normal, sensor sends data at configured rate
-            // Don't count this as an error
-        } else {
-            // Log other errors
-            error_count++;
-            if (error_count % 100 == 0) {  // Log every 100 errors
-                ESP_LOGW(TAG, "Read errors: %lu (last error: %s)", error_count, esp_err_to_name(read_ret));
+        // Service the sensor (handles SHTP communication)
+        ret = bno085_sh2_service();
+        if (ret == ESP_OK && bno085_sh2_has_new_quaternion()) {
+            bno085_quat_t quat;
+            ret = bno085_sh2_get_quaternion(&quat);
+            if (ret == ESP_OK) {
+                // Convert float quaternion to uint16_t for HID report
+                // Scale from [-1, 1] to [0, 65535]
+                report.quaternion[0] = (uint16_t)((quat.real + 1.0f) * 32767.5f);
+                report.quaternion[1] = (uint16_t)((quat.i + 1.0f) * 32767.5f);
+                report.quaternion[2] = (uint16_t)((quat.j + 1.0f) * 32767.5f);
+                report.quaternion[3] = (uint16_t)((quat.k + 1.0f) * 32767.5f);
+                
+                // Send HID report if connected (try both BOOT and REPORT modes)
+                if (s_ble_hid_param.hid_dev) {
+                    esp_hidd_dev_input_set(s_ble_hid_param.hid_dev, 0, 1, (uint8_t*)&report, sizeof(report));
+                    
+                    ESP_LOGI(TAG, "HID Sensor Report sent: Quat: w=%.3f, x=%.3f, y=%.3f, z=%.3f (acc=%d) mode=%d", 
+                             quat.real, quat.i, quat.j, quat.k, quat.accuracy, s_ble_hid_param.protocol_mode);
+                } else {
+                    ESP_LOGW(TAG, "HID device not connected");
+                }
             }
         }
         
-        // Periodically check sensor status
-        static uint32_t last_check_time = 0;
-        uint32_t now = xTaskGetTickCount() * portTICK_PERIOD_MS;
-        if (now - last_check_time >= 10000) {  // Every 10 seconds
-            ESP_LOGI(TAG, "Status: reads=%lu, errors=%lu", read_count, error_count);
-            
-            // Check if sensor is still responding
-            if (bno085_is_available()) {
-                ESP_LOGI(TAG, "BNO085 is still responding");
-            } else {
-                ESP_LOGE(TAG, "BNO085 not responding!");
-            }
-            last_check_time = now;
-        }
-        
-        vTaskDelay(pdMS_TO_TICKS(20)); // 50Hz polling rate
+        // Small delay to prevent hogging CPU
+        vTaskDelay(pdMS_TO_TICKS(5));
     }
 }
 
@@ -794,9 +844,9 @@ void ble_hid_task_start_up(void)
         return;
     }
 #if !CONFIG_BT_NIMBLE_ENABLED || CONFIG_EXAMPLE_HID_DEVICE_ROLE == 1
-    /* Executed for bluedroid and nimble media mode */
-    ESP_LOGI(TAG, "Creating media demo task");
-    xTaskCreate(ble_hid_media_task, "ble_hid_media_task", 4 * 1024, NULL, configMAX_PRIORITIES - 3,
+    /* Executed for bluedroid and nimble sensor mode */
+    ESP_LOGI(TAG, "Creating sensor task");
+    xTaskCreate(ble_hid_sensor_task, "ble_hid_sensor_task", 4 * 1024, NULL, configMAX_PRIORITIES - 3,
                 &s_ble_hid_param.task_hdl);
 
 #elif CONFIG_EXAMPLE_HID_DEVICE_ROLE == 2
@@ -832,11 +882,14 @@ static void ble_hidd_event_callback(void *handler_args, esp_event_base_t base, i
     }
     case ESP_HIDD_CONNECT_EVENT: {
         ESP_LOGI(TAG, "CONNECT");
+        s_ble_hid_param.protocol_mode = 0; // Initialize to BOOT mode, will be updated by protocol mode event
         ble_hid_task_start_up();
         break;
     }
     case ESP_HIDD_PROTOCOL_MODE_EVENT: {
         ESP_LOGI(TAG, "PROTOCOL MODE[%u]: %s", param->protocol_mode.map_index, param->protocol_mode.protocol_mode ? "REPORT" : "BOOT");
+        s_ble_hid_param.protocol_mode = param->protocol_mode.protocol_mode;
+        ESP_LOGI(TAG, "Protocol mode updated to: %d", s_ble_hid_param.protocol_mode);
         break;
     }
     case ESP_HIDD_CONTROL_EVENT: {
@@ -890,6 +943,26 @@ void ble_hid_device_host_task(void *param)
 void ble_store_config_init(void);
 #endif
 
+// Function to generate unique serial number from MAC address
+static void generate_unique_serial_number(char *serial_buffer, size_t buffer_size)
+{
+    uint8_t mac[6];
+    esp_read_mac(mac, ESP_MAC_WIFI_STA); // Use WiFi STA MAC address (unique per chip)
+    // Format as EIDON-GLOVE-XXXXXXXX where X is hex digit from MAC
+    snprintf(serial_buffer, buffer_size, "EIDON-GLOVE-%02X%02X%02X%02X", 
+             mac[2], mac[3], mac[4], mac[5]);
+}
+
+// Function to generate unique device name with MAC suffix
+static void generate_unique_device_name(char *name_buffer, size_t buffer_size)
+{
+    uint8_t mac[6];
+    esp_read_mac(mac, ESP_MAC_WIFI_STA);
+    // Format as "Eidon Tracker-XXXX" where XXXX is last 4 hex digits of MAC
+    snprintf(name_buffer, buffer_size, "Eidon Tracker-%02X%02X", 
+             mac[4], mac[5]);
+}
+
 void app_main(void)
 {
     ESP_LOGI(TAG, "app_main() started");
@@ -913,6 +986,12 @@ void app_main(void)
     ESP_ERROR_CHECK( ret );
 
 #if CONFIG_BT_BLE_ENABLED || CONFIG_BT_NIMBLE_ENABLED
+    // Generate unique device name with MAC suffix
+    static char unique_device_name[32];
+    generate_unique_device_name(unique_device_name, sizeof(unique_device_name));
+    ble_hid_config.device_name = unique_device_name;
+    ESP_LOGI(TAG, "Generated unique device name: %s", unique_device_name);
+    
 #if CONFIG_EXAMPLE_HID_DEVICE_ROLE == 2
     ret = esp_hid_ble_gap_adv_init(ESP_HID_APPEARANCE_KEYBOARD, ble_hid_config.device_name);
 #elif CONFIG_EXAMPLE_HID_DEVICE_ROLE == 3
@@ -920,20 +999,51 @@ void app_main(void)
 #else
     ret = esp_hid_ble_gap_adv_init(ESP_HID_APPEARANCE_GENERIC, ble_hid_config.device_name);
 #endif
-    ESP_ERROR_CHECK( ret );
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "esp_hid_ble_gap_adv_init failed: %s", esp_err_to_name(ret));
+        return;
+    }
 #if CONFIG_BT_BLE_ENABLED
     if ((ret = esp_ble_gatts_register_callback(esp_hidd_gatts_event_handler)) != ESP_OK) {
         ESP_LOGE(TAG, "GATTS register callback failed: %d", ret);
         return;
     }
 #endif
+    // Generate unique serial number from MAC address
+    static char unique_serial[32];
+    generate_unique_serial_number(unique_serial, sizeof(unique_serial));
+    ble_hid_config.serial_number = unique_serial;
+    ESP_LOGI(TAG, "Generated unique serial number: %s", unique_serial);
+    
+    // Set DIS serial number for use in event handler - DISABLED FOR NOW
+    /*
+    strncpy(dis_serial, unique_serial, sizeof(dis_serial)-1);
+    dis_serial[sizeof(dis_serial)-1] = '\0';
+    */
+
+    // Register the DIS GATT server - DISABLED FOR NOW
+    /*
+    ret = esp_ble_gatts_register_callback(dis_gatts_event_handler);
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to register DIS GATT server: %s", esp_err_to_name(ret));
+    }
+    ret = esp_ble_gatts_app_register(0xA0A0); // Arbitrary app ID for DIS
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to app register DIS: %s", esp_err_to_name(ret));
+    }
+    */
+    
     ESP_LOGI(TAG, "setting ble device");
-    ESP_ERROR_CHECK(
-        esp_hidd_dev_init(&ble_hid_config, ESP_HID_TRANSPORT_BLE, ble_hidd_event_callback, &s_ble_hid_param.hid_dev));
-        
+    ret = esp_hidd_dev_init(&ble_hid_config, ESP_HID_TRANSPORT_BLE, ble_hidd_event_callback, &s_ble_hid_param.hid_dev);
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "esp_hidd_dev_init failed: %s", esp_err_to_name(ret));
+        return;
+    }
+    ESP_LOGI(TAG, "BLE HID device initialized successfully");
+    
     // Start BNO085 test task
     ESP_LOGI(TAG, "Starting BNO085 test task");
-    xTaskCreate(bno085_test_task, "bno085_test", 4096, NULL, 5, NULL);
+    xTaskCreate(bno085_task, "bno085_task", 4096, NULL, 5, NULL);
 #endif
 
 #if CONFIG_BT_HID_DEVICE_ENABLED

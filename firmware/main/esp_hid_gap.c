@@ -668,7 +668,7 @@ esp_err_t esp_hid_ble_gap_adv_init(uint16_t appearance, const char *device_name)
     esp_ble_adv_data_t ble_adv_data = {
         .set_scan_rsp = false,
         .include_name = true,
-        .include_txpower = true,
+        .include_txpower = false,  // Remove TX power to save space
         .min_interval = 0x0006, //slave connection min interval, Time = min_interval * 1.25 msec
         .max_interval = 0x0010, //slave connection max interval, Time = max_interval * 1.25 msec
         .appearance = appearance,
@@ -680,25 +680,10 @@ esp_err_t esp_hid_ble_gap_adv_init(uint16_t appearance, const char *device_name)
         .p_service_uuid = (uint8_t *)hidd_service_uuid128,
         .flag = 0x6,
     };
-    
-    // Scan response data - keep it simple
-    esp_ble_adv_data_t scan_rsp_data = {
-        .set_scan_rsp = true,
-        .include_name = false,  // Don't duplicate name
-        .include_txpower = false,
-        .manufacturer_len = 0,
-        .p_manufacturer_data = NULL,
-        .service_data_len = 0,
-        .p_service_data = NULL,
-        .service_uuid_len = 0,
-        .p_service_uuid = NULL,
-        .flag = 0,
-    };
+
+
 
     esp_ble_auth_req_t auth_req = ESP_LE_AUTH_REQ_SC_BOND;  // Remove MITM requirement
-    //esp_ble_io_cap_t iocap = ESP_IO_CAP_OUT;//you have to enter the key on the host
-    //esp_ble_io_cap_t iocap = ESP_IO_CAP_IN;//you have to enter the key on the device
-    //esp_ble_io_cap_t iocap = ESP_IO_CAP_IO;//you have to agree that key matches on both
     esp_ble_io_cap_t iocap = ESP_IO_CAP_NONE;//device is not capable of input or output, insecure
     uint8_t init_key = ESP_BLE_ENC_KEY_MASK | ESP_BLE_ID_KEY_MASK;
     uint8_t rsp_key = ESP_BLE_ENC_KEY_MASK | ESP_BLE_ID_KEY_MASK;
@@ -740,16 +725,17 @@ esp_err_t esp_hid_ble_gap_adv_init(uint16_t appearance, const char *device_name)
         return ret;
     }
 
+    ESP_LOGI(TAG, "Configuring advertising data...");
+    ESP_LOGI(TAG, "  service_uuid_len: %d", ble_adv_data.service_uuid_len);
+    ESP_LOGI(TAG, "  include_name: %d", ble_adv_data.include_name);
+    ESP_LOGI(TAG, "  flag: 0x%02x", ble_adv_data.flag);
+    
     if ((ret = esp_ble_gap_config_adv_data(&ble_adv_data)) != ESP_OK) {
-        ESP_LOGE(TAG, "GAP config_adv_data failed: %d", ret);
+        ESP_LOGE(TAG, "GAP config_adv_data failed: %d (%s)", ret, esp_err_to_name(ret));
         return ret;
     }
     
-    // Configure scan response data
-    if ((ret = esp_ble_gap_config_adv_data(&scan_rsp_data)) != ESP_OK) {
-        ESP_LOGE(TAG, "GAP config_scan_rsp_data failed: %d", ret);
-        return ret;
-    }
+    ESP_LOGI(TAG, "BLE ADV_DATA_SET_COMPLETE: status = %d", ret);
 
     return ret;
 }

@@ -67,8 +67,8 @@ include CMakeFiles/confserver.dir/compiler_depend.make
 include CMakeFiles/confserver.dir/progress.make
 
 CMakeFiles/confserver:
-	/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python /Users/robert/esp-idf/tools/kconfig_new/prepare_kconfig_files.py --list-separator=semicolon --env-file /Users/robert/eidon/eidon-glove/firmware/build/config.env
-	/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python -m kconfserver --env-file /Users/robert/eidon/eidon-glove/firmware/build/config.env --kconfig /Users/robert/esp-idf/Kconfig --sdkconfig-rename /Users/robert/esp-idf/sdkconfig.rename --config /Users/robert/eidon/eidon-glove/firmware/sdkconfig
+	/Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python /Users/robert/esp/esp-idf/tools/kconfig_new/prepare_kconfig_files.py --list-separator=semicolon --env-file /Users/robert/eidon/eidon-glove/firmware/build/config.env
+	/Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python -m kconfserver --env-file /Users/robert/eidon/eidon-glove/firmware/build/config.env --kconfig /Users/robert/esp/esp-idf/Kconfig --sdkconfig-rename /Users/robert/esp/esp-idf/sdkconfig.rename --config /Users/robert/eidon/eidon-glove/firmware/sdkconfig
 
 CMakeFiles/confserver.dir/codegen:
 .PHONY : CMakeFiles/confserver.dir/codegen

@@ -53,7 +53,7 @@ RM = /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/robert/esp-idf/components/bootloader/subproject
+CMAKE_SOURCE_DIR = /Users/robert/esp/esp-idf/components/bootloader/subproject
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /Users/robert/eidon/eidon-glove/firmware/build/bootloader
@@ -67,8 +67,8 @@ include CMakeFiles/save-defconfig.dir/compiler_depend.make
 include CMakeFiles/save-defconfig.dir/progress.make
 
 CMakeFiles/save-defconfig:
-	/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python /Users/robert/esp-idf/tools/kconfig_new/prepare_kconfig_files.py --list-separator=semicolon --env-file /Users/robert/eidon/eidon-glove/firmware/build/bootloader/config.env
-	/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python -m kconfgen --list-separator=semicolon --kconfig /Users/robert/esp-idf/Kconfig --sdkconfig-rename /Users/robert/esp-idf/sdkconfig.rename --config /Users/robert/eidon/eidon-glove/firmware/sdkconfig --env IDF_MINIMAL_BUILD=n --env-file /Users/robert/eidon/eidon-glove/firmware/build/bootloader/config.env --dont-write-deprecated --output savedefconfig /Users/robert/esp-idf/components/bootloader/subproject/sdkconfig.defaults
+	/Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python /Users/robert/esp/esp-idf/tools/kconfig_new/prepare_kconfig_files.py --list-separator=semicolon --env-file /Users/robert/eidon/eidon-glove/firmware/build/bootloader/config.env
+	/Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python -m kconfgen --list-separator=semicolon --kconfig /Users/robert/esp/esp-idf/Kconfig --sdkconfig-rename /Users/robert/esp/esp-idf/sdkconfig.rename --config /Users/robert/eidon/eidon-glove/firmware/sdkconfig --env-file /Users/robert/eidon/eidon-glove/firmware/build/bootloader/config.env --dont-write-deprecated --output savedefconfig /Users/robert/esp/esp-idf/components/bootloader/subproject/sdkconfig.defaults
 
 CMakeFiles/save-defconfig.dir/codegen:
 .PHONY : CMakeFiles/save-defconfig.dir/codegen
@@ -86,6 +86,6 @@ CMakeFiles/save-defconfig.dir/clean:
 .PHONY : CMakeFiles/save-defconfig.dir/clean
 
 CMakeFiles/save-defconfig.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp-idf/components/bootloader/subproject /Users/robert/esp-idf/components/bootloader/subproject /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles/save-defconfig.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp/esp-idf/components/bootloader/subproject /Users/robert/esp/esp-idf/components/bootloader/subproject /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles/save-defconfig.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/save-defconfig.dir/depend
 

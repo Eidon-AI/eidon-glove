@@ -69,7 +69,7 @@ include esp-idf/bootloader/CMakeFiles/encrypted-bootloader-flash.dir/progress.ma
 esp-idf/bootloader/CMakeFiles/encrypted-bootloader-flash:
 	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/bootloader && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E echo "Error: The target encrypted-bootloader-flash requires"
 	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/bootloader && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E echo "CONFIG_SECURE_FLASH_ENCRYPTION_MODE_DEVELOPMENT to be enabled."
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/bootloader && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E env "FAIL_MESSAGE=Failed executing target (see errors on lines above)" /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -P /Users/robert/esp-idf/tools/cmake/scripts/fail.cmake
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/bootloader && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E env "FAIL_MESSAGE=Failed executing target (see errors on lines above)" /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -P /Users/robert/esp/esp-idf/tools/cmake/scripts/fail.cmake
 
 esp-idf/bootloader/CMakeFiles/encrypted-bootloader-flash.dir/codegen:
 .PHONY : esp-idf/bootloader/CMakeFiles/encrypted-bootloader-flash.dir/codegen
@@ -87,6 +87,6 @@ esp-idf/bootloader/CMakeFiles/encrypted-bootloader-flash.dir/clean:
 .PHONY : esp-idf/bootloader/CMakeFiles/encrypted-bootloader-flash.dir/clean
 
 esp-idf/bootloader/CMakeFiles/encrypted-bootloader-flash.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/bootloader /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/bootloader /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/bootloader/CMakeFiles/encrypted-bootloader-flash.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/bootloader /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/bootloader /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/bootloader/CMakeFiles/encrypted-bootloader-flash.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/bootloader/CMakeFiles/encrypted-bootloader-flash.dir/depend
 

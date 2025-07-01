@@ -53,7 +53,7 @@ RM = /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/robert/esp-idf/components/bootloader/subproject
+CMAKE_SOURCE_DIR = /Users/robert/esp/esp-idf/components/bootloader/subproject
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /Users/robert/eidon/eidon-glove/firmware/build/bootloader
@@ -73,158 +73,144 @@ esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/codegen:
 .PHONY : esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/codegen
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_sys.c.obj: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/flags.make
-esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_sys.c.obj: /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_sys.c
+esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_sys.c.obj: /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_sys.c
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_sys.c.obj: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_sys.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_sys.c.obj -MF CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_sys.c.obj.d -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_sys.c.obj -c /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_sys.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_sys.c.obj -MF CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_sys.c.obj.d -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_sys.c.obj -c /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_sys.c
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_sys.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_sys.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_sys.c > CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_sys.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_sys.c > CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_sys.c.i
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_sys.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_sys.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_sys.c -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_sys.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_sys.c -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_sys.c.s
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_print.c.obj: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/flags.make
-esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_print.c.obj: /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_print.c
+esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_print.c.obj: /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_print.c
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_print.c.obj: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_print.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_print.c.obj -MF CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_print.c.obj.d -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_print.c.obj -c /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_print.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_print.c.obj -MF CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_print.c.obj.d -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_print.c.obj -c /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_print.c
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_print.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_print.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_print.c > CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_print.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_print.c > CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_print.c.i
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_print.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_print.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_print.c -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_print.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_print.c -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_print.c.s
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_crc.c.obj: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/flags.make
-esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_crc.c.obj: /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_crc.c
+esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_crc.c.obj: /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_crc.c
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_crc.c.obj: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_crc.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_crc.c.obj -MF CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_crc.c.obj.d -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_crc.c.obj -c /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_crc.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_crc.c.obj -MF CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_crc.c.obj.d -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_crc.c.obj -c /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_crc.c
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_crc.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_crc.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_crc.c > CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_crc.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_crc.c > CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_crc.c.i
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_crc.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_crc.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_crc.c -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_crc.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_crc.c -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_crc.c.s
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_uart.c.obj: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/flags.make
-esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_uart.c.obj: /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_uart.c
+esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_uart.c.obj: /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_uart.c
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_uart.c.obj: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_uart.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_uart.c.obj -MF CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_uart.c.obj.d -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_uart.c.obj -c /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_uart.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_uart.c.obj -MF CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_uart.c.obj.d -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_uart.c.obj -c /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_uart.c
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_uart.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_uart.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_uart.c > CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_uart.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_uart.c > CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_uart.c.i
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_uart.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_uart.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_uart.c -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_uart.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_uart.c -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_uart.c.s
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_spiflash.c.obj: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/flags.make
-esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_spiflash.c.obj: /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c
+esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_spiflash.c.obj: /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_spiflash.c.obj: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_spiflash.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_spiflash.c.obj -MF CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_spiflash.c.obj.d -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_spiflash.c.obj -c /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_spiflash.c.obj -MF CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_spiflash.c.obj.d -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_spiflash.c.obj -c /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_spiflash.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_spiflash.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c > CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_spiflash.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c > CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_spiflash.c.i
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_spiflash.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_spiflash.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_spiflash.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_spiflash.c.s
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_efuse.c.obj: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/flags.make
-esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_efuse.c.obj: /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_efuse.c
+esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_efuse.c.obj: /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_efuse.c
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_efuse.c.obj: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_efuse.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_efuse.c.obj -MF CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_efuse.c.obj.d -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_efuse.c.obj -c /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_efuse.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_efuse.c.obj -MF CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_efuse.c.obj.d -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_efuse.c.obj -c /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_efuse.c
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_efuse.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_efuse.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_efuse.c > CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_efuse.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_efuse.c > CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_efuse.c.i
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_efuse.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_efuse.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_efuse.c -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_efuse.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_efuse.c -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_efuse.c.s
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_gpio.c.obj: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/flags.make
-esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_gpio.c.obj: /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_gpio.c
+esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_gpio.c.obj: /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_gpio.c
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_gpio.c.obj: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_gpio.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_gpio.c.obj -MF CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_gpio.c.obj.d -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_gpio.c.obj -c /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_gpio.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_gpio.c.obj -MF CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_gpio.c.obj.d -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_gpio.c.obj -c /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_gpio.c
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_gpio.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_gpio.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_gpio.c > CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_gpio.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_gpio.c > CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_gpio.c.i
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_gpio.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_gpio.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_gpio.c -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_gpio.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_gpio.c -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_gpio.c.s
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_hp_regi2c_esp32c6.c.obj: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/flags.make
-esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_hp_regi2c_esp32c6.c.obj: /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_hp_regi2c_esp32c6.c
+esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_hp_regi2c_esp32c6.c.obj: /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_hp_regi2c_esp32c6.c
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_hp_regi2c_esp32c6.c.obj: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_hp_regi2c_esp32c6.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_hp_regi2c_esp32c6.c.obj -MF CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_hp_regi2c_esp32c6.c.obj.d -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_hp_regi2c_esp32c6.c.obj -c /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_hp_regi2c_esp32c6.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_hp_regi2c_esp32c6.c.obj -MF CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_hp_regi2c_esp32c6.c.obj.d -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_hp_regi2c_esp32c6.c.obj -c /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_hp_regi2c_esp32c6.c
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_hp_regi2c_esp32c6.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_hp_regi2c_esp32c6.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_hp_regi2c_esp32c6.c > CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_hp_regi2c_esp32c6.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_hp_regi2c_esp32c6.c > CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_hp_regi2c_esp32c6.c.i
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_hp_regi2c_esp32c6.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_hp_regi2c_esp32c6.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_hp_regi2c_esp32c6.c -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_hp_regi2c_esp32c6.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_hp_regi2c_esp32c6.c -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_hp_regi2c_esp32c6.c.s
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_systimer.c.obj: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/flags.make
-esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_systimer.c.obj: /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_systimer.c
+esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_systimer.c.obj: /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_systimer.c
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_systimer.c.obj: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_systimer.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_systimer.c.obj -MF CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_systimer.c.obj.d -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_systimer.c.obj -c /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_systimer.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_systimer.c.obj -MF CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_systimer.c.obj.d -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_systimer.c.obj -c /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_systimer.c
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_systimer.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_systimer.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_systimer.c > CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_systimer.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_systimer.c > CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_systimer.c.i
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_systimer.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_systimer.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_systimer.c -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_systimer.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_systimer.c -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_systimer.c.s
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_wdt.c.obj: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/flags.make
-esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_wdt.c.obj: /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_wdt.c
+esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_wdt.c.obj: /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_wdt.c
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_wdt.c.obj: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_wdt.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_wdt.c.obj -MF CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_wdt.c.obj.d -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_wdt.c.obj -c /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_wdt.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_wdt.c.obj -MF CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_wdt.c.obj.d -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_wdt.c.obj -c /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_wdt.c
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_wdt.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_wdt.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_wdt.c > CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_wdt.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_wdt.c > CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_wdt.c.i
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_wdt.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_wdt.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_wdt.c -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_wdt.c.s
-
-esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_usb_serial.c.obj: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/flags.make
-esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_usb_serial.c.obj: /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_usb_serial.c
-esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_usb_serial.c.obj: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_usb_serial.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_usb_serial.c.obj -MF CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_usb_serial.c.obj.d -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_usb_serial.c.obj -c /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_usb_serial.c
-
-esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_usb_serial.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_usb_serial.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_usb_serial.c > CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_usb_serial.c.i
-
-esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_usb_serial.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_usb_serial.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_rom/patches/esp_rom_usb_serial.c -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_usb_serial.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_rom/patches/esp_rom_wdt.c -o CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_wdt.c.s
 
 # Object files for target __idf_esp_rom
 __idf_esp_rom_OBJECTS = \
@@ -237,8 +223,7 @@ __idf_esp_rom_OBJECTS = \
 "CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_gpio.c.obj" \
 "CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_hp_regi2c_esp32c6.c.obj" \
 "CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_systimer.c.obj" \
-"CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_wdt.c.obj" \
-"CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_usb_serial.c.obj"
+"CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_wdt.c.obj"
 
 # External object files for target __idf_esp_rom
 __idf_esp_rom_EXTERNAL_OBJECTS =
@@ -253,10 +238,9 @@ esp-idf/esp_rom/libesp_rom.a: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patch
 esp-idf/esp_rom/libesp_rom.a: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_hp_regi2c_esp32c6.c.obj
 esp-idf/esp_rom/libesp_rom.a: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_systimer.c.obj
 esp-idf/esp_rom/libesp_rom.a: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_wdt.c.obj
-esp-idf/esp_rom/libesp_rom.a: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_usb_serial.c.obj
 esp-idf/esp_rom/libesp_rom.a: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/build.make
 esp-idf/esp_rom/libesp_rom.a: esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking C static library libesp_rom.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking C static library libesp_rom.a"
 	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && $(CMAKE_COMMAND) -P CMakeFiles/__idf_esp_rom.dir/cmake_clean_target.cmake
 	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/__idf_esp_rom.dir/link.txt --verbose=$(VERBOSE)
 
@@ -269,6 +253,6 @@ esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/clean:
 .PHONY : esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/clean
 
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp-idf/components/bootloader/subproject /Users/robert/esp-idf/components/esp_rom /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp/esp-idf/components/bootloader/subproject /Users/robert/esp/esp-idf/components/esp_rom /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/depend
 

@@ -217,605 +217,605 @@ lib/fast:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/lib.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/lib.dir/build
 .PHONY : lib/fast
 
-Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes.obj: Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes.obj: Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes.obj
 
 # target to build an object file
-Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes.c.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes.c.obj
 
-Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes.i: Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes.i
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes.i: Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes.i
 
 # target to preprocess a source file
-Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes.c.i
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes.c.i
 
-Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes.s: Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes.s
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes.s: Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes.s
 
 # target to generate assembly for a file
-Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes.c.s
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes.c.s
 
-Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.obj: Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.obj: Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.obj
 
 # target to build an object file
-Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.c.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.c.obj
 
-Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.i: Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.i
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.i: Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.i
 
 # target to preprocess a source file
-Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.c.i
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.c.i
 
-Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.s: Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.s
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.s: Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.s
 
 # target to generate assembly for a file
-Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.c.s
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.c.s
 
-Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.obj: Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.obj: Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.obj
 
 # target to build an object file
-Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.c.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.c.obj
 
-Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.i: Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.i
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.i: Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.i
 
 # target to preprocess a source file
-Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.c.i
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.c.i
 
-Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.s: Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.s
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.s: Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.s
 
 # target to generate assembly for a file
-Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.c.s
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.c.s
 
-Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_common.obj: Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_common.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_common.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_common.obj: Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_common.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_common.obj
 
 # target to build an object file
-Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_common.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_common.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_common.c.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_common.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_common.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_common.c.obj
 
-Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_common.i: Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_common.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_common.i
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_common.i: Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_common.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_common.i
 
 # target to preprocess a source file
-Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_common.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_common.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_common.c.i
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_common.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_common.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_common.c.i
 
-Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_common.s: Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_common.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_common.s
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_common.s: Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_common.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_common.s
 
 # target to generate assembly for a file
-Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_common.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_common.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_common.c.s
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_common.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_common.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_common.c.s
 
-Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.obj: Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.obj: Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.obj
 
 # target to build an object file
-Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.c.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.c.obj
 
-Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.i: Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.i
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.i: Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.i
 
 # target to preprocess a source file
-Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.c.i
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.c.i
 
-Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.s: Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.s
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.s: Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.s
 
 # target to generate assembly for a file
-Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.c.s
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.c.s
 
-Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_xts.obj: Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_xts.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_xts.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_xts.obj: Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_xts.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_xts.obj
 
 # target to build an object file
-Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_xts.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_xts.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_xts.c.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_xts.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_xts.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_xts.c.obj
 
-Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_xts.i: Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_xts.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_xts.i
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_xts.i: Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_xts.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_xts.i
 
 # target to preprocess a source file
-Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_xts.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_xts.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_xts.c.i
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_xts.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_xts.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_xts.c.i
 
-Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_xts.s: Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_xts.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_xts.s
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_xts.s: Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_xts.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_xts.s
 
 # target to generate assembly for a file
-Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_xts.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_xts.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_xts.c.s
+Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_xts.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_xts.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_xts.c.s
 
-Users/robert/esp-idf/components/mbedtls/port/bignum/bignum_alt.obj: Users/robert/esp-idf/components/mbedtls/port/bignum/bignum_alt.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/bignum/bignum_alt.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/bignum/bignum_alt.obj: Users/robert/esp/esp-idf/components/mbedtls/port/bignum/bignum_alt.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/bignum/bignum_alt.obj
 
 # target to build an object file
-Users/robert/esp-idf/components/mbedtls/port/bignum/bignum_alt.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/bignum/bignum_alt.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/bignum/bignum_alt.c.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/bignum/bignum_alt.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/bignum/bignum_alt.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/bignum/bignum_alt.c.obj
 
-Users/robert/esp-idf/components/mbedtls/port/bignum/bignum_alt.i: Users/robert/esp-idf/components/mbedtls/port/bignum/bignum_alt.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/bignum/bignum_alt.i
+Users/robert/esp/esp-idf/components/mbedtls/port/bignum/bignum_alt.i: Users/robert/esp/esp-idf/components/mbedtls/port/bignum/bignum_alt.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/bignum/bignum_alt.i
 
 # target to preprocess a source file
-Users/robert/esp-idf/components/mbedtls/port/bignum/bignum_alt.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/bignum/bignum_alt.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/bignum/bignum_alt.c.i
+Users/robert/esp/esp-idf/components/mbedtls/port/bignum/bignum_alt.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/bignum/bignum_alt.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/bignum/bignum_alt.c.i
 
-Users/robert/esp-idf/components/mbedtls/port/bignum/bignum_alt.s: Users/robert/esp-idf/components/mbedtls/port/bignum/bignum_alt.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/bignum/bignum_alt.s
+Users/robert/esp/esp-idf/components/mbedtls/port/bignum/bignum_alt.s: Users/robert/esp/esp-idf/components/mbedtls/port/bignum/bignum_alt.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/bignum/bignum_alt.s
 
 # target to generate assembly for a file
-Users/robert/esp-idf/components/mbedtls/port/bignum/bignum_alt.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/bignum/bignum_alt.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/bignum/bignum_alt.c.s
+Users/robert/esp/esp-idf/components/mbedtls/port/bignum/bignum_alt.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/bignum/bignum_alt.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/bignum/bignum_alt.c.s
 
-Users/robert/esp-idf/components/mbedtls/port/bignum/esp_bignum.obj: Users/robert/esp-idf/components/mbedtls/port/bignum/esp_bignum.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/bignum/esp_bignum.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/bignum/esp_bignum.obj: Users/robert/esp/esp-idf/components/mbedtls/port/bignum/esp_bignum.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/bignum/esp_bignum.obj
 
 # target to build an object file
-Users/robert/esp-idf/components/mbedtls/port/bignum/esp_bignum.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/bignum/esp_bignum.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/bignum/esp_bignum.c.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/bignum/esp_bignum.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/bignum/esp_bignum.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/bignum/esp_bignum.c.obj
 
-Users/robert/esp-idf/components/mbedtls/port/bignum/esp_bignum.i: Users/robert/esp-idf/components/mbedtls/port/bignum/esp_bignum.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/bignum/esp_bignum.i
+Users/robert/esp/esp-idf/components/mbedtls/port/bignum/esp_bignum.i: Users/robert/esp/esp-idf/components/mbedtls/port/bignum/esp_bignum.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/bignum/esp_bignum.i
 
 # target to preprocess a source file
-Users/robert/esp-idf/components/mbedtls/port/bignum/esp_bignum.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/bignum/esp_bignum.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/bignum/esp_bignum.c.i
+Users/robert/esp/esp-idf/components/mbedtls/port/bignum/esp_bignum.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/bignum/esp_bignum.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/bignum/esp_bignum.c.i
 
-Users/robert/esp-idf/components/mbedtls/port/bignum/esp_bignum.s: Users/robert/esp-idf/components/mbedtls/port/bignum/esp_bignum.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/bignum/esp_bignum.s
+Users/robert/esp/esp-idf/components/mbedtls/port/bignum/esp_bignum.s: Users/robert/esp/esp-idf/components/mbedtls/port/bignum/esp_bignum.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/bignum/esp_bignum.s
 
 # target to generate assembly for a file
-Users/robert/esp-idf/components/mbedtls/port/bignum/esp_bignum.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/bignum/esp_bignum.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/bignum/esp_bignum.c.s
+Users/robert/esp/esp-idf/components/mbedtls/port/bignum/esp_bignum.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/bignum/esp_bignum.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/bignum/esp_bignum.c.s
 
-Users/robert/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.obj: Users/robert/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.obj: Users/robert/esp/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.obj
 
 # target to build an object file
-Users/robert/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.obj
 
-Users/robert/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.i: Users/robert/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.i
+Users/robert/esp/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.i: Users/robert/esp/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.i
 
 # target to preprocess a source file
-Users/robert/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.i
+Users/robert/esp/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.i
 
-Users/robert/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.s: Users/robert/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.s
+Users/robert/esp/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.s: Users/robert/esp/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.s
 
 # target to generate assembly for a file
-Users/robert/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.s
+Users/robert/esp/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.s
 
-Users/robert/esp-idf/components/mbedtls/port/ecc/ecc_alt.obj: Users/robert/esp-idf/components/mbedtls/port/ecc/ecc_alt.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/ecc/ecc_alt.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/ecc/ecc_alt.obj: Users/robert/esp/esp-idf/components/mbedtls/port/ecc/ecc_alt.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/ecc/ecc_alt.obj
 
 # target to build an object file
-Users/robert/esp-idf/components/mbedtls/port/ecc/ecc_alt.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/ecc/ecc_alt.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/ecc/ecc_alt.c.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/ecc/ecc_alt.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/ecc/ecc_alt.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/ecc/ecc_alt.c.obj
 
-Users/robert/esp-idf/components/mbedtls/port/ecc/ecc_alt.i: Users/robert/esp-idf/components/mbedtls/port/ecc/ecc_alt.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/ecc/ecc_alt.i
+Users/robert/esp/esp-idf/components/mbedtls/port/ecc/ecc_alt.i: Users/robert/esp/esp-idf/components/mbedtls/port/ecc/ecc_alt.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/ecc/ecc_alt.i
 
 # target to preprocess a source file
-Users/robert/esp-idf/components/mbedtls/port/ecc/ecc_alt.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/ecc/ecc_alt.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/ecc/ecc_alt.c.i
+Users/robert/esp/esp-idf/components/mbedtls/port/ecc/ecc_alt.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/ecc/ecc_alt.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/ecc/ecc_alt.c.i
 
-Users/robert/esp-idf/components/mbedtls/port/ecc/ecc_alt.s: Users/robert/esp-idf/components/mbedtls/port/ecc/ecc_alt.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/ecc/ecc_alt.s
+Users/robert/esp/esp-idf/components/mbedtls/port/ecc/ecc_alt.s: Users/robert/esp/esp-idf/components/mbedtls/port/ecc/ecc_alt.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/ecc/ecc_alt.s
 
 # target to generate assembly for a file
-Users/robert/esp-idf/components/mbedtls/port/ecc/ecc_alt.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/ecc/ecc_alt.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/ecc/ecc_alt.c.s
+Users/robert/esp/esp-idf/components/mbedtls/port/ecc/ecc_alt.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/ecc/ecc_alt.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/ecc/ecc_alt.c.s
 
-Users/robert/esp-idf/components/mbedtls/port/ecc/esp_ecc.obj: Users/robert/esp-idf/components/mbedtls/port/ecc/esp_ecc.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/ecc/esp_ecc.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/ecc/esp_ecc.obj: Users/robert/esp/esp-idf/components/mbedtls/port/ecc/esp_ecc.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/ecc/esp_ecc.obj
 
 # target to build an object file
-Users/robert/esp-idf/components/mbedtls/port/ecc/esp_ecc.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/ecc/esp_ecc.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/ecc/esp_ecc.c.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/ecc/esp_ecc.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/ecc/esp_ecc.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/ecc/esp_ecc.c.obj
 
-Users/robert/esp-idf/components/mbedtls/port/ecc/esp_ecc.i: Users/robert/esp-idf/components/mbedtls/port/ecc/esp_ecc.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/ecc/esp_ecc.i
+Users/robert/esp/esp-idf/components/mbedtls/port/ecc/esp_ecc.i: Users/robert/esp/esp-idf/components/mbedtls/port/ecc/esp_ecc.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/ecc/esp_ecc.i
 
 # target to preprocess a source file
-Users/robert/esp-idf/components/mbedtls/port/ecc/esp_ecc.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/ecc/esp_ecc.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/ecc/esp_ecc.c.i
+Users/robert/esp/esp-idf/components/mbedtls/port/ecc/esp_ecc.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/ecc/esp_ecc.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/ecc/esp_ecc.c.i
 
-Users/robert/esp-idf/components/mbedtls/port/ecc/esp_ecc.s: Users/robert/esp-idf/components/mbedtls/port/ecc/esp_ecc.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/ecc/esp_ecc.s
+Users/robert/esp/esp-idf/components/mbedtls/port/ecc/esp_ecc.s: Users/robert/esp/esp-idf/components/mbedtls/port/ecc/esp_ecc.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/ecc/esp_ecc.s
 
 # target to generate assembly for a file
-Users/robert/esp-idf/components/mbedtls/port/ecc/esp_ecc.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/ecc/esp_ecc.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/ecc/esp_ecc.c.s
+Users/robert/esp/esp-idf/components/mbedtls/port/ecc/esp_ecc.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/ecc/esp_ecc.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/ecc/esp_ecc.c.s
 
-Users/robert/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.obj: Users/robert/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.obj: Users/robert/esp/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.obj
 
 # target to build an object file
-Users/robert/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.c.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.c.obj
 
-Users/robert/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.i: Users/robert/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.i
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.i: Users/robert/esp/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.i
 
 # target to preprocess a source file
-Users/robert/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.c.i
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.c.i
 
-Users/robert/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.s: Users/robert/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.s
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.s: Users/robert/esp/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.s
 
 # target to generate assembly for a file
-Users/robert/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.c.s
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.c.s
 
-Users/robert/esp-idf/components/mbedtls/port/esp_hardware.obj: Users/robert/esp-idf/components/mbedtls/port/esp_hardware.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_hardware.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_hardware.obj: Users/robert/esp/esp-idf/components/mbedtls/port/esp_hardware.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_hardware.obj
 
 # target to build an object file
-Users/robert/esp-idf/components/mbedtls/port/esp_hardware.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/esp_hardware.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_hardware.c.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_hardware.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/esp_hardware.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_hardware.c.obj
 
-Users/robert/esp-idf/components/mbedtls/port/esp_hardware.i: Users/robert/esp-idf/components/mbedtls/port/esp_hardware.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_hardware.i
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_hardware.i: Users/robert/esp/esp-idf/components/mbedtls/port/esp_hardware.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_hardware.i
 
 # target to preprocess a source file
-Users/robert/esp-idf/components/mbedtls/port/esp_hardware.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/esp_hardware.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_hardware.c.i
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_hardware.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/esp_hardware.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_hardware.c.i
 
-Users/robert/esp-idf/components/mbedtls/port/esp_hardware.s: Users/robert/esp-idf/components/mbedtls/port/esp_hardware.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_hardware.s
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_hardware.s: Users/robert/esp/esp-idf/components/mbedtls/port/esp_hardware.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_hardware.s
 
 # target to generate assembly for a file
-Users/robert/esp-idf/components/mbedtls/port/esp_hardware.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/esp_hardware.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_hardware.c.s
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_hardware.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/esp_hardware.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_hardware.c.s
 
-Users/robert/esp-idf/components/mbedtls/port/esp_mem.obj: Users/robert/esp-idf/components/mbedtls/port/esp_mem.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_mem.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_mem.obj: Users/robert/esp/esp-idf/components/mbedtls/port/esp_mem.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_mem.obj
 
 # target to build an object file
-Users/robert/esp-idf/components/mbedtls/port/esp_mem.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/esp_mem.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_mem.c.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_mem.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/esp_mem.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_mem.c.obj
 
-Users/robert/esp-idf/components/mbedtls/port/esp_mem.i: Users/robert/esp-idf/components/mbedtls/port/esp_mem.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_mem.i
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_mem.i: Users/robert/esp/esp-idf/components/mbedtls/port/esp_mem.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_mem.i
 
 # target to preprocess a source file
-Users/robert/esp-idf/components/mbedtls/port/esp_mem.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/esp_mem.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_mem.c.i
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_mem.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/esp_mem.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_mem.c.i
 
-Users/robert/esp-idf/components/mbedtls/port/esp_mem.s: Users/robert/esp-idf/components/mbedtls/port/esp_mem.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_mem.s
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_mem.s: Users/robert/esp/esp-idf/components/mbedtls/port/esp_mem.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_mem.s
 
 # target to generate assembly for a file
-Users/robert/esp-idf/components/mbedtls/port/esp_mem.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/esp_mem.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_mem.c.s
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_mem.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/esp_mem.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_mem.c.s
 
-Users/robert/esp-idf/components/mbedtls/port/esp_platform_time.obj: Users/robert/esp-idf/components/mbedtls/port/esp_platform_time.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_platform_time.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_platform_time.obj: Users/robert/esp/esp-idf/components/mbedtls/port/esp_platform_time.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_platform_time.obj
 
 # target to build an object file
-Users/robert/esp-idf/components/mbedtls/port/esp_platform_time.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/Users/robert/esp-idf/components/mbedtls/port/esp_platform_time.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_platform_time.c.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_platform_time.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/Users/robert/esp/esp-idf/components/mbedtls/port/esp_platform_time.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_platform_time.c.obj
 
-Users/robert/esp-idf/components/mbedtls/port/esp_platform_time.i: Users/robert/esp-idf/components/mbedtls/port/esp_platform_time.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_platform_time.i
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_platform_time.i: Users/robert/esp/esp-idf/components/mbedtls/port/esp_platform_time.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_platform_time.i
 
 # target to preprocess a source file
-Users/robert/esp-idf/components/mbedtls/port/esp_platform_time.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/Users/robert/esp-idf/components/mbedtls/port/esp_platform_time.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_platform_time.c.i
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_platform_time.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/Users/robert/esp/esp-idf/components/mbedtls/port/esp_platform_time.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_platform_time.c.i
 
-Users/robert/esp-idf/components/mbedtls/port/esp_platform_time.s: Users/robert/esp-idf/components/mbedtls/port/esp_platform_time.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_platform_time.s
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_platform_time.s: Users/robert/esp/esp-idf/components/mbedtls/port/esp_platform_time.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_platform_time.s
 
 # target to generate assembly for a file
-Users/robert/esp-idf/components/mbedtls/port/esp_platform_time.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/Users/robert/esp-idf/components/mbedtls/port/esp_platform_time.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_platform_time.c.s
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_platform_time.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/Users/robert/esp/esp-idf/components/mbedtls/port/esp_platform_time.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_platform_time.c.s
 
-Users/robert/esp-idf/components/mbedtls/port/esp_timing.obj: Users/robert/esp-idf/components/mbedtls/port/esp_timing.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_timing.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_timing.obj: Users/robert/esp/esp-idf/components/mbedtls/port/esp_timing.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_timing.obj
 
 # target to build an object file
-Users/robert/esp-idf/components/mbedtls/port/esp_timing.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/esp_timing.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_timing.c.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_timing.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/esp_timing.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_timing.c.obj
 
-Users/robert/esp-idf/components/mbedtls/port/esp_timing.i: Users/robert/esp-idf/components/mbedtls/port/esp_timing.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_timing.i
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_timing.i: Users/robert/esp/esp-idf/components/mbedtls/port/esp_timing.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_timing.i
 
 # target to preprocess a source file
-Users/robert/esp-idf/components/mbedtls/port/esp_timing.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/esp_timing.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_timing.c.i
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_timing.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/esp_timing.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_timing.c.i
 
-Users/robert/esp-idf/components/mbedtls/port/esp_timing.s: Users/robert/esp-idf/components/mbedtls/port/esp_timing.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_timing.s
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_timing.s: Users/robert/esp/esp-idf/components/mbedtls/port/esp_timing.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_timing.s
 
 # target to generate assembly for a file
-Users/robert/esp-idf/components/mbedtls/port/esp_timing.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/esp_timing.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/esp_timing.c.s
+Users/robert/esp/esp-idf/components/mbedtls/port/esp_timing.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/esp_timing.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/esp_timing.c.s
 
-Users/robert/esp-idf/components/mbedtls/port/mbedtls_debug.obj: Users/robert/esp-idf/components/mbedtls/port/mbedtls_debug.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/mbedtls_debug.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/mbedtls_debug.obj: Users/robert/esp/esp-idf/components/mbedtls/port/mbedtls_debug.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/mbedtls_debug.obj
 
 # target to build an object file
-Users/robert/esp-idf/components/mbedtls/port/mbedtls_debug.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/Users/robert/esp-idf/components/mbedtls/port/mbedtls_debug.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/mbedtls_debug.c.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/mbedtls_debug.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/Users/robert/esp/esp-idf/components/mbedtls/port/mbedtls_debug.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/mbedtls_debug.c.obj
 
-Users/robert/esp-idf/components/mbedtls/port/mbedtls_debug.i: Users/robert/esp-idf/components/mbedtls/port/mbedtls_debug.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/mbedtls_debug.i
+Users/robert/esp/esp-idf/components/mbedtls/port/mbedtls_debug.i: Users/robert/esp/esp-idf/components/mbedtls/port/mbedtls_debug.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/mbedtls_debug.i
 
 # target to preprocess a source file
-Users/robert/esp-idf/components/mbedtls/port/mbedtls_debug.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/Users/robert/esp-idf/components/mbedtls/port/mbedtls_debug.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/mbedtls_debug.c.i
+Users/robert/esp/esp-idf/components/mbedtls/port/mbedtls_debug.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/Users/robert/esp/esp-idf/components/mbedtls/port/mbedtls_debug.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/mbedtls_debug.c.i
 
-Users/robert/esp-idf/components/mbedtls/port/mbedtls_debug.s: Users/robert/esp-idf/components/mbedtls/port/mbedtls_debug.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/mbedtls_debug.s
+Users/robert/esp/esp-idf/components/mbedtls/port/mbedtls_debug.s: Users/robert/esp/esp-idf/components/mbedtls/port/mbedtls_debug.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/mbedtls_debug.s
 
 # target to generate assembly for a file
-Users/robert/esp-idf/components/mbedtls/port/mbedtls_debug.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/Users/robert/esp-idf/components/mbedtls/port/mbedtls_debug.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/mbedtls_debug.c.s
+Users/robert/esp/esp-idf/components/mbedtls/port/mbedtls_debug.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/Users/robert/esp/esp-idf/components/mbedtls/port/mbedtls_debug.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/mbedtls_debug.c.s
 
-Users/robert/esp-idf/components/mbedtls/port/md/esp_md.obj: Users/robert/esp-idf/components/mbedtls/port/md/esp_md.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/md/esp_md.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/md/esp_md.obj: Users/robert/esp/esp-idf/components/mbedtls/port/md/esp_md.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/md/esp_md.obj
 
 # target to build an object file
-Users/robert/esp-idf/components/mbedtls/port/md/esp_md.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/md/esp_md.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/md/esp_md.c.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/md/esp_md.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/md/esp_md.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/md/esp_md.c.obj
 
-Users/robert/esp-idf/components/mbedtls/port/md/esp_md.i: Users/robert/esp-idf/components/mbedtls/port/md/esp_md.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/md/esp_md.i
+Users/robert/esp/esp-idf/components/mbedtls/port/md/esp_md.i: Users/robert/esp/esp-idf/components/mbedtls/port/md/esp_md.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/md/esp_md.i
 
 # target to preprocess a source file
-Users/robert/esp-idf/components/mbedtls/port/md/esp_md.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/md/esp_md.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/md/esp_md.c.i
+Users/robert/esp/esp-idf/components/mbedtls/port/md/esp_md.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/md/esp_md.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/md/esp_md.c.i
 
-Users/robert/esp-idf/components/mbedtls/port/md/esp_md.s: Users/robert/esp-idf/components/mbedtls/port/md/esp_md.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/md/esp_md.s
+Users/robert/esp/esp-idf/components/mbedtls/port/md/esp_md.s: Users/robert/esp/esp-idf/components/mbedtls/port/md/esp_md.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/md/esp_md.s
 
 # target to generate assembly for a file
-Users/robert/esp-idf/components/mbedtls/port/md/esp_md.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/md/esp_md.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/md/esp_md.c.s
+Users/robert/esp/esp-idf/components/mbedtls/port/md/esp_md.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/md/esp_md.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/md/esp_md.c.s
 
-Users/robert/esp-idf/components/mbedtls/port/net_sockets.obj: Users/robert/esp-idf/components/mbedtls/port/net_sockets.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/net_sockets.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/net_sockets.obj: Users/robert/esp/esp-idf/components/mbedtls/port/net_sockets.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/net_sockets.obj
 
 # target to build an object file
-Users/robert/esp-idf/components/mbedtls/port/net_sockets.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/Users/robert/esp-idf/components/mbedtls/port/net_sockets.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/net_sockets.c.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/net_sockets.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/Users/robert/esp/esp-idf/components/mbedtls/port/net_sockets.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/net_sockets.c.obj
 
-Users/robert/esp-idf/components/mbedtls/port/net_sockets.i: Users/robert/esp-idf/components/mbedtls/port/net_sockets.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/net_sockets.i
+Users/robert/esp/esp-idf/components/mbedtls/port/net_sockets.i: Users/robert/esp/esp-idf/components/mbedtls/port/net_sockets.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/net_sockets.i
 
 # target to preprocess a source file
-Users/robert/esp-idf/components/mbedtls/port/net_sockets.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/Users/robert/esp-idf/components/mbedtls/port/net_sockets.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/net_sockets.c.i
+Users/robert/esp/esp-idf/components/mbedtls/port/net_sockets.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/Users/robert/esp/esp-idf/components/mbedtls/port/net_sockets.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/net_sockets.c.i
 
-Users/robert/esp-idf/components/mbedtls/port/net_sockets.s: Users/robert/esp-idf/components/mbedtls/port/net_sockets.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/net_sockets.s
+Users/robert/esp/esp-idf/components/mbedtls/port/net_sockets.s: Users/robert/esp/esp-idf/components/mbedtls/port/net_sockets.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/net_sockets.s
 
 # target to generate assembly for a file
-Users/robert/esp-idf/components/mbedtls/port/net_sockets.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/Users/robert/esp-idf/components/mbedtls/port/net_sockets.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/net_sockets.c.s
+Users/robert/esp/esp-idf/components/mbedtls/port/net_sockets.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/Users/robert/esp/esp-idf/components/mbedtls/port/net_sockets.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/net_sockets.c.s
 
-Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha1.obj: Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha1.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha1.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha1.obj: Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha1.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha1.obj
 
 # target to build an object file
-Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha1.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha1.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha1.c.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha1.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha1.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha1.c.obj
 
-Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha1.i: Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha1.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha1.i
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha1.i: Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha1.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha1.i
 
 # target to preprocess a source file
-Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha1.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha1.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha1.c.i
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha1.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha1.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha1.c.i
 
-Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha1.s: Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha1.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha1.s
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha1.s: Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha1.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha1.s
 
 # target to generate assembly for a file
-Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha1.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha1.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha1.c.s
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha1.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha1.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha1.c.s
 
-Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha256.obj: Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha256.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha256.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha256.obj: Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha256.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha256.obj
 
 # target to build an object file
-Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha256.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha256.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha256.c.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha256.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha256.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha256.c.obj
 
-Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha256.i: Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha256.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha256.i
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha256.i: Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha256.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha256.i
 
 # target to preprocess a source file
-Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha256.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha256.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha256.c.i
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha256.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha256.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha256.c.i
 
-Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha256.s: Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha256.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha256.s
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha256.s: Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha256.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha256.s
 
 # target to generate assembly for a file
-Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha256.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha256.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha256.c.s
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha256.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha256.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha256.c.s
 
-Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha512.obj: Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha512.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha512.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha512.obj: Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha512.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha512.obj
 
 # target to build an object file
-Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha512.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha512.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha512.c.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha512.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha512.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha512.c.obj
 
-Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha512.i: Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha512.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha512.i
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha512.i: Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha512.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha512.i
 
 # target to preprocess a source file
-Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha512.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha512.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha512.c.i
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha512.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha512.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha512.c.i
 
-Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha512.s: Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha512.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha512.s
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha512.s: Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha512.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha512.s
 
 # target to generate assembly for a file
-Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha512.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha512.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha512.c.s
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha512.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha512.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha512.c.s
 
-Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha_gdma_impl.obj: Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha_gdma_impl.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha_gdma_impl.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha_gdma_impl.obj: Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha_gdma_impl.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha_gdma_impl.obj
 
 # target to build an object file
-Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha_gdma_impl.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha_gdma_impl.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha_gdma_impl.c.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha_gdma_impl.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha_gdma_impl.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha_gdma_impl.c.obj
 
-Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha_gdma_impl.i: Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha_gdma_impl.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha_gdma_impl.i
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha_gdma_impl.i: Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha_gdma_impl.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha_gdma_impl.i
 
 # target to preprocess a source file
-Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha_gdma_impl.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha_gdma_impl.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha_gdma_impl.c.i
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha_gdma_impl.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha_gdma_impl.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha_gdma_impl.c.i
 
-Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha_gdma_impl.s: Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha_gdma_impl.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha_gdma_impl.s
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha_gdma_impl.s: Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha_gdma_impl.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha_gdma_impl.s
 
 # target to generate assembly for a file
-Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha_gdma_impl.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha_gdma_impl.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha_gdma_impl.c.s
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha_gdma_impl.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha_gdma_impl.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha_gdma_impl.c.s
 
-Users/robert/esp-idf/components/mbedtls/port/sha/core/sha.obj: Users/robert/esp-idf/components/mbedtls/port/sha/core/sha.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/sha.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/sha.obj: Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/sha.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/sha.obj
 
 # target to build an object file
-Users/robert/esp-idf/components/mbedtls/port/sha/core/sha.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/sha/core/sha.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/sha.c.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/sha.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/sha.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/sha.c.obj
 
-Users/robert/esp-idf/components/mbedtls/port/sha/core/sha.i: Users/robert/esp-idf/components/mbedtls/port/sha/core/sha.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/sha.i
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/sha.i: Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/sha.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/sha.i
 
 # target to preprocess a source file
-Users/robert/esp-idf/components/mbedtls/port/sha/core/sha.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/sha/core/sha.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/sha.c.i
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/sha.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/sha.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/sha.c.i
 
-Users/robert/esp-idf/components/mbedtls/port/sha/core/sha.s: Users/robert/esp-idf/components/mbedtls/port/sha/core/sha.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/sha.s
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/sha.s: Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/sha.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/sha.s
 
 # target to generate assembly for a file
-Users/robert/esp-idf/components/mbedtls/port/sha/core/sha.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/sha/core/sha.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/core/sha.c.s
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/sha.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/sha.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/sha.c.s
 
-Users/robert/esp-idf/components/mbedtls/port/sha/esp_sha.obj: Users/robert/esp-idf/components/mbedtls/port/sha/esp_sha.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/esp_sha.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/esp_sha.obj: Users/robert/esp/esp-idf/components/mbedtls/port/sha/esp_sha.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/esp_sha.obj
 
 # target to build an object file
-Users/robert/esp-idf/components/mbedtls/port/sha/esp_sha.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/sha/esp_sha.c.obj
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/esp_sha.c.obj
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/esp_sha.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/sha/esp_sha.c.obj
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/esp_sha.c.obj
 
-Users/robert/esp-idf/components/mbedtls/port/sha/esp_sha.i: Users/robert/esp-idf/components/mbedtls/port/sha/esp_sha.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/esp_sha.i
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/esp_sha.i: Users/robert/esp/esp-idf/components/mbedtls/port/sha/esp_sha.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/esp_sha.i
 
 # target to preprocess a source file
-Users/robert/esp-idf/components/mbedtls/port/sha/esp_sha.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/sha/esp_sha.c.i
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/esp_sha.c.i
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/esp_sha.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/sha/esp_sha.c.i
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/esp_sha.c.i
 
-Users/robert/esp-idf/components/mbedtls/port/sha/esp_sha.s: Users/robert/esp-idf/components/mbedtls/port/sha/esp_sha.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/esp_sha.s
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/esp_sha.s: Users/robert/esp/esp-idf/components/mbedtls/port/sha/esp_sha.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/esp_sha.s
 
 # target to generate assembly for a file
-Users/robert/esp-idf/components/mbedtls/port/sha/esp_sha.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp-idf/components/mbedtls/port/sha/esp_sha.c.s
-.PHONY : Users/robert/esp-idf/components/mbedtls/port/sha/esp_sha.c.s
+Users/robert/esp/esp-idf/components/mbedtls/port/sha/esp_sha.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/Users/robert/esp/esp-idf/components/mbedtls/port/sha/esp_sha.c.s
+.PHONY : Users/robert/esp/esp-idf/components/mbedtls/port/sha/esp_sha.c.s
 
 aes.obj: aes.c.obj
 .PHONY : aes.obj
@@ -3401,81 +3401,81 @@ help:
 	@echo "... mbedcrypto"
 	@echo "... mbedtls"
 	@echo "... mbedx509"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes.obj"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes.i"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes.s"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.obj"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.i"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.s"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.obj"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.i"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.s"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_common.obj"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_common.i"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_common.s"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.obj"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.i"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.s"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_xts.obj"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_xts.i"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/aes/esp_aes_xts.s"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/bignum/bignum_alt.obj"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/bignum/bignum_alt.i"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/bignum/bignum_alt.s"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/bignum/esp_bignum.obj"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/bignum/esp_bignum.i"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/bignum/esp_bignum.s"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.obj"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.i"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.s"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/ecc/ecc_alt.obj"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/ecc/ecc_alt.i"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/ecc/ecc_alt.s"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/ecc/esp_ecc.obj"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/ecc/esp_ecc.i"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/ecc/esp_ecc.s"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.obj"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.i"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.s"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/esp_hardware.obj"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/esp_hardware.i"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/esp_hardware.s"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/esp_mem.obj"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/esp_mem.i"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/esp_mem.s"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/esp_platform_time.obj"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/esp_platform_time.i"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/esp_platform_time.s"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/esp_timing.obj"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/esp_timing.i"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/esp_timing.s"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/mbedtls_debug.obj"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/mbedtls_debug.i"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/mbedtls_debug.s"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/md/esp_md.obj"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/md/esp_md.i"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/md/esp_md.s"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/net_sockets.obj"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/net_sockets.i"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/net_sockets.s"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha1.obj"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha1.i"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha1.s"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha256.obj"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha256.i"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha256.s"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha512.obj"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha512.i"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha512.s"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha_gdma_impl.obj"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha_gdma_impl.i"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/sha/core/esp_sha_gdma_impl.s"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/sha/core/sha.obj"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/sha/core/sha.i"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/sha/core/sha.s"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/sha/esp_sha.obj"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/sha/esp_sha.i"
-	@echo "... Users/robert/esp-idf/components/mbedtls/port/sha/esp_sha.s"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes.obj"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes.i"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes.s"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.obj"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.i"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_dma_core.s"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.obj"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.i"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/aes/dma/esp_aes_gdma_impl.s"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_common.obj"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_common.i"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_common.s"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.obj"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.i"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_gcm.s"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_xts.obj"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_xts.i"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/aes/esp_aes_xts.s"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/bignum/bignum_alt.obj"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/bignum/bignum_alt.i"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/bignum/bignum_alt.s"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/bignum/esp_bignum.obj"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/bignum/esp_bignum.i"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/bignum/esp_bignum.s"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.obj"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.i"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.s"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/ecc/ecc_alt.obj"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/ecc/ecc_alt.i"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/ecc/ecc_alt.s"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/ecc/esp_ecc.obj"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/ecc/esp_ecc.i"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/ecc/esp_ecc.s"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.obj"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.i"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/esp_ds/esp_rsa_sign_alt.s"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/esp_hardware.obj"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/esp_hardware.i"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/esp_hardware.s"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/esp_mem.obj"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/esp_mem.i"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/esp_mem.s"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/esp_platform_time.obj"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/esp_platform_time.i"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/esp_platform_time.s"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/esp_timing.obj"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/esp_timing.i"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/esp_timing.s"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/mbedtls_debug.obj"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/mbedtls_debug.i"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/mbedtls_debug.s"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/md/esp_md.obj"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/md/esp_md.i"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/md/esp_md.s"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/net_sockets.obj"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/net_sockets.i"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/net_sockets.s"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha1.obj"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha1.i"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha1.s"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha256.obj"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha256.i"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha256.s"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha512.obj"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha512.i"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha512.s"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha_gdma_impl.obj"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha_gdma_impl.i"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/esp_sha_gdma_impl.s"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/sha.obj"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/sha.i"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/sha/dma/sha.s"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/sha/esp_sha.obj"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/sha/esp_sha.i"
+	@echo "... Users/robert/esp/esp-idf/components/mbedtls/port/sha/esp_sha.s"
 	@echo "... aes.obj"
 	@echo "... aes.i"
 	@echo "... aes.s"

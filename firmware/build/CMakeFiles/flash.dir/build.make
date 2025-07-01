@@ -67,7 +67,7 @@ include CMakeFiles/flash.dir/compiler_depend.make
 include CMakeFiles/flash.dir/progress.make
 
 CMakeFiles/flash:
-	cd /Users/robert/esp-idf/components/esptool_py && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -D IDF_PATH=/Users/robert/esp-idf -D "SERIAL_TOOL=/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python;;/Users/robert/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32c6" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args" -D WORKING_DIRECTORY=/Users/robert/eidon/eidon-glove/firmware/build -P /Users/robert/esp-idf/components/esptool_py/run_serial_tool.cmake
+	cd /Users/robert/esp/esp-idf/components/esptool_py && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -D IDF_PATH=/Users/robert/esp/esp-idf -D "SERIAL_TOOL=/Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python;;/Users/robert/esp/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32c6" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args" -D WORKING_DIRECTORY=/Users/robert/eidon/eidon-glove/firmware/build -P /Users/robert/esp/esp-idf/components/esptool_py/run_serial_tool.cmake
 
 CMakeFiles/flash.dir/codegen:
 .PHONY : CMakeFiles/flash.dir/codegen

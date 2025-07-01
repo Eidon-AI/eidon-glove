@@ -57,7 +57,7 @@ RM = /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/robert/esp-idf/components/bootloader/subproject
+CMAKE_SOURCE_DIR = /Users/robert/esp/esp-idf/components/bootloader/subproject
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /Users/robert/eidon/eidon-glove/firmware/build/bootloader
@@ -490,30 +490,6 @@ esp32c6/pcnt_periph.c.s:
 	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(MAKE) $(MAKESILENT) -f esp-idf/soc/CMakeFiles/__idf_soc.dir/build.make esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32c6/pcnt_periph.c.s
 .PHONY : esp32c6/pcnt_periph.c.s
 
-esp32c6/power_supply_periph.obj: esp32c6/power_supply_periph.c.obj
-.PHONY : esp32c6/power_supply_periph.obj
-
-# target to build an object file
-esp32c6/power_supply_periph.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(MAKE) $(MAKESILENT) -f esp-idf/soc/CMakeFiles/__idf_soc.dir/build.make esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32c6/power_supply_periph.c.obj
-.PHONY : esp32c6/power_supply_periph.c.obj
-
-esp32c6/power_supply_periph.i: esp32c6/power_supply_periph.c.i
-.PHONY : esp32c6/power_supply_periph.i
-
-# target to preprocess a source file
-esp32c6/power_supply_periph.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(MAKE) $(MAKESILENT) -f esp-idf/soc/CMakeFiles/__idf_soc.dir/build.make esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32c6/power_supply_periph.c.i
-.PHONY : esp32c6/power_supply_periph.c.i
-
-esp32c6/power_supply_periph.s: esp32c6/power_supply_periph.c.s
-.PHONY : esp32c6/power_supply_periph.s
-
-# target to generate assembly for a file
-esp32c6/power_supply_periph.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(MAKE) $(MAKESILENT) -f esp-idf/soc/CMakeFiles/__idf_soc.dir/build.make esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32c6/power_supply_periph.c.s
-.PHONY : esp32c6/power_supply_periph.c.s
-
 esp32c6/rmt_periph.obj: esp32c6/rmt_periph.c.obj
 .PHONY : esp32c6/rmt_periph.obj
 
@@ -856,9 +832,6 @@ help:
 	@echo "... esp32c6/pcnt_periph.obj"
 	@echo "... esp32c6/pcnt_periph.i"
 	@echo "... esp32c6/pcnt_periph.s"
-	@echo "... esp32c6/power_supply_periph.obj"
-	@echo "... esp32c6/power_supply_periph.i"
-	@echo "... esp32c6/power_supply_periph.s"
 	@echo "... esp32c6/rmt_periph.obj"
 	@echo "... esp32c6/rmt_periph.i"
 	@echo "... esp32c6/rmt_periph.s"

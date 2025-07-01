@@ -86,6 +86,6 @@ esp-idf/mbedtls/mbedtls/library/CMakeFiles/lib.dir/clean:
 .PHONY : esp-idf/mbedtls/mbedtls/library/CMakeFiles/lib.dir/clean
 
 esp-idf/mbedtls/mbedtls/library/CMakeFiles/lib.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/mbedtls/mbedtls/library /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/mbedtls/library /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/mbedtls/library/CMakeFiles/lib.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/mbedtls/mbedtls/library /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/mbedtls/library /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/mbedtls/library/CMakeFiles/lib.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/mbedtls/mbedtls/library/CMakeFiles/lib.dir/depend
 

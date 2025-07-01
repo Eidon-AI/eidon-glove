@@ -73,60 +73,60 @@ esp-idf/vfs/CMakeFiles/__idf_vfs.dir/codegen:
 .PHONY : esp-idf/vfs/CMakeFiles/__idf_vfs.dir/codegen
 
 esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs.c.obj: esp-idf/vfs/CMakeFiles/__idf_vfs.dir/flags.make
-esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs.c.obj: /Users/robert/esp-idf/components/vfs/vfs.c
+esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs.c.obj: /Users/robert/esp/esp-idf/components/vfs/vfs.c
 esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs.c.obj: esp-idf/vfs/CMakeFiles/__idf_vfs.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs.c.obj -MF CMakeFiles/__idf_vfs.dir/vfs.c.obj.d -o CMakeFiles/__idf_vfs.dir/vfs.c.obj -c /Users/robert/esp-idf/components/vfs/vfs.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs.c.obj -MF CMakeFiles/__idf_vfs.dir/vfs.c.obj.d -o CMakeFiles/__idf_vfs.dir/vfs.c.obj -c /Users/robert/esp/esp-idf/components/vfs/vfs.c
 
 esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_vfs.dir/vfs.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/vfs/vfs.c > CMakeFiles/__idf_vfs.dir/vfs.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/vfs/vfs.c > CMakeFiles/__idf_vfs.dir/vfs.c.i
 
 esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_vfs.dir/vfs.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/vfs/vfs.c -o CMakeFiles/__idf_vfs.dir/vfs.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/vfs/vfs.c -o CMakeFiles/__idf_vfs.dir/vfs.c.s
 
 esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs_eventfd.c.obj: esp-idf/vfs/CMakeFiles/__idf_vfs.dir/flags.make
-esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs_eventfd.c.obj: /Users/robert/esp-idf/components/vfs/vfs_eventfd.c
+esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs_eventfd.c.obj: /Users/robert/esp/esp-idf/components/vfs/vfs_eventfd.c
 esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs_eventfd.c.obj: esp-idf/vfs/CMakeFiles/__idf_vfs.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs_eventfd.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs_eventfd.c.obj -MF CMakeFiles/__idf_vfs.dir/vfs_eventfd.c.obj.d -o CMakeFiles/__idf_vfs.dir/vfs_eventfd.c.obj -c /Users/robert/esp-idf/components/vfs/vfs_eventfd.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs_eventfd.c.obj -MF CMakeFiles/__idf_vfs.dir/vfs_eventfd.c.obj.d -o CMakeFiles/__idf_vfs.dir/vfs_eventfd.c.obj -c /Users/robert/esp/esp-idf/components/vfs/vfs_eventfd.c
 
 esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs_eventfd.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_vfs.dir/vfs_eventfd.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/vfs/vfs_eventfd.c > CMakeFiles/__idf_vfs.dir/vfs_eventfd.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/vfs/vfs_eventfd.c > CMakeFiles/__idf_vfs.dir/vfs_eventfd.c.i
 
 esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs_eventfd.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_vfs.dir/vfs_eventfd.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/vfs/vfs_eventfd.c -o CMakeFiles/__idf_vfs.dir/vfs_eventfd.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/vfs/vfs_eventfd.c -o CMakeFiles/__idf_vfs.dir/vfs_eventfd.c.s
 
 esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs_semihost.c.obj: esp-idf/vfs/CMakeFiles/__idf_vfs.dir/flags.make
-esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs_semihost.c.obj: /Users/robert/esp-idf/components/vfs/vfs_semihost.c
+esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs_semihost.c.obj: /Users/robert/esp/esp-idf/components/vfs/vfs_semihost.c
 esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs_semihost.c.obj: esp-idf/vfs/CMakeFiles/__idf_vfs.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs_semihost.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs_semihost.c.obj -MF CMakeFiles/__idf_vfs.dir/vfs_semihost.c.obj.d -o CMakeFiles/__idf_vfs.dir/vfs_semihost.c.obj -c /Users/robert/esp-idf/components/vfs/vfs_semihost.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs_semihost.c.obj -MF CMakeFiles/__idf_vfs.dir/vfs_semihost.c.obj.d -o CMakeFiles/__idf_vfs.dir/vfs_semihost.c.obj -c /Users/robert/esp/esp-idf/components/vfs/vfs_semihost.c
 
 esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs_semihost.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_vfs.dir/vfs_semihost.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/vfs/vfs_semihost.c > CMakeFiles/__idf_vfs.dir/vfs_semihost.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/vfs/vfs_semihost.c > CMakeFiles/__idf_vfs.dir/vfs_semihost.c.i
 
 esp-idf/vfs/CMakeFiles/__idf_vfs.dir/vfs_semihost.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_vfs.dir/vfs_semihost.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/vfs/vfs_semihost.c -o CMakeFiles/__idf_vfs.dir/vfs_semihost.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/vfs/vfs_semihost.c -o CMakeFiles/__idf_vfs.dir/vfs_semihost.c.s
 
 esp-idf/vfs/CMakeFiles/__idf_vfs.dir/nullfs.c.obj: esp-idf/vfs/CMakeFiles/__idf_vfs.dir/flags.make
-esp-idf/vfs/CMakeFiles/__idf_vfs.dir/nullfs.c.obj: /Users/robert/esp-idf/components/vfs/nullfs.c
+esp-idf/vfs/CMakeFiles/__idf_vfs.dir/nullfs.c.obj: /Users/robert/esp/esp-idf/components/vfs/nullfs.c
 esp-idf/vfs/CMakeFiles/__idf_vfs.dir/nullfs.c.obj: esp-idf/vfs/CMakeFiles/__idf_vfs.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object esp-idf/vfs/CMakeFiles/__idf_vfs.dir/nullfs.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/vfs/CMakeFiles/__idf_vfs.dir/nullfs.c.obj -MF CMakeFiles/__idf_vfs.dir/nullfs.c.obj.d -o CMakeFiles/__idf_vfs.dir/nullfs.c.obj -c /Users/robert/esp-idf/components/vfs/nullfs.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/vfs/CMakeFiles/__idf_vfs.dir/nullfs.c.obj -MF CMakeFiles/__idf_vfs.dir/nullfs.c.obj.d -o CMakeFiles/__idf_vfs.dir/nullfs.c.obj -c /Users/robert/esp/esp-idf/components/vfs/nullfs.c
 
 esp-idf/vfs/CMakeFiles/__idf_vfs.dir/nullfs.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_vfs.dir/nullfs.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/vfs/nullfs.c > CMakeFiles/__idf_vfs.dir/nullfs.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/vfs/nullfs.c > CMakeFiles/__idf_vfs.dir/nullfs.c.i
 
 esp-idf/vfs/CMakeFiles/__idf_vfs.dir/nullfs.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_vfs.dir/nullfs.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/vfs/nullfs.c -o CMakeFiles/__idf_vfs.dir/nullfs.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/vfs/nullfs.c -o CMakeFiles/__idf_vfs.dir/nullfs.c.s
 
 # Object files for target __idf_vfs
 __idf_vfs_OBJECTS = \
@@ -157,6 +157,6 @@ esp-idf/vfs/CMakeFiles/__idf_vfs.dir/clean:
 .PHONY : esp-idf/vfs/CMakeFiles/__idf_vfs.dir/clean
 
 esp-idf/vfs/CMakeFiles/__idf_vfs.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/vfs /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs/CMakeFiles/__idf_vfs.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/vfs /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/vfs/CMakeFiles/__idf_vfs.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/vfs/CMakeFiles/__idf_vfs.dir/depend
 

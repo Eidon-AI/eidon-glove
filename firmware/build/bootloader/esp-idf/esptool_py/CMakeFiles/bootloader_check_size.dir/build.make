@@ -53,7 +53,7 @@ RM = /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/robert/esp-idf/components/bootloader/subproject
+CMAKE_SOURCE_DIR = /Users/robert/esp/esp-idf/components/bootloader/subproject
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /Users/robert/eidon/eidon-glove/firmware/build/bootloader
@@ -67,7 +67,7 @@ include esp-idf/esptool_py/CMakeFiles/bootloader_check_size.dir/compiler_depend.
 include esp-idf/esptool_py/CMakeFiles/bootloader_check_size.dir/progress.make
 
 esp-idf/esptool_py/CMakeFiles/bootloader_check_size:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esptool_py && /Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python /Users/robert/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x0 /Users/robert/eidon/eidon-glove/firmware/build/bootloader/bootloader.bin
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esptool_py && /Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python /Users/robert/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x0 /Users/robert/eidon/eidon-glove/firmware/build/bootloader/bootloader.bin
 
 esp-idf/esptool_py/CMakeFiles/bootloader_check_size.dir/codegen:
 .PHONY : esp-idf/esptool_py/CMakeFiles/bootloader_check_size.dir/codegen
@@ -85,6 +85,6 @@ esp-idf/esptool_py/CMakeFiles/bootloader_check_size.dir/clean:
 .PHONY : esp-idf/esptool_py/CMakeFiles/bootloader_check_size.dir/clean
 
 esp-idf/esptool_py/CMakeFiles/bootloader_check_size.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp-idf/components/bootloader/subproject /Users/robert/esp-idf/components/esptool_py /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esptool_py /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp/esp-idf/components/bootloader/subproject /Users/robert/esp/esp-idf/components/esptool_py /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esptool_py /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/esptool_py/CMakeFiles/bootloader_check_size.dir/depend
 

@@ -73,46 +73,46 @@ esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/codegen:
 .PHONY : esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/codegen
 
 esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_common.c.obj: esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/flags.make
-esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_common.c.obj: /Users/robert/esp-idf/components/esp_driver_parlio/src/parlio_common.c
+esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_common.c.obj: /Users/robert/esp/esp-idf/components/esp_driver_parlio/src/parlio_common.c
 esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_common.c.obj: esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_common.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_parlio && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_common.c.obj -MF CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_common.c.obj.d -o CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_common.c.obj -c /Users/robert/esp-idf/components/esp_driver_parlio/src/parlio_common.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_parlio && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_common.c.obj -MF CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_common.c.obj.d -o CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_common.c.obj -c /Users/robert/esp/esp-idf/components/esp_driver_parlio/src/parlio_common.c
 
 esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_common.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_common.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_parlio && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_driver_parlio/src/parlio_common.c > CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_common.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_parlio && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_driver_parlio/src/parlio_common.c > CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_common.c.i
 
 esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_common.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_common.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_parlio && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_driver_parlio/src/parlio_common.c -o CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_common.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_parlio && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_driver_parlio/src/parlio_common.c -o CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_common.c.s
 
 esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_tx.c.obj: esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/flags.make
-esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_tx.c.obj: /Users/robert/esp-idf/components/esp_driver_parlio/src/parlio_tx.c
+esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_tx.c.obj: /Users/robert/esp/esp-idf/components/esp_driver_parlio/src/parlio_tx.c
 esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_tx.c.obj: esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_tx.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_parlio && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_tx.c.obj -MF CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_tx.c.obj.d -o CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_tx.c.obj -c /Users/robert/esp-idf/components/esp_driver_parlio/src/parlio_tx.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_parlio && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_tx.c.obj -MF CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_tx.c.obj.d -o CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_tx.c.obj -c /Users/robert/esp/esp-idf/components/esp_driver_parlio/src/parlio_tx.c
 
 esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_tx.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_tx.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_parlio && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_driver_parlio/src/parlio_tx.c > CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_tx.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_parlio && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_driver_parlio/src/parlio_tx.c > CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_tx.c.i
 
 esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_tx.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_tx.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_parlio && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_driver_parlio/src/parlio_tx.c -o CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_tx.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_parlio && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_driver_parlio/src/parlio_tx.c -o CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_tx.c.s
 
 esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_rx.c.obj: esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/flags.make
-esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_rx.c.obj: /Users/robert/esp-idf/components/esp_driver_parlio/src/parlio_rx.c
+esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_rx.c.obj: /Users/robert/esp/esp-idf/components/esp_driver_parlio/src/parlio_rx.c
 esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_rx.c.obj: esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_rx.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_parlio && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_rx.c.obj -MF CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_rx.c.obj.d -o CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_rx.c.obj -c /Users/robert/esp-idf/components/esp_driver_parlio/src/parlio_rx.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_parlio && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_rx.c.obj -MF CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_rx.c.obj.d -o CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_rx.c.obj -c /Users/robert/esp/esp-idf/components/esp_driver_parlio/src/parlio_rx.c
 
 esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_rx.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_rx.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_parlio && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_driver_parlio/src/parlio_rx.c > CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_rx.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_parlio && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_driver_parlio/src/parlio_rx.c > CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_rx.c.i
 
 esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_rx.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_rx.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_parlio && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_driver_parlio/src/parlio_rx.c -o CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_rx.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_parlio && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_driver_parlio/src/parlio_rx.c -o CMakeFiles/__idf_esp_driver_parlio.dir/src/parlio_rx.c.s
 
 # Object files for target __idf_esp_driver_parlio
 __idf_esp_driver_parlio_OBJECTS = \
@@ -141,6 +141,6 @@ esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/clean:
 .PHONY : esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/clean
 
 esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/esp_driver_parlio /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_parlio /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/esp_driver_parlio /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_parlio /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/esp_driver_parlio/CMakeFiles/__idf_esp_driver_parlio.dir/depend
 

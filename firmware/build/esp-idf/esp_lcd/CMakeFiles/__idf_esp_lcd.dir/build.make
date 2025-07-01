@@ -73,130 +73,130 @@ esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/codegen:
 .PHONY : esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/codegen
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_common.c.obj: esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/flags.make
-esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_common.c.obj: /Users/robert/esp-idf/components/esp_lcd/src/esp_lcd_common.c
+esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_common.c.obj: /Users/robert/esp/esp-idf/components/esp_lcd/src/esp_lcd_common.c
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_common.c.obj: esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_common.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_common.c.obj -MF CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_common.c.obj.d -o CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_common.c.obj -c /Users/robert/esp-idf/components/esp_lcd/src/esp_lcd_common.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_common.c.obj -MF CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_common.c.obj.d -o CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_common.c.obj -c /Users/robert/esp/esp-idf/components/esp_lcd/src/esp_lcd_common.c
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_common.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_common.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_lcd/src/esp_lcd_common.c > CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_common.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_lcd/src/esp_lcd_common.c > CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_common.c.i
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_common.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_common.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_lcd/src/esp_lcd_common.c -o CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_common.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_lcd/src/esp_lcd_common.c -o CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_common.c.s
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_io.c.obj: esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/flags.make
-esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_io.c.obj: /Users/robert/esp-idf/components/esp_lcd/src/esp_lcd_panel_io.c
+esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_io.c.obj: /Users/robert/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_io.c
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_io.c.obj: esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_io.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_io.c.obj -MF CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_io.c.obj.d -o CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_io.c.obj -c /Users/robert/esp-idf/components/esp_lcd/src/esp_lcd_panel_io.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_io.c.obj -MF CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_io.c.obj.d -o CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_io.c.obj -c /Users/robert/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_io.c
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_io.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_io.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_lcd/src/esp_lcd_panel_io.c > CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_io.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_io.c > CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_io.c.i
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_io.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_io.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_lcd/src/esp_lcd_panel_io.c -o CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_io.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_io.c -o CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_io.c.s
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_nt35510.c.obj: esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/flags.make
-esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_nt35510.c.obj: /Users/robert/esp-idf/components/esp_lcd/src/esp_lcd_panel_nt35510.c
+esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_nt35510.c.obj: /Users/robert/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_nt35510.c
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_nt35510.c.obj: esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_nt35510.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_nt35510.c.obj -MF CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_nt35510.c.obj.d -o CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_nt35510.c.obj -c /Users/robert/esp-idf/components/esp_lcd/src/esp_lcd_panel_nt35510.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_nt35510.c.obj -MF CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_nt35510.c.obj.d -o CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_nt35510.c.obj -c /Users/robert/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_nt35510.c
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_nt35510.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_nt35510.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_lcd/src/esp_lcd_panel_nt35510.c > CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_nt35510.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_nt35510.c > CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_nt35510.c.i
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_nt35510.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_nt35510.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_lcd/src/esp_lcd_panel_nt35510.c -o CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_nt35510.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_nt35510.c -o CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_nt35510.c.s
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ssd1306.c.obj: esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/flags.make
-esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ssd1306.c.obj: /Users/robert/esp-idf/components/esp_lcd/src/esp_lcd_panel_ssd1306.c
+esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ssd1306.c.obj: /Users/robert/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_ssd1306.c
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ssd1306.c.obj: esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ssd1306.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ssd1306.c.obj -MF CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ssd1306.c.obj.d -o CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ssd1306.c.obj -c /Users/robert/esp-idf/components/esp_lcd/src/esp_lcd_panel_ssd1306.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ssd1306.c.obj -MF CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ssd1306.c.obj.d -o CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ssd1306.c.obj -c /Users/robert/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_ssd1306.c
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ssd1306.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ssd1306.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_lcd/src/esp_lcd_panel_ssd1306.c > CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ssd1306.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_ssd1306.c > CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ssd1306.c.i
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ssd1306.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ssd1306.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_lcd/src/esp_lcd_panel_ssd1306.c -o CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ssd1306.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_ssd1306.c -o CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ssd1306.c.s
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_st7789.c.obj: esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/flags.make
-esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_st7789.c.obj: /Users/robert/esp-idf/components/esp_lcd/src/esp_lcd_panel_st7789.c
+esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_st7789.c.obj: /Users/robert/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_st7789.c
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_st7789.c.obj: esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_st7789.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_st7789.c.obj -MF CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_st7789.c.obj.d -o CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_st7789.c.obj -c /Users/robert/esp-idf/components/esp_lcd/src/esp_lcd_panel_st7789.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_st7789.c.obj -MF CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_st7789.c.obj.d -o CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_st7789.c.obj -c /Users/robert/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_st7789.c
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_st7789.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_st7789.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_lcd/src/esp_lcd_panel_st7789.c > CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_st7789.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_st7789.c > CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_st7789.c.i
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_st7789.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_st7789.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_lcd/src/esp_lcd_panel_st7789.c -o CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_st7789.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_st7789.c -o CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_st7789.c.s
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ops.c.obj: esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/flags.make
-esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ops.c.obj: /Users/robert/esp-idf/components/esp_lcd/src/esp_lcd_panel_ops.c
+esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ops.c.obj: /Users/robert/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_ops.c
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ops.c.obj: esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ops.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ops.c.obj -MF CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ops.c.obj.d -o CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ops.c.obj -c /Users/robert/esp-idf/components/esp_lcd/src/esp_lcd_panel_ops.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ops.c.obj -MF CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ops.c.obj.d -o CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ops.c.obj -c /Users/robert/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_ops.c
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ops.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ops.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_lcd/src/esp_lcd_panel_ops.c > CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ops.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_ops.c > CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ops.c.i
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ops.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ops.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_lcd/src/esp_lcd_panel_ops.c -o CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ops.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_ops.c -o CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_ops.c.s
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v1.c.obj: esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/flags.make
-esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v1.c.obj: /Users/robert/esp-idf/components/esp_lcd/i2c/esp_lcd_panel_io_i2c_v1.c
+esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v1.c.obj: /Users/robert/esp/esp-idf/components/esp_lcd/i2c/esp_lcd_panel_io_i2c_v1.c
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v1.c.obj: esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v1.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v1.c.obj -MF CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v1.c.obj.d -o CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v1.c.obj -c /Users/robert/esp-idf/components/esp_lcd/i2c/esp_lcd_panel_io_i2c_v1.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v1.c.obj -MF CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v1.c.obj.d -o CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v1.c.obj -c /Users/robert/esp/esp-idf/components/esp_lcd/i2c/esp_lcd_panel_io_i2c_v1.c
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v1.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v1.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_lcd/i2c/esp_lcd_panel_io_i2c_v1.c > CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v1.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_lcd/i2c/esp_lcd_panel_io_i2c_v1.c > CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v1.c.i
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v1.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v1.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_lcd/i2c/esp_lcd_panel_io_i2c_v1.c -o CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v1.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_lcd/i2c/esp_lcd_panel_io_i2c_v1.c -o CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v1.c.s
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v2.c.obj: esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/flags.make
-esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v2.c.obj: /Users/robert/esp-idf/components/esp_lcd/i2c/esp_lcd_panel_io_i2c_v2.c
+esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v2.c.obj: /Users/robert/esp/esp-idf/components/esp_lcd/i2c/esp_lcd_panel_io_i2c_v2.c
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v2.c.obj: esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v2.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v2.c.obj -MF CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v2.c.obj.d -o CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v2.c.obj -c /Users/robert/esp-idf/components/esp_lcd/i2c/esp_lcd_panel_io_i2c_v2.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v2.c.obj -MF CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v2.c.obj.d -o CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v2.c.obj -c /Users/robert/esp/esp-idf/components/esp_lcd/i2c/esp_lcd_panel_io_i2c_v2.c
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v2.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v2.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_lcd/i2c/esp_lcd_panel_io_i2c_v2.c > CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v2.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_lcd/i2c/esp_lcd_panel_io_i2c_v2.c > CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v2.c.i
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v2.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v2.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_lcd/i2c/esp_lcd_panel_io_i2c_v2.c -o CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v2.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_lcd/i2c/esp_lcd_panel_io_i2c_v2.c -o CMakeFiles/__idf_esp_lcd.dir/i2c/esp_lcd_panel_io_i2c_v2.c.s
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/spi/esp_lcd_panel_io_spi.c.obj: esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/flags.make
-esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/spi/esp_lcd_panel_io_spi.c.obj: /Users/robert/esp-idf/components/esp_lcd/spi/esp_lcd_panel_io_spi.c
+esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/spi/esp_lcd_panel_io_spi.c.obj: /Users/robert/esp/esp-idf/components/esp_lcd/spi/esp_lcd_panel_io_spi.c
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/spi/esp_lcd_panel_io_spi.c.obj: esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/spi/esp_lcd_panel_io_spi.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/spi/esp_lcd_panel_io_spi.c.obj -MF CMakeFiles/__idf_esp_lcd.dir/spi/esp_lcd_panel_io_spi.c.obj.d -o CMakeFiles/__idf_esp_lcd.dir/spi/esp_lcd_panel_io_spi.c.obj -c /Users/robert/esp-idf/components/esp_lcd/spi/esp_lcd_panel_io_spi.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/spi/esp_lcd_panel_io_spi.c.obj -MF CMakeFiles/__idf_esp_lcd.dir/spi/esp_lcd_panel_io_spi.c.obj.d -o CMakeFiles/__idf_esp_lcd.dir/spi/esp_lcd_panel_io_spi.c.obj -c /Users/robert/esp/esp-idf/components/esp_lcd/spi/esp_lcd_panel_io_spi.c
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/spi/esp_lcd_panel_io_spi.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_lcd.dir/spi/esp_lcd_panel_io_spi.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_lcd/spi/esp_lcd_panel_io_spi.c > CMakeFiles/__idf_esp_lcd.dir/spi/esp_lcd_panel_io_spi.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_lcd/spi/esp_lcd_panel_io_spi.c > CMakeFiles/__idf_esp_lcd.dir/spi/esp_lcd_panel_io_spi.c.i
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/spi/esp_lcd_panel_io_spi.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_lcd.dir/spi/esp_lcd_panel_io_spi.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_lcd/spi/esp_lcd_panel_io_spi.c -o CMakeFiles/__idf_esp_lcd.dir/spi/esp_lcd_panel_io_spi.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_lcd/spi/esp_lcd_panel_io_spi.c -o CMakeFiles/__idf_esp_lcd.dir/spi/esp_lcd_panel_io_spi.c.s
 
 # Object files for target __idf_esp_lcd
 __idf_esp_lcd_OBJECTS = \
@@ -237,6 +237,6 @@ esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/clean:
 .PHONY : esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/clean
 
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/esp_lcd /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/esp_lcd /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/depend
 

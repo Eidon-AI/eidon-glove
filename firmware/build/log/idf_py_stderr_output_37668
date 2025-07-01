@@ -1,8 +1,0 @@
-Command: make -j 12 all
-In file included from /Users/robert/eidon/eidon-glove/firmware/main/esp_hid_device_main.c:43:
-/Users/robert/eidon/eidon-glove/firmware/main/bno085.h:31:18: warning: 'shtp_send_packet' declared 'static' but never defined [-Wunused-function]
-   31 | static esp_err_t shtp_send_packet(uint8_t channel, uint8_t *data, uint16_t length);
-      |                  ^~~~~~~~~~~~~~~~
-/Users/robert/eidon/eidon-glove/firmware/main/bno085.h:32:18: warning: 'shtp_receive_packet' declared 'static' but never defined [-Wunused-function]
-   32 | static esp_err_t shtp_receive_packet(uint8_t *channel, uint8_t *data, uint16_t *length, uint32_t timeout_ms);
-      |                  ^~~~~~~~~~~~~~~~~~~

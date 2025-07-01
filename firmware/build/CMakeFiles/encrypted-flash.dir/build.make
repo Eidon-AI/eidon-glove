@@ -69,7 +69,7 @@ include CMakeFiles/encrypted-flash.dir/progress.make
 CMakeFiles/encrypted-flash:
 	/opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E echo "Error: The target encrypted-flash requires"
 	/opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E echo "CONFIG_SECURE_FLASH_ENCRYPTION_MODE_DEVELOPMENT to be enabled."
-	/opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E env "FAIL_MESSAGE=Failed executing target (see errors on lines above)" /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -P /Users/robert/esp-idf/tools/cmake/scripts/fail.cmake
+	/opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E env "FAIL_MESSAGE=Failed executing target (see errors on lines above)" /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -P /Users/robert/esp/esp-idf/tools/cmake/scripts/fail.cmake
 
 CMakeFiles/encrypted-flash.dir/codegen:
 .PHONY : CMakeFiles/encrypted-flash.dir/codegen

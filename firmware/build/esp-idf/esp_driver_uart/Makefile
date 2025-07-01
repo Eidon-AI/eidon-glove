@@ -223,54 +223,6 @@ src/uart_vfs.c.s:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_uart/CMakeFiles/__idf_esp_driver_uart.dir/build.make esp-idf/esp_driver_uart/CMakeFiles/__idf_esp_driver_uart.dir/src/uart_vfs.c.s
 .PHONY : src/uart_vfs.c.s
 
-src/uart_wakeup.obj: src/uart_wakeup.c.obj
-.PHONY : src/uart_wakeup.obj
-
-# target to build an object file
-src/uart_wakeup.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_uart/CMakeFiles/__idf_esp_driver_uart.dir/build.make esp-idf/esp_driver_uart/CMakeFiles/__idf_esp_driver_uart.dir/src/uart_wakeup.c.obj
-.PHONY : src/uart_wakeup.c.obj
-
-src/uart_wakeup.i: src/uart_wakeup.c.i
-.PHONY : src/uart_wakeup.i
-
-# target to preprocess a source file
-src/uart_wakeup.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_uart/CMakeFiles/__idf_esp_driver_uart.dir/build.make esp-idf/esp_driver_uart/CMakeFiles/__idf_esp_driver_uart.dir/src/uart_wakeup.c.i
-.PHONY : src/uart_wakeup.c.i
-
-src/uart_wakeup.s: src/uart_wakeup.c.s
-.PHONY : src/uart_wakeup.s
-
-# target to generate assembly for a file
-src/uart_wakeup.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_uart/CMakeFiles/__idf_esp_driver_uart.dir/build.make esp-idf/esp_driver_uart/CMakeFiles/__idf_esp_driver_uart.dir/src/uart_wakeup.c.s
-.PHONY : src/uart_wakeup.c.s
-
-src/uhci.obj: src/uhci.c.obj
-.PHONY : src/uhci.obj
-
-# target to build an object file
-src/uhci.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_uart/CMakeFiles/__idf_esp_driver_uart.dir/build.make esp-idf/esp_driver_uart/CMakeFiles/__idf_esp_driver_uart.dir/src/uhci.c.obj
-.PHONY : src/uhci.c.obj
-
-src/uhci.i: src/uhci.c.i
-.PHONY : src/uhci.i
-
-# target to preprocess a source file
-src/uhci.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_uart/CMakeFiles/__idf_esp_driver_uart.dir/build.make esp-idf/esp_driver_uart/CMakeFiles/__idf_esp_driver_uart.dir/src/uhci.c.i
-.PHONY : src/uhci.c.i
-
-src/uhci.s: src/uhci.c.s
-.PHONY : src/uhci.s
-
-# target to generate assembly for a file
-src/uhci.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_uart/CMakeFiles/__idf_esp_driver_uart.dir/build.make esp-idf/esp_driver_uart/CMakeFiles/__idf_esp_driver_uart.dir/src/uhci.c.s
-.PHONY : src/uhci.c.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -290,12 +242,6 @@ help:
 	@echo "... src/uart_vfs.obj"
 	@echo "... src/uart_vfs.i"
 	@echo "... src/uart_vfs.s"
-	@echo "... src/uart_wakeup.obj"
-	@echo "... src/uart_wakeup.i"
-	@echo "... src/uart_wakeup.s"
-	@echo "... src/uhci.obj"
-	@echo "... src/uhci.i"
-	@echo "... src/uhci.s"
 .PHONY : help
 
 

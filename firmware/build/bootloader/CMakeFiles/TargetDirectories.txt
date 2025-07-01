@@ -17,10 +17,6 @@
 /Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles/rebuild_cache.dir
 /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/CMakeFiles/edit_cache.dir
 /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/CMakeFiles/rebuild_cache.dir
-/Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal/CMakeFiles/__idf_hal.dir
-/Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal/CMakeFiles/edit_cache.dir
-/Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal/CMakeFiles/rebuild_cache.dir
-/Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/riscv/CMakeFiles/__idf_riscv.dir
 /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/riscv/CMakeFiles/edit_cache.dir
 /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/riscv/CMakeFiles/rebuild_cache.dir
 /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/newlib/CMakeFiles/edit_cache.dir
@@ -31,6 +27,9 @@
 /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir
 /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/micro-ecc/CMakeFiles/edit_cache.dir
 /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/micro-ecc/CMakeFiles/rebuild_cache.dir
+/Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal/CMakeFiles/__idf_hal.dir
+/Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal/CMakeFiles/edit_cache.dir
+/Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/hal/CMakeFiles/rebuild_cache.dir
 /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/spi_flash/CMakeFiles/__idf_spi_flash.dir
 /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/spi_flash/CMakeFiles/edit_cache.dir
 /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/spi_flash/CMakeFiles/rebuild_cache.dir
@@ -80,8 +79,6 @@
 /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/partition_table/CMakeFiles/rebuild_cache.dir
 /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/bootloader/CMakeFiles/edit_cache.dir
 /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/bootloader/CMakeFiles/rebuild_cache.dir
-/Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_tee/CMakeFiles/edit_cache.dir
-/Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/esp_tee/CMakeFiles/rebuild_cache.dir
 /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/freertos/CMakeFiles/edit_cache.dir
 /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/freertos/CMakeFiles/rebuild_cache.dir
 /Users/robert/eidon/eidon-glove/firmware/build/bootloader/esp-idf/main/CMakeFiles/__idf_main.dir

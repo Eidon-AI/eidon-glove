@@ -70,7 +70,7 @@ CMakeFiles/gen_project_binary: .bin_timestamp
 
 .bin_timestamp: eidon-glove.elf
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating binary image from built executable"
-	/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python /Users/robert/esp-idf/components/esptool_py/esptool/esptool.py --chip esp32c6 elf2image --flash_mode dio --flash_freq 80m --flash_size 2MB --elf-sha256-offset 0xb0 --flash-mmu-page-size 32KB --min-rev-full 0 --max-rev-full 99 -o /Users/robert/eidon/eidon-glove/firmware/build/eidon-glove.bin /Users/robert/eidon/eidon-glove/firmware/build/eidon-glove.elf
+	/Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python /Users/robert/esp/esp-idf/components/esptool_py/esptool/esptool.py --chip esp32c6 elf2image --flash_mode dio --flash_freq 80m --flash_size 2MB --elf-sha256-offset 0xb0 --flash-mmu-page-size 32KB --min-rev-full 0 --max-rev-full 99 -o /Users/robert/eidon/eidon-glove/firmware/build/eidon-glove.bin /Users/robert/eidon/eidon-glove/firmware/build/eidon-glove.elf
 	/opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E echo "Generated /Users/robert/eidon/eidon-glove/firmware/build/eidon-glove.bin"
 	/opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E md5sum /Users/robert/eidon/eidon-glove/firmware/build/eidon-glove.bin > /Users/robert/eidon/eidon-glove/firmware/build/.bin_timestamp
 

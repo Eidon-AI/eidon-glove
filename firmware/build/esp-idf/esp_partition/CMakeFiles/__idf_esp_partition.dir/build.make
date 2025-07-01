@@ -73,32 +73,32 @@ esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/codegen:
 .PHONY : esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/codegen
 
 esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition.c.obj: esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/flags.make
-esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition.c.obj: /Users/robert/esp-idf/components/esp_partition/partition.c
+esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition.c.obj: /Users/robert/esp/esp-idf/components/esp_partition/partition.c
 esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition.c.obj: esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_partition && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition.c.obj -MF CMakeFiles/__idf_esp_partition.dir/partition.c.obj.d -o CMakeFiles/__idf_esp_partition.dir/partition.c.obj -c /Users/robert/esp-idf/components/esp_partition/partition.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_partition && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition.c.obj -MF CMakeFiles/__idf_esp_partition.dir/partition.c.obj.d -o CMakeFiles/__idf_esp_partition.dir/partition.c.obj -c /Users/robert/esp/esp-idf/components/esp_partition/partition.c
 
 esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_partition.dir/partition.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_partition && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_partition/partition.c > CMakeFiles/__idf_esp_partition.dir/partition.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_partition && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_partition/partition.c > CMakeFiles/__idf_esp_partition.dir/partition.c.i
 
 esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_partition.dir/partition.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_partition && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_partition/partition.c -o CMakeFiles/__idf_esp_partition.dir/partition.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_partition && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_partition/partition.c -o CMakeFiles/__idf_esp_partition.dir/partition.c.s
 
 esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition_target.c.obj: esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/flags.make
-esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition_target.c.obj: /Users/robert/esp-idf/components/esp_partition/partition_target.c
+esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition_target.c.obj: /Users/robert/esp/esp-idf/components/esp_partition/partition_target.c
 esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition_target.c.obj: esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition_target.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_partition && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition_target.c.obj -MF CMakeFiles/__idf_esp_partition.dir/partition_target.c.obj.d -o CMakeFiles/__idf_esp_partition.dir/partition_target.c.obj -c /Users/robert/esp-idf/components/esp_partition/partition_target.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_partition && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition_target.c.obj -MF CMakeFiles/__idf_esp_partition.dir/partition_target.c.obj.d -o CMakeFiles/__idf_esp_partition.dir/partition_target.c.obj -c /Users/robert/esp/esp-idf/components/esp_partition/partition_target.c
 
 esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition_target.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_partition.dir/partition_target.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_partition && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_partition/partition_target.c > CMakeFiles/__idf_esp_partition.dir/partition_target.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_partition && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_partition/partition_target.c > CMakeFiles/__idf_esp_partition.dir/partition_target.c.i
 
 esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition_target.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_partition.dir/partition_target.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_partition && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_partition/partition_target.c -o CMakeFiles/__idf_esp_partition.dir/partition_target.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_partition && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_partition/partition_target.c -o CMakeFiles/__idf_esp_partition.dir/partition_target.c.s
 
 # Object files for target __idf_esp_partition
 __idf_esp_partition_OBJECTS = \
@@ -125,6 +125,6 @@ esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/clean:
 .PHONY : esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/clean
 
 esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/esp_partition /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_partition /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/esp_partition /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_partition /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/depend
 

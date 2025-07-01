@@ -10,7 +10,7 @@
  */
 /*
  * Automatically generated file. DO NOT EDIT.
- * Espressif IoT Development Framework (ESP-IDF) 6.0.0 Configuration Header
+ * Espressif IoT Development Framework (ESP-IDF) 5.4.2 Configuration Header
  */
        
 /* List of deprecated options */
@@ -160,13 +160,11 @@ SECTIONS
     _iram_start = ABSOLUTE(.);
     /* Vectors go to start of IRAM */
     ASSERT(ABSOLUTE(.) % 0x100 == 0, "vector address must be 256 byte aligned");
-    _vector_table_start = ABSOLUTE(.);
     KEEP(*(.exception_vectors_table.text));
     KEEP(*(.exception_vectors.text));
-    /* esp_tee_config_t structure: used to share information between the TEE and REE
-     * (e.g. interrupt handler addresses, REE flash text-rodata boundaries, etc.)
-     * This symbol is expected by the TEE at an offset of 0x300 from the vector table start.
-     */
+    
+ . = ALIGN(4); 
+ _invalid_pc_placeholder = ABSOLUTE(.);
     /* Code marked as running out of IRAM */
     _iram_text_start = ABSOLUTE(.);
     mapping[iram0_text]
@@ -356,9 +354,19 @@ SECTIONS
     KEEP (*(SORT_BY_INIT_PRIORITY(.esp_system_init_fn.*)))
     _esp_system_init_fn_array_end = ABSOLUTE(.);
     _rodata_end = ABSOLUTE(.);
+    . = ALIGN(ALIGNOF(.eh_frame_hdr));
+  } > default_rodata_seg
+  ASSERT((ADDR(.eh_frame_hdr) == ADDR(.flash.rodata) + SIZEOF(.flash.rodata)), "The gap between .flash.rodata and .eh_frame_hdr must not exist to produce the final bin image.")
+  .eh_frame_hdr :
+  {
+    . = ALIGN(ALIGNOF(.eh_frame));
+  } > default_rodata_seg
+  ASSERT((ADDR(.eh_frame) == ADDR(.eh_frame_hdr) + SIZEOF(.eh_frame_hdr)), "The gap between .eh_frame_hdr and .eh_frame must not exist to produce the final bin image.")
+  .eh_frame :
+  {
     . = ALIGN(ALIGNOF(.flash.tdata));
   } > default_rodata_seg
-  ASSERT((ADDR(.flash.tdata) == ADDR(.flash.rodata) + SIZEOF(.flash.rodata)), "The gap between .flash.rodata and .flash.tdata must not exist to produce the final bin image.")
+  ASSERT((ADDR(.flash.tdata) == ADDR(.eh_frame) + SIZEOF(.eh_frame)), "The gap between .eh_frame and .flash.tdata must not exist to produce the final bin image.")
   .flash.tdata :
   {
     _thread_local_data_start = ABSOLUTE(.);
@@ -395,17 +403,6 @@ SECTIONS
  . = ALIGN(16); 
  _heap_start = ABSOLUTE(.);
   } > sram_seg
-  /**
-   * This section is not included in the binary image; it is only present in the ELF file.
-   * It is used to keep certain symbols in the ELF file.
-   */
-  .noload 0 (INFO) :
-  {
-    _noload_keep_in_elf_start = ABSOLUTE(.);
-    KEEP(*(.noload_keep_in_elf .noload_keep_in_elf.*))
-    mapping[noload_keep_in_elf]
-    _noload_keep_in_elf_end = ABSOLUTE(.);
-  }
   /* DWARF 1 */
   .debug 0 : { *(.debug) }
   .line 0 : { *(.line) }

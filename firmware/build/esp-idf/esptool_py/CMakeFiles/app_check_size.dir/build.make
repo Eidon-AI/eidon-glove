@@ -67,7 +67,7 @@ include esp-idf/esptool_py/CMakeFiles/app_check_size.dir/compiler_depend.make
 include esp-idf/esptool_py/CMakeFiles/app_check_size.dir/progress.make
 
 esp-idf/esptool_py/CMakeFiles/app_check_size:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esptool_py && /Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python /Users/robert/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /Users/robert/eidon/eidon-glove/firmware/build/partition_table/partition-table.bin /Users/robert/eidon/eidon-glove/firmware/build/eidon-glove.bin
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esptool_py && /Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python /Users/robert/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /Users/robert/eidon/eidon-glove/firmware/build/partition_table/partition-table.bin /Users/robert/eidon/eidon-glove/firmware/build/eidon-glove.bin
 
 esp-idf/esptool_py/CMakeFiles/app_check_size.dir/codegen:
 .PHONY : esp-idf/esptool_py/CMakeFiles/app_check_size.dir/codegen
@@ -85,6 +85,6 @@ esp-idf/esptool_py/CMakeFiles/app_check_size.dir/clean:
 .PHONY : esp-idf/esptool_py/CMakeFiles/app_check_size.dir/clean
 
 esp-idf/esptool_py/CMakeFiles/app_check_size.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/esptool_py /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esptool_py /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esptool_py/CMakeFiles/app_check_size.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/esptool_py /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esptool_py /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esptool_py/CMakeFiles/app_check_size.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/esptool_py/CMakeFiles/app_check_size.dir/depend
 

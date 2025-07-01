@@ -247,30 +247,6 @@ interrupt_plic.c.s:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/riscv/CMakeFiles/__idf_riscv.dir/build.make esp-idf/riscv/CMakeFiles/__idf_riscv.dir/interrupt_plic.c.s
 .PHONY : interrupt_plic.c.s
 
-rv_utils.obj: rv_utils.c.obj
-.PHONY : rv_utils.obj
-
-# target to build an object file
-rv_utils.c.obj:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/riscv/CMakeFiles/__idf_riscv.dir/build.make esp-idf/riscv/CMakeFiles/__idf_riscv.dir/rv_utils.c.obj
-.PHONY : rv_utils.c.obj
-
-rv_utils.i: rv_utils.c.i
-.PHONY : rv_utils.i
-
-# target to preprocess a source file
-rv_utils.c.i:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/riscv/CMakeFiles/__idf_riscv.dir/build.make esp-idf/riscv/CMakeFiles/__idf_riscv.dir/rv_utils.c.i
-.PHONY : rv_utils.c.i
-
-rv_utils.s: rv_utils.c.s
-.PHONY : rv_utils.s
-
-# target to generate assembly for a file
-rv_utils.c.s:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/riscv/CMakeFiles/__idf_riscv.dir/build.make esp-idf/riscv/CMakeFiles/__idf_riscv.dir/rv_utils.c.s
-.PHONY : rv_utils.c.s
-
 vectors.obj: vectors.S.obj
 .PHONY : vectors.obj
 
@@ -309,9 +285,6 @@ help:
 	@echo "... interrupt_plic.obj"
 	@echo "... interrupt_plic.i"
 	@echo "... interrupt_plic.s"
-	@echo "... rv_utils.obj"
-	@echo "... rv_utils.i"
-	@echo "... rv_utils.s"
 	@echo "... vectors.obj"
 	@echo "... vectors_intc.obj"
 .PHONY : help

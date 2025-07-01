@@ -81,6 +81,6 @@ esp-idf/mbedtls/CMakeFiles/custom_bundle.dir/clean:
 .PHONY : esp-idf/mbedtls/CMakeFiles/custom_bundle.dir/clean
 
 esp-idf/mbedtls/CMakeFiles/custom_bundle.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/mbedtls /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/CMakeFiles/custom_bundle.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/mbedtls /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/mbedtls/CMakeFiles/custom_bundle.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/mbedtls/CMakeFiles/custom_bundle.dir/depend
 

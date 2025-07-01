@@ -67,7 +67,7 @@ include CMakeFiles/merge-bin.dir/compiler_depend.make
 include CMakeFiles/merge-bin.dir/progress.make
 
 CMakeFiles/merge-bin:
-	cd /Users/robert/esp-idf/components/esptool_py && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -D IDF_PATH=/Users/robert/esp-idf -D "SERIAL_TOOL=/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python;;/Users/robert/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32c6" -D "SERIAL_TOOL_ARGS=merge_bin;-o;/Users/robert/eidon/eidon-glove/firmware/build/merged-binary.bin;@/Users/robert/eidon/eidon-glove/firmware/build/flash_args" -D WORKING_DIRECTORY=/Users/robert/eidon/eidon-glove/firmware/build -P run_serial_tool.cmake
+	cd /Users/robert/esp/esp-idf/components/esptool_py && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -D IDF_PATH=/Users/robert/esp/esp-idf -D "SERIAL_TOOL=/Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python;;/Users/robert/esp/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32c6" -D "SERIAL_TOOL_ARGS=merge_bin;-o;/Users/robert/eidon/eidon-glove/firmware/build/merged-binary.bin;@/Users/robert/eidon/eidon-glove/firmware/build/flash_args" -D WORKING_DIRECTORY=/Users/robert/eidon/eidon-glove/firmware/build -P run_serial_tool.cmake
 
 CMakeFiles/merge-bin.dir/codegen:
 .PHONY : CMakeFiles/merge-bin.dir/codegen

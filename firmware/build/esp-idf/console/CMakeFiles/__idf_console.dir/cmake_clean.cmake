@@ -33,8 +33,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/__idf_console.dir/esp_console_common.c.obj.d"
   "CMakeFiles/__idf_console.dir/esp_console_repl_chip.c.obj"
   "CMakeFiles/__idf_console.dir/esp_console_repl_chip.c.obj.d"
-  "CMakeFiles/__idf_console.dir/esp_console_repl_internal.c.obj"
-  "CMakeFiles/__idf_console.dir/esp_console_repl_internal.c.obj.d"
   "CMakeFiles/__idf_console.dir/linenoise/linenoise.c.obj"
   "CMakeFiles/__idf_console.dir/linenoise/linenoise.c.obj.d"
   "CMakeFiles/__idf_console.dir/split_argv.c.obj"

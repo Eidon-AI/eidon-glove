@@ -29,8 +29,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/__idf_soc.dir/esp32c6/parlio_periph.c.obj.d"
   "CMakeFiles/__idf_soc.dir/esp32c6/pcnt_periph.c.obj"
   "CMakeFiles/__idf_soc.dir/esp32c6/pcnt_periph.c.obj.d"
-  "CMakeFiles/__idf_soc.dir/esp32c6/power_supply_periph.c.obj"
-  "CMakeFiles/__idf_soc.dir/esp32c6/power_supply_periph.c.obj.d"
   "CMakeFiles/__idf_soc.dir/esp32c6/rmt_periph.c.obj"
   "CMakeFiles/__idf_soc.dir/esp32c6/rmt_periph.c.obj.d"
   "CMakeFiles/__idf_soc.dir/esp32c6/rtc_io_periph.c.obj"

@@ -8,11 +8,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/robert/esp-idf/components/esp_coex/esp32c6/esp_coex_adapter.c" "esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/esp32c6/esp_coex_adapter.c.obj" "gcc" "esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/esp32c6/esp_coex_adapter.c.obj.d"
-  "/Users/robert/esp-idf/components/esp_coex/src/coexist.c" "esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/src/coexist.c.obj" "gcc" "esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/src/coexist.c.obj.d"
-  "/Users/robert/esp-idf/components/esp_coex/src/coexist_debug.c" "esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/src/coexist_debug.c.obj" "gcc" "esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/src/coexist_debug.c.obj.d"
-  "/Users/robert/esp-idf/components/esp_coex/src/coexist_debug_diagram.c" "esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/src/coexist_debug_diagram.c.obj" "gcc" "esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/src/coexist_debug_diagram.c.obj.d"
-  "/Users/robert/esp-idf/components/esp_coex/src/lib_printf.c" "esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/src/lib_printf.c.obj" "gcc" "esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/src/lib_printf.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/esp_coex/esp32c6/esp_coex_adapter.c" "esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/esp32c6/esp_coex_adapter.c.obj" "gcc" "esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/esp32c6/esp_coex_adapter.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/esp_coex/src/coexist.c" "esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/src/coexist.c.obj" "gcc" "esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/src/coexist.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/esp_coex/src/coexist_debug.c" "esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/src/coexist_debug.c.obj" "gcc" "esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/src/coexist_debug.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/esp_coex/src/coexist_debug_diagram.c" "esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/src/coexist_debug_diagram.c.obj" "gcc" "esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/src/coexist_debug_diagram.c.obj.d"
+  "/Users/robert/esp/esp-idf/components/esp_coex/src/lib_printf.c" "esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/src/lib_printf.c.obj" "gcc" "esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/src/lib_printf.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

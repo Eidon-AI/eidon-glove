@@ -53,7 +53,7 @@ RM = /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/robert/esp-idf/components/bootloader/subproject
+CMAKE_SOURCE_DIR = /Users/robert/esp/esp-idf/components/bootloader/subproject
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /Users/robert/eidon/eidon-glove/firmware/build/bootloader
@@ -70,7 +70,7 @@ CMakeFiles/gen_project_binary: .bin_timestamp
 
 .bin_timestamp: bootloader.elf
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating binary image from built executable"
-	/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python /Users/robert/esp-idf/components/esptool_py/esptool/esptool.py --chip esp32c6 elf2image --flash_mode dio --flash_freq 80m --flash_size 2MB --min-rev-full 0 --max-rev-full 99 -o /Users/robert/eidon/eidon-glove/firmware/build/bootloader/bootloader.bin /Users/robert/eidon/eidon-glove/firmware/build/bootloader/bootloader.elf
+	/Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python /Users/robert/esp/esp-idf/components/esptool_py/esptool/esptool.py --chip esp32c6 elf2image --flash_mode dio --flash_freq 80m --flash_size 2MB --min-rev-full 0 --max-rev-full 99 -o /Users/robert/eidon/eidon-glove/firmware/build/bootloader/bootloader.bin /Users/robert/eidon/eidon-glove/firmware/build/bootloader/bootloader.elf
 	/opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E echo "Generated /Users/robert/eidon/eidon-glove/firmware/build/bootloader/bootloader.bin"
 	/opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E md5sum /Users/robert/eidon/eidon-glove/firmware/build/bootloader/bootloader.bin > /Users/robert/eidon/eidon-glove/firmware/build/bootloader/.bin_timestamp
 
@@ -91,6 +91,6 @@ CMakeFiles/gen_project_binary.dir/clean:
 .PHONY : CMakeFiles/gen_project_binary.dir/clean
 
 CMakeFiles/gen_project_binary.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp-idf/components/bootloader/subproject /Users/robert/esp-idf/components/bootloader/subproject /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles/gen_project_binary.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp/esp-idf/components/bootloader/subproject /Users/robert/esp/esp-idf/components/bootloader/subproject /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles/gen_project_binary.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/gen_project_binary.dir/depend
 

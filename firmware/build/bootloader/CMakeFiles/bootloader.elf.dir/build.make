@@ -53,7 +53,7 @@ RM = /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/robert/esp-idf/components/bootloader/subproject
+CMAKE_SOURCE_DIR = /Users/robert/esp/esp-idf/components/bootloader/subproject
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /Users/robert/eidon/eidon-glove/firmware/build/bootloader
@@ -80,15 +80,15 @@ CMakeFiles/bootloader.elf.dir/project_elf_src_esp32c6.c.obj: CMakeFiles/bootload
 CMakeFiles/bootloader.elf.dir/project_elf_src_esp32c6.c.obj: project_elf_src_esp32c6.c
 CMakeFiles/bootloader.elf.dir/project_elf_src_esp32c6.c.obj: CMakeFiles/bootloader.elf.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/bootloader.elf.dir/project_elf_src_esp32c6.c.obj"
-	/Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/bootloader.elf.dir/project_elf_src_esp32c6.c.obj -MF CMakeFiles/bootloader.elf.dir/project_elf_src_esp32c6.c.obj.d -o CMakeFiles/bootloader.elf.dir/project_elf_src_esp32c6.c.obj -c /Users/robert/eidon/eidon-glove/firmware/build/bootloader/project_elf_src_esp32c6.c
+	/Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/bootloader.elf.dir/project_elf_src_esp32c6.c.obj -MF CMakeFiles/bootloader.elf.dir/project_elf_src_esp32c6.c.obj.d -o CMakeFiles/bootloader.elf.dir/project_elf_src_esp32c6.c.obj -c /Users/robert/eidon/eidon-glove/firmware/build/bootloader/project_elf_src_esp32c6.c
 
 CMakeFiles/bootloader.elf.dir/project_elf_src_esp32c6.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/bootloader.elf.dir/project_elf_src_esp32c6.c.i"
-	/Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/eidon/eidon-glove/firmware/build/bootloader/project_elf_src_esp32c6.c > CMakeFiles/bootloader.elf.dir/project_elf_src_esp32c6.c.i
+	/Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/eidon/eidon-glove/firmware/build/bootloader/project_elf_src_esp32c6.c > CMakeFiles/bootloader.elf.dir/project_elf_src_esp32c6.c.i
 
 CMakeFiles/bootloader.elf.dir/project_elf_src_esp32c6.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/bootloader.elf.dir/project_elf_src_esp32c6.c.s"
-	/Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/eidon/eidon-glove/firmware/build/bootloader/project_elf_src_esp32c6.c -o CMakeFiles/bootloader.elf.dir/project_elf_src_esp32c6.c.s
+	/Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/eidon/eidon-glove/firmware/build/bootloader/project_elf_src_esp32c6.c -o CMakeFiles/bootloader.elf.dir/project_elf_src_esp32c6.c.s
 
 # Object files for target bootloader.elf
 bootloader_elf_OBJECTS = \
@@ -99,10 +99,9 @@ bootloader_elf_EXTERNAL_OBJECTS =
 
 bootloader.elf: CMakeFiles/bootloader.elf.dir/project_elf_src_esp32c6.c.obj
 bootloader.elf: CMakeFiles/bootloader.elf.dir/build.make
-bootloader.elf: esp-idf/hal/libhal.a
-bootloader.elf: esp-idf/riscv/libriscv.a
 bootloader.elf: esp-idf/soc/libsoc.a
 bootloader.elf: esp-idf/micro-ecc/libmicro-ecc.a
+bootloader.elf: esp-idf/hal/libhal.a
 bootloader.elf: esp-idf/spi_flash/libspi_flash.a
 bootloader.elf: esp-idf/esp_bootloader_format/libesp_bootloader_format.a
 bootloader.elf: esp-idf/bootloader_support/libbootloader_support.a
@@ -113,10 +112,9 @@ bootloader.elf: esp-idf/esp_common/libesp_common.a
 bootloader.elf: esp-idf/esp_rom/libesp_rom.a
 bootloader.elf: esp-idf/log/liblog.a
 bootloader.elf: esp-idf/main/libmain.a
-bootloader.elf: esp-idf/hal/libhal.a
-bootloader.elf: esp-idf/riscv/libriscv.a
 bootloader.elf: esp-idf/soc/libsoc.a
 bootloader.elf: esp-idf/micro-ecc/libmicro-ecc.a
+bootloader.elf: esp-idf/hal/libhal.a
 bootloader.elf: esp-idf/spi_flash/libspi_flash.a
 bootloader.elf: esp-idf/esp_bootloader_format/libesp_bootloader_format.a
 bootloader.elf: esp-idf/bootloader_support/libbootloader_support.a
@@ -126,10 +124,9 @@ bootloader.elf: esp-idf/esp_hw_support/libesp_hw_support.a
 bootloader.elf: esp-idf/esp_common/libesp_common.a
 bootloader.elf: esp-idf/esp_rom/libesp_rom.a
 bootloader.elf: esp-idf/log/liblog.a
-bootloader.elf: esp-idf/hal/libhal.a
-bootloader.elf: esp-idf/riscv/libriscv.a
 bootloader.elf: esp-idf/soc/libsoc.a
 bootloader.elf: esp-idf/micro-ecc/libmicro-ecc.a
+bootloader.elf: esp-idf/hal/libhal.a
 bootloader.elf: esp-idf/spi_flash/libspi_flash.a
 bootloader.elf: esp-idf/esp_bootloader_format/libesp_bootloader_format.a
 bootloader.elf: esp-idf/bootloader_support/libbootloader_support.a
@@ -139,10 +136,9 @@ bootloader.elf: esp-idf/esp_hw_support/libesp_hw_support.a
 bootloader.elf: esp-idf/esp_common/libesp_common.a
 bootloader.elf: esp-idf/esp_rom/libesp_rom.a
 bootloader.elf: esp-idf/log/liblog.a
-bootloader.elf: esp-idf/hal/libhal.a
-bootloader.elf: esp-idf/riscv/libriscv.a
 bootloader.elf: esp-idf/soc/libsoc.a
 bootloader.elf: esp-idf/micro-ecc/libmicro-ecc.a
+bootloader.elf: esp-idf/hal/libhal.a
 bootloader.elf: esp-idf/spi_flash/libspi_flash.a
 bootloader.elf: esp-idf/esp_bootloader_format/libesp_bootloader_format.a
 bootloader.elf: esp-idf/bootloader_support/libbootloader_support.a
@@ -152,10 +148,9 @@ bootloader.elf: esp-idf/esp_hw_support/libesp_hw_support.a
 bootloader.elf: esp-idf/esp_common/libesp_common.a
 bootloader.elf: esp-idf/esp_rom/libesp_rom.a
 bootloader.elf: esp-idf/log/liblog.a
-bootloader.elf: esp-idf/hal/libhal.a
-bootloader.elf: esp-idf/riscv/libriscv.a
 bootloader.elf: esp-idf/soc/libsoc.a
 bootloader.elf: esp-idf/micro-ecc/libmicro-ecc.a
+bootloader.elf: esp-idf/hal/libhal.a
 bootloader.elf: esp-idf/spi_flash/libspi_flash.a
 bootloader.elf: esp-idf/esp_bootloader_format/libesp_bootloader_format.a
 bootloader.elf: esp-idf/bootloader_support/libbootloader_support.a
@@ -165,19 +160,17 @@ bootloader.elf: esp-idf/esp_hw_support/libesp_hw_support.a
 bootloader.elf: esp-idf/esp_common/libesp_common.a
 bootloader.elf: esp-idf/esp_rom/libesp_rom.a
 bootloader.elf: esp-idf/log/liblog.a
-bootloader.elf: /Users/robert/esp-idf/components/riscv/ld/rom.api.ld
-bootloader.elf: /Users/robert/esp-idf/components/soc/esp32c6/ld/esp32c6.peripherals.ld
-bootloader.elf: /Users/robert/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.ld
-bootloader.elf: /Users/robert/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.api.ld
-bootloader.elf: /Users/robert/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.rvfp.ld
-bootloader.elf: /Users/robert/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.wdt.ld
-bootloader.elf: /Users/robert/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.systimer.ld
-bootloader.elf: /Users/robert/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.version.ld
-bootloader.elf: /Users/robert/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.libc.ld
-bootloader.elf: /Users/robert/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.libc-suboptimal_for_misaligned_mem.ld
-bootloader.elf: /Users/robert/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.newlib.ld
-bootloader.elf: /Users/robert/esp-idf/components/bootloader/subproject/main/ld/esp32c6/bootloader.ld
-bootloader.elf: /Users/robert/esp-idf/components/bootloader/subproject/main/ld/esp32c6/bootloader.rom.ld
+bootloader.elf: /Users/robert/esp/esp-idf/components/riscv/ld/rom.api.ld
+bootloader.elf: /Users/robert/esp/esp-idf/components/soc/esp32c6/ld/esp32c6.peripherals.ld
+bootloader.elf: /Users/robert/esp/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.ld
+bootloader.elf: /Users/robert/esp/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.api.ld
+bootloader.elf: /Users/robert/esp/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.rvfp.ld
+bootloader.elf: /Users/robert/esp/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.wdt.ld
+bootloader.elf: /Users/robert/esp/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.systimer.ld
+bootloader.elf: /Users/robert/esp/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.version.ld
+bootloader.elf: /Users/robert/esp/esp-idf/components/esp_rom/esp32c6/ld/esp32c6.rom.newlib.ld
+bootloader.elf: /Users/robert/esp/esp-idf/components/bootloader/subproject/main/ld/esp32c6/bootloader.ld
+bootloader.elf: /Users/robert/esp/esp-idf/components/bootloader/subproject/main/ld/esp32c6/bootloader.rom.ld
 bootloader.elf: CMakeFiles/bootloader.elf.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable bootloader.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/bootloader.elf.dir/link.txt --verbose=$(VERBOSE)
@@ -191,6 +184,6 @@ CMakeFiles/bootloader.elf.dir/clean:
 .PHONY : CMakeFiles/bootloader.elf.dir/clean
 
 CMakeFiles/bootloader.elf.dir/depend: project_elf_src_esp32c6.c
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp-idf/components/bootloader/subproject /Users/robert/esp-idf/components/bootloader/subproject /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles/bootloader.elf.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp/esp-idf/components/bootloader/subproject /Users/robert/esp/esp-idf/components/bootloader/subproject /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles/bootloader.elf.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/bootloader.elf.dir/depend
 

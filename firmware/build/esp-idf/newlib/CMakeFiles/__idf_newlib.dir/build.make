@@ -72,351 +72,319 @@ include esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
 esp-idf/newlib/CMakeFiles/__idf_newlib.dir/codegen:
 .PHONY : esp-idf/newlib/CMakeFiles/__idf_newlib.dir/codegen
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/init.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/init.c.obj: /Users/robert/esp-idf/components/newlib/src/init.c
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/init.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/init.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/init.c.obj -MF CMakeFiles/__idf_newlib.dir/src/init.c.obj.d -o CMakeFiles/__idf_newlib.dir/src/init.c.obj -c /Users/robert/esp-idf/components/newlib/src/init.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/abort.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/abort.c.obj: /Users/robert/esp/esp-idf/components/newlib/abort.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/abort.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/abort.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/abort.c.obj -MF CMakeFiles/__idf_newlib.dir/abort.c.obj.d -o CMakeFiles/__idf_newlib.dir/abort.c.obj -c /Users/robert/esp/esp-idf/components/newlib/abort.c
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/init.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/src/init.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/newlib/src/init.c > CMakeFiles/__idf_newlib.dir/src/init.c.i
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/abort.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/abort.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/newlib/abort.c > CMakeFiles/__idf_newlib.dir/abort.c.i
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/init.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/src/init.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/newlib/src/init.c -o CMakeFiles/__idf_newlib.dir/src/init.c.s
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/abort.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/abort.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/newlib/abort.c -o CMakeFiles/__idf_newlib.dir/abort.c.s
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/abort.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/abort.c.obj: /Users/robert/esp-idf/components/newlib/src/abort.c
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/abort.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/abort.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/abort.c.obj -MF CMakeFiles/__idf_newlib.dir/src/abort.c.obj.d -o CMakeFiles/__idf_newlib.dir/src/abort.c.obj -c /Users/robert/esp-idf/components/newlib/src/abort.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/assert.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/assert.c.obj: /Users/robert/esp/esp-idf/components/newlib/assert.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/assert.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/assert.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/assert.c.obj -MF CMakeFiles/__idf_newlib.dir/assert.c.obj.d -o CMakeFiles/__idf_newlib.dir/assert.c.obj -c /Users/robert/esp/esp-idf/components/newlib/assert.c
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/abort.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/src/abort.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/newlib/src/abort.c > CMakeFiles/__idf_newlib.dir/src/abort.c.i
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/assert.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/assert.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/newlib/assert.c > CMakeFiles/__idf_newlib.dir/assert.c.i
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/abort.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/src/abort.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/newlib/src/abort.c -o CMakeFiles/__idf_newlib.dir/src/abort.c.s
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/assert.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/assert.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/newlib/assert.c -o CMakeFiles/__idf_newlib.dir/assert.c.s
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/assert.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/assert.c.obj: /Users/robert/esp-idf/components/newlib/src/assert.c
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/assert.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/assert.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/assert.c.obj -MF CMakeFiles/__idf_newlib.dir/src/assert.c.obj.d -o CMakeFiles/__idf_newlib.dir/src/assert.c.obj -c /Users/robert/esp-idf/components/newlib/src/assert.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/heap.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/heap.c.obj: /Users/robert/esp/esp-idf/components/newlib/heap.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/heap.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/heap.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -fno-builtin -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/heap.c.obj -MF CMakeFiles/__idf_newlib.dir/heap.c.obj.d -o CMakeFiles/__idf_newlib.dir/heap.c.obj -c /Users/robert/esp/esp-idf/components/newlib/heap.c
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/assert.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/src/assert.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/newlib/src/assert.c > CMakeFiles/__idf_newlib.dir/src/assert.c.i
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/heap.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/heap.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -fno-builtin -E /Users/robert/esp/esp-idf/components/newlib/heap.c > CMakeFiles/__idf_newlib.dir/heap.c.i
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/assert.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/src/assert.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/newlib/src/assert.c -o CMakeFiles/__idf_newlib.dir/src/assert.c.s
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/heap.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/heap.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -fno-builtin -S /Users/robert/esp/esp-idf/components/newlib/heap.c -o CMakeFiles/__idf_newlib.dir/heap.c.s
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/heap.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/heap.c.obj: /Users/robert/esp-idf/components/newlib/src/heap.c
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/heap.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/heap.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/heap.c.obj -MF CMakeFiles/__idf_newlib.dir/src/heap.c.obj.d -o CMakeFiles/__idf_newlib.dir/src/heap.c.obj -c /Users/robert/esp-idf/components/newlib/src/heap.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flockfile.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flockfile.c.obj: /Users/robert/esp/esp-idf/components/newlib/flockfile.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flockfile.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flockfile.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flockfile.c.obj -MF CMakeFiles/__idf_newlib.dir/flockfile.c.obj.d -o CMakeFiles/__idf_newlib.dir/flockfile.c.obj -c /Users/robert/esp/esp-idf/components/newlib/flockfile.c
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/heap.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/src/heap.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/newlib/src/heap.c > CMakeFiles/__idf_newlib.dir/src/heap.c.i
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flockfile.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/flockfile.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/newlib/flockfile.c > CMakeFiles/__idf_newlib.dir/flockfile.c.i
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/heap.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/src/heap.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/newlib/src/heap.c -o CMakeFiles/__idf_newlib.dir/src/heap.c.s
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flockfile.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/flockfile.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/newlib/flockfile.c -o CMakeFiles/__idf_newlib.dir/flockfile.c.s
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/locks.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/locks.c.obj: /Users/robert/esp-idf/components/newlib/src/locks.c
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/locks.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/locks.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/locks.c.obj -MF CMakeFiles/__idf_newlib.dir/src/locks.c.obj.d -o CMakeFiles/__idf_newlib.dir/src/locks.c.obj -c /Users/robert/esp-idf/components/newlib/src/locks.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/locks.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/locks.c.obj: /Users/robert/esp/esp-idf/components/newlib/locks.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/locks.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/locks.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/locks.c.obj -MF CMakeFiles/__idf_newlib.dir/locks.c.obj.d -o CMakeFiles/__idf_newlib.dir/locks.c.obj -c /Users/robert/esp/esp-idf/components/newlib/locks.c
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/locks.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/src/locks.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/newlib/src/locks.c > CMakeFiles/__idf_newlib.dir/src/locks.c.i
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/locks.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/locks.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/newlib/locks.c > CMakeFiles/__idf_newlib.dir/locks.c.i
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/locks.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/src/locks.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/newlib/src/locks.c -o CMakeFiles/__idf_newlib.dir/src/locks.c.s
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/locks.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/locks.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/newlib/locks.c -o CMakeFiles/__idf_newlib.dir/locks.c.s
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/poll.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/poll.c.obj: /Users/robert/esp-idf/components/newlib/src/poll.c
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/poll.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/poll.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/poll.c.obj -MF CMakeFiles/__idf_newlib.dir/src/poll.c.obj.d -o CMakeFiles/__idf_newlib.dir/src/poll.c.obj -c /Users/robert/esp-idf/components/newlib/src/poll.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/poll.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/poll.c.obj: /Users/robert/esp/esp-idf/components/newlib/poll.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/poll.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/poll.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/poll.c.obj -MF CMakeFiles/__idf_newlib.dir/poll.c.obj.d -o CMakeFiles/__idf_newlib.dir/poll.c.obj -c /Users/robert/esp/esp-idf/components/newlib/poll.c
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/poll.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/src/poll.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/newlib/src/poll.c > CMakeFiles/__idf_newlib.dir/src/poll.c.i
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/poll.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/poll.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/newlib/poll.c > CMakeFiles/__idf_newlib.dir/poll.c.i
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/poll.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/src/poll.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/newlib/src/poll.c -o CMakeFiles/__idf_newlib.dir/src/poll.c.s
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/poll.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/poll.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/newlib/poll.c -o CMakeFiles/__idf_newlib.dir/poll.c.s
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/pthread.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/pthread.c.obj: /Users/robert/esp-idf/components/newlib/src/pthread.c
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/pthread.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/pthread.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/pthread.c.obj -MF CMakeFiles/__idf_newlib.dir/src/pthread.c.obj.d -o CMakeFiles/__idf_newlib.dir/src/pthread.c.obj -c /Users/robert/esp-idf/components/newlib/src/pthread.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/pthread.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/pthread.c.obj: /Users/robert/esp/esp-idf/components/newlib/pthread.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/pthread.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/pthread.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/pthread.c.obj -MF CMakeFiles/__idf_newlib.dir/pthread.c.obj.d -o CMakeFiles/__idf_newlib.dir/pthread.c.obj -c /Users/robert/esp/esp-idf/components/newlib/pthread.c
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/pthread.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/src/pthread.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/newlib/src/pthread.c > CMakeFiles/__idf_newlib.dir/src/pthread.c.i
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/pthread.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/pthread.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/newlib/pthread.c > CMakeFiles/__idf_newlib.dir/pthread.c.i
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/pthread.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/src/pthread.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/newlib/src/pthread.c -o CMakeFiles/__idf_newlib.dir/src/pthread.c.s
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/pthread.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/pthread.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/newlib/pthread.c -o CMakeFiles/__idf_newlib.dir/pthread.c.s
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/random.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/random.c.obj: /Users/robert/esp-idf/components/newlib/src/random.c
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/random.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/random.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/random.c.obj -MF CMakeFiles/__idf_newlib.dir/src/random.c.obj.d -o CMakeFiles/__idf_newlib.dir/src/random.c.obj -c /Users/robert/esp-idf/components/newlib/src/random.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/random.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/random.c.obj: /Users/robert/esp/esp-idf/components/newlib/random.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/random.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/random.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/random.c.obj -MF CMakeFiles/__idf_newlib.dir/random.c.obj.d -o CMakeFiles/__idf_newlib.dir/random.c.obj -c /Users/robert/esp/esp-idf/components/newlib/random.c
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/random.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/src/random.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/newlib/src/random.c > CMakeFiles/__idf_newlib.dir/src/random.c.i
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/random.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/random.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/newlib/random.c > CMakeFiles/__idf_newlib.dir/random.c.i
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/random.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/src/random.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/newlib/src/random.c -o CMakeFiles/__idf_newlib.dir/src/random.c.s
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/random.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/random.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/newlib/random.c -o CMakeFiles/__idf_newlib.dir/random.c.s
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/getentropy.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/getentropy.c.obj: /Users/robert/esp-idf/components/newlib/src/getentropy.c
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/getentropy.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/getentropy.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/getentropy.c.obj -MF CMakeFiles/__idf_newlib.dir/src/getentropy.c.obj.d -o CMakeFiles/__idf_newlib.dir/src/getentropy.c.obj -c /Users/robert/esp-idf/components/newlib/src/getentropy.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/getentropy.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/getentropy.c.obj: /Users/robert/esp/esp-idf/components/newlib/getentropy.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/getentropy.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/getentropy.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/getentropy.c.obj -MF CMakeFiles/__idf_newlib.dir/getentropy.c.obj.d -o CMakeFiles/__idf_newlib.dir/getentropy.c.obj -c /Users/robert/esp/esp-idf/components/newlib/getentropy.c
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/getentropy.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/src/getentropy.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/newlib/src/getentropy.c > CMakeFiles/__idf_newlib.dir/src/getentropy.c.i
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/getentropy.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/getentropy.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/newlib/getentropy.c > CMakeFiles/__idf_newlib.dir/getentropy.c.i
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/getentropy.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/src/getentropy.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/newlib/src/getentropy.c -o CMakeFiles/__idf_newlib.dir/src/getentropy.c.s
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/getentropy.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/getentropy.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/newlib/getentropy.c -o CMakeFiles/__idf_newlib.dir/getentropy.c.s
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/termios.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/termios.c.obj: /Users/robert/esp-idf/components/newlib/src/termios.c
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/termios.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/termios.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/termios.c.obj -MF CMakeFiles/__idf_newlib.dir/src/termios.c.obj.d -o CMakeFiles/__idf_newlib.dir/src/termios.c.obj -c /Users/robert/esp-idf/components/newlib/src/termios.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/reent_init.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/reent_init.c.obj: /Users/robert/esp/esp-idf/components/newlib/reent_init.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/reent_init.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/reent_init.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/reent_init.c.obj -MF CMakeFiles/__idf_newlib.dir/reent_init.c.obj.d -o CMakeFiles/__idf_newlib.dir/reent_init.c.obj -c /Users/robert/esp/esp-idf/components/newlib/reent_init.c
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/termios.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/src/termios.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/newlib/src/termios.c > CMakeFiles/__idf_newlib.dir/src/termios.c.i
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/reent_init.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/reent_init.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/newlib/reent_init.c > CMakeFiles/__idf_newlib.dir/reent_init.c.i
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/termios.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/src/termios.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/newlib/src/termios.c -o CMakeFiles/__idf_newlib.dir/src/termios.c.s
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/reent_init.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/reent_init.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/newlib/reent_init.c -o CMakeFiles/__idf_newlib.dir/reent_init.c.s
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/stdatomic.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/stdatomic.c.obj: /Users/robert/esp-idf/components/newlib/src/stdatomic.c
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/stdatomic.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/stdatomic.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/stdatomic.c.obj -MF CMakeFiles/__idf_newlib.dir/src/stdatomic.c.obj.d -o CMakeFiles/__idf_newlib.dir/src/stdatomic.c.obj -c /Users/robert/esp-idf/components/newlib/src/stdatomic.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/newlib_init.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/newlib_init.c.obj: /Users/robert/esp/esp-idf/components/newlib/newlib_init.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/newlib_init.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/newlib_init.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/newlib_init.c.obj -MF CMakeFiles/__idf_newlib.dir/newlib_init.c.obj.d -o CMakeFiles/__idf_newlib.dir/newlib_init.c.obj -c /Users/robert/esp/esp-idf/components/newlib/newlib_init.c
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/stdatomic.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/src/stdatomic.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/newlib/src/stdatomic.c > CMakeFiles/__idf_newlib.dir/src/stdatomic.c.i
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/newlib_init.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/newlib_init.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/newlib/newlib_init.c > CMakeFiles/__idf_newlib.dir/newlib_init.c.i
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/stdatomic.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/src/stdatomic.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/newlib/src/stdatomic.c -o CMakeFiles/__idf_newlib.dir/src/stdatomic.c.s
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/newlib_init.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/newlib_init.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/newlib/newlib_init.c -o CMakeFiles/__idf_newlib.dir/newlib_init.c.s
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/time.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/time.c.obj: /Users/robert/esp-idf/components/newlib/src/time.c
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/time.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/time.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/time.c.obj -MF CMakeFiles/__idf_newlib.dir/src/time.c.obj.d -o CMakeFiles/__idf_newlib.dir/src/time.c.obj -c /Users/robert/esp-idf/components/newlib/src/time.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/syscalls.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/syscalls.c.obj: /Users/robert/esp/esp-idf/components/newlib/syscalls.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/syscalls.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/syscalls.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/syscalls.c.obj -MF CMakeFiles/__idf_newlib.dir/syscalls.c.obj.d -o CMakeFiles/__idf_newlib.dir/syscalls.c.obj -c /Users/robert/esp/esp-idf/components/newlib/syscalls.c
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/time.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/src/time.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/newlib/src/time.c > CMakeFiles/__idf_newlib.dir/src/time.c.i
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/syscalls.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/syscalls.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/newlib/syscalls.c > CMakeFiles/__idf_newlib.dir/syscalls.c.i
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/time.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/src/time.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/newlib/src/time.c -o CMakeFiles/__idf_newlib.dir/src/time.c.s
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/syscalls.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/syscalls.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/newlib/syscalls.c -o CMakeFiles/__idf_newlib.dir/syscalls.c.s
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/sysconf.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/sysconf.c.obj: /Users/robert/esp-idf/components/newlib/src/sysconf.c
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/sysconf.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/sysconf.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/sysconf.c.obj -MF CMakeFiles/__idf_newlib.dir/src/sysconf.c.obj.d -o CMakeFiles/__idf_newlib.dir/src/sysconf.c.obj -c /Users/robert/esp-idf/components/newlib/src/sysconf.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/termios.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/termios.c.obj: /Users/robert/esp/esp-idf/components/newlib/termios.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/termios.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/termios.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/termios.c.obj -MF CMakeFiles/__idf_newlib.dir/termios.c.obj.d -o CMakeFiles/__idf_newlib.dir/termios.c.obj -c /Users/robert/esp/esp-idf/components/newlib/termios.c
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/sysconf.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/src/sysconf.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/newlib/src/sysconf.c > CMakeFiles/__idf_newlib.dir/src/sysconf.c.i
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/termios.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/termios.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/newlib/termios.c > CMakeFiles/__idf_newlib.dir/termios.c.i
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/sysconf.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/src/sysconf.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/newlib/src/sysconf.c -o CMakeFiles/__idf_newlib.dir/src/sysconf.c.s
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/termios.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/termios.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/newlib/termios.c -o CMakeFiles/__idf_newlib.dir/termios.c.s
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/realpath.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/realpath.c.obj: /Users/robert/esp-idf/components/newlib/src/realpath.c
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/realpath.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/realpath.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/realpath.c.obj -MF CMakeFiles/__idf_newlib.dir/src/realpath.c.obj.d -o CMakeFiles/__idf_newlib.dir/src/realpath.c.obj -c /Users/robert/esp-idf/components/newlib/src/realpath.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/stdatomic.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/stdatomic.c.obj: /Users/robert/esp/esp-idf/components/newlib/stdatomic.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/stdatomic.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/stdatomic.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/stdatomic.c.obj -MF CMakeFiles/__idf_newlib.dir/stdatomic.c.obj.d -o CMakeFiles/__idf_newlib.dir/stdatomic.c.obj -c /Users/robert/esp/esp-idf/components/newlib/stdatomic.c
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/realpath.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/src/realpath.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/newlib/src/realpath.c > CMakeFiles/__idf_newlib.dir/src/realpath.c.i
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/stdatomic.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/stdatomic.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/newlib/stdatomic.c > CMakeFiles/__idf_newlib.dir/stdatomic.c.i
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/realpath.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/src/realpath.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/newlib/src/realpath.c -o CMakeFiles/__idf_newlib.dir/src/realpath.c.s
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/stdatomic.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/stdatomic.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/newlib/stdatomic.c -o CMakeFiles/__idf_newlib.dir/stdatomic.c.s
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/scandir.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/scandir.c.obj: /Users/robert/esp-idf/components/newlib/src/scandir.c
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/scandir.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/scandir.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/scandir.c.obj -MF CMakeFiles/__idf_newlib.dir/src/scandir.c.obj.d -o CMakeFiles/__idf_newlib.dir/src/scandir.c.obj -c /Users/robert/esp-idf/components/newlib/src/scandir.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/time.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/time.c.obj: /Users/robert/esp/esp-idf/components/newlib/time.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/time.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/time.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/time.c.obj -MF CMakeFiles/__idf_newlib.dir/time.c.obj.d -o CMakeFiles/__idf_newlib.dir/time.c.obj -c /Users/robert/esp/esp-idf/components/newlib/time.c
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/scandir.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/src/scandir.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/newlib/src/scandir.c > CMakeFiles/__idf_newlib.dir/src/scandir.c.i
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/time.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/time.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/newlib/time.c > CMakeFiles/__idf_newlib.dir/time.c.i
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/scandir.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/src/scandir.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/newlib/src/scandir.c -o CMakeFiles/__idf_newlib.dir/src/scandir.c.s
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/time.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/time.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/newlib/time.c -o CMakeFiles/__idf_newlib.dir/time.c.s
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/syscalls.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/syscalls.c.obj: /Users/robert/esp-idf/components/newlib/src/syscalls.c
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/syscalls.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/syscalls.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/syscalls.c.obj -MF CMakeFiles/__idf_newlib.dir/src/syscalls.c.obj.d -o CMakeFiles/__idf_newlib.dir/src/syscalls.c.obj -c /Users/robert/esp-idf/components/newlib/src/syscalls.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/sysconf.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/sysconf.c.obj: /Users/robert/esp/esp-idf/components/newlib/sysconf.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/sysconf.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/sysconf.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/sysconf.c.obj -MF CMakeFiles/__idf_newlib.dir/sysconf.c.obj.d -o CMakeFiles/__idf_newlib.dir/sysconf.c.obj -c /Users/robert/esp/esp-idf/components/newlib/sysconf.c
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/syscalls.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/src/syscalls.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/newlib/src/syscalls.c > CMakeFiles/__idf_newlib.dir/src/syscalls.c.i
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/sysconf.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/sysconf.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/newlib/sysconf.c > CMakeFiles/__idf_newlib.dir/sysconf.c.i
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/syscalls.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/src/syscalls.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/newlib/src/syscalls.c -o CMakeFiles/__idf_newlib.dir/src/syscalls.c.s
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/sysconf.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/sysconf.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/newlib/sysconf.c -o CMakeFiles/__idf_newlib.dir/sysconf.c.s
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/reent_syscalls.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/reent_syscalls.c.obj: /Users/robert/esp-idf/components/newlib/src/reent_syscalls.c
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/reent_syscalls.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/reent_syscalls.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/reent_syscalls.c.obj -MF CMakeFiles/__idf_newlib.dir/src/reent_syscalls.c.obj.d -o CMakeFiles/__idf_newlib.dir/src/reent_syscalls.c.obj -c /Users/robert/esp-idf/components/newlib/src/reent_syscalls.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/realpath.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/realpath.c.obj: /Users/robert/esp/esp-idf/components/newlib/realpath.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/realpath.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/realpath.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/realpath.c.obj -MF CMakeFiles/__idf_newlib.dir/realpath.c.obj.d -o CMakeFiles/__idf_newlib.dir/realpath.c.obj -c /Users/robert/esp/esp-idf/components/newlib/realpath.c
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/reent_syscalls.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/src/reent_syscalls.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/newlib/src/reent_syscalls.c > CMakeFiles/__idf_newlib.dir/src/reent_syscalls.c.i
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/realpath.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/realpath.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/newlib/realpath.c > CMakeFiles/__idf_newlib.dir/realpath.c.i
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/reent_syscalls.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/src/reent_syscalls.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/newlib/src/reent_syscalls.c -o CMakeFiles/__idf_newlib.dir/src/reent_syscalls.c.s
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/realpath.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/realpath.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/newlib/realpath.c -o CMakeFiles/__idf_newlib.dir/realpath.c.s
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/port/esp_time_impl.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/port/esp_time_impl.c.obj: /Users/robert/esp-idf/components/newlib/src/port/esp_time_impl.c
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/port/esp_time_impl.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/port/esp_time_impl.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/port/esp_time_impl.c.obj -MF CMakeFiles/__idf_newlib.dir/src/port/esp_time_impl.c.obj.d -o CMakeFiles/__idf_newlib.dir/src/port/esp_time_impl.c.obj -c /Users/robert/esp-idf/components/newlib/src/port/esp_time_impl.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/scandir.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/scandir.c.obj: /Users/robert/esp/esp-idf/components/newlib/scandir.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/scandir.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/scandir.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/scandir.c.obj -MF CMakeFiles/__idf_newlib.dir/scandir.c.obj.d -o CMakeFiles/__idf_newlib.dir/scandir.c.obj -c /Users/robert/esp/esp-idf/components/newlib/scandir.c
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/port/esp_time_impl.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/src/port/esp_time_impl.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/newlib/src/port/esp_time_impl.c > CMakeFiles/__idf_newlib.dir/src/port/esp_time_impl.c.i
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/scandir.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/scandir.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/newlib/scandir.c > CMakeFiles/__idf_newlib.dir/scandir.c.i
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/port/esp_time_impl.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/src/port/esp_time_impl.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/newlib/src/port/esp_time_impl.c -o CMakeFiles/__idf_newlib.dir/src/port/esp_time_impl.c.s
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/scandir.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/scandir.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/newlib/scandir.c -o CMakeFiles/__idf_newlib.dir/scandir.c.s
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/flockfile.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/flockfile.c.obj: /Users/robert/esp-idf/components/newlib/src/flockfile.c
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/flockfile.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/flockfile.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/flockfile.c.obj -MF CMakeFiles/__idf_newlib.dir/src/flockfile.c.obj.d -o CMakeFiles/__idf_newlib.dir/src/flockfile.c.obj -c /Users/robert/esp-idf/components/newlib/src/flockfile.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/port/esp_time_impl.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/port/esp_time_impl.c.obj: /Users/robert/esp/esp-idf/components/newlib/port/esp_time_impl.c
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/port/esp_time_impl.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/port/esp_time_impl.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/port/esp_time_impl.c.obj -MF CMakeFiles/__idf_newlib.dir/port/esp_time_impl.c.obj.d -o CMakeFiles/__idf_newlib.dir/port/esp_time_impl.c.obj -c /Users/robert/esp/esp-idf/components/newlib/port/esp_time_impl.c
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/flockfile.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/src/flockfile.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/newlib/src/flockfile.c > CMakeFiles/__idf_newlib.dir/src/flockfile.c.i
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/port/esp_time_impl.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/port/esp_time_impl.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/newlib/port/esp_time_impl.c > CMakeFiles/__idf_newlib.dir/port/esp_time_impl.c.i
 
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/flockfile.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/src/flockfile.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/newlib/src/flockfile.c -o CMakeFiles/__idf_newlib.dir/src/flockfile.c.s
-
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/reent_init.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/reent_init.c.obj: /Users/robert/esp-idf/components/newlib/src/reent_init.c
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/reent_init.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/reent_init.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/reent_init.c.obj -MF CMakeFiles/__idf_newlib.dir/src/reent_init.c.obj.d -o CMakeFiles/__idf_newlib.dir/src/reent_init.c.obj -c /Users/robert/esp-idf/components/newlib/src/reent_init.c
-
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/reent_init.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/src/reent_init.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/newlib/src/reent_init.c > CMakeFiles/__idf_newlib.dir/src/reent_init.c.i
-
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/reent_init.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/src/reent_init.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/newlib/src/reent_init.c -o CMakeFiles/__idf_newlib.dir/src/reent_init.c.s
-
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/newlib_init.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flags.make
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/newlib_init.c.obj: /Users/robert/esp-idf/components/newlib/src/newlib_init.c
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/newlib_init.c.obj: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/newlib_init.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/newlib_init.c.obj -MF CMakeFiles/__idf_newlib.dir/src/newlib_init.c.obj.d -o CMakeFiles/__idf_newlib.dir/src/newlib_init.c.obj -c /Users/robert/esp-idf/components/newlib/src/newlib_init.c
-
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/newlib_init.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_newlib.dir/src/newlib_init.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/newlib/src/newlib_init.c > CMakeFiles/__idf_newlib.dir/src/newlib_init.c.i
-
-esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/newlib_init.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/src/newlib_init.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/newlib/src/newlib_init.c -o CMakeFiles/__idf_newlib.dir/src/newlib_init.c.s
+esp-idf/newlib/CMakeFiles/__idf_newlib.dir/port/esp_time_impl.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_newlib.dir/port/esp_time_impl.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/newlib/port/esp_time_impl.c -o CMakeFiles/__idf_newlib.dir/port/esp_time_impl.c.s
 
 # Object files for target __idf_newlib
 __idf_newlib_OBJECTS = \
-"CMakeFiles/__idf_newlib.dir/src/init.c.obj" \
-"CMakeFiles/__idf_newlib.dir/src/abort.c.obj" \
-"CMakeFiles/__idf_newlib.dir/src/assert.c.obj" \
-"CMakeFiles/__idf_newlib.dir/src/heap.c.obj" \
-"CMakeFiles/__idf_newlib.dir/src/locks.c.obj" \
-"CMakeFiles/__idf_newlib.dir/src/poll.c.obj" \
-"CMakeFiles/__idf_newlib.dir/src/pthread.c.obj" \
-"CMakeFiles/__idf_newlib.dir/src/random.c.obj" \
-"CMakeFiles/__idf_newlib.dir/src/getentropy.c.obj" \
-"CMakeFiles/__idf_newlib.dir/src/termios.c.obj" \
-"CMakeFiles/__idf_newlib.dir/src/stdatomic.c.obj" \
-"CMakeFiles/__idf_newlib.dir/src/time.c.obj" \
-"CMakeFiles/__idf_newlib.dir/src/sysconf.c.obj" \
-"CMakeFiles/__idf_newlib.dir/src/realpath.c.obj" \
-"CMakeFiles/__idf_newlib.dir/src/scandir.c.obj" \
-"CMakeFiles/__idf_newlib.dir/src/syscalls.c.obj" \
-"CMakeFiles/__idf_newlib.dir/src/reent_syscalls.c.obj" \
-"CMakeFiles/__idf_newlib.dir/src/port/esp_time_impl.c.obj" \
-"CMakeFiles/__idf_newlib.dir/src/flockfile.c.obj" \
-"CMakeFiles/__idf_newlib.dir/src/reent_init.c.obj" \
-"CMakeFiles/__idf_newlib.dir/src/newlib_init.c.obj"
+"CMakeFiles/__idf_newlib.dir/abort.c.obj" \
+"CMakeFiles/__idf_newlib.dir/assert.c.obj" \
+"CMakeFiles/__idf_newlib.dir/heap.c.obj" \
+"CMakeFiles/__idf_newlib.dir/flockfile.c.obj" \
+"CMakeFiles/__idf_newlib.dir/locks.c.obj" \
+"CMakeFiles/__idf_newlib.dir/poll.c.obj" \
+"CMakeFiles/__idf_newlib.dir/pthread.c.obj" \
+"CMakeFiles/__idf_newlib.dir/random.c.obj" \
+"CMakeFiles/__idf_newlib.dir/getentropy.c.obj" \
+"CMakeFiles/__idf_newlib.dir/reent_init.c.obj" \
+"CMakeFiles/__idf_newlib.dir/newlib_init.c.obj" \
+"CMakeFiles/__idf_newlib.dir/syscalls.c.obj" \
+"CMakeFiles/__idf_newlib.dir/termios.c.obj" \
+"CMakeFiles/__idf_newlib.dir/stdatomic.c.obj" \
+"CMakeFiles/__idf_newlib.dir/time.c.obj" \
+"CMakeFiles/__idf_newlib.dir/sysconf.c.obj" \
+"CMakeFiles/__idf_newlib.dir/realpath.c.obj" \
+"CMakeFiles/__idf_newlib.dir/scandir.c.obj" \
+"CMakeFiles/__idf_newlib.dir/port/esp_time_impl.c.obj"
 
 # External object files for target __idf_newlib
 __idf_newlib_EXTERNAL_OBJECTS =
 
-esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/init.c.obj
-esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/abort.c.obj
-esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/assert.c.obj
-esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/heap.c.obj
-esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/locks.c.obj
-esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/poll.c.obj
-esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/pthread.c.obj
-esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/random.c.obj
-esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/getentropy.c.obj
-esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/termios.c.obj
-esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/stdatomic.c.obj
-esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/time.c.obj
-esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/sysconf.c.obj
-esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/realpath.c.obj
-esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/scandir.c.obj
-esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/syscalls.c.obj
-esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/reent_syscalls.c.obj
-esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/port/esp_time_impl.c.obj
-esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/flockfile.c.obj
-esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/reent_init.c.obj
-esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/src/newlib_init.c.obj
+esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/abort.c.obj
+esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/assert.c.obj
+esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/heap.c.obj
+esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/flockfile.c.obj
+esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/locks.c.obj
+esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/poll.c.obj
+esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/pthread.c.obj
+esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/random.c.obj
+esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/getentropy.c.obj
+esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/reent_init.c.obj
+esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/newlib_init.c.obj
+esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/syscalls.c.obj
+esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/termios.c.obj
+esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/stdatomic.c.obj
+esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/time.c.obj
+esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/sysconf.c.obj
+esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/realpath.c.obj
+esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/scandir.c.obj
+esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/port/esp_time_impl.c.obj
 esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/build.make
 esp-idf/newlib/libnewlib.a: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Linking C static library libnewlib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking C static library libnewlib.a"
 	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && $(CMAKE_COMMAND) -P CMakeFiles/__idf_newlib.dir/cmake_clean_target.cmake
 	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/__idf_newlib.dir/link.txt --verbose=$(VERBOSE)
 
@@ -429,6 +397,6 @@ esp-idf/newlib/CMakeFiles/__idf_newlib.dir/clean:
 .PHONY : esp-idf/newlib/CMakeFiles/__idf_newlib.dir/clean
 
 esp-idf/newlib/CMakeFiles/__idf_newlib.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/newlib /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib/CMakeFiles/__idf_newlib.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/newlib /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/newlib/CMakeFiles/__idf_newlib.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/newlib/CMakeFiles/__idf_newlib.dir/depend
 

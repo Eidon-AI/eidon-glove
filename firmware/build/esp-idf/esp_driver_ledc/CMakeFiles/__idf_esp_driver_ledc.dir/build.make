@@ -73,18 +73,18 @@ esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/codegen:
 .PHONY : esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/codegen
 
 esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/src/ledc.c.obj: esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/flags.make
-esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/src/ledc.c.obj: /Users/robert/esp-idf/components/esp_driver_ledc/src/ledc.c
+esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/src/ledc.c.obj: /Users/robert/esp/esp-idf/components/esp_driver_ledc/src/ledc.c
 esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/src/ledc.c.obj: esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/src/ledc.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_ledc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/src/ledc.c.obj -MF CMakeFiles/__idf_esp_driver_ledc.dir/src/ledc.c.obj.d -o CMakeFiles/__idf_esp_driver_ledc.dir/src/ledc.c.obj -c /Users/robert/esp-idf/components/esp_driver_ledc/src/ledc.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_ledc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/src/ledc.c.obj -MF CMakeFiles/__idf_esp_driver_ledc.dir/src/ledc.c.obj.d -o CMakeFiles/__idf_esp_driver_ledc.dir/src/ledc.c.obj -c /Users/robert/esp/esp-idf/components/esp_driver_ledc/src/ledc.c
 
 esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/src/ledc.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_driver_ledc.dir/src/ledc.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_ledc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_driver_ledc/src/ledc.c > CMakeFiles/__idf_esp_driver_ledc.dir/src/ledc.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_ledc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_driver_ledc/src/ledc.c > CMakeFiles/__idf_esp_driver_ledc.dir/src/ledc.c.i
 
 esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/src/ledc.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_driver_ledc.dir/src/ledc.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_ledc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_driver_ledc/src/ledc.c -o CMakeFiles/__idf_esp_driver_ledc.dir/src/ledc.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_ledc && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_driver_ledc/src/ledc.c -o CMakeFiles/__idf_esp_driver_ledc.dir/src/ledc.c.s
 
 # Object files for target __idf_esp_driver_ledc
 __idf_esp_driver_ledc_OBJECTS = \
@@ -109,6 +109,6 @@ esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/clean:
 .PHONY : esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/clean
 
 esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/esp_driver_ledc /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_ledc /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/esp_driver_ledc /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_ledc /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/depend
 

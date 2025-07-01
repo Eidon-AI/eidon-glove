@@ -73,81 +73,66 @@ esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/codegen:
 .PHONY : esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/codegen
 
 esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.obj: esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/flags.make
-esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.obj: /Users/robert/esp-idf/components/esp_mm/esp_mmu_map.c
+esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.obj: /Users/robert/esp/esp-idf/components/esp_mm/esp_mmu_map.c
 esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.obj: esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.obj -MF CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.obj.d -o CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.obj -c /Users/robert/esp-idf/components/esp_mm/esp_mmu_map.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.obj -MF CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.obj.d -o CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.obj -c /Users/robert/esp/esp-idf/components/esp_mm/esp_mmu_map.c
 
 esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_mm/esp_mmu_map.c > CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_mm/esp_mmu_map.c > CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.i
 
 esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_mm/esp_mmu_map.c -o CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_mm/esp_mmu_map.c -o CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.s
 
 esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.obj: esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/flags.make
-esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.obj: /Users/robert/esp-idf/components/esp_mm/port/esp32c6/ext_mem_layout.c
+esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.obj: /Users/robert/esp/esp-idf/components/esp_mm/port/esp32c6/ext_mem_layout.c
 esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.obj: esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.obj -MF CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.obj.d -o CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.obj -c /Users/robert/esp-idf/components/esp_mm/port/esp32c6/ext_mem_layout.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.obj -MF CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.obj.d -o CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.obj -c /Users/robert/esp/esp-idf/components/esp_mm/port/esp32c6/ext_mem_layout.c
 
 esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_mm/port/esp32c6/ext_mem_layout.c > CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_mm/port/esp32c6/ext_mem_layout.c > CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.i
 
 esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_mm/port/esp32c6/ext_mem_layout.c -o CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_mm/port/esp32c6/ext_mem_layout.c -o CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.s
 
-esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_msync.c.obj: esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/flags.make
-esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_msync.c.obj: /Users/robert/esp-idf/components/esp_mm/esp_cache_msync.c
-esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_msync.c.obj: esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_msync.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_msync.c.obj -MF CMakeFiles/__idf_esp_mm.dir/esp_cache_msync.c.obj.d -o CMakeFiles/__idf_esp_mm.dir/esp_cache_msync.c.obj -c /Users/robert/esp-idf/components/esp_mm/esp_cache_msync.c
+esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache.c.obj: esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/flags.make
+esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache.c.obj: /Users/robert/esp/esp-idf/components/esp_mm/esp_cache.c
+esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache.c.obj: esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache.c.obj -MF CMakeFiles/__idf_esp_mm.dir/esp_cache.c.obj.d -o CMakeFiles/__idf_esp_mm.dir/esp_cache.c.obj -c /Users/robert/esp/esp-idf/components/esp_mm/esp_cache.c
 
-esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_msync.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_mm.dir/esp_cache_msync.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_mm/esp_cache_msync.c > CMakeFiles/__idf_esp_mm.dir/esp_cache_msync.c.i
+esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_mm.dir/esp_cache.c.i"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_mm/esp_cache.c > CMakeFiles/__idf_esp_mm.dir/esp_cache.c.i
 
-esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_msync.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_mm.dir/esp_cache_msync.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_mm/esp_cache_msync.c -o CMakeFiles/__idf_esp_mm.dir/esp_cache_msync.c.s
-
-esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_utils.c.obj: esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/flags.make
-esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_utils.c.obj: /Users/robert/esp-idf/components/esp_mm/esp_cache_utils.c
-esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_utils.c.obj: esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_utils.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_utils.c.obj -MF CMakeFiles/__idf_esp_mm.dir/esp_cache_utils.c.obj.d -o CMakeFiles/__idf_esp_mm.dir/esp_cache_utils.c.obj -c /Users/robert/esp-idf/components/esp_mm/esp_cache_utils.c
-
-esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_utils.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_mm.dir/esp_cache_utils.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_mm/esp_cache_utils.c > CMakeFiles/__idf_esp_mm.dir/esp_cache_utils.c.i
-
-esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_utils.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_mm.dir/esp_cache_utils.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_mm/esp_cache_utils.c -o CMakeFiles/__idf_esp_mm.dir/esp_cache_utils.c.s
+esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_mm.dir/esp_cache.c.s"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_mm/esp_cache.c -o CMakeFiles/__idf_esp_mm.dir/esp_cache.c.s
 
 esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.obj: esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/flags.make
-esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.obj: /Users/robert/esp-idf/components/esp_mm/heap_align_hw.c
+esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.obj: /Users/robert/esp/esp-idf/components/esp_mm/heap_align_hw.c
 esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.obj: esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.obj -MF CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.obj.d -o CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.obj -c /Users/robert/esp-idf/components/esp_mm/heap_align_hw.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.obj -MF CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.obj.d -o CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.obj -c /Users/robert/esp/esp-idf/components/esp_mm/heap_align_hw.c
 
 esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_mm/heap_align_hw.c > CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_mm/heap_align_hw.c > CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.i
 
 esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_mm/heap_align_hw.c -o CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_mm/heap_align_hw.c -o CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.s
 
 # Object files for target __idf_esp_mm
 __idf_esp_mm_OBJECTS = \
 "CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.obj" \
 "CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.obj" \
-"CMakeFiles/__idf_esp_mm.dir/esp_cache_msync.c.obj" \
-"CMakeFiles/__idf_esp_mm.dir/esp_cache_utils.c.obj" \
+"CMakeFiles/__idf_esp_mm.dir/esp_cache.c.obj" \
 "CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.obj"
 
 # External object files for target __idf_esp_mm
@@ -155,12 +140,11 @@ __idf_esp_mm_EXTERNAL_OBJECTS =
 
 esp-idf/esp_mm/libesp_mm.a: esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_mmu_map.c.obj
 esp-idf/esp_mm/libesp_mm.a: esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/port/esp32c6/ext_mem_layout.c.obj
-esp-idf/esp_mm/libesp_mm.a: esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_msync.c.obj
-esp-idf/esp_mm/libesp_mm.a: esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache_utils.c.obj
+esp-idf/esp_mm/libesp_mm.a: esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/esp_cache.c.obj
 esp-idf/esp_mm/libesp_mm.a: esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/heap_align_hw.c.obj
 esp-idf/esp_mm/libesp_mm.a: esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/build.make
 esp-idf/esp_mm/libesp_mm.a: esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C static library libesp_mm.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C static library libesp_mm.a"
 	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && $(CMAKE_COMMAND) -P CMakeFiles/__idf_esp_mm.dir/cmake_clean_target.cmake
 	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/__idf_esp_mm.dir/link.txt --verbose=$(VERBOSE)
 
@@ -173,6 +157,6 @@ esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/clean:
 .PHONY : esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/clean
 
 esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/esp_mm /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/esp_mm /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/depend
 

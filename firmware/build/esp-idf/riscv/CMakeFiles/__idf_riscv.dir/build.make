@@ -73,92 +73,77 @@ esp-idf/riscv/CMakeFiles/__idf_riscv.dir/codegen:
 .PHONY : esp-idf/riscv/CMakeFiles/__idf_riscv.dir/codegen
 
 esp-idf/riscv/CMakeFiles/__idf_riscv.dir/instruction_decode.c.obj: esp-idf/riscv/CMakeFiles/__idf_riscv.dir/flags.make
-esp-idf/riscv/CMakeFiles/__idf_riscv.dir/instruction_decode.c.obj: /Users/robert/esp-idf/components/riscv/instruction_decode.c
+esp-idf/riscv/CMakeFiles/__idf_riscv.dir/instruction_decode.c.obj: /Users/robert/esp/esp-idf/components/riscv/instruction_decode.c
 esp-idf/riscv/CMakeFiles/__idf_riscv.dir/instruction_decode.c.obj: esp-idf/riscv/CMakeFiles/__idf_riscv.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/riscv/CMakeFiles/__idf_riscv.dir/instruction_decode.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/riscv/CMakeFiles/__idf_riscv.dir/instruction_decode.c.obj -MF CMakeFiles/__idf_riscv.dir/instruction_decode.c.obj.d -o CMakeFiles/__idf_riscv.dir/instruction_decode.c.obj -c /Users/robert/esp-idf/components/riscv/instruction_decode.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/riscv/CMakeFiles/__idf_riscv.dir/instruction_decode.c.obj -MF CMakeFiles/__idf_riscv.dir/instruction_decode.c.obj.d -o CMakeFiles/__idf_riscv.dir/instruction_decode.c.obj -c /Users/robert/esp/esp-idf/components/riscv/instruction_decode.c
 
 esp-idf/riscv/CMakeFiles/__idf_riscv.dir/instruction_decode.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_riscv.dir/instruction_decode.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/riscv/instruction_decode.c > CMakeFiles/__idf_riscv.dir/instruction_decode.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/riscv/instruction_decode.c > CMakeFiles/__idf_riscv.dir/instruction_decode.c.i
 
 esp-idf/riscv/CMakeFiles/__idf_riscv.dir/instruction_decode.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_riscv.dir/instruction_decode.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/riscv/instruction_decode.c -o CMakeFiles/__idf_riscv.dir/instruction_decode.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/riscv/instruction_decode.c -o CMakeFiles/__idf_riscv.dir/instruction_decode.c.s
 
 esp-idf/riscv/CMakeFiles/__idf_riscv.dir/interrupt.c.obj: esp-idf/riscv/CMakeFiles/__idf_riscv.dir/flags.make
-esp-idf/riscv/CMakeFiles/__idf_riscv.dir/interrupt.c.obj: /Users/robert/esp-idf/components/riscv/interrupt.c
+esp-idf/riscv/CMakeFiles/__idf_riscv.dir/interrupt.c.obj: /Users/robert/esp/esp-idf/components/riscv/interrupt.c
 esp-idf/riscv/CMakeFiles/__idf_riscv.dir/interrupt.c.obj: esp-idf/riscv/CMakeFiles/__idf_riscv.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object esp-idf/riscv/CMakeFiles/__idf_riscv.dir/interrupt.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/riscv/CMakeFiles/__idf_riscv.dir/interrupt.c.obj -MF CMakeFiles/__idf_riscv.dir/interrupt.c.obj.d -o CMakeFiles/__idf_riscv.dir/interrupt.c.obj -c /Users/robert/esp-idf/components/riscv/interrupt.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/riscv/CMakeFiles/__idf_riscv.dir/interrupt.c.obj -MF CMakeFiles/__idf_riscv.dir/interrupt.c.obj.d -o CMakeFiles/__idf_riscv.dir/interrupt.c.obj -c /Users/robert/esp/esp-idf/components/riscv/interrupt.c
 
 esp-idf/riscv/CMakeFiles/__idf_riscv.dir/interrupt.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_riscv.dir/interrupt.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/riscv/interrupt.c > CMakeFiles/__idf_riscv.dir/interrupt.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/riscv/interrupt.c > CMakeFiles/__idf_riscv.dir/interrupt.c.i
 
 esp-idf/riscv/CMakeFiles/__idf_riscv.dir/interrupt.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_riscv.dir/interrupt.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/riscv/interrupt.c -o CMakeFiles/__idf_riscv.dir/interrupt.c.s
-
-esp-idf/riscv/CMakeFiles/__idf_riscv.dir/rv_utils.c.obj: esp-idf/riscv/CMakeFiles/__idf_riscv.dir/flags.make
-esp-idf/riscv/CMakeFiles/__idf_riscv.dir/rv_utils.c.obj: /Users/robert/esp-idf/components/riscv/rv_utils.c
-esp-idf/riscv/CMakeFiles/__idf_riscv.dir/rv_utils.c.obj: esp-idf/riscv/CMakeFiles/__idf_riscv.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object esp-idf/riscv/CMakeFiles/__idf_riscv.dir/rv_utils.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/riscv/CMakeFiles/__idf_riscv.dir/rv_utils.c.obj -MF CMakeFiles/__idf_riscv.dir/rv_utils.c.obj.d -o CMakeFiles/__idf_riscv.dir/rv_utils.c.obj -c /Users/robert/esp-idf/components/riscv/rv_utils.c
-
-esp-idf/riscv/CMakeFiles/__idf_riscv.dir/rv_utils.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_riscv.dir/rv_utils.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/riscv/rv_utils.c > CMakeFiles/__idf_riscv.dir/rv_utils.c.i
-
-esp-idf/riscv/CMakeFiles/__idf_riscv.dir/rv_utils.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_riscv.dir/rv_utils.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/riscv/rv_utils.c -o CMakeFiles/__idf_riscv.dir/rv_utils.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/riscv/interrupt.c -o CMakeFiles/__idf_riscv.dir/interrupt.c.s
 
 esp-idf/riscv/CMakeFiles/__idf_riscv.dir/vectors.S.obj: esp-idf/riscv/CMakeFiles/__idf_riscv.dir/flags.make
-esp-idf/riscv/CMakeFiles/__idf_riscv.dir/vectors.S.obj: /Users/robert/esp-idf/components/riscv/vectors.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building ASM object esp-idf/riscv/CMakeFiles/__idf_riscv.dir/vectors.S.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/__idf_riscv.dir/vectors.S.obj -c /Users/robert/esp-idf/components/riscv/vectors.S
+esp-idf/riscv/CMakeFiles/__idf_riscv.dir/vectors.S.obj: /Users/robert/esp/esp-idf/components/riscv/vectors.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building ASM object esp-idf/riscv/CMakeFiles/__idf_riscv.dir/vectors.S.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/__idf_riscv.dir/vectors.S.obj -c /Users/robert/esp/esp-idf/components/riscv/vectors.S
 
 esp-idf/riscv/CMakeFiles/__idf_riscv.dir/vectors.S.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing ASM source to CMakeFiles/__idf_riscv.dir/vectors.S.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /Users/robert/esp-idf/components/riscv/vectors.S > CMakeFiles/__idf_riscv.dir/vectors.S.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /Users/robert/esp/esp-idf/components/riscv/vectors.S > CMakeFiles/__idf_riscv.dir/vectors.S.i
 
 esp-idf/riscv/CMakeFiles/__idf_riscv.dir/vectors.S.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling ASM source to assembly CMakeFiles/__idf_riscv.dir/vectors.S.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /Users/robert/esp-idf/components/riscv/vectors.S -o CMakeFiles/__idf_riscv.dir/vectors.S.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /Users/robert/esp/esp-idf/components/riscv/vectors.S -o CMakeFiles/__idf_riscv.dir/vectors.S.s
 
 esp-idf/riscv/CMakeFiles/__idf_riscv.dir/interrupt_plic.c.obj: esp-idf/riscv/CMakeFiles/__idf_riscv.dir/flags.make
-esp-idf/riscv/CMakeFiles/__idf_riscv.dir/interrupt_plic.c.obj: /Users/robert/esp-idf/components/riscv/interrupt_plic.c
+esp-idf/riscv/CMakeFiles/__idf_riscv.dir/interrupt_plic.c.obj: /Users/robert/esp/esp-idf/components/riscv/interrupt_plic.c
 esp-idf/riscv/CMakeFiles/__idf_riscv.dir/interrupt_plic.c.obj: esp-idf/riscv/CMakeFiles/__idf_riscv.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object esp-idf/riscv/CMakeFiles/__idf_riscv.dir/interrupt_plic.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/riscv/CMakeFiles/__idf_riscv.dir/interrupt_plic.c.obj -MF CMakeFiles/__idf_riscv.dir/interrupt_plic.c.obj.d -o CMakeFiles/__idf_riscv.dir/interrupt_plic.c.obj -c /Users/robert/esp-idf/components/riscv/interrupt_plic.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object esp-idf/riscv/CMakeFiles/__idf_riscv.dir/interrupt_plic.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/riscv/CMakeFiles/__idf_riscv.dir/interrupt_plic.c.obj -MF CMakeFiles/__idf_riscv.dir/interrupt_plic.c.obj.d -o CMakeFiles/__idf_riscv.dir/interrupt_plic.c.obj -c /Users/robert/esp/esp-idf/components/riscv/interrupt_plic.c
 
 esp-idf/riscv/CMakeFiles/__idf_riscv.dir/interrupt_plic.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_riscv.dir/interrupt_plic.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/riscv/interrupt_plic.c > CMakeFiles/__idf_riscv.dir/interrupt_plic.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/riscv/interrupt_plic.c > CMakeFiles/__idf_riscv.dir/interrupt_plic.c.i
 
 esp-idf/riscv/CMakeFiles/__idf_riscv.dir/interrupt_plic.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_riscv.dir/interrupt_plic.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/riscv/interrupt_plic.c -o CMakeFiles/__idf_riscv.dir/interrupt_plic.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/riscv/interrupt_plic.c -o CMakeFiles/__idf_riscv.dir/interrupt_plic.c.s
 
 esp-idf/riscv/CMakeFiles/__idf_riscv.dir/vectors_intc.S.obj: esp-idf/riscv/CMakeFiles/__idf_riscv.dir/flags.make
-esp-idf/riscv/CMakeFiles/__idf_riscv.dir/vectors_intc.S.obj: /Users/robert/esp-idf/components/riscv/vectors_intc.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building ASM object esp-idf/riscv/CMakeFiles/__idf_riscv.dir/vectors_intc.S.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/__idf_riscv.dir/vectors_intc.S.obj -c /Users/robert/esp-idf/components/riscv/vectors_intc.S
+esp-idf/riscv/CMakeFiles/__idf_riscv.dir/vectors_intc.S.obj: /Users/robert/esp/esp-idf/components/riscv/vectors_intc.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building ASM object esp-idf/riscv/CMakeFiles/__idf_riscv.dir/vectors_intc.S.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/__idf_riscv.dir/vectors_intc.S.obj -c /Users/robert/esp/esp-idf/components/riscv/vectors_intc.S
 
 esp-idf/riscv/CMakeFiles/__idf_riscv.dir/vectors_intc.S.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing ASM source to CMakeFiles/__idf_riscv.dir/vectors_intc.S.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /Users/robert/esp-idf/components/riscv/vectors_intc.S > CMakeFiles/__idf_riscv.dir/vectors_intc.S.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /Users/robert/esp/esp-idf/components/riscv/vectors_intc.S > CMakeFiles/__idf_riscv.dir/vectors_intc.S.i
 
 esp-idf/riscv/CMakeFiles/__idf_riscv.dir/vectors_intc.S.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling ASM source to assembly CMakeFiles/__idf_riscv.dir/vectors_intc.S.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /Users/robert/esp-idf/components/riscv/vectors_intc.S -o CMakeFiles/__idf_riscv.dir/vectors_intc.S.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /Users/robert/esp/esp-idf/components/riscv/vectors_intc.S -o CMakeFiles/__idf_riscv.dir/vectors_intc.S.s
 
 # Object files for target __idf_riscv
 __idf_riscv_OBJECTS = \
 "CMakeFiles/__idf_riscv.dir/instruction_decode.c.obj" \
 "CMakeFiles/__idf_riscv.dir/interrupt.c.obj" \
-"CMakeFiles/__idf_riscv.dir/rv_utils.c.obj" \
 "CMakeFiles/__idf_riscv.dir/vectors.S.obj" \
 "CMakeFiles/__idf_riscv.dir/interrupt_plic.c.obj" \
 "CMakeFiles/__idf_riscv.dir/vectors_intc.S.obj"
@@ -168,13 +153,12 @@ __idf_riscv_EXTERNAL_OBJECTS =
 
 esp-idf/riscv/libriscv.a: esp-idf/riscv/CMakeFiles/__idf_riscv.dir/instruction_decode.c.obj
 esp-idf/riscv/libriscv.a: esp-idf/riscv/CMakeFiles/__idf_riscv.dir/interrupt.c.obj
-esp-idf/riscv/libriscv.a: esp-idf/riscv/CMakeFiles/__idf_riscv.dir/rv_utils.c.obj
 esp-idf/riscv/libriscv.a: esp-idf/riscv/CMakeFiles/__idf_riscv.dir/vectors.S.obj
 esp-idf/riscv/libriscv.a: esp-idf/riscv/CMakeFiles/__idf_riscv.dir/interrupt_plic.c.obj
 esp-idf/riscv/libriscv.a: esp-idf/riscv/CMakeFiles/__idf_riscv.dir/vectors_intc.S.obj
 esp-idf/riscv/libriscv.a: esp-idf/riscv/CMakeFiles/__idf_riscv.dir/build.make
 esp-idf/riscv/libriscv.a: esp-idf/riscv/CMakeFiles/__idf_riscv.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C static library libriscv.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C static library libriscv.a"
 	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && $(CMAKE_COMMAND) -P CMakeFiles/__idf_riscv.dir/cmake_clean_target.cmake
 	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/__idf_riscv.dir/link.txt --verbose=$(VERBOSE)
 
@@ -187,6 +171,6 @@ esp-idf/riscv/CMakeFiles/__idf_riscv.dir/clean:
 .PHONY : esp-idf/riscv/CMakeFiles/__idf_riscv.dir/clean
 
 esp-idf/riscv/CMakeFiles/__idf_riscv.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/riscv /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv/CMakeFiles/__idf_riscv.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/riscv /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/riscv/CMakeFiles/__idf_riscv.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/riscv/CMakeFiles/__idf_riscv.dir/depend
 

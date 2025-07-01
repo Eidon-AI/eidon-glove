@@ -1,1 +1,0 @@
-Command: cmake -G Unix Makefiles -DPYTHON_DEPS_CHECKED=1 -DPYTHON=/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python -DESP_PLATFORM=1 -DCCACHE_ENABLE=0 /Users/robert/eidon/eidon-glove/firmware

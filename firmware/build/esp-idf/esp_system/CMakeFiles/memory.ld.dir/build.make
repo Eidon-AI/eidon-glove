@@ -68,10 +68,10 @@ include esp-idf/esp_system/CMakeFiles/memory.ld.dir/progress.make
 
 esp-idf/esp_system/CMakeFiles/memory.ld: esp-idf/esp_system/ld/memory.ld
 
-esp-idf/esp_system/ld/memory.ld: /Users/robert/esp-idf/components/esp_system/ld/esp32c6/memory.ld.in
+esp-idf/esp_system/ld/memory.ld: /Users/robert/esp/esp-idf/components/esp_system/ld/esp32c6/memory.ld.in
 esp-idf/esp_system/ld/memory.ld: config/sdkconfig.h
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_system/ld/memory.ld linker script..."
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_system && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -DCC=/Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc -DSOURCE=/Users/robert/esp-idf/components/esp_system/ld/esp32c6/memory.ld.in -DTARGET=/Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_system/ld/memory.ld -DCONFIG_DIR=/Users/robert/eidon/eidon-glove/firmware/build/config -DLD_DIR=/Users/robert/esp-idf/components/esp_system/ld -P /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_system/ld/linker_script_generator.cmake
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_system && /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -DCC=/Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc -DSOURCE=/Users/robert/esp/esp-idf/components/esp_system/ld/esp32c6/memory.ld.in -DTARGET=/Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_system/ld/memory.ld -DCONFIG_DIR=/Users/robert/eidon/eidon-glove/firmware/build/config -DLD_DIR=/Users/robert/esp/esp-idf/components/esp_system/ld -P /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_system/ld/linker_script_generator.cmake
 
 esp-idf/esp_system/CMakeFiles/memory.ld.dir/codegen:
 .PHONY : esp-idf/esp_system/CMakeFiles/memory.ld.dir/codegen
@@ -90,6 +90,6 @@ esp-idf/esp_system/CMakeFiles/memory.ld.dir/clean:
 .PHONY : esp-idf/esp_system/CMakeFiles/memory.ld.dir/clean
 
 esp-idf/esp_system/CMakeFiles/memory.ld.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/esp_system /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_system /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_system/CMakeFiles/memory.ld.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/esp_system /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_system /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_system/CMakeFiles/memory.ld.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/esp_system/CMakeFiles/memory.ld.dir/depend
 

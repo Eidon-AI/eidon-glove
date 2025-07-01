@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.obj"
   "CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.obj.d"
-  "CMakeFiles/__idf_esp_security.dir/src/esp_crypto_periph_clk.c.obj"
-  "CMakeFiles/__idf_esp_security.dir/src/esp_crypto_periph_clk.c.obj.d"
   "CMakeFiles/__idf_esp_security.dir/src/esp_dpa_protection.c.obj"
   "CMakeFiles/__idf_esp_security.dir/src/esp_dpa_protection.c.obj.d"
   "CMakeFiles/__idf_esp_security.dir/src/esp_ds.c.obj"

@@ -73,290 +73,275 @@ esp-idf/console/CMakeFiles/__idf_console.dir/codegen:
 .PHONY : esp-idf/console/CMakeFiles/__idf_console.dir/codegen
 
 esp-idf/console/CMakeFiles/__idf_console.dir/commands.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/flags.make
-esp-idf/console/CMakeFiles/__idf_console.dir/commands.c.obj: /Users/robert/esp-idf/components/console/commands.c
+esp-idf/console/CMakeFiles/__idf_console.dir/commands.c.obj: /Users/robert/esp/esp-idf/components/console/commands.c
 esp-idf/console/CMakeFiles/__idf_console.dir/commands.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/commands.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/commands.c.obj -MF CMakeFiles/__idf_console.dir/commands.c.obj.d -o CMakeFiles/__idf_console.dir/commands.c.obj -c /Users/robert/esp-idf/components/console/commands.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/commands.c.obj -MF CMakeFiles/__idf_console.dir/commands.c.obj.d -o CMakeFiles/__idf_console.dir/commands.c.obj -c /Users/robert/esp/esp-idf/components/console/commands.c
 
 esp-idf/console/CMakeFiles/__idf_console.dir/commands.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_console.dir/commands.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/console/commands.c > CMakeFiles/__idf_console.dir/commands.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/console/commands.c > CMakeFiles/__idf_console.dir/commands.c.i
 
 esp-idf/console/CMakeFiles/__idf_console.dir/commands.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_console.dir/commands.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/console/commands.c -o CMakeFiles/__idf_console.dir/commands.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/console/commands.c -o CMakeFiles/__idf_console.dir/commands.c.s
 
 esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_common.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/flags.make
-esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_common.c.obj: /Users/robert/esp-idf/components/console/esp_console_common.c
+esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_common.c.obj: /Users/robert/esp/esp-idf/components/console/esp_console_common.c
 esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_common.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_common.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_common.c.obj -MF CMakeFiles/__idf_console.dir/esp_console_common.c.obj.d -o CMakeFiles/__idf_console.dir/esp_console_common.c.obj -c /Users/robert/esp-idf/components/console/esp_console_common.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_common.c.obj -MF CMakeFiles/__idf_console.dir/esp_console_common.c.obj.d -o CMakeFiles/__idf_console.dir/esp_console_common.c.obj -c /Users/robert/esp/esp-idf/components/console/esp_console_common.c
 
 esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_common.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_console.dir/esp_console_common.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/console/esp_console_common.c > CMakeFiles/__idf_console.dir/esp_console_common.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/console/esp_console_common.c > CMakeFiles/__idf_console.dir/esp_console_common.c.i
 
 esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_common.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_console.dir/esp_console_common.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/console/esp_console_common.c -o CMakeFiles/__idf_console.dir/esp_console_common.c.s
-
-esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_repl_internal.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/flags.make
-esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_repl_internal.c.obj: /Users/robert/esp-idf/components/console/esp_console_repl_internal.c
-esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_repl_internal.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_repl_internal.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_repl_internal.c.obj -MF CMakeFiles/__idf_console.dir/esp_console_repl_internal.c.obj.d -o CMakeFiles/__idf_console.dir/esp_console_repl_internal.c.obj -c /Users/robert/esp-idf/components/console/esp_console_repl_internal.c
-
-esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_repl_internal.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_console.dir/esp_console_repl_internal.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/console/esp_console_repl_internal.c > CMakeFiles/__idf_console.dir/esp_console_repl_internal.c.i
-
-esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_repl_internal.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_console.dir/esp_console_repl_internal.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/console/esp_console_repl_internal.c -o CMakeFiles/__idf_console.dir/esp_console_repl_internal.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/console/esp_console_common.c -o CMakeFiles/__idf_console.dir/esp_console_common.c.s
 
 esp-idf/console/CMakeFiles/__idf_console.dir/split_argv.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/flags.make
-esp-idf/console/CMakeFiles/__idf_console.dir/split_argv.c.obj: /Users/robert/esp-idf/components/console/split_argv.c
+esp-idf/console/CMakeFiles/__idf_console.dir/split_argv.c.obj: /Users/robert/esp/esp-idf/components/console/split_argv.c
 esp-idf/console/CMakeFiles/__idf_console.dir/split_argv.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/split_argv.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/split_argv.c.obj -MF CMakeFiles/__idf_console.dir/split_argv.c.obj.d -o CMakeFiles/__idf_console.dir/split_argv.c.obj -c /Users/robert/esp-idf/components/console/split_argv.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/split_argv.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/split_argv.c.obj -MF CMakeFiles/__idf_console.dir/split_argv.c.obj.d -o CMakeFiles/__idf_console.dir/split_argv.c.obj -c /Users/robert/esp/esp-idf/components/console/split_argv.c
 
 esp-idf/console/CMakeFiles/__idf_console.dir/split_argv.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_console.dir/split_argv.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/console/split_argv.c > CMakeFiles/__idf_console.dir/split_argv.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/console/split_argv.c > CMakeFiles/__idf_console.dir/split_argv.c.i
 
 esp-idf/console/CMakeFiles/__idf_console.dir/split_argv.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_console.dir/split_argv.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/console/split_argv.c -o CMakeFiles/__idf_console.dir/split_argv.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/console/split_argv.c -o CMakeFiles/__idf_console.dir/split_argv.c.s
 
 esp-idf/console/CMakeFiles/__idf_console.dir/linenoise/linenoise.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/flags.make
-esp-idf/console/CMakeFiles/__idf_console.dir/linenoise/linenoise.c.obj: /Users/robert/esp-idf/components/console/linenoise/linenoise.c
+esp-idf/console/CMakeFiles/__idf_console.dir/linenoise/linenoise.c.obj: /Users/robert/esp/esp-idf/components/console/linenoise/linenoise.c
 esp-idf/console/CMakeFiles/__idf_console.dir/linenoise/linenoise.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/linenoise/linenoise.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/linenoise/linenoise.c.obj -MF CMakeFiles/__idf_console.dir/linenoise/linenoise.c.obj.d -o CMakeFiles/__idf_console.dir/linenoise/linenoise.c.obj -c /Users/robert/esp-idf/components/console/linenoise/linenoise.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/linenoise/linenoise.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/linenoise/linenoise.c.obj -MF CMakeFiles/__idf_console.dir/linenoise/linenoise.c.obj.d -o CMakeFiles/__idf_console.dir/linenoise/linenoise.c.obj -c /Users/robert/esp/esp-idf/components/console/linenoise/linenoise.c
 
 esp-idf/console/CMakeFiles/__idf_console.dir/linenoise/linenoise.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_console.dir/linenoise/linenoise.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/console/linenoise/linenoise.c > CMakeFiles/__idf_console.dir/linenoise/linenoise.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/console/linenoise/linenoise.c > CMakeFiles/__idf_console.dir/linenoise/linenoise.c.i
 
 esp-idf/console/CMakeFiles/__idf_console.dir/linenoise/linenoise.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_console.dir/linenoise/linenoise.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/console/linenoise/linenoise.c -o CMakeFiles/__idf_console.dir/linenoise/linenoise.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/console/linenoise/linenoise.c -o CMakeFiles/__idf_console.dir/linenoise/linenoise.c.s
 
 esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_repl_chip.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/flags.make
-esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_repl_chip.c.obj: /Users/robert/esp-idf/components/console/esp_console_repl_chip.c
+esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_repl_chip.c.obj: /Users/robert/esp/esp-idf/components/console/esp_console_repl_chip.c
 esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_repl_chip.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_repl_chip.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_repl_chip.c.obj -MF CMakeFiles/__idf_console.dir/esp_console_repl_chip.c.obj.d -o CMakeFiles/__idf_console.dir/esp_console_repl_chip.c.obj -c /Users/robert/esp-idf/components/console/esp_console_repl_chip.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_repl_chip.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_repl_chip.c.obj -MF CMakeFiles/__idf_console.dir/esp_console_repl_chip.c.obj.d -o CMakeFiles/__idf_console.dir/esp_console_repl_chip.c.obj -c /Users/robert/esp/esp-idf/components/console/esp_console_repl_chip.c
 
 esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_repl_chip.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_console.dir/esp_console_repl_chip.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/console/esp_console_repl_chip.c > CMakeFiles/__idf_console.dir/esp_console_repl_chip.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/console/esp_console_repl_chip.c > CMakeFiles/__idf_console.dir/esp_console_repl_chip.c.i
 
 esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_repl_chip.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_console.dir/esp_console_repl_chip.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/console/esp_console_repl_chip.c -o CMakeFiles/__idf_console.dir/esp_console_repl_chip.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/console/esp_console_repl_chip.c -o CMakeFiles/__idf_console.dir/esp_console_repl_chip.c.s
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_cmd.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/flags.make
-esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_cmd.c.obj: /Users/robert/esp-idf/components/console/argtable3/arg_cmd.c
+esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_cmd.c.obj: /Users/robert/esp/esp-idf/components/console/argtable3/arg_cmd.c
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_cmd.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_cmd.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_cmd.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_cmd.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_cmd.c.obj -c /Users/robert/esp-idf/components/console/argtable3/arg_cmd.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_cmd.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_cmd.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_cmd.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_cmd.c.obj -c /Users/robert/esp/esp-idf/components/console/argtable3/arg_cmd.c
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_cmd.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_console.dir/argtable3/arg_cmd.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/console/argtable3/arg_cmd.c > CMakeFiles/__idf_console.dir/argtable3/arg_cmd.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/console/argtable3/arg_cmd.c > CMakeFiles/__idf_console.dir/argtable3/arg_cmd.c.i
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_cmd.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_console.dir/argtable3/arg_cmd.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/console/argtable3/arg_cmd.c -o CMakeFiles/__idf_console.dir/argtable3/arg_cmd.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/console/argtable3/arg_cmd.c -o CMakeFiles/__idf_console.dir/argtable3/arg_cmd.c.s
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_date.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/flags.make
-esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_date.c.obj: /Users/robert/esp-idf/components/console/argtable3/arg_date.c
+esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_date.c.obj: /Users/robert/esp/esp-idf/components/console/argtable3/arg_date.c
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_date.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_date.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_date.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_date.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_date.c.obj -c /Users/robert/esp-idf/components/console/argtable3/arg_date.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_date.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_date.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_date.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_date.c.obj -c /Users/robert/esp/esp-idf/components/console/argtable3/arg_date.c
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_date.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_console.dir/argtable3/arg_date.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/console/argtable3/arg_date.c > CMakeFiles/__idf_console.dir/argtable3/arg_date.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/console/argtable3/arg_date.c > CMakeFiles/__idf_console.dir/argtable3/arg_date.c.i
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_date.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_console.dir/argtable3/arg_date.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/console/argtable3/arg_date.c -o CMakeFiles/__idf_console.dir/argtable3/arg_date.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/console/argtable3/arg_date.c -o CMakeFiles/__idf_console.dir/argtable3/arg_date.c.s
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_dbl.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/flags.make
-esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_dbl.c.obj: /Users/robert/esp-idf/components/console/argtable3/arg_dbl.c
+esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_dbl.c.obj: /Users/robert/esp/esp-idf/components/console/argtable3/arg_dbl.c
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_dbl.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_dbl.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_dbl.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_dbl.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_dbl.c.obj -c /Users/robert/esp-idf/components/console/argtable3/arg_dbl.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_dbl.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_dbl.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_dbl.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_dbl.c.obj -c /Users/robert/esp/esp-idf/components/console/argtable3/arg_dbl.c
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_dbl.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_console.dir/argtable3/arg_dbl.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/console/argtable3/arg_dbl.c > CMakeFiles/__idf_console.dir/argtable3/arg_dbl.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/console/argtable3/arg_dbl.c > CMakeFiles/__idf_console.dir/argtable3/arg_dbl.c.i
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_dbl.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_console.dir/argtable3/arg_dbl.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/console/argtable3/arg_dbl.c -o CMakeFiles/__idf_console.dir/argtable3/arg_dbl.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/console/argtable3/arg_dbl.c -o CMakeFiles/__idf_console.dir/argtable3/arg_dbl.c.s
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_dstr.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/flags.make
-esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_dstr.c.obj: /Users/robert/esp-idf/components/console/argtable3/arg_dstr.c
+esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_dstr.c.obj: /Users/robert/esp/esp-idf/components/console/argtable3/arg_dstr.c
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_dstr.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_dstr.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_dstr.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_dstr.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_dstr.c.obj -c /Users/robert/esp-idf/components/console/argtable3/arg_dstr.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_dstr.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_dstr.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_dstr.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_dstr.c.obj -c /Users/robert/esp/esp-idf/components/console/argtable3/arg_dstr.c
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_dstr.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_console.dir/argtable3/arg_dstr.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/console/argtable3/arg_dstr.c > CMakeFiles/__idf_console.dir/argtable3/arg_dstr.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/console/argtable3/arg_dstr.c > CMakeFiles/__idf_console.dir/argtable3/arg_dstr.c.i
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_dstr.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_console.dir/argtable3/arg_dstr.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/console/argtable3/arg_dstr.c -o CMakeFiles/__idf_console.dir/argtable3/arg_dstr.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/console/argtable3/arg_dstr.c -o CMakeFiles/__idf_console.dir/argtable3/arg_dstr.c.s
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_end.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/flags.make
-esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_end.c.obj: /Users/robert/esp-idf/components/console/argtable3/arg_end.c
+esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_end.c.obj: /Users/robert/esp/esp-idf/components/console/argtable3/arg_end.c
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_end.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_end.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_end.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_end.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_end.c.obj -c /Users/robert/esp-idf/components/console/argtable3/arg_end.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_end.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_end.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_end.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_end.c.obj -c /Users/robert/esp/esp-idf/components/console/argtable3/arg_end.c
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_end.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_console.dir/argtable3/arg_end.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/console/argtable3/arg_end.c > CMakeFiles/__idf_console.dir/argtable3/arg_end.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/console/argtable3/arg_end.c > CMakeFiles/__idf_console.dir/argtable3/arg_end.c.i
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_end.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_console.dir/argtable3/arg_end.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/console/argtable3/arg_end.c -o CMakeFiles/__idf_console.dir/argtable3/arg_end.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/console/argtable3/arg_end.c -o CMakeFiles/__idf_console.dir/argtable3/arg_end.c.s
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_file.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/flags.make
-esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_file.c.obj: /Users/robert/esp-idf/components/console/argtable3/arg_file.c
+esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_file.c.obj: /Users/robert/esp/esp-idf/components/console/argtable3/arg_file.c
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_file.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_file.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_file.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_file.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_file.c.obj -c /Users/robert/esp-idf/components/console/argtable3/arg_file.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_file.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_file.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_file.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_file.c.obj -c /Users/robert/esp/esp-idf/components/console/argtable3/arg_file.c
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_file.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_console.dir/argtable3/arg_file.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/console/argtable3/arg_file.c > CMakeFiles/__idf_console.dir/argtable3/arg_file.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/console/argtable3/arg_file.c > CMakeFiles/__idf_console.dir/argtable3/arg_file.c.i
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_file.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_console.dir/argtable3/arg_file.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/console/argtable3/arg_file.c -o CMakeFiles/__idf_console.dir/argtable3/arg_file.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/console/argtable3/arg_file.c -o CMakeFiles/__idf_console.dir/argtable3/arg_file.c.s
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_hashtable.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/flags.make
-esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_hashtable.c.obj: /Users/robert/esp-idf/components/console/argtable3/arg_hashtable.c
+esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_hashtable.c.obj: /Users/robert/esp/esp-idf/components/console/argtable3/arg_hashtable.c
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_hashtable.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_hashtable.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_hashtable.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_hashtable.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_hashtable.c.obj -c /Users/robert/esp-idf/components/console/argtable3/arg_hashtable.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_hashtable.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_hashtable.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_hashtable.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_hashtable.c.obj -c /Users/robert/esp/esp-idf/components/console/argtable3/arg_hashtable.c
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_hashtable.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_console.dir/argtable3/arg_hashtable.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/console/argtable3/arg_hashtable.c > CMakeFiles/__idf_console.dir/argtable3/arg_hashtable.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/console/argtable3/arg_hashtable.c > CMakeFiles/__idf_console.dir/argtable3/arg_hashtable.c.i
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_hashtable.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_console.dir/argtable3/arg_hashtable.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/console/argtable3/arg_hashtable.c -o CMakeFiles/__idf_console.dir/argtable3/arg_hashtable.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/console/argtable3/arg_hashtable.c -o CMakeFiles/__idf_console.dir/argtable3/arg_hashtable.c.s
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_int.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/flags.make
-esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_int.c.obj: /Users/robert/esp-idf/components/console/argtable3/arg_int.c
+esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_int.c.obj: /Users/robert/esp/esp-idf/components/console/argtable3/arg_int.c
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_int.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_int.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_int.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_int.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_int.c.obj -c /Users/robert/esp-idf/components/console/argtable3/arg_int.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_int.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_int.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_int.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_int.c.obj -c /Users/robert/esp/esp-idf/components/console/argtable3/arg_int.c
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_int.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_console.dir/argtable3/arg_int.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/console/argtable3/arg_int.c > CMakeFiles/__idf_console.dir/argtable3/arg_int.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/console/argtable3/arg_int.c > CMakeFiles/__idf_console.dir/argtable3/arg_int.c.i
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_int.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_console.dir/argtable3/arg_int.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/console/argtable3/arg_int.c -o CMakeFiles/__idf_console.dir/argtable3/arg_int.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/console/argtable3/arg_int.c -o CMakeFiles/__idf_console.dir/argtable3/arg_int.c.s
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_lit.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/flags.make
-esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_lit.c.obj: /Users/robert/esp-idf/components/console/argtable3/arg_lit.c
+esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_lit.c.obj: /Users/robert/esp/esp-idf/components/console/argtable3/arg_lit.c
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_lit.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_lit.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_lit.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_lit.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_lit.c.obj -c /Users/robert/esp-idf/components/console/argtable3/arg_lit.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_lit.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_lit.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_lit.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_lit.c.obj -c /Users/robert/esp/esp-idf/components/console/argtable3/arg_lit.c
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_lit.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_console.dir/argtable3/arg_lit.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/console/argtable3/arg_lit.c > CMakeFiles/__idf_console.dir/argtable3/arg_lit.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/console/argtable3/arg_lit.c > CMakeFiles/__idf_console.dir/argtable3/arg_lit.c.i
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_lit.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_console.dir/argtable3/arg_lit.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/console/argtable3/arg_lit.c -o CMakeFiles/__idf_console.dir/argtable3/arg_lit.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/console/argtable3/arg_lit.c -o CMakeFiles/__idf_console.dir/argtable3/arg_lit.c.s
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_rem.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/flags.make
-esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_rem.c.obj: /Users/robert/esp-idf/components/console/argtable3/arg_rem.c
+esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_rem.c.obj: /Users/robert/esp/esp-idf/components/console/argtable3/arg_rem.c
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_rem.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_rem.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_rem.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_rem.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_rem.c.obj -c /Users/robert/esp-idf/components/console/argtable3/arg_rem.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_rem.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_rem.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_rem.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_rem.c.obj -c /Users/robert/esp/esp-idf/components/console/argtable3/arg_rem.c
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_rem.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_console.dir/argtable3/arg_rem.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/console/argtable3/arg_rem.c > CMakeFiles/__idf_console.dir/argtable3/arg_rem.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/console/argtable3/arg_rem.c > CMakeFiles/__idf_console.dir/argtable3/arg_rem.c.i
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_rem.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_console.dir/argtable3/arg_rem.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/console/argtable3/arg_rem.c -o CMakeFiles/__idf_console.dir/argtable3/arg_rem.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/console/argtable3/arg_rem.c -o CMakeFiles/__idf_console.dir/argtable3/arg_rem.c.s
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_rex.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/flags.make
-esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_rex.c.obj: /Users/robert/esp-idf/components/console/argtable3/arg_rex.c
+esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_rex.c.obj: /Users/robert/esp/esp-idf/components/console/argtable3/arg_rex.c
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_rex.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_rex.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_rex.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_rex.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_rex.c.obj -c /Users/robert/esp-idf/components/console/argtable3/arg_rex.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_rex.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_rex.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_rex.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_rex.c.obj -c /Users/robert/esp/esp-idf/components/console/argtable3/arg_rex.c
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_rex.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_console.dir/argtable3/arg_rex.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/console/argtable3/arg_rex.c > CMakeFiles/__idf_console.dir/argtable3/arg_rex.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/console/argtable3/arg_rex.c > CMakeFiles/__idf_console.dir/argtable3/arg_rex.c.i
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_rex.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_console.dir/argtable3/arg_rex.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/console/argtable3/arg_rex.c -o CMakeFiles/__idf_console.dir/argtable3/arg_rex.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/console/argtable3/arg_rex.c -o CMakeFiles/__idf_console.dir/argtable3/arg_rex.c.s
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_str.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/flags.make
-esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_str.c.obj: /Users/robert/esp-idf/components/console/argtable3/arg_str.c
+esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_str.c.obj: /Users/robert/esp/esp-idf/components/console/argtable3/arg_str.c
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_str.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_str.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_str.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_str.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_str.c.obj -c /Users/robert/esp-idf/components/console/argtable3/arg_str.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_str.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_str.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_str.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_str.c.obj -c /Users/robert/esp/esp-idf/components/console/argtable3/arg_str.c
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_str.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_console.dir/argtable3/arg_str.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/console/argtable3/arg_str.c > CMakeFiles/__idf_console.dir/argtable3/arg_str.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/console/argtable3/arg_str.c > CMakeFiles/__idf_console.dir/argtable3/arg_str.c.i
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_str.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_console.dir/argtable3/arg_str.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/console/argtable3/arg_str.c -o CMakeFiles/__idf_console.dir/argtable3/arg_str.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/console/argtable3/arg_str.c -o CMakeFiles/__idf_console.dir/argtable3/arg_str.c.s
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_utils.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/flags.make
-esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_utils.c.obj: /Users/robert/esp-idf/components/console/argtable3/arg_utils.c
+esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_utils.c.obj: /Users/robert/esp/esp-idf/components/console/argtable3/arg_utils.c
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_utils.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_utils.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_utils.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_utils.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_utils.c.obj -c /Users/robert/esp-idf/components/console/argtable3/arg_utils.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_utils.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_utils.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/arg_utils.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/arg_utils.c.obj -c /Users/robert/esp/esp-idf/components/console/argtable3/arg_utils.c
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_utils.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_console.dir/argtable3/arg_utils.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/console/argtable3/arg_utils.c > CMakeFiles/__idf_console.dir/argtable3/arg_utils.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/console/argtable3/arg_utils.c > CMakeFiles/__idf_console.dir/argtable3/arg_utils.c.i
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_utils.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_console.dir/argtable3/arg_utils.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/console/argtable3/arg_utils.c -o CMakeFiles/__idf_console.dir/argtable3/arg_utils.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/console/argtable3/arg_utils.c -o CMakeFiles/__idf_console.dir/argtable3/arg_utils.c.s
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/argtable3.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/flags.make
-esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/argtable3.c.obj: /Users/robert/esp-idf/components/console/argtable3/argtable3.c
+esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/argtable3.c.obj: /Users/robert/esp/esp-idf/components/console/argtable3/argtable3.c
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/argtable3.c.obj: esp-idf/console/CMakeFiles/__idf_console.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/argtable3.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/argtable3.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/argtable3.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/argtable3.c.obj -c /Users/robert/esp-idf/components/console/argtable3/argtable3.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/argtable3.c.obj"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/argtable3.c.obj -MF CMakeFiles/__idf_console.dir/argtable3/argtable3.c.obj.d -o CMakeFiles/__idf_console.dir/argtable3/argtable3.c.obj -c /Users/robert/esp/esp-idf/components/console/argtable3/argtable3.c
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/argtable3.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_console.dir/argtable3/argtable3.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/console/argtable3/argtable3.c > CMakeFiles/__idf_console.dir/argtable3/argtable3.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/console/argtable3/argtable3.c > CMakeFiles/__idf_console.dir/argtable3/argtable3.c.i
 
 esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/argtable3.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_console.dir/argtable3/argtable3.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/console/argtable3/argtable3.c -o CMakeFiles/__idf_console.dir/argtable3/argtable3.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/console/argtable3/argtable3.c -o CMakeFiles/__idf_console.dir/argtable3/argtable3.c.s
 
 # Object files for target __idf_console
 __idf_console_OBJECTS = \
 "CMakeFiles/__idf_console.dir/commands.c.obj" \
 "CMakeFiles/__idf_console.dir/esp_console_common.c.obj" \
-"CMakeFiles/__idf_console.dir/esp_console_repl_internal.c.obj" \
 "CMakeFiles/__idf_console.dir/split_argv.c.obj" \
 "CMakeFiles/__idf_console.dir/linenoise/linenoise.c.obj" \
 "CMakeFiles/__idf_console.dir/esp_console_repl_chip.c.obj" \
@@ -380,7 +365,6 @@ __idf_console_EXTERNAL_OBJECTS =
 
 esp-idf/console/libconsole.a: esp-idf/console/CMakeFiles/__idf_console.dir/commands.c.obj
 esp-idf/console/libconsole.a: esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_common.c.obj
-esp-idf/console/libconsole.a: esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_repl_internal.c.obj
 esp-idf/console/libconsole.a: esp-idf/console/CMakeFiles/__idf_console.dir/split_argv.c.obj
 esp-idf/console/libconsole.a: esp-idf/console/CMakeFiles/__idf_console.dir/linenoise/linenoise.c.obj
 esp-idf/console/libconsole.a: esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_repl_chip.c.obj
@@ -400,7 +384,7 @@ esp-idf/console/libconsole.a: esp-idf/console/CMakeFiles/__idf_console.dir/argta
 esp-idf/console/libconsole.a: esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/argtable3.c.obj
 esp-idf/console/libconsole.a: esp-idf/console/CMakeFiles/__idf_console.dir/build.make
 esp-idf/console/libconsole.a: esp-idf/console/CMakeFiles/__idf_console.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Linking C static library libconsole.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking C static library libconsole.a"
 	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && $(CMAKE_COMMAND) -P CMakeFiles/__idf_console.dir/cmake_clean_target.cmake
 	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/__idf_console.dir/link.txt --verbose=$(VERBOSE)
 
@@ -413,6 +397,6 @@ esp-idf/console/CMakeFiles/__idf_console.dir/clean:
 .PHONY : esp-idf/console/CMakeFiles/__idf_console.dir/clean
 
 esp-idf/console/CMakeFiles/__idf_console.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/console /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console/CMakeFiles/__idf_console.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/console /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/console/CMakeFiles/__idf_console.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/console/CMakeFiles/__idf_console.dir/depend
 

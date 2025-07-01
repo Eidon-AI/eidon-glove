@@ -53,7 +53,7 @@ RM = /opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/robert/esp-idf/components/bootloader/subproject
+CMAKE_SOURCE_DIR = /Users/robert/esp/esp-idf/components/bootloader/subproject
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /Users/robert/eidon/eidon-glove/firmware/build/bootloader
@@ -67,7 +67,7 @@ include CMakeFiles/uf2.dir/compiler_depend.make
 include CMakeFiles/uf2.dir/progress.make
 
 CMakeFiles/uf2:
-	/opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -D IDF_PATH=/Users/robert/esp-idf -D "UF2_CMD=/Users/robert/.espressif/python_env/idf6.0_py3.13_env/bin/python;/Users/robert/esp-idf/tools/mkuf2.py;write;--chip;esp32c6" -D "UF2_ARGS=--json;/Users/robert/eidon/eidon-glove/firmware/build/bootloader/flasher_args.json;-o;/Users/robert/eidon/eidon-glove/firmware/build/bootloader/uf2.bin" -P /Users/robert/esp-idf/tools/cmake/run_uf2_cmds.cmake
+	/opt/homebrew/Cellar/cmake/3.31.0/bin/cmake -D IDF_PATH=/Users/robert/esp/esp-idf -D "UF2_CMD=/Users/robert/.espressif/python_env/idf5.4_py3.13_env/bin/python;/Users/robert/esp/esp-idf/tools/mkuf2.py;write;--chip;esp32c6" -D "UF2_ARGS=--json;/Users/robert/eidon/eidon-glove/firmware/build/bootloader/flasher_args.json;-o;/Users/robert/eidon/eidon-glove/firmware/build/bootloader/uf2.bin" -P /Users/robert/esp/esp-idf/tools/cmake/run_uf2_cmds.cmake
 
 CMakeFiles/uf2.dir/codegen:
 .PHONY : CMakeFiles/uf2.dir/codegen
@@ -85,6 +85,6 @@ CMakeFiles/uf2.dir/clean:
 .PHONY : CMakeFiles/uf2.dir/clean
 
 CMakeFiles/uf2.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp-idf/components/bootloader/subproject /Users/robert/esp-idf/components/bootloader/subproject /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles/uf2.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build/bootloader && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/esp/esp-idf/components/bootloader/subproject /Users/robert/esp/esp-idf/components/bootloader/subproject /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader /Users/robert/eidon/eidon-glove/firmware/build/bootloader/CMakeFiles/uf2.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/uf2.dir/depend
 

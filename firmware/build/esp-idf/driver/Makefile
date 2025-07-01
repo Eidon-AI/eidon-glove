@@ -175,6 +175,126 @@ __idf_driver/fast:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/build
 .PHONY : __idf_driver/fast
 
+deprecated/adc_dma_legacy.obj: deprecated/adc_dma_legacy.c.obj
+.PHONY : deprecated/adc_dma_legacy.obj
+
+# target to build an object file
+deprecated/adc_dma_legacy.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/deprecated/adc_dma_legacy.c.obj
+.PHONY : deprecated/adc_dma_legacy.c.obj
+
+deprecated/adc_dma_legacy.i: deprecated/adc_dma_legacy.c.i
+.PHONY : deprecated/adc_dma_legacy.i
+
+# target to preprocess a source file
+deprecated/adc_dma_legacy.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/deprecated/adc_dma_legacy.c.i
+.PHONY : deprecated/adc_dma_legacy.c.i
+
+deprecated/adc_dma_legacy.s: deprecated/adc_dma_legacy.c.s
+.PHONY : deprecated/adc_dma_legacy.s
+
+# target to generate assembly for a file
+deprecated/adc_dma_legacy.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/deprecated/adc_dma_legacy.c.s
+.PHONY : deprecated/adc_dma_legacy.c.s
+
+deprecated/adc_legacy.obj: deprecated/adc_legacy.c.obj
+.PHONY : deprecated/adc_legacy.obj
+
+# target to build an object file
+deprecated/adc_legacy.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/deprecated/adc_legacy.c.obj
+.PHONY : deprecated/adc_legacy.c.obj
+
+deprecated/adc_legacy.i: deprecated/adc_legacy.c.i
+.PHONY : deprecated/adc_legacy.i
+
+# target to preprocess a source file
+deprecated/adc_legacy.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/deprecated/adc_legacy.c.i
+.PHONY : deprecated/adc_legacy.c.i
+
+deprecated/adc_legacy.s: deprecated/adc_legacy.c.s
+.PHONY : deprecated/adc_legacy.s
+
+# target to generate assembly for a file
+deprecated/adc_legacy.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/deprecated/adc_legacy.c.s
+.PHONY : deprecated/adc_legacy.c.s
+
+deprecated/i2s_legacy.obj: deprecated/i2s_legacy.c.obj
+.PHONY : deprecated/i2s_legacy.obj
+
+# target to build an object file
+deprecated/i2s_legacy.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/deprecated/i2s_legacy.c.obj
+.PHONY : deprecated/i2s_legacy.c.obj
+
+deprecated/i2s_legacy.i: deprecated/i2s_legacy.c.i
+.PHONY : deprecated/i2s_legacy.i
+
+# target to preprocess a source file
+deprecated/i2s_legacy.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/deprecated/i2s_legacy.c.i
+.PHONY : deprecated/i2s_legacy.c.i
+
+deprecated/i2s_legacy.s: deprecated/i2s_legacy.c.s
+.PHONY : deprecated/i2s_legacy.s
+
+# target to generate assembly for a file
+deprecated/i2s_legacy.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/deprecated/i2s_legacy.c.s
+.PHONY : deprecated/i2s_legacy.c.s
+
+deprecated/mcpwm_legacy.obj: deprecated/mcpwm_legacy.c.obj
+.PHONY : deprecated/mcpwm_legacy.obj
+
+# target to build an object file
+deprecated/mcpwm_legacy.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/deprecated/mcpwm_legacy.c.obj
+.PHONY : deprecated/mcpwm_legacy.c.obj
+
+deprecated/mcpwm_legacy.i: deprecated/mcpwm_legacy.c.i
+.PHONY : deprecated/mcpwm_legacy.i
+
+# target to preprocess a source file
+deprecated/mcpwm_legacy.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/deprecated/mcpwm_legacy.c.i
+.PHONY : deprecated/mcpwm_legacy.c.i
+
+deprecated/mcpwm_legacy.s: deprecated/mcpwm_legacy.c.s
+.PHONY : deprecated/mcpwm_legacy.s
+
+# target to generate assembly for a file
+deprecated/mcpwm_legacy.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/deprecated/mcpwm_legacy.c.s
+.PHONY : deprecated/mcpwm_legacy.c.s
+
+deprecated/pcnt_legacy.obj: deprecated/pcnt_legacy.c.obj
+.PHONY : deprecated/pcnt_legacy.obj
+
+# target to build an object file
+deprecated/pcnt_legacy.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/deprecated/pcnt_legacy.c.obj
+.PHONY : deprecated/pcnt_legacy.c.obj
+
+deprecated/pcnt_legacy.i: deprecated/pcnt_legacy.c.i
+.PHONY : deprecated/pcnt_legacy.i
+
+# target to preprocess a source file
+deprecated/pcnt_legacy.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/deprecated/pcnt_legacy.c.i
+.PHONY : deprecated/pcnt_legacy.c.i
+
+deprecated/pcnt_legacy.s: deprecated/pcnt_legacy.c.s
+.PHONY : deprecated/pcnt_legacy.s
+
+# target to generate assembly for a file
+deprecated/pcnt_legacy.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/deprecated/pcnt_legacy.c.s
+.PHONY : deprecated/pcnt_legacy.c.s
+
 deprecated/rmt_legacy.obj: deprecated/rmt_legacy.c.obj
 .PHONY : deprecated/rmt_legacy.obj
 
@@ -199,6 +319,30 @@ deprecated/rmt_legacy.c.s:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/deprecated/rmt_legacy.c.s
 .PHONY : deprecated/rmt_legacy.c.s
 
+deprecated/rtc_temperature_legacy.obj: deprecated/rtc_temperature_legacy.c.obj
+.PHONY : deprecated/rtc_temperature_legacy.obj
+
+# target to build an object file
+deprecated/rtc_temperature_legacy.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/deprecated/rtc_temperature_legacy.c.obj
+.PHONY : deprecated/rtc_temperature_legacy.c.obj
+
+deprecated/rtc_temperature_legacy.i: deprecated/rtc_temperature_legacy.c.i
+.PHONY : deprecated/rtc_temperature_legacy.i
+
+# target to preprocess a source file
+deprecated/rtc_temperature_legacy.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/deprecated/rtc_temperature_legacy.c.i
+.PHONY : deprecated/rtc_temperature_legacy.c.i
+
+deprecated/rtc_temperature_legacy.s: deprecated/rtc_temperature_legacy.c.s
+.PHONY : deprecated/rtc_temperature_legacy.s
+
+# target to generate assembly for a file
+deprecated/rtc_temperature_legacy.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/deprecated/rtc_temperature_legacy.c.s
+.PHONY : deprecated/rtc_temperature_legacy.c.s
+
 deprecated/sigma_delta_legacy.obj: deprecated/sigma_delta_legacy.c.obj
 .PHONY : deprecated/sigma_delta_legacy.obj
 
@@ -222,6 +366,30 @@ deprecated/sigma_delta_legacy.s: deprecated/sigma_delta_legacy.c.s
 deprecated/sigma_delta_legacy.c.s:
 	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/deprecated/sigma_delta_legacy.c.s
 .PHONY : deprecated/sigma_delta_legacy.c.s
+
+deprecated/timer_legacy.obj: deprecated/timer_legacy.c.obj
+.PHONY : deprecated/timer_legacy.obj
+
+# target to build an object file
+deprecated/timer_legacy.c.obj:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/deprecated/timer_legacy.c.obj
+.PHONY : deprecated/timer_legacy.c.obj
+
+deprecated/timer_legacy.i: deprecated/timer_legacy.c.i
+.PHONY : deprecated/timer_legacy.i
+
+# target to preprocess a source file
+deprecated/timer_legacy.c.i:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/deprecated/timer_legacy.c.i
+.PHONY : deprecated/timer_legacy.c.i
+
+deprecated/timer_legacy.s: deprecated/timer_legacy.c.s
+.PHONY : deprecated/timer_legacy.s
+
+# target to generate assembly for a file
+deprecated/timer_legacy.c.s:
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/deprecated/timer_legacy.c.s
+.PHONY : deprecated/timer_legacy.c.s
 
 i2c/i2c.obj: i2c/i2c.c.obj
 .PHONY : i2c/i2c.obj
@@ -284,12 +452,33 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... __idf_driver"
+	@echo "... deprecated/adc_dma_legacy.obj"
+	@echo "... deprecated/adc_dma_legacy.i"
+	@echo "... deprecated/adc_dma_legacy.s"
+	@echo "... deprecated/adc_legacy.obj"
+	@echo "... deprecated/adc_legacy.i"
+	@echo "... deprecated/adc_legacy.s"
+	@echo "... deprecated/i2s_legacy.obj"
+	@echo "... deprecated/i2s_legacy.i"
+	@echo "... deprecated/i2s_legacy.s"
+	@echo "... deprecated/mcpwm_legacy.obj"
+	@echo "... deprecated/mcpwm_legacy.i"
+	@echo "... deprecated/mcpwm_legacy.s"
+	@echo "... deprecated/pcnt_legacy.obj"
+	@echo "... deprecated/pcnt_legacy.i"
+	@echo "... deprecated/pcnt_legacy.s"
 	@echo "... deprecated/rmt_legacy.obj"
 	@echo "... deprecated/rmt_legacy.i"
 	@echo "... deprecated/rmt_legacy.s"
+	@echo "... deprecated/rtc_temperature_legacy.obj"
+	@echo "... deprecated/rtc_temperature_legacy.i"
+	@echo "... deprecated/rtc_temperature_legacy.s"
 	@echo "... deprecated/sigma_delta_legacy.obj"
 	@echo "... deprecated/sigma_delta_legacy.i"
 	@echo "... deprecated/sigma_delta_legacy.s"
+	@echo "... deprecated/timer_legacy.obj"
+	@echo "... deprecated/timer_legacy.i"
+	@echo "... deprecated/timer_legacy.s"
 	@echo "... i2c/i2c.obj"
 	@echo "... i2c/i2c.i"
 	@echo "... i2c/i2c.s"

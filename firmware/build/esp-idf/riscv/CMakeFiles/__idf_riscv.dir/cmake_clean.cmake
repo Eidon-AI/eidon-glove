@@ -5,8 +5,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/__idf_riscv.dir/interrupt.c.obj.d"
   "CMakeFiles/__idf_riscv.dir/interrupt_plic.c.obj"
   "CMakeFiles/__idf_riscv.dir/interrupt_plic.c.obj.d"
-  "CMakeFiles/__idf_riscv.dir/rv_utils.c.obj"
-  "CMakeFiles/__idf_riscv.dir/rv_utils.c.obj.d"
   "CMakeFiles/__idf_riscv.dir/vectors.S.obj"
   "CMakeFiles/__idf_riscv.dir/vectors_intc.S.obj"
   "libriscv.a"

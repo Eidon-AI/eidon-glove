@@ -73,46 +73,46 @@ esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/codegen:
 .PHONY : esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/codegen
 
 esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/default_event_loop.c.obj: esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/flags.make
-esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/default_event_loop.c.obj: /Users/robert/esp-idf/components/esp_event/default_event_loop.c
+esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/default_event_loop.c.obj: /Users/robert/esp/esp-idf/components/esp_event/default_event_loop.c
 esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/default_event_loop.c.obj: esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/default_event_loop.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_event && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/default_event_loop.c.obj -MF CMakeFiles/__idf_esp_event.dir/default_event_loop.c.obj.d -o CMakeFiles/__idf_esp_event.dir/default_event_loop.c.obj -c /Users/robert/esp-idf/components/esp_event/default_event_loop.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_event && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/default_event_loop.c.obj -MF CMakeFiles/__idf_esp_event.dir/default_event_loop.c.obj.d -o CMakeFiles/__idf_esp_event.dir/default_event_loop.c.obj -c /Users/robert/esp/esp-idf/components/esp_event/default_event_loop.c
 
 esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/default_event_loop.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_event.dir/default_event_loop.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_event && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_event/default_event_loop.c > CMakeFiles/__idf_esp_event.dir/default_event_loop.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_event && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_event/default_event_loop.c > CMakeFiles/__idf_esp_event.dir/default_event_loop.c.i
 
 esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/default_event_loop.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_event.dir/default_event_loop.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_event && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_event/default_event_loop.c -o CMakeFiles/__idf_esp_event.dir/default_event_loop.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_event && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_event/default_event_loop.c -o CMakeFiles/__idf_esp_event.dir/default_event_loop.c.s
 
 esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/esp_event.c.obj: esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/flags.make
-esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/esp_event.c.obj: /Users/robert/esp-idf/components/esp_event/esp_event.c
+esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/esp_event.c.obj: /Users/robert/esp/esp-idf/components/esp_event/esp_event.c
 esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/esp_event.c.obj: esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/esp_event.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_event && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/esp_event.c.obj -MF CMakeFiles/__idf_esp_event.dir/esp_event.c.obj.d -o CMakeFiles/__idf_esp_event.dir/esp_event.c.obj -c /Users/robert/esp-idf/components/esp_event/esp_event.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_event && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/esp_event.c.obj -MF CMakeFiles/__idf_esp_event.dir/esp_event.c.obj.d -o CMakeFiles/__idf_esp_event.dir/esp_event.c.obj -c /Users/robert/esp/esp-idf/components/esp_event/esp_event.c
 
 esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/esp_event.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_event.dir/esp_event.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_event && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_event/esp_event.c > CMakeFiles/__idf_esp_event.dir/esp_event.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_event && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_event/esp_event.c > CMakeFiles/__idf_esp_event.dir/esp_event.c.i
 
 esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/esp_event.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_event.dir/esp_event.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_event && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_event/esp_event.c -o CMakeFiles/__idf_esp_event.dir/esp_event.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_event && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_event/esp_event.c -o CMakeFiles/__idf_esp_event.dir/esp_event.c.s
 
 esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/esp_event_private.c.obj: esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/flags.make
-esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/esp_event_private.c.obj: /Users/robert/esp-idf/components/esp_event/esp_event_private.c
+esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/esp_event_private.c.obj: /Users/robert/esp/esp-idf/components/esp_event/esp_event_private.c
 esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/esp_event_private.c.obj: esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/robert/eidon/eidon-glove/firmware/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/esp_event_private.c.obj"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_event && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/esp_event_private.c.obj -MF CMakeFiles/__idf_esp_event.dir/esp_event_private.c.obj.d -o CMakeFiles/__idf_esp_event.dir/esp_event_private.c.obj -c /Users/robert/esp-idf/components/esp_event/esp_event_private.c
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_event && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/esp_event_private.c.obj -MF CMakeFiles/__idf_esp_event.dir/esp_event_private.c.obj.d -o CMakeFiles/__idf_esp_event.dir/esp_event_private.c.obj -c /Users/robert/esp/esp-idf/components/esp_event/esp_event_private.c
 
 esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/esp_event_private.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_esp_event.dir/esp_event_private.c.i"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_event && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp-idf/components/esp_event/esp_event_private.c > CMakeFiles/__idf_esp_event.dir/esp_event_private.c.i
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_event && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/robert/esp/esp-idf/components/esp_event/esp_event_private.c > CMakeFiles/__idf_esp_event.dir/esp_event_private.c.i
 
 esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/esp_event_private.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_esp_event.dir/esp_event_private.c.s"
-	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_event && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp-idf/components/esp_event/esp_event_private.c -o CMakeFiles/__idf_esp_event.dir/esp_event_private.c.s
+	cd /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_event && /Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/robert/esp/esp-idf/components/esp_event/esp_event_private.c -o CMakeFiles/__idf_esp_event.dir/esp_event_private.c.s
 
 # Object files for target __idf_esp_event
 __idf_esp_event_OBJECTS = \
@@ -141,6 +141,6 @@ esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/clean:
 .PHONY : esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/clean
 
 esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/depend:
-	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp-idf/components/esp_event /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_event /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/robert/eidon/eidon-glove/firmware/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/robert/eidon/eidon-glove/firmware /Users/robert/esp/esp-idf/components/esp_event /Users/robert/eidon/eidon-glove/firmware/build /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_event /Users/robert/eidon/eidon-glove/firmware/build/esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/depend
 
