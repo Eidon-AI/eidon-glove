@@ -42,7 +42,7 @@ static const uint8_t hid_sensor_descriptor[] = {
 
 // Report structure for sensor data
 typedef struct __attribute__((packed)) {
-    uint8_t report_id;      // Report ID = 1
+    // uint8_t report_id;      // Report ID = 1
     uint16_t quaternion[4]; // w, x, y, z components (16-bit each)
     uint8_t buttons;        // Bits 0-1: buttons, Bits 2-7: padding
 } sensor_report_t;

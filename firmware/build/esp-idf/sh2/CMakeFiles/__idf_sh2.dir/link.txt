@@ -1,2 +1,0 @@
-/Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-ar qc libsh2.a CMakeFiles/__idf_sh2.dir/sh2.c.obj CMakeFiles/__idf_sh2.dir/sh2_SensorValue.c.obj CMakeFiles/__idf_sh2.dir/sh2_util.c.obj CMakeFiles/__idf_sh2.dir/shtp.c.obj CMakeFiles/__idf_sh2.dir/euler.c.obj
-/Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-ranlib libsh2.a

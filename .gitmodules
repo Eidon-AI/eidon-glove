@@ -1,0 +1,4 @@
+ 
+[submodule "firmware/components/sh2/src"]
+	path = firmware/components/sh2/src
+	url = https://github.com/ceva-dsp/sh2.git

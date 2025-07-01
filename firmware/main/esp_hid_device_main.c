@@ -41,11 +41,13 @@
 
 #include "esp_hidd.h"
 #include "esp_hid_gap.h"
-#include "bno085_sh2.h"
+#include "adafruit_bno08x.h"
 #include "sensor_descriptor.h"
 #include "esp_efuse.h"
 
 static const char *TAG = "HID_DEV_DEMO";
+
+#define INPUT_REPORT_ID 1
 
 // Firmware version information
 #define FIRMWARE_VERSION_MAJOR   1
@@ -702,7 +704,7 @@ void ble_hid_sensor_task(void *pvParameters)
     vTaskDelay(pdMS_TO_TICKS(1000));  // Wait 1 second
     
     sensor_report_t report = {0};
-    report.report_id = 1;
+    // report.report_id = 1;
     report.buttons = 0; // No buttons pressed initially
     
     bno085_quaternion_t quat;
@@ -723,7 +725,7 @@ void ble_hid_sensor_task(void *pvParameters)
                     memcpy(report.quaternion, temp_quaternion, sizeof(temp_quaternion));
                     
                     // Send HID report
-                    esp_hidd_dev_input_set(s_ble_hid_param.hid_dev, 0, report.report_id, 
+                    esp_hidd_dev_input_set(s_ble_hid_param.hid_dev, 0, INPUT_REPORT_ID, 
                                          (uint8_t*)&report, sizeof(report));
                     
                     ESP_LOGD(TAG, "Quat: w=%.3f, x=%.3f, y=%.3f, z=%.3f", 
@@ -747,7 +749,7 @@ void ble_hid_sensor_task(void *pvParameters)
             memcpy(report.quaternion, temp_quaternion, sizeof(temp_quaternion));
             
             // Send HID report
-            esp_hidd_dev_input_set(s_ble_hid_param.hid_dev, 0, report.report_id, 
+            esp_hidd_dev_input_set(s_ble_hid_param.hid_dev, 0, INPUT_REPORT_ID, 
                                  (uint8_t*)&report, sizeof(report));
             
             ESP_LOGD(TAG, "Demo Quat: w=%.3f, x=%.3f, y=%.3f, z=%.3f", 
@@ -770,7 +772,7 @@ void ble_hid_demo_task(void *pvParameters)
 
 // HID report structure for sensor data (exactly 9 bytes)
 typedef struct {
-    uint8_t report_id;      // Report ID (1)
+    // uint8_t report_id;      // Report ID (1)
     uint16_t quaternion[4]; // 4 quaternion components (w, x, y, z) as 16-bit values
     uint8_t buttons;        // 8 button bits (packed into 1 byte)
 } __attribute__((packed)) sensor_hid_report_t;
@@ -780,8 +782,8 @@ static void bno085_task(void *pvParameters)
 {
     ESP_LOGI(TAG, "BNO085 task started");
     
-    // Initialize BNO085 with SH2 library
-    esp_err_t ret = bno085_sh2_init();
+    // Initialize BNO085 with Adafruit-style wrapper
+    esp_err_t ret = adafruit_bno08x_init();
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Failed to initialize BNO085");
         vTaskDelete(NULL);
@@ -789,40 +791,43 @@ static void bno085_task(void *pvParameters)
     }
     
     // Enable game rotation vector at 50Hz (20ms = 20000us)
-    ret = bno085_sh2_enable_game_rotation_vector(20000);
+    ret = adafruit_bno08x_enable_game_rotation_vector(20000);
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Failed to enable game rotation vector");
-        bno085_sh2_deinit();
+        adafruit_bno08x_deinit();
         vTaskDelete(NULL);
         return;
     }
     
-    ESP_LOGI(TAG, "BNO085 initialized successfully, starting sensor loop");
+    ESP_LOGI(TAG, "BNO085 initialized successfully with Adafruit-style wrapper, starting sensor loop");
     
     sensor_hid_report_t report = {0};
-    report.report_id = 1;
+    // report.report_id = 1;
     report.buttons = 0;  // No buttons pressed
     
     while (1) {
         // Service the sensor (handles SHTP communication)
-        ret = bno085_sh2_service();
-        if (ret == ESP_OK && bno085_sh2_has_new_quaternion()) {
-            bno085_quat_t quat;
-            ret = bno085_sh2_get_quaternion(&quat);
+        ret = adafruit_bno08x_service();
+        if (ret == ESP_OK && adafruit_bno08x_has_new_quaternion()) {
+            sh2_RotationVector_t quat;
+            ret = adafruit_bno08x_get_quaternion(&quat);
             if (ret == ESP_OK) {
+                // Apply coordinate system transformation to fix yaw/pitch swapping
+                adafruit_bno08x_transform_coordinate_system(&quat);
+                
                 // Convert float quaternion to uint16_t for HID report
                 // Scale from [-1, 1] to [0, 65535]
-                report.quaternion[0] = (uint16_t)((quat.real + 1.0f) * 32767.5f);
-                report.quaternion[1] = (uint16_t)((quat.i + 1.0f) * 32767.5f);
-                report.quaternion[2] = (uint16_t)((quat.j + 1.0f) * 32767.5f);
-                report.quaternion[3] = (uint16_t)((quat.k + 1.0f) * 32767.5f);
-                
+                report.quaternion[0] = (uint16_t)((quat.i + 1.0f) * 32767.5f);     // x
+                report.quaternion[1] = (uint16_t)((quat.j + 1.0f) * 32767.5f);     // y
+                report.quaternion[2] = (uint16_t)((quat.k + 1.0f) * 32767.5f);     // z
+                report.quaternion[3] = (uint16_t)((quat.real + 1.0f) * 32767.5f);  // w
+
                 // Send HID report if connected (try both BOOT and REPORT modes)
                 if (s_ble_hid_param.hid_dev) {
-                    esp_hidd_dev_input_set(s_ble_hid_param.hid_dev, 0, 1, (uint8_t*)&report, sizeof(report));
+                    esp_hidd_dev_input_set(s_ble_hid_param.hid_dev, 0, INPUT_REPORT_ID, (uint8_t*)&report, sizeof(report));
                     
-                    ESP_LOGI(TAG, "HID Sensor Report sent: Quat: w=%.3f, x=%.3f, y=%.3f, z=%.3f (acc=%d) mode=%d", 
-                             quat.real, quat.i, quat.j, quat.k, quat.accuracy, s_ble_hid_param.protocol_mode);
+                    ESP_LOGI(TAG, "HID Sensor Report sent: Quat: w=%.3f, x=%.3f, y=%.3f, z=%.3f mode=%d", 
+                             quat.real, quat.i, quat.j, quat.k, s_ble_hid_param.protocol_mode);
                 } else {
                     ESP_LOGW(TAG, "HID device not connected");
                 }

@@ -8,3 +8,5 @@
 
 # macOS
 .DS_Store
+
+firmware/build/
