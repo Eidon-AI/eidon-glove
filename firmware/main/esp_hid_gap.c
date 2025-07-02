@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2021-2024 Espressif Systems (Shanghai) CO LTD
+ * SPDX-FileCopyrightText: 2024-2025 Solidic Labs - Eidon AI
  *
  * SPDX-License-Identifier: Unlicense OR CC0-1.0
  */

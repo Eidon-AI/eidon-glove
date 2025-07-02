@@ -583,9 +583,12 @@ CONFIG_PARTITION_TABLE_MD5=y
 # end of Partition Table
 
 #
-# HID Example Configuration
+# Eidon Device Configuration
 #
-# end of HID Example Configuration
+CONFIG_EXAMPLE_TRACKER_ENABLE=y
+# CONFIG_EXAMPLE_GLOVE_ENABLE is not set
+CONFIG_EXAMPLE_HID_DEVICE_ROLE=1
+# end of Eidon Device Configuration
 
 #
 # Compiler options
@@ -881,6 +884,8 @@ CONFIG_BT_BLE_42_SCAN_EN=y
 # CONFIG_BT_BLE_HIGH_DUTY_ADV_INTERVAL is not set
 # CONFIG_BT_ABORT_WHEN_ALLOCATION_FAILS is not set
 # end of Bluedroid Options
+
+CONFIG_BT_NIMBLE_HID_SERVICE=y
 
 #
 # Controller Options

@@ -1,10 +1,16 @@
-#ifndef ADAFRUIT_BNO085_H
-#define ADAFRUIT_BNO085_H
+#ifndef IMU_H
+#define IMU_H
 
 #include <stdint.h>
 #include <stdbool.h>
 #include "esp_err.h"
 #include "sh2_SensorValue.h"
+
+// BNO085 I2C Configuration
+#define I2C_SCL  18   // GPIO 18 for SCL
+#define I2C_SDA  20   // GPIO 20 for SDA
+#define I2C_FREQ 100000
+#define I2C_ADDR 0x4B
 
 // Initialize the BNO085 sensor using Adafruit-style approach
 esp_err_t adafruit_bno08x_init(void);
@@ -31,4 +37,7 @@ bool adafruit_bno08x_was_reset(void);
 // This transforms from BNO085's coordinate system to the expected application coordinate system
 void adafruit_bno08x_transform_coordinate_system(sh2_RotationVector_t *quat);
 
-#endif // ADAFRUIT_BNO085_H 
+// Reset the IMU sensor (hardware reset via I2C)
+esp_err_t adafruit_bno08x_reset(void);
+
+#endif //IMU_H 

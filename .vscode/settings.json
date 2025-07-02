@@ -19,13 +19,25 @@
   "files.associations": {
     "*.h": "c",
     "*.c": "c",
-    "*.cpp": "cpp",
-    "*.hpp": "cpp"
+    "*.hpp": "cpp",
+    "*.cpp": "cpp"
   },
   "C_Cpp.intelliSenseEngine": "default",
-  "C_Cpp.default.compilerPath": "~/.espressif/tools/riscv32-esp-elf/13.2.0_20240530/riscv32-esp-elf/bin/riscv32-esp-elf-gcc",
-  "C_Cpp.default.includePath": [
-    "${workspaceFolder}/firmware/main",
-    "~/esp-idf/components/**"
-  ]
+  "C_Cpp.intelliSenseEngineFallback": "enabled",
+  "C_Cpp.errorSquiggles": "enabled",
+  "C_Cpp.warningSquiggles": "enabled",
+  "C_Cpp.includePath": [
+    "${workspaceFolder}/**",
+    "${workspaceFolder}/firmware/**",
+    "${workspaceFolder}/firmware/main/**",
+    "${workspaceFolder}/firmware/components/**",
+    "/Users/robert/esp/esp-idf/components/**"
+  ],
+  "C_Cpp.defines": [
+    "ESP_PLATFORM",
+    "CONFIG_IDF_TARGET_ESP32C6"
+  ],
+  "C_Cpp.compilerPath": "/Users/robert/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc",
+  "C_Cpp.cStandard": "c17",
+  "C_Cpp.cppStandard": "c++17"
 }

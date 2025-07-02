@@ -3799,7 +3799,7 @@ function addGlobalCalibrationButton() {
 
 // Send calibration command (reportId 1, value 1) to one or all devices
 async function calibrateDevice(deviceId = null) {
-    const REPORT_ID = 1;
+    const REPORT_ID = 2;
     const payload = new Uint8Array([1]);
 
     // Helper to send to a specific HIDDevice instance

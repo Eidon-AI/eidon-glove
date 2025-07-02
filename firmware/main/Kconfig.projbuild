@@ -1,4 +1,4 @@
-menu "HID Example Configuration"
+menu "Eidon Device Configuration"
     config EXAMPLE_SSP_ENABLED
         bool "Secure Simple Pairing"
         depends on BT_CLASSIC_ENABLED
@@ -8,31 +8,28 @@ menu "HID Example Configuration"
             Bluedroid will only support Legacy Pairing
 
     choice EXAMPLE_HID_DEVICE_ROLE
-        prompt "HID Device Role"
-        depends on BT_NIMBLE_ENABLED
-        default EXAMPLE_MEDIA_ENABLE
+        prompt "Eidon Device Type"
+        default EXAMPLE_TRACKER_ENABLE
         help
-            Three Supported Roles for Device
-            - Media Device
-            - Keyboard
-            - Mouse
+            Select the type of Eidon device
+            - Tracker: Basic orientation sensor
+            - Glove: Extended sensor array (future)
 
-        config EXAMPLE_MEDIA_ENABLE
+        config EXAMPLE_TRACKER_ENABLE
             select BT_NIMBLE_HID_SERVICE
-            bool "Enable Media Device"
+            bool "Eidon Tracker"
+            help
+                Basic orientation tracking device with IMU sensor
 
-        config EXAMPLE_KBD_ENABLE
+        config EXAMPLE_GLOVE_ENABLE
             select BT_NIMBLE_HID_SERVICE
-            bool "Enable Keyboard Device"
-
-        config EXAMPLE_MOUSE_ENABLE
-            select BT_NIMBLE_HID_SERVICE
-            bool "Enable Mouse Device"
+            bool "Eidon Glove"
+            help
+                Extended sensor array device (currently same as Tracker)
     endchoice
 
     config EXAMPLE_HID_DEVICE_ROLE
         int
-        default 1 if EXAMPLE_MEDIA_ENABLE
-        default 2 if EXAMPLE_KBD_ENABLE
-        default 3 if EXAMPLE_MOUSE_ENABLE
+        default 1 if EXAMPLE_TRACKER_ENABLE
+        default 2 if EXAMPLE_GLOVE_ENABLE
 endmenu

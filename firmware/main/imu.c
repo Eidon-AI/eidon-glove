@@ -3,7 +3,7 @@
  * Based on Adafruit_BNO08x library but rewritten in C for ESP-IDF
  */
 
-#include "adafruit_bno08x.h"
+#include "imu.h"
 #include "driver/i2c_master.h"
 #include "esp_log.h"
 #include "esp_timer.h"
@@ -14,13 +14,13 @@
 #include "sh2_SensorValue.h"
 #include "sh2_err.h"
 
-static const char *TAG = "ADAFRUIT_BNO08X";
+static const char *TAG = "IMU";
 
 // I2C Configuration
 #define I2C_MASTER_NUM I2C_NUM_0
-#define I2C_MASTER_FREQ_HZ 100000
+#define I2C_MASTER_FREQ_HZ I2C_FREQ
 #define I2C_MASTER_TIMEOUT_MS 100
-#define BNO085_I2C_ADDR 0x4B  // Default Adafruit address
+#define BNO085_I2C_ADDR I2C_ADDR
 
 // Static variables
 static i2c_master_bus_handle_t i2c_bus = NULL;
@@ -206,8 +206,8 @@ esp_err_t adafruit_bno08x_init(void) {
     // Configure I2C bus
     i2c_master_bus_config_t bus_config = {
         .i2c_port = I2C_MASTER_NUM,
-        .sda_io_num = GPIO_NUM_20,
-        .scl_io_num = GPIO_NUM_18,
+        .sda_io_num = I2C_SDA,
+        .scl_io_num = I2C_SCL,
         .clk_source = I2C_CLK_SRC_DEFAULT,
         .glitch_ignore_cnt = 7,
         .flags.enable_internal_pullup = true,
@@ -389,4 +389,34 @@ void adafruit_bno08x_transform_coordinate_system(sh2_RotationVector_t *quat) {
     quat->i = -x;    // x becomes -x (negate)
     quat->j = -y;    // y becomes -y (negate)
     quat->k = z;     // z stays the same
+}
+
+// Reset the IMU sensor (disable and re-enable game rotation vector)
+esp_err_t adafruit_bno08x_reset(void) {
+    ESP_LOGI(TAG, "Resetting IMU...");
+    
+    if (!sensor_initialized) {
+        ESP_LOGE(TAG, "IMU not initialized");
+        return ESP_ERR_INVALID_STATE;
+    }
+    
+    // Disable game rotation vector report
+    esp_err_t ret = adafruit_bno08x_enable_game_rotation_vector(0);
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to disable game rotation vector: %s", esp_err_to_name(ret));
+        return ret;
+    }
+    
+    // Wait 100ms as in the original code
+    vTaskDelay(pdMS_TO_TICKS(100));
+    
+    // Re-enable game rotation vector at 50Hz (20ms = 10000us)
+    ret = adafruit_bno08x_enable_game_rotation_vector(10000);
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to re-enable game rotation vector: %s", esp_err_to_name(ret));
+        return ret;
+    }
+    
+    ESP_LOGI(TAG, "IMU reset completed successfully");
+    return ESP_OK;
 } 
