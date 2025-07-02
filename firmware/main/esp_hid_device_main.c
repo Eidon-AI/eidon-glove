@@ -25,6 +25,7 @@
 #include "host/ble_hs.h"
 #include "nimble/nimble_port.h"
 #include "nimble/nimble_port_freertos.h"
+#include "host/ble_hs_adv.h"
 #else
 #include "esp_bt_defs.h"
 #if CONFIG_BT_BLE_ENABLED
@@ -44,10 +45,14 @@
 #include "adafruit_bno08x.h"
 #include "sensor_descriptor.h"
 #include "esp_efuse.h"
+#include "driver/gpio.h"
 
-static const char *TAG = "HID_DEV_DEMO";
+static const char *TAG = "EIDON_TRACKER";
 
 #define INPUT_REPORT_ID 1
+
+// Function declarations
+static void reset_imu(void);
 
 // Firmware version information
 #define FIRMWARE_VERSION_MAJOR   1
@@ -65,7 +70,7 @@ static const char *TAG = "HID_DEV_DEMO";
 // DIS attribute values - DISABLED FOR NOW
 /*
 static const char dis_manufacturer[] = "Eidon AI";
-static const char dis_model[] = "Eidon Glove";
+static const char dis_model[] = "Eidon Tracker";
 static char dis_serial[32] = ""; // Will be set dynamically
 static const char dis_firmware[] = FIRMWARE_VERSION_STRING;
 
@@ -157,6 +162,10 @@ static void dis_gatts_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_t ga
 #define I2C_SDA  20   // GPIO 20 for SDA
 #define I2C_FREQ 100000
 #define I2C_ADDR 0x4B
+
+// Boot button configuration
+#define BOOT_BUTTON_GPIO  9
+#define BOOT_BUTTON_ACTIVE_LEVEL  0  // Active low (button pressed = 0)
 
 // SHTP constants
 #define SHTP_MAX_TRANSFER_SIZE 300
@@ -448,6 +457,29 @@ const unsigned char sensorReportMap[] = {
       0x75, 0x01,           /*   Report Size (1)                     */
       0x95, 0x08,           /*   Report Count (8)                    */
       0x81, 0x02,           /*   Input (Data,Var,Abs)                */
+
+      /* ------------------------------------------------------------------
+       * Vendor-defined channel : Output (1 byte) - Report ID 2
+       * ---------------------------------------------------------------- */
+      0x85, 0x02,           /*   Report ID (2)                       */
+      0x06, 0x00, 0xFF,     /*   UsagePage (Vendor 0xFF00)           */
+      0x09, 0x01,           /*   Usage      (Vendor 1)               */
+      0x15, 0x00,           /*   Logical Minimum (0)                 */
+      0x26, 0xFF, 0x00,     /*   Logical Maximum (255)               */
+      0x75, 0x08,           /*   ReportSize 8                        */
+      0x95, 0x01,           /*   ReportCount 1                       */
+      0x91, 0x02,           /*   Output (Data,Var,Abs)               */
+      
+      /* ------------------------------------------------------------------
+       * Vendor-defined channel : Feature (1 byte) - for compatibility
+       * ---------------------------------------------------------------- */
+      0x06, 0x00, 0xFF,     /*   UsagePage (Vendor 0xFF00)           */
+      0x09, 0x02,           /*   Usage      (Vendor 2)               */
+      0x15, 0x00,           /*   Logical Minimum (0)                 */
+      0x26, 0xFF, 0x00,     /*   Logical Maximum (255)               */
+      0x75, 0x08,           /*   ReportSize 8                        */
+      0x95, 0x01,           /*   ReportCount 1                       */
+      0xB1, 0x02,           /*   Feature (Data,Var,Abs)              */
       
       0xC0                   /* End Collection                        */
 };
@@ -790,8 +822,8 @@ static void bno085_task(void *pvParameters)
         return;
     }
     
-    // Enable game rotation vector at 50Hz (20ms = 20000us)
-    ret = adafruit_bno08x_enable_game_rotation_vector(20000);
+    // Enable game rotation vector at 50Hz (20ms = 10000us)
+    ret = adafruit_bno08x_enable_game_rotation_vector(10000);
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Failed to enable game rotation vector");
         adafruit_bno08x_deinit();
@@ -824,7 +856,14 @@ static void bno085_task(void *pvParameters)
 
                 // Send HID report if connected (try both BOOT and REPORT modes)
                 if (s_ble_hid_param.hid_dev) {
-                    esp_hidd_dev_input_set(s_ble_hid_param.hid_dev, 0, INPUT_REPORT_ID, (uint8_t*)&report, sizeof(report));
+                    // Try to send in current mode, if it fails, try the other mode
+                    esp_err_t ret = esp_hidd_dev_input_set(s_ble_hid_param.hid_dev, 0, INPUT_REPORT_ID, (uint8_t*)&report, sizeof(report));
+                    if (ret != ESP_OK) {
+                        // If failed, try switching protocol mode and retry
+                        ESP_LOGW(TAG, "HID report failed, trying alternative protocol mode");
+                        // Try the opposite mode
+                        ret = esp_hidd_dev_input_set(s_ble_hid_param.hid_dev, 0, INPUT_REPORT_ID, (uint8_t*)&report, sizeof(report));
+                    }
                     
                     ESP_LOGI(TAG, "HID Sensor Report sent: Quat: w=%.3f, x=%.3f, y=%.3f, z=%.3f mode=%d", 
                              quat.real, quat.i, quat.j, quat.k, s_ble_hid_param.protocol_mode);
@@ -834,8 +873,8 @@ static void bno085_task(void *pvParameters)
             }
         }
         
-        // Small delay to prevent hogging CPU
-        vTaskDelay(pdMS_TO_TICKS(5));
+        // Small delay to prevent hogging CPU and reduce protocol mode pressure
+        vTaskDelay(pdMS_TO_TICKS(20)); // Increased from 5ms to 20ms to reduce frequency
     }
 }
 
@@ -877,7 +916,7 @@ static void ble_hidd_event_callback(void *handler_args, esp_event_base_t base, i
 {
     esp_hidd_event_t event = (esp_hidd_event_t)id;
     esp_hidd_event_data_t *param = (esp_hidd_event_data_t *)event_data;
-    static const char *TAG = "HID_DEV_BLE";
+    static const char *TAG = "EIDON_TRACKER";
 
     switch (event) {
     case ESP_HIDD_START_EVENT: {
@@ -888,6 +927,7 @@ static void ble_hidd_event_callback(void *handler_args, esp_event_base_t base, i
     case ESP_HIDD_CONNECT_EVENT: {
         ESP_LOGI(TAG, "CONNECT");
         s_ble_hid_param.protocol_mode = 0; // Initialize to BOOT mode, will be updated by protocol mode event
+        ESP_LOGI(TAG, "HID device connected, protocol mode initialized to BOOT (0)");
         ble_hid_task_start_up();
         break;
     }
@@ -895,6 +935,14 @@ static void ble_hidd_event_callback(void *handler_args, esp_event_base_t base, i
         ESP_LOGI(TAG, "PROTOCOL MODE[%u]: %s", param->protocol_mode.map_index, param->protocol_mode.protocol_mode ? "REPORT" : "BOOT");
         s_ble_hid_param.protocol_mode = param->protocol_mode.protocol_mode;
         ESP_LOGI(TAG, "Protocol mode updated to: %d", s_ble_hid_param.protocol_mode);
+        
+        // For NimBLE, we need to ensure the protocol mode is properly set
+        // The error suggests the host is trying to write protocol mode but failing
+        // Let's add a small delay to ensure the HID device is ready
+        vTaskDelay(pdMS_TO_TICKS(10));
+        
+        // Log the current state for debugging
+        ESP_LOGI(TAG, "Current protocol mode state: %d", s_ble_hid_param.protocol_mode);
         break;
     }
     case ESP_HIDD_CONTROL_EVENT: {
@@ -912,13 +960,42 @@ static void ble_hidd_event_callback(void *handler_args, esp_event_base_t base, i
     case ESP_HIDD_OUTPUT_EVENT: {
         ESP_LOGI(TAG, "OUTPUT[%u]: %8s ID: %2u, Len: %d, Data:", param->output.map_index, esp_hid_usage_str(param->output.usage), param->output.report_id, param->output.length);
         ESP_LOG_BUFFER_HEX(TAG, param->output.data, param->output.length);
+        
+        // Handle vendor-defined output report for IMU reset (Report ID 2)
+        if (param->output.report_id == 2) { // Separate report ID for output
+            if (param->output.length >= 1) {
+                uint8_t command = param->output.data[0];
+                ESP_LOGI(TAG, "Received vendor command: 0x%02X", command);
+                
+                // Command 0x01 triggers IMU reset
+                if (command == 0x01) {
+                    ESP_LOGI(TAG, "Triggering IMU reset via HID output command");
+                    reset_imu();
+                }
+            }
+        }
         break;
     }
     case ESP_HIDD_FEATURE_EVENT: {
         ESP_LOGI(TAG, "FEATURE[%u]: %8s ID: %2u, Len: %d, Data:", param->feature.map_index, esp_hid_usage_str(param->feature.usage), param->feature.report_id, param->feature.length);
         ESP_LOG_BUFFER_HEX(TAG, param->feature.data, param->feature.length);
+        
+        // Handle vendor-defined feature report for IMU reset (Report ID 1)
+        if (param->feature.report_id == 1) { // Same report ID as input/output
+            if (param->feature.length >= 1) {
+                uint8_t command = param->feature.data[0];
+                ESP_LOGI(TAG, "Received vendor feature command: 0x%02X", command);
+                
+                // Command 0x01 triggers IMU reset
+                if (command == 0x01) {
+                    ESP_LOGI(TAG, "Triggering IMU reset via HID feature command");
+                    reset_imu();
+                }
+            }
+        }
         break;
     }
+
     case ESP_HIDD_DISCONNECT_EVENT: {
         ESP_LOGI(TAG, "DISCONNECT: %s", esp_hid_disconnect_reason_str(esp_hidd_dev_transport_get(param->disconnect.dev), param->disconnect.reason));
         ble_hid_task_shut_down();
@@ -937,9 +1014,36 @@ static void ble_hidd_event_callback(void *handler_args, esp_event_base_t base, i
 #endif
 
 #if CONFIG_BT_NIMBLE_ENABLED
+static void ble_hid_on_sync(void)
+{
+    ESP_LOGI(TAG, "NimBLE host synced, initializing HID device");
+    
+    // Add a small delay to ensure NimBLE is fully ready
+    vTaskDelay(pdMS_TO_TICKS(100));
+    
+    // Initialize HID device after NimBLE is ready
+    esp_err_t ret = esp_hidd_dev_init(&ble_hid_config, ESP_HID_TRANSPORT_BLE, ble_hidd_event_callback, &s_ble_hid_param.hid_dev);
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "esp_hidd_dev_init failed: %s", esp_err_to_name(ret));
+        return;
+    }
+    ESP_LOGI(TAG, "BLE HID device initialized successfully");
+    
+    // Add another delay to ensure HID service is fully initialized
+    vTaskDelay(pdMS_TO_TICKS(200));
+    
+    // Start advertisement
+    ESP_LOGI(TAG, "Starting HID advertisement");
+    esp_hid_ble_gap_adv_start();
+}
+
 void ble_hid_device_host_task(void *param)
 {
     ESP_LOGI(TAG, "BLE Host Task Started");
+    
+    /* Initialize the NimBLE host configuration */
+    ble_hs_cfg.sync_cb = ble_hid_on_sync;
+    
     /* This function will return only when nimble_port_stop() is executed */
     nimble_port_run();
 
@@ -948,13 +1052,90 @@ void ble_hid_device_host_task(void *param)
 void ble_store_config_init(void);
 #endif
 
+// Function to reset the IMU (disable and re-enable game rotation vector)
+static void reset_imu(void)
+{
+    ESP_LOGI(TAG, "Resetting IMU...");
+    
+    // Disable game rotation vector report
+    esp_err_t ret = adafruit_bno08x_enable_game_rotation_vector(0);
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to disable game rotation vector: %s", esp_err_to_name(ret));
+        return;
+    }
+    
+    // Wait 100ms as in the original code
+    vTaskDelay(pdMS_TO_TICKS(100));
+    
+    // Re-enable game rotation vector at 50Hz (20ms = 10000us)
+    ret = adafruit_bno08x_enable_game_rotation_vector(10000);
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to re-enable game rotation vector: %s", esp_err_to_name(ret));
+        return;
+    }
+    
+    ESP_LOGI(TAG, "IMU reset completed successfully");
+}
+
+// Button interrupt handler
+static void IRAM_ATTR boot_button_isr_handler(void* arg)
+{
+    // Notify the button task
+    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+    vTaskNotifyGiveFromISR((TaskHandle_t)arg, &xHigherPriorityTaskWoken);
+    portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+}
+
+// Button task to handle debouncing and IMU reset
+static void boot_button_task(void *pvParameters)
+{
+    ESP_LOGI(TAG, "Boot button task started");
+    
+    // Configure boot button as input with internal pull-up
+    gpio_config_t io_conf = {
+        .pin_bit_mask = (1ULL << BOOT_BUTTON_GPIO),
+        .mode = GPIO_MODE_INPUT,
+        .pull_up_en = GPIO_PULLUP_ENABLE,
+        .pull_down_en = GPIO_PULLDOWN_DISABLE,
+        .intr_type = GPIO_INTR_NEGEDGE  // Trigger on button press (falling edge)
+    };
+    gpio_config(&io_conf);
+    
+    // Install GPIO ISR service
+    gpio_install_isr_service(0);
+    
+    // Add ISR handler
+    gpio_isr_handler_add(BOOT_BUTTON_GPIO, boot_button_isr_handler, xTaskGetCurrentTaskHandle());
+    
+    ESP_LOGI(TAG, "Boot button configured on GPIO %d", BOOT_BUTTON_GPIO);
+    
+    while (1) {
+        // Wait for button press notification
+        if (ulTaskNotifyTake(pdTRUE, portMAX_DELAY)) {
+            // Debounce delay
+            vTaskDelay(pdMS_TO_TICKS(50));
+            
+            // Check if button is still pressed (debounce)
+            if (gpio_get_level(BOOT_BUTTON_GPIO) == BOOT_BUTTON_ACTIVE_LEVEL) {
+                ESP_LOGI(TAG, "Boot button pressed - triggering IMU reset");
+                reset_imu();
+                
+                // Wait for button release to prevent multiple triggers
+                while (gpio_get_level(BOOT_BUTTON_GPIO) == BOOT_BUTTON_ACTIVE_LEVEL) {
+                    vTaskDelay(pdMS_TO_TICKS(10));
+                }
+            }
+        }
+    }
+}
+
 // Function to generate unique serial number from MAC address
 static void generate_unique_serial_number(char *serial_buffer, size_t buffer_size)
 {
     uint8_t mac[6];
     esp_read_mac(mac, ESP_MAC_WIFI_STA); // Use WiFi STA MAC address (unique per chip)
-    // Format as EIDON-GLOVE-XXXXXXXX where X is hex digit from MAC
-    snprintf(serial_buffer, buffer_size, "EIDON-GLOVE-%02X%02X%02X%02X", 
+    // Format as Eidon Tracker-XXXX where X is hex digit from MAC
+    snprintf(serial_buffer, buffer_size, "Eidon Tracker-%02X%02X%02X%02X", 
              mac[2], mac[3], mac[4], mac[5]);
 }
 
@@ -1038,6 +1219,9 @@ void app_main(void)
     }
     */
     
+    // For NimBLE, HID device initialization and advertisement will be started in the sync callback
+    // For Bluedroid, we need to do it here
+#if !CONFIG_BT_NIMBLE_ENABLED
     ESP_LOGI(TAG, "setting ble device");
     ret = esp_hidd_dev_init(&ble_hid_config, ESP_HID_TRANSPORT_BLE, ble_hidd_event_callback, &s_ble_hid_param.hid_dev);
     if (ret != ESP_OK) {
@@ -1045,6 +1229,12 @@ void app_main(void)
         return;
     }
     ESP_LOGI(TAG, "BLE HID device initialized successfully");
+    esp_hid_ble_gap_adv_start();
+#endif
+    
+    // Start boot button task for IMU reset
+    ESP_LOGI(TAG, "Starting boot button task");
+    xTaskCreate(boot_button_task, "boot_button_task", 2048, NULL, 4, NULL);
     
     // Start BNO085 test task
     ESP_LOGI(TAG, "Starting BNO085 test task");
@@ -1073,10 +1263,14 @@ void app_main(void)
     ble_store_config_init();
 
     ble_hs_cfg.store_status_cb = ble_store_util_status_rr;
-	/* Starting nimble task after gatts is initialized*/
+    
+    /* Starting nimble task after gatts is initialized*/
     ret = esp_nimble_enable(ble_hid_device_host_task);
     if (ret) {
         ESP_LOGE(TAG, "esp_nimble_enable failed: %d", ret);
+        return;
     }
+    
+    ESP_LOGI(TAG, "NimBLE enabled, waiting for host sync callback...");
 #endif
 }

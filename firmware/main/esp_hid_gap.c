@@ -779,12 +779,10 @@ static struct ble_hs_adv_fields fields;
 
 esp_err_t esp_hid_ble_gap_adv_init(uint16_t appearance, const char *device_name)
 {
-    ble_uuid16_t *uuid16, *uuid16_1;
     /**
      *  Set the advertisement data included in our advertisements:
      *     o Flags (indicates advertisement type and other general info).
-     *     o Advertising tx power.
-     *     o Device name.
+     *     o Device name (shortened if needed).
      *     o 16-bit service UUIDs (HID).
      */
 
@@ -797,26 +795,20 @@ esp_err_t esp_hid_ble_gap_adv_init(uint16_t appearance, const char *device_name)
     fields.flags = BLE_HS_ADV_F_DISC_GEN |
                    BLE_HS_ADV_F_BREDR_UNSUP;
 
-    fields.appearance = ESP_HID_APPEARANCE_GENERIC;
-    fields.appearance_is_present = 1;
+    /* Add device name (limit to 8 characters to save space) */
+    if (device_name && strlen(device_name) > 0) {
+        fields.name = (uint8_t *)device_name;
+        fields.name_len = strlen(device_name);
+        /* Limit name length to fit in advertisement */
+        if (fields.name_len > 8) {
+            fields.name_len = 8;
+        }
+        fields.name_is_complete = 1;
+    }
 
-    /* Indicate that the TX power level field should be included; have the
-     * stack fill this value automatically.  This is done by assigning the
-     * special value BLE_HS_ADV_TX_PWR_LVL_AUTO.
-     */
-    fields.tx_pwr_lvl_is_present = 1;
-    fields.tx_pwr_lvl = BLE_HS_ADV_TX_PWR_LVL_AUTO;
-
-    fields.name = (uint8_t *)device_name;
-    fields.name_len = strlen(device_name);
-    fields.name_is_complete = 1;
-
-    uuid16 = (ble_uuid16_t *)malloc(sizeof(ble_uuid16_t));
-    uuid16_1 = (ble_uuid16_t[]) {
-        BLE_UUID16_INIT(GATT_SVR_SVC_HID_UUID)
-    };
-    memcpy(uuid16, uuid16_1, sizeof(ble_uuid16_t));
-    fields.uuids16 = uuid16;
+    /* Add HID service UUID */
+    static ble_uuid16_t hid_uuid = BLE_UUID16_INIT(GATT_SVR_SVC_HID_UUID);
+    fields.uuids16 = &hid_uuid;
     fields.num_uuids16 = 1;
     fields.uuids16_is_complete = 1;
 
@@ -826,7 +818,7 @@ esp_err_t esp_hid_ble_gap_adv_init(uint16_t appearance, const char *device_name)
     ble_hs_cfg.sm_mitm = 0;  // Disable MITM since we can't do numeric comparison
     ble_hs_cfg.sm_sc = 1;
     ble_hs_cfg.sm_our_key_dist = BLE_SM_PAIR_KEY_DIST_ID | BLE_SM_PAIR_KEY_DIST_ENC;
-    ble_hs_cfg.sm_their_key_dist |= BLE_SM_PAIR_KEY_DIST_ID | BLE_SM_PAIR_KEY_DIST_ENC;
+    ble_hs_cfg.sm_their_key_dist = BLE_SM_PAIR_KEY_DIST_ID | BLE_SM_PAIR_KEY_DIST_ENC;
 
     return ESP_OK;
 
