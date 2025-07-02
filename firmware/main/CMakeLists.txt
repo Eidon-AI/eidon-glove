@@ -1,7 +1,9 @@
 # Main component for Eidon Glove firmware
 set(srcs "esp_hid_device_main.c"
          "esp_hid_gap.c"
-         "adafruit_bno08x.c")
+         "button.c"
+         "imu.c"
+         "led.c")
 
 set(include_dirs ".")
 
