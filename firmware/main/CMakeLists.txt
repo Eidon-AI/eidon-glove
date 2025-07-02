@@ -1,5 +1,5 @@
 # Main component for Eidon Glove firmware
-set(srcs "esp_hid_device_main.c"
+set(srcs "main.c"
          "esp_hid_gap.c"
          "button.c"
          "imu.c"
