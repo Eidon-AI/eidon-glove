@@ -3,7 +3,9 @@ set(srcs "main.c"
          "esp_hid_gap.c"
          "button.c"
          "imu.c"
-         "led.c")
+         "led.c"
+         "storage.c"
+        )
 
 set(include_dirs ".")
 

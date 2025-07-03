@@ -51,23 +51,15 @@
 #include "nvs.h"
 #include "led.h"
 #include "button.h"
+#include "storage.h"
 
 static const char *TAG = "MAIN";
 
 #define INPUT_REPORT_ID 1
 #define FEATURE_REPORT_ID 3
 
-// Device shell color storage constants
-#define NVS_NAMESPACE "eidon_config"
-#define NVS_KEY_SHELL_COLOR "shell_color"
-#define DEFAULT_SHELL_COLOR_R 0xFF  // Default red
-#define DEFAULT_SHELL_COLOR_G 0x00  // Default green  
-#define DEFAULT_SHELL_COLOR_B 0x00  // Default blue
-
 // Function declarations
 
-static esp_err_t save_shell_color(uint8_t r, uint8_t g, uint8_t b);
-static esp_err_t load_shell_color(uint8_t *r, uint8_t *g, uint8_t *b);
 static void discover_feature_report_handle(void);
 esp_err_t get_feature_report(uint8_t report_id, uint8_t *data, size_t *length);
 
@@ -193,11 +185,8 @@ typedef struct
     uint8_t *buffer;
 } local_param_t;
 
-// Global shell color storage
-static uint8_t current_shell_color[3] = {DEFAULT_SHELL_COLOR_R, DEFAULT_SHELL_COLOR_G, DEFAULT_SHELL_COLOR_B};
-
-// Global feature report data for Report ID 2 (3 bytes: R, G, B)
-static uint8_t current_feature_report[3] = {DEFAULT_SHELL_COLOR_R, DEFAULT_SHELL_COLOR_G, DEFAULT_SHELL_COLOR_B};
+// Global feature report data for Report ID 3 (3 bytes: R, G, B)
+static uint8_t current_feature_report[3] = {PREFERENCES_DEFAULT_SHELL_COLOR_R, PREFERENCES_DEFAULT_SHELL_COLOR_G, PREFERENCES_DEFAULT_SHELL_COLOR_B};
 
 // Feature report GATT attribute handle (set during device initialization)
 static uint16_t feature_report_handle = 0;
@@ -521,8 +510,16 @@ static void ble_hidd_event_callback(void *handler_args, esp_event_base_t base, i
             if (param->feature.length == 0) {
                 // Host is requesting to read the feature report (receiveFeatureReport)
                 ESP_LOGI(TAG, "*** HOST REQUESTING TO READ FEATURE REPORT (receiveFeatureReport) ***");
-                ESP_LOGI(TAG, "Current color: R=0x%02X, G=0x%02X, B=0x%02X", 
-                         current_shell_color[0], current_shell_color[1], current_shell_color[2]);
+                
+                // Get current shell color from storage
+                shell_color_t color;
+                esp_err_t ret = storage_get_shell_color(&color);
+                if (ret == ESP_OK) {
+                    ESP_LOGI(TAG, "Current color: R=0x%02X, G=0x%02X, B=0x%02X", 
+                             color.r, color.g, color.b);
+                } else {
+                    ESP_LOGW(TAG, "Failed to get current shell color: %s", esp_err_to_name(ret));
+                }
                 
                 // Note: The response is now handled by the GATT read handler
                 ESP_LOGI(TAG, "Feature report read request logged - response handled by GATT handler");
@@ -533,7 +530,33 @@ static void ble_hidd_event_callback(void *handler_args, esp_event_base_t base, i
                 uint8_t b = param->feature.data[2];
                 ESP_LOGI(TAG, "*** HOST SETTING COLOR VIA FEATURE REPORT (sendFeatureReport) ***");
                 ESP_LOGI(TAG, "Setting device shell color: R=0x%02X, G=0x%02X, B=0x%02X", r, g, b);
-                save_shell_color(r, g, b);
+                
+                // Save color using storage module
+                esp_err_t ret = storage_save_shell_color(r, g, b);
+                if (ret != ESP_OK) {
+                    ESP_LOGE(TAG, "Failed to save shell color: %s", esp_err_to_name(ret));
+                } else {
+                    // Update feature report data
+                    current_feature_report[0] = r;
+                    current_feature_report[1] = g;
+                    current_feature_report[2] = b;
+                    
+#if CONFIG_BT_BLE_ENABLED || CONFIG_BT_NIMBLE_ENABLED
+                    // Proactively update the GATT attribute value so the next read returns the correct value
+                    if (feature_report_handle != 0 && s_ble_hid_param.hid_dev) {
+                        esp_err_t update_ret = esp_ble_gatts_set_attr_value(feature_report_handle, sizeof(current_feature_report), current_feature_report);
+                        if (update_ret == ESP_OK) {
+                            ESP_LOGI(TAG, "*** Proactively updated GATT attribute for feature report ***");
+                            ESP_LOGI(TAG, "GATT attribute handle: %d, data: [0x%02X, 0x%02X, 0x%02X]", 
+                                     feature_report_handle, current_feature_report[0], current_feature_report[1], current_feature_report[2]);
+                        } else {
+                            ESP_LOGW(TAG, "Failed to update GATT attribute: %s (0x%x)", esp_err_to_name(update_ret), update_ret);
+                        }
+                    } else {
+                        ESP_LOGW(TAG, "Cannot update GATT attribute - handle: %d, device: %p", feature_report_handle, s_ble_hid_param.hid_dev);
+                    }
+#endif
+                }
             } else {
                 ESP_LOGW(TAG, "Unexpected feature report length: %d (expected 0 for read or 3 for write)", param->feature.length);
             }
@@ -599,117 +622,9 @@ void ble_hid_device_host_task(void *param)
 void ble_store_config_init(void);
 #endif
 
-// Function to save device shell color to NVS flash storage
-static esp_err_t save_shell_color(uint8_t r, uint8_t g, uint8_t b)
-{
-    nvs_handle_t nvs_handle;
-    esp_err_t err;
-    
-    // Open NVS namespace
-    err = nvs_open(NVS_NAMESPACE, NVS_READWRITE, &nvs_handle);
-    if (err != ESP_OK) {
-        ESP_LOGE(TAG, "Error opening NVS handle: %s", esp_err_to_name(err));
-        return err;
-    }
-    
-    // Prepare color data (3 bytes: R, G, B)
-    uint8_t color_data[3] = {r, g, b};
-    
-    // Write color data to NVS
-    err = nvs_set_blob(nvs_handle, NVS_KEY_SHELL_COLOR, color_data, sizeof(color_data));
-    if (err != ESP_OK) {
-        ESP_LOGE(TAG, "Error writing device shell color to NVS: %s", esp_err_to_name(err));
-        nvs_close(nvs_handle);
-        return err;
-    }
-    
-    // Commit changes
-    err = nvs_commit(nvs_handle);
-    if (err != ESP_OK) {
-        ESP_LOGE(TAG, "Error committing NVS: %s", esp_err_to_name(err));
-        nvs_close(nvs_handle);
-        return err;
-    }
-    
-    nvs_close(nvs_handle);
-    
-    // Update global color
-    current_shell_color[0] = r;
-    current_shell_color[1] = g;
-    current_shell_color[2] = b;
-    
-    // Update feature report data
-    current_feature_report[0] = r;     // R
-    current_feature_report[1] = g;     // G
-    current_feature_report[2] = b;     // B
-    
-#if CONFIG_BT_BLE_ENABLED || CONFIG_BT_NIMBLE_ENABLED
-    // Proactively update the GATT attribute value so the next read returns the correct value
-    if (feature_report_handle != 0 && s_ble_hid_param.hid_dev) {
-        esp_err_t update_ret = esp_ble_gatts_set_attr_value(feature_report_handle, sizeof(current_feature_report), current_feature_report);
-        if (update_ret == ESP_OK) {
-            ESP_LOGI(TAG, "*** Proactively updated GATT attribute for feature report ***");
-            ESP_LOGI(TAG, "GATT attribute handle: %d, data: [0x%02X, 0x%02X, 0x%02X]", 
-                     feature_report_handle, current_feature_report[0], current_feature_report[1], current_feature_report[2]);
-        } else {
-            ESP_LOGW(TAG, "Failed to update GATT attribute: %s (0x%x)", esp_err_to_name(update_ret), update_ret);
-        }
-    } else {
-        ESP_LOGW(TAG, "Cannot update GATT attribute - handle: %d, device: %p", feature_report_handle, s_ble_hid_param.hid_dev);
-    }
-#endif
-    
-    ESP_LOGI(TAG, "Device shell color saved to NVS: R=0x%02X, G=0x%02X, B=0x%02X", r, g, b);
-    return ESP_OK;
-}
 
-// Function to load device shell color from NVS flash storage
-static esp_err_t load_shell_color(uint8_t *r, uint8_t *g, uint8_t *b)
-{
-    nvs_handle_t nvs_handle;
-    esp_err_t err;
-    
-    // Open NVS namespace
-    err = nvs_open(NVS_NAMESPACE, NVS_READONLY, &nvs_handle);
-    if (err != ESP_OK) {
-        ESP_LOGE(TAG, "Error opening NVS handle: %s", esp_err_to_name(err));
-        return err;
-    }
-    
-    // Read color data from NVS
-    size_t required_size = 3;
-    uint8_t color_data[3];
-    err = nvs_get_blob(nvs_handle, NVS_KEY_SHELL_COLOR, color_data, &required_size);
-    if (err != ESP_OK) {
-        ESP_LOGW(TAG, "Device shell color not found in NVS, using defaults: %s", esp_err_to_name(err));
-        nvs_close(nvs_handle);
-        // Return default values
-        *r = DEFAULT_SHELL_COLOR_R;
-        *g = DEFAULT_SHELL_COLOR_G;
-        *b = DEFAULT_SHELL_COLOR_B;
-        return ESP_ERR_NOT_FOUND;
-    }
-    
-    nvs_close(nvs_handle);
-    
-    // Extract RGB values
-    *r = color_data[0];
-    *g = color_data[1];
-    *b = color_data[2];
-    
-    // Update global color
-    current_shell_color[0] = *r;
-    current_shell_color[1] = *g;
-    current_shell_color[2] = *b;
-    
-    // Update feature report data
-    current_feature_report[0] = *r;   // R
-    current_feature_report[1] = *g;   // G
-    current_feature_report[2] = *b;   // B
-    
-    ESP_LOGI(TAG, "Device shell color loaded from NVS: R=0x%02X, G=0x%02X, B=0x%02X", *r, *g, *b);
-    return ESP_OK;
-}
+
+
 
 // Function to discover and store the feature report handle
 static void discover_feature_report_handle(void)
@@ -745,12 +660,26 @@ esp_err_t get_feature_report(uint8_t report_id, uint8_t *data, size_t *length)
 {
     ESP_LOGI(TAG, "*** get_feature_report called ***");
     ESP_LOGI(TAG, "Requested report_id: %d, buffer size: %d", report_id, *length);
-    ESP_LOGI(TAG, "Current feature report data: [0x%02X, 0x%02X, 0x%02X]", 
-             current_feature_report[0], current_feature_report[1], current_feature_report[2]);
-    ESP_LOGI(TAG, "Current shell color: [0x%02X, 0x%02X, 0x%02X]", 
-             current_shell_color[0], current_shell_color[1], current_shell_color[2]);
     
     if (report_id == 3) {
+        // Get current shell color from storage
+        shell_color_t color;
+        esp_err_t ret = storage_get_shell_color(&color);
+        if (ret != ESP_OK) {
+            ESP_LOGE(TAG, "Failed to get shell color from storage: %s", esp_err_to_name(ret));
+            return ret;
+        }
+        
+        // Update feature report data with current color
+        current_feature_report[0] = color.r;
+        current_feature_report[1] = color.g;
+        current_feature_report[2] = color.b;
+        
+        ESP_LOGI(TAG, "Current feature report data: [0x%02X, 0x%02X, 0x%02X]", 
+                 current_feature_report[0], current_feature_report[1], current_feature_report[2]);
+        ESP_LOGI(TAG, "Current shell color: [0x%02X, 0x%02X, 0x%02X]", 
+                 color.r, color.g, color.b);
+        
         if (*length >= sizeof(current_feature_report)) {
             memcpy(data, current_feature_report, sizeof(current_feature_report));
             *length = sizeof(current_feature_report);
@@ -848,23 +777,33 @@ void app_main(void)
         ESP_LOGW(TAG, "LED initialization failed, continuing without LED control");
     }
     
-    // Load device shell color from NVS
-    uint8_t r, g, b;
-    ESP_LOGI(TAG, "*** Loading device shell color from NVS ***");
-    ret = load_shell_color(&r, &g, &b);
+    // Initialize storage module
+    ESP_LOGI(TAG, "*** Initializing storage module ***");
+    ret = storage_init();
+    if (ret != ESP_OK) {
+        ESP_LOGW(TAG, "Storage initialization failed: %s", esp_err_to_name(ret));
+    }
+    
+    // Get current shell color and update feature report data
+    shell_color_t color;
+    ret = storage_get_shell_color(&color);
     if (ret == ESP_OK) {
-        ESP_LOGI(TAG, "*** Device shell color loaded from NVS on startup ***");
-        ESP_LOGI(TAG, "Loaded color: R=0x%02X, G=0x%02X, B=0x%02X", r, g, b);
+        ESP_LOGI(TAG, "*** Device shell color loaded from storage ***");
+        ESP_LOGI(TAG, "Loaded color: R=0x%02X, G=0x%02X, B=0x%02X", color.r, color.g, color.b);
+        
+        // Update feature report data
+        current_feature_report[0] = color.r;
+        current_feature_report[1] = color.g;
+        current_feature_report[2] = color.b;
     } else {
         ESP_LOGI(TAG, "*** Using default device shell color on startup ***");
-        ESP_LOGI(TAG, "Default color: R=0x%02X, G=0x%02X, B=0x%02X", r, g, b);
+        ESP_LOGI(TAG, "Default color: R=0x%02X, G=0x%02X, B=0x%02X", 
+                 current_feature_report[0], current_feature_report[1], current_feature_report[2]);
     }
     
     ESP_LOGI(TAG, "*** Current feature report data after startup ***");
     ESP_LOGI(TAG, "current_feature_report: [0x%02X, 0x%02X, 0x%02X]", 
              current_feature_report[0], current_feature_report[1], current_feature_report[2]);
-    ESP_LOGI(TAG, "current_shell_color: [0x%02X, 0x%02X, 0x%02X]", 
-             current_shell_color[0], current_shell_color[1], current_shell_color[2]);
     
     // Set initial LED state to STROBE for testing (will be set properly when BLE starts)
     led_set_state(LED_STATE_STROBE);
