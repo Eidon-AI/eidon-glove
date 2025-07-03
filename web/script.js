@@ -6,6 +6,8 @@ let decoder = new TextDecoder();
 let inputBuffer = '';
 const MAX_JOINTS = 16;
 
+const FEATURE_REPORT_ID = 3;
+
 // IMU Coordinate System Configuration
 // Adjust these values to fix yaw/roll/pitch mapping issues
 const IMU_COORDINATE_CONFIG = {
@@ -1547,11 +1549,12 @@ async function connectToDevice() {
             // Read firmware colour, update UI and cache when it arrives
             const readColour = async () => {
                 try {
-                    const dv = await device.receiveFeatureReport(1);
+                    const dv = await device.receiveFeatureReport(FEATURE_REPORT_ID);
                     const arr = new Uint8Array(dv.buffer);
                     if (arr.length >= 3) {
-                        const offset = (arr[0] === 1 && arr.length >= 4) ? 1 : 0;
-                        return (arr[offset] << 16) | (arr[offset + 1] << 8) | arr[offset + 2];
+                        // Always use the last 3 bytes for RGB values
+                        const startIndex = arr.length - 3;
+                        return (arr[startIndex] << 16) | (arr[startIndex + 1] << 8) | arr[startIndex + 2];
                     }
                 } catch(err) {
                     console.warn('Colour report read failed', err);
@@ -1691,11 +1694,12 @@ async function connectDevice(device, deviceId) {
 
         const readColour = async () => {
             try {
-                const dv = await device.receiveFeatureReport(1);
+                const dv = await device.receiveFeatureReport(FEATURE_REPORT_ID);
                 const arr = new Uint8Array(dv.buffer);
                 if (arr.length >= 3) {
-                    const offset = (arr[0] === 1 && arr.length >= 4) ? 1 : 0;
-                    return (arr[offset] << 16) | (arr[offset + 1] << 8) | arr[offset + 2];
+                    // Always use the last 3 bytes for RGB values
+                    const startIndex = arr.length - 3;
+                    return (arr[startIndex] << 16) | (arr[startIndex + 1] << 8) | arr[startIndex + 2];
                 }
             } catch (err) {
                 console.warn('Could not read colour feature from device', err);
@@ -3937,7 +3941,7 @@ function attachColorPicker(dotEl, deviceId) {
             const g = (colorInt >> 8) & 0xFF;
             const b = colorInt & 0xFF;
             try {
-                await device.sendFeatureReport(1, new Uint8Array([r, g, b]));
+                await device.sendFeatureReport(FEATURE_REPORT_ID, new Uint8Array([r, g, b]));
             } catch(e) {
                 console.warn('Failed to send colour feature', e);
             }
