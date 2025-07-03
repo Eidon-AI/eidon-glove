@@ -56,126 +56,12 @@
 static const char *TAG = "MAIN";
 
 #define INPUT_REPORT_ID 1
-#define FEATURE_REPORT_ID 3
+// #define OUTPUT_REPORT_ID 2
+// #define FEATURE_REPORT_ID 3
 
 // Function declarations
-
 static void discover_feature_report_handle(void);
 esp_err_t get_feature_report(uint8_t report_id, uint8_t *data, size_t *length);
-
-// Firmware version information
-#define FIRMWARE_VERSION_MAJOR   1
-#define FIRMWARE_VERSION_MINOR   0
-#define FIRMWARE_VERSION_PATCH   0
-#define FIRMWARE_VERSION_STRING  "1.0.0"
-
-// Device Information Service UUIDs
-#define DIS_SERVICE_UUID    0x180A
-#define DIS_CHAR_MANUFACTURER_NAME_UUID  0x2A29
-#define DIS_CHAR_MODEL_NUMBER_UUID       0x2A24
-#define DIS_CHAR_SERIAL_NUMBER_UUID      0x2A25
-#define DIS_CHAR_FIRMWARE_REVISION_UUID  0x2A26
-
-// DIS attribute values - DISABLED FOR NOW
-/*
-static const char dis_manufacturer[] = "Eidon AI";
-#if CONFIG_HID_DEVICE_ROLE == 1
-static const char dis_model[] = "Eidon Tracker";
-#elif CONFIG_HID_DEVICE_ROLE == 2
-static const char dis_model[] = "Eidon Glove";
-#else
-static const char dis_model[] = "Eidon Tracker";  // Default
-#endif
-static char dis_serial[32] = ""; // Will be set dynamically
-static const char dis_firmware[] = FIRMWARE_VERSION_STRING;
-
-// DIS handles
-static uint16_t dis_service_handle = 0;
-static uint16_t dis_char_handle_manufacturer = 0;
-static uint16_t dis_char_handle_model = 0;
-static uint16_t dis_char_handle_serial = 0;
-static uint16_t dis_char_handle_firmware = 0;
-*/
-
-// DIS GATT server event handler - DISABLED FOR NOW
-/*
-static void dis_gatts_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_t gatts_if, esp_ble_gatts_cb_param_t *param)
-{
-    esp_err_t ret;
-    switch (event) {
-    case ESP_GATTS_REG_EVT: {
-        // Create DIS service
-        esp_gatt_srvc_id_t service_id = {
-            .is_primary = true,
-            .id = {
-                .inst_id = 0,
-                .uuid = {
-                    .len = ESP_UUID_LEN_16,
-                    .uuid = {.uuid16 = DIS_SERVICE_UUID}
-                }
-            }
-        };
-        ret = esp_ble_gatts_create_service(gatts_if, &service_id, 8);
-        if (ret != ESP_OK) {
-            ESP_LOGE(TAG, "Failed to create DIS service: %s", esp_err_to_name(ret));
-        }
-        break;
-    }
-    case ESP_GATTS_CREATE_EVT: {
-        dis_service_handle = param->create.service_handle;
-        // Add Manufacturer Name
-        esp_bt_uuid_t char_uuid = {.len = ESP_UUID_LEN_16, .uuid = {.uuid16 = DIS_CHAR_MANUFACTURER_NAME_UUID}};
-        esp_attr_value_t attr_val = {
-            .attr_max_len = sizeof(dis_manufacturer),
-            .attr_len = strlen(dis_manufacturer),
-            .attr_value = (uint8_t*)dis_manufacturer
-        };
-        ret = esp_ble_gatts_add_char(dis_service_handle, &char_uuid, ESP_GATT_PERM_READ, ESP_GATT_CHAR_PROP_BIT_READ, &attr_val, NULL);
-        if (ret != ESP_OK) ESP_LOGE(TAG, "Failed to add DIS manufacturer char: %s", esp_err_to_name(ret));
-        // Add Model Number
-        char_uuid.uuid.uuid16 = DIS_CHAR_MODEL_NUMBER_UUID;
-        attr_val.attr_max_len = sizeof(dis_model);
-        attr_val.attr_len = strlen(dis_model);
-        attr_val.attr_value = (uint8_t*)dis_model;
-        ret = esp_ble_gatts_add_char(dis_service_handle, &char_uuid, ESP_GATT_PERM_READ, ESP_GATT_CHAR_PROP_BIT_READ, &attr_val, NULL);
-        if (ret != ESP_OK) ESP_LOGE(TAG, "Failed to add DIS model char: %s", esp_err_to_name(ret));
-        // Add Serial Number (set after creation)
-        char_uuid.uuid.uuid16 = DIS_CHAR_SERIAL_NUMBER_UUID;
-        attr_val.attr_max_len = sizeof(dis_serial);
-        attr_val.attr_len = strlen(dis_serial);
-        attr_val.attr_value = (uint8_t*)dis_serial;
-        ret = esp_ble_gatts_add_char(dis_service_handle, &char_uuid, ESP_GATT_PERM_READ, ESP_GATT_CHAR_PROP_BIT_READ, &attr_val, NULL);
-        if (ret != ESP_OK) ESP_LOGE(TAG, "Failed to add DIS serial char: %s", esp_err_to_name(ret));
-        // Add Firmware Revision
-        char_uuid.uuid.uuid16 = DIS_CHAR_FIRMWARE_REVISION_UUID;
-        attr_val.attr_max_len = sizeof(dis_firmware);
-        attr_val.attr_len = strlen(dis_firmware);
-        attr_val.attr_value = (uint8_t*)dis_firmware;
-        ret = esp_ble_gatts_add_char(dis_service_handle, &char_uuid, ESP_GATT_PERM_READ, ESP_GATT_CHAR_PROP_BIT_READ, &attr_val, NULL);
-        if (ret != ESP_OK) ESP_LOGE(TAG, "Failed to add DIS firmware char: %s", esp_err_to_name(ret));
-        // Start service
-        esp_ble_gatts_start_service(dis_service_handle);
-        break;
-    }
-    case ESP_GATTS_ADD_CHAR_EVT: {
-        // Save handles for later updates
-        uint16_t uuid = param->add_char.char_uuid.uuid.uuid16;
-        if (uuid == DIS_CHAR_MANUFACTURER_NAME_UUID) dis_char_handle_manufacturer = param->add_char.attr_handle;
-        else if (uuid == DIS_CHAR_MODEL_NUMBER_UUID) dis_char_handle_model = param->add_char.attr_handle;
-        else if (uuid == DIS_CHAR_SERIAL_NUMBER_UUID) dis_char_handle_serial = param->add_char.attr_handle;
-        else if (uuid == DIS_CHAR_FIRMWARE_REVISION_UUID) dis_char_handle_firmware = param->add_char.attr_handle;
-        break;
-    }
-    default:
-        break;
-    }
-}
-*/
-
-
-
-// SHTP constants
-#define SHTP_MAX_TRANSFER_SIZE 300
 
 typedef struct
 {
@@ -226,7 +112,7 @@ static esp_hid_device_config_t ble_hid_config = {
 #elif CONFIG_HID_DEVICE_ROLE == 2
     .product_id         = 0x0001,  // Eidon Glove product ID
 #else
-    .product_id         = 0x0002,  // Default to Tracker
+    .product_id         = 0x0000,  // Default to zero
 #endif
     .version            = 0x0100,
 #if CONFIG_HID_DEVICE_ROLE == 1
@@ -241,8 +127,6 @@ static esp_hid_device_config_t ble_hid_config = {
     .report_maps        = ble_report_maps,
     .report_maps_len    = 1
 };
-
-
 
 #if !CONFIG_BT_NIMBLE_ENABLED || CONFIG_HID_DEVICE_ROLE == 1
 
@@ -264,7 +148,7 @@ void ble_hid_sensor_task(void *pvParameters)
         vTaskDelay(pdMS_TO_TICKS(1000));
     }
     
-    // The actual sensor data sending is handled by the bno085_task
+    // The actual sensor data sending is handled by the imu_task
     while (1) {
         vTaskDelay(pdMS_TO_TICKS(1000));
     }
@@ -325,9 +209,10 @@ static void hid_reporting_task(void *pvParameters)
                     // Update last sent values
                     last_sent_report = report;
                     last_sent_button_state = current_button;
-                    // Set LED to transmitting state
-                    led_set_state(LED_STATE_TRANSMITTING);
+                    
                     if (state_changed) {
+                        // Set LED to transmitting state only when state actually changed
+                        led_set_state(LED_STATE_TRANSMITTING);
                         ESP_LOGI(TAG, "HID report sent (state changed) - Button: %s, Position: 0x%02X", 
                                 current_button ? "PRESSED" : "RELEASED", current_body_position);
                     }
@@ -344,10 +229,10 @@ static void hid_reporting_task(void *pvParameters)
     }
 }
 
-// BNO085 task to read sensor data
-static void bno085_task(void *pvParameters)
+// IMU (BNO085) task to read sensor data
+static void imu_task(void *pvParameters)
 {
-    ESP_LOGI(TAG, "BNO085 task started");
+    ESP_LOGI(TAG, "BNO085 IMU task started");
     
     // Initialize BNO085 with Adafruit-style wrapper
     esp_err_t ret = adafruit_bno08x_init();
@@ -405,19 +290,10 @@ void ble_hid_task_start_up(void)
         ESP_LOGI(TAG, "Task already exists");
         return;
     }
-#if !CONFIG_BT_NIMBLE_ENABLED || CONFIG_HID_DEVICE_ROLE == 1
+#if !CONFIG_BT_NIMBLE_ENABLED // || CONFIG_HID_DEVICE_ROLE == 1
     /* Executed for bluedroid and nimble sensor mode */
     ESP_LOGI(TAG, "Creating HID reporting task");
     xTaskCreate(hid_reporting_task, "hid_reporting_task", 4 * 1024, NULL, configMAX_PRIORITIES - 3,
-                &s_ble_hid_param.task_hdl);
-
-#elif CONFIG_HID_DEVICE_ROLE == 2
-    /* Nimble Specific */
-    xTaskCreate(ble_hid_demo_task_kbd, "ble_hid_demo_task_kbd", 3 * 1024, NULL, configMAX_PRIORITIES - 3,
-                &s_ble_hid_param.task_hdl);
-#elif CONFIG_HID_DEVICE_ROLE == 3
-    /* Nimble Specific */
-    xTaskCreate(ble_hid_demo_task_mouse, "ble_hid_demo_task_mouse", 3 * 1024, NULL, configMAX_PRIORITIES - 3,
                 &s_ble_hid_param.task_hdl);
 #endif
 }
@@ -547,6 +423,13 @@ static void ble_hidd_event_callback(void *handler_args, esp_event_base_t base, i
                     // Reset IMU
                     adafruit_bno08x_reset();
                 }
+            } else if (param->output.length == 0) {
+                // Empty output report also triggers IMU reset
+                ESP_LOGI(TAG, "Triggering IMU reset via empty HID output command");
+                // Trigger LED reset sequence
+                led_trigger_reset_sequence();
+                // Reset IMU
+                adafruit_bno08x_reset();
             }
         }
         break;
@@ -675,10 +558,6 @@ void ble_hid_device_host_task(void *param)
 }
 void ble_store_config_init(void);
 #endif
-
-
-
-
 
 // Function to discover and store the feature report handle
 static void discover_feature_report_handle(void)
@@ -812,8 +691,6 @@ static void generate_unique_device_name(char *name_buffer, size_t buffer_size)
 #endif
 }
 
-
-
 void app_main(void)
 {
     ESP_LOGI(TAG, "app_main() started");
@@ -894,13 +771,11 @@ void app_main(void)
     ble_hid_config.device_name = unique_device_name;
     ESP_LOGI(TAG, "Generated unique device name: %s", unique_device_name);
     
-#if CONFIG_HID_DEVICE_ROLE == 2
-    ret = esp_hid_ble_gap_adv_init(ESP_HID_APPEARANCE_KEYBOARD, ble_hid_config.device_name);
-#elif CONFIG_HID_DEVICE_ROLE == 3
-    ret = esp_hid_ble_gap_adv_init(ESP_HID_APPEARANCE_MOUSE, ble_hid_config.device_name);
-#else
+// #if CONFIG_HID_DEVICE_ROLE == 2 // Glove - Gamepad mode
+//     ret = esp_hid_ble_gap_adv_init(ESP_HID_APPEARANCE_GAMEPAD, ble_hid_config.device_name);
+// #else
     ret = esp_hid_ble_gap_adv_init(ESP_HID_APPEARANCE_GENERIC, ble_hid_config.device_name);
-#endif
+// #endif
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "esp_hid_ble_gap_adv_init failed: %s", esp_err_to_name(ret));
         return;
@@ -967,12 +842,8 @@ void app_main(void)
     }
     
     // Start BNO085 sensor task
-    ESP_LOGI(TAG, "Starting BNO085 sensor task");
-    xTaskCreate(bno085_task, "bno085_task", 4 * 1024, NULL, configMAX_PRIORITIES - 4, NULL);
-    
-    // Start BNO085 test task
-    ESP_LOGI(TAG, "Starting BNO085 test task");
-    xTaskCreate(bno085_task, "bno085_task", 4096, NULL, 5, NULL);
+    ESP_LOGI(TAG, "Starting BNO085 IMU sensor task");
+    xTaskCreate(imu_task, "imu_task", 4 * 1024, NULL, configMAX_PRIORITIES - 4, NULL);
 #endif
 
 #if CONFIG_BT_HID_DEVICE_ENABLED

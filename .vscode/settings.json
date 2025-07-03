@@ -20,7 +20,11 @@
     "*.h": "c",
     "*.c": "c",
     "*.hpp": "cpp",
-    "*.cpp": "cpp"
+    "*.cpp": "cpp",
+    "array": "c",
+    "string": "c",
+    "string_view": "c",
+    "span": "c"
   },
   "C_Cpp.intelliSenseEngine": "default",
   "C_Cpp.intelliSenseEngineFallback": "enabled",

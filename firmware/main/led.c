@@ -4,6 +4,11 @@
 #include "driver/ledc.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include <math.h>
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 
 static const char *TAG = "LED";
 
@@ -185,14 +190,35 @@ void led_task(void *pvParameters)
             
             led_state_timer += 50; // Update every 50ms
         } else if (current_led_state == LED_STATE_STROBE) {
-            // Handle strobe pattern (slow blinking dim)
+            // Handle smooth fade strobe pattern
             uint32_t strobe_phase = led_state_timer % LED_STROBE_PERIOD_MS;
-            if (strobe_phase < LED_STROBE_PERIOD_MS / 2) {
-                led_set_brightness(LED_BRIGHTNESS_DIM);
+            
+            // Create a more aggressive fade effect that definitely goes to zero
+            // Convert phase to radians (0 to 2π over the full period)
+            float phase_rad = (2.0f * M_PI * strobe_phase) / LED_STROBE_PERIOD_MS;
+            
+            // Generate sine wave
+            float sine_value = sinf(phase_rad);
+            
+            // Create a more aggressive threshold - only turn on when sine is above 0.3
+            // This ensures more time spent completely off
+            float fade_value = 0.0f;
+            if (sine_value > 0.3f) {
+                // Only when sine is significantly positive, create a fade
+                // Normalize the positive range (0.3 to 1.0) to (0 to 1)
+                float normalized = (sine_value - 0.3f) / 0.7f;
+                // Apply a steep curve for dramatic effect
+                fade_value = powf(normalized, 2.0f); // Square curve for sharp rise
             } else {
-                led_set_brightness(LED_BRIGHTNESS_OFF);
+                // When sine is <= 0.3, keep it completely off
+                fade_value = 0.0f;
             }
-            led_state_timer += 50; // Update every 50ms
+            
+            // Scale to our brightness range (0 to LED_BRIGHTNESS_BRIGHT)
+            uint32_t brightness = (uint32_t)(fade_value * LED_BRIGHTNESS_BRIGHT);
+            
+            led_set_brightness(brightness);
+            led_state_timer += 20; // Update every 20ms for smoother animation
         } else if (!led_state_override) {
             // Handle static states
             switch (current_led_state) {
@@ -211,6 +237,6 @@ void led_task(void *pvParameters)
             }
         }
         
-        vTaskDelayUntil(&last_wake_time, pdMS_TO_TICKS(50)); // 50ms update rate
+        vTaskDelayUntil(&last_wake_time, pdMS_TO_TICKS(20)); // 20ms update rate for smoother animation
     }
 } 

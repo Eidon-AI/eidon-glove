@@ -12,6 +12,9 @@
 #define I2C_FREQ 100000
 #define I2C_ADDR 0x4B
 
+// SHTP constants
+#define SHTP_MAX_TRANSFER_SIZE 300
+
 // Initialize the BNO085 sensor using Adafruit-style approach
 esp_err_t adafruit_bno08x_init(void);
 
