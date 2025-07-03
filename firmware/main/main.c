@@ -55,7 +55,7 @@
 static const char *TAG = "MAIN";
 
 #define INPUT_REPORT_ID 1
-#define FEATURE_REPORT_ID 2
+#define FEATURE_REPORT_ID 3
 
 // Device shell color storage constants
 #define NVS_NAMESPACE "eidon_config"
@@ -516,8 +516,8 @@ static void ble_hidd_event_callback(void *handler_args, esp_event_base_t base, i
         // Discover feature report handle on first feature event
         discover_feature_report_handle();
         
-        // Handle vendor-defined feature report for device shell color (Report ID 2)
-        if (param->feature.report_id == 2) {
+        // Handle vendor-defined feature report for device shell color (Report ID 3)
+        if (param->feature.report_id == 3) {
             if (param->feature.length == 0) {
                 // Host is requesting to read the feature report (receiveFeatureReport)
                 ESP_LOGI(TAG, "*** HOST REQUESTING TO READ FEATURE REPORT (receiveFeatureReport) ***");
@@ -750,17 +750,17 @@ esp_err_t get_feature_report(uint8_t report_id, uint8_t *data, size_t *length)
     ESP_LOGI(TAG, "Current shell color: [0x%02X, 0x%02X, 0x%02X]", 
              current_shell_color[0], current_shell_color[1], current_shell_color[2]);
     
-    if (report_id == 2) {
+    if (report_id == 3) {
         if (*length >= sizeof(current_feature_report)) {
             memcpy(data, current_feature_report, sizeof(current_feature_report));
             *length = sizeof(current_feature_report);
-            ESP_LOGI(TAG, "*** Feature report 2 data copied to buffer ***");
+            ESP_LOGI(TAG, "*** Feature report 3 data copied to buffer ***");
             ESP_LOGI(TAG, "Buffer contents after copy: [0x%02X, 0x%02X, 0x%02X]", 
                      data[0], data[1], data[2]);
             ESP_LOGI(TAG, "Returning length: %d", *length);
             return ESP_OK;
         } else {
-            ESP_LOGE(TAG, "Buffer too small for feature report 2 (need %d, got %d)", 
+            ESP_LOGE(TAG, "Buffer too small for feature report 3 (need %d, got %d)", 
                      sizeof(current_feature_report), *length);
             return ESP_ERR_INVALID_SIZE;
         }

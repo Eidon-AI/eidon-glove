@@ -45,6 +45,7 @@ static const uint8_t glove_report_map[] = {
       /* ------------------------------------------------------------------
        * Vendor-defined channel : Feature (3 bytes) - Device shell color storage
        * ---------------------------------------------------------------- */
+      0x85, 0x03,           /*   Report ID (3)                       */
       0x06, 0x00, 0xFF,     /*   UsagePage (Vendor 0xFF00)           */
       0x09, 0x02,           /*   Usage      (Vendor 2)               */
       0x15, 0x00,           /*   Logical Minimum (0)                 */
