@@ -188,6 +188,9 @@ typedef struct
 // Global feature report data for Report ID 3 (3 bytes: R, G, B)
 static uint8_t current_feature_report[3] = {PREFERENCES_DEFAULT_SHELL_COLOR_R, PREFERENCES_DEFAULT_SHELL_COLOR_G, PREFERENCES_DEFAULT_SHELL_COLOR_B};
 
+// Global body position for input reports (stored in first 4 button bits)
+static uint8_t current_body_position = 0x00;  // Default position (0-3)
+
 // Feature report GATT attribute handle (set during device initialization)
 static uint16_t feature_report_handle = 0;
 
@@ -327,6 +330,10 @@ static void bno085_task(void *pvParameters)
                 report.quaternion[1] = (uint16_t)((quat.j + 1.0f) * 32767.5f);     // y
                 report.quaternion[2] = (uint16_t)((quat.k + 1.0f) * 32767.5f);     // z
                 report.quaternion[3] = (uint16_t)((quat.real + 1.0f) * 32767.5f);  // w
+                
+                // Set body position in first 4 button bits (buttons 1-4)
+                // Clear the first 4 bits and set them to the current position
+                report.buttons = (report.buttons & 0xF0) | (current_body_position & 0x0F);
 
                 // Send HID report if connected (try both BOOT and REPORT modes)
                 if (s_ble_hid_param.hid_dev) {
@@ -700,10 +707,15 @@ esp_err_t get_feature_report(uint8_t report_id, uint8_t *data, size_t *length)
 
 
 
-// Button callback function for IMU reset
+// Button callback function for IMU reset and position change
 static void button_imu_reset_callback(void)
 {
-    ESP_LOGI(TAG, "Button pressed - triggering IMU reset");
+    ESP_LOGI(TAG, "Button pressed - triggering IMU reset and position change");
+    
+    // Change body position (cycle through 0-3 for now)
+    current_body_position = (current_body_position + 1) % 4;
+    ESP_LOGI(TAG, "Body position changed to: 0x%02X", current_body_position);
+    
     // Trigger LED reset sequence
     led_trigger_reset_sequence();
     // Reset IMU
@@ -804,6 +816,18 @@ void app_main(void)
     ESP_LOGI(TAG, "*** Current feature report data after startup ***");
     ESP_LOGI(TAG, "current_feature_report: [0x%02X, 0x%02X, 0x%02X]", 
              current_feature_report[0], current_feature_report[1], current_feature_report[2]);
+    
+    // Get current body position from storage
+    body_position_t position;
+    ret = storage_get_body_position(&position);
+    if (ret == ESP_OK) {
+        ESP_LOGI(TAG, "*** Body position loaded from storage ***");
+        ESP_LOGI(TAG, "Loaded position: 0x%02X", position.position);
+        current_body_position = position.position;
+    } else {
+        ESP_LOGI(TAG, "*** Using default body position on startup ***");
+        ESP_LOGI(TAG, "Default position: 0x%02X", current_body_position);
+    }
     
     // Set initial LED state to STROBE for testing (will be set properly when BLE starts)
     led_set_state(LED_STATE_STROBE);
