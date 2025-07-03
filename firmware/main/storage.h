@@ -20,12 +20,12 @@ extern "C" {
 // Shell color settings
 #define PREFERENCES_KEY_SHELL_COLOR "shell_color"
 #define PREFERENCES_DEFAULT_SHELL_COLOR_R 0xFF  // Default red
-#define PREFERENCES_DEFAULT_SHELL_COLOR_G 0x00  // Default green  
-#define PREFERENCES_DEFAULT_SHELL_COLOR_B 0x00  // Default blue
+#define PREFERENCES_DEFAULT_SHELL_COLOR_G 0xFF  // Default green  
+#define PREFERENCES_DEFAULT_SHELL_COLOR_B 0xFF  // Default blue
 
 // Body position settings (for future use)
 #define PREFERENCES_KEY_BODY_POSITION "body_pos"
-#define PREFERENCES_DEFAULT_BODY_POSITION 0x00  // Default body position
+#define PREFERENCES_DEFAULT_BODY_POSITION 0x01  // Default body position
 
 // Shell color structure
 typedef struct {

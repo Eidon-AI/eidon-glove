@@ -17,6 +17,8 @@ static const char *TAG = "BUTTON";
 static TaskHandle_t button_task_handle = NULL;
 static button_callback_t button_callback = NULL;
 static bool button_initialized = false;
+static bool button_pressed_flag = false;  // Flag to track button press state
+static volatile bool button_pressed = false;  // Global debounced button state
 
 // Button interrupt handler
 static void IRAM_ATTR button_isr_handler(void* arg)
@@ -42,6 +44,10 @@ static void button_task(void *pvParameters)
             if (gpio_get_level(BOOT_BUTTON_GPIO) == BOOT_BUTTON_ACTIVE_LEVEL) {
                 ESP_LOGI(TAG, "Boot button pressed");
                 
+                // Set button pressed flag
+                button_pressed_flag = true;
+                button_pressed = true;
+                
                 // Execute callback if set
                 if (button_callback != NULL) {
                     button_callback();
@@ -53,6 +59,7 @@ static void button_task(void *pvParameters)
                 }
                 
                 ESP_LOGI(TAG, "Boot button released");
+                button_pressed = false;
             }
         }
     }
@@ -162,4 +169,25 @@ int button_get_state(void)
     }
     
     return (gpio_get_level(BOOT_BUTTON_GPIO) == BOOT_BUTTON_ACTIVE_LEVEL) ? 1 : 0;
+}
+
+bool button_was_pressed(void)
+{
+    if (!button_initialized) {
+        return false;
+    }
+    
+    bool was_pressed = button_pressed_flag;
+    button_pressed_flag = false;  // Clear the flag when checked
+    return was_pressed;
+}
+
+void button_clear_pressed_state(void)
+{
+    button_pressed_flag = false;
+}
+
+bool button_is_pressed(void)
+{
+    return button_pressed;
 } 

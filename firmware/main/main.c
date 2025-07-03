@@ -188,19 +188,14 @@ typedef struct
 // Global feature report data for Report ID 3 (3 bytes: R, G, B)
 static uint8_t current_feature_report[3] = {PREFERENCES_DEFAULT_SHELL_COLOR_R, PREFERENCES_DEFAULT_SHELL_COLOR_G, PREFERENCES_DEFAULT_SHELL_COLOR_B};
 
-// Global body position for input reports (stored in first 4 button bits)
-static uint8_t current_body_position = 0x00;  // Default position (0-3)
+// Global state variables for input reports
+static uint8_t current_body_position = 0x00;  // Default position (0-15)
 
 // Feature report GATT attribute handle (set during device initialization)
 static uint16_t feature_report_handle = 0;
 
-
-
 #if CONFIG_BT_BLE_ENABLED || CONFIG_BT_NIMBLE_ENABLED
 static local_param_t s_ble_hid_param = {0};
-
-
-
 
 static esp_hid_raw_report_map_t ble_report_maps[] = {
 #if CONFIG_HID_DEVICE_ROLE == 1
@@ -286,6 +281,69 @@ typedef glove_hid_report_t sensor_hid_report_t;
 typedef tracker_hid_report_t sensor_hid_report_t;  // Default to tracker
 #endif
 
+// Global sensor data state
+static sensor_hid_report_t current_sensor_report = {0};
+static sensor_hid_report_t last_sent_report = {0};
+static bool last_sent_button_state = false;
+
+// High-speed HID reporting task (50Hz)
+static void hid_reporting_task(void *pvParameters)
+{
+    ESP_LOGI(TAG, "HID reporting task started");
+    // Wait for HID device to be ready
+    while (1) {
+        if (s_ble_hid_param.hid_dev && esp_hidd_dev_connected(s_ble_hid_param.hid_dev)) {
+            ESP_LOGI(TAG, "HID device connected and ready for reporting");
+            break;
+        } else {
+            ESP_LOGI(TAG, "Waiting for HID connection...");
+        }
+        vTaskDelay(pdMS_TO_TICKS(1000));
+    }
+    // High-speed reporting loop
+    while (1) {
+        if (s_ble_hid_param.hid_dev && esp_hidd_dev_connected(s_ble_hid_param.hid_dev)) {
+            // Get current button state
+            bool current_button = button_is_pressed();
+            // Create report with current state
+            sensor_hid_report_t report = current_sensor_report;
+            // Set body position in first 4 button bits
+            report.buttons = (report.buttons & 0xF0) | (current_body_position & 0x0F);
+            // Set button press state in bit 4
+            if (current_button) {
+                report.buttons |= 0x10;  // Set bit 4
+            }
+            // Check if anything has changed
+            bool state_changed = (current_button != last_sent_button_state) ||
+                                (memcmp(&report.quaternion, &last_sent_report.quaternion, sizeof(report.quaternion)) != 0) ||
+                                (report.buttons != last_sent_report.buttons);
+            // Send HID report if state changed or periodically (every 10th iteration = 5Hz minimum)
+            static int report_counter = 0;
+            if (state_changed || (++report_counter % 10) == 0) {
+                esp_err_t ret = esp_hidd_dev_input_set(s_ble_hid_param.hid_dev, 0, INPUT_REPORT_ID, (uint8_t*)&report, sizeof(report));
+                if (ret == ESP_OK) {
+                    // Update last sent values
+                    last_sent_report = report;
+                    last_sent_button_state = current_button;
+                    // Set LED to transmitting state
+                    led_set_state(LED_STATE_TRANSMITTING);
+                    if (state_changed) {
+                        ESP_LOGI(TAG, "HID report sent (state changed) - Button: %s, Position: 0x%02X", 
+                                current_button ? "PRESSED" : "RELEASED", current_body_position);
+                    }
+                } else {
+                    ESP_LOGW(TAG, "HID report failed: %s", esp_err_to_name(ret));
+                }
+            }
+        } else {
+            ESP_LOGW(TAG, "HID device not connected");
+            led_set_state(LED_STATE_PAIRED);
+        }
+        // High-speed reporting interval (50Hz = 20ms)
+        vTaskDelay(pdMS_TO_TICKS(20));
+    }
+}
+
 // BNO085 task to read sensor data
 static void bno085_task(void *pvParameters)
 {
@@ -310,10 +368,6 @@ static void bno085_task(void *pvParameters)
     
     ESP_LOGI(TAG, "BNO085 initialized successfully with Adafruit-style wrapper, starting sensor loop");
     
-    sensor_hid_report_t report = {0};
-    // report.report_id = 1;
-    report.buttons = 0;  // No buttons pressed
-    
     while (1) {
         // Service the sensor (handles SHTP communication)
         ret = adafruit_bno08x_service();
@@ -326,36 +380,14 @@ static void bno085_task(void *pvParameters)
                 
                 // Convert float quaternion to uint16_t for HID report
                 // Scale from [-1, 1] to [0, 65535]
-                report.quaternion[0] = (uint16_t)((quat.i + 1.0f) * 32767.5f);     // x
-                report.quaternion[1] = (uint16_t)((quat.j + 1.0f) * 32767.5f);     // y
-                report.quaternion[2] = (uint16_t)((quat.k + 1.0f) * 32767.5f);     // z
-                report.quaternion[3] = (uint16_t)((quat.real + 1.0f) * 32767.5f);  // w
+                current_sensor_report.quaternion[0] = (uint16_t)((quat.i + 1.0f) * 32767.5f);     // x
+                current_sensor_report.quaternion[1] = (uint16_t)((quat.j + 1.0f) * 32767.5f);     // y
+                current_sensor_report.quaternion[2] = (uint16_t)((quat.k + 1.0f) * 32767.5f);     // z
+                current_sensor_report.quaternion[3] = (uint16_t)((quat.real + 1.0f) * 32767.5f);  // w
                 
-                // Set body position in first 4 button bits (buttons 1-4)
-                // Clear the first 4 bits and set them to the current position
-                report.buttons = (report.buttons & 0xF0) | (current_body_position & 0x0F);
-
-                // Send HID report if connected (try both BOOT and REPORT modes)
-                if (s_ble_hid_param.hid_dev) {
-                    // Set LED to transmitting state (bright)
-                    led_set_state(LED_STATE_TRANSMITTING);
-                    
-                    // Try to send in current mode, if it fails, try the other mode
-                    esp_err_t ret = esp_hidd_dev_input_set(s_ble_hid_param.hid_dev, 0, INPUT_REPORT_ID, (uint8_t*)&report, sizeof(report));
-                    if (ret != ESP_OK) {
-                        // If failed, try switching protocol mode and retry
-                        ESP_LOGW(TAG, "HID report failed, trying alternative protocol mode");
-                        // Try the opposite mode
-                        ret = esp_hidd_dev_input_set(s_ble_hid_param.hid_dev, 0, INPUT_REPORT_ID, (uint8_t*)&report, sizeof(report));
-                    }
-                    
-                    // ESP_LOGI(TAG, "HID Sensor Report sent: Quat: w=%.3f, x=%.3f, y=%.3f, z=%.3f mode=%d", 
-                    //          quat.real, quat.i, quat.j, quat.k, s_ble_hid_param.protocol_mode);
-                } else {
-                    ESP_LOGW(TAG, "HID device not connected");
-                    // Set LED back to paired state if not connected
-                    led_set_state(LED_STATE_PAIRED);
-                }
+                // Update global sensor state (reporting task will handle sending)
+                ESP_LOGI(TAG, "Updated sensor state - Quat: w=%.3f, x=%.3f, y=%.3f, z=%.3f", 
+                         quat.real, quat.i, quat.j, quat.k);
             }
         }
         
@@ -375,8 +407,8 @@ void ble_hid_task_start_up(void)
     }
 #if !CONFIG_BT_NIMBLE_ENABLED || CONFIG_HID_DEVICE_ROLE == 1
     /* Executed for bluedroid and nimble sensor mode */
-    ESP_LOGI(TAG, "Creating sensor task");
-    xTaskCreate(ble_hid_sensor_task, "ble_hid_sensor_task", 4 * 1024, NULL, configMAX_PRIORITIES - 3,
+    ESP_LOGI(TAG, "Creating HID reporting task");
+    xTaskCreate(hid_reporting_task, "hid_reporting_task", 4 * 1024, NULL, configMAX_PRIORITIES - 3,
                 &s_ble_hid_param.task_hdl);
 
 #elif CONFIG_HID_DEVICE_ROLE == 2
@@ -465,6 +497,21 @@ static void ble_hidd_event_callback(void *handler_args, esp_event_base_t base, i
         // The error suggests the host is trying to write protocol mode but failing
         // Let's add a small delay to ensure the HID device is ready
         vTaskDelay(pdMS_TO_TICKS(10));
+        
+        // Send initial empty input report after protocol mode is established
+        sensor_hid_report_t initial_report = {0};
+        // Set body position in first 4 button bits
+        initial_report.buttons = (initial_report.buttons & 0xF0) | (current_body_position & 0x0F);
+        
+        if (s_ble_hid_param.hid_dev) {
+            ESP_LOGI(TAG, "Sending initial empty input report with position: 0x%02X", current_body_position);
+            esp_err_t ret = esp_hidd_dev_input_set(s_ble_hid_param.hid_dev, 0, INPUT_REPORT_ID, (uint8_t*)&initial_report, sizeof(initial_report));
+            if (ret == ESP_OK) {
+                ESP_LOGI(TAG, "Initial input report sent successfully");
+            } else {
+                ESP_LOGW(TAG, "Failed to send initial input report: %s", esp_err_to_name(ret));
+            }
+        }
         
         // Log the current state for debugging
         ESP_LOGI(TAG, "Current protocol mode state: %d", s_ble_hid_param.protocol_mode);
@@ -705,16 +752,17 @@ esp_err_t get_feature_report(uint8_t report_id, uint8_t *data, size_t *length)
     return ESP_ERR_NOT_FOUND;
 }
 
-
-
 // Button callback function for IMU reset and position change
 static void button_imu_reset_callback(void)
 {
     ESP_LOGI(TAG, "Button pressed - triggering IMU reset and position change");
     
-    // Change body position (cycle through 0-3 for now)
-    current_body_position = (current_body_position + 1) % 4;
+    // Change body position (cycle through 0-15 for now)
+    current_body_position = (current_body_position + 1) % 16;
     ESP_LOGI(TAG, "Body position changed to: 0x%02X", current_body_position);
+    
+    // Update global state (reporting task will handle sending)
+    ESP_LOGI(TAG, "Updated body position state - Position: 0x%02X", current_body_position);
     
     // Trigger LED reset sequence
     led_trigger_reset_sequence();
@@ -763,6 +811,8 @@ static void generate_unique_device_name(char *name_buffer, size_t buffer_size)
              mac[4], mac[5]);
 #endif
 }
+
+
 
 void app_main(void)
 {
@@ -915,6 +965,10 @@ void app_main(void)
             ESP_LOGI(TAG, "Button functionality started successfully");
         }
     }
+    
+    // Start BNO085 sensor task
+    ESP_LOGI(TAG, "Starting BNO085 sensor task");
+    xTaskCreate(bno085_task, "bno085_task", 4 * 1024, NULL, configMAX_PRIORITIES - 4, NULL);
     
     // Start BNO085 test task
     ESP_LOGI(TAG, "Starting BNO085 test task");

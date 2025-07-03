@@ -55,6 +55,24 @@ void button_task_stop(void);
  */
 int button_get_state(void);
 
+/**
+ * @brief Check if button was pressed and clear the state
+ * 
+ * @return bool true if button was pressed since last check, false otherwise
+ */
+bool button_was_pressed(void);
+
+/**
+ * @brief Clear the button pressed state
+ */
+void button_clear_pressed_state(void);
+
+/**
+ * @brief Get the current debounced button state.
+ * @return true if pressed, false if not pressed.
+ */
+bool button_is_pressed(void);
+
 #ifdef __cplusplus
 }
 #endif
