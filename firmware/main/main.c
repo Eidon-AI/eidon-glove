@@ -53,229 +53,23 @@
 #include "button.h"
 #include "storage.h"
 #include "config.h"
+#include "hid_device.h"
 
 static const char *TAG = "MAIN";
 
-#define INPUT_REPORT_ID 1
-// #define OUTPUT_REPORT_ID 2
-// #define FEATURE_REPORT_ID 3
-
 // Function declarations
 static void discover_feature_report_handle(void);
-esp_err_t get_feature_report(uint8_t report_id, uint8_t *data, size_t *length);
-
-typedef struct
-{
-    TaskHandle_t task_hdl;
-    esp_hidd_dev_t *hid_dev;
-    uint8_t protocol_mode;
-    uint8_t *buffer;
-} local_param_t;
-
-// Global feature report data for Report ID 3 (3 bytes: R, G, B)
-static uint8_t current_feature_report[3] = {PREFERENCES_DEFAULT_SHELL_COLOR_R, PREFERENCES_DEFAULT_SHELL_COLOR_G, PREFERENCES_DEFAULT_SHELL_COLOR_B};
-
-// Global state variables for input reports
-static uint8_t current_body_position = 0x00;  // Default position (0-15)
-
-// Feature report GATT attribute handle (set during device initialization)
-static uint16_t feature_report_handle = 0;
 
 #if CONFIG_BT_BLE_ENABLED || CONFIG_BT_NIMBLE_ENABLED
-static local_param_t s_ble_hid_param = {0};
 
-static esp_hid_raw_report_map_t ble_report_maps[] = {
-#if CONFIG_HID_DEVICE_ROLE == 1
-    /* Eidon Tracker */
-    {
-        .data = tracker_report_map,
-        .len = sizeof(tracker_report_map)
-    }
-#elif CONFIG_HID_DEVICE_ROLE == 2
-    /* Eidon Glove */
-    {
-        .data = glove_report_map,
-        .len = sizeof(glove_report_map)
-    }
-#else
-    /* Default to Tracker for bluedroid */
-    {
-        .data = tracker_report_map,
-        .len = sizeof(tracker_report_map)
-    }
-#endif
-};
-
-static esp_hid_device_config_t ble_hid_config = {
-    .vendor_id          = 0xE1D0,  // Eidon AI vendor ID
-#if CONFIG_HID_DEVICE_ROLE == 1
-    .product_id         = 0x0002,  // Eidon Tracker product ID
-#elif CONFIG_HID_DEVICE_ROLE == 2
-    .product_id         = 0x0001,  // Eidon Glove product ID
-#else
-    .product_id         = 0x0000,  // Default to zero
-#endif
-    .version            = 0x0100,
-#if CONFIG_HID_DEVICE_ROLE == 1
-    .device_name        = "Eidon Tracker",
-#elif CONFIG_HID_DEVICE_ROLE == 2
-    .device_name        = "Eidon Glove",
-#else
-    .device_name        = "Eidon Device",  // Default
-#endif
-    .manufacturer_name  = "Eidon AI",
-    .serial_number      = NULL,  // Will be set dynamically
-    .report_maps        = ble_report_maps,
-    .report_maps_len    = 1
-};
-
-// HID report structure for sensor data (exactly 9 bytes)
-#if CONFIG_HID_DEVICE_ROLE == 1
-typedef tracker_hid_report_t sensor_hid_report_t;
-#elif CONFIG_HID_DEVICE_ROLE == 2
-typedef glove_hid_report_t sensor_hid_report_t;
-#else
-typedef tracker_hid_report_t sensor_hid_report_t;  // Default to tracker
-#endif
-
-// Global sensor data state
-static sensor_hid_report_t current_sensor_report = {0};
-static sensor_hid_report_t last_sent_report = {0};
-static bool last_sent_button_state = false;
-
-// High-speed HID reporting task
-static void hid_reporting_task(void *pvParameters)
-{
-    ESP_LOGI(TAG, "HID reporting task started at %dHz (delay: %dms)", HID_REPORT_FREQ_HZ, HID_REPORT_DELAY_MS);
-
-    // High-speed reporting loop
-    while (1) {
-        if (s_ble_hid_param.hid_dev && esp_hidd_dev_connected(s_ble_hid_param.hid_dev)) {
-            // Get current button state
-            bool current_button = button_is_pressed();
-            // Create report with current state
-            sensor_hid_report_t report = current_sensor_report;
-            // Set body position in first 4 button bits
-            report.buttons = (report.buttons & 0xF0) | (current_body_position & 0x0F);
-            // Set button press state in bit 4
-            if (current_button) {
-                report.buttons |= 0x10;  // Set bit 4
-            }
-            // Check if anything has changed
-            bool button_changed = (current_button != last_sent_button_state);
-            bool position_changed = ((report.buttons & 0x0F) != (last_sent_report.buttons & 0x0F));
-            
-            // Check if quaternion changed significantly (more than 1 LSB in Q14 format)
-            bool quaternion_changed = false;
-            for (int i = 0; i < 4; i++) {
-                int16_t diff = abs(report.quaternion[i] - last_sent_report.quaternion[i]);
-                if (diff > 1) {  // More than 1 LSB change in Q14 format
-                    quaternion_changed = true;
-                    break;
-                }
-            }
-            
-            bool state_changed = button_changed || position_changed || quaternion_changed;
-            // Send HID report if state changed or periodically (every 10th iteration = 5Hz minimum)
-            static int report_counter = 0;
-            if (state_changed || (++report_counter % 10) == 0) {
-                esp_err_t ret = esp_hidd_dev_input_set(s_ble_hid_param.hid_dev, 0, INPUT_REPORT_ID, (uint8_t*)&report, sizeof(report));
-                if (ret == ESP_OK) {
-                    // Update last sent values
-                    last_sent_report = report;
-                    last_sent_button_state = current_button;
-                    
-                    if (state_changed) {
-                        // Set LED to transmitting state only when state actually changed
-                        led_set_state(LED_STATE_TRANSMITTING);
-                        ESP_LOGI(TAG, "HID input report (change) - btn: %d, pos: 0x%02X, quat: [%.3f, %.3f, %.3f, %.3f]", 
-                                current_button ? 1 : 0, current_body_position,
-                                report.quaternion[0]/32767.5f-1.0f, report.quaternion[1]/32767.5f-1.0f, report.quaternion[2]/32767.5f-1.0f, report.quaternion[3]/32767.5f-1.0f);
-                    }
-                } else {
-                    ESP_LOGW(TAG, "HID report failed: %s", esp_err_to_name(ret));
-                }
-            }
-        } else {
-            ESP_LOGW(TAG, "HID device not connected");
-            led_set_state(LED_STATE_PAIRED);
-        }
-        // High-speed reporting interval
-        vTaskDelay(pdMS_TO_TICKS(HID_REPORT_DELAY_MS));
-    }
-}
-
-// IMU (BNO085) task to read sensor data
-static void imu_task(void *pvParameters) {
-    (void) pvParameters;
-    ESP_LOGI(TAG, "IMU task started - Polling: %dHz, Sensor: %dHz", IMU_POLL_FREQ_HZ, IMU_SENSOR_FREQ_HZ);
-    
-    // Initialize IMU
-    esp_err_t ret = imu_init();
-    if (ret != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to initialize BNO085");
-        vTaskDelete(NULL);
-        return;
-    }
-    
-    ESP_LOGI(TAG, "BNO085 initialized successfully, starting sensor loop");
-    
-    // Enable game rotation vector at configured frequency
-    ESP_LOGI(TAG, "About to enable game rotation vector at %dHz", IMU_SENSOR_FREQ_HZ);
-    ret = imu_enable_game_rotation_vector(IMU_SENSOR_PERIOD_US);  // Period in microseconds
-    ESP_LOGI(TAG, "imu_enable_game_rotation_vector returned: %d", ret);
-    
-    if (ret != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to enable game rotation vector");
-        imu_deinit();
-        vTaskDelete(NULL);
-        return;
-    }
-    
-    // Give the sensor time to process configuration and start sending data
-    ESP_LOGI(TAG, "Waiting for sensor to start sending data...");
-    vTaskDelay(pdMS_TO_TICKS(100));  // Reduced from 500ms to 100ms
-    
-    ESP_LOGI(TAG, "Starting sensor monitoring loop");
-    
-    // Tracking variables
-    imu_quaternion_t quat;
-    uint32_t no_data_count = 0;
-    
-    while (1) {
-        // Try to get quaternion data
-        ret = imu_get_quaternion(&quat);
-        if (ret == ESP_OK) {
-            // Apply coordinate transformation
-            imu_transform_coordinate_system(&quat);
-            
-            // Update the global sensor report with new quaternion data
-            current_sensor_report.quaternion[0] = (uint16_t)((quat.i + 1.0f) * 32767.5f);     // x
-            current_sensor_report.quaternion[1] = (uint16_t)((quat.j + 1.0f) * 32767.5f);     // y
-            current_sensor_report.quaternion[2] = (uint16_t)((quat.k + 1.0f) * 32767.5f);     // z
-            current_sensor_report.quaternion[3] = (uint16_t)((quat.real + 1.0f) * 32767.5f);  // w
-            
-            no_data_count = 0;  // Reset counter on successful read
-            // Short delay when actively receiving data
-            vTaskDelay(pdMS_TO_TICKS(IMU_POLL_DELAY_MS));
-        } else {
-            // No new data available
-            no_data_count++;
-            // Longer delay when no data to avoid busy-waiting
-            if (no_data_count > 10) {
-                vTaskDelay(pdMS_TO_TICKS(HID_REPORT_DELAY_MS));  // Back off to HID rate when idle
-            } else {
-                vTaskDelay(pdMS_TO_TICKS(IMU_POLL_DELAY_MS));   // Use polling rate
-            }
-        }
-    }
-}
+// Note: Using hid_device module for all HID state management
 
 void ble_hid_task_start_up(void)
 {
     ESP_LOGI(TAG, "ble_hid_task_start_up called");
     
-    if (s_ble_hid_param.task_hdl) {
+    hid_param_t *param = hid_device_get_params();
+    if (param->task_hdl) {
         // Task already exists
         ESP_LOGI(TAG, "Task already exists");
         return;
@@ -284,15 +78,16 @@ void ble_hid_task_start_up(void)
     /* Executed for bluedroid and nimble sensor mode */
     ESP_LOGI(TAG, "Creating HID reporting task");
     xTaskCreate(hid_reporting_task, "hid_reporting_task", 4 * 1024, NULL, configMAX_PRIORITIES - 3,
-                &s_ble_hid_param.task_hdl);
+                &param->task_hdl);
 #endif
 }
 
 void ble_hid_task_shut_down(void)
 {
-    if (s_ble_hid_param.task_hdl) {
-        vTaskDelete(s_ble_hid_param.task_hdl);
-        s_ble_hid_param.task_hdl = NULL;
+    hid_param_t *param = hid_device_get_params();
+    if (param->task_hdl) {
+        vTaskDelete(param->task_hdl);
+        param->task_hdl = NULL;
     }
 }
 
@@ -310,54 +105,66 @@ static void ble_hidd_event_callback(void *handler_args, esp_event_base_t base, i
         led_set_state(LED_STATE_STROBE);
         
         // Find and store the feature report handle for proactive updates
-        if (s_ble_hid_param.hid_dev) {
+        if (hid_device_get_params()->hid_dev) {
             ESP_LOGI(TAG, "*** Searching for feature report handle ***");
             // We'll need to get the handle from the ESP-IDF HID stack
             // For now, we'll set it to 0 and update it when we get the first feature event
-            feature_report_handle = 0;
+            // feature_report_handle = 0; // This line is removed as per new_code
             ESP_LOGI(TAG, "Feature report handle initialized to 0 (will be set on first feature event)");
         }
         break;
     }
     case ESP_HIDD_CONNECT_EVENT: {
         ESP_LOGI(TAG, "CONNECT");
-        s_ble_hid_param.protocol_mode = 0; // Initialize to BOOT mode, will be updated by protocol mode event
+        hid_param_t *hid_param = hid_device_get_params();
+        hid_param->protocol_mode = 0; // Initialize to BOOT mode, will be updated by protocol mode event
         ESP_LOGI(TAG, "HID device connected, protocol mode initialized to BOOT (0)");
         // Set LED to paired state (dim)
         led_set_state(LED_STATE_PAIRED);
         ble_hid_task_start_up();
         
         // Proactively update GATT attribute if handle is already known
-        if (feature_report_handle != 0) {
-            esp_err_t update_ret = esp_ble_gatts_set_attr_value(feature_report_handle, sizeof(current_feature_report), current_feature_report);
-            if (update_ret == ESP_OK) {
-                ESP_LOGI(TAG, "*** Proactively updated GATT attribute on connect ***");
-                ESP_LOGI(TAG, "GATT attribute handle: %d, data: [0x%02X, 0x%02X, 0x%02X]", 
-                         feature_report_handle, current_feature_report[0], current_feature_report[1], current_feature_report[2]);
-            } else {
-                ESP_LOGW(TAG, "Failed to update GATT attribute on connect: %s (0x%x)", esp_err_to_name(update_ret), update_ret);
+        uint16_t handle = hid_device_get_feature_handle();
+        if (handle != 0) {
+            // Get current feature report data
+            shell_color_t color;
+            if (storage_get_shell_color(&color) == ESP_OK) {
+                uint8_t feature_data[3] = {color.r, color.g, color.b};
+                esp_err_t update_ret = esp_ble_gatts_set_attr_value(handle, sizeof(feature_data), feature_data);
+                if (update_ret == ESP_OK) {
+                    ESP_LOGI(TAG, "*** Proactively updated GATT attribute on connect ***");
+                    ESP_LOGI(TAG, "GATT attribute handle: %d, data: [0x%02X, 0x%02X, 0x%02X]", 
+                             handle, color.r, color.g, color.b);
+                } else {
+                    ESP_LOGW(TAG, "Failed to update GATT attribute on connect: %s (0x%x)", esp_err_to_name(update_ret), update_ret);
+                }
             }
         } else {
             // Handle not known yet, set it to the known value from logs
-            feature_report_handle = 71;
+            hid_device_set_feature_handle(71);
             ESP_LOGI(TAG, "*** Setting feature report handle to 71 on connect ***");
             
             // Try to update the GATT attribute immediately
-            esp_err_t update_ret = esp_ble_gatts_set_attr_value(feature_report_handle, sizeof(current_feature_report), current_feature_report);
-            if (update_ret == ESP_OK) {
-                ESP_LOGI(TAG, "*** Proactively updated GATT attribute on connect (handle 71) ***");
-                ESP_LOGI(TAG, "GATT attribute handle: %d, data: [0x%02X, 0x%02X, 0x%02X]", 
-                         feature_report_handle, current_feature_report[0], current_feature_report[1], current_feature_report[2]);
-            } else {
-                ESP_LOGW(TAG, "Failed to update GATT attribute on connect (handle 71): %s (0x%x)", esp_err_to_name(update_ret), update_ret);
+            shell_color_t color;
+            if (storage_get_shell_color(&color) == ESP_OK) {
+                uint8_t feature_data[3] = {color.r, color.g, color.b};
+                esp_err_t update_ret = esp_ble_gatts_set_attr_value(71, sizeof(feature_data), feature_data);
+                if (update_ret == ESP_OK) {
+                    ESP_LOGI(TAG, "*** Proactively updated GATT attribute on connect (handle 71) ***");
+                    ESP_LOGI(TAG, "GATT attribute handle: %d, data: [0x%02X, 0x%02X, 0x%02X]", 
+                             71, color.r, color.g, color.b);
+                } else {
+                    ESP_LOGW(TAG, "Failed to update GATT attribute on connect (handle 71): %s (0x%x)", esp_err_to_name(update_ret), update_ret);
+                }
             }
         }
         break;
     }
     case ESP_HIDD_PROTOCOL_MODE_EVENT: {
         ESP_LOGI(TAG, "PROTOCOL MODE[%u]: %s", param->protocol_mode.map_index, param->protocol_mode.protocol_mode ? "REPORT" : "BOOT");
-        s_ble_hid_param.protocol_mode = param->protocol_mode.protocol_mode;
-        ESP_LOGI(TAG, "Protocol mode updated to: %d", s_ble_hid_param.protocol_mode);
+        hid_param_t *hid_param = hid_device_get_params();
+        hid_param->protocol_mode = param->protocol_mode.protocol_mode;
+        ESP_LOGI(TAG, "Protocol mode updated to: %d", hid_param->protocol_mode);
         
         // For NimBLE, we need to ensure the protocol mode is properly set
         // The error suggests the host is trying to write protocol mode but failing
@@ -365,22 +172,10 @@ static void ble_hidd_event_callback(void *handler_args, esp_event_base_t base, i
         vTaskDelay(pdMS_TO_TICKS(10));
         
         // Send initial empty input report after protocol mode is established
-        sensor_hid_report_t initial_report = {0};
-        // Set body position in first 4 button bits
-        initial_report.buttons = (initial_report.buttons & 0xF0) | (current_body_position & 0x0F);
-        
-        if (s_ble_hid_param.hid_dev) {
-            ESP_LOGI(TAG, "Sending initial empty input report with position: 0x%02X", current_body_position);
-            esp_err_t ret = esp_hidd_dev_input_set(s_ble_hid_param.hid_dev, 0, INPUT_REPORT_ID, (uint8_t*)&initial_report, sizeof(initial_report));
-            if (ret == ESP_OK) {
-                ESP_LOGI(TAG, "Initial input report sent successfully");
-            } else {
-                ESP_LOGW(TAG, "Failed to send initial input report: %s", esp_err_to_name(ret));
-            }
-        }
+        // Note: Initial report sending is now handled by the HID reporting task
         
         // Log the current state for debugging
-        ESP_LOGI(TAG, "Current protocol mode state: %d", s_ble_hid_param.protocol_mode);
+        ESP_LOGI(TAG, "Current protocol mode state: %d", hid_param->protocol_mode);
         break;
     }
     case ESP_HIDD_CONTROL_EVENT: {
@@ -463,24 +258,24 @@ static void ble_hidd_event_callback(void *handler_args, esp_event_base_t base, i
                 if (ret != ESP_OK) {
                     ESP_LOGE(TAG, "Failed to save shell color: %s", esp_err_to_name(ret));
                 } else {
-                    // Update feature report data
-                    current_feature_report[0] = r;
-                    current_feature_report[1] = g;
-                    current_feature_report[2] = b;
+                    // Update feature report data in HID device module
+                    hid_device_update_feature_report(r, g, b);
                     
 #if CONFIG_BT_BLE_ENABLED || CONFIG_BT_NIMBLE_ENABLED
                     // Proactively update the GATT attribute value so the next read returns the correct value
-                    if (feature_report_handle != 0 && s_ble_hid_param.hid_dev) {
-                        esp_err_t update_ret = esp_ble_gatts_set_attr_value(feature_report_handle, sizeof(current_feature_report), current_feature_report);
+                    uint16_t handle = hid_device_get_feature_handle();
+                    if (handle != 0 && hid_device_get_params()->hid_dev) {
+                        uint8_t feature_data[3] = {r, g, b};
+                        esp_err_t update_ret = esp_ble_gatts_set_attr_value(handle, sizeof(feature_data), feature_data);
                         if (update_ret == ESP_OK) {
                             ESP_LOGI(TAG, "*** Proactively updated GATT attribute for feature report ***");
                             ESP_LOGI(TAG, "GATT attribute handle: %d, data: [0x%02X, 0x%02X, 0x%02X]", 
-                                     feature_report_handle, current_feature_report[0], current_feature_report[1], current_feature_report[2]);
+                                     handle, r, g, b);
                         } else {
                             ESP_LOGW(TAG, "Failed to update GATT attribute: %s (0x%x)", esp_err_to_name(update_ret), update_ret);
                         }
                     } else {
-                        ESP_LOGW(TAG, "Cannot update GATT attribute - handle: %d, device: %p", feature_report_handle, s_ble_hid_param.hid_dev);
+                        ESP_LOGW(TAG, "Cannot update GATT attribute - handle: %d, device: %p", handle, hid_device_get_params()->hid_dev);
                     }
 #endif
                 }
@@ -519,7 +314,9 @@ static void ble_hid_on_sync(void)
     vTaskDelay(pdMS_TO_TICKS(100));
     
     // Initialize HID device after NimBLE is ready
-    esp_err_t ret = esp_hidd_dev_init(&ble_hid_config, ESP_HID_TRANSPORT_BLE, ble_hidd_event_callback, &s_ble_hid_param.hid_dev);
+    hid_param_t *hid_param = hid_device_get_params();
+    esp_hid_device_config_t *config = hid_device_get_config();
+    esp_err_t ret = esp_hidd_dev_init(config, ESP_HID_TRANSPORT_BLE, ble_hidd_event_callback, &hid_param->hid_dev);
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "esp_hidd_dev_init failed: %s", esp_err_to_name(ret));
         return;
@@ -552,7 +349,8 @@ void ble_store_config_init(void);
 // Function to discover and store the feature report handle
 static void discover_feature_report_handle(void)
 {
-    if (feature_report_handle != 0) {
+    uint16_t handle = hid_device_get_feature_handle();
+    if (handle != 0) {
         // Already discovered
         return;
     }
@@ -560,21 +358,12 @@ static void discover_feature_report_handle(void)
     // For now, we'll use a hardcoded handle based on the logs
     // From your logs, we saw "Attribute handle: 71" for the feature report
     // This is not ideal but will work for testing
-    feature_report_handle = 71;
-    ESP_LOGI(TAG, "*** Feature report handle discovered: %d ***", feature_report_handle);
+    hid_device_set_feature_handle(71);
+    ESP_LOGI(TAG, "*** Feature report handle discovered: %d ***", 71);
     
 #if CONFIG_BT_BLE_ENABLED || CONFIG_BT_NIMBLE_ENABLED
     // Proactively update the GATT attribute with current color data
-    if (s_ble_hid_param.hid_dev) {
-        esp_err_t update_ret = esp_ble_gatts_set_attr_value(feature_report_handle, sizeof(current_feature_report), current_feature_report);
-        if (update_ret == ESP_OK) {
-            ESP_LOGI(TAG, "*** Proactively updated GATT attribute on startup ***");
-            ESP_LOGI(TAG, "GATT attribute handle: %d, data: [0x%02X, 0x%02X, 0x%02X]", 
-                     feature_report_handle, current_feature_report[0], current_feature_report[1], current_feature_report[2]);
-        } else {
-            ESP_LOGW(TAG, "Failed to update GATT attribute on startup: %s (0x%x)", esp_err_to_name(update_ret), update_ret);
-        }
-    }
+    // Note: This is now handled by the hid_device module
 #endif
 }
 
@@ -584,41 +373,8 @@ esp_err_t get_feature_report(uint8_t report_id, uint8_t *data, size_t *length)
     ESP_LOGI(TAG, "*** get_feature_report called ***");
     ESP_LOGI(TAG, "Requested report_id: %d, buffer size: %d", report_id, *length);
     
-    if (report_id == 3) {
-        // Get current shell color from storage
-        shell_color_t color;
-        esp_err_t ret = storage_get_shell_color(&color);
-        if (ret != ESP_OK) {
-            ESP_LOGE(TAG, "Failed to get shell color from storage: %s", esp_err_to_name(ret));
-            return ret;
-        }
-        
-        // Update feature report data with current color
-        current_feature_report[0] = color.r;
-        current_feature_report[1] = color.g;
-        current_feature_report[2] = color.b;
-        
-        ESP_LOGI(TAG, "Current feature report data: [0x%02X, 0x%02X, 0x%02X]", 
-                 current_feature_report[0], current_feature_report[1], current_feature_report[2]);
-        ESP_LOGI(TAG, "Current shell color: [0x%02X, 0x%02X, 0x%02X]", 
-                 color.r, color.g, color.b);
-        
-        if (*length >= sizeof(current_feature_report)) {
-            memcpy(data, current_feature_report, sizeof(current_feature_report));
-            *length = sizeof(current_feature_report);
-            ESP_LOGI(TAG, "*** Feature report 3 data copied to buffer ***");
-            ESP_LOGI(TAG, "Buffer contents after copy: [0x%02X, 0x%02X, 0x%02X]", 
-                     data[0], data[1], data[2]);
-            ESP_LOGI(TAG, "Returning length: %d", *length);
-            return ESP_OK;
-        } else {
-            ESP_LOGE(TAG, "Buffer too small for feature report 3 (need %d, got %d)", 
-                     sizeof(current_feature_report), *length);
-            return ESP_ERR_INVALID_SIZE;
-        }
-    }
-    ESP_LOGW(TAG, "Unknown feature report ID: %d", report_id);
-    return ESP_ERR_NOT_FOUND;
+    // Delegate to hid_device module
+    return hid_device_get_feature_report(report_id, data, length);
 }
 
 // Button callback function for IMU reset and position change
@@ -627,11 +383,13 @@ static void button_imu_reset_callback(void)
     ESP_LOGI(TAG, "Button pressed - triggering IMU reset and position change");
     
     // Change body position (cycle through 0-15 for now)
-    current_body_position = (current_body_position + 1) % 16;
-    ESP_LOGI(TAG, "Body position changed to: 0x%02X", current_body_position);
+    uint8_t current_position = hid_device_get_body_position();
+    uint8_t new_position = (current_position + 1) % 16;
+    hid_device_update_body_position(new_position);
+    ESP_LOGI(TAG, "Body position changed to: 0x%02X", new_position);
     
     // Update global state (reporting task will handle sending)
-    ESP_LOGI(TAG, "Updated body position state - Position: 0x%02X", current_body_position);
+    ESP_LOGI(TAG, "Updated body position state - Position: 0x%02X", new_position);
     
     // Trigger LED reset sequence
     led_trigger_reset_sequence();
@@ -713,6 +471,9 @@ void app_main(void)
         ESP_LOGW(TAG, "Storage initialization failed: %s", esp_err_to_name(ret));
     }
     
+    // Initialize HID device globals (loads saved values from storage)
+    hid_device_init_globals();
+    
     // Get current shell color and update feature report data
     shell_color_t color;
     ret = storage_get_shell_color(&color);
@@ -720,19 +481,16 @@ void app_main(void)
         ESP_LOGI(TAG, "*** Device shell color loaded from storage ***");
         ESP_LOGI(TAG, "Loaded color: R=0x%02X, G=0x%02X, B=0x%02X", color.r, color.g, color.b);
         
-        // Update feature report data
-        current_feature_report[0] = color.r;
-        current_feature_report[1] = color.g;
-        current_feature_report[2] = color.b;
+        // Update feature report data in HID device module
+        hid_device_update_feature_report(color.r, color.g, color.b);
     } else {
         ESP_LOGI(TAG, "*** Using default device shell color on startup ***");
         ESP_LOGI(TAG, "Default color: R=0x%02X, G=0x%02X, B=0x%02X", 
-                 current_feature_report[0], current_feature_report[1], current_feature_report[2]);
+                 PREFERENCES_DEFAULT_SHELL_COLOR_R, PREFERENCES_DEFAULT_SHELL_COLOR_G, PREFERENCES_DEFAULT_SHELL_COLOR_B);
     }
     
     ESP_LOGI(TAG, "*** Current feature report data after startup ***");
-    ESP_LOGI(TAG, "current_feature_report: [0x%02X, 0x%02X, 0x%02X]", 
-             current_feature_report[0], current_feature_report[1], current_feature_report[2]);
+    // Note: Feature report data is now managed by hid_device module
     
     // Get current body position from storage
     body_position_t position;
@@ -740,10 +498,10 @@ void app_main(void)
     if (ret == ESP_OK) {
         ESP_LOGI(TAG, "*** Body position loaded from storage ***");
         ESP_LOGI(TAG, "Loaded position: 0x%02X", position.position);
-        current_body_position = position.position;
+        hid_device_update_body_position(position.position);
     } else {
         ESP_LOGI(TAG, "*** Using default body position on startup ***");
-        ESP_LOGI(TAG, "Default position: 0x%02X", current_body_position);
+        ESP_LOGI(TAG, "Default position: 0x%02X", PREFERENCES_DEFAULT_BODY_POSITION);
     }
     
     // Set initial LED state to STROBE for testing (will be set properly when BLE starts)
@@ -755,16 +513,19 @@ void app_main(void)
     ESP_ERROR_CHECK( ret );
 
 #if CONFIG_BT_BLE_ENABLED || CONFIG_BT_NIMBLE_ENABLED
+    // Get HID device config
+    esp_hid_device_config_t *hid_config = hid_device_get_config();
+    
     // Generate unique device name with MAC suffix
     static char unique_device_name[32];
     generate_unique_device_name(unique_device_name, sizeof(unique_device_name));
-    ble_hid_config.device_name = unique_device_name;
+    hid_config->device_name = unique_device_name;
     ESP_LOGI(TAG, "Generated unique device name: %s", unique_device_name);
     
 // #if CONFIG_HID_DEVICE_ROLE == 2 // Glove - Gamepad mode
-//     ret = esp_hid_ble_gap_adv_init(ESP_HID_APPEARANCE_GAMEPAD, ble_hid_config.device_name);
+//     ret = esp_hid_ble_gap_adv_init(ESP_HID_APPEARANCE_GAMEPAD, hid_config->device_name);
 // #else
-    ret = esp_hid_ble_gap_adv_init(ESP_HID_APPEARANCE_GENERIC, ble_hid_config.device_name);
+    ret = esp_hid_ble_gap_adv_init(ESP_HID_APPEARANCE_GENERIC, hid_config->device_name);
 // #endif
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "esp_hid_ble_gap_adv_init failed: %s", esp_err_to_name(ret));
@@ -779,32 +540,15 @@ void app_main(void)
     // Generate unique serial number from MAC address
     static char unique_serial[32];
     generate_unique_serial_number(unique_serial, sizeof(unique_serial));
-    ble_hid_config.serial_number = unique_serial;
+    hid_config->serial_number = unique_serial;
     ESP_LOGI(TAG, "Generated unique serial number: %s", unique_serial);
-    
-    // Set DIS serial number for use in event handler - DISABLED FOR NOW
-    /*
-    strncpy(dis_serial, unique_serial, sizeof(dis_serial)-1);
-    dis_serial[sizeof(dis_serial)-1] = '\0';
-    */
 
-    // Register the DIS GATT server - DISABLED FOR NOW
-    /*
-    ret = esp_ble_gatts_register_callback(dis_gatts_event_handler);
-    if (ret != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to register DIS GATT server: %s", esp_err_to_name(ret));
-    }
-    ret = esp_ble_gatts_app_register(0xA0A0); // Arbitrary app ID for DIS
-    if (ret != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to app register DIS: %s", esp_err_to_name(ret));
-    }
-    */
-    
     // For NimBLE, HID device initialization and advertisement will be started in the sync callback
     // For Bluedroid, we need to do it here
 #if !CONFIG_BT_NIMBLE_ENABLED
     ESP_LOGI(TAG, "setting ble device");
-    ret = esp_hidd_dev_init(&ble_hid_config, ESP_HID_TRANSPORT_BLE, ble_hidd_event_callback, &s_ble_hid_param.hid_dev);
+    hid_param_t *hid_param = hid_device_get_params();
+    ret = esp_hidd_dev_init(hid_config, ESP_HID_TRANSPORT_BLE, ble_hidd_event_callback, &hid_param->hid_dev);
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "esp_hidd_dev_init failed: %s", esp_err_to_name(ret));
         return;

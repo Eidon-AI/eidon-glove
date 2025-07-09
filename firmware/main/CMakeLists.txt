@@ -5,6 +5,7 @@ set(srcs "main.c"
          "imu.c"
          "led.c"
          "storage.c"
+         "hid_device.c"
         )
 
 set(include_dirs ".")

@@ -70,4 +70,7 @@ void imu_transform_coordinate_system(imu_quaternion_t *quat);
 // Reset the IMU sensor (hardware reset via I2C)
 esp_err_t imu_reset(void);
 
+// IMU task for continuous sensor reading
+void imu_task(void *pvParameters);
+
 #endif //IMU_H 

@@ -10,6 +10,7 @@
 #include "freertos/task.h"
 #include <string.h>
 #include "config.h"
+#include "hid_device.h"
 
 static const char *TAG = "IMU";
 
@@ -159,6 +160,69 @@ void imu_transform_coordinate_system(imu_quaternion_t *quat) {
     quat->i = -x;    // x becomes -x (negate)
     quat->j = -y;    // y becomes -y (negate)
     quat->k = z;     // z stays the same
+}
+
+// IMU task for continuous sensor reading
+void imu_task(void *pvParameters) {
+    (void) pvParameters;
+    ESP_LOGI(TAG, "IMU task started - Polling: %dHz, Sensor: %dHz", IMU_POLL_FREQ_HZ, IMU_SENSOR_FREQ_HZ);
+    
+    // Initialize IMU
+    esp_err_t ret = imu_init();
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to initialize BNO085");
+        vTaskDelete(NULL);
+        return;
+    }
+    
+    ESP_LOGI(TAG, "BNO085 initialized successfully, starting sensor loop");
+    
+    // Enable game rotation vector at configured frequency
+    ESP_LOGI(TAG, "About to enable game rotation vector at %dHz", IMU_SENSOR_FREQ_HZ);
+    ret = imu_enable_game_rotation_vector(IMU_SENSOR_PERIOD_US);  // Period in microseconds
+    ESP_LOGI(TAG, "imu_enable_game_rotation_vector returned: %d", ret);
+    
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to enable game rotation vector");
+        imu_deinit();
+        vTaskDelete(NULL);
+        return;
+    }
+    
+    // Give the sensor time to process configuration and start sending data
+    ESP_LOGI(TAG, "Waiting for sensor to start sending data...");
+    vTaskDelay(pdMS_TO_TICKS(100));  // Reduced from 500ms to 100ms
+    
+    ESP_LOGI(TAG, "Starting sensor monitoring loop");
+    
+    // Tracking variables
+    imu_quaternion_t quat;
+    uint32_t no_data_count = 0;
+    
+    while (1) {
+        // Try to get quaternion data
+        ret = imu_get_quaternion(&quat);
+        if (ret == ESP_OK) {
+            // Apply coordinate transformation
+            imu_transform_coordinate_system(&quat);
+            
+            // Update the global sensor report with new quaternion data
+            hid_device_update_quaternion(quat.i, quat.j, quat.k, quat.real);
+            
+            no_data_count = 0;  // Reset counter on successful read
+            // Short delay when actively receiving data
+            vTaskDelay(pdMS_TO_TICKS(IMU_POLL_DELAY_MS));
+        } else {
+            // No new data available
+            no_data_count++;
+            // Longer delay when no data to avoid busy-waiting
+            if (no_data_count > 10) {
+                vTaskDelay(pdMS_TO_TICKS(HID_REPORT_DELAY_MS));  // Back off to HID rate when idle
+            } else {
+                vTaskDelay(pdMS_TO_TICKS(IMU_POLL_DELAY_MS));   // Use polling rate
+            }
+        }
+    }
 }
 
 esp_err_t imu_reset(void) {
