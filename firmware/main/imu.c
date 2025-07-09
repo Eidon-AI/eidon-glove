@@ -9,6 +9,7 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include <string.h>
+#include "config.h"
 
 static const char *TAG = "IMU";
 
@@ -203,8 +204,8 @@ esp_err_t bno08x_reset(void) {
     // Clear any stale data
     new_data_available = false;
     
-    // Re-enable game rotation vector at 400Hz (matching main.c configuration)
-    BNO08x_enable_game_rotation_vector(&imu, 2500);  // 400Hz = 2500us
+    // Re-enable game rotation vector at configured frequency
+    BNO08x_enable_game_rotation_vector(&imu, IMU_SENSOR_PERIOD_US);
     
     ESP_LOGI(TAG, "IMU reset completed successfully");
     return ESP_OK;

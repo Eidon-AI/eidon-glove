@@ -52,6 +52,7 @@
 #include "led.h"
 #include "button.h"
 #include "storage.h"
+#include "config.h"
 
 static const char *TAG = "MAIN";
 
@@ -142,10 +143,10 @@ static sensor_hid_report_t current_sensor_report = {0};
 static sensor_hid_report_t last_sent_report = {0};
 static bool last_sent_button_state = false;
 
-// High-speed HID reporting task (100Hz)
+// High-speed HID reporting task
 static void hid_reporting_task(void *pvParameters)
 {
-    ESP_LOGI(TAG, "HID reporting task started");
+    ESP_LOGI(TAG, "HID reporting task started at %dHz (delay: %dms)", HID_REPORT_FREQ_HZ, HID_REPORT_DELAY_MS);
 
     // High-speed reporting loop
     while (1) {
@@ -199,15 +200,15 @@ static void hid_reporting_task(void *pvParameters)
             ESP_LOGW(TAG, "HID device not connected");
             led_set_state(LED_STATE_PAIRED);
         }
-        // High-speed reporting interval (100Hz = 10ms)
-        vTaskDelay(pdMS_TO_TICKS(10));
+        // High-speed reporting interval
+        vTaskDelay(pdMS_TO_TICKS(HID_REPORT_DELAY_MS));
     }
 }
 
 // IMU (BNO085) task to read sensor data
 static void imu_task(void *pvParameters) {
     (void) pvParameters;
-    ESP_LOGI(TAG, "IMU task started");
+    ESP_LOGI(TAG, "IMU task started - Polling: %dHz, Sensor: %dHz", IMU_POLL_FREQ_HZ, IMU_SENSOR_FREQ_HZ);
     
     // Initialize IMU
     esp_err_t ret = bno08x_init();
@@ -219,9 +220,9 @@ static void imu_task(void *pvParameters) {
     
     ESP_LOGI(TAG, "BNO085 initialized successfully, starting sensor loop");
     
-    // Enable game rotation vector at 400Hz (2500us)
-    ESP_LOGI(TAG, "About to enable game rotation vector at 400Hz");
-    ret = bno08x_enable_game_rotation_vector(2500);  // 400Hz for fastest updates
+    // Enable game rotation vector at configured frequency
+    ESP_LOGI(TAG, "About to enable game rotation vector at %dHz", IMU_SENSOR_FREQ_HZ);
+    ret = bno08x_enable_game_rotation_vector(IMU_SENSOR_PERIOD_US);  // Period in microseconds
     ESP_LOGI(TAG, "bno08x_enable_game_rotation_vector returned: %d", ret);
     
     if (ret != ESP_OK) {
@@ -256,15 +257,15 @@ static void imu_task(void *pvParameters) {
             
             no_data_count = 0;  // Reset counter on successful read
             // Short delay when actively receiving data
-            vTaskDelay(pdMS_TO_TICKS(2));
+            vTaskDelay(pdMS_TO_TICKS(IMU_POLL_DELAY_MS));
         } else {
             // No new data available
             no_data_count++;
             // Longer delay when no data to avoid busy-waiting
             if (no_data_count > 10) {
-                vTaskDelay(pdMS_TO_TICKS(10));  // Back off to 100Hz when idle
+                vTaskDelay(pdMS_TO_TICKS(HID_REPORT_DELAY_MS));  // Back off to HID rate when idle
             } else {
-                vTaskDelay(pdMS_TO_TICKS(5));   // Medium delay initially
+                vTaskDelay(pdMS_TO_TICKS(IMU_POLL_DELAY_MS));   // Use polling rate
             }
         }
     }
