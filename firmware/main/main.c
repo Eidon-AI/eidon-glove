@@ -128,34 +128,6 @@ static esp_hid_device_config_t ble_hid_config = {
     .report_maps_len    = 1
 };
 
-#if !CONFIG_BT_NIMBLE_ENABLED || CONFIG_HID_DEVICE_ROLE == 1
-
-// Sensor task to send quaternion data via HID
-void ble_hid_sensor_task(void *pvParameters)
-{
-    ESP_LOGI(TAG, "Sensor task started");
-    
-    // Wait for BNO085 to initialize
-    vTaskDelay(pdMS_TO_TICKS(3000));
-    
-    while (1) {
-        if (s_ble_hid_param.hid_dev && esp_hidd_dev_connected(s_ble_hid_param.hid_dev)) {
-            ESP_LOGI(TAG, "HID device connected and ready for sensor data");
-            break;
-        } else {
-            ESP_LOGI(TAG, "Waiting for HID connection...");
-        }
-        vTaskDelay(pdMS_TO_TICKS(1000));
-    }
-    
-    // The actual sensor data sending is handled by the imu_task
-    while (1) {
-        vTaskDelay(pdMS_TO_TICKS(1000));
-    }
-}
-
-#endif  // #if !CONFIG_BT_NIMBLE_ENABLED || CONFIG_HID_DEVICE_ROLE == 1
-
 // HID report structure for sensor data (exactly 9 bytes)
 #if CONFIG_HID_DEVICE_ROLE == 1
 typedef tracker_hid_report_t sensor_hid_report_t;
@@ -170,20 +142,11 @@ static sensor_hid_report_t current_sensor_report = {0};
 static sensor_hid_report_t last_sent_report = {0};
 static bool last_sent_button_state = false;
 
-// High-speed HID reporting task (50Hz)
+// High-speed HID reporting task (100Hz)
 static void hid_reporting_task(void *pvParameters)
 {
     ESP_LOGI(TAG, "HID reporting task started");
-    // Wait for HID device to be ready
-    while (1) {
-        if (s_ble_hid_param.hid_dev && esp_hidd_dev_connected(s_ble_hid_param.hid_dev)) {
-            ESP_LOGI(TAG, "HID device connected and ready for reporting");
-            break;
-        } else {
-            ESP_LOGI(TAG, "Waiting for HID connection...");
-        }
-        vTaskDelay(pdMS_TO_TICKS(1000));
-    }
+
     // High-speed reporting loop
     while (1) {
         if (s_ble_hid_param.hid_dev && esp_hidd_dev_connected(s_ble_hid_param.hid_dev)) {
@@ -198,9 +161,20 @@ static void hid_reporting_task(void *pvParameters)
                 report.buttons |= 0x10;  // Set bit 4
             }
             // Check if anything has changed
-            bool state_changed = (current_button != last_sent_button_state) ||
-                                (memcmp(&report.quaternion, &last_sent_report.quaternion, sizeof(report.quaternion)) != 0) ||
-                                (report.buttons != last_sent_report.buttons);
+            bool button_changed = (current_button != last_sent_button_state);
+            bool position_changed = ((report.buttons & 0x0F) != (last_sent_report.buttons & 0x0F));
+            
+            // Check if quaternion changed significantly (more than 1 LSB in Q14 format)
+            bool quaternion_changed = false;
+            for (int i = 0; i < 4; i++) {
+                int16_t diff = abs(report.quaternion[i] - last_sent_report.quaternion[i]);
+                if (diff > 1) {  // More than 1 LSB change in Q14 format
+                    quaternion_changed = true;
+                    break;
+                }
+            }
+            
+            bool state_changed = button_changed || position_changed || quaternion_changed;
             // Send HID report if state changed or periodically (every 10th iteration = 5Hz minimum)
             static int report_counter = 0;
             if (state_changed || (++report_counter % 10) == 0) {
@@ -213,8 +187,9 @@ static void hid_reporting_task(void *pvParameters)
                     if (state_changed) {
                         // Set LED to transmitting state only when state actually changed
                         led_set_state(LED_STATE_TRANSMITTING);
-                        ESP_LOGI(TAG, "HID report sent (state changed) - Button: %s, Position: 0x%02X", 
-                                current_button ? "PRESSED" : "RELEASED", current_body_position);
+                        ESP_LOGI(TAG, "HID input report (change) - btn: %d, pos: 0x%02X, quat: [%.3f, %.3f, %.3f, %.3f]", 
+                                current_button ? 1 : 0, current_body_position,
+                                report.quaternion[0]/32767.5f-1.0f, report.quaternion[1]/32767.5f-1.0f, report.quaternion[2]/32767.5f-1.0f, report.quaternion[3]/32767.5f-1.0f);
                     }
                 } else {
                     ESP_LOGW(TAG, "HID report failed: %s", esp_err_to_name(ret));
@@ -224,60 +199,74 @@ static void hid_reporting_task(void *pvParameters)
             ESP_LOGW(TAG, "HID device not connected");
             led_set_state(LED_STATE_PAIRED);
         }
-        // High-speed reporting interval (50Hz = 20ms)
-        vTaskDelay(pdMS_TO_TICKS(20));
+        // High-speed reporting interval (100Hz = 10ms)
+        vTaskDelay(pdMS_TO_TICKS(10));
     }
 }
 
 // IMU (BNO085) task to read sensor data
-static void imu_task(void *pvParameters)
-{
-    ESP_LOGI(TAG, "BNO085 IMU task started");
+static void imu_task(void *pvParameters) {
+    (void) pvParameters;
+    ESP_LOGI(TAG, "IMU task started");
     
-    // Initialize BNO085 with Adafruit-style wrapper
-    esp_err_t ret = adafruit_bno08x_init();
+    // Initialize IMU
+    esp_err_t ret = bno08x_init();
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Failed to initialize BNO085");
         vTaskDelete(NULL);
         return;
     }
     
-    // Enable game rotation vector at 50Hz (20ms = 10000us)
-    ret = adafruit_bno08x_enable_game_rotation_vector(10000);
+    ESP_LOGI(TAG, "BNO085 initialized successfully, starting sensor loop");
+    
+    // Enable game rotation vector at 400Hz (2500us)
+    ESP_LOGI(TAG, "About to enable game rotation vector at 400Hz");
+    ret = bno08x_enable_game_rotation_vector(2500);  // 400Hz for fastest updates
+    ESP_LOGI(TAG, "bno08x_enable_game_rotation_vector returned: %d", ret);
+    
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Failed to enable game rotation vector");
-        adafruit_bno08x_deinit();
+        bno08x_deinit();
         vTaskDelete(NULL);
         return;
     }
     
-    ESP_LOGI(TAG, "BNO085 initialized successfully with Adafruit-style wrapper, starting sensor loop");
+    // Give the sensor time to process configuration and start sending data
+    ESP_LOGI(TAG, "Waiting for sensor to start sending data...");
+    vTaskDelay(pdMS_TO_TICKS(100));  // Reduced from 500ms to 100ms
+    
+    ESP_LOGI(TAG, "Starting sensor monitoring loop");
+    
+    // Tracking variables
+    imu_quaternion_t quat;
+    uint32_t no_data_count = 0;
     
     while (1) {
-        // Service the sensor (handles SHTP communication)
-        ret = adafruit_bno08x_service();
-        if (ret == ESP_OK && adafruit_bno08x_has_new_quaternion()) {
-            sh2_RotationVector_t quat;
-            ret = adafruit_bno08x_get_quaternion(&quat);
-            if (ret == ESP_OK) {
-                // Apply coordinate system transformation to fix yaw/pitch swapping
-                adafruit_bno08x_transform_coordinate_system(&quat);
-                
-                // Convert float quaternion to uint16_t for HID report
-                // Scale from [-1, 1] to [0, 65535]
-                current_sensor_report.quaternion[0] = (uint16_t)((quat.i + 1.0f) * 32767.5f);     // x
-                current_sensor_report.quaternion[1] = (uint16_t)((quat.j + 1.0f) * 32767.5f);     // y
-                current_sensor_report.quaternion[2] = (uint16_t)((quat.k + 1.0f) * 32767.5f);     // z
-                current_sensor_report.quaternion[3] = (uint16_t)((quat.real + 1.0f) * 32767.5f);  // w
-                
-                // Update global sensor state (reporting task will handle sending)
-                ESP_LOGI(TAG, "Updated sensor state - Quat: w=%.3f, x=%.3f, y=%.3f, z=%.3f", 
-                         quat.real, quat.i, quat.j, quat.k);
+        // Try to get quaternion data
+        ret = bno08x_get_quaternion(&quat);
+        if (ret == ESP_OK) {
+            // Apply coordinate transformation
+            bno08x_transform_coordinate_system(&quat);
+            
+            // Update the global sensor report with new quaternion data
+            current_sensor_report.quaternion[0] = (uint16_t)((quat.i + 1.0f) * 32767.5f);     // x
+            current_sensor_report.quaternion[1] = (uint16_t)((quat.j + 1.0f) * 32767.5f);     // y
+            current_sensor_report.quaternion[2] = (uint16_t)((quat.k + 1.0f) * 32767.5f);     // z
+            current_sensor_report.quaternion[3] = (uint16_t)((quat.real + 1.0f) * 32767.5f);  // w
+            
+            no_data_count = 0;  // Reset counter on successful read
+            // Short delay when actively receiving data
+            vTaskDelay(pdMS_TO_TICKS(2));
+        } else {
+            // No new data available
+            no_data_count++;
+            // Longer delay when no data to avoid busy-waiting
+            if (no_data_count > 10) {
+                vTaskDelay(pdMS_TO_TICKS(10));  // Back off to 100Hz when idle
+            } else {
+                vTaskDelay(pdMS_TO_TICKS(5));   // Medium delay initially
             }
         }
-        
-        // Small delay to prevent hogging CPU and reduce protocol mode pressure
-        vTaskDelay(pdMS_TO_TICKS(20)); // Increased from 5ms to 20ms to reduce frequency
     }
 }
 
@@ -421,7 +410,7 @@ static void ble_hidd_event_callback(void *handler_args, esp_event_base_t base, i
                     // Trigger LED reset sequence
                     led_trigger_reset_sequence();
                     // Reset IMU
-                    adafruit_bno08x_reset();
+                    bno08x_reset();
                 }
             } else if (param->output.length == 0) {
                 // Empty output report also triggers IMU reset
@@ -429,7 +418,7 @@ static void ble_hidd_event_callback(void *handler_args, esp_event_base_t base, i
                 // Trigger LED reset sequence
                 led_trigger_reset_sequence();
                 // Reset IMU
-                adafruit_bno08x_reset();
+                bno08x_reset();
             }
         }
         break;
@@ -646,7 +635,7 @@ static void button_imu_reset_callback(void)
     // Trigger LED reset sequence
     led_trigger_reset_sequence();
     // Reset IMU
-    adafruit_bno08x_reset();
+    bno08x_reset();
 }
 
 // Function to generate unique serial number from MAC address
@@ -843,7 +832,7 @@ void app_main(void)
     
     // Start BNO085 sensor task
     ESP_LOGI(TAG, "Starting BNO085 IMU sensor task");
-    xTaskCreate(imu_task, "imu_task", 4 * 1024, NULL, configMAX_PRIORITIES - 4, NULL);
+    xTaskCreate(imu_task, "imu_task", 4 * 1024, NULL, configMAX_PRIORITIES - 2, NULL);  // Higher priority for SPI timing
 #endif
 
 #if CONFIG_BT_HID_DEVICE_ENABLED

@@ -113,6 +113,11 @@ void led_set_state(led_state_t state)
         return;
     }
     
+    // Only update if state is actually changing
+    if (current_led_state == state) {
+        return;
+    }
+    
     current_led_state = state;
     led_state_timer = 0;
     

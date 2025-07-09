@@ -1,4 +1,4 @@
  
-[submodule "firmware/components/sh2/src"]
-	path = firmware/components/sh2/src
-	url = https://github.com/ceva-dsp/sh2.git
+[submodule "firmware/components/bno08x_driver"]
+	path = firmware/components/bno08x_driver
+	url = https://github.com/davidliyutong/esp32_bno08x_driver.git

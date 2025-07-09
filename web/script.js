@@ -109,6 +109,12 @@ const trackers = new Map(); // Map to store tracker data by deviceId
 // Add at the start of the file, with other global variables
 let lastConnectedDeviceId = localStorage.getItem('lastHidDevice');
 
+// Auto-reconnect variables
+let recentlyDisconnectedDevices = new Map(); // Track devices that were recently disconnected
+let autoReconnectInterval = null; // Interval for checking reconnection
+const AUTO_RECONNECT_CHECK_INTERVAL = 2000; // Check every 2 seconds
+const AUTO_RECONNECT_TIMEOUT = 300000; // Stop trying after 5 minutes (300 seconds)
+
 // Add these variables at the top of the file with other globals
 let lastLinearX = 128;
 let lastLinearY = 128;
@@ -580,7 +586,7 @@ function addHandLabel(handModel) {
 }
 
 // Modify disconnectFromDevice to clean up UI and 3D elements
-async function disconnectFromDevice(deviceId = null) {
+async function disconnectFromDevice(deviceId = null, isIntentional = true) {
     const savedDevices = JSON.parse(localStorage.getItem('hidDevices') || '[]');
 
     if (deviceId) {
@@ -599,14 +605,32 @@ async function disconnectFromDevice(deviceId = null) {
             // Clean up UI and 3D elements
             cleanupDevice(deviceId);
             
-            // Clear this device's permissions
-            try {
-                await device.forget();
-            } catch (error) {
-                console.error(`Error clearing HID permissions for device ${deviceId}:`, error);
+            // Only forget device if this was an intentional disconnect (user clicked disconnect)
+            if (isIntentional) {
+                // Clear this device's permissions
+                try {
+                    await device.forget();
+                } catch (error) {
+                    console.error(`Error clearing HID permissions for device ${deviceId}:`, error);
+                }
+                
+                // Remove from recently disconnected tracking
+                recentlyDisconnectedDevices.delete(deviceId);
+            } else {
+                // Track this device for auto-reconnect
+                recentlyDisconnectedDevices.set(deviceId, {
+                    device: device,
+                    productName: device.productName,
+                    vendorId: device.vendorId,
+                    productId: device.productId,
+                    disconnectTime: Date.now()
+                });
+                
+                // Start auto-reconnect monitoring if not already running
+                startAutoReconnectMonitoring();
             }
             
-            addLogMessage(`Disconnected from HID device: ${device.productName}`);
+            addLogMessage(`Disconnected from HID device: ${device.productName}${isIntentional ? '' : ' (will attempt auto-reconnect)'}`);
         }
     } else {
         // Disconnect all devices
@@ -620,14 +644,20 @@ async function disconnectFromDevice(deviceId = null) {
         hidDevices.clear();
         localStorage.setItem('hidDevices', '[]');
         
-        // Clear all HID device permissions
-        try {
-            const devices = await navigator.hid.getDevices();
-            for (const device of devices) {
-                await device.forget();
+        // Only clear permissions if intentional
+        if (isIntentional) {
+            // Clear all HID device permissions
+            try {
+                const devices = await navigator.hid.getDevices();
+                for (const device of devices) {
+                    await device.forget();
+                }
+            } catch (error) {
+                console.error('Error clearing HID permissions:', error);
             }
-        } catch (error) {
-            console.error('Error clearing HID permissions:', error);
+            
+            // Clear recently disconnected devices
+            recentlyDisconnectedDevices.clear();
         }
     }
     
@@ -903,8 +933,8 @@ resetViewBtn.addEventListener('click', () => {
 // Event listeners for serial connection
 connectButton.addEventListener('click', connectToDevice);
 disconnectButton.addEventListener('click', () => {
-    // Disconnect all devices
-    disconnectFromDevice();
+    // Disconnect all devices (intentional disconnect)
+    disconnectFromDevice(null, true);
 });
 
 // Check if Web HID API is supported
@@ -912,6 +942,9 @@ if (!navigator.hid) {
     statusIndicator.textContent = 'Status: WebHID API not supported in this browser';
     connectButton.disabled = true;
     addLogMessage('ERROR: WebHID API is not supported in this browser. Try Chrome or Edge.');
+} else {
+    // Log auto-reconnect feature
+    addLogMessage('✨ Auto-reconnect enabled: Devices will automatically reconnect if disconnected');
 }
 
 // Initialize Three.js scene
@@ -1729,19 +1762,31 @@ async function connectDevice(device, deviceId) {
 
 // Update updateConnectionStatus to show more device details
 function updateConnectionStatus() {
+    let statusText = '';
+    let statusClass = '';
+    
     if (hidDevices.size > 0) {
-        statusIndicator.textContent = `Status: Connected to ${hidDevices.size} device(s)`;
-        statusIndicator.className = 'status connected';
+        statusText = `Status: Connected to ${hidDevices.size} device(s)`;
+        statusClass = 'status connected';
         connectButton.disabled = false;
         disconnectButton.disabled = false;
         disconnectButton.style.display = '';
     } else {
-        statusIndicator.textContent = 'Status: Disconnected';
-        statusIndicator.className = 'status disconnected';
+        statusText = 'Status: Disconnected';
+        statusClass = 'status disconnected';
         connectButton.disabled = false;
         disconnectButton.disabled = true;
         disconnectButton.style.display = 'none';
     }
+    
+    // Add auto-reconnect status if active
+    if (recentlyDisconnectedDevices.size > 0) {
+        statusText += ` | Auto-reconnecting ${recentlyDisconnectedDevices.size} device(s)...`;
+        statusClass += ' reconnecting';
+    }
+    
+    statusIndicator.textContent = statusText;
+    statusIndicator.className = statusClass;
 }
 
 let firstFrame = true;
@@ -1998,7 +2043,7 @@ function addTrackerDisplay(deviceId, presetColor = null) {
             </div>
             <div class="tracker-controls">
                 <button class="calibrate-btn" onclick="calibrateDevice('${deviceId}')">Calibrate</button>
-                <button class="disconnect-btn" onclick="disconnectFromDevice('${deviceId}')">Disconnect</button>
+                <button class="disconnect-btn" onclick="disconnectFromDevice('${deviceId}', true)">Disconnect</button>
             </div>
         </div>
         <div class="tracker-values">
@@ -2367,7 +2412,7 @@ function addGloveDisplay(deviceId, presetColor = null) {
         </div>
         <div class="glove-controls">
             <button class="calibrate-btn" onclick="calibrateDevice('${deviceId}')">Calibrate</button>
-            <button class="disconnect-btn" onclick="disconnectFromDevice('${deviceId}')">Disconnect</button>
+            <button class="disconnect-btn" onclick="disconnectFromDevice('${deviceId}', true)">Disconnect</button>
         </div>
     `;
     gloveElement.appendChild(header);
@@ -4314,6 +4359,148 @@ function addIMUCoordinateControls() {
     imuControls.appendChild(resetButton);
     
     controlPanel.appendChild(imuControls);
+}
+
+// Auto-reconnect functions
+function startAutoReconnectMonitoring() {
+    if (autoReconnectInterval) return; // Already running
+    
+    autoReconnectInterval = setInterval(checkAndReconnectDevices, AUTO_RECONNECT_CHECK_INTERVAL);
+}
+
+function stopAutoReconnectMonitoring() {
+    if (autoReconnectInterval) {
+        clearInterval(autoReconnectInterval);
+        autoReconnectInterval = null;
+    }
+}
+
+async function checkAndReconnectDevices() {
+    if (recentlyDisconnectedDevices.size === 0) {
+        stopAutoReconnectMonitoring();
+        return;
+    }
+    
+    // Get list of currently available devices
+    try {
+        const availableDevices = await navigator.hid.getDevices();
+        
+        // Check each recently disconnected device
+        for (const [deviceId, deviceInfo] of recentlyDisconnectedDevices) {
+            // Check if device has timed out
+            if (Date.now() - deviceInfo.disconnectTime > AUTO_RECONNECT_TIMEOUT) {
+                recentlyDisconnectedDevices.delete(deviceId);
+                addLogMessage(`Auto-reconnect timeout for ${deviceInfo.productName}`);
+                continue;
+            }
+            
+            // Look for matching device in available devices
+            const matchingDevice = availableDevices.find(d => 
+                d.vendorId === deviceInfo.vendorId && 
+                d.productId === deviceInfo.productId &&
+                d.productName === deviceInfo.productName
+            );
+            
+            if (matchingDevice && !hidDevices.has(deviceId)) {
+                // Device is available, try to reconnect
+                try {
+                    await matchingDevice.open();
+                    hidDevices.set(deviceId, matchingDevice);
+                    
+                    // Re-add to localStorage
+                    const savedDevices = JSON.parse(localStorage.getItem('hidDevices') || '[]');
+                    if (!savedDevices.includes(deviceId)) {
+                        savedDevices.push(deviceId);
+                        localStorage.setItem('hidDevices', JSON.stringify(savedDevices));
+                    }
+                    
+                    // Set up input report handler
+                    matchingDevice.addEventListener('inputreport', handleHIDInput);
+                    
+                    // Recreate UI based on device type
+                    const cachedColor = getCachedColor(deviceId);
+                    if (matchingDevice.productName.toLowerCase().includes('tracker')) {
+                        if (!trackers.has(deviceId)) addTrackerDisplay(deviceId, cachedColor);
+                    } else {
+                        addGloveDisplay(deviceId, cachedColor);
+                        createHandModel(deviceId);
+                    }
+                    
+                    // Read and update color from device
+                    const readColour = async () => {
+                        try {
+                            const dv = await matchingDevice.receiveFeatureReport(FEATURE_REPORT_ID);
+                            const arr = new Uint8Array(dv.buffer);
+                            if (arr.length >= 3) {
+                                const startIndex = arr.length - 3;
+                                return (arr[startIndex] << 16) | (arr[startIndex + 1] << 8) | arr[startIndex + 2];
+                            }
+                        } catch(err) {
+                            console.warn('Colour report read failed', err);
+                        }
+                        return null;
+                    };
+                    
+                    readColour().then(col => {
+                        if (col === null) return;
+                        const arrow = trackerArrows.get(deviceId);
+                        const dotSelector = matchingDevice.productName.toLowerCase().includes('tracker') ? 'tracker' : 'glove';
+                        const dot = document.querySelector(`#${dotSelector}-${deviceId} .device-dot`);
+                        if (arrow) {
+                            arrow.color = col;
+                            [arrow.forward.material, arrow.up.material].forEach(m=>m.color.setHex(col));
+                        }
+                        if (dot) dot.style.backgroundColor = '#' + col.toString(16).padStart(6,'0');
+                        setCachedColor(deviceId, col);
+                    });
+                    
+                    // Remove from recently disconnected
+                    recentlyDisconnectedDevices.delete(deviceId);
+                    
+                    addLogMessage(`✅ Auto-reconnected to ${matchingDevice.productName}`);
+                    updateConnectionStatus();
+                    
+                    // Update device grouping display if in chain mode
+                    if (chainMode) {
+                        repositionTrackerArrows();
+                    }
+                    
+                } catch (error) {
+                    console.error('Auto-reconnect failed:', error);
+                }
+            }
+        }
+        
+    } catch (error) {
+        console.error('Error checking for device reconnection:', error);
+    }
+}
+
+// Add HID connection event listeners
+if (navigator.hid) {
+    navigator.hid.addEventListener('connect', async (event) => {
+        console.log('HID device connected:', event.device);
+        // The connect event fires when a device is physically connected
+        // We handle reconnection in our checkAndReconnectDevices function
+    });
+    
+    navigator.hid.addEventListener('disconnect', async (event) => {
+        console.log('HID device disconnected:', event.device);
+        
+        // Find the device ID for this device
+        let disconnectedDeviceId = null;
+        for (const [deviceId, device] of hidDevices) {
+            if (device === event.device) {
+                disconnectedDeviceId = deviceId;
+                break;
+            }
+        }
+        
+        if (disconnectedDeviceId) {
+            // Handle as unintentional disconnect
+            await disconnectFromDevice(disconnectedDeviceId, false);
+        }
+    });
 }
 
 // Call this after Three.js initialization

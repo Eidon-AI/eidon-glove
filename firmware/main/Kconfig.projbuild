@@ -16,20 +16,25 @@ menu "Eidon Device Configuration"
             - Glove: Extended sensor array (future)
 
         config EXAMPLE_TRACKER_ENABLE
-            select BT_NIMBLE_HID_SERVICE
             bool "Eidon Tracker"
             help
                 Basic orientation tracking device with IMU sensor
 
         config EXAMPLE_GLOVE_ENABLE
-            select BT_NIMBLE_HID_SERVICE
             bool "Eidon Glove"
             help
                 Extended sensor array device (currently same as Tracker)
     endchoice
 
-    config EXAMPLE_HID_DEVICE_ROLE
+    config HID_DEVICE_ROLE
         int
         default 1 if EXAMPLE_TRACKER_ENABLE
         default 2 if EXAMPLE_GLOVE_ENABLE
+
+    config IMU_DEBUG_LOGGING
+        bool "Enable IMU debug logging"
+        default n
+        help
+            Enable detailed debug logging for IMU communication.
+            This will show SPI/I2C transactions, INT pin status, and sensor events.
 endmenu

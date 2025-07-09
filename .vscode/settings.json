@@ -24,7 +24,9 @@
     "array": "c",
     "string": "c",
     "string_view": "c",
-    "span": "c"
+    "span": "c",
+    "compare": "c",
+    "cstdint": "c"
   },
   "C_Cpp.intelliSenseEngine": "default",
   "C_Cpp.intelliSenseEngineFallback": "enabled",
