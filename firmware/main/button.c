@@ -91,7 +91,11 @@ esp_err_t button_init(void)
     
     // Install GPIO ISR service
     ret = gpio_install_isr_service(0);
-    if (ret != ESP_OK && ret != ESP_ERR_INVALID_STATE) {
+    if (ret == ESP_OK) {
+        ESP_LOGI(TAG, "GPIO ISR service installed successfully");
+    } else if (ret == ESP_ERR_INVALID_STATE) {
+        ESP_LOGI(TAG, "GPIO ISR service already installed, reusing existing service");
+    } else {
         ESP_LOGE(TAG, "Failed to install GPIO ISR service: %s", esp_err_to_name(ret));
         return ret;
     }

@@ -8,6 +8,7 @@ set(srcs "main.c"
          "hid_device.c"
          "device_info.c"
          "ble_hid.c"
+         "ble.c"
         )
 
 set(include_dirs ".")

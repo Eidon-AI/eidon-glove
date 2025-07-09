@@ -113,12 +113,12 @@ esp_err_t imu_enable_game_rotation_vector(uint32_t period_us) {
         return ESP_ERR_INVALID_STATE;
     }
     
-    ESP_LOGI(TAG, "Enabling game rotation vector with period %lu us", (unsigned long)period_us);
+    ESP_LOGI(TAG, "Enabling ARVR stabilized game rotation vector with period %lu us", (unsigned long)period_us);
     
-    // Enable game rotation vector reports
-    BNO08x_enable_game_rotation_vector(&imu, period_us);
+    // Enable ARVR stabilized game rotation vector reports for more stable output
+    BNO08x_enable_ARVR_stabilized_game_rotation_vector(&imu, period_us);
     
-    ESP_LOGI(TAG, "Game rotation vector enabled");
+    ESP_LOGI(TAG, "ARVR stabilized game rotation vector enabled");
     return ESP_OK;
 }
 

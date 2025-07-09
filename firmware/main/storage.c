@@ -26,11 +26,25 @@ static body_position_t current_body_position = {
 
 esp_err_t storage_init(void)
 {
-    ESP_LOGI(TAG, "Initializing preferences module");
+    ESP_LOGI(TAG, "Initializing storage module");
+    
+    // Initialize NVS flash
+    ESP_LOGI(TAG, "Initializing NVS flash...");
+    esp_err_t ret = nvs_flash_init();
+    if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
+        ESP_LOGW(TAG, "NVS partition was truncated and needs to be erased");
+        ESP_ERROR_CHECK(nvs_flash_erase());
+        ret = nvs_flash_init();
+    }
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to initialize NVS flash: %s", esp_err_to_name(ret));
+        return ret;
+    }
+    ESP_LOGI(TAG, "NVS flash initialized successfully");
     
     // Load shell color from NVS
     uint8_t r, g, b;
-    esp_err_t ret = storage_load_shell_color(&r, &g, &b);
+    ret = storage_load_shell_color(&r, &g, &b);
     if (ret == ESP_OK) {
         ESP_LOGI(TAG, "Shell color loaded from NVS: R=0x%02X, G=0x%02X, B=0x%02X", r, g, b);
     } else {
