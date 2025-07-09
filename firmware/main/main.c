@@ -19,7 +19,6 @@
 #include "esp_log.h"
 #include "nvs_flash.h"
 #include "esp_bt.h"
-#include "esp_mac.h"
 
 #if CONFIG_BT_NIMBLE_ENABLED
 #include "host/ble_hs.h"
@@ -54,6 +53,7 @@
 #include "storage.h"
 #include "config.h"
 #include "hid_device.h"
+#include "device_info.h"
 
 static const char *TAG = "MAIN";
 
@@ -397,47 +397,7 @@ static void button_imu_reset_callback(void)
     imu_reset();
 }
 
-// Function to generate unique serial number from MAC address
-static void generate_unique_serial_number(char *serial_buffer, size_t buffer_size)
-{
-    uint8_t mac[6];
-    esp_read_mac(mac, ESP_MAC_WIFI_STA); // Use WiFi STA MAC address (unique per chip)
-    
-#if CONFIG_HID_DEVICE_ROLE == 1
-    // Format as Eidon Tracker-XXXX where X is hex digit from MAC
-    snprintf(serial_buffer, buffer_size, "Eidon Tracker-%02X%02X%02X%02X", 
-             mac[2], mac[3], mac[4], mac[5]);
-#elif CONFIG_HID_DEVICE_ROLE == 2
-    // Format as Eidon Glove-XXXX where X is hex digit from MAC
-    snprintf(serial_buffer, buffer_size, "Eidon Glove-%02X%02X%02X%02X", 
-             mac[2], mac[3], mac[4], mac[5]);
-#else
-    // Default to Tracker
-    snprintf(serial_buffer, buffer_size, "Eidon Device-%02X%02X%02X%02X", 
-             mac[2], mac[3], mac[4], mac[5]);
-#endif
-}
 
-// Function to generate unique device name with MAC suffix
-static void generate_unique_device_name(char *name_buffer, size_t buffer_size)
-{
-    uint8_t mac[6];
-    esp_read_mac(mac, ESP_MAC_WIFI_STA);
-    
-#if CONFIG_HID_DEVICE_ROLE == 1
-    // Format as "Eidon Tracker-XXXX" where XXXX is last 4 hex digits of MAC
-    snprintf(name_buffer, buffer_size, "Eidon Tracker-%02X%02X", 
-             mac[4], mac[5]);
-#elif CONFIG_HID_DEVICE_ROLE == 2
-    // Format as "Eidon Glove-XXXX" where XXXX is last 4 hex digits of MAC
-    snprintf(name_buffer, buffer_size, "Eidon Glove-%02X%02X", 
-             mac[4], mac[5]);
-#else
-    // Default to Tracker
-    snprintf(name_buffer, buffer_size, "Eidon Tracker-%02X%02X", 
-             mac[4], mac[5]);
-#endif
-}
 
 void app_main(void)
 {
@@ -518,9 +478,8 @@ void app_main(void)
     
     // Generate unique device name with MAC suffix
     static char unique_device_name[32];
-    generate_unique_device_name(unique_device_name, sizeof(unique_device_name));
+    device_info_get_device_name(unique_device_name, sizeof(unique_device_name));
     hid_config->device_name = unique_device_name;
-    ESP_LOGI(TAG, "Generated unique device name: %s", unique_device_name);
     
 // #if CONFIG_HID_DEVICE_ROLE == 2 // Glove - Gamepad mode
 //     ret = esp_hid_ble_gap_adv_init(ESP_HID_APPEARANCE_GAMEPAD, hid_config->device_name);
@@ -539,9 +498,8 @@ void app_main(void)
 #endif
     // Generate unique serial number from MAC address
     static char unique_serial[32];
-    generate_unique_serial_number(unique_serial, sizeof(unique_serial));
+    device_info_get_serial_number(unique_serial, sizeof(unique_serial));
     hid_config->serial_number = unique_serial;
-    ESP_LOGI(TAG, "Generated unique serial number: %s", unique_serial);
 
     // For NimBLE, HID device initialization and advertisement will be started in the sync callback
     // For Bluedroid, we need to do it here
