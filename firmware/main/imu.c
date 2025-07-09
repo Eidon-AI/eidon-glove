@@ -17,8 +17,7 @@ static const char *TAG = "IMU";
 static BNO08x imu;
 static bool sensor_initialized = false;
 static bool new_data_available = false;
-static imu_quaternion_t latest_quaternion = {0};
-// static int callback_count = 0;
+static imu_quaternion_t latest_quaternion = {0, 0, 0, 1.0f}; // Initialize with forward quaternion
 
 // Data callback function for BNO08x
 static void imu_data_callback(void *arg) {
@@ -35,19 +34,13 @@ static void imu_data_callback(void *arg) {
     latest_quaternion.k = k;
     latest_quaternion.real = real;
     new_data_available = true;
-    
-    // Log every 100 callbacks to show it's working
-    // if (++callback_count % 100 == 0) {
-    //     ESP_LOGI(TAG, "IMU callback #%d - Quaternion: w=%.3f, x=%.3f, y=%.3f, z=%.3f", 
-    //              callback_count, real, i, j, k);
-    // }
 }
 
 // Configure PS0/PS1 pins for SPI mode
 static void configure_interface_pins(void) {
     // Configure PS0/PS1 pins for SPI mode
     gpio_config_t io_conf = {
-        .pin_bit_mask = (1ULL << BNO08X_PS0) | (1ULL << BNO08X_PS1),
+        .pin_bit_mask = (1ULL << IMU_PS0) | (1ULL << IMU_PS1),
         .mode = GPIO_MODE_OUTPUT,
         .pull_up_en = GPIO_PULLUP_DISABLE,
         .pull_down_en = GPIO_PULLDOWN_DISABLE,
@@ -56,14 +49,14 @@ static void configure_interface_pins(void) {
     gpio_config(&io_conf);
     
     // For SPI mode: PS1=1, PS0=1 (PS0 becomes WAKE in SPI mode)
-    gpio_set_level(BNO08X_PS0, 1);
-    gpio_set_level(BNO08X_PS1, 1);
+    gpio_set_level(IMU_PS0, 1);
+    gpio_set_level(IMU_PS1, 1);
     
     ESP_LOGI(TAG, "Configured PS0/PS1 pins for SPI mode");
 }
 
 // Public functions
-esp_err_t bno08x_init(void) {
+esp_err_t imu_init(void) {
     ESP_LOGI(TAG, "Initializing BNO085 using esp32_bno08x_driver library");
     
     // Configure interface pins for SPI mode
@@ -75,15 +68,15 @@ esp_err_t bno08x_init(void) {
     
     // Configure BNO08x with our pin mappings
     BNO08x_config_t cfg = {
-        .spi_peripheral = SPI_HOST,
-        .io_mosi = SPI_MOSI,
-        .io_miso = SPI_MISO,
-        .io_sclk = SPI_SCLK,
-        .io_cs = SPI_CS,
-        .io_int = BNO08X_INT,
-        .io_rst = BNO08X_RST,
-        .io_wake = BNO08X_PS0,  // WAKE pin (PS0 in SPI mode)
-        .sclk_speed = SPI_FREQ,
+        .spi_peripheral = IMU_SPI_HOST,
+        .io_mosi = IMU_SPI_MOSI,
+        .io_miso = IMU_SPI_MISO,
+        .io_sclk = IMU_SPI_SCLK,
+        .io_cs = IMU_SPI_CS,
+        .io_int = IMU_INT,
+        .io_rst = IMU_RST,
+        .io_wake = IMU_PS0,  // WAKE pin (PS0 in SPI mode)
+        .sclk_speed = IMU_SPI_FREQ,
         .cpu_spi_intr_affinity = 0  // CPU 0
     };
     
@@ -105,7 +98,7 @@ esp_err_t bno08x_init(void) {
     return ESP_OK;
 }
 
-void bno08x_deinit(void) {
+void imu_deinit(void) {
     if (sensor_initialized) {
         // The library doesn't provide a deinit function, so we'll just mark as uninitialized
         sensor_initialized = false;
@@ -113,7 +106,7 @@ void bno08x_deinit(void) {
     }
 }
 
-esp_err_t bno08x_enable_game_rotation_vector(uint32_t period_us) {
+esp_err_t imu_enable_game_rotation_vector(uint32_t period_us) {
     if (!sensor_initialized) {
         ESP_LOGE(TAG, "BNO085 not initialized");
         return ESP_ERR_INVALID_STATE;
@@ -128,12 +121,7 @@ esp_err_t bno08x_enable_game_rotation_vector(uint32_t period_us) {
     return ESP_OK;
 }
 
-esp_err_t bno08x_service(void) {
-    // Not needed with callback-based approach, but keep for compatibility
-    return ESP_OK;
-}
-
-esp_err_t bno08x_get_quaternion(imu_quaternion_t *quat) {
+esp_err_t imu_get_quaternion(imu_quaternion_t *quat) {
     if (!sensor_initialized || !quat) {
         return ESP_ERR_INVALID_ARG;
     }
@@ -149,16 +137,11 @@ esp_err_t bno08x_get_quaternion(imu_quaternion_t *quat) {
     return ESP_OK;
 }
 
-bool bno08x_has_new_quaternion(void) {
+bool imu_has_new_quaternion(void) {
     return new_data_available;
 }
 
-bool bno08x_was_reset(void) {
-    // The library handles resets internally
-    return false;
-}
-
-void bno08x_transform_coordinate_system(imu_quaternion_t *quat) {
+void imu_transform_coordinate_system(imu_quaternion_t *quat) {
     if (!quat) {
         return;
     }
@@ -178,7 +161,7 @@ void bno08x_transform_coordinate_system(imu_quaternion_t *quat) {
     quat->k = z;     // z stays the same
 }
 
-esp_err_t bno08x_reset(void) {
+esp_err_t imu_reset(void) {
     ESP_LOGI(TAG, "Resetting IMU...");
     
     if (!sensor_initialized) {

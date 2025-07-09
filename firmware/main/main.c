@@ -211,7 +211,7 @@ static void imu_task(void *pvParameters) {
     ESP_LOGI(TAG, "IMU task started - Polling: %dHz, Sensor: %dHz", IMU_POLL_FREQ_HZ, IMU_SENSOR_FREQ_HZ);
     
     // Initialize IMU
-    esp_err_t ret = bno08x_init();
+    esp_err_t ret = imu_init();
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Failed to initialize BNO085");
         vTaskDelete(NULL);
@@ -222,12 +222,12 @@ static void imu_task(void *pvParameters) {
     
     // Enable game rotation vector at configured frequency
     ESP_LOGI(TAG, "About to enable game rotation vector at %dHz", IMU_SENSOR_FREQ_HZ);
-    ret = bno08x_enable_game_rotation_vector(IMU_SENSOR_PERIOD_US);  // Period in microseconds
-    ESP_LOGI(TAG, "bno08x_enable_game_rotation_vector returned: %d", ret);
+    ret = imu_enable_game_rotation_vector(IMU_SENSOR_PERIOD_US);  // Period in microseconds
+    ESP_LOGI(TAG, "imu_enable_game_rotation_vector returned: %d", ret);
     
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Failed to enable game rotation vector");
-        bno08x_deinit();
+        imu_deinit();
         vTaskDelete(NULL);
         return;
     }
@@ -244,10 +244,10 @@ static void imu_task(void *pvParameters) {
     
     while (1) {
         // Try to get quaternion data
-        ret = bno08x_get_quaternion(&quat);
+        ret = imu_get_quaternion(&quat);
         if (ret == ESP_OK) {
             // Apply coordinate transformation
-            bno08x_transform_coordinate_system(&quat);
+            imu_transform_coordinate_system(&quat);
             
             // Update the global sensor report with new quaternion data
             current_sensor_report.quaternion[0] = (uint16_t)((quat.i + 1.0f) * 32767.5f);     // x
@@ -411,7 +411,7 @@ static void ble_hidd_event_callback(void *handler_args, esp_event_base_t base, i
                     // Trigger LED reset sequence
                     led_trigger_reset_sequence();
                     // Reset IMU
-                    bno08x_reset();
+                    imu_reset();
                 }
             } else if (param->output.length == 0) {
                 // Empty output report also triggers IMU reset
@@ -419,7 +419,7 @@ static void ble_hidd_event_callback(void *handler_args, esp_event_base_t base, i
                 // Trigger LED reset sequence
                 led_trigger_reset_sequence();
                 // Reset IMU
-                bno08x_reset();
+                imu_reset();
             }
         }
         break;
@@ -636,7 +636,7 @@ static void button_imu_reset_callback(void)
     // Trigger LED reset sequence
     led_trigger_reset_sequence();
     // Reset IMU
-    bno08x_reset();
+    imu_reset();
 }
 
 // Function to generate unique serial number from MAC address
