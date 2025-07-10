@@ -73,4 +73,10 @@ esp_err_t imu_reset(void);
 // IMU task for continuous sensor reading
 void imu_task(void *pvParameters);
 
+// Tare/zero the yaw heading
+esp_err_t imu_tare_heading(void);
+
+// Tare/zero all axes (roll, pitch, yaw)
+esp_err_t imu_tare_all_axes(void);
+
 #endif //IMU_H 

@@ -11,6 +11,7 @@
 #include <string.h>
 #include "config.h"
 #include "hid_device.h"
+#include "bno08x_driver.h"
 
 static const char *TAG = "IMU";
 
@@ -19,6 +20,10 @@ static BNO08x imu;
 static bool sensor_initialized = false;
 static bool new_data_available = false;
 static imu_quaternion_t latest_quaternion = {0, 0, 0, 1.0f}; // Initialize with forward quaternion
+static TickType_t last_tare_time = 0;  // Track last tare operation time
+
+// Minimum time between tare operations (in milliseconds)
+#define TARE_COOLDOWN_MS 500
 
 // Data callback function for BNO08x
 static void imu_data_callback(void *arg) {
@@ -255,5 +260,77 @@ esp_err_t imu_reset(void) {
     BNO08x_enable_game_rotation_vector(&imu, IMU_SENSOR_PERIOD_US);
     
     ESP_LOGI(TAG, "IMU reset completed successfully");
+    return ESP_OK;
+}
+
+esp_err_t imu_tare_heading(void) {
+    ESP_LOGI(TAG, "Taring IMU heading (yaw axis only)...");
+    
+    if (!sensor_initialized) {
+        ESP_LOGE(TAG, "IMU not initialized");
+        return ESP_ERR_INVALID_STATE;
+    }
+    
+    // Check if enough time has passed since last tare
+    TickType_t current_time = xTaskGetTickCount();
+    TickType_t time_since_last_tare = (current_time - last_tare_time) * portTICK_PERIOD_MS;
+    
+    if (last_tare_time != 0 && time_since_last_tare < TARE_COOLDOWN_MS) {
+        ESP_LOGW(TAG, "Tare cooldown active. Please wait %lu ms before next tare.", 
+                 (unsigned long)(TARE_COOLDOWN_MS - time_since_last_tare));
+        return ESP_ERR_INVALID_STATE;
+    }
+    
+    // Get current yaw before tare (for debugging)
+    float yaw_before = BNO08x_get_yaw_deg(&imu);
+    ESP_LOGI(TAG, "Yaw before tare: %.2f degrees", yaw_before);
+    
+    // Tare only the Z axis (yaw/heading) - use game rotation vector basis for tare
+    // Note: Even though we're using ARVR stabilized reports, tare uses game rotation vector basis
+    BNO08x_tare_now(&imu, TARE_AXIS_Z, TARE_GAME_ROTATION_VECTOR);
+    
+    // Update last tare time
+    last_tare_time = current_time;
+    
+    // Give the sensor a bit more time to process the tare command
+    vTaskDelay(pdMS_TO_TICKS(50));
+    
+    // Get yaw after tare (for debugging)
+    float yaw_after = BNO08x_get_yaw_deg(&imu);
+    ESP_LOGI(TAG, "Yaw after tare: %.2f degrees", yaw_after);
+    
+    ESP_LOGI(TAG, "IMU heading tared successfully");
+    return ESP_OK;
+}
+
+esp_err_t imu_tare_all_axes(void) {
+    ESP_LOGI(TAG, "Taring all IMU axes (roll, pitch, yaw)...");
+    
+    if (!sensor_initialized) {
+        ESP_LOGE(TAG, "IMU not initialized");
+        return ESP_ERR_INVALID_STATE;
+    }
+    
+    // Check if enough time has passed since last tare
+    TickType_t current_time = xTaskGetTickCount();
+    TickType_t time_since_last_tare = (current_time - last_tare_time) * portTICK_PERIOD_MS;
+    
+    if (last_tare_time != 0 && time_since_last_tare < TARE_COOLDOWN_MS) {
+        ESP_LOGW(TAG, "Tare cooldown active. Please wait %lu ms before next tare.", 
+                 (unsigned long)(TARE_COOLDOWN_MS - time_since_last_tare));
+        return ESP_ERR_INVALID_STATE;
+    }
+    
+    // Tare all axes - use game rotation vector basis for tare
+    // Note: Even though we're using ARVR stabilized reports, tare uses game rotation vector basis
+    BNO08x_tare_now(&imu, TARE_AXIS_ALL, TARE_GAME_ROTATION_VECTOR);
+    
+    // Update last tare time
+    last_tare_time = current_time;
+    
+    // Give the sensor time to process
+    vTaskDelay(pdMS_TO_TICKS(50));
+    
+    ESP_LOGI(TAG, "All IMU axes tared successfully");
     return ESP_OK;
 } 

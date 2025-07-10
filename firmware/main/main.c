@@ -18,10 +18,10 @@
 
 static const char *TAG = "MAIN";
 
-// Button callback function for IMU reset and position change
+// Button callback function for IMU heading reset and position change
 static void button_imu_reset_callback(void)
 {
-    ESP_LOGI(TAG, "Button pressed - triggering IMU reset and position change");
+    ESP_LOGI(TAG, "Button pressed - taring IMU heading and changing position");
     
     // Change body position (cycle through 0-15 for now)
     uint8_t current_position = hid_device_get_body_position();
@@ -34,7 +34,7 @@ static void button_imu_reset_callback(void)
     
     // Trigger LED reset sequence
     led_trigger_reset_sequence();
-    // Reset IMU
+    // Reset IMU heading
     imu_reset();
 }
 
@@ -112,7 +112,7 @@ void app_main(void)
     if (ret != ESP_OK) {
         ESP_LOGW(TAG, "Button initialization failed, continuing without button control");
     } else {
-        // Set callback for IMU reset
+        // Set callback for IMU heading tare
         button_set_callback(button_imu_reset_callback);
         
         // Start button task
