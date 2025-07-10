@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: Unlicense OR CC0-1.0
  */
 
-#ifndef HID_DEVICE_H
-#define HID_DEVICE_H
+#ifndef HID_REPORTS_H
+#define HID_REPORTS_H
 
 #include <stdint.h>
 #include <stdbool.h>
@@ -79,4 +79,4 @@ esp_hid_device_config_t* hid_device_get_config(void);
 }
 #endif
 
-#endif // HID_DEVICE_H 
+#endif // HID_REPORTS_H 

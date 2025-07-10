@@ -10,7 +10,7 @@
 #include "freertos/task.h"
 #include <string.h>
 #include "config.h"
-#include "hid_device.h"
+#include "hid_reports.h"
 #include "bno08x_driver.h"
 
 static const char *TAG = "IMU";
@@ -89,19 +89,48 @@ esp_err_t imu_init(void) {
     // Initialize the BNO08x driver
     BNO08x_init(&imu, &cfg);
     
-    // Initialize the BNO08x device
-    if (!BNO08x_initialize(&imu)) {
-        ESP_LOGE(TAG, "Failed to initialize BNO08x device");
-        return ESP_FAIL;
+    // Try to initialize the BNO08x device with retries
+    const int max_retries = 3;
+    const int retry_delay_ms = 500;
+    
+    for (int retry = 0; retry < max_retries; retry++) {
+        ESP_LOGI(TAG, "Attempting to initialize BNO08x (attempt %d/%d)...", retry + 1, max_retries);
+        
+        if (BNO08x_initialize(&imu)) {
+            // Success!
+            ESP_LOGI(TAG, "BNO08x initialization successful on attempt %d", retry + 1);
+            
+            // Register data callback
+            BNO08x_register_cb(&imu, imu_data_callback);
+            
+            sensor_initialized = true;
+            ESP_LOGI(TAG, "BNO085 initialized successfully using esp32_bno08x_driver");
+            
+            return ESP_OK;
+        }
+        
+        ESP_LOGW(TAG, "BNO08x initialization failed on attempt %d", retry + 1);
+        
+        if (retry < max_retries - 1) {
+            // Not the last attempt, try resetting the device
+            ESP_LOGI(TAG, "Performing hardware reset before retry...");
+            
+            // Toggle reset pin if available
+            if (IMU_RST != GPIO_NUM_NC) {
+                gpio_set_level(IMU_RST, 0);
+                vTaskDelay(pdMS_TO_TICKS(10));
+                gpio_set_level(IMU_RST, 1);
+            }
+            
+            // Wait before next attempt
+            ESP_LOGI(TAG, "Waiting %d ms before retry...", retry_delay_ms);
+            vTaskDelay(pdMS_TO_TICKS(retry_delay_ms));
+        }
     }
     
-    // Register data callback
-    BNO08x_register_cb(&imu, imu_data_callback);
-    
-    sensor_initialized = true;
-    ESP_LOGI(TAG, "BNO085 initialized successfully using esp32_bno08x_driver");
-    
-    return ESP_OK;
+    // All retries failed
+    ESP_LOGE(TAG, "Failed to initialize BNO08x device after %d attempts", max_retries);
+    return ESP_FAIL;
 }
 
 void imu_deinit(void) {
@@ -174,37 +203,68 @@ void imu_task(void *pvParameters) {
     
     // Initialize IMU
     esp_err_t ret = imu_init();
-    if (ret != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to initialize BNO085");
-        vTaskDelete(NULL);
-        return;
-    }
-    
-    ESP_LOGI(TAG, "BNO085 initialized successfully, starting sensor loop");
-    
-    // Enable game rotation vector at configured frequency
-    ESP_LOGI(TAG, "About to enable game rotation vector at %dHz", IMU_SENSOR_FREQ_HZ);
-    ret = imu_enable_game_rotation_vector(IMU_SENSOR_PERIOD_US);  // Period in microseconds
-    ESP_LOGI(TAG, "imu_enable_game_rotation_vector returned: %d", ret);
+    bool imu_failed = false;
     
     if (ret != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to enable game rotation vector");
-        imu_deinit();
-        vTaskDelete(NULL);
-        return;
+        ESP_LOGE(TAG, "Failed to initialize BNO085 - continuing with identity quaternion");
+        imu_failed = true;
+        // Set identity quaternion (facing forward, no rotation)
+        hid_device_update_quaternion(0, 0, 0, 1.0f);
+    } else {
+        ESP_LOGI(TAG, "BNO085 initialized successfully, starting sensor loop");
+        
+        // Enable game rotation vector at configured frequency
+        ESP_LOGI(TAG, "About to enable game rotation vector at %dHz", IMU_SENSOR_FREQ_HZ);
+        ret = imu_enable_game_rotation_vector(IMU_SENSOR_PERIOD_US);  // Period in microseconds
+        ESP_LOGI(TAG, "imu_enable_game_rotation_vector returned: %d", ret);
+        
+        if (ret != ESP_OK) {
+            ESP_LOGE(TAG, "Failed to enable game rotation vector - continuing with identity quaternion");
+            imu_deinit();
+            imu_failed = true;
+            // Set identity quaternion
+            hid_device_update_quaternion(0, 0, 0, 1.0f);
+        } else {
+            // Give the sensor time to process configuration and start sending data
+            ESP_LOGI(TAG, "Waiting for sensor to start sending data...");
+            vTaskDelay(pdMS_TO_TICKS(100));  // Reduced from 500ms to 100ms
+            
+            ESP_LOGI(TAG, "Starting sensor monitoring loop");
+        }
     }
-    
-    // Give the sensor time to process configuration and start sending data
-    ESP_LOGI(TAG, "Waiting for sensor to start sending data...");
-    vTaskDelay(pdMS_TO_TICKS(100));  // Reduced from 500ms to 100ms
-    
-    ESP_LOGI(TAG, "Starting sensor monitoring loop");
     
     // Tracking variables
     imu_quaternion_t quat;
     uint32_t no_data_count = 0;
+    uint32_t retry_init_counter = 0;
+    const uint32_t retry_init_interval = 5000 / IMU_POLL_DELAY_MS; // Retry every 5 seconds
     
     while (1) {
+        if (imu_failed) {
+            // If IMU failed, periodically try to reinitialize
+            retry_init_counter++;
+            if (retry_init_counter >= retry_init_interval) {
+                retry_init_counter = 0;
+                ESP_LOGI(TAG, "Attempting to reinitialize IMU...");
+                
+                ret = imu_init();
+                if (ret == ESP_OK) {
+                    ret = imu_enable_game_rotation_vector(IMU_SENSOR_PERIOD_US);
+                    if (ret == ESP_OK) {
+                        ESP_LOGI(TAG, "IMU reinitialized successfully!");
+                        imu_failed = false;
+                        vTaskDelay(pdMS_TO_TICKS(100));
+                    } else {
+                        imu_deinit();
+                    }
+                }
+            }
+            
+            // Continue sending identity quaternion while IMU is failed
+            vTaskDelay(pdMS_TO_TICKS(HID_REPORT_DELAY_MS));
+            continue;
+        }
+        
         // Try to get quaternion data
         ret = imu_get_quaternion(&quat);
         if (ret == ESP_OK) {
@@ -220,6 +280,16 @@ void imu_task(void *pvParameters) {
         } else {
             // No new data available
             no_data_count++;
+            
+            // If no data for too long, assume sensor failure
+            if (no_data_count > 500) { // ~5 seconds at 100Hz
+                ESP_LOGE(TAG, "No data from IMU for 5 seconds, assuming sensor failure");
+                imu_failed = true;
+                no_data_count = 0;
+                // Set identity quaternion
+                hid_device_update_quaternion(0, 0, 0, 1.0f);
+            }
+            
             // Longer delay when no data to avoid busy-waiting
             if (no_data_count > 10) {
                 vTaskDelay(pdMS_TO_TICKS(HID_REPORT_DELAY_MS));  // Back off to HID rate when idle
@@ -234,8 +304,8 @@ esp_err_t imu_reset(void) {
     ESP_LOGI(TAG, "Resetting IMU...");
     
     if (!sensor_initialized) {
-        ESP_LOGE(TAG, "IMU not initialized");
-        return ESP_ERR_INVALID_STATE;
+        ESP_LOGW(TAG, "IMU not initialized - attempting initialization instead");
+        return imu_init();
     }
     
     // Perform hardware reset
@@ -244,9 +314,26 @@ esp_err_t imu_reset(void) {
     // Wait for reset to complete
     vTaskDelay(pdMS_TO_TICKS(100));
     
-    // Re-initialize the device
-    if (!BNO08x_initialize(&imu)) {
+    // Re-initialize the device with retries
+    const int max_retries = 3;
+    bool reset_success = false;
+    
+    for (int retry = 0; retry < max_retries; retry++) {
+        ESP_LOGI(TAG, "Attempting to re-initialize after reset (attempt %d/%d)...", retry + 1, max_retries);
+        
+        if (BNO08x_initialize(&imu)) {
+            reset_success = true;
+            break;
+        }
+        
+        if (retry < max_retries - 1) {
+            vTaskDelay(pdMS_TO_TICKS(200));
+        }
+    }
+    
+    if (!reset_success) {
         ESP_LOGE(TAG, "Failed to re-initialize BNO08x after reset");
+        sensor_initialized = false;
         return ESP_FAIL;
     }
     

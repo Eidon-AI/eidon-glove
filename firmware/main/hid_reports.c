@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: Unlicense OR CC0-1.0
  */
 
-#include "hid_device.h"
+#include "hid_reports.h"
 #include "esp_log.h"
 #include "esp_hidd.h"
 #include "freertos/FreeRTOS.h"
@@ -85,22 +85,40 @@ static esp_hid_device_config_t ble_hid_config = {
 // Initialize HID device globals
 void hid_device_init_globals(void)
 {
+    ESP_LOGI(TAG, "Initializing HID device globals");
+    
     // Initialize with defaults
     memset(&current_sensor_report, 0, sizeof(current_sensor_report));
     memset(&last_sent_report, 0, sizeof(last_sent_report));
     last_sent_button_state = false;
     
-    // Load saved values from storage
+    // Load saved shell color from storage
     shell_color_t color;
-    if (storage_get_shell_color(&color) == ESP_OK) {
+    esp_err_t ret = storage_get_shell_color(&color);
+    if (ret == ESP_OK) {
+        ESP_LOGI(TAG, "*** Device shell color loaded from storage ***");
+        ESP_LOGI(TAG, "Loaded color: R=0x%02X, G=0x%02X, B=0x%02X", color.r, color.g, color.b);
         current_feature_report[0] = color.r;
         current_feature_report[1] = color.g;
         current_feature_report[2] = color.b;
+    } else {
+        ESP_LOGI(TAG, "*** Using default device shell color ***");
+        ESP_LOGI(TAG, "Default color: R=0x%02X, G=0x%02X, B=0x%02X", 
+                 PREFERENCES_DEFAULT_SHELL_COLOR_R, PREFERENCES_DEFAULT_SHELL_COLOR_G, PREFERENCES_DEFAULT_SHELL_COLOR_B);
+        // Defaults already set in initialization
     }
     
+    // Load saved body position from storage
     body_position_t position;
-    if (storage_get_body_position(&position) == ESP_OK) {
+    ret = storage_get_body_position(&position);
+    if (ret == ESP_OK) {
+        ESP_LOGI(TAG, "*** Body position loaded from storage ***");
+        ESP_LOGI(TAG, "Loaded position: 0x%02X", position.position);
         current_body_position = position.position;
+    } else {
+        ESP_LOGI(TAG, "*** Using default body position ***");
+        ESP_LOGI(TAG, "Default position: 0x%02X", PREFERENCES_DEFAULT_BODY_POSITION);
+        current_body_position = PREFERENCES_DEFAULT_BODY_POSITION;
     }
 }
 

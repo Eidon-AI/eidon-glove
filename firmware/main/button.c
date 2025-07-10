@@ -10,8 +10,42 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/queue.h"
+#include "hid_reports.h"
+#include "led.h"
+#include "imu.h"
+#include "storage.h"
 
 static const char *TAG = "BUTTON";
+
+// Default button callback function for IMU reset and position change
+static void button_default_callback(void)
+{
+    ESP_LOGI(TAG, "Button pressed - taring IMU heading and changing position");
+    
+    // Change body position (cycle through 0-15 for now)
+    uint8_t current_position = hid_device_get_body_position();
+    uint8_t new_position = (current_position + 1) % 16;
+    hid_device_update_body_position(new_position);
+    ESP_LOGI(TAG, "Body position changed to: 0x%02X", new_position);
+    
+    // Save the new position to storage
+    esp_err_t ret = storage_save_body_position(new_position);
+    if (ret != ESP_OK) {
+        ESP_LOGW(TAG, "Failed to save body position: %s", esp_err_to_name(ret));
+    }
+    
+    // Update global state (reporting task will handle sending)
+    ESP_LOGI(TAG, "Updated body position state - Position: 0x%02X", new_position);
+    
+    // Trigger LED reset sequence
+    led_trigger_reset_sequence();
+    
+    // Reset IMU heading
+    esp_err_t imu_ret = imu_reset();
+    if (imu_ret != ESP_OK) {
+        ESP_LOGW(TAG, "IMU reset failed: %s", esp_err_to_name(imu_ret));
+    }
+}
 
 // Global variables
 static TaskHandle_t button_task_handle = NULL;
@@ -101,15 +135,23 @@ esp_err_t button_init(void)
     }
     
     button_initialized = true;
-    ESP_LOGI(TAG, "Boot button initialized successfully");
+    
+    // Set default callback
+    button_callback = button_default_callback;
+    ESP_LOGI(TAG, "Boot button initialized successfully with default callback");
     
     return ESP_OK;
 }
 
 void button_set_callback(button_callback_t callback)
 {
-    button_callback = callback;
-    ESP_LOGI(TAG, "Button callback set");
+    if (callback != NULL) {
+        button_callback = callback;
+        ESP_LOGI(TAG, "Custom button callback set");
+    } else {
+        button_callback = button_default_callback;
+        ESP_LOGI(TAG, "Button callback restored to default");
+    }
 }
 
 esp_err_t button_task_start(void)

@@ -25,6 +25,11 @@ typedef void (*button_callback_t)(void);
 /**
  * @brief Initialize the boot button
  * 
+ * Initializes the button with a default callback that:
+ * - Cycles through body positions (0-15)
+ * - Triggers LED reset sequence
+ * - Resets IMU heading
+ * 
  * @return esp_err_t ESP_OK on success, error code on failure
  */
 esp_err_t button_init(void);
@@ -32,7 +37,10 @@ esp_err_t button_init(void);
 /**
  * @brief Set the callback function to be called when button is pressed
  * 
- * @param callback Function to call on button press
+ * Override the default button behavior with a custom callback.
+ * Pass NULL to restore the default callback.
+ * 
+ * @param callback Function to call on button press, or NULL for default
  */
 void button_set_callback(button_callback_t callback);
 

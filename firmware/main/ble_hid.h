@@ -16,6 +16,21 @@ extern "C" {
 #endif
 
 /**
+ * @brief Initialize the BLE HID stack
+ * 
+ * This function handles all BLE-related initialization including:
+ * - HID GAP initialization
+ * - BLE advertisement setup
+ * - Device name and serial number generation
+ * - GATT server callbacks (Bluedroid)
+ * - HID device initialization
+ * - NimBLE-specific setup if enabled
+ * 
+ * @return ESP_OK on success, error code on failure
+ */
+esp_err_t ble_hid_init(void);
+
+/**
  * @brief Start the BLE HID task
  * 
  * Creates the HID reporting task if it doesn't already exist

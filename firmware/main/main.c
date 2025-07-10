@@ -8,35 +8,14 @@
 #include "freertos/task.h"
 #include "freertos/event_groups.h"
 
-#include "ble.h"
-#include "imu.h"
-#include "config.h"
-#include "led.h"
 #include "button.h"
+#include "ble_hid.h"
+#include "imu.h"
+#include "led.h"
 #include "storage.h"
-#include "hid_device.h"
+#include "hid_reports.h"
 
 static const char *TAG = "MAIN";
-
-// Button callback function for IMU heading reset and position change
-static void button_imu_reset_callback(void)
-{
-    ESP_LOGI(TAG, "Button pressed - taring IMU heading and changing position");
-    
-    // Change body position (cycle through 0-15 for now)
-    uint8_t current_position = hid_device_get_body_position();
-    uint8_t new_position = (current_position + 1) % 16;
-    hid_device_update_body_position(new_position);
-    ESP_LOGI(TAG, "Body position changed to: 0x%02X", new_position);
-    
-    // Update global state (reporting task will handle sending)
-    ESP_LOGI(TAG, "Updated body position state - Position: 0x%02X", new_position);
-    
-    // Trigger LED reset sequence
-    led_trigger_reset_sequence();
-    // Reset IMU heading
-    imu_reset();
-}
 
 void app_main(void)
 {
@@ -61,39 +40,12 @@ void app_main(void)
     // Initialize HID device globals (loads saved values from storage)
     hid_device_init_globals();
     
-    // Get current shell color and update feature report data
-    shell_color_t color;
-    ret = storage_get_shell_color(&color);
-    if (ret == ESP_OK) {
-        ESP_LOGI(TAG, "*** Device shell color loaded from storage ***");
-        ESP_LOGI(TAG, "Loaded color: R=0x%02X, G=0x%02X, B=0x%02X", color.r, color.g, color.b);
-        
-        // Update feature report data in HID device module
-        hid_device_update_feature_report(color.r, color.g, color.b);
-    } else {
-        ESP_LOGI(TAG, "*** Using default device shell color on startup ***");
-        ESP_LOGI(TAG, "Default color: R=0x%02X, G=0x%02X, B=0x%02X", 
-                 PREFERENCES_DEFAULT_SHELL_COLOR_R, PREFERENCES_DEFAULT_SHELL_COLOR_G, PREFERENCES_DEFAULT_SHELL_COLOR_B);
-    }
-    
-    // Get current body position from storage
-    body_position_t position;
-    ret = storage_get_body_position(&position);
-    if (ret == ESP_OK) {
-        ESP_LOGI(TAG, "*** Body position loaded from storage ***");
-        ESP_LOGI(TAG, "Loaded position: 0x%02X", position.position);
-        hid_device_update_body_position(position.position);
-    } else {
-        ESP_LOGI(TAG, "*** Using default body position on startup ***");
-        ESP_LOGI(TAG, "Default position: 0x%02X", PREFERENCES_DEFAULT_BODY_POSITION);
-    }
-    
     // Set initial LED state to STROBE for testing (will be set properly when BLE starts)
     led_set_state(LED_STATE_STROBE);
     ESP_LOGI(TAG, "Set initial LED state to STROBE for testing");
 
     // Initialize BLE stack
-    ret = ble_init();
+    ret = ble_hid_init();
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "BLE initialization failed: %s", esp_err_to_name(ret));
         return;
@@ -112,10 +64,7 @@ void app_main(void)
     if (ret != ESP_OK) {
         ESP_LOGW(TAG, "Button initialization failed, continuing without button control");
     } else {
-        // Set callback for IMU heading tare
-        button_set_callback(button_imu_reset_callback);
-        
-        // Start button task
+        // Start button task (button now has default IMU reset callback)
         ret = button_task_start();
         if (ret != ESP_OK) {
             ESP_LOGW(TAG, "Button task start failed: %s", esp_err_to_name(ret));
